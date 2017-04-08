@@ -1,0 +1,100 @@
+@import "ui/vc_ui-fonts.less";
+@import "ui/vc_ui-button.less";
+@import "ui/vc_ui-helper.less";
+@import "ui/vc_ui-icon-pixel.less";
+
+@vc-welcome-border: rgba(125, 125, 125, 0.40);
+@vc-welcome-margin: 14px;
+@vc-welcome-base-font-size: 14px;
+@vc-welcome-gap: 20px;
+@vc-welcome-header-font-size: 36px;
+@vc-welcome-header-line-height: 1em;
+@vc-welcome-header-font-color: #656565;
+
+
+.vc_welcome {
+  margin: @vc-welcome-margin;
+  font-size: @vc-welcome-base-font-size;
+  text-align: center;
+  padding: @vc-welcome-gap;
+
+  // buttons behavior
+  .vc_ui-btn-group {
+    margin-top: @vc-welcome-gap;
+    margin-bottom: @vc-welcome-gap;
+  }
+  .vc_ui-button {
+    margin: @vc-welcome-gap / 2;
+    margin-bottom: 0;
+    min-width: 190px;
+    text-transform: capitalize;
+  }
+  // icon behaviour {
+  .vc_ui-icon-pixel {
+    padding-right: .5em;
+  }
+}
+
+.vc_welcome-brand {
+  margin-top: @vc-welcome-gap;
+  margin-bottom: @vc-welcome-gap * 1.5;
+  img {
+    box-shadow: none;
+  }
+}
+
+.vc_welcome-header {
+  font-weight: 300;
+  font-size: @vc-welcome-header-font-size;
+  line-height: @vc-welcome-header-line-height;
+  color: @vc-welcome-header-font-color;
+  text-transform: uppercase;
+  margin-top: @vc-welcome-gap;
+  margin-bottom: @vc-welcome-gap * 2;
+}
+
+.vc_add-element-not-empty-button {
+  display: inline-block;
+  width: 39px;
+  height: 38px;
+  background-image: url(../vc/fe/empty_row_sprite.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border: none !important;
+  transition-property: none;
+  &:hover {
+    background-position: bottom center;
+  }
+}
+
+// not empty state
+.vc_welcome {
+  &.vc_not-empty {
+    border: 1px dashed @vc-welcome-border;
+    .vc_welcome-visible-e {
+      display: none;
+    }
+  }
+  &:not(.vc_not-empty) {
+    .vc_welcome-visible-ne {
+      display: none;
+    }
+  }
+}
+
+// editors behaviour
+.vc_editor.compose-mode {
+  .vc_welcome {
+    margin: 0;
+  }
+}
+
+// media behaviour
+@media screen and (max-width: @screen-sm) {
+  .vc_welcome {
+    .vc_ui-button {
+      display: block;
+    }
+  }
+}
