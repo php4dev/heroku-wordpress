@@ -13,7 +13,7 @@
  *
  * @package WordPress
  */
-define('FORCE_SSL_ADMIN', true);
+
 // ** Heroku Postgres settings - from Heroku Environment ** //
 $db = parse_url($_ENV["DATABASE_URL"]);
 
