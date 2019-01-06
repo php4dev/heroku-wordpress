@@ -21,7 +21,7 @@ class WordPressHTTPS_Module_Settings extends Mvied_Plugin_Module {
 		if ( is_admin() ) {
 			add_action('wp_ajax_' . $this->getPlugin()->getSlug() . '_settings_save', array(&$this, 'save'));
 			add_action('wp_ajax_' . $this->getPlugin()->getSlug() . '_settings_reset', array(&$this, 'reset'));
-			add_action('wp_ajax_' . $this->getPlugin()->getSlug() . '_ajax_metabox', array(&$this, 'ajax_metabox'));
+			add_action('wp_ajax_' . $this->getPlugin()->getSlug() . '_settings_cache_reset', array(&$this, 'cache_reset'));
 			if ( isset($_GET['page']) && strpos($_GET['page'], $this->getPlugin()->getSlug()) !== false ) {
 				// Add meta boxes
 				add_action('admin_init', array(&$this, 'add_meta_boxes'));
@@ -59,7 +59,7 @@ class WordPressHTTPS_Module_Settings extends Mvied_Plugin_Module {
 	public function add_meta_boxes() {
 		add_meta_box(
 			$this->getPlugin()->getSlug() . '_settings',
-			__( 'General Settings', $this->getPlugin()->getSlug() ),
+			__( 'General Settings', 'wordpress-https' ),
 			array($this->getPlugin()->getModule('Admin'), 'meta_box_render'),
 			'toplevel_page_' . $this->getPlugin()->getSlug(),
 			'main',
@@ -67,49 +67,40 @@ class WordPressHTTPS_Module_Settings extends Mvied_Plugin_Module {
 			array( 'metabox' => 'settings' )
 		);
 		add_meta_box(
-			$this->getPlugin()->getSlug() . '_updates',
-			__( 'Developer Updates', $this->getPlugin()->getSlug() ),
-			array($this->getPlugin()->getModule('Admin'), 'meta_box_render'),
-			'toplevel_page_' . $this->getPlugin()->getSlug(),
-			'side',
-			'high',
-			array( 'metabox' => 'ajax', 'url' => 'http://wordpresshttps.com/client/updates.php' )
-		);
-		add_meta_box(
 			$this->getPlugin()->getSlug() . '_support',
-			__( 'Support', $this->getPlugin()->getSlug() ),
+			__( 'Support', 'wordpress-https' ),
 			array($this->getPlugin()->getModule('Admin'), 'meta_box_render'),
 			'toplevel_page_' . $this->getPlugin()->getSlug(),
 			'side',
 			'high',
-			array( 'metabox' => 'ajax', 'url' => 'http://wordpresshttps.com/client/support.php' )
+			array( 'metabox' => 'support' )
 		);
 		add_meta_box(
 			$this->getPlugin()->getSlug() . '_rate',
-			__( 'Feedback', $this->getPlugin()->getSlug() ),
+			__( 'Feedback', 'wordpress-https' ),
 			array($this->getPlugin()->getModule('Admin'), 'meta_box_render'),
 			'toplevel_page_' . $this->getPlugin()->getSlug(),
 			'side',
 			'core',
-			array( 'metabox' => 'ajax', 'url' => 'http://wordpresshttps.com/client/rate.php' )
+			array( 'metabox' => 'feedback' )
 		);
 		add_meta_box(
 			$this->getPlugin()->getSlug() . '_donate',
-			__( 'Donate', $this->getPlugin()->getSlug() ),
+			__( 'Donate', 'wordpress-https' ),
 			array($this->getPlugin()->getModule('Admin'), 'meta_box_render'),
 			'toplevel_page_' . $this->getPlugin()->getSlug(),
 			'side',
 			'core',
-			array( 'metabox' => 'ajax', 'url' => 'http://wordpresshttps.com/client/donate.php' )
+			array( 'metabox' => 'donate' )
 		);
 		add_meta_box(
 			$this->getPlugin()->getSlug() . '_donate2',
-			__( 'Loading...', $this->getPlugin()->getSlug() ),
+			__( 'Promotion', 'wordpress-https' ),
 			array($this->getPlugin()->getModule('Admin'), 'meta_box_render'),
 			'toplevel_page_' . $this->getPlugin()->getSlug(),
-			'main',
+			'side',
 			'low',
-			array( 'metabox' => 'ajax', 'url' => 'http://wordpresshttps.com/client/donate2.php' )
+			array( 'metabox' => 'donate2' )
 		);
 	}
 
@@ -128,36 +119,6 @@ class WordPressHTTPS_Module_Settings extends Mvied_Plugin_Module {
 	}
 
 	/**
-	 * Dispatch request for ajax metabox
-	 *
-	 * @param none
-	 * @return void
-	 */
-	public function ajax_metabox() {
-		// Disable errors
-		error_reporting(0);
-
-		// Set headers
-		header("Status: 200");
-		header("HTTP/1.1 200 OK");
-		header('Content-Type: text/html');
-		header('Cache-Control: no-store, no-cache, must-revalidate');
-		header('Cache-Control: post-check=0, pre-check=0', FALSE);
-		header('Pragma: no-cache');
-		header("Vary: Accept-Encoding");
-
-		if ( ! wp_verify_nonce($_POST['_nonce'], $this->getPlugin()->getSlug()) ) {
-			exit;
-		}
-
-		$content = WordPressHTTPS_Url::fromString( $_POST['url'] )->getContent();
-		if ( $content ) {
-			echo $content;
-		}
-		exit;
-	}
-
-	/**
 	 * Adds javascript and stylesheets to settings page in the admin panel.
 	 * WordPress Hook - enqueue_scripts
 	 *
@@ -165,7 +126,7 @@ class WordPressHTTPS_Module_Settings extends Mvied_Plugin_Module {
 	 * @return void
 	 */
 	public function admin_enqueue_scripts() {
-		wp_enqueue_style($this->getPlugin()->getSlug() . '-admin-page', $this->getPlugin()->getPluginUrl() . '/admin/css/settings.css', array(), $this->getPlugin()->getVersion());
+		wp_enqueue_style($this->getPlugin()->getSlug() . '-admin-page', $this->getPlugin()->getPluginUrl() . '/css/settings.css', array(), $this->getPlugin()->getVersion());
 		wp_enqueue_script('jquery-form');
 		wp_enqueue_script('post');
 		
@@ -181,7 +142,30 @@ class WordPressHTTPS_Module_Settings extends Mvied_Plugin_Module {
 	 * @return void
 	 */
 	public function render() {
-		require_once($this->getPlugin()->getDirectory() . '/admin/templates/settings.php');
+		$this->getPlugin()->renderView('settings');
+	}
+
+	/**
+	 * Reset Cache
+	 *
+	 * @param none
+	 * @return void
+	 */
+	public function cache_reset() {
+		if ( !wp_verify_nonce($_POST['_wpnonce'], $this->getPlugin()->getSlug()) ) {
+			return false;
+		}
+
+		$message = __('Cache reset.', 'wordpress-https' );
+		$errors = array();
+		$reload = false;
+
+		$this->getPlugin()->setSetting('secure_external_urls', array());
+		$this->getPlugin()->setSetting('unsecure_external_urls', array());
+		$this->getPlugin()->setSetting('path_cache', array());
+		$this->getPlugin()->setSetting('blog_cache', array());
+
+		$this->getPlugin()->renderView('ajax_message', array('message' => $message, 'errors' => $errors, 'reload' => $reload));
 	}
 
 	/**
@@ -195,7 +179,7 @@ class WordPressHTTPS_Module_Settings extends Mvied_Plugin_Module {
 			return false;
 		}
 
-		$message = "Settings reset.";
+		$message = __('Settings reset.', 'wordpress-https' );
 		$errors = array();
 		$reload = true;
 
@@ -204,7 +188,7 @@ class WordPressHTTPS_Module_Settings extends Mvied_Plugin_Module {
 		}
 		$this->getPlugin()->install();
 
-		require_once($this->getPlugin()->getDirectory() . '/admin/templates/ajax_message.php');
+		$this->getPlugin()->renderView('ajax_message', array('message' => $message, 'errors' => $errors, 'reload' => $reload));
 	}
 	
 	/**
@@ -214,14 +198,15 @@ class WordPressHTTPS_Module_Settings extends Mvied_Plugin_Module {
 	 * @return void
 	 */
 	public function save() {
-		if ( !wp_verify_nonce($_POST['_wpnonce'], $this->getPlugin()->getSlug()) ) {
+		if ( !wp_verify_nonce($_POST['_wpnonce'], 'wordpress-https') ) {
 			return false;
 		}
 
-		$message = "Settings saved.";
+		$message = __('Settings saved.', 'wordpress-https' );
 		$errors = array();
 		$reload = false;
 		$logout = false;
+		$ssl_host = clone $this->getPlugin()->getHttpsUrl();
 
 		foreach ($this->getPlugin()->getSettings() as $key => $default) {
 			if ( !array_key_exists($key, $_POST) && $default == 0 ) {
@@ -236,11 +221,7 @@ class WordPressHTTPS_Module_Settings extends Mvied_Plugin_Module {
 							$_POST[$key] = 'https://' . $_POST[$key];
 						}
 
-						$ssl_host = WordPressHTTPS_Url::fromString($_POST[$key]);
-
-						// Add Port
-						$_POST['ssl_port'] = $port = ((isset($_POST['ssl_port']) && is_int($_POST['ssl_port']) && $_POST['ssl_port'] != 443) ? $_POST['ssl_port'] : $ssl_host->getPort());
-						$ssl_host->setPort($port);
+						$ssl_host = Mvied_Url::fromString($_POST[$key]);
 
 						// Add Path
 						if ( strpos($ssl_host->getPath(), $this->getPlugin()->getHttpUrl()->getPath()) !== true ) {
@@ -256,7 +237,7 @@ class WordPressHTTPS_Module_Settings extends Mvied_Plugin_Module {
 								if ( $this->getPlugin()->isSsl() ) {
 									$logout = true;
 								}
-								$_POST[$key] = $ssl_host->setPort('')->toString();
+								$_POST[$key] = $ssl_host->toString();
 							/*} else {
 								$errors[] = '<strong>SSL Host</strong> - Invalid WordPress installation at ' . $ssl_host;
 								$_POST[$key] = get_option($key);
@@ -297,7 +278,7 @@ class WordPressHTTPS_Module_Settings extends Mvied_Plugin_Module {
 			wp_logout();
 		}
 
-		require_once($this->getPlugin()->getDirectory() . '/admin/templates/ajax_message.php');
+		$this->getPlugin()->renderView('ajax_message', array('message' => $message, 'errors' => $errors, 'reload' => $reload, 'logout' => $logout));
 	}
 	
 }

@@ -19,16 +19,16 @@ $db = parse_url($_ENV["DATABASE_URL"]);
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', trim($db["path"],"/"));
+define('DB_NAME', 'path');
 
 /** MySQL database username */
-define('DB_USER', $db["user"]);
+define('DB_USER', 'user');
 
 /** MySQL database password */
-define('DB_PASSWORD', $db["pass"]);
+define('DB_PASSWORD', 'pass');
 
 /** MySQL hostname */
-define('DB_HOST', $db["host"]);
+define('DB_HOST', 'host');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');

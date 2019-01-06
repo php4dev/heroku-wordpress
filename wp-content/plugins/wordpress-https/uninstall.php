@@ -7,6 +7,7 @@ if ( !defined('WP_UNINSTALL_PLUGIN') ) {
 }
 
 $options = array(
+	'wordpress-https_hosts',
 	'wordpress-https_external_urls',
 	'wordpress-https_secure_external_urls',
 	'wordpress-https_unsecure_external_urls',
@@ -23,12 +24,14 @@ $options = array(
 	'wordpress-https_debug',
 	'wordpress-https_admin_menu',
 	'wordpress-https_secure_filter',
-	'wordpress-https_ssl_host_mapping'
+	'wordpress-https_ssl_host_mapping',
+	'wordpress-https_path_cache',
+	'wordpress-https_blog_cache',
 );
 
 global $wpdb;
 if ( is_multisite() && is_network_admin() ) {
-	$blogs = $wpdb->get_col($wpdb->prepare("SELECT blog_id FROM " . $wpdb->blogs, NULL));
+	$blogs = $wpdb->get_col("SELECT blog_id FROM {$wpdb->blogs}");
 } else {
 	$blogs = array($wpdb->blogid);
 }

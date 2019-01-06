@@ -1,7 +1,22 @@
-/**
- * AWS wrap
- */
-.aws-main.wrap {
+$as3cf_assets: #0769ad;
+
+.as3cf-content,
+.as3cf-updated,
+.as3cf-compatibility-notice {
+	box-sizing: border-box;
+	max-width: 650px;
+}
+
+.settings_page_amazon-s3-and-cloudfront {
+	.error,
+	.notice,
+	.updated {
+		box-sizing: border-box;
+		max-width: 650px;
+	}
+}
+
+.as3cf-main.wrap {
 	position: relative;
 
 	& > h1 {
@@ -9,8 +24,6 @@
 	}
 
 	.as3cf-notice, .as3cf-updated, .as3cf-error {
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 	}
 
@@ -25,13 +38,20 @@
 		margin-top: 10px;
 		padding: 9px 0 0 5px;
 
+		.nav-tab-container {
+			float: right;
+
+			:last-child {
+				margin-right: 5px;
+			}
+		}
+
 		a.nav-tab-active {
 			color: #464646;
 			cursor: default;
 		}
 
 		a:focus {
-			-webkit-box-shadow: none;
 			box-shadow: none;
 		}
 	}
@@ -65,8 +85,6 @@
 	.as3cf-notice, .error, .updated {
 		max-width: 650px;
 		margin-top: 15px;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 	}
 
@@ -76,27 +94,107 @@
 			display: block;
 		}
 	}
+
+	.alignleft {
+		margin-right: 20px;
+		margin-bottom: 20px;
+	}
+
+	.spinner {
+		min-width: 20px;
+	}
 }
 
 /**
- * Bucket select
+ * Show Storage Provider / Bucket Select / media Settings
  */
 .as3cf-tab {
 	.as3cf-main-settings {
-		display: none;
-	}
-
-	.as3cf-bucket-container {
-		display: block;
-	}
-
-	&.as3cf-has-bucket {
-		.as3cf-main-settings {
-			display: block;
+		.as3cf-provider-select {
+			display: none;
 		}
 
 		.as3cf-bucket-container {
 			display: none;
+
+			a.as3cf-change-provider {
+				display: none;
+			}
+		}
+
+		.as3cf-media-settings {
+			display: none;
+		}
+	}
+
+	&.as3cf-needs-access-keys, &.as3cf-has-access-keys.as3cf-change-provider {
+		.as3cf-can-write-error {
+			display: none;
+		}
+
+		.as3cf-main-settings {
+			.as3cf-provider-select {
+				display: block;
+			}
+
+			.as3cf-bucket-container {
+				display: none;
+			}
+
+			.as3cf-media-settings {
+				display: none;
+			}
+		}
+	}
+
+	&.as3cf-has-access-keys.as3cf-needs-bucket:not(.as3cf-change-provider), &.as3cf-has-access-keys.as3cf-change-bucket:not(.as3cf-change-provider) {
+		.as3cf-can-write-error {
+			display: none;
+		}
+
+		.as3cf-main-settings {
+			.as3cf-provider-select {
+				display: none;
+			}
+
+			.as3cf-bucket-container {
+				display: block;
+			}
+
+			.as3cf-media-settings {
+				display: none;
+			}
+		}
+	}
+
+	&.as3cf-has-access-keys.as3cf-has-bucket:not(.as3cf-change-provider):not(.as3cf-change-bucket) {
+		.as3cf-main-settings {
+			.as3cf-provider-select {
+				display: none;
+			}
+
+			.as3cf-bucket-container {
+				display: none;
+			}
+
+			.as3cf-media-settings {
+				display: block;
+			}
+		}
+	}
+}
+
+.as3cf-content {
+	> section {
+		margin-bottom: 20px;
+	}
+
+	> section + section.as3cf-access-keys {
+		padding-top: 20px;
+		border-top: 1px solid #d3d3d3;
+
+		.as3cf-section-heading {
+			margin-top: 0;
 		}
 	}
 }
@@ -130,8 +228,6 @@
 		padding: 20px 0 0;
 		max-width: 650px;
 		width: 100%;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 
 		.as3cf-url-preview {
@@ -173,7 +269,6 @@
 		padding: 2px;
 		overflow: hidden;
 		border-radius: 2px;
-		-webkit-border-radius: 2px;
 		background-color: #d4d3d3;
 		cursor: pointer;
 
@@ -183,8 +278,6 @@
 
 		span {
 			visibility: hidden;
-			-webkit-box-sizing: border-box;
-			-moz-box-sizing: border-box;
 			box-sizing: border-box;
 			float: left;
 			display: inline-block;
@@ -192,7 +285,6 @@
 			font-size: 12px;
 			line-height: 20px;
 			border-radius: 2px;
-			-webkit-border-radius: 2px;
 			font-weight: bold;
 			padding: 4px 8px;
 			background: #fff;
@@ -241,7 +333,6 @@
 	h3 {
 		font-weight: normal;
 		text-transform: uppercase;
-		margin: 15px 0;
 	}
 
 	.form-table {
@@ -258,11 +349,16 @@
 			&.as3cf-setting-title:first-child td {
 				padding-top: 20px;
 			}
+			&.configure-url:first-child td {
+				padding-top: 5px;
+				padding-bottom: 0;
+			}
 			td {
 				padding: 15px 0;
 				&:first-child {
 					vertical-align: top;
 					min-width: 120px;
+					padding-top: 20px;
 				}
 
 				.as3cf-notice:last-child {
@@ -273,16 +369,6 @@
 					margin-top: 0;
 				}
 			}
-
-			&:first-of-type {
-				td {
-					padding-top: 5px;
-				}
-			}
-		}
-
-		tr.as3cf-bucket-setting .as3cf-defined-in-config {
-			float: none;
 		}
 
 		h3 {
@@ -294,10 +380,10 @@
 		}
 	}
 
-	.as3cf-active-bucket {
-		font-weight: bold;
-		margin-right: 10px;
+	.as3cf-active-region {
+		font-style: italic;
 	}
+
 	.as3cf-view-bucket {
 		color: #444;
 		text-decoration: none;
@@ -338,8 +424,6 @@
 		margin-left: -250px;
 		padding: 10px;
 		width: 500px;
-		-webkit-border-radius: 3px;
-		-moz-border-radius: 3px;
 		border-radius: 3px;
 		background-color: #000;
 		background-color: hsla(0, 0%, 20%, 0.9);
@@ -381,6 +465,7 @@
 		padding: 2px 5px;
 		margin: 0 0 5px 5px;
 		float: right;
+		white-space: nowrap;
 	}
 
 	.as3cf-defined-setting {
@@ -402,6 +487,25 @@
 			display: none !important;
 		}
 	}
+
+	p.actions {
+		margin: 20px -30px -30px;
+		padding: 20px 30px;
+		border-top: none;
+		overflow: hidden;
+
+		.right {
+			margin-left: 15px;
+
+			&:last-of-type {
+				margin-left: 0;
+			}
+		}
+
+		button {
+			min-width: 90px;
+		}
+	}
 }
 
 /**
@@ -410,22 +514,13 @@
 #tab-media {
 	display: block;
 
-	.as3cf-main-settings {
-		display: none;
+	.as3cf-provider-setting td {
+		padding-top: 20px;
+		padding-bottom: 5px;
 	}
 
-	.as3cf-bucket-container {
-		display: block;
-	}
-
-	&.as3cf-has-bucket {
-		.as3cf-main-settings {
-			display: block;
-		}
-
-		.as3cf-bucket-container {
-			display: none;
-		}
+	.as3cf-bucket-setting td {
+		padding: 5px 0;
 	}
 }
 
@@ -439,7 +534,6 @@
 	}
 
 	a:focus {
-		-webkit-box-shadow: none;
 		box-shadow: none;
 		outline: none;
 	}
@@ -455,6 +549,15 @@
 	}
 
 	.form-table {
+		.as3cf-provider-setting {
+			h4 {
+				font-weight: inherit;
+				margin: 0;
+			}
+		}
+		.as3cf-bucket-list {
+			margin: 5px 0 0 0;
+		}
 		td {
 			padding: 5px 0;
 
@@ -482,15 +585,6 @@
 			display: inline-block;
 			margin-right: 20px;
 			line-height: 28px;
-		}
-
-		.bucket-action-cancel {
-			color: #a00;
-			text-decoration: none;
-
-			&:hover {
-				color: red;
-			}
 		}
 	}
 
@@ -524,19 +618,6 @@
 			}
 		}
 	}
-
-	.as3cf-bucket-select,
-	.as3cf-bucket-create {
-		display: none;
-	}
-
-	.bucket-actions.select {
-		display: none;
-	}
-}
-
-.as3cf-tab {
-	display: none;
 }
 
 #tab-media {
@@ -553,6 +634,10 @@
 		border-bottom: 1px solid #ccc;
 		padding-bottom: 20px;
 		margin-bottom: 20px;
+
+		h3 {
+			font-size: 20px;
+		}
 	}
 
 	.debug {
@@ -686,18 +771,6 @@
 		}
 	}
 
-	@media (min--moz-device-pixel-ratio: 1.3),
-	(-o-min-device-pixel-ratio: 2.6/2),
-	(-webkit-min-device-pixel-ratio: 1.3),
-	(min-device-pixel-ratio: 1.3),
-	(min-resolution: 1.3dppx) {
-
-		.as3cf-banner {
-			background-image: url(../img/snail-banner@2x.jpg);
-			background-size: 292px 156px;
-		}
-	}
-
 	@media screen and (max-width: 1052px) {
 		position: relative;
 		top: auto;
@@ -708,48 +781,55 @@
 /**
  * Misc
  */
+.as3cf-active-provider, .as3cf-active-bucket {
+	font-weight: bold;
+	margin-right: 10px;
+}
+
 .as3cf-banner {
 	margin-top: 35px;
 	width: 292px;
-	height: 156px;
+	height: 200px;
 	display: block;
-	background-image: url(../img/snail-banner.jpg);
-	position: relative;
-
-	h1 {
-		font-size: 28px;
-		color: #fff;
-		font-weight: 200;
-		margin: 0;
-		position: absolute;
-		bottom: 25px;
-		left: 20px;
-		text-decoration: none;
-	}
+	background: #f8cfae url(../img/os3-banner.svg) left bottom / 220px 220px no-repeat;
 }
 
-.as3cf-upgrade-details {
-	background-color: #73833b;
-	padding: 20px;
-	color: #fff;
+.as3cf-banner:focus {
+	box-shadow: none;
+}
+
+.wrap .as3cf-upgrade-details {
+	background-color: #4e0d33;
+	padding: 10px 20px 20px 20px;
+	color: #eee;
 	font-size: 13px;
 	margin: 0;
 	display: block;
 	text-decoration: none;
+
+	h1 {
+		font-size: 28px;
+		color: #eee;
+		margin: 0 0 15px 0;
+		padding: 0;
+		text-decoration: none;
+		font-weight: 200;
+		line-height: 1;
+	}
 
 	p {
 		margin: 0;
 	}
 
 	a {
-		color: #fff;
+		color: #eee;
 		font-weight: bold;
 		text-decoration: none;
 		font-size: 16px;
+		box-shadow: none;
 
 		&:hover {
 			color: #fff;
-			opacity: 0.9;
 		}
 	}
 
@@ -760,7 +840,7 @@
 	}
 }
 
-.aws-compatibility-notice.error {
+.as3cf-compatibility-notice.error {
 	clear: both;
 	margin: 5px 20px 5px 0;
 }
@@ -788,5 +868,105 @@
 		margin-left: 0;
 		padding-left: 40px;
 		color: #dc3232;
+	}
+}
+
+.as3cf-need-help {
+	background-color: white;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 1em;
+
+	a {
+		text-decoration: none;
+	}
+}
+
+.as3cf-settings {
+	h3 {
+		font-size: 20px;
+	}
+
+	p {
+		font-size: 14px;
+	}
+}
+
+.as3cf-addons,
+.as3cf-tab .as3cf-compatibility-notice {
+	max-width: cover;
+}
+
+textarea.as3cf-access-key-constants-snippet.code {
+	width: 100%;
+	white-space: pre;
+	overflow: hidden;
+	font-size: 12px;
+	padding: 10px;
+	height: 53px;
+}
+
+/**
+ * Addons Tab
+ */
+.as3cf-addons {
+	.as3cf-addons-list {
+		margin: 20px 0 200px;
+		padding-top: 5px;
+	}
+
+	.as3cf-addon {
+		display: flex;
+		padding: 20px;
+		font-size: 14px;
+
+		&-info {
+			min-height: 100px;
+		}
+
+		&-links {
+			float: right;
+
+			span {
+				padding: 4px 6px;
+			}
+		}
+
+		&-icon {
+			float: left;
+			margin-right: 20px;
+		}
+
+		&-details {
+			white-space: nowrap;
+		}
+
+		&-title,
+		&-description {
+			font-weight: 100;
+		}
+
+		+ .as3cf-addon {
+			margin-top: 20px;
+		}
+
+		&.amazon-s3-and-cloudfront-assets-pull {
+			background-color: $as3cf_assets;
+			color: white;
+
+			.as3cf-addon-title,
+			.as3cf-addon-description,
+			a {
+				color: white;
+			}
+
+			.extra {
+				background: white;
+				a {
+					color: $as3cf_assets;
+					text-decoration: none;
+				}
+			}
+		}
 	}
 }

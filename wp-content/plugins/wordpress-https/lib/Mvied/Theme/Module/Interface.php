@@ -20,17 +20,16 @@ interface Mvied_Theme_Module_Interface {
 	/**
 	 * Set Theme
 	 * 
-	 * @param Mvied_Theme $theme
+	 * @param Mvied_Theme_Modular $theme
 	 * @return Mvied_Theme_Module
-	 * @uses Mvied_Theme
 	 */
-	public function setTheme( Mvied_Theme $theme );
+	public function setTheme( Mvied_Theme_Modular $theme );
 
 	/**
 	 * Get Theme
 	 * 
 	 * @param none
-	 * @return Mvied_Theme
+	 * @return Mvied_Theme_Modular
 	 */
 	public function getTheme();
 }
