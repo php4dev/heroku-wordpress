@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: WP Offload Media Lite
+Plugin Name: WP Offload S3 Lite
 Plugin URI: http://wordpress.org/extend/plugins/amazon-s3-and-cloudfront/
-Description: Automatically copies media uploads to Amazon S3 or DigitalOcean Spaces for storage and delivery. Optionally configure Amazon CloudFront or another CDN for even faster delivery.
+Description: Automatically copies media uploads to Amazon S3 for storage and delivery. Optionally configure Amazon CloudFront for even faster delivery.
 Author: Delicious Brains
-Version: 2.0.1
-Author URI: https://deliciousbrains.com/
+Version: 1.1.6
+Author URI: http://deliciousbrains.com/
 Network: True
 Text Domain: amazon-s3-and-cloudfront
 Domain Path: /languages/
@@ -26,30 +26,29 @@ Domain Path: /languages/
 // Then completely rewritten.
 */
 
-$GLOBALS['aws_meta']['amazon-s3-and-cloudfront']['version'] = '2.0.1';
+$GLOBALS['aws_meta']['amazon-s3-and-cloudfront']['version'] = '1.1.6';
 
-require_once dirname( __FILE__ ) . '/classes/as3cf-compatibility-check.php';
+$aws_plugin_version_required = '1.0.1';
 
-add_action( 'activated_plugin', array( 'AS3CF_Compatibility_Check', 'deactivate_other_instances' ) );
+require_once dirname( __FILE__ ) . '/classes/wp-aws-compatibility-check.php';
+require_once dirname( __FILE__ ) . '/classes/as3cf-utils.php';
+
+add_action( 'activated_plugin', array( 'AS3CF_Utils', 'deactivate_other_instances' ) );
 
 global $as3cf_compat_check;
-$as3cf_compat_check = new AS3CF_Compatibility_Check(
-	'WP Offload Media Lite',
+$as3cf_compat_check = new WP_AWS_Compatibility_Check(
+	'WP Offload S3 Lite',
 	'amazon-s3-and-cloudfront',
-	__FILE__
+	__FILE__,
+	'Amazon Web Services',
+	'amazon-web-services',
+	$aws_plugin_version_required
 );
 
-/**
- * @throws Exception
- */
-function as3cf_init() {
-	if ( class_exists( 'Amazon_S3_And_CloudFront' ) ) {
-		return;
-	}
-
+function as3cf_init( $aws ) {
 	global $as3cf_compat_check;
 
-	if ( method_exists( 'AS3CF_Compatibility_Check', 'is_plugin_active' ) && $as3cf_compat_check->is_plugin_active( 'amazon-s3-and-cloudfront-pro/amazon-s3-and-cloudfront-pro.php' ) ) {
+	if ( method_exists( 'WP_AWS_Compatibility_Check', 'is_plugin_active' ) && $as3cf_compat_check->is_plugin_active( 'amazon-s3-and-cloudfront-pro/amazon-s3-and-cloudfront-pro.php' ) ) {
 		// Don't load if pro plugin installed
 		return;
 	}
@@ -60,29 +59,29 @@ function as3cf_init() {
 
 	global $as3cf;
 	$abspath = dirname( __FILE__ );
-
-	// Autoloader.
-	require_once $abspath . '/wp-offload-media-autoloader.php';
-
 	require_once $abspath . '/include/functions.php';
-	require_once $abspath . '/classes/as3cf-utils.php';
 	require_once $abspath . '/classes/as3cf-error.php';
+	require_once $abspath . '/classes/as3cf-upgrade.php';
+	require_once $abspath . '/classes/as3cf-upgrade-filter-post.php';
+	require_once $abspath . '/classes/upgrades/as3cf-region-meta.php';
+	require_once $abspath . '/classes/upgrades/as3cf-file-sizes.php';
+	require_once $abspath . '/classes/upgrades/as3cf-meta-wp-error.php';
+	require_once $abspath . '/classes/upgrades/as3cf-filter-edd.php';
+	require_once $abspath . '/classes/upgrades/as3cf-filter-post-content.php';
+	require_once $abspath . '/classes/upgrades/as3cf-filter-post-excerpt.php';
 	require_once $abspath . '/classes/as3cf-filter.php';
 	require_once $abspath . '/classes/filters/as3cf-local-to-s3.php';
 	require_once $abspath . '/classes/filters/as3cf-s3-to-local.php';
 	require_once $abspath . '/classes/as3cf-notices.php';
-	require_once $abspath . '/classes/as3cf-plugin-base.php';
+	require_once $abspath . '/classes/as3cf-stream-wrapper.php';
 	require_once $abspath . '/classes/as3cf-plugin-compatibility.php';
 	require_once $abspath . '/classes/amazon-s3-and-cloudfront.php';
 
-	new WP_Offload_Media_Autoloader( 'WP_Offload_Media', $abspath );
+	// Autoloader
+	require_once $abspath . '/wp-offload-s3-autoloader.php';
+	new WP_Offload_S3_Autoloader( 'WP_Offload_S3', $abspath );
 
-	$as3cf = new Amazon_S3_And_CloudFront( __FILE__ );
-
-	do_action( 'as3cf_init', $as3cf );
+	$as3cf = new Amazon_S3_And_CloudFront( __FILE__, $aws );
 }
 
-add_action( 'init', 'as3cf_init' );
-
-// If AWS still active need to be around to satisfy addon version checks until upgraded.
-add_action( 'aws_init', 'as3cf_init', 11 );
+add_action( 'aws_init', 'as3cf_init' );

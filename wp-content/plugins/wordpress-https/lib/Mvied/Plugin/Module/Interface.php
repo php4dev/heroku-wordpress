@@ -20,16 +20,17 @@ interface Mvied_Plugin_Module_Interface {
 	/**
 	 * Set Plugin
 	 * 
-	 * @param Mvied_Plugin_Modular $plugin
+	 * @param Mvied_Plugin $plugin
 	 * @return Mvied_Plugin_Module
+	 * @uses Mvied_Plugin
 	 */
-	public function setPlugin( Mvied_Plugin_Modular $plugin );
+	public function setPlugin( Mvied_Plugin $plugin );
 
 	/**
 	 * Get Plugin
 	 * 
 	 * @param none
-	 * @return Mvied_Plugin_Modular
+	 * @return Mvied_Plugin
 	 */
 	public function getPlugin();
 }

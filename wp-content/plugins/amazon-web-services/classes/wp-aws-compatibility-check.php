@@ -304,7 +304,7 @@ if ( ! class_exists( 'WP_AWS_Compatibility_Check' ) ) {
 		/**
 		 * Get the compatibility error message
 		 *
-		 * @return string|bool
+		 * @return string|void
 		 */
 		function get_error_msg() {
 			if ( is_null( $this->parent_plugin_slug ) ) {

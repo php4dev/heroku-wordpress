@@ -68,7 +68,7 @@ class AS3CF_Notices {
 			'only_show_to_user'     => true, // The user who has initiated an action resulting in notice. Otherwise show to all users.
 			'user_capabilities'     => array( 'as3cf_compat_check', 'check_capabilities' ), // A user with these capabilities can see the notice. Can be a callback with the first array item the name of global class instance.
 			'only_show_in_settings' => false,
-			'only_show_on_tab'      => false, // Only show on a specific WP Offload Media tab.
+			'only_show_on_tab'      => false, // Only show on a specific WP Offload S3 tab.
 			'custom_id'             => '',
 			'auto_p'                => true, // Automatically wrap the message in a <p>
 			'class'                 => '', // Extra classes for the notice
@@ -423,8 +423,15 @@ class AS3CF_Notices {
 	 * Enqueue notice scripts in the admin
 	 */
 	public function enqueue_notice_scripts() {
-		$this->as3cf->enqueue_style( 'as3cf-notice', 'assets/css/notice' );
-		$this->as3cf->enqueue_script( 'as3cf-notice', 'assets/js/notice', array( 'jquery' ) );
+		$version = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : $GLOBALS['aws_meta']['amazon-s3-and-cloudfront']['version'];
+		$suffix  = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+		// Enqueue notice.css & notice.js globally as some notices can be shown & dismissed on any admin page.
+		$src = plugins_url( 'assets/css/notice.css', $this->as3cf->get_plugin_file_path() );
+		wp_enqueue_style( 'as3cf-notice', $src, array(), $version );
+		
+		$src = plugins_url( 'assets/js/notice' . $suffix . '.js', $this->as3cf->get_plugin_file_path() );
+		wp_enqueue_script( 'as3cf-notice', $src, array( 'jquery' ), $version, true );
 
 		wp_localize_script( 'as3cf-notice', 'as3cf_notice', array(
 			'strings' => array(

@@ -1,33 +1,25 @@
 <div class="as3cf-sidebar">
 
-	<a class="as3cf-banner" href="<?php echo $this->dbrains_url( '/wp-offload-media/', array(
-		'utm_campaign' => 'WP+Offload+S3',
-		'utm_content'  => 'sidebar',
-	) ); ?>">
+	<a class="as3cf-banner" href="https://deliciousbrains.com/wp-offload-s3/?utm_source=insideplugin&amp;utm_medium=web&amp;utm_content=sidebar&amp;utm_campaign=os3-free-plugin">
+		<h1>Upgrade</h1>
 	</a>
 
 	<div class="as3cf-upgrade-details">
-		<h1>Upgrade</h1>
 
 		<ul>
-			<li><?php echo wptexturize( __( 'Offload existing Media Library items', 'amazon-s3-and-cloudfront' ) ); // xss ok ?></li>
-			<li><?php echo wptexturize( __( 'Manage offloaded files in WordPress', 'amazon-s3-and-cloudfront' ) ); // xss ok ?></li>
-			<li><?php echo wptexturize( __( 'Assets addon - Serve your CSS & JS from CloudFront or another CDN', 'amazon-s3-and-cloudfront' ) ); // xss ok ?></li>
-			<li><?php echo wptexturize( __( 'WooCommerce integration', 'amazon-s3-and-cloudfront' ) ); // xss ok ?></li>
-			<li><?php echo wptexturize( __( 'Easy Digital Downloads integration', 'amazon-s3-and-cloudfront' ) ); // xss ok ?></li>
+			<li><?php echo wptexturize( __( 'Upload existing Media Library to S3', 'amazon-s3-and-cloudfront' ) ); // xss ok ?></li>
+			<li><?php echo wptexturize( __( 'Manage S3 files in WordPress', 'amazon-s3-and-cloudfront' ) ); // xss ok ?></li>
+			<li><?php echo wptexturize( __( 'Assets addon - Serve your CSS & JS from S3/CloudFront', 'amazon-s3-and-cloudfront' ) ); // xss ok ?></li>
+			<li><?php echo wptexturize( __( 'WooCommerce addon', 'amazon-s3-and-cloudfront' ) ); // xss ok ?></li>
+			<li><?php echo wptexturize( __( 'Easy Digital Downloads addon', 'amazon-s3-and-cloudfront' ) ); // xss ok ?></li>
 			<li><?php echo wptexturize( __( 'PriorityExpert™ email support', 'amazon-s3-and-cloudfront' ) ); // xss ok ?></li>
 		</ul>
 
-		<p>
-			<a href="<?php echo $this->dbrains_url( '/wp-offload-media/', array(
-				'utm_campaign' => 'WP+Offload+S3',
-				'utm_content'  => 'sidebar',
-			) ); ?>"><?php echo __( 'Visit deliciousbrains.com &rarr;', 'amazon-s3-and-cloudfront' ); ?></a>
-		</p>
+		<p><a href="https://deliciousbrains.com/wp-offload-s3/?utm_source=insideplugin&amp;utm_medium=web&amp;utm_content=sidebar&amp;utm_campaign=os3-free-plugin"><?php echo __( 'Visit deliciousbrains.com &rarr;', 'amazon-s3-and-cloudfront' ); ?></a></p>
 
 	</div>
 
-	<form method="post" action="<?php echo Amazon_S3_And_CloudFront::DBRAINS_URL ?>/email-subscribe/" target="_blank" class="subscribe block">
+	<form method="post" action="https://deliciousbrains.com/email-subscribe/" target="_blank" class="subscribe block">
 		<?php $user = wp_get_current_user(); ?>
 
 		<h2><?php _e( 'Get 20% Off!', 'amazon-s3-and-cloudfront' ); ?></h2>
@@ -64,10 +56,7 @@
 		<h4>Created &amp; maintained by</h4>
 		<ul>
 			<li>
-				<a href="<?php echo $this->dbrains_url( '', array(
-					'utm_campaign' => 'WP+Offload+S3',
-					'utm_content'  => 'sidebar',
-				) ); ?>">
+				<a href="https://deliciousbrains.com/?utm_source=insideplugin&amp;utm_medium=web&amp;utm_content=sidebar&amp;utm_campaign=os3-free-plugin">
 					<img src="//www.gravatar.com/avatar/e62fc2e9c8d9fc6edd4fea5339036a91?size=64" alt="" width="32" height="32">
 					<span>Delicious Brains Inc.</span>
 				</a>
