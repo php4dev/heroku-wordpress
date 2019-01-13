@@ -290,7 +290,9 @@ final class WP_Screen {
 
 			switch ( $base ) {
 				case 'post' :
-					if ( isset( $_GET['post'] ) )
+					if ( isset( $_GET['post'] ) && isset( $_POST['post_ID'] ) && (int) $_GET['post'] !== (int) $_POST['post_ID'] )
+						wp_die( __( 'A post ID mismatch has been detected.' ), __( 'Sorry, you are not allowed to edit this item.' ), 400 );
+					elseif ( isset( $_GET['post'] ) )
 						$post_id = (int) $_GET['post'];
 					elseif ( isset( $_POST['post_ID'] ) )
 						$post_id = (int) $_POST['post_ID'];
@@ -307,6 +309,9 @@ final class WP_Screen {
 				case 'term' :
 					if ( null === $post_type && is_object_in_taxonomy( 'post', $taxonomy ? $taxonomy : 'post_tag' ) )
 						$post_type = 'post';
+					break;
+				case 'upload':
+					$post_type = 'attachment';
 					break;
 			}
 		}
@@ -1163,7 +1168,7 @@ final class WP_Screen {
 			$per_page = apply_filters( 'edit_categories_per_page', $per_page );
 		} else {
 			/** This filter is documented in wp-admin/includes/class-wp-list-table.php */
-			$per_page = apply_filters( $option, $per_page );
+			$per_page = apply_filters( "{$option}", $per_page );
 		}
 
 		// Back compat
@@ -1193,6 +1198,8 @@ final class WP_Screen {
 	 * Render the list table view mode preferences.
 	 *
 	 * @since 4.4.0
+	 *
+	 * @global string $mode List table view mode.
 	 */
 	public function render_view_mode() {
 		$screen = get_current_screen();

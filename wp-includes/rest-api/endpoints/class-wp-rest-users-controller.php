@@ -148,6 +148,7 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 	 * The value can be an integer, 'false', false, or ''.
 	 *
 	 * @since 4.7.0
+	 * @access public
 	 *
 	 * @param int|bool        $value   The value passed to the reassign parameter.
 	 * @param WP_REST_Request $request Full details about the request.
@@ -220,6 +221,7 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 			'per_page' => 'number',
 			'search'   => 'search',
 			'roles'    => 'role__in',
+			'slug'     => 'nicename__in',
 		);
 
 		$prepared_args = array();
@@ -260,12 +262,6 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 		if ( ! empty( $prepared_args['search'] ) ) {
 			$prepared_args['search'] = '*' . $prepared_args['search'] . '*';
 		}
-
-		if ( isset( $registered['slug'] ) && ! empty( $request['slug'] ) ) {
-			$prepared_args['search'] = $request['slug'];
-			$prepared_args['search_columns'] = array( 'user_nicename' );
-		}
-
 		/**
 		 * Filters WP_User_Query arguments when querying users via the REST API.
 		 *
@@ -639,7 +635,7 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 
 		$user = get_user_by( 'id', $user_id );
 
-		/* This action is documented in lib/endpoints/class-wp-rest-users-controller.php */
+		/** This action is documented in wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php */
 		do_action( 'rest_insert_user', $user, $request, false );
 
 		if ( ! empty( $request['roles'] ) ) {
@@ -1084,6 +1080,7 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 	 * Performs a couple of checks like edit_user() in wp-admin/includes/user.php.
 	 *
 	 * @since 4.7.0
+	 * @access public
 	 *
 	 * @param  mixed            $value   The username submitted in the request.
 	 * @param  WP_REST_Request  $request Full details about the request.
@@ -1113,6 +1110,7 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 	 * Performs a couple of checks like edit_user() in wp-admin/includes/user.php.
 	 *
 	 * @since 4.7.0
+	 * @access public
 	 *
 	 * @param  mixed            $value   The password submitted in the request.
 	 * @param  WP_REST_Request  $request Full details about the request.
@@ -1360,8 +1358,11 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 		);
 
 		$query_params['slug']    = array(
-			'description'        => __( 'Limit result set to users with a specific slug.' ),
-			'type'               => 'string',
+			'description'        => __( 'Limit result set to users with one or more specific slugs.' ),
+			'type'               => 'array',
+			'items'              => array(
+				'type'               => 'string',
+			),
 		);
 
 		$query_params['roles']   = array(

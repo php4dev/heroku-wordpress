@@ -530,7 +530,7 @@ function wp_http_validate_url( $url ) {
 	$parsed_home = @parse_url( get_option( 'home' ) );
 
 	if ( isset( $parsed_home['host'] ) ) {
-		$same_host = ( strtolower( $parsed_home['host'] ) === strtolower( $parsed_url['host'] ) || 'localhost' === strtolower( $parsed_url['host'] ) );
+		$same_host = strtolower( $parsed_home['host'] ) === strtolower( $parsed_url['host'] );
 	} else {
 		$same_host = false;
 	}
@@ -650,7 +650,7 @@ function ms_allowed_http_request_hosts( $is_external, $host ) {
  *                          @see http://php.net/manual/en/function.parse-url.php
  * @return mixed False on parse failure; Array of URL components on success;
  *               When a specific component has been requested: null if the component
- *               doesn't exist in the given URL; a sting or - in the case of
+ *               doesn't exist in the given URL; a string or - in the case of
  *               PHP_URL_PORT - integer when it does. See parse_url()'s return values.
  */
 function wp_parse_url( $url, $component = -1 ) {
@@ -695,7 +695,7 @@ function wp_parse_url( $url, $component = -1 ) {
  *                          @see http://php.net/manual/en/function.parse-url.php
  * @return mixed False on parse failure; Array of URL components on success;
  *               When a specific component has been requested: null if the component
- *               doesn't exist in the given URL; a sting or - in the case of
+ *               doesn't exist in the given URL; a string or - in the case of
  *               PHP_URL_PORT - integer when it does. See parse_url()'s return values.
  */
 function _get_component_from_parsed_url_array( $url_parts, $component = -1 ) {

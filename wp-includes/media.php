@@ -1045,6 +1045,8 @@ function wp_calculate_image_srcset( $size_array, $image_src, $image_meta, $attac
 	/**
 	 * Let plugins pre-filter the image meta to be able to fix inconsistencies in the stored data.
 	 *
+	 * @since 4.5.0
+	 *
 	 * @param array  $image_meta    The image meta data as returned by 'wp_get_attachment_metadata()'.
 	 * @param array  $size_array    Array of width and height values in pixels (in that order).
 	 * @param string $image_src     The 'src' of the image.
@@ -2157,9 +2159,9 @@ function wp_get_audio_extensions() {
 	 * @since 3.6.0
 	 *
 	 * @param array $extensions An array of support audio formats. Defaults are
-	 *                          'mp3', 'ogg', 'wma', 'm4a', 'wav'.
+	 *                          'mp3', 'ogg', 'm4a', 'wav'.
 	 */
-	return apply_filters( 'wp_audio_extensions', array( 'mp3', 'ogg', 'wma', 'm4a', 'wav' ) );
+	return apply_filters( 'wp_audio_extensions', array( 'mp3', 'ogg', 'm4a', 'wav' ) );
 }
 
 /**
@@ -2390,9 +2392,9 @@ function wp_get_video_extensions() {
 	 * @since 3.6.0
 	 *
 	 * @param array $extensions An array of support video formats. Defaults are
-	 *                          'mp4', 'm4v', 'webm', 'ogv', 'wmv', 'flv'.
+	 *                          'mp4', 'm4v', 'webm', 'ogv', 'flv'.
 	 */
-	return apply_filters( 'wp_video_extensions', array( 'mp4', 'm4v', 'webm', 'ogv', 'wmv', 'flv' ) );
+	return apply_filters( 'wp_video_extensions', array( 'mp4', 'm4v', 'webm', 'ogv', 'flv' ) );
 }
 
 /**
@@ -2542,6 +2544,24 @@ function wp_video_shortcode( $attr, $content = '' ) {
 	if ( 'mediaelement' === $library && did_action( 'init' ) ) {
 		wp_enqueue_style( 'wp-mediaelement' );
 		wp_enqueue_script( 'wp-mediaelement' );
+	}
+
+	// Mediaelement has issues with some URL formats for Vimeo and YouTube, so
+	// update the URL to prevent the ME.js player from breaking.
+	if ( 'mediaelement' === $library ) {
+		if ( $is_youtube ) {
+			// Remove `feature` query arg and force SSL - see #40866.
+			$atts['src'] = remove_query_arg( 'feature', $atts['src'] );
+			$atts['src'] = set_url_scheme( $atts['src'], 'https' );
+		} elseif ( $is_vimeo ) {
+			// Remove all query arguments and force SSL - see #40866.
+			$parsed_vimeo_url = wp_parse_url( $atts['src'] );
+			$vimeo_src = 'https://' . $parsed_vimeo_url['host'] . $parsed_vimeo_url['path'];
+
+			// Add loop param for mejs bug - see #40977, not needed after #39686.
+			$loop = $atts['loop'] ? '1' : '0';
+			$atts['src'] = add_query_arg( 'loop', $loop, $vimeo_src );
+		}
 	}
 
 	/**
@@ -3096,7 +3116,11 @@ function wp_prepare_attachment_for_js( $attachment ) {
 	);
 
 	$author = new WP_User( $attachment->post_author );
-	$response['authorName'] = $author->display_name;
+	if ( $author->exists() ) {
+		$response['authorName'] = html_entity_decode( $author->display_name, ENT_QUOTES, get_bloginfo( 'charset' ) );
+	} else {
+		$response['authorName'] = __( '(no author)' );
+	}
 
 	if ( $attachment->post_parent ) {
 		$post_parent = get_post( $attachment->post_parent );
@@ -3319,26 +3343,87 @@ function wp_enqueue_media( $args = array() ) {
 		}
 	}
 
-	$has_audio = $wpdb->get_var( "
-		SELECT ID
-		FROM $wpdb->posts
-		WHERE post_type = 'attachment'
-		AND post_mime_type LIKE 'audio%'
-		LIMIT 1
-	" );
-	$has_video = $wpdb->get_var( "
-		SELECT ID
-		FROM $wpdb->posts
-		WHERE post_type = 'attachment'
-		AND post_mime_type LIKE 'video%'
-		LIMIT 1
-	" );
-	$months = $wpdb->get_results( $wpdb->prepare( "
-		SELECT DISTINCT YEAR( post_date ) AS year, MONTH( post_date ) AS month
-		FROM $wpdb->posts
-		WHERE post_type = %s
-		ORDER BY post_date DESC
-	", 'attachment' ) );
+	/**
+	 * Allows showing or hiding the "Create Audio Playlist" button in the media library.
+	 *
+	 * By default, the "Create Audio Playlist" button will always be shown in
+	 * the media library.  If this filter returns `null`, a query will be run
+	 * to determine whether the media library contains any audio items.  This
+	 * was the default behavior prior to version 4.8.0, but this query is
+	 * expensive for large media libraries.
+	 *
+	 * @since 4.7.4
+	 * @since 4.8.0 The filter's default value is `true` rather than `null`.
+	 *
+	 * @link https://core.trac.wordpress.org/ticket/31071
+	 *
+	 * @param bool|null Whether to show the button, or `null` to decide based
+	 *                  on whether any audio files exist in the media library.
+	 */
+	$show_audio_playlist = apply_filters( 'media_library_show_audio_playlist', true );
+	if ( null === $show_audio_playlist ) {
+		$show_audio_playlist = $wpdb->get_var( "
+			SELECT ID
+			FROM $wpdb->posts
+			WHERE post_type = 'attachment'
+			AND post_mime_type LIKE 'audio%'
+			LIMIT 1
+		" );
+	}
+
+	/**
+	 * Allows showing or hiding the "Create Video Playlist" button in the media library.
+	 *
+	 * By default, the "Create Video Playlist" button will always be shown in
+	 * the media library.  If this filter returns `null`, a query will be run
+	 * to determine whether the media library contains any video items.  This
+	 * was the default behavior prior to version 4.8.0, but this query is
+	 * expensive for large media libraries.
+	 *
+	 * @since 4.7.4
+	 * @since 4.8.0 The filter's default value is `true` rather than `null`.
+	 *
+	 * @link https://core.trac.wordpress.org/ticket/31071
+	 *
+	 * @param bool|null Whether to show the button, or `null` to decide based
+	 *                  on whether any video files exist in the media library.
+	 */
+	$show_video_playlist = apply_filters( 'media_library_show_video_playlist', true );
+	if ( null === $show_video_playlist ) {
+		$show_video_playlist = $wpdb->get_var( "
+			SELECT ID
+			FROM $wpdb->posts
+			WHERE post_type = 'attachment'
+			AND post_mime_type LIKE 'video%'
+			LIMIT 1
+		" );
+	}
+
+	/**
+	 * Allows overriding the list of months displayed in the media library.
+	 *
+	 * By default (if this filter does not return an array), a query will be
+	 * run to determine the months that have media items.  This query can be
+	 * expensive for large media libraries, so it may be desirable for sites to
+	 * override this behavior.
+	 *
+	 * @since 4.7.4
+	 *
+	 * @link https://core.trac.wordpress.org/ticket/31071
+	 *
+	 * @param array|null An array of objects with `month` and `year`
+	 *                   properties, or `null` (or any other non-array value)
+	 *                   for default behavior.
+	 */
+	$months = apply_filters( 'media_library_months_with_files', null );
+	if ( ! is_array( $months ) ) {
+		$months = $wpdb->get_results( $wpdb->prepare( "
+			SELECT DISTINCT YEAR( post_date ) AS year, MONTH( post_date ) AS month
+			FROM $wpdb->posts
+			WHERE post_type = %s
+			ORDER BY post_date DESC
+		", 'attachment' ) );
+	}
 	foreach ( $months as $month_year ) {
 		$month_year->text = sprintf( __( '%1$s %2$d' ), $wp_locale->get_month( $month_year->month ), $month_year->year );
 	}
@@ -3351,20 +3436,22 @@ function wp_enqueue_media( $args = array() ) {
 		'captions'  => ! apply_filters( 'disable_captions', '' ),
 		'nonce'     => array(
 			'sendToEditor' => wp_create_nonce( 'media-send-to-editor' ),
+			'wpRestApi'    => wp_create_nonce( 'wp_rest' ),
 		),
 		'post'    => array(
 			'id' => 0,
 		),
 		'defaultProps' => $props,
 		'attachmentCounts' => array(
-			'audio' => ( $has_audio ) ? 1 : 0,
-			'video' => ( $has_video ) ? 1 : 0
+			'audio' => ( $show_audio_playlist ) ? 1 : 0,
+			'video' => ( $show_video_playlist ) ? 1 : 0,
 		),
+		'oEmbedProxyUrl' => rest_url( 'oembed/1.0/proxy' ),
 		'embedExts'    => $exts,
 		'embedMimes'   => $ext_mimes,
 		'contentWidth' => $content_width,
 		'months'       => $months,
-		'mediaTrash'   => MEDIA_TRASH ? 1 : 0
+		'mediaTrash'   => MEDIA_TRASH ? 1 : 0,
 	);
 
 	$post = null;
@@ -3432,8 +3519,8 @@ function wp_enqueue_media( $args = array() ) {
 		'unattached'             => __( 'Unattached' ),
 		'trash'                  => _x( 'Trash', 'noun' ),
 		'uploadedToThisPost'     => $post_type_object->labels->uploaded_to_this_item,
-		'warnDelete'             => __( "You are about to permanently delete this item.\n  'Cancel' to stop, 'OK' to delete." ),
-		'warnBulkDelete'         => __( "You are about to permanently delete these items.\n  'Cancel' to stop, 'OK' to delete." ),
+		'warnDelete'             => __( "You are about to permanently delete this item from your site.\nThis action cannot be undone.\n 'Cancel' to stop, 'OK' to delete." ),
+		'warnBulkDelete'         => __( "You are about to permanently delete these items from your site.\nThis action cannot be undone.\n 'Cancel' to stop, 'OK' to delete." ),
 		'warnBulkTrash'          => __( "You are about to trash these items.\n  'Cancel' to stop, 'OK' to delete." ),
 		'bulkSelect'             => __( 'Bulk Select' ),
 		'cancelSelection'        => __( 'Cancel Selection' ),
@@ -3481,7 +3568,8 @@ function wp_enqueue_media( $args = array() ) {
 		'cropImage' => __( 'Crop Image' ),
 		'cropYourImage' => __( 'Crop your image' ),
 		'cropping' => __( 'Cropping&hellip;' ),
-		'suggestedDimensions' => __( 'Suggested image dimensions:' ),
+		/* translators: 1: suggested width number, 2: suggested height number. */
+		'suggestedDimensions' => __( 'Suggested image dimensions: %1$s by %2$s pixels.' ),
 		'cropError' => __( 'There has been an error cropping your image.' ),
 
 		// Edit Audio
@@ -3679,7 +3767,7 @@ function get_post_galleries( $post, $html = true ) {
 			if ( 'gallery' === $shortcode[2] ) {
 				$srcs = array();
 
-				$shortcode_attrs = shortcode_parse_atts( $shortcode[3] ); 
+				$shortcode_attrs = shortcode_parse_atts( $shortcode[3] );
 				if ( ! is_array( $shortcode_attrs ) ) {
 					$shortcode_attrs = array();
 				}

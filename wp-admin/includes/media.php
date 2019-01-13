@@ -852,11 +852,12 @@ function wp_media_upload_handler() {
  *
  * @since 2.6.0
  * @since 4.2.0 Introduced the `$return` parameter.
+ * @since 4.8.0 Introduced the 'id' option within the `$return` parameter.
  *
  * @param string $file    The URL of the image to download.
  * @param int    $post_id The post ID the media is to be associated with.
  * @param string $desc    Optional. Description of the image.
- * @param string $return  Optional. Accepts 'html' (image tag html) or 'src' (URL). Default 'html'.
+ * @param string $return  Optional. Accepts 'html' (image tag html) or 'src' (URL), or 'id' (attachment ID). Default 'html'.
  * @return string|WP_Error Populated HTML img tag on success, WP_Error object otherwise.
  */
 function media_sideload_image( $file, $post_id, $desc = null, $return = 'html' ) {
@@ -885,6 +886,9 @@ function media_sideload_image( $file, $post_id, $desc = null, $return = 'html' )
 		// If error storing permanently, unlink.
 		if ( is_wp_error( $id ) ) {
 			@unlink( $file_array['tmp_name'] );
+			return $id;
+		// If attachment id was requested, return it early.
+		} elseif ( $return === 'id' ) {
 			return $id;
 		}
 
@@ -2982,7 +2986,7 @@ function wp_add_id3_tag_data( &$metadata, $data ) {
 		if ( ! empty( $data[$version]['comments'] ) ) {
 			foreach ( $data[$version]['comments'] as $key => $list ) {
 				if ( 'length' !== $key && ! empty( $list ) ) {
-					$metadata[$key] = reset( $list );
+					$metadata[$key] = wp_kses_post( reset( $list ) );
 					// Fix bug in byte stream analysis.
 					if ( 'terms_of_use' === $key && 0 === strpos( $metadata[$key], 'yright notice.' ) )
 						$metadata[$key] = 'Cop' . $metadata[$key];
@@ -3072,8 +3076,6 @@ function wp_read_video_metadata( $file ) {
 
 	wp_add_id3_tag_data( $metadata, $data );
 
-	$metadata = wp_kses_post_deep( $metadata );
-
 	return $metadata;
 }
 
@@ -3118,8 +3120,6 @@ function wp_read_audio_metadata( $file ) {
 		$metadata['length_formatted'] = $data['playtime_string'];
 
 	wp_add_id3_tag_data( $metadata, $data );
-
-	$metadata = wp_kses_post_deep( $metadata );
 
 	return $metadata;
 }

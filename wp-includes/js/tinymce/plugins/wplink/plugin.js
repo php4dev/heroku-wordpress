@@ -1,10 +1,10 @@
 ( function( tinymce ) {
-	tinymce.ui.WPLinkPreview = tinymce.ui.Control.extend( {
+	tinymce.ui.Factory.add( 'WPLinkPreview', tinymce.ui.Control.extend( {
 		url: '#',
 		renderHtml: function() {
 			return (
 				'<div id="' + this._id + '" class="wp-link-preview">' +
-					'<a href="' + this.url + '" target="_blank" tabindex="-1">' + this.url + '</a>' +
+					'<a href="' + this.url + '" target="_blank" rel="noopener" tabindex="-1">' + this.url + '</a>' +
 				'</div>'
 			);
 		},
@@ -50,9 +50,9 @@
 				tinymce.$( this.getEl().firstChild ).attr( 'href', this.url ).text( url );
 			}
 		}
-	} );
+	} ) );
 
-	tinymce.ui.WPLinkInput = tinymce.ui.Control.extend( {
+	tinymce.ui.Factory.add( 'WPLinkInput', tinymce.ui.Control.extend( {
 		renderHtml: function() {
 			return (
 				'<div id="' + this._id + '" class="wp-link-input">' +
@@ -82,7 +82,7 @@
 			urlInput.value = '';
 			urlInput.nextSibling.value = '';
 		}
-	} );
+	} ) );
 
 	tinymce.PluginManager.add( 'wplink', function( editor ) {
 		var toolbar;
@@ -101,7 +101,7 @@
 
 		function getSelectedLink() {
 			var href, html,
-				node = editor.selection.getNode(),
+				node = editor.selection.getStart(),
 				link = editor.dom.getParent( node, 'a[href]' );
 
 			if ( ! link ) {
@@ -248,6 +248,13 @@
 				href = inputInstance.getURL();
 				text = inputInstance.getLinkText();
 				editor.focus();
+
+				var parser = document.createElement( 'a' );
+				parser.href = href;
+
+				if ( 'javascript:' === parser.protocol || 'data:' === parser.protocol ) { // jshint ignore:line
+					href = '';
+				}
 
 				if ( ! href ) {
 					editor.dom.remove( linkNode, true );
@@ -587,9 +594,9 @@
 						editor.focus(); // Needed for IE
 					}
 
+					editToolbar.tempHide = true;
 					window.wpLink.open( editor.id, url, text, linkNode );
 
-					editToolbar.tempHide = true;
 					inputInstance.reset();
 				}
 			}

@@ -176,6 +176,27 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 }
 
 /**
+ * Returns only allowed post data fields
+ *
+ * @since 4.9.9
+ *
+ * @param array $post_data Array of post data. Defaults to the contents of $_POST.
+ * @return object|bool WP_Error on failure, true on success.
+ */
+function _wp_get_allowed_postdata( $post_data = null ) {
+	if ( empty( $post_data ) ) {
+		$post_data = $_POST;
+	}
+
+	// Pass through errors
+	if ( is_wp_error( $post_data ) ) {
+		return $post_data;
+	}
+
+	return array_diff_key( $post_data, array_flip( array( 'meta_input', 'file', 'guid' ) ) );
+}
+
+/**
  * Update an existing post with values provided in $_POST.
  *
  * @since 1.5.0
@@ -243,6 +264,7 @@ function edit_post( $post_data = null ) {
 	$post_data = _wp_translate_postdata( true, $post_data );
 	if ( is_wp_error($post_data) )
 		wp_die( $post_data->get_error_message() );
+	$translated = _wp_get_allowed_postdata( $post_data );
 
 	// Post Formats
 	if ( isset( $post_data['post_format'] ) )
@@ -322,7 +344,7 @@ function edit_post( $post_data = null ) {
 		$attachment_data = isset( $post_data['attachments'][ $post_ID ] ) ? $post_data['attachments'][ $post_ID ] : array();
 
 		/** This filter is documented in wp-admin/includes/media.php */
-		$post_data = apply_filters( 'attachment_fields_to_save', $post_data, $attachment_data );
+		$translated = apply_filters( 'attachment_fields_to_save', $translated, $attachment_data );
 	}
 
 	// Convert taxonomy input to term IDs, to avoid ambiguity.
@@ -367,7 +389,7 @@ function edit_post( $post_data = null ) {
 				}
 			}
 
-			$post_data['tax_input'][ $taxonomy ] = $clean_terms;
+			$translated['tax_input'][ $taxonomy ] = $clean_terms;
 		}
 	}
 
@@ -375,18 +397,18 @@ function edit_post( $post_data = null ) {
 
 	update_post_meta( $post_ID, '_edit_last', get_current_user_id() );
 
-	$success = wp_update_post( $post_data );
+	$success = wp_update_post( $translated );
 	// If the save failed, see if we can sanity check the main fields and try again
 	if ( ! $success && is_callable( array( $wpdb, 'strip_invalid_text_for_column' ) ) ) {
 		$fields = array( 'post_title', 'post_content', 'post_excerpt' );
 
 		foreach ( $fields as $field ) {
-			if ( isset( $post_data[ $field ] ) ) {
-				$post_data[ $field ] = $wpdb->strip_invalid_text_for_column( $wpdb->posts, $field, $post_data[ $field ] );
+			if ( isset( $translated[ $field ] ) ) {
+				$translated[ $field ] = $wpdb->strip_invalid_text_for_column( $wpdb->posts, $field, $translated[ $field ] );
 			}
 		}
 
-		wp_update_post( $post_data );
+		wp_update_post( $translated );
 	}
 
 	// Now that we have an ID we can fix any attachment anchor hrefs
@@ -546,9 +568,9 @@ function bulk_edit_posts( $post_data = null ) {
 			unset( $post_data['tax_input']['category'] );
 		}
 
+		$post_data['post_ID']        = $post_ID;
 		$post_data['post_type'] = $post->post_type;
 		$post_data['post_mime_type'] = $post->post_mime_type;
-		$post_data['guid'] = $post->guid;
 
 		foreach ( array( 'comment_status', 'ping_status', 'post_author' ) as $field ) {
 			if ( ! isset( $post_data[ $field ] ) ) {
@@ -556,14 +578,12 @@ function bulk_edit_posts( $post_data = null ) {
 			}
 		}
 
-		$post_data['ID'] = $post_ID;
-		$post_data['post_ID'] = $post_ID;
-
 		$post_data = _wp_translate_postdata( true, $post_data );
 		if ( is_wp_error( $post_data ) ) {
 			$skipped[] = $post_ID;
 			continue;
 		}
+		$post_data = _wp_get_allowed_postdata( $post_data );
 
 		$updated[] = wp_update_post( $post_data );
 
@@ -574,8 +594,8 @@ function bulk_edit_posts( $post_data = null ) {
 				unstick_post( $post_ID );
 		}
 
-		if ( isset( $post_data['post_format'] ) )
-			set_post_format( $post_ID, $post_data['post_format'] );
+		if ( isset( $shared_post_data['post_format'] ) )
+			set_post_format( $post_ID, $shared_post_data['post_format'] );
 	}
 
 	return array( 'updated' => $updated, 'skipped' => $skipped, 'locked' => $locked );
@@ -756,9 +776,10 @@ function wp_write_post() {
 	$translated = _wp_translate_postdata( false );
 	if ( is_wp_error($translated) )
 		return $translated;
+	$translated = _wp_get_allowed_postdata( $translated );
 
 	// Create the post.
-	$post_ID = wp_insert_post( $_POST );
+	$post_ID = wp_insert_post( $translated );
 	if ( is_wp_error( $post_ID ) )
 		return $post_ID;
 
@@ -1448,25 +1469,34 @@ function _wp_post_thumbnail_html( $thumbnail_id = null, $post = null ) {
  *
  * @since 2.5.0
  *
- * @param int $post_id ID of the post to check for editing
- * @return integer False: not locked or locked by current user. Int: user ID of user with lock.
+ * @param int $post_id ID of the post to check for editing.
+ * @return int|false ID of the user with lock. False if the post does not exist, post is not locked,
+ *                   the user with lock does not exist, or the post is locked by current user.
  */
 function wp_check_post_lock( $post_id ) {
-	if ( !$post = get_post( $post_id ) )
+	if ( ! $post = get_post( $post_id ) ) {
 		return false;
+	}
 
-	if ( !$lock = get_post_meta( $post->ID, '_edit_lock', true ) )
+	if ( ! $lock = get_post_meta( $post->ID, '_edit_lock', true ) ) {
 		return false;
+	}
 
 	$lock = explode( ':', $lock );
 	$time = $lock[0];
 	$user = isset( $lock[1] ) ? $lock[1] : get_post_meta( $post->ID, '_edit_last', true );
 
+	if ( ! get_userdata( $user ) ) {
+		return false;
+	}
+
 	/** This filter is documented in wp-admin/includes/ajax-actions.php */
 	$time_window = apply_filters( 'wp_check_post_lock_window', 150 );
 
-	if ( $time && $time > time() - $time_window && $user != get_current_user_id() )
+	if ( $time && $time > time() - $time_window && $user != get_current_user_id() ) {
 		return $user;
+	}
+
 	return false;
 }
 
@@ -1475,20 +1505,24 @@ function wp_check_post_lock( $post_id ) {
  *
  * @since 2.5.0
  *
- * @param int $post_id ID of the post to being edited
- * @return bool|array Returns false if the post doesn't exist of there is no current user, or
- * 	an array of the lock time and the user ID.
+ * @param int $post_id ID of the post being edited.
+ * @return array|false Array of the lock time and user ID. False if the post does not exist, or
+ *                     there is no current user.
  */
 function wp_set_post_lock( $post_id ) {
-	if ( !$post = get_post( $post_id ) )
+	if ( ! $post = get_post( $post_id ) ) {
 		return false;
-	if ( 0 == ($user_id = get_current_user_id()) )
+	}
+
+	if ( 0 == ( $user_id = get_current_user_id() ) ) {
 		return false;
+	}
 
 	$now = time();
 	$lock = "$now:$user_id";
 
 	update_post_meta( $post->ID, '_edit_lock', $lock );
+
 	return array( $now, $user_id );
 }
 
@@ -1516,6 +1550,7 @@ function _admin_notice_post_locked() {
 		 * @since 3.6.0
 		 *
 		 * @param bool         $display Whether to display the dialog. Default true.
+		 * @param WP_Post      $post    Post object.
 		 * @param WP_User|bool $user    WP_User object on success, false otherwise.
 		 */
 		if ( ! apply_filters( 'show_post_locked_dialog', true, $post, $user ) )
@@ -1664,6 +1699,7 @@ function wp_create_post_autosave( $post_data ) {
 	$post_data = _wp_translate_postdata( true, $post_data );
 	if ( is_wp_error( $post_data ) )
 		return $post_data;
+	$post_data = _wp_get_allowed_postdata( $post_data );
 
 	$post_author = get_current_user_id();
 

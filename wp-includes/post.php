@@ -815,7 +815,7 @@ function register_post_status( $post_status, $args = array() ) {
 		$args->label = $post_status;
 
 	if ( false === $args->label_count )
-		$args->label_count = array( $args->label, $args->label );
+		$args->label_count = _n_noop( $args->label, $args->label );
 
 	$wp_post_statuses[$post_status] = $args;
 
@@ -1355,7 +1355,7 @@ function _post_type_meta_capabilities( $capabilities = null ) {
  * @since 3.0.0
  * @since 4.3.0 Added the `featured_image`, `set_featured_image`, `remove_featured_image`,
  *              and `use_featured_image` labels.
- * @since 4.4.0 Added the `insert_into_item`, `uploaded_to_this_item`, `filter_items_list`,
+ * @since 4.4.0 Added the `archives`, `insert_into_item`, `uploaded_to_this_item`, `filter_items_list`,
  *              `items_list_navigation`, and `items_list` labels.
  * @since 4.6.0 Converted the `$post_type` parameter to accept a WP_Post_Type object.
  * @since 4.7.0 Added the `view_items` and `attributes` labels.
@@ -1384,10 +1384,10 @@ function get_post_type_labels( $post_type_object ) {
 		'attributes' => array( __( 'Post Attributes' ), __( 'Page Attributes' ) ),
 		'insert_into_item' => array( __( 'Insert into post' ), __( 'Insert into page' ) ),
 		'uploaded_to_this_item' => array( __( 'Uploaded to this post' ), __( 'Uploaded to this page' ) ),
-		'featured_image' => array( __( 'Featured Image' ), __( 'Featured Image' ) ),
-		'set_featured_image' => array( __( 'Set featured image' ), __( 'Set featured image' ) ),
-		'remove_featured_image' => array( __( 'Remove featured image' ), __( 'Remove featured image' ) ),
-		'use_featured_image' => array( __( 'Use as featured image' ), __( 'Use as featured image' ) ),
+		'featured_image' => array( _x( 'Featured Image', 'post' ), _x( 'Featured Image', 'page' ) ),
+		'set_featured_image' => array( _x( 'Set featured image', 'post' ), _x( 'Set featured image', 'page' ) ),
+		'remove_featured_image' => array( _x( 'Remove featured image', 'post' ), _x( 'Remove featured image', 'page' ) ),
+		'use_featured_image' => array( _x( 'Use as featured image', 'post' ), _x( 'Use as featured image', 'page' ) ),
 		'filter_items_list' => array( __( 'Filter posts list' ), __( 'Filter pages list' ) ),
 		'items_list_navigation' => array( __( 'Posts list navigation' ), __( 'Pages list navigation' ) ),
 		'items_list' => array( __( 'Posts list' ), __( 'Pages list' ) ),
@@ -2061,7 +2061,7 @@ function sanitize_post_field( $field, $value, $post_id, $context = 'display' ) {
 			 *                        values include 'raw', 'edit', 'db', 'display',
 			 *                        'attribute' and 'js'.
 			 */
-			$value = apply_filters( $field, $value, $post_id, $context );
+			$value = apply_filters( "{$field}", $value, $post_id, $context );
 		} else {
 			$value = apply_filters( "post_{$field}", $value, $post_id, $context );
 		}
@@ -2800,10 +2800,12 @@ function wp_untrash_post_comments( $post = null ) {
  *
  * @param int   $post_id Optional. The Post ID. Does not default to the ID of the
  *                       global $post. Default 0.
- * @param array $args    Optional. Category arguments. See wp_get_object_terms(). Default empty.
- * @return array List of categories. If the `$fields` argument passed via `$args` is 'all' or
- *               'all_with_object_id', an array of WP_Term objects will be returned. If `$fields`
- *               is 'ids', an array of category ids. If `$fields` is 'names', an array of category names.
+ * @param array $args    Optional. Category query parameters. Default empty array.
+ *                       See WP_Term_Query::__construct() for supported arguments.
+ * @return array|WP_Error List of categories. If the `$fields` argument passed via `$args` is 'all' or
+ *                        'all_with_object_id', an array of WP_Term objects will be returned. If `$fields`
+ *                        is 'ids', an array of category ids. If `$fields` is 'names', an array of category names.
+ *                        WP_Error object if 'category' taxonomy doesn't exist.
  */
 function wp_get_post_categories( $post_id = 0, $args = array() ) {
 	$post_id = (int) $post_id;
@@ -2826,8 +2828,10 @@ function wp_get_post_categories( $post_id = 0, $args = array() ) {
  *
  * @param int   $post_id Optional. The Post ID. Does not default to the ID of the
  *                       global $post. Default 0.
- * @param array $args Optional. Overwrite the defaults
- * @return array List of post tags.
+ * @param array $args    Optional. Tag query parameters. Default empty array.
+ *                       See WP_Term_Query::__construct() for supported arguments.
+ * @return array|WP_Error Array of WP_Term objects on success or empty array if no tags were found.
+ *                        WP_Error object if 'post_tag' taxonomy doesn't exist.
  */
 function wp_get_post_tags( $post_id = 0, $args = array() ) {
 	return wp_get_post_terms( $post_id, 'post_tag', $args);
@@ -2845,9 +2849,10 @@ function wp_get_post_tags( $post_id = 0, $args = array() ) {
  * @param int    $post_id  Optional. The Post ID. Does not default to the ID of the
  *                         global $post. Default 0.
  * @param string $taxonomy Optional. The taxonomy for which to retrieve terms. Default 'post_tag'.
- * @param array  $args     Optional. wp_get_object_terms() arguments. Default empty array.
- * @return array|WP_Error  List of post terms or empty array if no terms were found. WP_Error object
- *                         if `$taxonomy` doesn't exist.
+ * @param array  $args     Optional. Term query parameters. Default empty array.
+ *                         See WP_Term_Query::__construct() for supported arguments.
+ * @return array|WP_Error  Array of WP_Term objects on success or empty array if no terms were found.
+ *                         WP_Error object if `$taxonomy` doesn't exist.
  */
 function wp_get_post_terms( $post_id = 0, $taxonomy = 'post_tag', $args = array() ) {
 	$post_id = (int) $post_id;
@@ -4241,10 +4246,10 @@ function get_page_by_path( $page_path, $output = OBJECT, $post_type = 'page' ) {
 	$page_path = str_replace('%2F', '/', $page_path);
 	$page_path = str_replace('%20', ' ', $page_path);
 	$parts = explode( '/', trim( $page_path, '/' ) );
-	$parts = esc_sql( $parts );
 	$parts = array_map( 'sanitize_title_for_query', $parts );
+	$escaped_parts = esc_sql( $parts );
 
-	$in_string = "'" . implode( "','", $parts ) . "'";
+	$in_string = "'" . implode( "','", $escaped_parts ) . "'";
 
 	if ( is_array( $post_type ) ) {
 		$post_types = $post_type;
@@ -4471,7 +4476,7 @@ function get_page_uri( $page = 0 ) {
 }
 
 /**
- * Retrieve a list of pages.
+ * Retrieve a list of pages (or hierarchical post type items).
  *
  * @global wpdb $wpdb WordPress database abstraction object.
  *
@@ -4914,42 +4919,79 @@ function wp_delete_attachment( $post_id, $force_delete = false ) {
 	/** This action is documented in wp-includes/post.php */
 	do_action( 'deleted_post', $post_id );
 
-	$uploadpath = wp_get_upload_dir();
+	wp_delete_attachment_files( $post_id, $meta, $backup_sizes, $file );
 
-	if ( ! empty($meta['thumb']) ) {
+	clean_post_cache( $post );
+
+	return $post;
+}
+
+/**
+ * Deletes all files that belong to the given attachment.
+ *
+ * @since 4.9.7
+ *
+ * @param int    $post_id      Attachment ID.
+ * @param array  $meta         The attachment's meta data.
+ * @param array  $backup_sizes The meta data for the attachment's backup images.
+ * @param string $file         Absolute path to the attachment's file.
+ * @return bool True on success, false on failure.
+ */
+function wp_delete_attachment_files( $post_id, $meta, $backup_sizes, $file ) {
+	global $wpdb;
+
+	$uploadpath = wp_get_upload_dir();
+	$deleted    = true;
+
+	if ( ! empty( $meta['thumb'] ) ) {
 		// Don't delete the thumb if another attachment uses it.
-		if (! $wpdb->get_row( $wpdb->prepare( "SELECT meta_id FROM $wpdb->postmeta WHERE meta_key = '_wp_attachment_metadata' AND meta_value LIKE %s AND post_id <> %d", '%' . $wpdb->esc_like( $meta['thumb'] ) . '%', $post_id)) ) {
-			$thumbfile = str_replace(basename($file), $meta['thumb'], $file);
-			/** This filter is documented in wp-includes/functions.php */
-			$thumbfile = apply_filters( 'wp_delete_file', $thumbfile );
-			@ unlink( path_join($uploadpath['basedir'], $thumbfile) );
+		if ( ! $wpdb->get_row( $wpdb->prepare( "SELECT meta_id FROM $wpdb->postmeta WHERE meta_key = '_wp_attachment_metadata' AND meta_value LIKE %s AND post_id <> %d", '%' . $wpdb->esc_like( $meta['thumb'] ) . '%', $post_id ) ) ) {
+			$thumbfile = str_replace( basename( $file ), $meta['thumb'], $file );
+			if ( ! empty( $thumbfile ) ) {
+				$thumbfile = path_join( $uploadpath['basedir'], $thumbfile );
+				$thumbdir  = path_join( $uploadpath['basedir'], dirname( $file ) );
+
+				if ( ! wp_delete_file_from_directory( $thumbfile, $thumbdir ) ) {
+					$deleted = false;
+				}
+			}
 		}
 	}
 
 	// Remove intermediate and backup images if there are any.
 	if ( isset( $meta['sizes'] ) && is_array( $meta['sizes'] ) ) {
+		$intermediate_dir = path_join( $uploadpath['basedir'], dirname( $file ) );
 		foreach ( $meta['sizes'] as $size => $sizeinfo ) {
 			$intermediate_file = str_replace( basename( $file ), $sizeinfo['file'], $file );
-			/** This filter is documented in wp-includes/functions.php */
-			$intermediate_file = apply_filters( 'wp_delete_file', $intermediate_file );
-			@ unlink( path_join( $uploadpath['basedir'], $intermediate_file ) );
+			if ( ! empty( $intermediate_file ) ) {
+				$intermediate_file = path_join( $uploadpath['basedir'], $intermediate_file );
+
+				if ( ! wp_delete_file_from_directory( $intermediate_file, $intermediate_dir ) ) {
+					$deleted = false;
+				}
+			}
 		}
 	}
 
-	if ( is_array($backup_sizes) ) {
+	if ( is_array( $backup_sizes ) ) {
+		$del_dir = path_join( $uploadpath['basedir'], dirname( $meta['file'] ) );
 		foreach ( $backup_sizes as $size ) {
-			$del_file = path_join( dirname($meta['file']), $size['file'] );
-			/** This filter is documented in wp-includes/functions.php */
-			$del_file = apply_filters( 'wp_delete_file', $del_file );
-			@ unlink( path_join($uploadpath['basedir'], $del_file) );
+			$del_file = path_join( dirname( $meta['file'] ), $size['file'] );
+			if ( ! empty( $del_file ) ) {
+				$del_file = path_join( $uploadpath['basedir'], $del_file );
+
+				if ( ! wp_delete_file_from_directory( $del_file, $del_dir ) ) {
+					$deleted = false;
+				}
+			}
 		}
 	}
 
-	wp_delete_file( $file );
+	if ( ! wp_delete_file_from_directory( $file, $uploadpath['basedir'] ) ) {
+		$deleted = false;
+	}
 
-	clean_post_cache( $post );
-
-	return $post;
+	return $deleted;
 }
 
 /**
@@ -5932,7 +5974,9 @@ function _publish_post_hook( $post_id ) {
 		add_post_meta( $post_id, '_pingme', '1' );
 	add_post_meta( $post_id, '_encloseme', '1' );
 
-	wp_schedule_single_event(time(), 'do_pings');
+	if ( ! wp_next_scheduled( 'do_pings' ) ) {
+		wp_schedule_single_event( time(), 'do_pings' );
+	}
 }
 
 /**
