@@ -16,14 +16,25 @@ span.shortcode.old {
 	color: #fff;
 }
 
-span.shortcode > input {
-	background: inherit;
-	color: inherit;
+span.shortcode input {
 	font-size: 12px;
 	border: none;
 	box-shadow: none;
 	padding: 4px 8px;
 	margin: 0;
+}
+
+#wpcf7-contact-form-list-table span.shortcode input,
+#wpcf7-contact-form-editor span.shortcode input {
+	background: transparent;
+}
+
+#wpcf7-contact-form-list-table span.shortcode input {
+	color: #444;
+}
+
+#wpcf7-contact-form-editor span.shortcode input {
+	color: #fff;
 }
 
 #submitpost input.copy {
@@ -62,29 +73,38 @@ div.config-error, span.config-error, ul.config-error {
 	font-size: 13px;
 }
 
-div.config-error span.dashicons {
-	color: #82878c;
-}
-
 ul.config-error {
-	margin: 0;
+	margin: 2px 0;
 }
 
 ul.config-error li {
-	list-style: disc inside;
-	padding: 0 4px;
+	list-style: none;
+	padding: 2px 2px;
 	margin: 0;
-}
-
-ul.config-error li a.external {
-	font-style: normal;
-	font-weight: normal;
-	font-size: 18px;
-	vertical-align: middle;
 }
 
 [data-config-field][aria-invalid="true"] {
 	border-color: #d00;
+}
+
+#contact-form-editor-tabs li a .icon-in-circle,
+#contact-form-editor .config-error .icon-in-circle,
+.wp-list-table .config-error .icon-in-circle,
+.icon-in-circle {
+	display: inline-block;
+	vertical-align: text-top;
+	margin: 1px 6px 0;
+	padding: 0 5px;
+	min-width: 7px;
+	height: 17px;
+	border-radius: 11px;
+	background-color: #ca4a1f;
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 17px;
+	text-align: center;
+	z-index: 26;
 }
 
 /*
@@ -138,13 +158,11 @@ ul.config-error li a.external {
 	color: #000;
 }
 
-#contact-form-editor-tabs li a span.dashicons {
-	font-style: normal;
-	padding: 6px 0 4px 4px;
-	color: #82878c;
+#contact-form-editor .contact-form-editor-panel > div.config-error {
+	margin-bottom: 1.4em;
 }
 
-#contact-form-editor-tabs li.ui-tabs-active a span.dashicons {
+#contact-form-editor-tabs li.ui-tabs-active a .icon-in-circle {
 	display: none;
 }
 
@@ -224,6 +242,10 @@ ul.config-error li a.external {
 	width: 200px;
 }
 
+.tag-generator-panel .control-box input.large-text {
+	width: 400px;
+}
+
 .tag-generator-panel .control-box textarea.values {
 	width: 200px;
 	height: 6em;
@@ -298,6 +320,10 @@ ul.config-error li a.external {
 	color: #666;
 }
 
+.contact-form-editor-box-mail span.mailtag.unused {
+	font-weight: bold;
+}
+
 /*
  * Messages Tab
  */
@@ -314,10 +340,6 @@ ul.config-error li a.external {
 
 .fixed .column-shortcode {
 	width: 38%;
-}
-
-.wp-list-table .config-error span.dashicons {
-	color: #82878c;
 }
 
 /*

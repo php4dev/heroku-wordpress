@@ -20,7 +20,8 @@ class WPCF7_Integration {
 	public function add_service( $name, WPCF7_Service $service ) {
 		$name = sanitize_key( $name );
 
-		if ( empty( $name ) || isset( $this->services[$name] ) ) {
+		if ( empty( $name )
+		or isset( $this->services[$name] ) ) {
 			return false;
 		}
 
@@ -30,7 +31,8 @@ class WPCF7_Integration {
 	public function add_category( $name, $title ) {
 		$name = sanitize_key( $name );
 
-		if ( empty( $name ) || isset( $this->categories[$name] ) ) {
+		if ( empty( $name )
+		or isset( $this->categories[$name] ) ) {
 			return false;
 		}
 
@@ -130,6 +132,190 @@ abstract class WPCF7_Service {
 	}
 
 	public function admin_notice( $message = '' ) {
+	}
+
+}
+
+class WPCF7_Service_OAuth2 extends WPCF7_Service {
+
+	protected $client_id = '';
+	protected $client_secret = '';
+	protected $access_token = '';
+	protected $refresh_token = '';
+	protected $authorization_endpoint = 'https://example.com/authorization';
+	protected $token_endpoint = 'https://example.com/token';
+
+	public function get_title() {
+		return '';
+	}
+
+	public function is_active() {
+		return ! empty( $this->access_token );
+	}
+
+	protected function save_data() {
+	}
+
+	protected function reset_data() {
+	}
+
+	protected function get_redirect_uri() {
+		return admin_url();
+	}
+
+	protected function menu_page_url( $args = '' ) {
+		return menu_page_url( 'wpcf7-integration', false );
+	}
+
+	public function load( $action = '' ) {
+		if ( 'auth_redirect' == $action ) {
+			$code = isset( $_GET['code'] ) ? $_GET['code'] : '';
+
+			if ( $code ) {
+				$this->request_token( $code );
+			}
+
+			wp_safe_redirect( $this->menu_page_url( 'action=setup' ) );
+			exit();
+		}
+	}
+
+	protected function authorize( $scope = '' ) {
+		$endpoint = add_query_arg(
+			array(
+				'response_type' => 'code',
+				'client_id' => $this->client_id,
+				'redirect_uri' => urlencode( $this->get_redirect_uri() ),
+				'scope' => $scope,
+			),
+			$this->authorization_endpoint
+		);
+
+		if ( wp_redirect( esc_url_raw( $endpoint ) ) ) {
+			exit();
+		}
+	}
+
+	protected function get_http_authorization_header( $scheme = 'basic' ) {
+		$scheme = strtolower( trim( $scheme ) );
+
+		switch ( $scheme ) {
+			case 'bearer':
+				return sprintf( 'Bearer %s', $this->access_token );
+			case 'basic':
+			default:
+				return sprintf( 'Basic %s',
+					base64_encode( $this->client_id . ':' . $this->client_secret )
+				);
+		}
+	}
+
+	protected function request_token( $authorization_code ) {
+		$endpoint = add_query_arg(
+			array(
+				'code' => $authorization_code,
+				'redirect_uri' => urlencode( $this->get_redirect_uri() ),
+				'grant_type' => 'authorization_code',
+			),
+			$this->token_endpoint
+		);
+
+		$request = array(
+			'headers' => array(
+				'Authorization' => $this->get_http_authorization_header( 'basic' ),
+			),
+		);
+
+		$response = wp_remote_post( esc_url_raw( $endpoint ), $request );
+
+		if ( WP_DEBUG
+		and 400 <= (int) wp_remote_retrieve_response_code( $response ) ) {
+			$this->log( $endpoint, $request, $response );
+		}
+
+		$response_body = wp_remote_retrieve_body( $response );
+
+		if ( empty( $response_body ) ) {
+			return $response;
+		}
+
+		$response_body = json_decode( $response_body, true );
+
+		$this->access_token = isset( $response_body['access_token'] )
+			? $response_body['access_token'] : null;
+
+		$this->refresh_token = isset( $response_body['refresh_token'] )
+			? $response_body['refresh_token'] : null;
+
+		$this->save_data();
+
+		return $response;
+	}
+
+	protected function refresh_token() {
+		$endpoint = add_query_arg(
+			array(
+				'refresh_token' => $this->refresh_token,
+				'grant_type' => 'refresh_token',
+			),
+			$this->token_endpoint
+		);
+
+		$request = array(
+			'headers' => array(
+				'Authorization' => $this->get_http_authorization_header( 'basic' ),
+			),
+		);
+
+		$response = wp_remote_post( esc_url_raw( $endpoint ), $request );
+
+		if ( WP_DEBUG
+		and 400 <= (int) wp_remote_retrieve_response_code( $response ) ) {
+			$this->log( $endpoint, $request, $response );
+		}
+
+		$response_body = wp_remote_retrieve_body( $response );
+
+		if ( empty( $response_body ) ) {
+			return $response;
+		}
+
+		$response_body = json_decode( $response_body, true );
+
+		$this->access_token = isset( $response_body['access_token'] )
+			? $response_body['access_token'] : null;
+
+		$this->refresh_token = isset( $response_body['refresh_token'] )
+			? $response_body['refresh_token'] : null;
+
+		$this->save_data();
+
+		return $response;
+	}
+
+	protected function remote_request( $url, $args = array() ) {
+		$request = $args = wp_parse_args( $args, array(
+			'refresh_token' => true,
+		) );
+
+		unset( $request['refresh_token'] );
+
+		$response = wp_remote_request( esc_url_raw( $url ), $request );
+
+		if ( 401 === wp_remote_retrieve_response_code( $response )
+		and $args['refresh_token'] ) {
+			$this->refresh_token();
+
+			$response = $this->remote_request( $url,
+				array_merge( $args, array( 'refresh_token' => false ) )
+			);
+		}
+
+		return $response;
+	}
+
+	protected function log( $url, $request, $response ) {
+		wpcf7_log_remote_request( $url, $request, $response );
 	}
 
 }

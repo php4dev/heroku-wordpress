@@ -85,11 +85,34 @@ class WPCF7_FormTagsManager {
 	}
 
 	public function tag_type_supports( $tag, $feature ) {
+		$feature = array_filter( (array) $feature );
+
 		if ( isset( $this->tag_types[$tag]['features'] ) ) {
-			return ! empty( $this->tag_types[$tag]['features'][$feature] );
+			return (bool) array_intersect(
+				array_keys( array_filter( $this->tag_types[$tag]['features'] ) ),
+				$feature );
 		}
 
 		return false;
+	}
+
+	public function collect_tag_types( $feature = null, $invert = false ) {
+		$tag_types = array_keys( $this->tag_types );
+
+		if ( empty( $feature ) ) {
+			return $tag_types;
+		}
+
+		$output = array();
+
+		foreach ( $tag_types as $tag ) {
+			if ( ! $invert && $this->tag_type_supports( $tag, $feature )
+			|| $invert && ! $this->tag_type_supports( $tag, $feature ) ) {
+				$output[] = $tag;
+			}
+		}
+
+		return $output;
 	}
 
 	private function sanitize_tag_type( $tag ) {
@@ -118,7 +141,8 @@ class WPCF7_FormTagsManager {
 
 	private function normalize_callback( $m ) {
 		// allow [[foo]] syntax for escaping a tag
-		if ( $m[1] == '[' && $m[6] == ']' ) {
+		if ( $m[1] == '['
+		and $m[6] == ']' ) {
 			return $m[0];
 		}
 
@@ -172,11 +196,11 @@ class WPCF7_FormTagsManager {
 		}
 	}
 
-	public function filter( $content, $cond ) {
-		if ( is_array( $content ) ) {
-			$tags = $content;
-		} elseif ( is_string( $content ) ) {
-			$tags = $this->scan( $content );
+	public function filter( $input, $cond ) {
+		if ( is_array( $input ) ) {
+			$tags = $input;
+		} elseif ( is_string( $input ) ) {
+			$tags = $this->scan( $input );
 		} else {
 			$tags = $this->scanned_tags;
 		}
@@ -185,42 +209,50 @@ class WPCF7_FormTagsManager {
 			return array();
 		}
 
-		if ( ! is_array( $cond ) || empty( $cond ) ) {
-			return $tags;
+		$cond = wp_parse_args( $cond, array(
+			'type' => array(),
+			'name' => array(),
+			'feature' => '',
+		) );
+
+		$type = array_filter( (array) $cond['type'] );
+		$name = array_filter( (array) $cond['name'] );
+		$feature = is_string( $cond['feature'] ) ? trim( $cond['feature'] ) : '';
+
+		if ( '!' == substr( $feature, 0, 1 ) ) {
+			$feature_negative = true;
+			$feature = trim( substr( $feature, 1 ) );
+		} else {
+			$feature_negative = false;
 		}
 
-		for ( $i = 0, $size = count( $tags ); $i < $size; $i++ ) {
+		$output = array();
 
-			if ( isset( $cond['type'] ) ) {
-				if ( is_string( $cond['type'] ) && ! empty( $cond['type'] ) ) {
-					if ( $tags[$i]['type'] != $cond['type'] ) {
-						unset( $tags[$i] );
-						continue;
-					}
-				} elseif ( is_array( $cond['type'] ) ) {
-					if ( ! in_array( $tags[$i]['type'], $cond['type'] ) ) {
-						unset( $tags[$i] );
-						continue;
-					}
+		foreach ( $tags as $tag ) {
+			$tag = new WPCF7_FormTag( $tag );
+
+			if ( $type and ! in_array( $tag->type, $type, true ) ) {
+				continue;
+			}
+
+			if ( $name and ! in_array( $tag->name, $name, true ) ) {
+				continue;
+			}
+
+			if ( $feature ) {
+				if ( ! $this->tag_type_supports( $tag->type, $feature )
+				and ! $feature_negative ) {
+					continue;
+				} elseif ( $this->tag_type_supports( $tag->type, $feature )
+				and $feature_negative ) {
+					continue;
 				}
 			}
 
-			if ( isset( $cond['name'] ) ) {
-				if ( is_string( $cond['name'] ) && ! empty( $cond['name'] ) ) {
-					if ( $tags[$i]['name'] != $cond['name'] ) {
-						unset ( $tags[$i] );
-						continue;
-					}
-				} elseif ( is_array( $cond['name'] ) ) {
-					if ( ! in_array( $tags[$i]['name'], $cond['name'] ) ) {
-						unset( $tags[$i] );
-						continue;
-					}
-				}
-			}
+			$output[] = $tag;
 		}
 
-		return array_values( $tags );
+		return $output;
 	}
 
 	private function tag_regex() {
@@ -239,7 +271,8 @@ class WPCF7_FormTagsManager {
 
 	private function scan_callback( $m, $replace = false ) {
 		// allow [[foo]] syntax for escaping a tag
-		if ( $m[1] == '[' && $m[6] == ']' ) {
+		if ( $m[1] == '['
+		and $m[6] == ']' ) {
 			return substr( $m[0], 1, -1 );
 		}
 
@@ -262,7 +295,7 @@ class WPCF7_FormTagsManager {
 		if ( is_array( $attr ) ) {
 			if ( is_array( $attr['options'] ) ) {
 				if ( $this->tag_type_supports( $tag, 'name-attr' )
-				&& ! empty( $attr['options'] ) ) {
+				and ! empty( $attr['options'] ) ) {
 					$scanned_tag['name'] = array_shift( $attr['options'] );
 
 					if ( ! wpcf7_is_name( $scanned_tag['name'] ) ) {
@@ -297,6 +330,8 @@ class WPCF7_FormTagsManager {
 		$scanned_tag['content'] = $content;
 
 		$scanned_tag = apply_filters( 'wpcf7_form_tag', $scanned_tag, $replace );
+
+		$scanned_tag = new WPCF7_FormTag( $scanned_tag );
 
 		$this->scanned_tags[] = $scanned_tag;
 

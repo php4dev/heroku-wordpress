@@ -18,7 +18,7 @@ class WPCF7_Contact_Form_List_Table extends WP_List_Table {
 		return $columns;
 	}
 
-	function __construct() {
+	public function __construct() {
 		parent::__construct( array(
 			'singular' => 'post',
 			'plural' => 'posts',
@@ -26,11 +26,9 @@ class WPCF7_Contact_Form_List_Table extends WP_List_Table {
 		) );
 	}
 
-	function prepare_items() {
+	public function prepare_items() {
 		$current_screen = get_current_screen();
 		$per_page = $this->get_items_per_page( 'cfseven_contact_forms_per_page' );
-
-		$this->_column_headers = $this->get_column_info();
 
 		$args = array(
 			'posts_per_page' => $per_page,
@@ -73,11 +71,11 @@ class WPCF7_Contact_Form_List_Table extends WP_List_Table {
 		) );
 	}
 
-	function get_columns() {
+	public function get_columns() {
 		return get_column_headers( get_current_screen() );
 	}
 
-	function get_sortable_columns() {
+	protected function get_sortable_columns() {
 		$columns = array(
 			'title' => array( 'title', true ),
 			'author' => array( 'author', false ),
@@ -87,7 +85,7 @@ class WPCF7_Contact_Form_List_Table extends WP_List_Table {
 		return $columns;
 	}
 
-	function get_bulk_actions() {
+	protected function get_bulk_actions() {
 		$actions = array(
 			'delete' => __( 'Delete', 'contact-form-7' ),
 		);
@@ -95,24 +93,31 @@ class WPCF7_Contact_Form_List_Table extends WP_List_Table {
 		return $actions;
 	}
 
-	function column_default( $item, $column_name ) {
+	protected function column_default( $item, $column_name ) {
 		return '';
 	}
 
-	function column_cb( $item ) {
+	public function column_cb( $item ) {
 		return sprintf(
 			'<input type="checkbox" name="%1$s[]" value="%2$s" />',
 			$this->_args['singular'],
-			$item->id() );
+			$item->id()
+		);
 	}
 
-	function column_title( $item ) {
-		$url = admin_url( 'admin.php?page=wpcf7&post=' . absint( $item->id() ) );
-		$edit_link = add_query_arg( array( 'action' => 'edit' ), $url );
+	public function column_title( $item ) {
+		$edit_link = add_query_arg(
+			array(
+				'post' => absint( $item->id() ),
+				'action' => 'edit',
+			),
+			menu_page_url( 'wpcf7', false )
+		);
 
 		$output = sprintf(
-			'<a class="row-title" href="%1$s" title="%2$s">%3$s</a>',
+			'<a class="row-title" href="%1$s" aria-label="%2$s">%3$s</a>',
 			esc_url( $edit_link ),
+			/* translators: %s: title of contact form */
 			esc_attr( sprintf( __( 'Edit &#8220;%s&#8221;', 'contact-form-7' ),
 				$item->title() ) ),
 			esc_html( $item->title() )
@@ -121,47 +126,70 @@ class WPCF7_Contact_Form_List_Table extends WP_List_Table {
 		$output = sprintf( '<strong>%s</strong>', $output );
 
 		if ( wpcf7_validate_configuration()
-		&& current_user_can( 'wpcf7_edit_contact_form', $item->id() ) ) {
+		and current_user_can( 'wpcf7_edit_contact_form', $item->id() ) ) {
 			$config_validator = new WPCF7_ConfigValidator( $item );
 			$config_validator->restore();
 
 			if ( $count_errors = $config_validator->count_errors() ) {
 				$error_notice = sprintf(
+					/* translators: %s: number of errors detected */
 					_n(
 						'%s configuration error detected',
 						'%s configuration errors detected',
 						$count_errors, 'contact-form-7' ),
-					number_format_i18n( $count_errors ) );
+					number_format_i18n( $count_errors )
+				);
+
 				$output .= sprintf(
-					'<div class="config-error"><span class="dashicons dashicons-warning"></span> %s</div>',
-					$error_notice );
+					'<div class="config-error"><span class="icon-in-circle" aria-hidden="true">!</span> %s</div>',
+					$error_notice
+				);
 			}
 		}
-
-		$actions = array(
-			'edit' => sprintf( '<a href="%1$s">%2$s</a>',
-				esc_url( $edit_link ),
-				esc_html( __( 'Edit', 'contact-form-7' ) ) ) );
-
-		if ( current_user_can( 'wpcf7_edit_contact_form', $item->id() ) ) {
-			$copy_link = wp_nonce_url(
-				add_query_arg( array( 'action' => 'copy' ), $url ),
-				'wpcf7-copy-contact-form_' . absint( $item->id() ) );
-
-			$actions = array_merge( $actions, array(
-				'copy' => sprintf( '<a href="%1$s">%2$s</a>',
-					esc_url( $copy_link ),
-					esc_html( __( 'Duplicate', 'contact-form-7' ) )
-				),
-			) );
-		}
-
-		$output .= $this->row_actions( $actions );
 
 		return $output;
 	}
 
-	function column_author( $item ) {
+	protected function handle_row_actions( $item, $column_name, $primary ) {
+		if ( $column_name !== $primary ) {
+			return '';
+		}
+
+		$edit_link = add_query_arg(
+			array(
+				'post' => absint( $item->id() ),
+				'action' => 'edit',
+			),
+			menu_page_url( 'wpcf7', false )
+		);
+
+		$actions = array(
+			'edit' => wpcf7_link( $edit_link, __( 'Edit', 'contact-form-7' ) ),
+		);
+
+		if ( current_user_can( 'wpcf7_edit_contact_form', $item->id() ) ) {
+			$copy_link = add_query_arg(
+				array(
+					'post' => absint( $item->id() ),
+					'action' => 'copy',
+				),
+				menu_page_url( 'wpcf7', false )
+			);
+
+			$copy_link = wp_nonce_url(
+				$copy_link,
+				'wpcf7-copy-contact-form_' . absint( $item->id() )
+			);
+
+			$actions = array_merge( $actions, array(
+				'copy' => wpcf7_link( $copy_link, __( 'Duplicate', 'contact-form-7' ) ),
+			) );
+		}
+
+		return $this->row_actions( $actions );
+	}
+
+	public function column_author( $item ) {
 		$post = get_post( $item->id() );
 
 		if ( ! $post ) {
@@ -177,7 +205,7 @@ class WPCF7_Contact_Form_List_Table extends WP_List_Table {
 		return esc_html( $author->display_name );
 	}
 
-	function column_shortcode( $item ) {
+	public function column_shortcode( $item ) {
 		$shortcodes = array( $item->shortcode() );
 
 		$output = '';
@@ -192,7 +220,7 @@ class WPCF7_Contact_Form_List_Table extends WP_List_Table {
 		return trim( $output );
 	}
 
-	function column_date( $item ) {
+	public function column_date( $item ) {
 		$post = get_post( $item->id() );
 
 		if ( ! $post ) {
@@ -207,13 +235,19 @@ class WPCF7_Contact_Form_List_Table extends WP_List_Table {
 
 		$time_diff = time() - $time;
 
-		if ( $time_diff > 0 && $time_diff < 24*60*60 ) {
+		if ( $time_diff > 0 and $time_diff < 24*60*60 ) {
 			$h_time = sprintf(
-				__( '%s ago', 'contact-form-7' ), human_time_diff( $time ) );
+				/* translators: %s: time since the creation of the contact form */
+				__( '%s ago', 'contact-form-7' ),
+				human_time_diff( $time )
+			);
 		} else {
 			$h_time = mysql2date( __( 'Y/m/d', 'contact-form-7' ), $m_time );
 		}
 
-		return '<abbr title="' . $t_time . '">' . $h_time . '</abbr>';
+		return sprintf( '<abbr title="%2$s">%1$s</abbr>',
+			esc_html( $h_time ),
+			esc_attr( $t_time )
+		);
 	}
 }

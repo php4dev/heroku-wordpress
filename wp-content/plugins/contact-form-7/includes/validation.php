@@ -24,14 +24,16 @@ class WPCF7_Validation implements ArrayAccess {
 
 		$name = ! empty( $tag ) ? $tag->name : null;
 
-		if ( empty( $name ) || ! wpcf7_is_name( $name ) ) {
+		if ( empty( $name )
+		or ! wpcf7_is_name( $name ) ) {
 			return;
 		}
 
 		if ( $this->is_valid( $name ) ) {
 			$id = $tag->get_id_option();
 
-			if ( empty( $id ) || ! wpcf7_is_name( $id ) ) {
+			if ( empty( $id )
+			or ! wpcf7_is_name( $id ) ) {
 				$id = null;
 			}
 
@@ -59,7 +61,8 @@ class WPCF7_Validation implements ArrayAccess {
 			$this->container[$offset] = $value;
 		}
 
-		if ( 'reason' == $offset && is_array( $value ) ) {
+		if ( 'reason' == $offset
+		and is_array( $value ) ) {
 			foreach ( $value as $k => $v ) {
 				$this->invalidate( $k, $v );
 			}

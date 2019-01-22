@@ -51,8 +51,17 @@ class WPCF7_Editor {
 }
 
 function wpcf7_editor_panel_form( $post ) {
+	$desc_link = wpcf7_link(
+		__( 'https://contactform7.com/editing-form-template/', 'contact-form-7' ),
+		__( 'Editing Form Template', 'contact-form-7' ) );
+	$description = __( "You can edit the form template here. For details, see %s.", 'contact-form-7' );
+	$description = sprintf( esc_html( $description ), $desc_link );
 ?>
+
 <h2><?php echo esc_html( __( 'Form', 'contact-form-7' ) ); ?></h2>
+
+<fieldset>
+<legend><?php echo $description; ?></legend>
 
 <?php
 	$tag_generator = WPCF7_TagGenerator::get_instance();
@@ -60,6 +69,7 @@ function wpcf7_editor_panel_form( $post ) {
 ?>
 
 <textarea id="wpcf7-form" name="wpcf7-form" cols="100" rows="24" class="large-text code" data-config-field="form.body"><?php echo esc_textarea( $post->prop( 'form' ) ); ?></textarea>
+</fieldset>
 <?php
 }
 
@@ -112,8 +122,22 @@ function wpcf7_editor_box_mail( $post, $args = '' ) {
 ?>
 
 <fieldset>
-<legend><?php echo esc_html( __( "In the following fields, you can use these mail-tags:", 'contact-form-7' ) ); ?><br />
-<?php $post->suggest_mail_tags( $args['name'] ); ?></legend>
+<legend>
+<?php
+	$desc_link = wpcf7_link(
+		__( 'https://contactform7.com/setting-up-mail/', 'contact-form-7' ),
+		__( 'Setting Up Mail', 'contact-form-7' ) );
+	$description = __( "You can edit the mail template here. For details, see %s.", 'contact-form-7' );
+	$description = sprintf( esc_html( $description ), $desc_link );
+	echo $description;
+	echo '<br />';
+
+	echo esc_html( __( "In the following fields, you can use these mail-tags:",
+		'contact-form-7' ) );
+	echo '<br />';
+	$post->suggest_mail_tags( $args['name'] );
+?>
+</legend>
 <table class="form-table">
 <tbody>
 	<tr>
@@ -181,17 +205,23 @@ function wpcf7_editor_box_mail( $post, $args = '' ) {
 }
 
 function wpcf7_editor_panel_messages( $post ) {
+	$desc_link = wpcf7_link(
+		__( 'https://contactform7.com/editing-messages/', 'contact-form-7' ),
+		__( 'Editing Messages', 'contact-form-7' ) );
+	$description = __( "You can edit messages used in various situations here. For details, see %s.", 'contact-form-7' );
+	$description = sprintf( esc_html( $description ), $desc_link );
+
 	$messages = wpcf7_messages();
 
 	if ( isset( $messages['captcha_not_match'] )
-	&& ! wpcf7_use_really_simple_captcha() ) {
+	and ! wpcf7_use_really_simple_captcha() ) {
 		unset( $messages['captcha_not_match'] );
 	}
 
 ?>
 <h2><?php echo esc_html( __( 'Messages', 'contact-form-7' ) ); ?></h2>
 <fieldset>
-<legend><?php echo esc_html( __( 'Edit messages used in the following situations.', 'contact-form-7' ) ); ?></legend>
+<legend><?php echo $description; ?></legend>
 <?php
 
 	foreach ( $messages as $key => $arr ) {

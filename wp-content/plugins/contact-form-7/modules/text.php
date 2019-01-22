@@ -9,7 +9,7 @@
 
 /* form_tag handler */
 
-add_action( 'wpcf7_init', 'wpcf7_add_form_tag_text' );
+add_action( 'wpcf7_init', 'wpcf7_add_form_tag_text', 10, 0 );
 
 function wpcf7_add_form_tag_text() {
 	wpcf7_add_form_tag(
@@ -18,8 +18,6 @@ function wpcf7_add_form_tag_text() {
 }
 
 function wpcf7_text_form_tag_handler( $tag ) {
-	$tag = new WPCF7_FormTag( $tag );
-
 	if ( empty( $tag->name ) ) {
 		return '';
 	}
@@ -42,14 +40,14 @@ function wpcf7_text_form_tag_handler( $tag ) {
 	$atts['maxlength'] = $tag->get_maxlength_option();
 	$atts['minlength'] = $tag->get_minlength_option();
 
-	if ( $atts['maxlength'] && $atts['minlength']
-	&& $atts['maxlength'] < $atts['minlength'] ) {
+	if ( $atts['maxlength'] and $atts['minlength']
+	and $atts['maxlength'] < $atts['minlength'] ) {
 		unset( $atts['maxlength'], $atts['minlength'] );
 	}
 
 	$atts['class'] = $tag->get_class_option( $class );
 	$atts['id'] = $tag->get_id_option();
-	$atts['tabindex'] = $tag->get_option( 'tabindex', 'int', true );
+	$atts['tabindex'] = $tag->get_option( 'tabindex', 'signed_int', true );
 
 	$atts['autocomplete'] = $tag->get_option( 'autocomplete',
 		'[-0-9a-zA-Z]+', true );
@@ -66,7 +64,8 @@ function wpcf7_text_form_tag_handler( $tag ) {
 
 	$value = (string) reset( $tag->values );
 
-	if ( $tag->has_option( 'placeholder' ) || $tag->has_option( 'watermark' ) ) {
+	if ( $tag->has_option( 'placeholder' )
+	or $tag->has_option( 'watermark' ) ) {
 		$atts['placeholder'] = $value;
 		$value = '';
 	}
@@ -107,8 +106,6 @@ add_filter( 'wpcf7_validate_tel', 'wpcf7_text_validation_filter', 10, 2 );
 add_filter( 'wpcf7_validate_tel*', 'wpcf7_text_validation_filter', 10, 2 );
 
 function wpcf7_text_validation_filter( $result, $tag ) {
-	$tag = new WPCF7_FormTag( $tag );
-
 	$name = $tag->name;
 
 	$value = isset( $_POST[$name] )
@@ -116,31 +113,31 @@ function wpcf7_text_validation_filter( $result, $tag ) {
 		: '';
 
 	if ( 'text' == $tag->basetype ) {
-		if ( $tag->is_required() && '' == $value ) {
+		if ( $tag->is_required() and '' == $value ) {
 			$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
 		}
 	}
 
 	if ( 'email' == $tag->basetype ) {
-		if ( $tag->is_required() && '' == $value ) {
+		if ( $tag->is_required() and '' == $value ) {
 			$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
-		} elseif ( '' != $value && ! wpcf7_is_email( $value ) ) {
+		} elseif ( '' != $value and ! wpcf7_is_email( $value ) ) {
 			$result->invalidate( $tag, wpcf7_get_message( 'invalid_email' ) );
 		}
 	}
 
 	if ( 'url' == $tag->basetype ) {
-		if ( $tag->is_required() && '' == $value ) {
+		if ( $tag->is_required() and '' == $value ) {
 			$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
-		} elseif ( '' != $value && ! wpcf7_is_url( $value ) ) {
+		} elseif ( '' != $value and ! wpcf7_is_url( $value ) ) {
 			$result->invalidate( $tag, wpcf7_get_message( 'invalid_url' ) );
 		}
 	}
 
 	if ( 'tel' == $tag->basetype ) {
-		if ( $tag->is_required() && '' == $value ) {
+		if ( $tag->is_required() and '' == $value ) {
 			$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
-		} elseif ( '' != $value && ! wpcf7_is_tel( $value ) ) {
+		} elseif ( '' != $value and ! wpcf7_is_tel( $value ) ) {
 			$result->invalidate( $tag, wpcf7_get_message( 'invalid_tel' ) );
 		}
 	}
@@ -149,16 +146,16 @@ function wpcf7_text_validation_filter( $result, $tag ) {
 		$maxlength = $tag->get_maxlength_option();
 		$minlength = $tag->get_minlength_option();
 
-		if ( $maxlength && $minlength && $maxlength < $minlength ) {
+		if ( $maxlength and $minlength and $maxlength < $minlength ) {
 			$maxlength = $minlength = null;
 		}
 
 		$code_units = wpcf7_count_code_units( stripslashes( $value ) );
 
 		if ( false !== $code_units ) {
-			if ( $maxlength && $maxlength < $code_units ) {
+			if ( $maxlength and $maxlength < $code_units ) {
 				$result->invalidate( $tag, wpcf7_get_message( 'invalid_too_long' ) );
-			} elseif ( $minlength && $code_units < $minlength ) {
+			} elseif ( $minlength and $code_units < $minlength ) {
 				$result->invalidate( $tag, wpcf7_get_message( 'invalid_too_short' ) );
 			}
 		}
@@ -170,30 +167,39 @@ function wpcf7_text_validation_filter( $result, $tag ) {
 
 /* Messages */
 
-add_filter( 'wpcf7_messages', 'wpcf7_text_messages' );
+add_filter( 'wpcf7_messages', 'wpcf7_text_messages', 10, 1 );
 
 function wpcf7_text_messages( $messages ) {
-	return array_merge( $messages, array(
+	$messages = array_merge( $messages, array(
 		'invalid_email' => array(
-			'description' => __( "Email address that the sender entered is invalid", 'contact-form-7' ),
-			'default' => __( "The e-mail address entered is invalid.", 'contact-form-7' )
+			'description' =>
+				__( "Email address that the sender entered is invalid", 'contact-form-7' ),
+			'default' =>
+				__( "The e-mail address entered is invalid.", 'contact-form-7' ),
 		),
 
 		'invalid_url' => array(
-			'description' => __( "URL that the sender entered is invalid", 'contact-form-7' ),
-			'default' => __( "The URL is invalid.", 'contact-form-7' )
+			'description' =>
+				__( "URL that the sender entered is invalid", 'contact-form-7' ),
+			'default' =>
+				__( "The URL is invalid.", 'contact-form-7' ),
 		),
 
 		'invalid_tel' => array(
-			'description' => __( "Telephone number that the sender entered is invalid", 'contact-form-7' ),
-			'default' => __( "The telephone number is invalid.", 'contact-form-7' )
-		) ) );
+			'description' =>
+				__( "Telephone number that the sender entered is invalid", 'contact-form-7' ),
+			'default' =>
+				__( "The telephone number is invalid.", 'contact-form-7' ),
+		),
+	) );
+
+	return $messages;
 }
 
 
 /* Tag generator */
 
-add_action( 'wpcf7_admin_init', 'wpcf7_add_tag_generator_text', 15 );
+add_action( 'wpcf7_admin_init', 'wpcf7_add_tag_generator_text', 15, 0 );
 
 function wpcf7_add_tag_generator_text() {
 	$tag_generator = WPCF7_TagGenerator::get_instance();

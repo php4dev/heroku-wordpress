@@ -15,9 +15,13 @@ function wpcf7_convert_to_cpt( $new_ver, $old_ver ) {
 
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) ) {
 		$old_rows = $wpdb->get_results( "SELECT * FROM $table_name" );
-	} elseif ( ( $opt = get_option( 'wpcf7' ) ) && ! empty( $opt['contact_forms'] ) ) {
+	} elseif ( $opt = get_option( 'wpcf7' )
+	and ! empty( $opt['contact_forms'] ) ) {
 		foreach ( (array) $opt['contact_forms'] as $key => $value ) {
-			$old_rows[] = (object) array_merge( $value, array( 'cf7_unit_id' => $key ) );
+			$old_rows[] = (object) array_merge(
+				$value,
+				array( 'cf7_unit_id' => $key )
+			);
 		}
 	}
 

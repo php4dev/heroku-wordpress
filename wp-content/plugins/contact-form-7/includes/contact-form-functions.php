@@ -46,7 +46,8 @@ function wpcf7_get_hangover( $name, $default = null ) {
 
 	$submission = WPCF7_Submission::get_instance();
 
-	if ( ! $submission || $submission->is( 'mail_sent' ) ) {
+	if ( ! $submission
+	or $submission->is( 'mail_sent' ) ) {
 		return $default;
 	}
 

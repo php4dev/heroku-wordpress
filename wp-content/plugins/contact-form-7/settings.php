@@ -12,6 +12,7 @@ require_once WPCF7_PLUGIN_DIR . '/includes/contact-form-template.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/contact-form.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/contact-form-functions.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/mail.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/special-mail-tags.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/submission.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/upgrade.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/integration.php';
@@ -30,10 +31,12 @@ class WPCF7 {
 		self::load_module( 'acceptance' );
 		self::load_module( 'akismet' );
 		self::load_module( 'checkbox' );
+		self::load_module( 'constant-contact' );
 		self::load_module( 'count' );
 		self::load_module( 'date' );
 		self::load_module( 'file' );
 		self::load_module( 'flamingo' );
+		self::load_module( 'hidden' );
 		self::load_module( 'listo' );
 		self::load_module( 'number' );
 		self::load_module( 'quiz' );
@@ -44,13 +47,12 @@ class WPCF7 {
 		self::load_module( 'submit' );
 		self::load_module( 'text' );
 		self::load_module( 'textarea' );
-		self::load_module( 'hidden' );
 	}
 
 	protected static function load_module( $mod ) {
 		$dir = WPCF7_PLUGIN_MODULES_DIR;
 
-		if ( empty( $dir ) || ! is_dir( $dir ) ) {
+		if ( empty( $dir ) or ! is_dir( $dir ) ) {
 			return false;
 		}
 
@@ -83,7 +85,7 @@ class WPCF7 {
 	}
 }
 
-add_action( 'plugins_loaded', 'wpcf7' );
+add_action( 'plugins_loaded', 'wpcf7', 10, 0 );
 
 function wpcf7() {
 	wpcf7_load_textdomain();
@@ -94,7 +96,7 @@ function wpcf7() {
 	add_shortcode( 'contact-form', 'wpcf7_contact_form_tag_func' );
 }
 
-add_action( 'init', 'wpcf7_init' );
+add_action( 'init', 'wpcf7_init', 10, 0 );
 
 function wpcf7_init() {
 	wpcf7_get_request_uri();
@@ -103,7 +105,7 @@ function wpcf7_init() {
 	do_action( 'wpcf7_init' );
 }
 
-add_action( 'admin_init', 'wpcf7_upgrade' );
+add_action( 'admin_init', 'wpcf7_upgrade', 10, 0 );
 
 function wpcf7_upgrade() {
 	$old_ver = WPCF7::get_option( 'version', '0' );
@@ -120,7 +122,7 @@ function wpcf7_upgrade() {
 
 /* Install and default settings */
 
-add_action( 'activate_' . WPCF7_PLUGIN_BASENAME, 'wpcf7_install' );
+add_action( 'activate_' . WPCF7_PLUGIN_BASENAME, 'wpcf7_install', 10, 0 );
 
 function wpcf7_install() {
 	if ( $opt = get_option( 'wpcf7' ) ) {
@@ -137,7 +139,9 @@ function wpcf7_install() {
 
 	$contact_form = WPCF7_ContactForm::get_template(
 		array(
-			'title' => sprintf( __( 'Contact form %d', 'contact-form-7' ), 1 ),
+			'title' =>
+				/* translators: title of your first contact form. %d: number fixed to '1' */
+				sprintf( __( 'Contact form %d', 'contact-form-7' ), 1 ),
 		)
 	);
 

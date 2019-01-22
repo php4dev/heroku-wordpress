@@ -5,6 +5,7 @@ class WPCF7_Mail {
 	private static $current = null;
 
 	private $name = '';
+	private $locale = '';
 	private $template = array();
 	private $use_html = false;
 	private $exclude_blank = false;
@@ -31,6 +32,11 @@ class WPCF7_Mail {
 			'additional_headers' => '',
 			'attachments' => '',
 		) );
+
+		if ( $submission = WPCF7_Submission::get_instance() ) {
+			$contact_form = $submission->get_contact_form();
+			$this->locale = $contact_form->locale();
+		}
 	}
 
 	public function name() {
@@ -51,7 +57,7 @@ class WPCF7_Mail {
 			) );
 
 			if ( $use_html
-			&& ! preg_match( '%<html[>\s].*</html>%is', $component ) ) {
+			and ! preg_match( '%<html[>\s].*</html>%is', $component ) ) {
 				$component = $this->htmlize( $component );
 			}
 		}
@@ -60,9 +66,20 @@ class WPCF7_Mail {
 	}
 
 	private function htmlize( $body ) {
+		if ( $this->locale ) {
+			$lang_atts = sprintf( ' %s',
+				wpcf7_format_atts( array(
+					'dir' => wpcf7_is_rtl( $this->locale ) ? 'rtl' : 'ltr',
+					'lang' => str_replace( '_', '-', $this->locale ),
+				) )
+			);
+		} else {
+			$lang_atts = '';
+		}
+
 		$header = apply_filters( 'wpcf7_mail_html_header',
 			'<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"' . $lang_atts . '>
 <head>
 <title>' . esc_html( $this->get( 'subject', true ) ) . '</title>
 </head>
@@ -142,7 +159,7 @@ class WPCF7_Mail {
 
 			foreach ( (array) $uploaded_files as $name => $path ) {
 				if ( false !== strpos( $template, "[${name}]" )
-				&& ! empty( $path ) ) {
+				and ! empty( $path ) ) {
 					$attachments[] = $path;
 				}
 			}
@@ -157,7 +174,13 @@ class WPCF7_Mail {
 
 			$path = path_join( WP_CONTENT_DIR, $line );
 
-			if ( @is_readable( $path ) && @is_file( $path ) ) {
+			if ( ! wpcf7_is_file_path_in_content_dir( $path ) ) {
+				// $path is out of WP_CONTENT_DIR
+				continue;
+			}
+
+			if ( is_readable( $path )
+			and is_file( $path ) ) {
 				$attachments[] = $path;
 			}
 		}
@@ -189,7 +212,8 @@ function wpcf7_mail_replace_tags( $content, $args = '' ) {
 		if ( $args['exclude_blank'] ) {
 			$replaced_tags = $line->get_replaced_tags();
 
-			if ( empty( $replaced_tags ) || array_filter( $replaced_tags ) ) {
+			if ( empty( $replaced_tags )
+			or array_filter( $replaced_tags ) ) {
 				$content[$num] = $replaced;
 			} else {
 				unset( $content[$num] ); // Remove a line.
@@ -204,20 +228,28 @@ function wpcf7_mail_replace_tags( $content, $args = '' ) {
 	return $content;
 }
 
-add_action( 'phpmailer_init', 'wpcf7_phpmailer_init' );
+add_action( 'phpmailer_init', 'wpcf7_phpmailer_init', 10, 1 );
 
 function wpcf7_phpmailer_init( $phpmailer ) {
+	$custom_headers = $phpmailer->getCustomHeaders();
+	$phpmailer->clearCustomHeaders();
 	$wpcf7_content_type = false;
 
-	foreach ( (array) $phpmailer->getCustomHeaders() as $custom_header ) {
-		if ( 'X-WPCF7-Content-Type' == $custom_header[0] ) {
-			$wpcf7_content_type = trim( $custom_header[1] );
-			break;
+	foreach ( (array) $custom_headers as $custom_header ) {
+		$name = $custom_header[0];
+		$value = $custom_header[1];
+
+		if ( 'X-WPCF7-Content-Type' === $name ) {
+			$wpcf7_content_type = trim( $value );
+		} else {
+			$phpmailer->addCustomHeader( $name, $value );
 		}
 	}
 
-	if ( 'text/html' == $wpcf7_content_type ) {
+	if ( 'text/html' === $wpcf7_content_type ) {
 		$phpmailer->msgHTML( $phpmailer->Body );
+	} elseif ( 'text/plain' === $wpcf7_content_type ) {
+		$phpmailer->AltBody = '';
 	}
 }
 
@@ -236,7 +268,8 @@ class WPCF7_MailTaggedText {
 
 		$this->html = (bool) $args['html'];
 
-		if ( null !== $args['callback'] && is_callable( $args['callback'] ) ) {
+		if ( null !== $args['callback']
+		and is_callable( $args['callback'] ) ) {
 			$this->callback = $args['callback'];
 		} elseif ( $this->html ) {
 			$this->callback = array( $this, 'replace_tags_callback_html' );
@@ -266,7 +299,8 @@ class WPCF7_MailTaggedText {
 
 	private function replace_tags_callback( $matches, $html = false ) {
 		// allow [[foo]] syntax for escaping a tag
-		if ( $matches[1] == '[' && $matches[4] == ']' ) {
+		if ( $matches[1] == '['
+		and $matches[4] == ']' ) {
 			return substr( $matches[0], 1, -1 );
 		}
 
@@ -274,37 +308,23 @@ class WPCF7_MailTaggedText {
 		$tagname = $matches[2];
 		$values = $matches[3];
 
-		if ( ! empty( $values ) ) {
-			preg_match_all( '/"[^"]*"|\'[^\']*\'/', $values, $matches );
-			$values = wpcf7_strip_quote_deep( $matches[0] );
-		}
-
-		$do_not_heat = false;
-
-		if ( preg_match( '/^_raw_(.+)$/', $tagname, $matches ) ) {
-			$tagname = trim( $matches[1] );
-			$do_not_heat = true;
-		}
-
-		$format = '';
-
-		if ( preg_match( '/^_format_(.+)$/', $tagname, $matches ) ) {
-			$tagname = trim( $matches[1] );
-			$format = $values[0];
-		}
+		$mail_tag = new WPCF7_MailTag( $tag, $tagname, $values );
+		$field_name = $mail_tag->field_name();
 
 		$submission = WPCF7_Submission::get_instance();
-		$submitted = $submission ? $submission->get_posted_data( $tagname ) : null;
+		$submitted = $submission
+			? $submission->get_posted_data( $field_name )
+			: null;
 
 		if ( null !== $submitted ) {
 
-			if ( $do_not_heat ) {
-				$submitted = isset( $_POST[$tagname] ) ? $_POST[$tagname] : '';
+			if ( $mail_tag->get_option( 'do_not_heat' ) ) {
+				$submitted = isset( $_POST[$field_name] ) ? $_POST[$field_name] : '';
 			}
 
 			$replaced = $submitted;
 
-			if ( ! empty( $format ) ) {
+			if ( $format = $mail_tag->get_option( 'format' ) ) {
 				$replaced = $this->format( $replaced, $format );
 			}
 
@@ -315,8 +335,16 @@ class WPCF7_MailTaggedText {
 				$replaced = wptexturize( $replaced );
 			}
 
-			$replaced = apply_filters( 'wpcf7_mail_tag_replaced',
-				$replaced, $submitted, $html );
+			if ( $form_tag = $mail_tag->corresponding_form_tag() ) {
+				$type = $form_tag->type;
+
+				$replaced = apply_filters(
+					"wpcf7_mail_tag_replaced_{$type}", $replaced,
+					$submitted, $html, $mail_tag );
+			}
+
+			$replaced = apply_filters( 'wpcf7_mail_tag_replaced', $replaced,
+				$submitted, $html, $mail_tag );
 
 			$replaced = wp_unslash( trim( $replaced ) );
 
@@ -324,9 +352,10 @@ class WPCF7_MailTaggedText {
 			return $replaced;
 		}
 
-		$special = apply_filters( 'wpcf7_special_mail_tags', '', $tagname, $html );
+		$special = apply_filters( 'wpcf7_special_mail_tags', null,
+			$mail_tag->tag_name(), $html, $mail_tag );
 
-		if ( ! empty( $special ) ) {
+		if ( null !== $special ) {
 			$this->replaced_tags[$tag] = $special;
 			return $special;
 		}
@@ -347,95 +376,73 @@ class WPCF7_MailTaggedText {
 	}
 }
 
-/* Special Mail Tags */
+class WPCF7_MailTag {
 
-add_filter( 'wpcf7_special_mail_tags', 'wpcf7_special_mail_tag', 10, 3 );
+	private $tag;
+	private $tagname = '';
+	private $name = '';
+	private $options = array();
+	private $values = array();
+	private $form_tag = null;
 
-function wpcf7_special_mail_tag( $output, $name, $html ) {
-	$name = preg_replace( '/^wpcf7\./', '_', $name ); // for back-compat
+	public function __construct( $tag, $tagname, $values ) {
+		$this->tag = $tag;
+		$this->name = $this->tagname = $tagname;
 
-	$submission = WPCF7_Submission::get_instance();
+		$this->options = array(
+			'do_not_heat' => false,
+			'format' => '',
+		);
 
-	if ( ! $submission ) {
-		return $output;
-	}
+		if ( ! empty( $values ) ) {
+			preg_match_all( '/"[^"]*"|\'[^\']*\'/', $values, $matches );
+			$this->values = wpcf7_strip_quote_deep( $matches[0] );
+		}
 
-	if ( '_remote_ip' == $name ) {
-		if ( $remote_ip = $submission->get_meta( 'remote_ip' ) ) {
-			return $remote_ip;
-		} else {
-			return '';
+		if ( preg_match( '/^_raw_(.+)$/', $tagname, $matches ) ) {
+			$this->name = trim( $matches[1] );
+			$this->options['do_not_heat'] = true;
+		}
+
+		if ( preg_match( '/^_format_(.+)$/', $tagname, $matches ) ) {
+			$this->name = trim( $matches[1] );
+			$this->options['format'] = $this->values[0];
 		}
 	}
 
-	if ( '_user_agent' == $name ) {
-		if ( $user_agent = $submission->get_meta( 'user_agent' ) ) {
-			return $html ? esc_html( $user_agent ) : $user_agent;
-		} else {
-			return '';
-		}
+	public function tag_name() {
+		return $this->tagname;
 	}
 
-	if ( '_url' == $name ) {
-		if ( $url = $submission->get_meta( 'url' ) ) {
-			return esc_url( $url );
-		} else {
-			return '';
-		}
+	public function field_name() {
+		return $this->name;
 	}
 
-	if ( '_date' == $name || '_time' == $name ) {
-		if ( $timestamp = $submission->get_meta( 'timestamp' ) ) {
-			if ( '_date' == $name ) {
-				return date_i18n( get_option( 'date_format' ), $timestamp );
-			}
-
-			if ( '_time' == $name ) {
-				return date_i18n( get_option( 'time_format' ), $timestamp );
-			}
-		}
-
-		return '';
+	public function get_option( $option ) {
+		return $this->options[$option];
 	}
 
-	if ( '_post_' == substr( $name, 0, 6 ) ) {
-		$unit_tag = $submission->get_meta( 'unit_tag' );
+	public function values() {
+		return $this->values;
+	}
 
-		if ( $unit_tag
-		&& preg_match( '/^wpcf7-f(\d+)-p(\d+)-o(\d+)$/', $unit_tag, $matches ) ) {
-			$post_id = absint( $matches[2] );
+	public function corresponding_form_tag() {
+		if ( $this->form_tag instanceof WPCF7_FormTag ) {
+			return $this->form_tag;
+		}
 
-			if ( $post = get_post( $post_id ) ) {
-				if ( '_post_id' == $name ) {
-					return (string) $post->ID;
-				}
+		if ( $submission = WPCF7_Submission::get_instance() ) {
+			$contact_form = $submission->get_contact_form();
+			$tags = $contact_form->scan_form_tags( array(
+				'name' => $this->name,
+				'feature' => '! zero-controls-container',
+			) );
 
-				if ( '_post_name' == $name ) {
-					return $post->post_name;
-				}
-
-				if ( '_post_title' == $name ) {
-					return $html ? esc_html( $post->post_title ) : $post->post_title;
-				}
-
-				if ( '_post_url' == $name ) {
-					return get_permalink( $post->ID );
-				}
-
-				$user = new WP_User( $post->post_author );
-
-				if ( '_post_author' == $name ) {
-					return $user->display_name;
-				}
-
-				if ( '_post_author_email' == $name ) {
-					return $user->user_email;
-				}
+			if ( $tags ) {
+				$this->form_tag = $tags[0];
 			}
 		}
 
-		return '';
+		return $this->form_tag;
 	}
-
-	return $output;
 }

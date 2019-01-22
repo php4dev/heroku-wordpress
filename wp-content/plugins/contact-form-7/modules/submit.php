@@ -5,22 +5,20 @@
 
 /* form_tag handler */
 
-add_action( 'wpcf7_init', 'wpcf7_add_form_tag_submit' );
+add_action( 'wpcf7_init', 'wpcf7_add_form_tag_submit', 10, 0 );
 
 function wpcf7_add_form_tag_submit() {
 	wpcf7_add_form_tag( 'submit', 'wpcf7_submit_form_tag_handler' );
 }
 
 function wpcf7_submit_form_tag_handler( $tag ) {
-	$tag = new WPCF7_FormTag( $tag );
-
 	$class = wpcf7_form_controls_class( $tag->type );
 
 	$atts = array();
 
 	$atts['class'] = $tag->get_class_option( $class );
 	$atts['id'] = $tag->get_id_option();
-	$atts['tabindex'] = $tag->get_option( 'tabindex', 'int', true );
+	$atts['tabindex'] = $tag->get_option( 'tabindex', 'signed_int', true );
 
 	$value = isset( $tag->values[0] ) ? $tag->values[0] : '';
 
@@ -41,7 +39,7 @@ function wpcf7_submit_form_tag_handler( $tag ) {
 
 /* Tag generator */
 
-add_action( 'wpcf7_admin_init', 'wpcf7_add_tag_generator_submit', 55 );
+add_action( 'wpcf7_admin_init', 'wpcf7_add_tag_generator_submit', 55, 0 );
 
 function wpcf7_add_tag_generator_submit() {
 	$tag_generator = WPCF7_TagGenerator::get_instance();
