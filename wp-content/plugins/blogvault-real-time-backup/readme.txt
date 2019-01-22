@@ -1,6 +1,6 @@
 === Backup & Staging - BlogVault Backups ===
 Contributors: BlogVault Backup
-Tags: backup, restore, staging, dropbox, database backup
+Tags: backup, wordpress backup, backup plugin, cloud backup, database backup, back up, staging, restore, s3 backup, dropbox backup, google drive backup
 Plugin URI: https://blogvault.net/
 Donate link: https://app.blogvault.net/home/signup
 Requires at least: 4.0
@@ -101,6 +101,12 @@ Never! We will be with you for any queries at any time. **[Click here](https://b
 
 
 == CHANGELOG ==
+= 1.84 =
+* Disable form on submit
+
+= 1.83 =
+* Setting blocked page to be non-cacheable
+
 = 1.82 =
 * Improving ip extraction and updating tested upto 5.0
 

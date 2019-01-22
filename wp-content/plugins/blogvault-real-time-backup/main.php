@@ -8,7 +8,7 @@ require_once dirname( __FILE__ ) . '/main/auth.php';
 require_once dirname( __FILE__ ) . '/main/db.php';
 
 class BVBackup {
-	public $version = '1.82';
+	public $version = '1.84';
 	public $plugname = 'bvbackup';
 	public $brandname = 'BlogVault';
 	public $webpage = 'https://blogvault.net';
