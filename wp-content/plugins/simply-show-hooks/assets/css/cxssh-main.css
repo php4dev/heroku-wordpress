@@ -1,0 +1,400 @@
+
+/* HOOK LABEL (MAIN INLINE LABEL) */
+.cxssh-hook {
+	position: relative !important;
+	clear: both !important;
+	width: auto !important;
+	float: none !important;
+	min-width: 0px !important;
+	min-height: 0px !important;
+	box-shadow: none !important;
+	color: #EEEEEE !important;
+	text-decoration: none !important;
+	border-radius: 2px !important;
+	margin: 2px 0 2px 2px !important;
+	font-size: 11px !important;
+	font-family: monospace !important;
+	font-weight: normal !important;
+	display: inline-block !important;
+	line-height: 15px !important;
+	height: auto !important;
+	padding: 1px 5px 1px !important;
+	background: rgb(66, 66, 66) !important;
+	transition: 0s !important;
+	white-space: nowrap !important;
+	box-sizing: initial !important;
+	z-index: 9997;
+}
+
+	/* ACTION HOOK */
+	.cxssh-hook.cxssh-hook-action {
+		background: #D1E8E0 !important;
+		color: #2E2E2E !important;
+		box-shadow: none !important;
+		border: 1px solid #c3d9d1 !important;
+	}
+	
+	/* FILTER HOOK */
+	.cxssh-hook.cxssh-hook-filter {
+		background: #ffe8ea !important;
+		color: #3A2D2D !important;
+		box-shadow: none !important;
+		border: 1px solid rgb(248, 216, 218) !important;
+	}
+
+	/* HOOK TYPE */
+	.cxssh-hook .cxssh-hook-type{
+		background: rgba(0, 0, 0, 0.13) !important;
+		border-radius: 30px !important;
+		min-width: 11px !important;
+		line-height: 11px !important;
+		padding-top: 0px !important;
+		display: inline-block !important;
+		text-align: center !important;
+		color: rgba(8, 8, 8, 0.9) !important;
+		font-size: 9px !important;
+		margin: -2px -2px -2px -1px !important;
+		float: none !important;
+		position: relative !important;
+		top: -1px !important;
+	}
+	.cxssh-hook.cxssh-hook-action .cxssh-hook-type{
+		background: rgba(0, 0, 0, 0.2) !important;
+		color: rgba(199, 255, 212, 1) !important;
+	}
+	.cxssh-hook.cxssh-hook-filter .cxssh-hook-type{
+		background: rgba(0, 0, 0, 0.15) !important;
+		color: #F4E1E1 !important;
+	}
+	.cxssh-hook.cxssh-hook-action.cxssh-hook-has-hooks .cxssh-hook-type{
+		background: rgba(0, 0, 0, 0.2) !important;
+		color: #4DCCA8 !important;
+	}
+	.cxssh-hook.cxssh-hook-filter.cxssh-hook-has-hooks .cxssh-hook-type{
+		background: rgba(0, 0, 0, 0.25) !important;
+		color: rgba(196, 131, 131, 1) !important;
+	}
+	
+	/* HAS HOOKS*/
+	.cxssh-hook.cxssh-hook-has-hooks {
+		cursor: pointer !important;
+	}
+	
+		/* ACTION HOOK */
+		.cxssh-hook.cxssh-hook-action.cxssh-hook-has-hooks {
+			background: #34B08D !important;
+			border: 1px solid #289c7c !important;
+			color: #F6F6F6 !important;
+			box-shadow: none !important;
+		}
+		
+		/* FILTER HOOK */
+		.cxssh-hook.cxssh-hook-filter.cxssh-hook-has-hooks {
+			background: #c53164 !important;
+			box-shadow: none !important;
+			border: 1px solid #b22958 !important;
+			color: #FFF !important;
+		}
+
+	/* HOOK COUNT */
+	.cxssh-hook .cxssh-hook-count {
+		float:none !important;
+		min-width: 12px !important;
+		min-height:0 !important;
+		font-size: 8px !important;
+		background: rgba(255, 0, 43, 0.96) !important;
+		border-radius: 20px !important;
+		padding: 0px 3px 0px 3px !important;
+		box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.16) inset, 0 1px 0 rgba(0, 0, 0, 0.01)  !important;
+		line-height: 12px !important;
+		position: relative !important;
+		top: -8px !important;
+		right: -9px !important;
+		margin: 0 0 -10px -13px !important;
+		width: auto !important;
+		display: inline-block !important;
+		text-align: center !important;
+		height: auto !important;
+		box-sizing: border-box !important;
+		color: rgba(255, 255, 255, 0.95) !important;
+		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2) !important;
+	}
+	
+	/* HOOK DROP DOWN */
+	.cxssh-hook .cxssh-hook-dropdown {
+		position: absolute;
+		z-index: 100000;
+		line-height: 12px;
+		display: none;
+		border-radius: 4px;
+		box-shadow: 0 3px 7px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0,0,0,0.08);
+		color: rgb(66, 66, 66);
+		font-size: 11px;
+		white-space: nowrap;
+		padding: 0px 10px 9px;
+		margin: 0px 0 0 -16px !important;
+		background: rgb(255, 255, 255);
+		overflow: visible !important;
+		top: 100%;
+		text-align: left !important;
+	}
+	.cxssh-hook .cxssh-hook-dropdown:after {
+		display:block;
+		content:'';
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 6px;
+		border-color: transparent;
+		border-bottom-color: #FFF !important;
+		border-top-width: 0;
+		position: absolute;
+		bottom: 100%;
+		left: 30px;
+		opacity: 1 !important;
+	}
+	.cxssh-hook .cxssh-hook-dropdown:before {
+		display:block;
+		content:'';
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 7px;
+		border-color: transparent;
+		border-bottom-color: rgba(0, 0, 0, 0.29);
+		border-top-width: 0;
+		position: absolute;
+		bottom: 100%;
+		margin-left:-1px;
+		left: 30px;
+	}
+	.cxssh-hook ul.cxssh-hook-dropdown li {
+		display:block;
+		padding: 2px 0 2px 0;
+		position: relative;
+		margin: 0;
+		float: none;
+		clear: both;
+		width: auto !important;
+		float: none !important;
+	}
+	
+	/* HOOK NAME */
+	.cxssh-hook ul.cxssh-hook-dropdown li.cxssh-hook-heading {
+		padding: 1px 0;
+		background: rgba(231, 231, 231, 0.46);
+		margin: 10px 0 20px;
+		font-size: 13px;
+		padding: 9px 7px;
+		border: 1px solid rgb(228, 228, 228);
+		border-radius: 3px;
+	}
+	
+	/* HOOKED FUNCTION NAME */
+	.cxssh-hook ul.cxssh-hook-dropdown {}
+	.cxssh-hook ul.cxssh-hook-dropdown li span.cxssh-function-string {
+		position: relative;
+		width: auto !important;
+		float: none !important;
+		min-width: 0px !important;
+		min-height: 0px !important;
+		border: 1px solid rgb(228, 228, 228) !important;
+		color: rgb(66, 66, 66) !important;
+		text-decoration: none !important;
+		border-radius: 2px !important;
+		margin: 0 !important;
+		font-size: 11px !important;
+		display: inline-block !important;
+		line-height: 15px !important;
+		height: auto !important;
+		padding: 1px 5px !important;
+		background: #f4f4f4 !important;
+		transition: .5s !important;
+		white-space: nowrap !important;
+	}
+	.cxssh-hook ul.cxssh-hook-dropdown li span:before {
+		display: none !important;
+	}
+	.cxssh-hook ul.cxssh-hook-dropdown li span:after {
+		display:none !important;
+	}
+	
+	/* HOOK PRIORITY */
+	.cxssh-hook ul.cxssh-hook-dropdown li.cxssh-priority {
+		display:block;
+		height: 1px;
+		padding:0;
+		margin: 18px 0 11px;
+		border-bottom: 1px dotted #ebebeb;
+	}
+		
+		/* HOOK PRIORITY LABEL */
+		.cxssh-hook ul.cxssh-hook-dropdown li span.cxssh-priority-label {
+			display: inline-block;
+			background: #FFFFFF;
+			border-radius: 50px;
+			line-height: 20px;
+			height: 16px;
+			font-size: 11px;
+			color: #474747;
+			padding: 0 5px 0 0;
+			margin: -2px 0 0;
+			position: relative;
+			top: -7px;
+			left: 0px;
+		}
+		.cxssh-hook ul.cxssh-hook-dropdown li span.cxssh-priority-label:after{
+			content:"" !important;
+		}
+		.cxssh-hook ul.cxssh-hook-dropdown li span.cxssh-priority-label:before{
+			content:"" !important;
+		}
+		.cxssh-hook ul.cxssh-hook-dropdown li span.cxssh-priority-label strong {
+			font-weight:bold;
+		}
+	
+	/* UNKNOWN */
+	.cxssh-hook ul.cxssh-hook-dropdown li ul {
+		display:none;
+		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2) inset, 0 2px 9px rgba(0, 0, 0, 0.21);
+		border-radius: 3px;
+		position: absolute;
+		background: white;
+		z-index: 100;
+		top: 100%;
+		margin-top: -1px;
+		left: 15px;
+		pointer-events: none;
+	}
+	.cxssh-hook ul.cxssh-hook-dropdown li ul li {}
+	.cxssh-hook ul.cxssh-hook-dropdown li:hover ul {
+		display:block;
+	}
+
+	/* UNKNOWN */
+	.cxssh-collection-divider{
+		margin: 1px 2px;
+		padding: 10px 0;
+		font-size: 12px;
+		font-weight: bold;
+	}
+
+	/* PULSE ANIMATION */
+	@-webkit-keyframes cxssh-pulse {
+		0% {
+			opacity:0;
+		}
+		100% {
+			opacity:1;
+		}
+	}
+	
+	/* LABEL HOVER */
+	.cxssh-hook:hover {
+		z-index: 9998;
+	}
+	.cxssh-hook:hover .cxssh-hook-dropdown {
+		display:block !important;
+	}
+
+/* SHOW-ALL-FILTERS PANEL */
+.cxssh-nested-hooks-block {
+	display:none;
+	background: white;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 100000;
+	width: 385px;
+	height: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	box-shadow: 6px 0px 0px rgba(0, 0, 0, 0.05), 0 1px 15px rgba(0, 0, 0, 0.3);
+	border-right: 1px solid rgba(0, 0, 0, 0.24);
+	padding: 3px;
+}
+.cxssh-nested-hooks-block.cxssh-active {
+	display:block;
+}
+.cxssh-nested-hooks-block .cxssh-hook {
+	max-width: 380px;
+}
+
+
+/* ADMIN BAR UX */
+#wp-admin-bar-cxssh-main-menu .ab-submenu .ab-item:before  {
+	line-height: 9px;
+	display:inline-block;
+	background-color: rgba(146, 146, 146, 1);
+	width: 9px;
+	height: 1px;
+	display: inline-block;
+	border-radius: 50px;
+	margin: 0 6px -1px 0px;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.59);
+	float: none !important;
+	content: "" !important;
+	clear: both;
+	display: inline-block;
+	position: relative;
+	top: -1px;
+}
+#wp-admin-bar-cxssh-main-menu .ab-submenu .cxssh-hooks-on .ab-item:before {
+	background-color: #b7ed00;
+	-webkit-animation: cxssh-pulse 1s infinite alternate;
+}
+
+
+/* SWITCH-OFF BUTTON UX */
+.cxssh-notification-switch {
+	position: fixed;
+	background: rgb(35, 40, 45);
+	z-index: 100000;
+	padding: 0 11px 0 0 !important;
+	color: #FFF !important;
+	font-size: 13px !important;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-weight: normal;
+	white-space: nowrap !important;
+	right: 0px;
+	line-height: 32px !important;
+	height: 32px;
+	top: 30px;
+	text-decoration: none;
+	border-radius: 2px 0 0 2px;
+	box-shadow: -1px 1px 4px rgba(0,0,0,0.1);
+}
+.cxssh-notification-switch:hover {
+	color:white;
+	text-decoration:none;
+}
+
+	/* ON INDICATOR */
+	.cxssh-notification-switch .cxssh-notification-indicator {
+		background-color: #b7ed00;
+		-webkit-animation: cxssh-pulse 1s infinite alternate;
+		width: 9px;
+		height: 9px;
+		display: inline-block;
+		border-radius: 50px;
+		margin: 0 2px -1px 11px;
+		box-shadow: 0 1px 0 rgba(255, 255, 255, 0.24) inset, 0 -1px 0 rgba(0, 0, 0, 0.12) inset, 0 1px 0 rgba(0, 0, 0, 0.59);
+		position: relative;
+		top: -1px;
+	}
+
+
+/* UNKNOWN */
+.cxssh-notification-switch .cxssh-notification-button {
+	display: none;
+}
+.cxssh-notification-switch:hover .cxssh-notification-button {
+	display: inline-block;
+	margin-right: -18px;
+	height: 33px;
+	line-height: 33px;
+	padding: 0 14px 0 11px;
+}
+.cxssh-notification-switch .cxssh-notification-button:hover {
+	background: rgba(255, 255, 255, 0.11);
+}
