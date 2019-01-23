@@ -3,10 +3,12 @@
 	<?php
 	$use_ec2_iam_roles = $this->use_ec2_iam_roles(); ?>
 
-	<?php if ( ! $this->are_access_keys_set() && ! $use_ec2_iam_roles ) : ?>
+	<?php if ( $this->needs_access_keys() ) : ?>
 
 		<p class="need-help dashicons-before dashicons-info">
-			<?php printf( __( 'Need help getting your Access Keys? <a href="%s">Check out the Quick Start Guide &rarr;</a>', 'amazon-web-services' ), 'https://deliciousbrains.com/wp-offload-s3/doc/quick-start-guide/' ); ?>
+			<?php printf( __( 'Need help getting your Access Keys? <a href="%s">Check out the Quick Start Guide &rarr;</a>', 'amazon-web-services' ), $this->dbrains_url( '/wp-offload-s3/doc/quick-start-guide/', array(
+				'utm_campaign' => 'support+docs',
+			) ) ); ?>
 		</p>
 
 	<?php endif; ?>
@@ -21,8 +23,18 @@
 
 	<?php elseif ( ! $use_ec2_iam_roles && ( $this->are_prefixed_key_constants_set() || $this->are_key_constants_set() ) ) : ?>
 
+		<?php if ( ! $this->are_access_keys_set() ) : ?>
+			<div class="notice-error notice">
+				<p>
+					<?php _e( 'Please check your wp-config.php file as it looks like one of your defines is missing or incorrect.', 'amazon-web-services' ); ?>
+				</p>
+			</div>
+		<?php endif; ?>
+
 		<p>
-			<?php _e( 'You&#8217;ve already defined your AWS access keys in your wp-config.php. If you&#8217;d prefer to manage them here and store them in the database (not recommended), simply remove the lines from your wp-config.', 'amazon-web-services' ); ?>
+			<?php printf( __( 'You&#8217;ve already defined your AWS access keys in your wp-config.php. If you&#8217;d prefer to manage them here and store them in the database (<a href="%s">not recommended</a>), simply remove the lines from your wp-config.', 'amazon-web-services' ), $this->dbrains_url( '/wp-offload-s3/doc/quick-start-guide/#save-access-keys', array(
+				'utm_campaign' => 'support+docs',
+			) ) ); ?>
 		</p>
 
 	<?php else : ?>
@@ -34,11 +46,21 @@
 		<pre>define( 'DBI_AWS_ACCESS_KEY_ID', '********************' );
 define( 'DBI_AWS_SECRET_ACCESS_KEY', '****************************************' );</pre>
 
-		<p class="reveal-form">
-			<?php _e( 'If you&#8217;d rather store your Access Keys in the database, <a href="">click here to reveal a form.</a>', 'amazon-web-services' ); ?>
-		</p>
+		<?php if ( $this->get_access_key_id() || $this->get_secret_access_key() ) : ?>
+			<p>
+				<?php printf( __( 'You&#8217;re storing your Access Keys in the database (<a href="%s">not recommended</a>).</a>', 'amazon-web-services' ), $this->dbrains_url( '/wp-offload-s3/doc/quick-start-guide/#save-access-keys', array(
+					'utm_campaign' => 'support+docs',
+				) ) ); ?>
+			</p>
+		<?php else : ?>
+			<p class="reveal-form">
+				<?php _e( 'If you&#8217;d rather store your Access Keys in the database, <a href="">click here to reveal a form.</a>', 'amazon-web-services' ); ?>
+			</p>
+		<?php endif; ?>
 
 		<form method="post" <?php echo ( ! $this->get_access_key_id() && ! $this->get_secret_access_key() ) ? 'style="display: none;"' : ''; // xss ok ?>>
+
+			<?php do_action( 'aws_access_key_form_header' ); ?>
 
 			<?php if ( isset( $_POST['access_key_id'] ) ) { // input var okay ?>
 				<div class="aws-updated updated">

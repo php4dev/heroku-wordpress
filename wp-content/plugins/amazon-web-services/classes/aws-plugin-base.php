@@ -2,6 +2,8 @@
 
 class AWS_Plugin_Base {
 
+	const DBRAINS_URL = 'https://deliciousbrains.com';
+
 	protected $plugin_file_path;
 	protected $plugin_dir_path;
 	protected $plugin_slug;
@@ -93,18 +95,15 @@ class AWS_Plugin_Base {
 	 * @return array
 	 */
 	function get_defined_settings( $force = false ) {
+		if ( ! defined( static::SETTINGS_CONSTANT ) ) {
+			$this->defined_settings = array();
+
+			return $this->defined_settings;
+		}
+
 		if ( is_null( $this->defined_settings ) || $force ) {
 			$this->defined_settings = array();
-			$unserialized           = array();
-			$class                  = get_class( $this );
-
-			if ( defined( "$class::SETTINGS_CONSTANT" ) ) {
-				$constant = static::SETTINGS_CONSTANT;
-				if ( defined( $constant ) ) {
-					$unserialized = maybe_unserialize( constant( $constant ) );
-				}
-			}
-
+			$unserialized = maybe_unserialize( constant( static::SETTINGS_CONSTANT ) );
 			$unserialized = is_array( $unserialized ) ? $unserialized : array();
 
 			foreach ( $unserialized as $key => $value ) {
@@ -124,9 +123,74 @@ class AWS_Plugin_Base {
 
 				$this->defined_settings[ $key ] = $value;
 			}
+
+			$this->listen_for_settings_constant_changes();
+
+			// Normalize the defined settings before saving, so we can detect when a real change happens.
+			ksort( $this->defined_settings );
+			update_site_option( 'as3cf_constant_' . static::SETTINGS_CONSTANT, $this->defined_settings );
 		}
 
 		return $this->defined_settings;
+	}
+
+	/**
+	 * Subscribe to changes of the site option used to store the constant-defined settings.
+	 */
+	protected function listen_for_settings_constant_changes() {
+		if ( ! has_action( 'update_site_option_' . 'as3cf_constant_' . static::SETTINGS_CONSTANT, array( $this, 'settings_constant_changed' ) ) ) {
+			add_action( 'add_site_option_' . 'as3cf_constant_' . static::SETTINGS_CONSTANT, array( $this, 'settings_constant_added' ), 10, 3 );
+			add_action( 'update_site_option_' . 'as3cf_constant_' . static::SETTINGS_CONSTANT, array( $this, 'settings_constant_changed' ), 10, 4 );
+		}
+	}
+
+	/**
+	 * Translate a settings constant option addition into a change.
+	 *
+	 * @param string $option      Name of the option.
+	 * @param mixed  $value       Value the option is being initialized with.
+	 * @param int    $network_id  ID of the network.
+	 */
+	public function settings_constant_added( $option, $value, $network_id ) {
+		$db_settings = get_site_option( static::SETTINGS_KEY, array() );
+		$this->settings_constant_changed( $option, $value, $db_settings, $network_id );
+	}
+
+	/**
+	 * Callback for announcing when settings-defined values change.
+	 *
+	 * @param string $option        Name of the option.
+	 * @param mixed  $new_settings  Current value of the option.
+	 * @param mixed  $old_settings  Old value of the option.
+	 * @param int    $network_id    ID of the network.
+	 */
+	public function settings_constant_changed( $option, $new_settings, $old_settings, $network_id ) {
+		$old_settings = $old_settings ?: array();
+
+		foreach ( $this->get_settings_whitelist() as $setting ) {
+			$old_value = isset( $old_settings[ $setting ] ) ? $old_settings[ $setting ] : null;
+			$new_value = isset( $new_settings[ $setting ] ) ? $new_settings[ $setting ] : null;
+
+			if ( $old_value !== $new_value ) {
+				/**
+				 * Setting-specific hook for setting change.
+				 *
+				 * @param mixed $new_value
+				 * @param mixed $old_value
+				 * @param string $setting
+				 */
+				do_action( 'as3cf_constant_' . static::SETTINGS_CONSTANT . '_changed_' . $setting, $new_value, $old_value, $setting );
+
+				/**
+				 * Generic hook for setting change.
+				 *
+				 * @param mixed $new_value
+				 * @param mixed $old_value
+				 * @param string $setting
+				 */
+				do_action( 'as3cf_constant_' . static::SETTINGS_CONSTANT . '_changed', $new_value, $old_value, $setting );
+			}
+		}
 	}
 
 	/**
@@ -227,7 +291,7 @@ class AWS_Plugin_Base {
 	/**
 	 * Render a view template file
 	 *
-	 * @param       $view View filename without the extension
+	 * @param string $view View filename without the extension
 	 * @param array $args Arguments to pass to the view
 	 */
 	function render_view( $view, $args = array() ) {
@@ -320,6 +384,36 @@ class AWS_Plugin_Base {
 	}
 
 	/**
+	 * Enqueue script.
+	 *
+	 * @param string $handle
+	 * @param string $path
+	 * @param array  $deps
+	 * @param bool   $footer
+	 */
+	public function enqueue_script( $handle, $path, $deps = array(), $footer = true ) {
+		$version = $this->get_asset_version();
+		$suffix  = $this->get_asset_suffix();
+
+		$src = plugins_url( $path . $suffix . '.js', $this->plugin_file_path );
+		wp_enqueue_script( $handle, $src, $deps, $version, $footer );
+	}
+
+	/**
+	 * Enqueue style.
+	 *
+	 * @param string $handle
+	 * @param string $path
+	 * @param array  $deps
+	 */
+	public function enqueue_style( $handle, $path, $deps = array() ) {
+		$version = $this->get_asset_version();
+
+		$src = plugins_url( $path . '.css', $this->plugin_file_path );
+		wp_enqueue_style( $handle, $src, $deps, $version );
+	}
+
+	/**
 	 * Get the version used for script enqueuing
 	 *
 	 * @return mixed
@@ -360,5 +454,39 @@ class AWS_Plugin_Base {
 		);
 
 		return apply_filters( 'aws_get_regions', $regions );
+	}
+
+	/**
+	 * Generate site URL with correct UTM tags.
+	 *
+	 * @param string $path
+	 * @param array  $args
+	 * @param string $hash
+	 *
+	 * @return string
+	 */
+	public function dbrains_url( $path, $args = array(), $hash = '' ) {
+		$args = wp_parse_args( $args, array(
+			'utm_medium' => 'insideplugin',
+			'utm_source' => $this->get_utm_source(),
+		) );
+		$args = array_map( 'urlencode', $args );
+		$url  = trailingslashit( self::DBRAINS_URL ) . ltrim( $path, '/' );
+		$url  = add_query_arg( $args, $url );
+
+		if ( $hash ) {
+			$url .= '#' . $hash;
+		}
+
+		return $url;
+	}
+
+	/**
+	 * Get UTM source for plugin.
+	 *
+	 * @return string
+	 */
+	protected function get_utm_source() {
+		return 'AWS';
 	}
 }

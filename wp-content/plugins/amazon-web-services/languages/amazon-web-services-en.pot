@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: amazon-web-services\n"
 "Report-Msgid-Bugs-To: nom@deliciousbrains.com\n"
-"POT-Creation-Date: 2017-03-13 13:11+0000\n"
+"POT-Creation-Date: 2018-02-20 16:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,115 +17,29 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: classes/amazon-web-services.php:51
-#: classes/amazon-web-services.php:195
+#: classes/amazon-web-services.php:52
+#: classes/amazon-web-services.php:178
 msgid "Amazon Web Services"
 msgstr ""
 
-#: classes/amazon-web-services.php:52
+#: classes/amazon-web-services.php:53
 msgid "AWS"
 msgstr ""
 
-#: classes/amazon-web-services.php:75
-msgid "Addons"
-msgstr ""
-
-#: classes/amazon-web-services.php:83
+#: classes/amazon-web-services.php:79
 #: classes/amazon-web-services.php:349
-#: view/settings.php:14
+#: view/settings.php:16
 msgid "Access Keys"
 msgstr ""
 
-#: classes/amazon-web-services.php:153
+#: classes/amazon-web-services.php:136
 msgid "Cheatin' eh?"
 msgstr ""
 
-#: classes/amazon-web-services.php:204
-msgid "Amazon Web Services: Addons"
-msgstr ""
-
-#: classes/amazon-web-services.php:297
+#: classes/amazon-web-services.php:298
 #, php-format
 msgid ""
 "You must first <a href=\"%s\">set your AWS access keys</a> to use this addon."
-msgstr ""
-
-#: classes/amazon-web-services.php:362
-msgid "WP Offload S3 Lite"
-msgstr ""
-
-#: classes/amazon-web-services.php:367
-msgid "WP Offload S3"
-msgstr ""
-
-#: classes/amazon-web-services.php:371
-msgid "Assets"
-msgstr ""
-
-#: classes/amazon-web-services.php:373
-msgid "Feature"
-msgstr ""
-
-#: classes/amazon-web-services.php:377
-msgid "WooCommerce"
-msgstr ""
-
-#: classes/amazon-web-services.php:379
-#: classes/amazon-web-services.php:386
-#: classes/amazon-web-services.php:393
-#: classes/amazon-web-services.php:400
-#: classes/amazon-web-services.php:407
-#: classes/amazon-web-services.php:414
-msgid "Integration"
-msgstr ""
-
-#: classes/amazon-web-services.php:384
-msgid "Easy Digital Downloads"
-msgstr ""
-
-#: classes/amazon-web-services.php:391
-msgid "WPML"
-msgstr ""
-
-#: classes/amazon-web-services.php:398
-msgid "Meta Slider"
-msgstr ""
-
-#: classes/amazon-web-services.php:405
-msgid "Enable Media Replace"
-msgstr ""
-
-#: classes/amazon-web-services.php:412
-msgid "ACF Image Crop"
-msgstr ""
-
-#: classes/amazon-web-services.php:461
-msgctxt "Plugin already installed and activated"
-msgid "Installed & Activated"
-msgstr ""
-
-#: classes/amazon-web-services.php:463
-msgctxt "Plugin already installed"
-msgid "Installed"
-msgstr ""
-
-#: classes/amazon-web-services.php:464
-msgctxt "Activate plugin now"
-msgid "Activate Now"
-msgstr ""
-
-#: classes/amazon-web-services.php:467
-msgctxt "Install plugin now"
-msgid "Install Now"
-msgstr ""
-
-#: classes/amazon-web-services.php:503
-msgid "Visit Site"
-msgstr ""
-
-#: classes/amazon-web-services.php:506
-msgctxt "View plugin details"
-msgid "View Details"
 msgstr ""
 
 #: classes/aws-compatibility-check.php:25
@@ -154,7 +68,7 @@ msgid ""
 "7.16.2+ compiled with OpenSSL and zlib. Your server currently has"
 msgstr ""
 
-#: classes/aws-plugin-base.php:296
+#: classes/aws-plugin-base.php:360
 msgid "Settings"
 msgstr ""
 
@@ -246,42 +160,57 @@ msgid ""
 "Guide &rarr;</a>"
 msgstr ""
 
-#: view/settings.php:19
+#: view/settings.php:21
 msgid "You have enabled the use of IAM roles for Amazon EC2 instances."
 msgstr ""
 
-#: view/settings.php:25
+#: view/settings.php:29
 msgid ""
-"You&#8217;ve already defined your AWS access keys in your wp-config.php. If "
-"you&#8217;d prefer to manage them here and store them in the database (not "
-"recommended), simply remove the lines from your wp-config."
+"Please check your wp-config.php file as it looks like one of your defines is "
+"missing or incorrect."
 msgstr ""
 
-#: view/settings.php:31
+#: view/settings.php:35
+#, php-format
+msgid ""
+"You&#8217;ve already defined your AWS access keys in your wp-config.php. If "
+"you&#8217;d prefer to manage them here and store them in the database (<a "
+"href=\"%s\">not recommended</a>), simply remove the lines from your wp-"
+"config."
+msgstr ""
+
+#: view/settings.php:43
 msgid ""
 "We recommend defining your Access Keys in wp-config.php so long as you "
 "don&#8217;t commit it to source control (you shouldn&#8217;t be). Simply "
 "copy the following snippet and replace the stars with the keys."
 msgstr ""
 
-#: view/settings.php:38
+#: view/settings.php:51
+#, php-format
+msgid ""
+"You&#8217;re storing your Access Keys in the database (<a href=\"%s\">not "
+"recommended</a>).</a>"
+msgstr ""
+
+#: view/settings.php:57
 msgid ""
 "If you&#8217;d rather store your Access Keys in the database, <a href="
 "\"\">click here to reveal a form.</a>"
 msgstr ""
 
-#: view/settings.php:54
+#: view/settings.php:76
 msgid "Access Key ID:"
 msgstr ""
 
-#: view/settings.php:60
+#: view/settings.php:82
 msgid "Secret Access Key:"
 msgstr ""
 
-#: view/settings.php:67
+#: view/settings.php:89
 msgid "Save Changes"
 msgstr ""
 
-#: view/settings.php:70
+#: view/settings.php:92
 msgid "Remove Keys"
 msgstr ""
