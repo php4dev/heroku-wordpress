@@ -2,18 +2,27 @@
 Contributors: Mvied
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N9NFVADLVUR7A
 Tags: security, encryption, ssl, shared ssl, private ssl, public ssl, private ssl, http, https
-Requires at least: 3.0
-Tested up to: 3.5
-Stable tag: 3.3.6
+Requires at least: 3.5
+Tested up to: 4.9.1
+Stable tag: 3.4.0
 License: GPLv3
 
 WordPress HTTPS is intended to be an all-in-one solution to using SSL on WordPress sites.
 
 == Description ==
-<p>Read the <a href="http://wordpress.org/extend/plugins/wordpress-https/installation/">Installation Guide</a>. If after setting up the plugin you are experiencing issues, please check the <a href="http://wordpress.org/extend/plugins/wordpress-https/faq/">FAQ</a>.</p>
-<p>If you are still unable to resolve your issue, <a href="http://wordpress.org/support/plugin/wordpress-https">start a support topic</a> and I or someone from the community will be able to assist you.</p>
-<p>Contribute Code at <a href="https://github.com/Mvied/wordpress-https">https://github.com/Mvied/wordpress-https</a></p>
-<p>Contribute Translations at <a href="https://translate.foe-services.de/projects/wordpress-https">https://translate.foe-services.de/projects/wordpress-https</a></p>
+WordPress HTTPS is intended to be an all-in-one solution to using SSL on WordPress sites. WordPress HTTPS is well-known for being the "heavy-hitter" of SSL plugins. The latest release focuses on speed and performance.
+
+Read the <a href="http://wordpress.org/extend/plugins/wordpress-https/installation/">Installation Guide</a>. If after setting up the plugin you are experiencing issues, please check the <a href="http://wordpress.org/extend/plugins/wordpress-https/faq/">FAQ</a>. If you are still unable to resolve your issue, <a href="http://wordpress.org/support/plugin/wordpress-https">start a support topic</a> and someone from the community may be able to assist you. If you need immediate assistance, I am available for hire. Unfortunately, I do not have time to support the plugin for free.
+
+If your SSL needs are simple, there are many fantastic, light-weight alternatives to WordPress HTTPS such as:
+<a href="https://wordpress.org/plugins/really-simple-ssl/" target="_blank">Really Simple SSL</a> (great for securing the entire site)
+<a href="https://wordpress.org/plugins/ssl-insecure-content-fixer/">SSL Insecure Content Fixer</a> (great at fixing most insecure content errors)
+
+Contribute Code at <a href="https://github.com/Mvied/wordpress-https">https://github.com/Mvied/wordpress-https</a>
+
+Issue Tracker at <a href="https://github.com/mvied/wordpress-https/issues">https://github.com/mvied/wordpress-https/issues</a>
+
+Contribute Translations at <a href="https://translate.wordpress.org/projects/wp-plugins/wordpress-https">https://translate.wordpress.org/projects/wp-plugins/wordpress-https</a>
 
 == Installation ==
 1. Upload the `wordpress-https` folder to the `/wp-content/plugins/` directory.
@@ -95,6 +104,18 @@ add_filter('force_ssl', 'store_force_ssl', 10, 3);`
 2. Force SSL checkbox added to add/edit posts screen
 
 == Changelog ==
+= 3.4.0 =
+* Tested with WordPress v4.9.1
+* Many improvements to performance. Special thanks to <a href="https://github.com/heshiming">He Shiming</a> for help with profiling and improvements.
+* Added internal caching to Parser module to drastically reduce queries.
+* Added checks for Domain Mapping plugin.
+* Renamed Domain Mapping featured to URL Mapping to reduce confusion with Domain Mapping plugin.
+* Added ability to map both to and from HTTPS with URL Mapping.
+* Added ability to also map local resources using URL Mapping.
+* Fixed bug when external resources contained a port number, the port was not removed when testing for HTTPS.
+* External HTTPS elements on HTTP pages will now stay HTTPS.
+* Fonts should now be properly secured.
+* Added check for HTTP_X_FORWARDED_SSL header.
 = 3.3.6 =
 * Fixed bug where admin links in multisite networks were being broken.
 * Added check for Jigoshop admin-ajax.php calls.
@@ -290,5 +311,7 @@ add_filter('force_ssl', 'store_force_ssl', 10, 3);`
 * Initial Release.
 
 == Upgrade Notice ==
+= 3.5.0 =
+Content Fixer is now optional in the plugin settings. This option should be on by default.
 = 3.2 =
 You may lose your SSL Host setting upon upgrading if it is not default (matching your Site URL).

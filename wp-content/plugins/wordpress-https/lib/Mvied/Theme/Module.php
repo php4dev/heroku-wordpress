@@ -13,7 +13,7 @@ class Mvied_Theme_Module implements Mvied_Theme_Module_Interface {
 	/**
 	 * Theme object that this module extends
 	 *
-	 * @var Mvied_Theme
+	 * @var Mvied_Theme_Modular
 	 */
 	protected $_theme;
 
@@ -30,11 +30,10 @@ class Mvied_Theme_Module implements Mvied_Theme_Module_Interface {
 	/**
 	 * Set Theme
 	 * 
-	 * @param Mvied_Theme $theme
+	 * @param Mvied_Theme_Modular $theme
 	 * @return object $this
-	 * @uses Mvied_Theme
 	 */
-	public function setTheme( Mvied_Theme $theme ) {
+	public function setTheme( Mvied_Theme_Modular $theme ) {
 		$this->_theme = $theme;
 		return $this;
 	}
@@ -43,7 +42,7 @@ class Mvied_Theme_Module implements Mvied_Theme_Module_Interface {
 	 * Get Theme
 	 * 
 	 * @param none
-	 * @return Mvied_Theme
+	 * @return Mvied_Theme_Modular
 	 */
 	public function getTheme() {
 		if ( ! isset($this->_theme) ) {

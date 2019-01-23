@@ -1,8 +1,8 @@
 <?php 
 /**
- * Network admin Settings Module
+ * Network Module
  * 
- * Adds the network settings page.
+ * Adds the network settings page to network dashboard.
  *
  * @author Mike Ems
  * @package WordPressHTTPS
@@ -54,7 +54,7 @@ class WordPressHTTPS_Module_Network extends Mvied_Plugin_Module {
 	public function add_meta_boxes() {
 		add_meta_box(
 			$this->getPlugin()->getSlug() . '_settings',
-			__( 'Network Settings', $this->getPlugin()->getSlug() ),
+			__( 'Network Settings', 'wordpress-https' ),
 			array($this->getPlugin()->getModule('Admin'), 'meta_box_render'),
 			'toplevel_page_' . $this->getPlugin()->getSlug() . '_network',
 			'main',
@@ -63,12 +63,12 @@ class WordPressHTTPS_Module_Network extends Mvied_Plugin_Module {
 		);
 		add_meta_box(
 			$this->getPlugin()->getSlug() . '_donate2',
-			__( 'Loading...', $this->getPlugin()->getSlug() ),
+			__( 'Promotion', 'wordpress-https' ),
 			array($this->getPlugin()->getModule('Admin'), 'meta_box_render'),
 			'toplevel_page_' . $this->getPlugin()->getSlug() . '_network',
 			'main',
 			'low',
-			array( 'metabox' => 'ajax', 'url' => 'http://wordpresshttps.com/client/donate2.php' )
+			array( 'metabox' => 'donate2' )
 		);
 	}
 
@@ -94,7 +94,7 @@ class WordPressHTTPS_Module_Network extends Mvied_Plugin_Module {
 	 * @return void
 	 */
 	public function admin_enqueue_scripts() {
-		wp_enqueue_style($this->getPlugin()->getSlug() . '-network-admin-page', $this->getPlugin()->getPluginUrl() . '/admin/css/network.css', array($this->getPlugin()->getSlug() . '-admin-page'), $this->getPlugin()->getVersion());
+		wp_enqueue_style($this->getPlugin()->getSlug() . '-network-admin-page', $this->getPlugin()->getPluginUrl() . '/css/network.css', array($this->getPlugin()->getSlug() . '-admin-page'), $this->getPlugin()->getVersion());
 	}
 
 	/**
@@ -104,7 +104,7 @@ class WordPressHTTPS_Module_Network extends Mvied_Plugin_Module {
 	 * @return void
 	 */
 	public function render() {
-		require_once($this->getPlugin()->getDirectory() . '/admin/templates/network.php');
+		$this->getPlugin()->renderView('network');
 	}
 	
 	/**
@@ -118,7 +118,7 @@ class WordPressHTTPS_Module_Network extends Mvied_Plugin_Module {
 			return false;
 		}
 
-		$message = "Network settings saved.";
+		$message = __('Network settings saved.','wordpress-https');
 		$errors = array();
 		$reload = false;
 		$logout = false;
@@ -127,18 +127,14 @@ class WordPressHTTPS_Module_Network extends Mvied_Plugin_Module {
 			foreach( $_POST['blog'] as $blog_id => $setting ) {
 				foreach( $setting as $key => $value ) {
 					if ( $key == 'ssl_host' && $value != '' ) {
-						$blog_url = WordPressHTTPS_Url::fromString(get_site_url($blog_id, '', 'https'));
+						$blog_url = Mvied_Url::fromString(get_site_url($blog_id, '', 'https'));
 						$value = strtolower($value);
 						// Add Scheme
 						if ( strpos($value, 'http://') === false && strpos($value, 'https://') === false ) {
 							$value = 'https://' . $value;
 						}
 
-						$ssl_host = WordPressHTTPS_Url::fromString($value);
-
-						// Add Port
-						$port = (($blog_url->getPort() && $blog_url->getPort() != 80 && $blog_url->getPort() != 443) ? $port : null);
-						$ssl_host->setPort($port);
+						$ssl_host = Mvied_Url::fromString($value);
 
 						// Add Path
 						if ( strpos($ssl_host->getPath(), $blog_url->getPath()) !== true ) {
@@ -160,7 +156,7 @@ class WordPressHTTPS_Module_Network extends Mvied_Plugin_Module {
 			wp_logout();
 		}
 
-		require_once($this->getPlugin()->getDirectory() . '/admin/templates/ajax_message.php');
+		$this->getPlugin()->renderView('ajax_message', array('message' => $message, 'errors' => $errors, 'reload' => $reload, 'logout' => $logout));
 	}
 	
 }
