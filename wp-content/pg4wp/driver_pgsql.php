@@ -311,7 +311,21 @@
 			{
 				$sql = str_replace('GROUP BY '.$wpdb->prefix.'posts.ID', '' , $sql);
 			}
-			$sql = str_replace("!= ''", '<> 0', $sql);
+			$sql = str_replace("AND CAST( meta.meta_value AS CHAR ) <> 0", "AND CAST( meta.meta_value AS CHAR ) != ''", $sql);
+			$sql = str_replace("tm.meta_value+0", "NULLIF(tm.meta_value, '')::int", $sql);
+			$sql = str_replace("wp_postmeta.meta_value+0", "NULLIF(wp_postmeta.meta_value, '')::int", $sql);
+			$sql = str_replace("SUM( order_item_meta.meta_value )", "SUM( NULLIF(order_item_meta.meta_value, '')::int )", $sql);
+			$sql = str_replace("SUM( meta__order_total.meta_value)", "SUM( NULLIF(meta__order_total.meta_value, '')::int )", $sql);
+			$sql = str_replace("SUM( meta__order_tax.meta_value)", "SUM( NULLIF(meta__order_tax.meta_value, '')::int )", $sql);
+			$sql = str_replace("SUM( order_item_meta_discount_amount.meta_value)", "SUM( NULLIF(order_item_meta_discount_amount.meta_value, '')::int )", $sql);
+			$sql = str_replace("SUM( order_item_meta__qty.meta_value)", "SUM( NULLIF(order_item_meta__qty.meta_value, '')::int )", $sql);
+			$sql = str_replace("SUM( postmeta.meta_value )", "SUM( NULLIF(postmeta.meta_value, '')::int )", $sql);
+			$sql = str_replace("GROUP BY t.term_id, tr.object_id ORDER BY", "GROUP BY t.term_id, tr.object_id, tt.term_taxonomy_id, tm.meta_value ORDER BY", $sql);
+			$sql = str_replace("GROUP BY t.term_id ORDER BY", "GROUP BY t.term_id, tt.term_taxonomy_id, tm.meta_value ORDER BY", $sql);
+			$sql = str_replace("GROUP BY YEAR(posts.post_date), MONTH(posts.post_date), DAY(posts.post_date) ORDER BY",
+			        "GROUP BY YEAR(posts.post_date), MONTH(posts.post_date), DAY(posts.post_date), parent_meta__order_total.meta_value ORDER BY", $sql);
+			$sql = str_replace("GROUP BY refund_id ORDER BY post_date", "GROUP BY refund_id, post_date ORDER BY post_date", $sql);
+			$sql = str_replace("HAVING meta_key NOT LIKE", "GROUP BY meta_key HAVING meta_key NOT LIKE", $sql);
 			
 			// MySQL 'LIKE' is case insensitive by default, whereas PostgreSQL 'LIKE' is
 			$sql = str_replace( ' LIKE ', ' ILIKE ', $sql);
@@ -359,6 +373,10 @@
 
 			// Those are used when we need to set the date to now() in gmt time
 			$sql = str_replace( "'0000-00-00 00:00:00'", 'now() AT TIME ZONE \'gmt\'', $sql);
+			$sql = str_replace("meta_value = meta_value - 1.000000", "meta_value = CAST(NULLIF(meta_value, '')::int - 1 AS TEXT)", $sql);
+			$sql = str_replace("SET meta_value = meta_value + 1.000000", "SET meta_value = CAST(NULLIF(meta_value, '')::int + 1 AS TEXT)", $sql);
+			$sql = str_replace("ORDER BY menu_order ASC, post_date_gmt ASC, ID ASC LIMIT 25",
+			        "from (select id from wp_posts ORDER BY menu_order ASC, post_date_gmt ASC, ID ASC LIMIT 25) t where t.id = wp_posts.id", $sql);
 
 			// For correct ID quoting
 			$pattern = '/(,|\s)[ ]*([^ \']*ID[^ \']*)[ ]*=/';
@@ -443,7 +461,8 @@
 			}
 
 			// LIMIT is not allowed in DELETE queries
-			$sql = str_replace( 'LIMIT 1', '', $sql);
+			$pattern = '/\s+LIMIT.\d+/';
+			$sql = preg_replace( $pattern, '', $sql);
 			$sql = str_replace( ' REGEXP ', ' ~ ', $sql);
 			
 			// This handles removal of duplicate entries in table options

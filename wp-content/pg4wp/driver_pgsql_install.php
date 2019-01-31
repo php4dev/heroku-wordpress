@@ -13,7 +13,9 @@
 	$GLOBALS['pg4wp_ttr'] = array(
 		'bigint(20)'	=> 'bigint',
 		'bigint(10)'	=> 'int',
+		'BIGINT UNSIGNED'	=> 'bigint',
 		'int(11)'		=> 'int',
+		'INT (11)'		=> 'int',
 		'tinytext'		=> 'text',
 		'mediumtext'	=> 'text',
 		'longtext'		=> 'text',
@@ -24,14 +26,17 @@
 		'datetime'		=> 'timestamp',
 		'DEFAULT CHARACTER SET utf8'	=> '',
 		
-		// WP 2.7.1 compatibility
-		'int(4)'		=> 'smallint',
-		
 		// For WPMU (starting with WP 3.2)
 		'tinyint(2)'	=> 'smallint',
 		'tinyint(1)'	=> 'smallint',
 		"enum('0','1')"	=> 'smallint',
 		'COLLATE utf8_general_ci'	=> '',
+
+		// WP 2.7.1 compatibility
+		'int(1)'		=> 'smallint',
+		'smallint(4)'		=> 'smallint',
+		'smallint(10)'		=> 'smallint',
+		'int(4)'		=> 'smallint',
 
 		// For flash-album-gallery plugin
 		'tinyint'		=> 'smallint',
@@ -264,6 +269,16 @@ WHERE pg_class.relname='$table_name' AND pg_attribute.attnum>=1 AND NOT pg_attri
 			{
 				$seq = $table . '_seq';
 				$sql = str_replace( 'NOT NULL auto_increment', "NOT NULL DEFAULT nextval('$seq'::text)", $sql);
+				$sql .= "\nCREATE SEQUENCE $seq;";
+			}
+			
+			// Fix auto_increment by adding a sequence
+			$pattern = '/bigint NOT NULL AUTO_INCREMENT/';
+			preg_match($pattern, $sql, $matches);
+			if($matches)
+			{
+				$seq = $table . '_seq';
+				$sql = str_replace( 'NOT NULL AUTO_INCREMENT', "NOT NULL DEFAULT nextval('$seq'::text)", $sql);
 				$sql .= "\nCREATE SEQUENCE $seq;";
 			}
 			
