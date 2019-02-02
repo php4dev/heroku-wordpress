@@ -375,8 +375,31 @@
 			$sql = str_replace( "'0000-00-00 00:00:00'", 'now() AT TIME ZONE \'gmt\'', $sql);
 			$sql = str_replace("meta_value = meta_value - 1.000000", "meta_value = CAST(NULLIF(meta_value, '')::int - 1 AS TEXT)", $sql);
 			$sql = str_replace("SET meta_value = meta_value + 1.000000", "SET meta_value = CAST(NULLIF(meta_value, '')::int + 1 AS TEXT)", $sql);
-			$sql = str_replace("ORDER BY menu_order ASC, post_date_gmt ASC, ID ASC LIMIT 25",
-			        "from (select id from wp_posts ORDER BY menu_order ASC, post_date_gmt ASC, ID ASC LIMIT 25) t where t.id = wp_posts.id", $sql);
+			$sql = str_replace("ORDER BY menu_order ASC, post_date_gmt ASC, ID ASC", '', $sql);
+			if( 0 === strpos($sql, "SELECT  posts.id as refund_id, meta__refund_amount.meta_value as total_refund, "
+				. "posts.post_date as post_date, order_items.order_item_type as item_type, meta__order_total.meta_value as total_sales, "
+				. "meta__order_shipping.meta_value as total_shipping, meta__order_tax.meta_value as total_tax, "
+				. "meta__order_shipping_tax.meta_value as total_shipping_tax,SUM( order_item_meta__qty.meta_value)"))
+			{
+				$sql = 'SELECT  posts."ID" as refund_id, meta__refund_amount.meta_value as total_refund, posts.post_date as post_date, '
+				. 'order_items.order_item_type as item_type, meta__order_total.meta_value as total_sales, '
+				. 'meta__order_shipping.meta_value as total_shipping, meta__order_tax.meta_value as total_tax, '
+				. 'meta__order_shipping_tax.meta_value as total_shipping_tax,SUM( NULLIF(order_item_meta__qty.meta_value, "")::int ) '
+				. 'as order_item_count FROM wp_posts AS posts INNER JOIN wp_postmeta AS meta__refund_amount ON '
+				. '( posts."ID" = meta__refund_amount.post_id AND meta__refund_amount.meta_key = "_refund_amount" ) '
+				. 'LEFT JOIN wp_woocommerce_order_items AS order_items ON (posts."ID" = order_items.order_id) '
+				. 'INNER JOIN wp_postmeta AS meta__order_total ON ( posts."ID" = meta__order_total.post_id '
+				. 'AND meta__order_total.meta_key = "_order_total" ) LEFT JOIN wp_postmeta AS meta__order_shipping '
+				. 'ON ( posts."ID" = meta__order_shipping.post_id AND meta__order_shipping.meta_key = "_order_shipping" ) '
+				. 'LEFT JOIN wp_postmeta AS meta__order_tax ON ( posts."ID" = meta__order_tax.post_id AND '
+				. 'meta__order_tax.meta_key = "_order_tax" ) LEFT JOIN wp_postmeta AS meta__order_shipping_tax ON '
+				. '( posts."ID" = meta__order_shipping_tax.post_id AND meta__order_shipping_tax.meta_key = "_order_shipping_tax" )'
+				. ' LEFT JOIN wp_woocommerce_order_itemmeta AS order_item_meta__qty ON '
+				. '(order_items.order_item_id = order_item_meta__qty.order_item_id)  AND (order_item_meta__qty.meta_key = "_qty") '
+				. 'LEFT JOIN wp_posts AS parent ON posts.post_parent = parent."ID" GROUP by posts."ID", '
+				. 'meta__refund_amount.meta_value,order_items.order_item_type,meta__order_total.meta_value,'
+				. 'meta__order_shipping.meta_value,meta__order_tax.meta_value,meta__order_shipping_tax.meta_value';
+			}
 
 			// For correct ID quoting
 			$pattern = '/(,|\s)[ ]*([^ \']*ID[^ \']*)[ ]*=/';
@@ -493,6 +516,40 @@
 		{
 			$logto = 'SHOWTABLES';
 			$sql = 'SELECT tablename FROM pg_tables WHERE schemaname = \'public\';';
+		}
+		elseif( 0 === strpos( $sql, 'SHOW') || 0 === strpos( $sql, 'show'))
+		{
+			// SHOW VARIABLES LIKE emulation for sql_mode
+			// Used by nextgen-gallery plugin
+			if( 0 === strpos( $sql, "SHOW VARIABLES LIKE 'sql_mode'"))
+			{
+				// Act like MySQL default configuration, where sql_mode is ""
+				$sql = 'SELECT \'sql_mode\' AS "Variable_name", \'\' AS "Value";';
+			}
+			// SHOW COLUMNS emulation
+			elseif( preg_match('/SHOW\s+(FULL\s+)?COLUMNS\s+(?:FROM\s+|IN\s+)`?(\w+)`?(?:\s+LIKE\s+(.+)|\s+WHERE\s+(.+))?/i', $sql, $matches))
+			{
+				$logto = 'SHOWCOLUMN';
+				$full = $matches[1];
+				$table = $matches[2];
+				$like = isset($matches[3]) ? $matches[3] : FALSE;
+				$where = isset($matches[4]) ? $matches[4] : FALSE;
+// Wrap as sub-query to emulate WHERE behavior
+$sql = ($where ? 'SELECT * FROM (' : '').
+'SELECT column_name as "Field",
+	data_type as "Type",'.($full ? '
+	NULL as "Collation",' : '').'
+	is_nullable as "Null",
+	\'\' as "Key",
+	column_default as "Default",
+	\'\' as "Extra"'.($full ? ',
+	\'select,insert,update,references\' as "Privileges",
+	\'\' as "Comment"' : '').'
+FROM information_schema.columns
+WHERE table_name = \''.$table.'\''.($like ? '
+	AND column_name LIKE '.$like : '').($where ? ') AS columns
+WHERE '.$where : '').';';
+			}
 		}
 		// Rewriting optimize table
 		elseif( 0 === strpos($sql, 'OPTIMIZE TABLE'))

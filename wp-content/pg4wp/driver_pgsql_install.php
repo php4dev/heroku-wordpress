@@ -152,7 +152,7 @@ WHERE '.$where : '').';';
 				if( !empty($default))
 					$newq .= ", ALTER COLUMN $col SET DEFAULT $defval";
 				if( $col != $newname)
-					$newq .= ";ALTER TABLE $table RENAME COLUMN $col TO $newcol;";
+					$newq .= ";ALTER TABLE $table RENAME COLUMN $col TO $newname;";
 				$sql = $newq;
 			}
 			$pattern = '/ALTER TABLE\s+(\w+)\s+ALTER COLUMN\s+/';
@@ -292,6 +292,8 @@ WHERE pg_class.relname='$table_name' AND pg_attribute.attnum>=1 AND NOT pg_attri
 					$columns = $match[3];
 					$columns = preg_replace( '/\(\d+\)/', '', $columns);
 					// Workaround for index name duplicate
+                    $index = str_replace( 'download_order_key_product', "d_o_key_p", $index);
+                    $index = str_replace( 'download_order_product', "d_o_p", $index);
 					$index = $table.'_'.$index;
 					$sql .= "\nCREATE {$unique}INDEX $index ON $table ($columns);";
 				}
