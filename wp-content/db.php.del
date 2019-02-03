@@ -12,7 +12,7 @@ License: GPLv2 or newer.
 if( !defined('PG4WP_ROOT'))
 {
 // You can choose the driver to load here
-define('DB_DRIVER', 'pgsql'); // 'pgsql' or 'mysql' are supported for now
+define('DB_DRIVER', 'mysql'); // 'pgsql' or 'mysql' are supported for now
 
 // Set this to 'true' and check that `pg4wp` is writable if you want debug logs to be written
 define( 'PG4WP_DEBUG', false);
