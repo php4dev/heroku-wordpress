@@ -9,7 +9,8 @@
     width: auto;
     max-width: 1000%;
     padding-left: 1.41575em;
-    padding-right: 1.41575em; }
+    padding-right: 1.41575em;
+    clear: both; }
   .storefront-align-wide.page-template-template-fullwidth-php .hentry .entry-content .alignfull,
   .storefront-align-wide.storefront-full-width-content .hentry .entry-content .alignfull {
     margin-left: calc(50% - 50vw);
@@ -90,8 +91,6 @@
     font-size: 1em;
     line-height: 1.618;
     border: 0;
-    background: none;
-    border-color: #43454b;
     cursor: pointer;
     padding: 0.6180469716em 1.41575em;
     text-decoration: none;
@@ -104,22 +103,6 @@
   .hentry .entry-content .wp-block-button:not(.is-style-squared) .wp-block-button__link,
   .editor-styles-wrapper .wp-block-button:not(.is-style-squared) .wp-block-button__link {
     border-radius: 5px; }
-  .hentry .entry-content .wp-block-button:not(.has-text-color) .wp-block-button__link,
-  .editor-styles-wrapper .wp-block-button:not(.has-text-color) .wp-block-button__link {
-    color: #fff; }
-    .hentry .entry-content .wp-block-button:not(.has-text-color) .wp-block-button__link:hover, .hentry .entry-content .wp-block-button:not(.has-text-color) .wp-block-button__link:focus, .hentry .entry-content .wp-block-button:not(.has-text-color) .wp-block-button__link:active,
-    .editor-styles-wrapper .wp-block-button:not(.has-text-color) .wp-block-button__link:hover,
-    .editor-styles-wrapper .wp-block-button:not(.has-text-color) .wp-block-button__link:focus,
-    .editor-styles-wrapper .wp-block-button:not(.has-text-color) .wp-block-button__link:active {
-      color: #fff; }
-  .hentry .entry-content .wp-block-button:not(.has-background) .wp-block-button__link,
-  .editor-styles-wrapper .wp-block-button:not(.has-background) .wp-block-button__link {
-    background-color: #43454b; }
-    .hentry .entry-content .wp-block-button:not(.has-background) .wp-block-button__link:hover, .hentry .entry-content .wp-block-button:not(.has-background) .wp-block-button__link:focus, .hentry .entry-content .wp-block-button:not(.has-background) .wp-block-button__link:active,
-    .editor-styles-wrapper .wp-block-button:not(.has-background) .wp-block-button__link:hover,
-    .editor-styles-wrapper .wp-block-button:not(.has-background) .wp-block-button__link:focus,
-    .editor-styles-wrapper .wp-block-button:not(.has-background) .wp-block-button__link:active {
-      background-color: #43454b; }
   .hentry .entry-content .wp-block-button.is-style-outline .wp-block-button__link,
   .hentry .entry-content .wp-block-button.is-style-outline .wp-block-button__link:focus,
   .hentry .entry-content .wp-block-button.is-style-outline .wp-block-button__link:active,
@@ -272,7 +255,6 @@
   .editor-styles-wrapper .wp-block-quote footer,
   .editor-styles-wrapper .wp-block-quote cite,
   .editor-styles-wrapper .wp-block-quote__citation {
-    color: #43454b;
     font-size: 1em;
     font-weight: 700; }
 
@@ -290,8 +272,7 @@
     margin: 0;
     padding: 0.875em 0;
     font-size: 0.875em;
-    font-style: italic;
-    color: #43454b; }
+    font-style: italic; }
 
 .hentry .entry-content .wp-block-cover-image,
 .hentry .entry-content .wp-block-cover,
@@ -599,9 +580,6 @@
 .editor-styles-wrapper .wp-block-separator {
   border: 0;
   margin: 0 auto 1.41575em; }
-  .hentry .entry-content .wp-block-separator.is-style-dots::before,
-  .editor-styles-wrapper .wp-block-separator.is-style-dots::before {
-    color: #131315; }
 
 .hentry .entry-content .wp-block-embed-twitter,
 .editor-styles-wrapper .wp-block-embed-twitter {
@@ -629,10 +607,6 @@
     font-size: 0.875em;
     line-height: 1.618;
     border: 0;
-    background: none;
-    color: #fff;
-    background-color: #43454b;
-    border-color: #43454b;
     cursor: pointer;
     padding: 0.6180469716em 1.41575em;
     text-decoration: none;
@@ -641,20 +615,13 @@
     display: inline-block;
     outline: none;
     -webkit-appearance: none;
-    border-radius: 0; }
-    .hentry .entry-content .wp-block-file .wp-block-file__button:hover, .hentry .entry-content .wp-block-file .wp-block-file__button:focus, .hentry .entry-content .wp-block-file .wp-block-file__button:active,
-    .editor-styles-wrapper .wp-block-file .wp-block-file__button:hover,
-    .editor-styles-wrapper .wp-block-file .wp-block-file__button:focus,
-    .editor-styles-wrapper .wp-block-file .wp-block-file__button:active {
-      color: #fff;
-      background-color: #43454b;
-      border-color: #43454b; }
+    border-radius: 0;
+    opacity: 1; }
 
 .hentry .entry-content .wp-block-code,
 .hentry .entry-content .wp-block-preformatted pre,
 .editor-styles-wrapper .wp-block-code,
 .editor-styles-wrapper .wp-block-preformatted pre {
-  color: #43454b;
   font-family: 'Courier 10 Pitch', Courier, monospace;
   font-size: 1em; }
 

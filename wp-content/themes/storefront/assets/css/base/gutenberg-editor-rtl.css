@@ -30,7 +30,6 @@
 .editor-post-title__block .editor-post-title__input {
   clear: both;
   font-weight: 300;
-  color: #131315;
   font-size: 2.617924em;
   line-height: 1.214;
   letter-spacing: -1px; }
@@ -49,8 +48,7 @@ h6,
 .wp-block-freeform.block-library-rich-text__tinymce h6 {
   clear: both;
   font-weight: 300;
-  margin: 0 0 0.5407911001em;
-  color: #131315; }
+  margin: 0 0 0.5407911001em; }
 
 h1,
 .wp-block-freeform.block-library-rich-text__tinymce h1 {
@@ -210,8 +208,6 @@ img {
 
 a {
   text-decoration: none; }
-  a:focus {
-    outline: 1px dotted #96588a; }
 
 table {
   border-spacing: 0;
@@ -247,6 +243,8 @@ table {
  */
 .wp-block {
   max-width: 66.4989378333em; }
+  .storefront-has-sidebar .wp-block {
+    max-width: calc(66.4989378333em * 0.7391304348); }
 
 .wp-block[data-align='wide'] {
   max-width: 75.9987860952em; }

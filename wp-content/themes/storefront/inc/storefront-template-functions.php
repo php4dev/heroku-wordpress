@@ -356,16 +356,21 @@ if ( ! function_exists( 'storefront_post_header' ) ) {
 		?>
 		<header class="entry-header">
 		<?php
+
+		/**
+		 * Functions hooked in to storefront_post_header_before action.
+		 *
+		 * @hooked storefront_post_meta - 10
+		 */
+		do_action( 'storefront_post_header_before' );
+
 		if ( is_single() ) {
-			storefront_post_meta();
 			the_title( '<h1 class="entry-title">', '</h1>' );
 		} else {
-			if ( 'post' === get_post_type() ) {
-				storefront_post_meta();
-			}
-
 			the_title( sprintf( '<h2 class="alpha entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
 		}
+
+		do_action( 'storefront_post_header_after' );
 		?>
 		</header><!-- .entry-header -->
 		<?php
@@ -419,11 +424,15 @@ if ( ! function_exists( 'storefront_post_meta' ) ) {
 	 * @since 1.0.0
 	 */
 	function storefront_post_meta() {
+		if ( 'post' !== get_post_type() ) {
+			return;
+		}
+
 		// Posted on.
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time> <time class="updated" datetime="%3$s">%4$s</time>';
+			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
 		}
 
 		$time_string = sprintf(
@@ -434,11 +443,13 @@ if ( ! function_exists( 'storefront_post_meta' ) ) {
 			esc_html( get_the_modified_date() )
 		);
 
-		$posted_on = sprintf(
-			'<span class="posted-on">%s <a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a></span>',
+		$output_time_string = sprintf( '<a href="%1$s" rel="bookmark">%2$s</a>', esc_url( get_permalink() ), $time_string );
+
+		$posted_on = '
+			<span class="posted-on">' .
 			/* translators: %s: post date */
-			_x( 'Posted on', 'post date', 'storefront' )
-		);
+			sprintf( __( 'Posted on %s', 'storefront' ), $output_time_string ) .
+			'</span>';
 
 		// Author.
 		$author = sprintf(
@@ -497,17 +508,15 @@ if ( ! function_exists( 'storefront_post_taxonomy' ) ) {
 		<aside class="entry-taxonomy">
 			<?php if ( $categories_list ) : ?>
 			<div class="cat-links">
-				<span class="screen-reader-text"><?php echo esc_attr( __( 'Posted in', 'storefront' ) ); ?></span>
-				<?php echo wp_kses_post( $categories_list ); ?>
+				<?php echo esc_html( _n( 'Category:', 'Categories:', count( get_the_category() ), 'storefront' ) ); ?> <?php echo wp_kses_post( $categories_list ); ?>
 			</div>
-			<?php endif; // End if categories. ?>
+			<?php endif; ?>
 
 			<?php if ( $tags_list ) : ?>
 			<div class="tags-links">
-				<span class="screen-reader-text"><?php echo esc_attr( __( 'Tagged', 'storefront' ) ); ?></span>
-				<?php echo wp_kses_post( $tags_list ); ?>
+				<?php echo esc_html( _n( 'Tag:', 'Tags:', count( get_the_tags() ), 'storefront' ) ); ?> <?php echo wp_kses_post( $tags_list ); ?>
 			</div>
-			<?php endif; // End if $tags_list. ?>
+			<?php endif; ?>
 		</aside>
 
 		<?php

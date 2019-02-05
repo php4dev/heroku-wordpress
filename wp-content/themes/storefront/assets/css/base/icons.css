@@ -2850,38 +2850,6 @@ readers do not read off random characters that represent icons */
 .site-search .widget_product_search form input[type=text] {
   padding-left: 2.617924em; }
 
-.entry-taxonomy .cat-links::before {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  line-height: 1;
-  vertical-align: -.125em;
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  line-height: inherit;
-  vertical-align: baseline;
-  content: "\f07b";
-  margin-right: 0.5407911001em; }
-
-.entry-taxonomy .tags-links::before {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  line-height: 1;
-  vertical-align: -.125em;
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  line-height: inherit;
-  vertical-align: baseline;
-  content: "\f02b";
-  margin-right: 0.5407911001em; }
-
 #comments .commentlist .bypostauthor > .comment-body cite::after {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
