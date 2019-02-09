@@ -1,0 +1,34 @@
+.acf-field-setting-fa_live_preview .acf-input i,
+.acf-input .icon_preview i,
+.field_option_font-awesome .fa_live_preview i {
+	font-size: 50px;
+}
+
+.acf-field-object-font-awesome .acf-field-setting-default_label,
+.acf-field-object-font-awesome .acf-field-setting-custom_icon_sets {
+	display: none;
+}
+
+.acf-input .icon_preview i {
+	margin: 0 0 10px 0;
+}
+
+.field_type-font-awesome .icon_preview i {
+	font-size: 50px;
+	margin: 0 0 10px 0;
+}
+
+.fa-select2.fa4,
+.fa-select2-drop.fa4 {
+	font-family: FontAwesome,-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.fa-select2.fa5,
+.fa-select2-drop.fa5 {
+	font-family: "Font Awesome 5 Brands","Font Awesome 5 Free",-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.fa-select2.fa5 i.fas,
+.fa-select2-drop.fa5 i.fas {
+	font-weight: 900;
+}
