@@ -1,22 +1,26 @@
-<div id="content-wrapper">
+<?php
+	if ($this->bvmain->isMalcare()) {
+		$headerColor = "#4686f5";
+		$pluginSlug = "malcare-security";
+		$headerLogoLink = $this->getWebPage() . "/?utm_source=mc_plugin_lp_logo&utm_medium=logo_link&utm_campaign=mc_plugin_lp_header&utm_term=header_logo&utm_content=image_link";
+	} else {
+		$headerColor = "#25bea0";
+		$pluginSlug = "blogvault-real-time-backup";
+		$headerLogoLink = $this->getWebPage() . "/?utm_source=bv_plugin_lp_logo&utm_medium=logo_link&utm_campaign=bv_plugin_lp_header&utm_term=header_logo&utm_content=image_link";
+	}
+?>
+<div id="content-wrapper" style="width: 99%;">
 	<!-- Content HTML goes here -->
 	<div class="mui-container-fluid">
 		<div class="mui--appbar-height"></div>
 		<br><br>
-		<div class="mui-row" >
-			<div class="mui-col-md-6 mui-col-md-offset-3 mui--text-center" style="padding-bottom:1.5%;">
-				<a href="<?php echo $this->getWebPage() ?>"><img src="<?php echo plugins_url($this->getPluginLogo(), __FILE__); ?>" /></a>
-			</div>
-			<div class="mui-col-md-6 mui-col-md-offset-3 mui--text-center" >
-				<?php if (!isset($_REQUEST['free'])) { ?>
-						<div align="center" style="margin-bottom: 25px;">
-				<?php if ($this->bvmain->getBrandName() === 'MalCare - Pro') {?>
-							<iframe id="video" width="360" height="240" src="//www.youtube.com/embed/rBuYh2dIadk?rel=0" frameborder="0" allowfullscreen></iframe>
-				<?php } else {?>
-							<iframe style="border: 1px solid gray; padding: 3px;" src="https://player.vimeo.com/video/88638675?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="450" height="275" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-				<?php }?>
-				  	</div>
-				<?php } ?>
+		<div class="mui-row">
+			<div style="background: <?php echo $headerColor;?>; overflow: hidden;">
+				<a href="<?php echo $headerLogoLink; ?>"><img src="<?php echo plugins_url($this->getPluginLogo(), __FILE__); ?>" style="padding: 10px;"></a>
+				<div class="top-links">
+					<span class="bv-top-button"><a href="https://wordpress.org/support/plugin/<?php echo $pluginSlug; ?>/reviews/#new-post">Leave a Review</a></span>
+					<span class="bv-top-button"><a href="https://wordpress.org/support/plugin/<?php echo $pluginSlug; ?>/">Need Help?</a></span>
+				</div>
 			</div>
 		</div>
 	</div>

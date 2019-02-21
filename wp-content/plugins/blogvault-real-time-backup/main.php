@@ -8,7 +8,7 @@ require_once dirname( __FILE__ ) . '/main/auth.php';
 require_once dirname( __FILE__ ) . '/main/db.php';
 
 class BVBackup {
-	public $version = '1.84';
+	public $version = '1.85';
 	public $plugname = 'bvbackup';
 	public $brandname = 'BlogVault';
 	public $webpage = 'https://blogvault.net';
@@ -54,6 +54,14 @@ class BVBackup {
 			return $brand['menuname'];
 		}
 		return $this->brandname;
+	}
+
+	public function isMalcare() {
+		return $this->getBrandName() === 'MalCare - Pro';
+	}
+
+	public function isBlogvault() {
+		return $this->getBrandName() === 'BlogVault';
 	}
 
 	public function getBrandInfo() {

@@ -12,95 +12,236 @@ License URI: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licen
 Backup , Restore, Migrate, and Stage  your website with our incremental backup technology. Backup easily to S3 and Dropbox. Complete website backups.
 
 == DESCRIPTION ==
+The Most Reliable Incremental Backup Plugin with Free Cloud Storage. Best Part, Comes with a FREE Staging Environment.
 
-Backup with the most reliable backup, staging and restore plugin, BlogVault WordPress Backups. Trusted by 500,000 sites and counting, it ensures a stress- free WordPress backup and security solution in a single dashboard.
+Check out more BlogVault customer testimonials from **[here](http://bit.ly/2RGXKN2)**
 
-BlogVault takes smart incremental database and file backups. Backups are stored on cloud – BlogVault servers and on Amazon S3. BlogVault provides real- time backups for WooCommerce sites. It also facilitates backup validation, restore, migration, dedicated staging, site copying, website management with zero downtime and upload to Dropbox. It makes use of FTP, SFTP or FTPS for migrate/restore feature.
+With a 100% Successful Website Restore Rate, BlogVault is the world's Fastest and most Reliable WordPress Backup solution trusted by over 4,50,000+ websites.
 
-BlogVault WordPress backup plugin also has a best-in-class malware scanning and one-click malware removal functionality.
-If the current backup plugins like UpdraftPlus, Backup Buddy, CodeGuard, and VaultPress have left you wanting for more, backup with BlogVault and see the difference.
+**Companies you Trust, Trust BlogVault.**
 
-**TOP FEATURES**
+We officially power migration for some of the largest web hosts from WPEngine, Pantheon, FlyWheel, LiquidWeb, Cloudways, Savvii and many more.
 
-= Backup and Restore =
-* Automatic Daily and Real Time Backups
-* One-click Site Restoration
-* Efficient, Incremental backup
-* 365-day Backup history
-* Backup to Cloud & Dropbox
+It is the perfect solution for developer and agencies as it comes with all the tools you need to maintain and manage multiple websites. **From One-Click Staging to Flawless Migrations to Complete Website Management and a White Label Solution**. It even provides out of the box **Client Reporting**.
 
-= Manage WordPress =
-* Perform theme and plugin updates directly
-* Manage clients, team members, and websites directly
+Learn more about BlogVault from **[here](http://bit.ly/2RLJh2e)**
 
-= Staging =
-* Dedicated One-Click Staging setup
-* Only WordPress backup plugin with free staging
+== BlogVault in Numbers ==
+* 1+ million Successful Website Restorations
+* 450,000+ Sites backed up and counting
+* 330GB Largest site Backed Up
+* 10,000+ Web hosts Compatibility
+* Five Star Support
 
-= Migrate =
-* One-Click Migrations to 5,000+ web hosts
-* Copy or clone sites with our backups
+[youtube https://www.youtube.com/watch?v=Y4teDRL08mY]
 
-= Test Restore =
-* Backup Restore Test from 365 days backup archive
-* Organized backup history
-* Safe inbuilt backup and recovery testing
+== Benefits of Using BlogVault as Your Go-to Backup Solution ==
 
-= Security powered by MalCare Pro =
-* Automatic Daily and Real Time Scans
-* One-click Malware Removal
-* Hardening Site Security
-* Encrypted, secure backups
+= 1. Incremental Backups Guaranteed to Always Work =
+* Incremental backups that never overloads your server
+* Free offsite storage ensures 24X7 availability
+* 90 days archive to recover from any mistake
+* First plugin with Multi-site backup support
 
-= One-Click Auto-Restore even when your site is down =
+= 2. Fastest Website Recovery Within Minutes =
+* 1 million+ website restores with 100% success rate
+* Differential Restore for lightning-fast recovery
+* 90 days archive to recover from any mistake
+* Perform full Restore even if your website is offline
 
-= Official Migration partners with WPEngine, Pantheon, FlyWheel, Cloudways and many more =
+= 3. Deploy a Staging Site in One-click for Free =
+* Safely test your website updates and changes
+* Staging site runs on our cloud servers
+* Completely free of cost
+* One-click Merge to push changes to live site
 
-Awesome World-class Lifetime Support which people **[swear by](https://blogvault.net/testimonials-new/)**
+= 4. Frustration-Free Website Migrations in 1-Click =
+* Compatible & approved with 5,000+ web hosts
+* Zero downtime guaranteed
+* Intelligent automatic rewrite of all website URLs
+* Migrate to a new domain, host, DNS or server
 
-Sign up for our **[fully functional, 7-day trial](https://app.blogvault.net/home/signup)** now! We guarantee that you will want to subscribe at the end of your trial period. You do not need to provide your card details to sign up for the free trial.
+= 5. Real-time Backups for WooCommerce Stores =
+* Backup all orders as and when they take place
+* Recover anytime with 365 days of backup archives
+* 24X7 data protection with offsite storage
+
+= 6. Manage Multiple Websites from a Single Dashboard =
+* Perform WordPress core, theme, plugin updates
+* Invite team members for efficient collaboration
+* Exclusive White-label solution to grow revenues
+* Beautiful and comprehensive Client Reporting
+
+= 7. Last, BlogVault is a "Service," Not just a Backup Plugin =
+* Always improving & adding features unlike plugins
+* Our Support always has your back
+* Full peace of mind with encrypted offsite storage
+* Access backups 24X7 with independent dashboard
+
+== Why Choose BlogVault Backup Services? ==
+
+* **Set up & Running in Just 60 Secs -** Get started in no time. Log in. Auto-Install. And that’s it!
+* **Comes with Built-in Free Staging -** Develop your site the way you’ve always wanted to. Update without breaking live site.
+* **Doesn’t Slow Down Website, Ever -** All processing take place on our own server. Your site does not slow down at all.
+* **No Technical Knowledge Needed -** Automated workflows that ensure everything you need is only a click away.
+* **Personal Support for Everyone -** Agile & Responsive Customer Support that caters to Everyone.
+
+**Have You Tried BlogVault Pro Yet?**
+
+BlogVault offers an unrestricted 7 days free trial. **Explore all features of full BlogVault for FREE**.
+
+**[Try out BlogVault](http://bit.ly/2RKzrgY)** without any commitment. No credit card needed.
 
 == FREQUENTLY ASKED QUESTIONS ==
 
-=How do I access my backups?=
-Access them by logging in to the **[BlogVault Dashboard](https://app.blogvault.net/home/signin)**.
+=Can I Setup my BlogVault backup account myself?=
+Yes. Take the help of this **[step-by-step guide](http://bit.ly/2RJg9sv)**.
 
-=How often does BlogVault backup a WordPress site?=
-One-click, daily, scheduled and real-time backups.
+=I am unable to reach the backup plugin. What can I do?=
+You can send an email to the support team on *support@blogvault.net* and notify our team regarding this.
 
-=Where are my backups stored?=
-We store encrypted backup copies of each backup of your WordPress site on our own data centers as well as on Amazon S3 servers. You can access the backups of the 'Last 365 days' at anytime from your BlogVault dashboard.
+=Are there any prerequisites for using BlogVault?=
+No. All you need is a WordPress site. We don’t use your website resources for backing up so you will not experience any downtime, or page delay while executing BlogVault functions.
 
-=Does BlogVault do migrations or restores?=
-Yes. You can **[restore](https://blogvault.net/blogvault-auto-restore/)** or **[migrate](https://blogvault.net/migrating-to-a-new-domain-or-url/)** your WordPress site with a single click!
+=Do you have a free plan? How does it work?=
+BlogVault is a paid backup service. But we understand the user's dilemma before starting a new service, which is why we provide a 7 days free trial period. You can avail free trial without any registration, just enter your email ID, password and site URL. Moreover, we do not discriminate between our trial period users and premium customers.
 
-=What if my entire site is down, including WordPress core?=
-BlogVault WordPress backup is accessible even when your entire site is down. Our dashboard is completely independent of your WordPress site.
+=How do I upgrade from my free trial to a premium account?=
+To upgrade from free trial version to a premium account, please take the help of **[this guide](http://bit.ly/2RHvPfS)**.
 
-=Does BlogVault work with all hosting providers?=
-BlogVault works with all web hosts like GoDaddy, BlueHost, HostGator, 1 & 1, DreamHost, WPEngine, etc.
-
-=What files does BlogVault backup?=
-We backup all the files related to a WordPress installation, which includes the folders ‘wp-content’, ‘wp-admin’, and ‘wp-includes’. We also backup the files in the base directory, such as ‘wp-config.php’, ‘index.php’, ‘wp-settings.php’, etc. These folders cover every aspect of a WordPress installation including plugins, themes, uploads, images, videos, etc.
-
-=Is there a limit to the size of the site which BlogVault can backup?=
-No. BlogVault can easily handle more than 20GB of data.
+=How do I upgrade to a bigger Plan?=
+To upgrade to a bigger Plan, take the help of **[this guide](http://bit.ly/2RHvPfS)**.
 
 =Do I need to pay for support and help?=
-Never! We will be with you for any queries at any time. **[Click here](https://blogvault.net/contact)** to get in touch with us!
+Never! We will be with you for any queries regarding backups or anything at all times. **[Click here](https://blogvault.net/contact)** to get in touch with us!
+
+=What exactly does BlogVault backup?=
+BlogVault Backup Service backs up everything in your WordPress site incrementally and completely – Including posts, pages, files, themes, images, etc. A WordPress site consists of 2 parts:
+* Database backup – We back up the complete database.
+* Files backup – We back up all the files within your core WordPress folders (wp-content, wp-includes, and wp-admin).
+
+This strategy ensures that we do not miss anything on your site.
+
+=How often does BlogVault backup my website?=
+BlogVault backs up your website daily, automatically.
+
+=How safe are my backup files?=
+Your backups are very safe. We use encrypted cloud backups and off-site BlogVault servers to store your site backups and run security operations. This ensures seamless integration of security to your website without affecting your site servers.
+
+=Can I have all backups sync to my Google Drive and not Dropbox?=
+We do not automatically sync your backups to Dropbox. However, we do provide an interface that can help enable you to move your backup to Dropbox. You can also download your Backups to your computer and then upload them on Google Drive.
+
+=Can BlogVault be used for WooCommerce store websites?=
+Yes, BlogVault integrates well with WooCommerce websites with the special inbuilt Real Time backups functionality. Please see **[WooCommerce backups page](http://bit.ly/2RKNfrR)**.
+
+=What does BlogVault backup from a WooCommerce site?=
+BlogVault backups files and tables, database metadata like database name, location, all content, settings, and configuration.
+
+=Can I restore WooCommerce backup using BlogVault?=
+Yes. Restoring a backup using BlogVault is easy. Take a look at **[how to restore a site](http://bit.ly/2RL9gXN)**.
+
+=Can I use BlogVault to handle Backup Restoration?=
+Yes, BlogVault’s Auto recovery functionality gets your site back up and running with almost Zero Downtime. Please see **[Auto-Recovery page](http://bit.ly/2RKsEUE).
+
+=What is the difference between Restore and Test Restore?=
+Test Restore is meant to test the backups only, whereas Restore helps to restore a backup on the live site, directly.
+
+=Can I restore a backup to a new server?=
+Yes. You can do this by making use of our integrated Migration feature where you can choose the backup version that you want to migrate to a new server or new site.
+
+=Where is the staging site located?=
+Your staging site will be on BlogVault servers.
+
+=How long is my staging valid?=
+With BlogVault backup service, you can extend your staging site validity up to 56 days.
+
+=What do I do after Staging a site?=
+After you are satisfied with your staging site, BlogVault Backup Service allows you can push the changes you like, onto your actual live site, directly.
+
+=Will I receive emails from the staging environment?=
+No, we do not have a mailing system at the Staging server. Many sites have automated emails setup on their sites. On staging environments, they do not want these to be triggered. Staging environment does not have protection for spam emails. Blocking all emails ensures that the staging server IP is not blacklisted.
+
+=Can I merge WooCommerce website staging site to live site?=
+If you move them from the staging site to the live site, all your new orders will be lost on the live site. But we have provided you with the option with the selective merge. Select only the tables you want to merge and let BlogVault take care of the rest for you. Please don’t forget to backup your website before you start merging.
+
+=Does BlogVault backup work with all web hosts?=
+Yes. We’ve built BlogVault to work with any web host in the world. You just need to provide FTP credentials for the destination server. We migrate your WordPress site, whether you are:
+
+Migrating to or from GoDaddy, BlueHost, SiteGround, HostGator, WPEngine, Flywheel, etc. OR Migrating to any other web host (in this case you’ll have to select either the cPanel or FTP options).
+
+=Will there be downtime during migration?=
+No, BlogVault Backup Service will cause no downtime to the destination server while migration.
+
+=Will BlogVault start backing up the new site after migration?=
+Unless otherwise specified, BlogVault will backup a site following DNS resolution. If you migrated the site to a different URL, make sure the new URL is added as a site with BlogVault to enable backup. If the migration were to the same URL at a different host, BlogVault would automatically start doing a backup from the new location as soon as the DNS is updated.
+
+=Can I update WordPress core, plugins and themes directly?=
+Yes. Take a look at this **[Manage Site help doc](http://bit.ly/2ROA9du)**. Before updating on the live site, we’d suggest you update on a staging site. BlogVault Backup Service comes with a free staging website.
+
+=Can I manage my site users and their password directly?=
+Yes. With BlogVault backup service, you can manage your site users and passwords. Take the help of this **[Manage Site help doc](http://bit.ly/2ROA9du)**.
+
+=Can I add Clients and Team Members on my BlogVault Backup account?=
+Yes, you can.
+
+Our client feature is for your reference alone. You can assign a client to their site. If you want to give a user, the dashboard access, please add them as your team members under the team section. Please see **[How do I add clients and team members](http://bit.ly/2RK7p5t)**?
+
+=Isn’t WordPress or Web Host backing up my website for me?=
+WordPress by default does not back up your site for you. As for web hosts, if your site is not on wordpress.com, then you have a reason to worry. Servers, while generally robust, do fail from time to time for various reasons. Moreover, web hosting providers usually do not provide complete backups. When such backups are restored, sites crash and data is lost. Several such horror stories inspired us to build this service!
+
+=Do I really need BlogVault?=
+BlogVault provides comprehensive and complete backup services. Apart from handling website security, it can also assist you with instant Migration as well as Staging and Merging services at very reasonable rates.
+This is a backup and security service that remains committed to your website security by handling site management functions. If you care about keeping your WordPress website safe, then you definitely need a security solution like BlogVault.
+
+=What will the security report contain?=
+Your Website Reports will contain details on the following:
+* WP Version
+* Total Backups made
+* Backups Time range
+* Total security scans made (Backup+Security plan only)
+* Active Theme
+* Number of Published Posts
+* Number of Published Pages
+* Number of Approved Comments
+* Total database tables
+* Total Files
+* Total Plugins
+* Active Plugins
+* Installed Themes
+
+=Is BlogVault compatible with all other plugins and themes?=
+BlogVault is compatible with all plugins and themes. It works even if you have a different backup plugin installed. If you want to uninstall a plugin and install BlogVault plugin, kindly take a look at our guide on **[How to install BlogVault](http://bit.ly/2RKgPxP)**.
+
+=Error: "FTP permission issues, FTP is correct but we might not have permissions to upload or remove a file."=
+This could happen when you’re on shared hosting. Contact your host and ask them to grant you access to upload files via FTP.
+
+=Error: "Execution expired, Connection timed out, Connection reset by a peer in both FTP and HTTP requests."=
+Nothing to worry, this notification means your destination server denied our requests to offload your site’s data. This could be because of a few reasons:
+* Your destination site isn’t reachable (you’ll have to contact your destination web host about this)
+* You have a firewall installed, which is blocking consecutive requests from the same source (in which case, please wait for some time and try again)
+
+=How can I submit a feature request?=
+We are happy to accept all feature requests for our products and services. Simply fill in a detailed description of our **[contact form](https://blogvault.net/contact/)**, and we’ll make sure the correct department reviews the request. We cannot guarantee that all requests will be satisfied, but we love hearing feedback from our users.
+
+=Very happy with the service and want to give you guys a review. Where do I do it?=
+Thank you. We really appreciate these kind words, and it makes our day. We would love it if you could review our service **[here](http://bit.ly/2RKkko2)**.
 
 == SCREENSHOTS ==
 
-1. The powerful BlogVault dashboard lets you manage backups of multiple sites.
-2. BlogVault Backup History: Bird's eye view of backups made of your site in 365 days. Contains details about date, time of backup version as well as changes made to the site recorded with every backup version.
-3. The BlogVault Backup Module.
-4. Accessing BlogVault's Auto Restore feature.
-5. To Auto Restore a site, first enter its FTP, SFTP or SSH details.
-6. Next step to Auto Restore a site: select the directory in which you've installed WordPress.
-7. Last step to Auto Restore site: Check its details. You're done!
-
+1. BlogVault provides you a comprehensive History page that lets you manage all your WordPress backups with ease.
+2. Trusted by over 4,00,000+ websites, BlogVault is the best WordPress backup service for your website.
+3. Check the Performance Speed of your website from the BlogVault dashboard.
+4. Manage multiple WordPress sites from one dashboard.
+5. With Uptime Monitoring you get notified the moment your website is shut down.
+6. With BlogVault's free Staging test updates, plugins, and WordPress themes without breaking your live site.
+7. With BlogVault's White-Label Solution you can showcase our service under your own brilliant brand.
+8. For WooCommerce sites, BlogVault’s Real Time Backups can make all the difference.
+9. We power WordPress migration for WPEngine, Pantheon, FlyWheel, LiquidWeb, Cloudways, Savvii and many more. Need we say more?
 
 == CHANGELOG ==
+= 1.85 =
+* UI improvements
+
 = 1.84 =
 * Disable form on submit
 

@@ -131,6 +131,7 @@ class BVAdmin {
 
 	public function adminPage() {
 		wp_enqueue_style( 'bvsurface', plugins_url('css/bvmui.min.css', __FILE__));
+		wp_enqueue_style( 'bvplugin', plugins_url('css/bvplugin.min.css', __FILE__));
 		if (isset($_REQUEST['bvnonce']) && wp_verify_nonce( $_REQUEST['bvnonce'], 'bvnonce' )) {
 			$this->account->remove($_REQUEST['pubkey']);
 		}
