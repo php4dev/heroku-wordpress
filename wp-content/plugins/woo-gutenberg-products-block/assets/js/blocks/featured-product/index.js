@@ -2,6 +2,7 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { InnerBlocks } from '@wordpress/editor';
 import { registerBlockType } from '@wordpress/blocks';
 
 /**
@@ -48,6 +49,14 @@ registerBlockType( 'woocommerce/featured-product', {
 		editMode: {
 			type: 'boolean',
 			default: true,
+		},
+
+		/**
+		 * A fixed height for the block.
+		 */
+		height: {
+			type: 'number',
+			default: wc_product_block_data.default_height,
 		},
 
 		/**
@@ -123,6 +132,6 @@ registerBlockType( 'woocommerce/featured-product', {
 	 * Block content is rendered in PHP, not via save function.
 	 */
 	save() {
-		return null;
+		return <InnerBlocks.Content />;
 	},
 } );

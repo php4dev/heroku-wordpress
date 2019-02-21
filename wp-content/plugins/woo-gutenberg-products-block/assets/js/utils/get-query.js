@@ -1,5 +1,14 @@
-export default function getQuery( attributes, name ) {
-	const { categories, catOperator, columns, orderby, products, rows } = attributes;
+export default function getQuery( blockAttributes, name ) {
+	const {
+		attributes,
+		attrOperator,
+		categories,
+		catOperator,
+		orderby,
+		products,
+	} = blockAttributes;
+	const columns = blockAttributes.columns || wc_product_block_data.default_columns;
+	const rows = blockAttributes.rows || wc_product_block_data.default_rows;
 
 	const query = {
 		status: 'publish',
@@ -28,6 +37,15 @@ export default function getQuery( attributes, name ) {
 			query.order = 'asc';
 		} else {
 			query.orderby = orderby;
+		}
+	}
+
+	if ( attributes && attributes.length > 0 ) {
+		query.attribute_term = attributes.map( ( { id } ) => id ).join( ',' );
+		query.attribute = attributes[ 0 ].attr_slug;
+
+		if ( attrOperator ) {
+			query.attr_operator = 'all' === attrOperator ? 'AND' : 'IN';
 		}
 	}
 

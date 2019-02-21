@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce Blocks
  * Plugin URI: https://github.com/woocommerce/woocommerce-gutenberg-products-block
  * Description: WooCommerce blocks for the Gutenberg editor.
- * Version: 1.3.1
+ * Version: 1.4.0
  * Author: Automattic
  * Author URI: https://woocommerce.com
  * Text Domain:  woo-gutenberg-products-block
@@ -15,7 +15,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'WGPB_VERSION', '1.3.0' );
+define( 'WGPB_VERSION', '1.4.0' );
 
 define( 'WGPB_DEVELOPMENT_MODE', true );
 
@@ -128,6 +128,13 @@ function wgpb_register_blocks() {
 		array(
 			'editor_script' => 'wc-product-top-rated',
 			'editor_style'  => 'wc-product-top-rated-editor',
+		)
+	);
+	register_block_type(
+		'woocommerce/products-by-attribute',
+		array(
+			'editor_script' => 'wc-products-attribute',
+			'editor_style'  => 'wc-products-attribute-editor',
 		)
 	);
 	register_block_type(
@@ -327,6 +334,25 @@ function wgpb_register_scripts() {
 	}
 
 	wp_register_script(
+		'wc-products-attribute',
+		plugins_url( 'build/products-attribute.js', __FILE__ ),
+		$block_dependencies,
+		wgpb_get_file_version( '/build/products-attribute.js' ),
+		true
+	);
+
+	wp_register_style(
+		'wc-products-attribute-editor',
+		plugins_url( 'build/products-attribute.css', __FILE__ ),
+		array( 'wc-vendors', 'wp-edit-blocks', 'wc-products-grid' ),
+		wgpb_get_file_version( '/build/products-attribute.css' )
+	);
+
+	if ( function_exists( 'wp_set_script_translations' ) ) {
+		wp_set_script_translations( 'wc-products-attribute', 'woo-gutenberg-products-block', plugin_dir_path( __FILE__ ) . 'languages' );
+	}
+
+	wp_register_script(
 		'woocommerce-products-block-editor',
 		plugins_url( 'build/products-block.js', __FILE__ ),
 		array( 'wp-api-fetch', 'wp-element', 'wp-components', 'wp-blocks', 'wp-editor', 'wp-i18n', 'react-transition-group' ),
@@ -369,6 +395,8 @@ function wgpb_print_script_settings() {
 	global $wp_locale;
 	$code = get_woocommerce_currency();
 
+	// NOTE: wcSettings is not used directly, it's only for @woocommerce/components
+	//
 	// Settings and variables can be passed here for access in the app.
 	// Will need `wcAdminAssetUrl` if the ImageAsset component is used.
 	// Will need `dataEndpoints.countries` if Search component is used with 'country' type.
@@ -395,12 +423,15 @@ function wgpb_print_script_settings() {
 
 	// Global settings used in each block.
 	$block_settings = array(
-		'min_columns'     => wc_get_theme_support( 'product_grid::min_columns', 1 ),
-		'max_columns'     => wc_get_theme_support( 'product_grid::max_columns', 6 ),
-		'default_columns' => wc_get_default_products_per_row(),
-		'min_rows'        => wc_get_theme_support( 'product_grid::min_rows', 1 ),
-		'max_rows'        => wc_get_theme_support( 'product_grid::max_rows', 6 ),
-		'default_rows'    => wc_get_default_product_rows_per_page(),
+		'min_columns'       => wc_get_theme_support( 'product_grid::min_columns', 1 ),
+		'max_columns'       => wc_get_theme_support( 'product_grid::max_columns', 6 ),
+		'default_columns'   => wc_get_default_products_per_row(),
+		'min_rows'          => wc_get_theme_support( 'product_grid::min_rows', 1 ),
+		'max_rows'          => wc_get_theme_support( 'product_grid::max_rows', 6 ),
+		'default_rows'      => wc_get_default_product_rows_per_page(),
+		'placeholderImgSrc' => wc_placeholder_img_src(),
+		'min_height'        => wc_get_theme_support( 'featured_block::min_height', 500 ),
+		'default_height'    => wc_get_theme_support( 'featured_block::default_height', 500 ),
 	);
 	?>
 	<script type="text/javascript">

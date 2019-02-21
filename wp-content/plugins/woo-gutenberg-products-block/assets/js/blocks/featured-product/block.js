@@ -6,11 +6,11 @@ import apiFetch from '@wordpress/api-fetch';
 import {
 	AlignmentToolbar,
 	BlockControls,
+	InnerBlocks,
 	InspectorControls,
 	MediaUpload,
 	MediaUploadCheck,
 	PanelColorSettings,
-	RichText,
 	withColors,
 } from '@wordpress/editor';
 import {
@@ -19,6 +19,7 @@ import {
 	PanelBody,
 	Placeholder,
 	RangeControl,
+	ResizableBox,
 	Spinner,
 	ToggleControl,
 	Toolbar,
@@ -38,6 +39,11 @@ import {
 	getImageSrcFromProduct,
 	getImageIdFromProduct,
 } from '../../utils/products';
+
+/**
+ * The min-height for the block content.
+ */
+const MIN_HEIGHT = wc_product_block_data.min_height;
 
 /**
  * Generate a style object given either a product object or URL to an image.
@@ -120,18 +126,6 @@ class FeaturedProduct extends Component {
 
 		return (
 			<InspectorControls key="inspector">
-				<PanelBody
-					title={ __( 'Product', 'woo-gutenberg-products-block' ) }
-					initialOpen={ false }
-				>
-					<ProductControl
-						selected={ attributes.productId || 0 }
-						onChange={ ( value = [] ) => {
-							const id = value[ 0 ] ? value[ 0 ].id : 0;
-							setAttributes( { productId: id, mediaId: 0, mediaSrc: '' } );
-						} }
-					/>
-				</PanelBody>
 				<PanelBody title={ __( 'Content', 'woo-gutenberg-products-block' ) }>
 					<ToggleControl
 						label={ __( 'Show description', 'woo-gutenberg-products-block' ) }
@@ -206,12 +200,12 @@ class FeaturedProduct extends Component {
 	}
 
 	render() {
-		const { attributes, setAttributes, overlayColor } = this.props;
+		const { attributes, isSelected, overlayColor, setAttributes } = this.props;
 		const {
 			contentAlign,
 			dimRatio,
 			editMode,
-			linkText,
+			height,
 			showDesc,
 			showPrice,
 		} = attributes;
@@ -219,6 +213,7 @@ class FeaturedProduct extends Component {
 		const classes = classnames(
 			'wc-block-featured-product',
 			{
+				'is-selected': isSelected,
 				'is-loading': ! product && ! loaded,
 				'is-not-found': ! product && loaded,
 				'has-background-dim': dimRatio !== 0,
@@ -235,6 +230,10 @@ class FeaturedProduct extends Component {
 			style.backgroundColor = overlayColor.color;
 		}
 
+		const onResizeStop = ( event, direction, elt ) => {
+			setAttributes( { height: parseInt( elt.style.height ) } );
+		};
+
 		return (
 			<Fragment>
 				<BlockControls>
@@ -243,16 +242,6 @@ class FeaturedProduct extends Component {
 						onChange={ ( nextAlign ) => {
 							setAttributes( { contentAlign: nextAlign } );
 						} }
-					/>
-					<Toolbar
-						controls={ [
-							{
-								icon: 'edit',
-								title: __( 'Edit' ),
-								onClick: () => setAttributes( { editMode: ! editMode } ),
-								isActive: editMode,
-							},
-						] }
 					/>
 					<MediaUploadCheck>
 						<Toolbar>
@@ -280,34 +269,49 @@ class FeaturedProduct extends Component {
 				) : (
 					<Fragment>
 						{ !! product ? (
-							<div className={ classes } style={ style }>
-								<h2 className="wc-block-featured-product__title">
-									{ product.name }
-								</h2>
-								{ showDesc && (
-									<div
-										className="wc-block-featured-product__description"
-										dangerouslySetInnerHTML={ {
-											__html: product.short_description,
-										} }
-									/>
-								) }
-								{ showPrice && (
-									<div
-										className="wc-block-featured-product__price"
-										dangerouslySetInnerHTML={ { __html: product.price_html } }
-									/>
-								) }
-								<div className="wc-block-featured-product__link wp-block-button">
-									<RichText
-										value={ linkText }
-										onChange={ ( value ) => setAttributes( { linkText: value } ) }
-										formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
-										className="wp-block-button__link"
-										keepPlaceholderOnFocus
-									/>
+							<ResizableBox
+								className={ classes }
+								size={ { height } }
+								minHeight={ MIN_HEIGHT }
+								enable={ { bottom: true } }
+								onResizeStop={ onResizeStop }
+								style={ style }
+							>
+								<div className="wc-block-featured-product__wrapper">
+									<h2 className="wc-block-featured-product__title">
+										{ product.name }
+									</h2>
+									{ showDesc && (
+										<div
+											className="wc-block-featured-product__description"
+											dangerouslySetInnerHTML={ {
+												__html: product.short_description,
+											} }
+										/>
+									) }
+									{ showPrice && (
+										<div
+											className="wc-block-featured-product__price"
+											dangerouslySetInnerHTML={ { __html: product.price_html } }
+										/>
+									) }
+									<div className="wc-block-featured-product__link">
+										<InnerBlocks
+											template={ [
+												[
+													'core/button',
+													{
+														text: __( 'Shop now', 'woo-gutenberg-products-block' ),
+														url: product.permalink,
+														align: 'center',
+													},
+												],
+											] }
+											templateLock="all"
+										/>
+									</div>
 								</div>
-							</div>
+							</ResizableBox>
 						) : (
 							<Placeholder
 								className="wc-block-featured-product"
@@ -330,15 +334,19 @@ class FeaturedProduct extends Component {
 
 FeaturedProduct.propTypes = {
 	/**
-	 * The attributes for this block
+	 * The attributes for this block.
 	 */
 	attributes: PropTypes.object.isRequired,
+	/**
+	 * Whether this block is currently active.
+	 */
+	isSelected: PropTypes.bool.isRequired,
 	/**
 	 * The register block name.
 	 */
 	name: PropTypes.string.isRequired,
 	/**
-	 * A callback to update attributes
+	 * A callback to update attributes.
 	 */
 	setAttributes: PropTypes.func.isRequired,
 	// from withColors

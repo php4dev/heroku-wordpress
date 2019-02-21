@@ -29,7 +29,7 @@ class WC_Block_Featured_Product {
 		'align'        => 'none',
 		'contentAlign' => 'center',
 		'dimRatio'     => 50,
-		'linkText'     => false,
+		'height'       => false,
 		'mediaId'      => 0,
 		'mediaSrc'     => '',
 		'showDesc'     => true,
@@ -50,8 +50,8 @@ class WC_Block_Featured_Product {
 			return '';
 		}
 		$attributes = wp_parse_args( $attributes, self::$defaults );
-		if ( ! $attributes['linkText'] ) {
-			$attributes['linkText'] = __( 'Shop now', 'woo-gutenberg-products-block' );
+		if ( ! $attributes['height'] ) {
+			$attributes['height'] = wc_get_theme_support( 'featured_block::default_height', 500 );
 		}
 
 		$title = sprintf(
@@ -69,14 +69,6 @@ class WC_Block_Featured_Product {
 			$product->get_price_html()
 		);
 
-		$link_str = sprintf(
-			'<div class="wc-block-featured-product__link wp-block-button"><a class="wp-block-button__link" href="%1$s" aria-label="%2$s">%3$s</a></div>',
-			$product->get_permalink(),
-			/* translators: %s is product name */
-			sprintf( __( 'View product %s', 'woo-gutenberg-products-block' ), $product->get_name() ),
-			$attributes['linkText']
-		);
-
 		$output = sprintf( '<div class="%1$s" style="%2$s">', self::get_classes( $attributes ), self::get_styles( $attributes, $product ) );
 
 		$output .= $title;
@@ -86,7 +78,7 @@ class WC_Block_Featured_Product {
 		if ( $attributes['showPrice'] ) {
 			$output .= $price_str;
 		}
-		$output .= $link_str;
+		$output .= '<div class="wc-block-featured-product__link">' . $content . '</div>';
 		$output .= '</div>';
 
 		return $output;
@@ -100,7 +92,12 @@ class WC_Block_Featured_Product {
 	 * @return string
 	 */
 	public static function get_styles( $attributes, $product ) {
-		$image_size = ( 'none' !== $attributes['align'] ) ? 'full' : 'large';
+		$style      = '';
+		$image_size = 'large';
+		if ( 'none' !== $attributes['align'] || $attributes['height'] > 800 ) {
+			$image_size = 'full';
+		}
+
 		if ( $attributes['mediaId'] ) {
 			$image = wp_get_attachment_image_url( $attributes['mediaId'], $image_size );
 		} else {
@@ -108,11 +105,15 @@ class WC_Block_Featured_Product {
 		}
 
 		if ( ! empty( $image ) ) {
-			$style = sprintf( 'background-image:url(%s);', esc_url( $image ) );
+			$style .= sprintf( 'background-image:url(%s);', esc_url( $image ) );
 		}
 
 		if ( isset( $attributes['customOverlayColor'] ) ) {
 			$style .= sprintf( 'background-color:%s;', esc_attr( $attributes['customOverlayColor'] ) );
+		}
+
+		if ( isset( $attributes['height'] ) ) {
+			$style .= sprintf( 'min-height:%dpx;', intval( $attributes['height'] ) );
 		}
 
 		return $style;
