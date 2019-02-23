@@ -17,7 +17,7 @@ define('SENDGRID_API_KEY', $_ENV["SENDGRID_API_KEY"]);
 
 define('ALTERNATE_WP_CRON', true);
 // ** Heroku Postgres settings - from Heroku Environment ** //
-$db = parse_url($_ENV["JAWSDB_MARIA_URL"]);
+$db = parse_url($_ENV["DATABASE_URL"]);
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
