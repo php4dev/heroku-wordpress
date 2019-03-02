@@ -319,6 +319,9 @@
 			$sql = str_replace("SUM( meta__order_tax.meta_value)", "SUM( NULLIF(meta__order_tax.meta_value, '')::int )", $sql);
 			$sql = str_replace("SUM( order_item_meta_discount_amount.meta_value)", "SUM( NULLIF(order_item_meta_discount_amount.meta_value, '')::int )", $sql);
 			$sql = str_replace("SUM( order_item_meta__qty.meta_value)", "SUM( NULLIF(order_item_meta__qty.meta_value, '')::int )", $sql);
+			$sql = str_replace("SUM( meta__order_shipping.meta_value)", "SUM( NULLIF(meta__order_shipping.meta_value, '')::int )", $sql);
+			$sql = str_replace("SUM( meta__order_tax.meta_value)", "SUM( NULLIF(meta__order_tax.meta_value, '')::int )", $sql);
+			$sql = str_replace("SUM( meta__order_shipping_tax.meta_value)", "SUM( NULLIF(meta__order_shipping_tax.meta_value, '')::int )", $sql);
 			$sql = str_replace("SUM( postmeta.meta_value )", "SUM( NULLIF(postmeta.meta_value, '')::int )", $sql);
 			$sql = str_replace("GROUP BY t.term_id, tr.object_id ORDER BY", "GROUP BY t.term_id, tr.object_id, tt.term_taxonomy_id, tm.meta_value ORDER BY", $sql);
 			$sql = str_replace("GROUP BY t.term_id ORDER BY", "GROUP BY t.term_id, tt.term_taxonomy_id, tm.meta_value ORDER BY", $sql);
