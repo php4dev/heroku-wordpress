@@ -325,7 +325,12 @@
 			$sql = str_replace("GROUP BY YEAR(posts.post_date), MONTH(posts.post_date), DAY(posts.post_date) ORDER BY",
 			        "GROUP BY YEAR(posts.post_date), MONTH(posts.post_date), DAY(posts.post_date), parent_meta__order_total.meta_value ORDER BY", $sql);
 			$sql = str_replace("GROUP BY refund_id ORDER BY post_date", "GROUP BY refund_id, post_date ORDER BY post_date", $sql);
+			$sql = str_replace("GROUP BY meta.meta_key", "GROUP BY meta.meta_key, meta.meta_value", $sql);
+			if( false !== strpos( $sql, 'SELECT tt.parent FROM wp_terms'))
+				$sql = str_replace( 'GROUP BY t.term_id', 'GROUP BY t.term_id, tt.parent', $sql);
 			$sql = str_replace("HAVING meta_key NOT LIKE", "GROUP BY meta_key HAVING meta_key NOT LIKE", $sql);
+			$sql = str_replace("AND postmeta.meta_value ", "AND NULLIF(postmeta.meta_value, '')::int ", $sql);
+			$sql = str_replace("min( meta_value+0 )", "min( NULLIF(meta_value, '')::int )", $sql);
 			
 			// MySQL 'LIKE' is case insensitive by default, whereas PostgreSQL 'LIKE' is
 			$sql = str_replace( ' LIKE ', ' ILIKE ', $sql);
