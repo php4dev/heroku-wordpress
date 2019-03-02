@@ -1,0 +1,386 @@
+# Translation of Plugins - WooCommerce Blocks - Stable (latest release) in Ukrainian
+# This file is distributed under the same license as the Plugins - WooCommerce Blocks - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-01-08 10:13:28+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: uk_UA\n"
+"Project-Id-Version: Plugins - WooCommerce Blocks - Stable (latest release)\n"
+
+#: woocommerce-gutenberg-products-block.php:44
+msgid "WooCommerce Product Blocks development mode requires files to be built. From the plugin directory, run <code>npm install</code> to install dependencies, <code>npm run build</code> to build the files or <code>npm start</code> to build the files and watch for changes."
+msgstr "Режим розробки продуктів WooCommerce вимагає створення файлів. У каталозі плагінів запустіть <code>npm install</code> для встановлення залежностей, <code>npm run build</code> для побудови файлів або <code>npm start</code> збирати файли та спостерігати за змінами."
+
+#: includes/class-wgpb-product-categories-controller.php:93
+#: includes/class-wgpb-product-attributes-controller.php:96
+#: includes/class-wgpb-product-attributes-controller.php:126
+#: includes/class-wgpb-product-attribute-terms-controller.php:93
+msgid "Resource does not exist."
+msgstr "Ресурс не існує."
+
+#: includes/class-wgpb-product-categories-controller.php:84
+#: includes/class-wgpb-product-attributes-controller.php:117
+#: includes/class-wgpb-product-attribute-terms-controller.php:84
+msgid "Taxonomy does not exist."
+msgstr "Таксономія не існує."
+
+#: includes/class-wgpb-products-controller.php:95
+#: includes/class-wgpb-product-attributes-controller.php:100
+msgid "Sorry, you cannot view this resource."
+msgstr "Пробачте, ви не можете переглядати цей ресурс."
+
+#: includes/class-wgpb-products-controller.php:81
+#: includes/class-wgpb-product-attributes-controller.php:81
+msgid "Sorry, you cannot list resources."
+msgstr "Пробачте, ви не можете перераховувати ресурси."
+
+#: languages/woo-gutenberg-products-block.php:239
+#: assets/js/product-category-block.js:89
+msgid "Product Category"
+msgstr "Категорія товарів"
+
+#: languages/woo-gutenberg-products-block.php:236
+#: assets/js/product-category-block.js:307
+msgid "Display a grid of products from your selected categories."
+msgstr "Відображення сітки продуктів з вибраних категорій."
+
+#: languages/woo-gutenberg-products-block.php:233
+#: assets/js/product-category-block.js:306
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: languages/woo-gutenberg-products-block.php:230
+#: assets/js/product-category-block.js:190
+#: assets/js/product-category-block.js:260
+#: assets/js/product-category-block.js:303
+msgid "Products by Category"
+msgstr "Товари за категорією"
+
+#: languages/woo-gutenberg-products-block.php:227
+#: assets/js/product-category-block.js:268
+msgid "No products in this category."
+msgstr "Немає товарів у цій категорії."
+
+#: languages/woo-gutenberg-products-block.php:224
+#: assets/js/product-category-block.js:193
+msgid "Display a grid of products from your selected categories"
+msgstr "Відображення сітки продуктів з вибраних категорій"
+
+#: languages/woo-gutenberg-products-block.php:221
+#: assets/js/product-category-block.js:183
+msgid "Showing product block preview."
+msgstr "Показ попереднього перегляду блоку продуктів."
+
+#: languages/woo-gutenberg-products-block.php:218
+#: assets/js/product-category-block.js:167
+msgid "Menu Order"
+msgstr "Порядок меню"
+
+#: languages/woo-gutenberg-products-block.php:215
+#: assets/js/product-category-block.js:124
+msgid "Order products by"
+msgstr "Замовити товари по"
+
+#: languages/woo-gutenberg-products-block.php:212
+#: assets/js/product-category-block.js:120
+msgid "Order By"
+msgstr "Сортувати за"
+
+#: languages/woo-gutenberg-products-block.php:209
+msgid "Selected products"
+msgstr "Вибрані продукти"
+
+#: languages/woo-gutenberg-products-block.php:206
+msgid "Products list"
+msgstr "Список товарів"
+
+#: languages/woo-gutenberg-products-block.php:203
+msgid "Search for products to display"
+msgstr "Пошук продуктів для відображення"
+
+#: languages/woo-gutenberg-products-block.php:200
+msgid "No categories found"
+msgstr "Категорій не знайдено"
+
+#: languages/woo-gutenberg-products-block.php:197
+msgid "Search for categories"
+msgstr "Пошук категорій"
+
+#: languages/woo-gutenberg-products-block.php:194
+msgid "No terms found"
+msgstr "Не знайдено жодного терміну"
+
+#: languages/woo-gutenberg-products-block.php:191
+msgid "No attributes found"
+msgstr "Не знайдено атрибутів"
+
+#: languages/woo-gutenberg-products-block.php:188
+msgid "Search for attributes"
+msgstr "Пошук атрибутів"
+
+#: languages/woo-gutenberg-products-block.php:185
+msgid "Display a grid of products from a variety of sources."
+msgstr "Відображення сітки продуктів з різних джерел."
+
+#: languages/woo-gutenberg-products-block.php:182
+msgid "Products"
+msgstr "Товари"
+
+#: languages/woo-gutenberg-products-block.php:179
+msgid "Current Source"
+msgstr "Поточне джерело"
+
+#: languages/woo-gutenberg-products-block.php:176
+#: assets/js/product-category-block.js:241
+msgid "Edit"
+msgstr "Змінити"
+
+#: languages/woo-gutenberg-products-block.php:172
+#: assets/js/product-category-block.js:101
+msgid "Layout"
+msgstr "Розмітка"
+
+#: languages/woo-gutenberg-products-block.php:168
+#: assets/js/product-category-block.js:112
+msgid "Rows"
+msgstr "Рядки"
+
+#: languages/woo-gutenberg-products-block.php:164
+#: assets/js/product-category-block.js:160
+msgid "Title - alphabetical"
+msgstr "Назва - алфавітний"
+
+#: languages/woo-gutenberg-products-block.php:160
+#: assets/js/product-category-block.js:156
+msgid "Sales - most first"
+msgstr "Продажі - найперше"
+
+#: languages/woo-gutenberg-products-block.php:156
+#: assets/js/product-category-block.js:149
+msgid "Rating - highest first"
+msgstr "Рейтинг - найвищий перший"
+
+#: languages/woo-gutenberg-products-block.php:152
+#: assets/js/product-category-block.js:142
+msgid "Price - high to low"
+msgstr "Ціна - від вищої до нижчої"
+
+#: languages/woo-gutenberg-products-block.php:148
+#: assets/js/product-category-block.js:135
+msgid "Price - low to high"
+msgstr "Ціна - від нижчої до вищої"
+
+#: languages/woo-gutenberg-products-block.php:144
+#: assets/js/product-category-block.js:128
+msgid "Newness - newest first"
+msgstr "Новинка - спочатку новітня"
+
+#: languages/woo-gutenberg-products-block.php:140
+msgid "Order Products By"
+msgstr "Замовлення товарів за"
+
+#: languages/woo-gutenberg-products-block.php:137
+#: assets/js/product-category-block.js:105
+msgid "Columns"
+msgstr "Стовпці"
+
+#: languages/woo-gutenberg-products-block.php:133
+msgid "Display all products ordered chronologically, alphabetically, by price, by rating or by sales"
+msgstr "Відобразити всі продукти, замовлені в хронологічному порядку, за алфавітом, за ціною, за рейтингом або по продажах"
+
+#: languages/woo-gutenberg-products-block.php:130
+msgid "All products"
+msgstr "Всі товари"
+
+#: languages/woo-gutenberg-products-block.php:127
+msgid "Terms: "
+msgstr "Умови: "
+
+#: languages/woo-gutenberg-products-block.php:124
+msgid "Attribute: "
+msgstr "Атрибут: "
+
+#: languages/woo-gutenberg-products-block.php:121
+msgid "Product categories: "
+msgstr "Категорії продуктів: "
+
+#: languages/woo-gutenberg-products-block.php:118
+msgid "Attribute"
+msgstr "Атрибут"
+
+#: languages/woo-gutenberg-products-block.php:115
+msgid "Top rated"
+msgstr "Товари з найвищою оцінкою"
+
+#: languages/woo-gutenberg-products-block.php:112
+msgid "Best sellers"
+msgstr "Топ продаж"
+
+#: languages/woo-gutenberg-products-block.php:109
+msgid "No products found"
+msgstr "Товарів не знайдено"
+
+#: languages/woo-gutenberg-products-block.php:105
+msgid "Loading"
+msgstr "Завантаження"
+
+#: languages/woo-gutenberg-products-block.php:100
+msgid "On sale"
+msgstr "Розпродаж"
+
+#: languages/woo-gutenberg-products-block.php:94
+msgid "E.g. featured products, or products with a specific attribute like size or color"
+msgstr "Наприклад, представлені продукти або продукти з певним атрибутом, наприклад розміром або кольором"
+
+#: languages/woo-gutenberg-products-block.php:91
+msgid "Filter products"
+msgstr "Фільтрувати товари"
+
+#: languages/woo-gutenberg-products-block.php:88
+#: assets/js/product-category-block.js:206
+msgid "Done"
+msgstr "Зроблено"
+
+#: languages/woo-gutenberg-products-block.php:84
+msgid "Please select an attribute"
+msgstr "Виберіть атрибут"
+
+#: languages/woo-gutenberg-products-block.php:81
+msgid "Please select at least one category to display"
+msgstr "Виберіть принаймні одну категорію для відображення"
+
+#: languages/woo-gutenberg-products-block.php:78
+msgid "Please search for and select products to display"
+msgstr "Шукайте та вибирайте продукти для відображення"
+
+#: languages/woo-gutenberg-products-block.php:75
+msgid "Please select which products you'd like to display"
+msgstr "Виберіть, які продукти потрібно відображати"
+
+#: languages/woo-gutenberg-products-block.php:72
+msgid "Displaying "
+msgstr "Відображення "
+
+#: languages/woo-gutenberg-products-block.php:69
+msgid "Display products from a specific category or multiple categories"
+msgstr "Відображати продукти з певної категорії або декількох категорій"
+
+#: languages/woo-gutenberg-products-block.php:66
+msgid "Display different products"
+msgstr "Відображення різних продуктів"
+
+#: languages/woo-gutenberg-products-block.php:63
+msgid "Product category"
+msgstr "Категорія продукту"
+
+#: languages/woo-gutenberg-products-block.php:60
+msgid "Hand-pick which products to display"
+msgstr "Вибирайте, які продукти відображатимуться"
+
+#: languages/woo-gutenberg-products-block.php:57
+msgid "Individual products"
+msgstr "Окремі продукти"
+
+#: languages/woo-gutenberg-products-block.php:54
+msgid "Choose which products you'd like to display:"
+msgstr "Виберіть, які продукти потрібно відображати:"
+
+#: languages/woo-gutenberg-products-block.php:51
+#: assets/js/components/search-list-control/index.js:35
+msgid "Search results updated."
+msgstr "Результати пошуку оновлено."
+
+#: languages/woo-gutenberg-products-block.php:45
+#: assets/js/components/search-list-control/index.js:32
+msgid "Search for items"
+msgstr "Пошук елементів"
+
+#: languages/woo-gutenberg-products-block.php:42
+#: assets/js/components/search-list-control/index.js:31
+msgid "No results for %s"
+msgstr "Немає результатів для %s"
+
+#: languages/woo-gutenberg-products-block.php:39
+#: assets/js/components/search-list-control/index.js:30
+msgid "No items found."
+msgstr "Нічого не знайдено."
+
+#: languages/woo-gutenberg-products-block.php:36
+#: assets/js/components/search-list-control/index.js:29
+msgid "Results"
+msgstr "Результати"
+
+#: languages/woo-gutenberg-products-block.php:33
+#: assets/js/components/search-list-control/index.js:28
+msgid "Clear all selected items"
+msgstr "Очистити всі вибрані елементи"
+
+#: languages/woo-gutenberg-products-block.php:30
+#: assets/js/components/search-list-control/index.js:215
+msgid "Clear all"
+msgstr "Очистити все"
+
+#: languages/woo-gutenberg-products-block.php:27
+#: assets/js/components/product-preview/index.js:30
+msgid "Add to cart"
+msgstr "Додати у кошик"
+
+#: languages/woo-gutenberg-products-block.php:20
+#: assets/js/components/product-category-control/index.js:129
+msgid "Category search results updated."
+msgstr "Оновлені результати пошуку категорії."
+
+#: languages/woo-gutenberg-products-block.php:14
+#: assets/js/components/product-category-control/index.js:118
+msgid "Search for product categories"
+msgstr "Шукати категорії продуктів"
+
+#: languages/woo-gutenberg-products-block.php:11
+#: assets/js/components/product-category-control/index.js:117
+msgid "Your store doesn't have any product categories."
+msgstr "У вашому магазині немає категорій продуктів."
+
+#: languages/woo-gutenberg-products-block.php:8
+#: assets/js/components/product-category-control/index.js:116
+msgid "Product Categories"
+msgstr "Категорії товарів"
+
+#: languages/woo-gutenberg-products-block.php:5
+#: assets/js/components/product-category-control/index.js:115
+msgid "Clear all product categories"
+msgstr "Очистити всі категорії продуктів"
+
+#. Description of the plugin
+msgid "WooCommerce blocks for the Gutenberg editor."
+msgstr "Блоки WooCommerce для редактора Гутенберга."
+
+#. Plugin Name of the plugin
+msgid "WooCommerce Blocks"
+msgstr "Блоки WooCommerce"
+
+#: languages/woo-gutenberg-products-block.php:97
+msgid "Featured products"
+msgstr "Рекомендовані товари"
+
+#: includes/class-wgpb-products-controller.php:52
+#: includes/class-wgpb-product-categories-controller.php:52
+#: includes/class-wgpb-product-attributes-controller.php:52
+#: includes/class-wgpb-product-attribute-terms-controller.php:52
+msgid "Unique identifier for the resource."
+msgstr "Унікальний ідентифікатор для ресурсу."
+
+#. Author URI of the plugin
+msgid "https://woocommerce.com"
+msgstr "https://woocommerce.com"
+
+#. Author of the plugin
+msgid "Automattic"
+msgstr "Автоматично"
+
+#. Plugin URI of the plugin
+msgid "https://github.com/woocommerce/woocommerce-gutenberg-products-block"
+msgstr "https://github.com/woocommerce/woocommerce-gutenberg-products-block"

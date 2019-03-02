@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Storefront package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-12-06 12:32:56+0000\n"
+"PO-Revision-Date: 2019-02-24 18:27:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,31 +19,50 @@ msgstr "Storefront"
 msgid "Storefront is the perfect theme for your next WooCommerce project. Designed and developed by WooCommerce Core developers, it features a bespoke integration with WooCommerce itself plus many of the most popular customer facing WooCommerce extensions. There are several layout & color options to personalise your shop, multiple widget regions, a responsive design and much more. Developers will love its lean and extensible codebase making it a joy to customize and extend. Looking for a WooCommerce theme? Look no further!"
 msgstr "Storefront — отличная тема для вашего проекта на WooCommerce. Будучи созданной разработчиками ядра WooCommerce, она полностью совместима с самим плагином и многими из его самых популярных расширений. Тема включает в себя несколько вариантов разметки и цветовых схем для настройки вашего магазина, несколько областей для виджетов, адаптивный дизайн и многое другое. Разработчикам понравится её простой и расширяемый код, который очень легко настраивается и дополняется. Ищете тему для WooCommerce? Вы её нашли!"
 
-#: inc/storefront-template-functions.php:446
+#: inc/storefront-template-functions.php:517
+msgid "Tag:"
+msgid_plural "Tags:"
+msgstr[0] "Метка"
+msgstr[1] "Метки"
+msgstr[2] "Меток"
+
+#: inc/storefront-template-functions.php:511
+msgid "Category:"
+msgid_plural "Categories:"
+msgstr[0] "Рубрика"
+msgstr[1] "Рубрики"
+msgstr[2] "Рубрик"
+
+#. translators: %s: post date
+#: inc/storefront-template-functions.php:451
+msgid "Posted on %s"
+msgstr "Опубликовано %s"
+
+#: inc/storefront-template-functions.php:457
 msgid "by"
 msgstr "от"
 
-#: inc/woocommerce/storefront-woocommerce-template-functions.php:828
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:825
 msgid "Product Brands"
 msgstr "Бренды"
 
-#: inc/woocommerce/storefront-woocommerce-template-functions.php:813
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:810
 msgid "Shop by Brand"
 msgstr "Бренды магазина"
 
-#: inc/woocommerce/storefront-woocommerce-template-functions.php:778
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:775
 msgid "You're viewing:"
 msgstr "Вы смотрите: "
 
-#: inc/woocommerce/storefront-woocommerce-template-functions.php:733
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:724
 msgid "More products"
 msgstr "Больше товаров"
 
-#: inc/storefront-template-functions.php:541
+#: inc/storefront-template-functions.php:550
 msgid "Previous post:"
 msgstr "Предыдущий: "
 
-#: inc/storefront-template-functions.php:540
+#: inc/storefront-template-functions.php:549
 msgid "Next post:"
 msgstr "Следующий: "
 
@@ -75,11 +94,11 @@ msgstr "Цвет текста"
 msgid "Hero heading color"
 msgstr "Цвет заголовка"
 
-#: inc/class-storefront.php:307
+#: inc/class-storefront.php:308
 msgid "Collapse child menu"
 msgstr "Свернутое вложенное меню"
 
-#: inc/class-storefront.php:306
+#: inc/class-storefront.php:307
 msgid "Expand child menu"
 msgstr "Развернутое вложенное меню"
 
@@ -99,7 +118,7 @@ msgstr "Организуйте свои меню, добавив страниц�
 msgid "Customize your navigation menus"
 msgstr "Настройте свои меню"
 
-#: inc/class-storefront.php:441
+#: inc/class-storefront.php:467
 msgid "Post Navigation"
 msgstr "Навигация"
 
@@ -119,8 +138,8 @@ msgstr "Коментарии записи"
 msgid "Promoted Products"
 msgstr "Продвигаемые товары"
 
-#: inc/admin/class-storefront-admin.php:174
 #: inc/admin/class-storefront-plugin-install.php:62
+#: inc/admin/class-storefront-admin.php:174
 msgid "Activated"
 msgstr "Комментарии к сообщению"
 
@@ -276,8 +295,8 @@ msgstr "Пропустить этот шаг"
 msgid "No thanks, skip the tour"
 msgstr "Спасибо, пропустить тур"
 
-#: inc/nux/class-storefront-nux-guided-tour.php:112
 #: inc/nux/class-storefront-nux-admin.php:131
+#: inc/nux/class-storefront-nux-guided-tour.php:112
 msgid "Let's go!"
 msgstr "Вперед!"
 
@@ -322,32 +341,32 @@ msgid "Thanks for installing Storefront, you rock! 🤘"
 msgstr "Спасибо за установку Storefront, это круто! 🤘"
 
 #. translators: 1: column number, 2: row number
-#: inc/class-storefront.php:230
+#: inc/class-storefront.php:231
 msgid "Widgets added here will appear in column %1$d of footer row %2$d."
 msgstr "Виджеты, добавленные в эту область появятся в %1$d столбце %2$d строки подвала."
 
 #. translators: 1: row number, 2: column number
-#: inc/class-storefront.php:227
+#: inc/class-storefront.php:228
 msgid "Footer Row %1$d - Column %2$d"
 msgstr "Подвал Строка %1$d - Столбец %2$d"
 
 #. translators: 1: column number
-#: inc/class-storefront.php:224
+#: inc/class-storefront.php:225
 msgid "Widgets added here will appear in column %1$d of the footer."
 msgstr "Виджеты, добавленные в эту область появятся в %1$d столбце подвала."
 
 #. translators: 1: column number
-#: inc/class-storefront.php:221
+#: inc/class-storefront.php:222
 msgid "Footer Column %1$d"
 msgstr "Подвал Столбец %1$d"
 
-#: inc/admin/class-storefront-admin.php:205
 #: inc/admin/class-storefront-plugin-install.php:114
+#: inc/admin/class-storefront-admin.php:205
 msgid "Learn more"
 msgstr "Узнать больше"
 
-#: inc/admin/class-storefront-admin.php:198
 #: inc/admin/class-storefront-plugin-install.php:94
+#: inc/admin/class-storefront-admin.php:198
 msgid "Install now"
 msgstr "Установить сейчас"
 
@@ -412,7 +431,7 @@ msgstr "Документация"
 msgid "Support"
 msgstr "Поддержка"
 
-#: inc/class-storefront.php:208
+#: inc/class-storefront.php:209
 msgid "Widgets added to this region will appear beneath the header and above the main content."
 msgstr "Виджеты, добавленные в эту область, будут отображаться между шапкой и основной контентной областью"
 
@@ -444,19 +463,11 @@ msgstr "Новинки"
 msgid "Shop by Category"
 msgstr "Категории товаров"
 
-#: inc/storefront-template-functions.php:507
-msgid "Tagged"
-msgstr "Метки:"
-
-#: inc/storefront-template-functions.php:500
-msgid "Posted in"
-msgstr "Рубрика:"
-
 #: inc/storefront-template-functions.php:229
 msgid "Menu"
 msgstr "Меню"
 
-#: inc/class-storefront.php:206
+#: inc/class-storefront.php:207
 msgid "Below Header"
 msgstr "Под заголовком"
 
@@ -482,12 +493,12 @@ msgstr "Новинки"
 msgid "Header background image"
 msgstr "Фоновое изображение заголовка"
 
-#: inc/storefront-template-functions.php:526
+#: inc/storefront-template-functions.php:535
 msgctxt "Next post"
 msgid "Next"
 msgstr "Далее"
 
-#: inc/storefront-template-functions.php:527
+#: inc/storefront-template-functions.php:536
 msgctxt "Previous post"
 msgid "Previous"
 msgstr "Назад"
@@ -545,41 +556,35 @@ msgstr "Посмотреть вашу корзину"
 msgid "On Sale"
 msgstr "Распродажа"
 
-#. translators: %s: post date
-#: inc/storefront-template-functions.php:440
-msgctxt "post date"
-msgid "Posted on"
-msgstr "Опубликовано"
-
 #: inc/nux/class-storefront-nux-guided-tour.php:83
 msgid "Next"
 msgstr "Далее"
 
-#: inc/storefront-template-functions.php:455
+#: inc/storefront-template-functions.php:466
 msgid "% Comments"
 msgstr "Комментарии (%)"
 
-#: inc/storefront-template-functions.php:455
+#: inc/storefront-template-functions.php:466
 msgid "1 Comment"
 msgstr "1 комментарий"
 
-#: inc/storefront-template-functions.php:455
+#: inc/storefront-template-functions.php:466
 msgid "Leave a comment"
 msgstr "Оставить комментарий"
 
 #. translators: used between list items, there is a space after the comma
-#: inc/storefront-template-functions.php:491
-#: inc/storefront-template-functions.php:494
+#: inc/storefront-template-functions.php:502
+#: inc/storefront-template-functions.php:505
 msgid ", "
 msgstr ", "
 
 #. translators: %s: post title
-#: inc/storefront-template-functions.php:396
+#: inc/storefront-template-functions.php:401
 msgid "Continue reading %s"
 msgstr "Читать далее %s"
 
 #: inc/storefront-template-functions.php:339
-#: inc/storefront-template-functions.php:405
+#: inc/storefront-template-functions.php:410
 msgid "Pages:"
 msgstr "Страницы:"
 
@@ -607,17 +612,17 @@ msgstr "Изменить"
 msgid "Your comment is awaiting moderation."
 msgstr "Ваш комментарий ожидает проверки."
 
+#: inc/class-storefront.php:95
 #: inc/nux/class-storefront-nux-starter-content.php:192
-#: inc/class-storefront.php:94
 msgid "Handheld Menu"
 msgstr "Меню для мобильных устройств"
 
-#: inc/class-storefront.php:200
+#: inc/class-storefront.php:201
 msgid "Sidebar"
 msgstr "Боковая колонка"
 
+#: inc/class-storefront.php:94
 #: inc/nux/class-storefront-nux-starter-content.php:182
-#: inc/class-storefront.php:93
 msgid "Secondary Menu"
 msgstr "Дополнительное меню"
 
@@ -625,8 +630,8 @@ msgstr "Дополнительное меню"
 msgid "Looking for more options?"
 msgstr "Ищете дополнительные варианты?"
 
+#: inc/class-storefront.php:93
 #: inc/nux/class-storefront-nux-starter-content.php:162
-#: inc/class-storefront.php:92
 msgid "Primary Menu"
 msgstr "Основное меню"
 
@@ -723,8 +728,8 @@ msgstr "Установить WooCommerce"
 msgid "Add your logo"
 msgstr "Добавить свой логотип"
 
-#: inc/admin/class-storefront-admin.php:183
 #: inc/admin/class-storefront-plugin-install.php:75
+#: inc/admin/class-storefront-admin.php:183
 msgid "Activate"
 msgstr "Активировать"
 

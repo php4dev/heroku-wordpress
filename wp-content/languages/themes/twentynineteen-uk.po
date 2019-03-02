@@ -1,0 +1,391 @@
+# Translation of Themes - Twenty Nineteen in Ukrainian
+# This file is distributed under the same license as the Themes - Twenty Nineteen package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-01-10 07:05:20+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: uk_UA\n"
+"Project-Id-Version: Themes - Twenty Nineteen\n"
+
+#. Description of the theme
+msgid "Our 2019 default theme is designed to show off the power of the block editor. It features custom styles for all the default blocks, and is built so that what you see in the editor looks like what you'll see on your website. Twenty Nineteen is designed to be adaptable to a wide range of websites, whether you’re running a photo blog, launching a new business, or supporting a non-profit. Featuring ample whitespace and modern sans-serif headlines paired with classic serif body text, it's built to be beautiful on all screen sizes."
+msgstr "Наша тема 2019-го за замовчуванням, призначена для демонстрації потужності редактора блоків. Вона містить спеціальні стилі для всіх блоків за замовчуванням і побудована таким чином, щоб те, що ви бачите в редакторі, виглядало так само, як ви побачите на своєму веб-сайті. Twenty Nineteen призначена до широкого кола веб-сайтів, незалежно від того, чи створюєте фото-блог, запускаєте новий бізнес або підтримуєте некомерційну діяльність. Маючи великі проміжки і сучасні заголовки без засічок у поєднанні з класичним текстом із засічками, вона створена бути гарною на всіх розмірах екрану."
+
+#. Theme Name of the theme
+msgid "Twenty Nineteen"
+msgstr "Twenty Nineteen"
+
+#. translators: %s: parent post link
+#: single.php:31
+msgid "<span class=\"meta-nav\">Published in</span><span class=\"post-title\">%s</span>"
+msgstr "<span class=\"meta-nav\">Опубліковано в</span><span class=\"post-title\">%s</span>"
+
+#: image.php:87
+msgctxt "Parent post link"
+msgid "<span class=\"meta-nav\">Published in</span><br><span class=\"post-title\">%title</span>"
+msgstr "<span class=\"meta-nav\">Опубліковано в</span><br><span class=\"post-title\">%title</span>"
+
+#: inc/template-functions.php:216
+msgid "Back"
+msgstr "Назад"
+
+#: inc/template-functions.php:209
+msgid "More"
+msgstr "Більше"
+
+#: inc/customizer.php:98
+msgid "Apply a filter to featured images using the primary color"
+msgstr "Застосування фільтру до головного зображення з використанням основного кольору"
+
+#: inc/customizer.php:56
+msgctxt "primary color"
+msgid "Custom"
+msgstr "Користувацький"
+
+#: inc/customizer.php:55
+msgctxt "primary color"
+msgid "Default"
+msgstr "За замовчуванням"
+
+#: functions.php:166
+msgid "White"
+msgstr "Біла"
+
+#: functions.php:161
+msgid "Light Gray"
+msgstr "Світло-сіра"
+
+#: functions.php:156
+msgid "Dark Gray"
+msgstr "Темно-сіра"
+
+#: functions.php:151
+msgid "Secondary"
+msgstr "Вторинна"
+
+#: functions.php:134
+msgid "XL"
+msgstr "XL"
+
+#: functions.php:133
+msgid "Huge"
+msgstr "Величезний"
+
+#: functions.php:128
+msgid "L"
+msgstr "L"
+
+#: functions.php:127
+msgid "Large"
+msgstr "Великий"
+
+#: functions.php:122
+msgid "M"
+msgstr "M"
+
+#: functions.php:121
+msgid "Normal"
+msgstr "Звичайний"
+
+#: functions.php:115
+msgid "Small"
+msgstr "Маленький"
+
+#: functions.php:116
+msgid "S"
+msgstr "S"
+
+#: functions.php:60 footer.php:37
+msgid "Footer Menu"
+msgstr "Меню підвалу"
+
+#: inc/customizer.php:78
+msgid "Apply a custom color for buttons, links, featured images, etc."
+msgstr "Застосування користувацького кольору для кнопок, посилань, головних зображень та ін."
+
+#: inc/back-compat.php:39 inc/back-compat.php:53 inc/back-compat.php:73
+msgid "Twenty Nineteen requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again."
+msgstr "Twenty Nineteen вимагає WordPress версії не нижче 4.7. У вас - %s. Будь ласка оновіть WordPress перед тим, як спробувати знову."
+
+#: template-parts/content/content.php:18
+#: template-parts/content/content-excerpt.php:18
+msgctxt "post"
+msgid "Featured"
+msgstr "Обрана"
+
+#: image.php:70
+msgctxt "Used before full size attachment link."
+msgid "Full size"
+msgstr "Повний розмір"
+
+#: image.php:56
+msgid "Page"
+msgstr "Сторінка"
+
+#: functions.php:190
+msgid "Add widgets here to appear in your footer."
+msgstr "Додайте віджети сюди, для розміщення їх в підвал сайту."
+
+#: functions.php:188 template-parts/footer/footer-widgets.php:12
+msgid "Footer"
+msgstr "Підвал"
+
+#: inc/customizer.php:53
+msgid "Primary Color"
+msgstr "Основний колір"
+
+#: template-parts/content/content-none.php:39
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Вибачте, але за вашим пошуковим запитом нічого не знайдено. Будь ласка, спробуйте інші ключові слова."
+
+#. translators: 1: link to WP admin new post page.
+#: template-parts/content/content-none.php:26
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Готові опублікувати свій перший запис? <a href=\"%1$s\">Почніть звідси</a>."
+
+#: header.php:24
+msgid "Skip to content"
+msgstr "Перейти до вмісту"
+
+#: functions.php:61 template-parts/header/site-branding.php:46
+msgid "Social Links Menu"
+msgstr "Меню соціальних посилань"
+
+#: 404.php:20
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Отакої! Сторінка не знайдена."
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#: template-parts/content/content.php:36
+#: template-parts/content/content-single.php:27
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "Продовжити читання<span class=\"screen-reader-text\"> \"%s\"</span>"
+
+#: single.php:38
+msgid "Next Post"
+msgstr "Наступний запис"
+
+#. translators: used between list items, there is a space after the comma.
+#: inc/template-tags.php:86 inc/template-tags.php:98
+msgid ", "
+msgstr ", "
+
+#: template-parts/header/site-branding.php:33
+msgid "Top Menu"
+msgstr "Верхнє меню"
+
+#: template-parts/content/content-none.php:16
+msgid "Nothing Found"
+msgstr "Нічого не знайдено"
+
+#: 404.php:24
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "За даною адресою нічого не знайдено. Спробуйте скористатися пошуком."
+
+#: single.php:42
+msgid "Previous post:"
+msgstr "Попередній запис:"
+
+#: single.php:39
+msgid "Next post:"
+msgstr "Наступний запис:"
+
+#: search.php:22
+msgid "Search results for:"
+msgstr "Результати пошуку для:"
+
+#. translators: %s: Name of current post. Only visible to screen readers.
+#: inc/template-tags.php:63
+msgid "Leave a comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr "Залишити коментар<span class=\"screen-reader-text\"> до %s</span>"
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#. translators: %s: Name of current post. Only visible to screen readers.
+#: template-parts/content/content-page.php:41
+#: template-parts/header/entry-header.php:32 inc/template-tags.php:120
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr "Редагувати <span class=\"screen-reader-text\">%s</span>"
+
+#: functions.php:59 functions.php:146
+msgid "Primary"
+msgstr "Головна"
+
+#: comments.php:35 comments.php:105 comments.php:107
+msgid "Leave a comment"
+msgstr "Залишити коментар"
+
+#: classes/class-twentynineteen-walker-comment.php:95
+msgid "Edit"
+msgstr "Редагувати"
+
+#. translators: 1: comment date, 2: comment time
+#: classes/class-twentynineteen-walker-comment.php:87
+msgid "%1$s at %2$s"
+msgstr "%1$s о %2$s"
+
+#. translators: %1(X comments)$s
+#: template-parts/post/discussion-meta.php:16
+msgid "%d Comment"
+msgid_plural "%d Comments"
+msgstr[0] "%d коментар"
+msgstr[1] "%d коментарі"
+msgstr[2] "%d коментарів"
+
+#. translators: 1: number of comments, 2: post title
+#: comments.php:44
+msgctxt "comments title"
+msgid "%1$s reply on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s replies on &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s коментар &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s коментарі &ldquo;%2$s&rdquo;"
+msgstr[2] "%1$s коментарів &ldquo;%2$s&rdquo;"
+
+#. translators: %s: post title
+#: comments.php:40
+msgctxt "comments title"
+msgid "One reply on &ldquo;%s&rdquo;"
+msgstr "Один коментар до &ldquo;%s&rdquo;"
+
+#: comments.php:33
+msgid "Join the Conversation"
+msgstr "Долучитися до обговорення"
+
+#: template-parts/post/author-bio.php:26
+msgid "View more posts"
+msgstr "Переглянути більше записів"
+
+#. translators: %s: Taxonomy singular name
+#: inc/template-functions.php:90
+msgid "%s Archives:"
+msgstr "Архіви %s:"
+
+#: inc/template-functions.php:84
+msgid "Daily Archives: "
+msgstr "Архіви за день:"
+
+#: inc/template-functions.php:86
+msgid "Post Type Archives: "
+msgstr "Архіви типів записів:"
+
+#: inc/template-functions.php:82
+msgid "Monthly Archives: "
+msgstr "Архіви за місяць:"
+
+#: inc/template-functions.php:80
+msgid "Yearly Archives: "
+msgstr "Архіви за рік:"
+
+#: inc/template-functions.php:78
+msgid "Author Archives: "
+msgstr "Архіви автора:"
+
+#: inc/template-functions.php:76
+msgid "Tag Archives: "
+msgstr "Архіви позначок:"
+
+#: inc/template-functions.php:74
+msgid "Category Archives: "
+msgstr "Архіви категорій:"
+
+#: classes/class-twentynineteen-walker-comment.php:67
+msgid "%s <span class=\"screen-reader-text says\">says:</span>"
+msgstr "%s <span class=\"screen-reader-text says\">пише:</span>"
+
+#: classes/class-twentynineteen-walker-comment.php:100
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш коментар чекає схвалення."
+
+#: comments.php:116
+msgid "Comments are closed."
+msgstr "Обговорення закрито."
+
+#: comments.php:96
+msgid "Next"
+msgstr "Далі"
+
+#: inc/template-tags.php:46
+msgid "Posted by"
+msgstr "Написано автором"
+
+#: inc/template-tags.php:104
+msgid "Tags:"
+msgstr "Позначки:"
+
+#: inc/template-tags.php:92
+msgid "Posted in"
+msgstr "Написано в"
+
+#: inc/template-tags.php:234
+msgid "Older posts"
+msgstr "Старі записи"
+
+#: inc/template-tags.php:230
+msgid "Newer posts"
+msgstr "Нові записи"
+
+#: single.php:41
+msgid "Previous Post"
+msgstr "Попередній запис"
+
+#. translators: %s: post author
+#: template-parts/post/author-bio.php:17
+msgid "Published by %s"
+msgstr "Опубліковано %s"
+
+#. translators: %s: WordPress.
+#: footer.php:28
+msgid "Proudly powered by %s."
+msgstr "Сайт працює на %s."
+
+#: template-parts/post/discussion-meta.php:18
+msgid "No comments"
+msgstr "Немає коментарів"
+
+#: image.php:52 template-parts/content/content-page.php:27
+#: template-parts/content/content.php:49
+#: template-parts/content/content-single.php:40
+msgid "Pages:"
+msgstr "Сторінки:"
+
+#: template-parts/content/content-none.php:46
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Схоже не вдалося знайти те, що ви шукаєте. Можливо допоможе пошук."
+
+#: inc/template-functions.php:82
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: inc/template-functions.php:80
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#: inc/template-functions.php:92
+msgid "Archives:"
+msgstr "Архіви:"
+
+#: comments.php:92 comments.php:95 comments.php:96
+msgid "Comments"
+msgstr "Коментарі"
+
+#: comments.php:95
+msgid "Previous"
+msgstr "Назад"
+
+#. Author of the theme
+msgid "the WordPress team"
+msgstr "Команда WordPress"
+
+#. Author URI of the theme
+#: footer.php:25
+msgid "https://wordpress.org/"
+msgstr "https://uk.wordpress.org/"
+
+#. Theme URI of the theme
+msgid "https://github.com/WordPress/twentynineteen"
+msgstr "https://github.com/WordPress/twentynineteen"

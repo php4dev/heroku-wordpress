@@ -1,0 +1,374 @@
+# Translation of Themes - Twenty Sixteen in Russian
+# This file is distributed under the same license as the Themes - Twenty Sixteen package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-12-07 09:51:50+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: ru\n"
+"Project-Id-Version: Themes - Twenty Sixteen\n"
+
+#. Theme Name of the theme
+msgid "Twenty Sixteen"
+msgstr "Twenty Sixteen"
+
+#. Description of the theme
+msgid "Twenty Sixteen is a modernized take on an ever-popular WordPress layout — the horizontal masthead with an optional right sidebar that works perfectly for blogs and websites. It has custom color options with beautiful default color schemes, a harmonious fluid grid using a mobile-first approach, and impeccable polish in every detail. Twenty Sixteen will make your WordPress look beautiful everywhere."
+msgstr "Twenty Sixteen — современная версия популярного дизайна для WordPress. Горизонтальный заголовок с дополнительной правой панелью идеально подходит для блогов и сайтов. В теме есть произвольная настройка цветов с красивыми встроенными схемами и гармоничная растяжимая сетка с ориентацией на мобильные устройства, внимание уделено даже мельчайшим деталям. С Twenty Sixteen ваш сайт будет прекрасно выглядеть на любых экранах."
+
+#: functions.php:202
+msgid "Bright Red"
+msgstr "Ярко-красная"
+
+#: functions.php:197
+msgid "Dark Red"
+msgstr "Темно-красная"
+
+#: functions.php:192
+msgid "Medium Brown"
+msgstr "Средне-коричневая"
+
+#: functions.php:187
+msgid "Dark Brown"
+msgstr "Темно-коричневая"
+
+#: functions.php:182
+msgid "Light Blue"
+msgstr "Светло-синяя"
+
+#: functions.php:177
+msgid "Bright Blue"
+msgstr "Ярко-синяя"
+
+#: functions.php:172
+msgid "Blue Gray"
+msgstr "Сине-серая"
+
+#: functions.php:167
+msgid "White"
+msgstr "Белая"
+
+#: functions.php:162
+msgid "Light Gray"
+msgstr "Светло-серая"
+
+#: functions.php:157
+msgid "Medium Gray"
+msgstr "Средне-серая"
+
+#: functions.php:152
+msgid "Dark Gray"
+msgstr "Темно-серая"
+
+#. translators: %s: Name of current post
+#: template-parts/content.php:29 inc/template-tags.php:194
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "Читать далее<span class=\"screen-reader-text\"> «%s»</span>"
+
+#. translators: %s: Name of current post
+#: template-parts/content.php:53 template-parts/content-page.php:39
+#: template-parts/content-search.php:28 template-parts/content-search.php:43
+#: template-parts/content-single.php:47 image.php:88
+msgid "Edit<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "Изменить<span class=\"screen-reader-text\"> «%s»</span>"
+
+#: inc/customizer.php:345
+msgid "Red"
+msgstr "Красный"
+
+#. translators: %s: post title
+#: comments.php:31
+msgctxt "comments title"
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr "%s: 1 комментарий"
+
+#: searchform.php:16
+msgctxt "submit button"
+msgid "Search"
+msgstr "Поиск"
+
+#: searchform.php:14
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Поиск&hellip;"
+
+#: searchform.php:13
+msgctxt "label"
+msgid "Search for:"
+msgstr "Искать:"
+
+#: footer.php:30
+msgid "Footer Social Links Menu"
+msgstr "Меню социальных ссылок в подвале"
+
+#: footer.php:17
+msgid "Footer Primary Menu"
+msgstr "Основное меню подвала"
+
+#: functions.php:246
+msgid "Add widgets here to appear in your sidebar."
+msgstr "Добавьте сюда виджеты, которые вы хотите разместить в боковой колонке."
+
+#: template-parts/content.php:14
+msgid "Featured"
+msgstr "Избранные"
+
+#: template-parts/content-none.php:28
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Запрошенную информацию найти не удалось. Возможно, будет полезен поиск по сайту."
+
+#: template-parts/content-none.php:23
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Извините, по вашему запросу ничего не найдено. Попробуйте другие ключевые слова."
+
+#: template-parts/content-none.php:19
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Готовы опубликовать свою первую запись? <a href=\"%1$s\">Начните отсюда</a>."
+
+#: template-parts/content-none.php:13
+msgid "Nothing Found"
+msgstr "Не найдено"
+
+#: template-parts/biography.php:33
+msgid "View all posts by %s"
+msgstr "Посмотреть все записи автора %s"
+
+#: template-parts/biography.php:28
+msgid "Author:"
+msgstr "Автор:"
+
+#: single.php:42
+msgid "Previous post:"
+msgstr "Предыдущая запись:"
+
+#: single.php:41
+msgid "Previous"
+msgstr "Назад"
+
+#: single.php:39
+msgid "Next post:"
+msgstr "Следующая запись:"
+
+#: single.php:38
+msgid "Next"
+msgstr "Далее"
+
+#: search.php:18
+msgid "Search Results for: %s"
+msgstr "Результаты поиска: %s"
+
+#: inc/template-tags.php:112
+msgctxt "Used before tag names."
+msgid "Tags"
+msgstr "Метки"
+
+#: inc/template-tags.php:103
+msgctxt "Used before category names."
+msgid "Categories"
+msgstr "Рубрики"
+
+#: inc/template-tags.php:99 inc/template-tags.php:108
+msgctxt "Used between list items, there is a space after the comma."
+msgid ", "
+msgstr ", "
+
+#: inc/template-tags.php:83
+msgctxt "Used before publish date."
+msgid "Posted on"
+msgstr "Опубликовано"
+
+#: inc/template-tags.php:40
+msgctxt "Used before post format."
+msgid "Format"
+msgstr "Формат"
+
+#: inc/template-tags.php:52
+msgid "Leave a comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr "Добавить комментарий<span class=\"screen-reader-text\"> к записи %s</span>"
+
+#: inc/template-tags.php:26
+msgctxt "Used before post author name."
+msgid "Author"
+msgstr "Автор"
+
+#: functions.php:207 inc/customizer.php:355
+msgid "Yellow"
+msgstr "Жёлтый"
+
+#: inc/customizer.php:335
+msgid "Gray"
+msgstr "Серый"
+
+#: inc/customizer.php:325
+msgid "Dark"
+msgstr "Тёмный"
+
+#: inc/customizer.php:221
+msgid "Main Text Color"
+msgstr "Основной цвет текста"
+
+#: inc/customizer.php:315
+msgid "Default"
+msgstr "По умолчанию"
+
+#: inc/customizer.php:242
+msgid "Secondary Text Color"
+msgstr "Цвет второстепенного текста"
+
+#: inc/customizer.php:200
+msgid "Link Color"
+msgstr "Цвет ссылок"
+
+#: inc/customizer.php:176
+msgid "Page Background Color"
+msgstr "Цвет фона страницы"
+
+#: single.php:31 image.php:107
+msgctxt "Parent post link"
+msgid "<span class=\"meta-nav\">Published in</span><span class=\"post-title\">%title</span>"
+msgstr "<span class=\"meta-nav\">Опубликовано в</span><span class=\"post-title\">%title</span>"
+
+#: inc/back-compat.php:41 inc/back-compat.php:54 inc/back-compat.php:72
+msgid "Twenty Sixteen requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again."
+msgstr "Тема Twenty Sixteen требует WordPress версии 4.4 или выше. У вас версия %s. Пожалуйста, обновите WordPress и попробуйте ещё раз."
+
+#: inc/customizer.php:153
+msgid "Base Color Scheme"
+msgstr "Основная цветовая схема"
+
+#: image.php:77
+msgctxt "Used before full size attachment link."
+msgid "Full size"
+msgstr "Полный размер"
+
+#: template-parts/content.php:36 template-parts/content-page.php:24
+#: template-parts/content-single.php:26 image.php:58
+msgid "Pages:"
+msgstr "Страницы:"
+
+#: image.php:26
+msgid "Next Image"
+msgstr "Следующее изображение"
+
+#: image.php:25
+msgid "Previous Image"
+msgstr "Предыдущее изображение"
+
+#: header.php:49
+msgid "Menu"
+msgstr "Меню"
+
+#: header.php:27
+msgid "Skip to content"
+msgstr "Перейти к содержимому"
+
+#: functions.php:386
+msgid "expand child menu"
+msgstr "раскрыть дочернее меню"
+
+#: functions.php:387
+msgid "collapse child menu"
+msgstr "свернуть дочернее меню"
+
+#. translators: If there are characters in your language that are not supported
+#. by Inconsolata, translate this to 'off'. Do not translate into your own
+#. language.
+#: functions.php:306
+msgctxt "Inconsolata font: on or off"
+msgid "on"
+msgstr "on"
+
+#: functions.php:256
+msgid "Content Bottom 1"
+msgstr "Под содержимым 1"
+
+#: functions.php:258 functions.php:270
+msgid "Appears at the bottom of the content on posts and pages."
+msgstr "Отображается под содержимым на страницах и записях."
+
+#: functions.php:268
+msgid "Content Bottom 2"
+msgstr "Под содержимым 2"
+
+#. translators: If there are characters in your language that are not supported
+#. by Merriweather, translate this to 'off'. Do not translate into your own
+#. language.
+#: functions.php:296
+msgctxt "Merriweather font: on or off"
+msgid "on"
+msgstr "off"
+
+#. translators: If there are characters in your language that are not supported
+#. by Montserrat, translate this to 'off'. Do not translate into your own
+#. language.
+#: functions.php:301
+msgctxt "Montserrat font: on or off"
+msgid "on"
+msgstr "off"
+
+#: functions.php:244
+msgid "Sidebar"
+msgstr "Боковая колонка"
+
+#: functions.php:93 header.php:66
+msgid "Social Links Menu"
+msgstr "Меню социальных ссылок"
+
+#: functions.php:92 header.php:53
+msgid "Primary Menu"
+msgstr "Основное меню"
+
+#: footer.php:61
+msgid "Proudly powered by %s"
+msgstr "Сайт работает на %s"
+
+#: comments.php:71
+msgid "Comments are closed."
+msgstr "Обсуждение закрыто."
+
+#. translators: 1: number of comments, 2: post title
+#: comments.php:35
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "%2$s: %1$s комментарий"
+msgstr[1] "%2$s: %1$s комментария"
+msgstr[2] "%2$s: %1$s комментариев"
+
+#: archive.php:53 template-parts/content.php:40
+#: template-parts/content-page.php:28 template-parts/content-single.php:30
+#: search.php:41 index.php:50 image.php:62
+msgid "Page"
+msgstr "Страница"
+
+#: archive.php:52 search.php:40 index.php:49
+msgid "Next page"
+msgstr "Следующая страница"
+
+#: archive.php:51 search.php:39 index.php:48
+msgid "Previous page"
+msgstr "Предыдущая страница"
+
+#: 404.php:21
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "По данному адресу ничего не найдено. Попробуйте воспользоваться поиском."
+
+#: 404.php:17
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Ой! Страница не найдена."
+
+#. Theme URI of the theme
+msgid "https://wordpress.org/themes/twentysixteen/"
+msgstr "https://wordpress.org/themes/twentysixteen/"
+
+#. Author of the theme
+msgid "the WordPress team"
+msgstr "Команда WordPress"
+
+#. Author URI of the theme
+#: footer.php:60
+msgid "https://wordpress.org/"
+msgstr "https://wordpress.org/"

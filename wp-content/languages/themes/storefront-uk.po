@@ -1,0 +1,512 @@
+# Translation of Themes - Storefront in Ukrainian
+# This file is distributed under the same license as the Themes - Storefront package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-01-29 03:28:07+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: uk_UA\n"
+"Project-Id-Version: Themes - Storefront\n"
+
+#. Theme Name of the plugin/theme
+msgid "Storefront"
+msgstr "Storefront"
+
+#. Description of the plugin/theme
+msgid "Storefront is the perfect theme for your next WooCommerce project. Designed and developed by WooCommerce Core developers, it features a bespoke integration with WooCommerce itself plus many of the most popular customer facing WooCommerce extensions. There are several layout & color options to personalise your shop, multiple widget regions, a responsive design and much more. Developers will love it's lean and extensible codebase making it a joy to customise and extend. Looking for a WooCommerce theme? Look no further!"
+msgstr "Storefront - відмінна тема для вашого наступного проекту на WooCommerce. Будучи створеною розробниками ядра WooCommerce, вона повністю сумісна із самим плагіном та багатьма з його найпопулярніших розширень. Тема включає в себе кілька варіантів розмітки та кольорових схем для налаштування вашого магазину, кілька областей для віджетів, адаптивний дизайн та багато іншого. Розробникам сподобається її простий та розширюваний код, який дуже легко налаштовується та доповнюється. Шукаєте тему для WooCommerce? Можете більше не шукати!"
+
+#: inc/class-storefront.php:145
+msgid "Widgets added to this region will appear beneath the header and above the main content."
+msgstr "Додані сюди віджети з'являться під заголовком та над основним вмістом."
+
+#: inc/admin/welcome-screen/component-contribute.php:15
+msgid "Download Theme Customisations"
+msgstr "Завантажити налаштовувач тем"
+
+#: inc/admin/welcome-screen/component-contribute.php:11
+msgid "We highly encourage you to make %s all yours. If you need to make a CSS tweak or add some custom JS or PHP, please use our Theme Customisations Plugin. Simply Click the button below, install as normal, and start Customizing today!"
+msgstr "Ми дуже заохочуємо вас зробити %s під себе. Якщо вам треба підлаштувати CSS чи додати власний JS чи PHP, будь ласка скористайтесь нашим плагіном для налаштування тем. Просто натисніть кнопку нижче, встановіть як зазвичай та починайте налаштовувати вже сьогодні!"
+
+#: inc/admin/welcome-screen/component-contribute.php:10
+msgid "Customise Storefront"
+msgstr "Налаштувати Storefront"
+
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:327
+msgid "My Account"
+msgstr "Мій обліковий запис"
+
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:300
+msgid "Search"
+msgstr "Пошук"
+
+#: inc/storefront-template-functions.php:738
+msgid "Best Sellers"
+msgstr "Часто купують"
+
+#: inc/storefront-template-functions.php:662
+msgid "Fan Favorites"
+msgstr "Популярне"
+
+#: inc/storefront-template-functions.php:621
+msgid "We Recommend"
+msgstr "Рекомендуємо"
+
+#: inc/storefront-template-functions.php:580
+msgid "New In"
+msgstr "Новинки"
+
+#: inc/storefront-template-functions.php:539
+msgid "Shop by Category"
+msgstr "Категорії товарів"
+
+#: inc/storefront-template-functions.php:443
+msgid "Comments"
+msgstr "Коментарі"
+
+#: inc/storefront-template-functions.php:433
+msgid "Tagged"
+msgstr "Позначено"
+
+#: inc/storefront-template-functions.php:420
+msgid "Posted in"
+msgstr "Рубрика"
+
+#: inc/storefront-template-functions.php:409
+msgid "Written by"
+msgstr "Автор"
+
+#: inc/storefront-template-functions.php:231
+msgid "Menu"
+msgstr "Меню"
+
+#: inc/admin/welcome-screen/component-intro.php:66
+msgid "Stay up to date with Storefront developments on the %sdev blog%s."
+msgstr "Будьте в курсі подій щодо розробки StoreFront у %sблозі розробників%s."
+
+#: inc/admin/welcome-screen/component-enhance.php:39
+#: inc/admin/welcome-screen/component-enhance.php:81
+#: inc/admin/welcome-screen/component-enhance.php:111
+msgid "We're currently unable to retrieve these products. Please double check your internet connection or try back later."
+msgstr "Не вдалося завантажити продукти. Перевірте ваше з'єднання або повторіть спробу пізніше."
+
+#: inc/admin/welcome-screen/component-contribute.php:32
+msgid "You can find a wide range of information on how to use and customise %s in our %sdocumentation%s. If you're a customer you can get support in our %sHelpdesk%3$s. Otherwise you can try posting on the WordPress.org %ssupport forums%3$s."
+msgstr "Детальну інформацію щодо використання та налаштування теми %s можна знайти в нашій %sдокументації%s. Якщо ви наш клієнт, ви можете звернутися за допомогою до нашої %sслужби підтримки%3$s. В іншому випадку - ви можете спробувати задати питання на %sфорумах підтримки%3$s WordPress.org."
+
+#: inc/admin/welcome-screen/component-contribute.php:31
+msgid "Get support"
+msgstr "Отримати допомогу"
+
+#: inc/class-storefront.php:143
+msgid "Below Header"
+msgstr "Під заголовком"
+
+#: inc/admin/welcome-screen/component-intro.php:58
+msgid "Customizer settings"
+msgstr "Налаштування Customizer"
+
+#: inc/customizer/class-storefront-customizer-control-more.php:31
+msgid "Enjoying %s?"
+msgstr "Подобається %s?"
+
+#: inc/admin/welcome-screen/component-intro.php:57
+msgid "FAQ"
+msgstr "ЧаП"
+
+#: inc/admin/welcome-screen/component-intro.php:56
+msgid "Installation &amp; configuration"
+msgstr "Встановлення та налаштування"
+
+#: inc/admin/welcome-screen/component-intro.php:54
+msgid "Featured Docs"
+msgstr "Рекомендовані документи"
+
+#: inc/admin/welcome-screen/component-intro.php:34
+msgid "Recent News"
+msgstr "Останні новини"
+
+#: inc/admin/welcome-screen/component-intro.php:31
+msgid "Latest %s news"
+msgstr "Останні новини від %s"
+
+#: inc/admin/welcome-screen/component-intro.php:26
+msgid "Install %s"
+msgstr "Встановити %s"
+
+#: inc/admin/welcome-screen/component-intro.php:19
+msgid "Built to enrich your %s store"
+msgstr "Створена, щоб збагатити ваш магазин %s"
+
+#: inc/admin/welcome-screen/component-intro.php:14
+msgid "%sEnjoying %s?%s Why not %sleave a review%s on WordPress.org? We'd really appreciate it!"
+msgstr "%sВам подобається тема %s?%s Чому б не %sзалишити відгук%s на WordPress.org? Ми будемо дуже вдячні!"
+
+#: inc/admin/welcome-screen/component-enhance.php:86
+msgid "View all %s child themes &rarr;"
+msgstr "Переглянути всі дочірні теми %s →"
+
+#: inc/admin/welcome-screen/component-enhance.php:53
+msgid "Take a look at our range of child themes for %s that allow you to easily change the look of your store to suit a specific industry."
+msgstr "Подивіться наш набір дочірніх тем для %s, за допомогою яких можна легко змінити зовнішній вигляд магазину для конкретної галузі."
+
+#: inc/admin/welcome-screen/component-enhance.php:52
+msgid "Child themes"
+msgstr "Дочірні теми"
+
+#: inc/admin/welcome-screen/component-enhance.php:94
+msgid "There are a number of free plugins available for %s on the WordPress.org %splugin repository%s. Here's a few we made earlier:"
+msgstr "Безкоштовні плагіни для %s можна знайти в %sкаталозі плагінів%s на WordPress.org. Ось деякі з них:"
+
+#: inc/admin/welcome-screen/component-enhance.php:46
+msgid "View all %s extensions &rarr;"
+msgstr "Переглянути всі розширення %s →"
+
+#: inc/admin/welcome-screen/component-enhance.php:22
+msgid "Take a look at our range of extensions that extend and enhance %s functionality."
+msgstr "Подивіться наш набір розширень, які покращують та доповнюють функціональність %s."
+
+#: inc/admin/welcome-screen/component-enhance.php:20
+msgid "Enhance %s"
+msgstr "Вдосконалити %s"
+
+#: inc/admin/welcome-screen/component-contribute.php:38
+msgid "An %s project"
+msgstr "Проект %s"
+
+#: inc/admin/welcome-screen/component-contribute.php:27
+msgid "Please suggest and vote on ideas at the %s%s Ideas board%s. The most popular ideas will see prioritised development."
+msgstr "Пропонуйте ідеї та голосуйте за них на %sфорумі ідей %s%s. Найбільш популярні пропозиції будуть реалізовані першочергово."
+
+#: inc/admin/welcome-screen/component-contribute.php:26
+msgid "Suggest a feature"
+msgstr "Запропонувати функцію"
+
+#: inc/admin/welcome-screen/component-contribute.php:21
+msgid "Contribute to Storefront"
+msgstr "Участь у розвитку Storefront"
+
+#: inc/admin/welcome-screen/component-intro.php:24
+msgid "%s is activated"
+msgstr "%s активовано"
+
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:225
+msgid "On Sale Now"
+msgstr "Розпродаж"
+
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:233
+msgid "New In Store"
+msgstr "Новинки"
+
+#: inc/admin/welcome-screen/component-enhance.php:62
+#: inc/admin/welcome-screen/component-enhance.php:106
+msgid "Free!"
+msgstr "Безкоштовно!"
+
+#: inc/admin/welcome-screen/component-enhance.php:92
+msgid "Install free plugins"
+msgstr "Встановити безкоштовні плагіни"
+
+#: inc/customizer/class-storefront-customizer.php:234
+msgid "Header background image"
+msgstr "Фонове зображення заголовка"
+
+#: inc/storefront-template-functions.php:461
+msgctxt "Next post"
+msgid "Next"
+msgstr "Наступні"
+
+#: inc/storefront-template-functions.php:462
+msgctxt "Previous post"
+msgid "Previous"
+msgstr "Попередні"
+
+#: 404.php:58
+msgid "Popular Products"
+msgstr "Популярні товари"
+
+#: 404.php:22
+msgid "Nothing was found at this location. Try searching, or check out the links below."
+msgstr "За даною адресою нічого не знайдено. Скористайтеся пошуком або перегляньте посилання нижче."
+
+#. Template Name of the plugin/theme
+msgid "Homepage"
+msgstr "Головна сторінка"
+
+#. Template Name of the plugin/theme
+msgid "Full width"
+msgstr "Уся ширина"
+
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:75
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] "%d товар"
+msgstr[1] "%d товари"
+msgstr[2] "%d товарів"
+
+#: search.php:16
+msgid "Search Results for: %s"
+msgstr "Результати пошуку для фрази: %s"
+
+#: 404.php:47
+msgid "Product Categories"
+msgstr "Категорії товарів"
+
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:217
+msgid "Featured Products"
+msgstr "Рекомендовані товари"
+
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:74
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:313
+msgid "View your shopping cart"
+msgstr "Переглянути кошик"
+
+#: inc/storefront-template-functions.php:701
+msgid "On Sale"
+msgstr "Розпродаж"
+
+#: inc/storefront-template-functions.php:500
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr "Опубліковано %s"
+
+#: inc/storefront-template-functions.php:444
+msgid "% Comments"
+msgstr "%s коментарів"
+
+#: inc/storefront-template-functions.php:444
+msgid "1 Comment"
+msgstr "1 коментар"
+
+#: inc/storefront-template-functions.php:444
+msgid "Leave a comment"
+msgstr "Залишити коментар"
+
+#. translators: used between list items, there is a space after the comma
+#: inc/storefront-template-functions.php:415
+#: inc/storefront-template-functions.php:428
+msgid ", "
+msgstr ", "
+
+#: inc/storefront-template-functions.php:377
+msgid "Continue reading %s"
+msgstr "Читати далі %s"
+
+#: inc/storefront-template-functions.php:322
+#: inc/storefront-template-functions.php:385
+msgid "Pages:"
+msgstr "Сторінки:"
+
+#: inc/storefront-template-functions.php:286
+msgid "Skip to navigation"
+msgstr "Перейти до навігації"
+
+#: inc/storefront-template-functions.php:262
+msgid "Secondary Navigation"
+msgstr "Додаткова навігація"
+
+#: inc/storefront-template-functions.php:287
+msgid "Skip to content"
+msgstr "Перейти до контенту"
+
+#: inc/storefront-template-functions.php:128
+msgid "%1$s designed by %2$s."
+msgstr "Тема %1$s розроблена %2$s."
+
+#: inc/storefront-template-functions.php:230
+msgid "Primary Navigation"
+msgstr "Головне меню"
+
+#: inc/storefront-template-functions.php:64
+msgid "Edit"
+msgstr "Редагувати"
+
+#: inc/class-storefront.php:154
+msgid "Footer %d"
+msgstr "Підвал %d"
+
+#: inc/class-storefront.php:156
+msgid "Widgetized Footer Region %d."
+msgstr "Область віджетів підвалу %d."
+
+#: inc/storefront-template-functions.php:48
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш коментар очікує узгодження."
+
+#: inc/class-storefront.php:88
+msgid "Handheld Menu"
+msgstr "Меню для мобільних пристроїв"
+
+#: inc/class-storefront.php:137
+msgid "Sidebar"
+msgstr "Бокова панель"
+
+#: inc/class-storefront.php:87
+msgid "Secondary Menu"
+msgstr "Додаткове меню"
+
+#: inc/customizer/class-storefront-customizer.php:460
+msgid "Looking for more options?"
+msgstr "Потрібні додаткові опції?"
+
+#: inc/class-storefront.php:86
+msgid "Primary Menu"
+msgstr "Головне меню"
+
+#: inc/customizer/class-storefront-customizer.php:437
+msgid "General Layout"
+msgstr "Загальна розмітка"
+
+#: inc/customizer/class-storefront-customizer.php:450
+msgid "More"
+msgstr "Більше..."
+
+#: inc/customizer/class-storefront-customizer.php:289
+msgid "Customise the look & feel of your web site footer."
+msgstr "Налаштувати вигляд підвалу вашого сайту."
+
+#: inc/customizer/class-storefront-customizer.php:358
+msgid "Customise the look & feel of your web site buttons."
+msgstr "Налаштувати вигляд кнопок вашого сайту."
+
+#: inc/customizer/class-storefront-customizer.php:356
+msgid "Buttons"
+msgstr "Кнопки"
+
+#: inc/customizer/class-storefront-customizer.php:415
+msgid "Alternate button text color"
+msgstr "Додатковий колір тексту кнопки"
+
+#: inc/customizer/class-storefront-customizer.php:400
+msgid "Alternate button background color"
+msgstr "Додатковий колір фону кнопки"
+
+#: inc/customizer/class-storefront-customizer.php:425
+msgid "Layout"
+msgstr "Розмітка"
+
+#: inc/customizer/class-storefront-customizer.php:287
+msgid "Footer"
+msgstr "Підвал"
+
+#: inc/customizer/class-storefront-customizer.php:277
+#: inc/customizer/class-storefront-customizer.php:346
+msgid "Link color"
+msgstr "Колір посилань"
+
+#: inc/customizer/class-storefront-customizer.php:247
+#: inc/customizer/class-storefront-customizer.php:301
+#: inc/customizer/class-storefront-customizer.php:370
+msgid "Background color"
+msgstr "Колір фону"
+
+#: inc/customizer/class-storefront-customizer.php:195
+#: inc/customizer/class-storefront-customizer.php:316
+msgid "Heading color"
+msgstr "Колір заголовку"
+
+#: inc/customizer/class-storefront-customizer.php:225
+msgid "Link / accent color"
+msgstr "Колір посилання / виділення"
+
+#: inc/customizer/class-storefront-customizer.php:210
+#: inc/customizer/class-storefront-customizer.php:262
+#: inc/customizer/class-storefront-customizer.php:331
+#: inc/customizer/class-storefront-customizer.php:385
+msgid "Text color"
+msgstr "Колір тексту"
+
+#: inc/customizer/class-storefront-customizer.php:182
+msgid "Typography"
+msgstr "Шрифти"
+
+#: inc/customizer/class-storefront-customizer.php:144
+msgid "Header"
+msgstr "Заголовок"
+
+#: inc/admin/welcome-screen/component-contribute.php:22
+msgid "Found a bug? Want to contribute a patch or create a new feature? %sGitHub is the place to go!%s Or would you like to translate %s into your language? %sGet involved on WordPress.org%s."
+msgstr "Знайшли помилку? Бажаєте поділитися патчем або створити нову функцію? Можете зробити це на %sGitHub%s! Або бажаєте перекласти %s на вашу мову? %sПриєднуйтесь на WordPress.org%s."
+
+#: inc/admin/class-storefront-admin.php:57
+msgid "Get started with Storefront"
+msgstr "Початок роботи із Storefront"
+
+#: inc/admin/class-storefront-admin.php:56
+msgid "Thanks for choosing Storefront! You can read hints and tips on how get the most out of your new theme on the %swelcome screen%s."
+msgstr "Дякуємо вам за вибір Storefront! Поради та підказки про те, як отримати максимум від вашої нової теми, ви можете знайти на %sекрані привітання%s."
+
+#: inc/customizer/class-storefront-customizer-control-more.php:28
+msgid "There's a range of %s extensions available to put additional power in your hands. Check out the %s%s%s page in your dashboard for more information."
+msgstr "Існує цілий комплект розширень для %s, які дадуть вам більше можливостей. Подробиці можна дізнатися на сторінці %s%s%s в майстерні."
+
+#: inc/customizer/class-storefront-customizer-control-more.php:34
+msgid "Why not leave us a review on %sWordPress.org%s?  We'd really appreciate it!"
+msgstr "Чому б не залишити відгук про нас на %sWordPress.org%s? Ми будемо дуже вдячні!"
+
+#: inc/customizer/class-storefront-customizer.php:140
+msgid "Background"
+msgstr "Фон"
+
+#: inc/admin/welcome-screen/component-intro.php:21
+msgid "Although %s works fine as a regular WordPress theme, it really shines when used for an online store. Install %s and start selling now."
+msgstr "Хоча %s можна використовувати як звичайну тему для WordPress, насправді відмінно вона  підходить для інтернет-магазину. Встановіть %s та починайте продаж вже зараз."
+
+#: content-none.php:29
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Здається, ми не можемо знайти те, що ви шукаєте. Можливо, пошук по сайту зможе допомогти."
+
+#: content-none.php:24
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Вибачте, за вашим запитом нічого не знайдено. Спробуйте інші ключові слова."
+
+#: content-none.php:20
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Готові опублікувати свій перший запис? <a href=\"%1$s\">Почніть звідси</a>."
+
+#: content-none.php:14
+msgid "Nothing Found"
+msgstr "Нічого не знайдено"
+
+#: comments.php:64
+msgid "Comments are closed."
+msgstr "Коментувати не дозволено."
+
+#: comments.php:39 comments.php:57
+msgid "Newer Comments &rarr;"
+msgstr "Наступні коментарі →"
+
+#: comments.php:38 comments.php:56
+msgid "&larr; Older Comments"
+msgstr "← Попередні коментарі"
+
+#: comments.php:37 comments.php:55
+msgid "Comment navigation"
+msgstr "Навігація по коментарях"
+
+#: comments.php:28
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s коментар до &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s коментарі до &ldquo;%2$s&rdquo;"
+msgstr[2] "%1$s коментарів до &ldquo;%2$s&rdquo;"
+
+#: 404.php:19
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Ой! Сторінка не знайдена."
+
+#. Author URI of the plugin/theme
+msgid "https://woocommerce.com/"
+msgstr "https://woocommerce.com/"
+
+#. Theme URI of the plugin/theme
+msgid "https://woocommerce.com/storefront"
+msgstr "https://woocommerce.com/storefront"
+
+#. Author of the plugin/theme
+msgid "WooThemes"
+msgstr "WooThemes"
