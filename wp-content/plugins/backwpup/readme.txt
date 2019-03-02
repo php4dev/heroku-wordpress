@@ -2,9 +2,9 @@
 Contributors: inpsyde, danielhuesken, Bueltge, nullbyte
 Tags: backup, database backup, cloud backup, restore, wordpress backup
 Requires at least: 3.9
-Tested up to: 5.0.3
+Tested up to: 5.1.0
 Requires PHP: 5.3.3
-Stable tag: 3.6.7
+Stable tag: 3.6.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -160,8 +160,14 @@ Yes. You need to have writing access to the wp-config.php file (usually residing
 [You can find a detailed tutorial in the BackWPup documentation.](https://backwpup.com/docs/install-backwpup-pro-activate-licence/)
 
 == Changelog ==
+= Version 3.6.8 =
+Release Date: Feb 25, 2019
+
+* Fixed: Typos in settings job page
+* Fixed: Rest API admin note language doesn't change when changing user language
+
 = Version 3.6.7 =
-Release Date: Jan 23, 2019
+Release Date: Jan 22, 2019
 
 * Fixed: More margin to dashboard footer to avoid save button unclickable
 * Fixed: On folder sync destination folder is not created
