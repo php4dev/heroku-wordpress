@@ -24,7 +24,7 @@ msgstr "Вебхук статус повинен бути дійсним."
 #: templates/emails/plain/customer-processing-order.php:27
 #: templates/emails/customer-processing-order.php:30
 msgid "Just to let you know &mdash; we've received your order #%s, and it is now being processed:"
-msgstr "Просто повідомити &mdash; ми отримали ваше замовлення #%s, і його зараз обробляється:"
+msgstr "Повідомляємо &mdash; ми отримали ваше замовлення #%s, і воно зараз обробляється:"
 
 #: includes/admin/views/html-notice-wootenberg.php:30
 msgid "Install the WooCommerce Products Block"
