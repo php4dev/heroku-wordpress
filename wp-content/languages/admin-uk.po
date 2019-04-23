@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.1.x - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-04-10 21:25:44+0000\n"
+"PO-Revision-Date: 2019-04-12 12:56:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2072,11 +2072,11 @@ msgstr "Доступні віджети"
 
 #: wp-admin/widgets.php:406
 msgid "Disable accessibility mode"
-msgstr "Деактивувати режим доступності"
+msgstr "Вимкнути режим спеціальних можливостей"
 
 #: wp-admin/widgets.php:406
 msgid "Enable accessibility mode"
-msgstr "Увімкнути режим доступності"
+msgstr "Ввімкнути режим спеціальних можливостей"
 
 #: wp-admin/widgets.php:373
 msgid "Error in displaying the widget settings form."
@@ -10347,7 +10347,7 @@ msgstr "Автоматичне оновлення WordPress не вдалося!
 
 #: wp-admin/includes/update.php:662
 msgid "An automated WordPress update has failed to complete - <a href=\"%s\">please attempt the update again now</a>."
-msgstr "Автоматичне оновлення WordPress аварійно завершилось - <a href=\"%s\">спробуйте ще раз</a>."
+msgstr "Автоматичне оновлення WordPress завершилось аварійно - <a href=\"%s\">будь ласка, спробуйте ще раз</a>."
 
 #: wp-admin/includes/update.php:421
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" %3$s>View version %4$s details</a>. <em>Automatic update is unavailable for this plugin.</em>"

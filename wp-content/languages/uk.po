@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.1.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-04-10 21:30:56+0000\n"
+"PO-Revision-Date: 2019-04-12 11:47:00+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2061,7 +2061,7 @@ msgstr[2] "%d редакцій"
 #: wp-includes/js/dist/editor.js:25194 wp-includes/js/dist/editor.js:26739
 #: wp-includes/js/dist/editor.js:26846
 msgid "Suggestion:"
-msgstr "Підказки:"
+msgstr "Пропозиції:"
 
 #: wp-includes/js/dist/editor.js:25180
 msgid "Post Format"
@@ -12554,7 +12554,7 @@ msgstr "Посилання"
 
 #: wp-includes/widgets/class-wp-widget-links.php:26
 msgid "Your blogroll"
-msgstr "Ваш блоґрол"
+msgstr "Ваші посилання"
 
 #: wp-includes/widgets/class-wp-widget-recent-posts.php:148
 msgid "Display post date?"
@@ -12671,7 +12671,7 @@ msgstr "Мета"
 
 #: wp-includes/widgets/class-wp-widget-meta.php:29
 msgid "Login, RSS, &amp; WordPress.org links."
-msgstr "Вхід, RSS, і посилання WordPress.org."
+msgstr "Вхід, RSS, і WordPress.org посилання."
 
 #: wp-includes/widgets/class-wp-widget-media-gallery.php:61
 #: wp-includes/widgets/class-wp-widget-media.php:151
@@ -12874,7 +12874,7 @@ msgstr "Хмаринка позначок"
 
 #: wp-includes/widgets/class-wp-widget-tag-cloud.php:26
 msgid "A cloud of your most used tags."
-msgstr "Хмара ваших найбільш використовуваних позначок."
+msgstr "Хмара часто використовуваних позначок."
 
 #: wp-includes/widgets/class-wp-widget-recent-comments.php:169
 msgid "Number of comments to show:"
