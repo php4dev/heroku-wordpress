@@ -2,16 +2,18 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { registerBlockType } from '@wordpress/blocks';
+import classnames from 'classnames';
+import { createBlock, registerBlockType } from '@wordpress/blocks';
+import { without } from 'lodash';
 import { RawHTML } from '@wordpress/element';
 
 /**
  * Internal dependencies
  */
-import './style.scss';
+import './editor.scss';
 import Block from './block';
 import getShortcode from '../../utils/get-shortcode';
-import sharedAttributes from '../../utils/shared-attributes';
+import sharedAttributes, { sharedAttributeBlockTypes } from '../../utils/shared-attributes';
 
 /**
  * Register and run the "Products by Category" block.
@@ -47,6 +49,18 @@ registerBlockType( 'woocommerce/product-category', {
 			default: 'date',
 		},
 	},
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: without( sharedAttributeBlockTypes, 'woocommerce/product-category' ),
+				transform: ( attributes ) => createBlock(
+					'woocommerce/product-category',
+					{ ...attributes, editMode: false }
+				),
+			},
+		],
+	},
 
 	/**
 	 * Renders and manages the block.
@@ -63,9 +77,19 @@ registerBlockType( 'woocommerce/product-category', {
 	save( props ) {
 		const {
 			align,
+			contentVisibility,
 		} = props.attributes; /* eslint-disable-line react/prop-types */
+		const classes = classnames(
+			align ? `align${ align }` : '',
+			{
+				'is-hidden-title': ! contentVisibility.title,
+				'is-hidden-price': ! contentVisibility.price,
+				'is-hidden-rating': ! contentVisibility.rating,
+				'is-hidden-button': ! contentVisibility.button,
+			}
+		);
 		return (
-			<RawHTML className={ align ? `align${ align }` : '' }>
+			<RawHTML className={ classes }>
 				{ getShortcode( props, 'woocommerce/product-category' ) }
 			</RawHTML>
 		);

@@ -13,12 +13,13 @@ export default function getQuery( blockAttributes, name ) {
 	const query = {
 		status: 'publish',
 		per_page: rows * columns,
+		catalog_visibility: 'visible',
 	};
 
 	if ( categories && categories.length ) {
 		query.category = categories.join( ',' );
 		if ( catOperator && 'all' === catOperator ) {
-			query.cat_operator = 'AND';
+			query.category_operator = 'and';
 		}
 	}
 
@@ -45,7 +46,7 @@ export default function getQuery( blockAttributes, name ) {
 		query.attribute = attributes[ 0 ].attr_slug;
 
 		if ( attrOperator ) {
-			query.attr_operator = 'all' === attrOperator ? 'AND' : 'IN';
+			query.attribute_operator = 'all' === attrOperator ? 'and' : 'in';
 		}
 	}
 

@@ -7,11 +7,7 @@ import apiFetch from '@wordpress/api-fetch';
 import { Component, Fragment } from '@wordpress/element';
 import { find } from 'lodash';
 import PropTypes from 'prop-types';
-
-/**
- * Internal dependencies
- */
-import SearchListControl from '../search-list-control';
+import { SearchListControl } from '@woocommerce/components';
 
 class ProductControl extends Component {
 	constructor() {
@@ -24,8 +20,9 @@ class ProductControl extends Component {
 
 	componentDidMount() {
 		apiFetch( {
-			path: addQueryArgs( '/wc-pb/v3/products', {
+			path: addQueryArgs( '/wc-blocks/v1/products', {
 				per_page: -1,
+				catalog_visibility: 'visible',
 				status: 'publish',
 			} ),
 		} )

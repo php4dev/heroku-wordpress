@@ -2,7 +2,9 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { registerBlockType } from '@wordpress/blocks';
+import classnames from 'classnames';
+import { createBlock, registerBlockType } from '@wordpress/blocks';
+import { without } from 'lodash';
 import { RawHTML } from '@wordpress/element';
 
 /**
@@ -11,7 +13,7 @@ import { RawHTML } from '@wordpress/element';
 import Block from './block';
 import getShortcode from '../../utils/get-shortcode';
 import { IconNewReleases } from '../../components/icons';
-import sharedAttributes from '../../utils/shared-attributes';
+import sharedAttributes, { sharedAttributeBlockTypes } from '../../utils/shared-attributes';
 
 registerBlockType( 'woocommerce/product-new', {
 	title: __( 'Newest Products', 'woo-gutenberg-products-block' ),
@@ -27,6 +29,18 @@ registerBlockType( 'woocommerce/product-new', {
 	},
 	attributes: {
 		...sharedAttributes,
+	},
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: without( sharedAttributeBlockTypes, 'woocommerce/product-new' ),
+				transform: ( attributes ) => createBlock(
+					'woocommerce/product-new',
+					attributes
+				),
+			},
+		],
 	},
 
 	/**
@@ -44,9 +58,19 @@ registerBlockType( 'woocommerce/product-new', {
 	save( props ) {
 		const {
 			align,
+			contentVisibility,
 		} = props.attributes; /* eslint-disable-line react/prop-types */
+		const classes = classnames(
+			align ? `align${ align }` : '',
+			{
+				'is-hidden-title': ! contentVisibility.title,
+				'is-hidden-price': ! contentVisibility.price,
+				'is-hidden-rating': ! contentVisibility.rating,
+				'is-hidden-button': ! contentVisibility.button,
+			}
+		);
 		return (
-			<RawHTML className={ align ? `align${ align }` : '' }>
+			<RawHTML className={ classes }>
 				{ getShortcode( props, 'woocommerce/product-new' ) }
 			</RawHTML>
 		);

@@ -7,14 +7,13 @@ import apiFetch from '@wordpress/api-fetch';
 import { Component, Fragment } from '@wordpress/element';
 import { find } from 'lodash';
 import PropTypes from 'prop-types';
+import { SearchListControl, SearchListItem } from '@woocommerce/components';
 import { SelectControl } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
 import './style.scss';
-import SearchListControl from '../search-list-control';
-import SearchListItem from '../search-list-control/item';
 
 class ProductCategoryControl extends Component {
 	constructor() {
@@ -28,7 +27,7 @@ class ProductCategoryControl extends Component {
 
 	componentDidMount() {
 		apiFetch( {
-			path: addQueryArgs( '/wc-pb/v3/products/categories', { per_page: -1 } ),
+			path: addQueryArgs( '/wc-blocks/v1/products/categories', { per_page: -1 } ),
 		} )
 			.then( ( list ) => {
 				this.setState( { list, loading: false } );

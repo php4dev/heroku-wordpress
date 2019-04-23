@@ -2,8 +2,10 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames';
+import { createBlock, registerBlockType } from '@wordpress/blocks';
+import { without } from 'lodash';
 import Gridicon from 'gridicons';
-import { registerBlockType } from '@wordpress/blocks';
 import { RawHTML } from '@wordpress/element';
 
 /**
@@ -11,7 +13,7 @@ import { RawHTML } from '@wordpress/element';
  */
 import Block from './block';
 import getShortcode from '../../utils/get-shortcode';
-import sharedAttributes from '../../utils/shared-attributes';
+import sharedAttributes, { sharedAttributeBlockTypes } from '../../utils/shared-attributes';
 
 registerBlockType( 'woocommerce/product-on-sale', {
 	title: __( 'On Sale Products', 'woo-gutenberg-products-block' ),
@@ -36,6 +38,18 @@ registerBlockType( 'woocommerce/product-on-sale', {
 			default: 'date',
 		},
 	},
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: without( sharedAttributeBlockTypes, 'woocommerce/product-on-sale' ),
+				transform: ( attributes ) => createBlock(
+					'woocommerce/product-on-sale',
+					attributes
+				),
+			},
+		],
+	},
 
 	/**
 	 * Renders and manages the block.
@@ -52,9 +66,19 @@ registerBlockType( 'woocommerce/product-on-sale', {
 	save( props ) {
 		const {
 			align,
+			contentVisibility,
 		} = props.attributes; /* eslint-disable-line react/prop-types */
+		const classes = classnames(
+			align ? `align${ align }` : '',
+			{
+				'is-hidden-title': ! contentVisibility.title,
+				'is-hidden-price': ! contentVisibility.price,
+				'is-hidden-rating': ! contentVisibility.rating,
+				'is-hidden-button': ! contentVisibility.button,
+			}
+		);
 		return (
-			<RawHTML className={ align ? `align${ align }` : '' }>
+			<RawHTML className={ classes }>
 				{ getShortcode( props, 'woocommerce/product-on-sale' ) }
 			</RawHTML>
 		);

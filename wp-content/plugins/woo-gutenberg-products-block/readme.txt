@@ -1,10 +1,10 @@
 === WooCommerce Blocks ===
 Contributors: automattic, claudiulodro, tiagonoronha, jameskoster, ryelle, levinmedia
 Tags: gutenberg, woocommerce, woo commerce, products
-Requires at least: 4.9
-Tested up to: 5.0
+Requires at least: 5.0
+Tested up to: 5.2
 Requires PHP: 5.2
-Stable tag: 1.4.0
+Stable tag: 2.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 WooCommerce Blocks are the easiest, most flexible way to display your products on posts and pages!
 
-**NEW: Products by Attribute Block**
+**Products by Attribute Block**
 Display a grid of products from your selected attributes.
 
 **Featured Product Block**
@@ -42,16 +42,8 @@ We've also improved the category selection filter. If you select two or more cat
 
 = Minimum Requirements =
 
-* WordPress 4.9.x
-* Gutenberg plugin 4.6 or greater
-* WooCommerce 3.3.1 or greater
-* PHP version 5.2.4 or greater (PHP 7.2 or greater is recommended)
-* MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
-
-OR
-
-* WordPress 5.0.x
-* WooCommerce 3.5.1 or greater
+* WordPress 5.0
+* WooCommerce 3.6 or greater
 * PHP version 5.2.4 or greater (PHP 7.2 or greater is recommended)
 * MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
 
@@ -90,6 +82,33 @@ Release and roadmap notes available on the [WooCommerce Developers Blog](https:/
 5. WooCommerce Product Blocks in the block inserter menu
 
 == Changelog ==
+
+= 2.0.1 - 2019-04-22 =
+
+- Fix: Fix warnings about blocks already being registered.
+- Fix: Fix a conflict with WooCommerce 3.6 and WooCommerce Blocks 1.4 (this change only applies to the version of blocks bundled with WooCommerce core).
+
+= 2.0.0 - 2019-04-18 =
+
+- **BREAKING:** Requires WordPress 5.0+, WooCommerce 3.6+
+- **BREAKING:** Remove the legacy block entirely
+- **BREAKING:** Remove the `wc-pb/v3/*` endpoints in favor of new core `wc-blocks/v1/*` endpoints
+- Feature: Add content visibility settings to show/hide title, price, rating, button
+- Feature: Add transforms between basic product grid blocks
+- Fix: Add product rating display to preview, to better match front end
+- Fix: Product titles render HTML correctly in preview
+- Fix: Icons are now aligned correctly in placeholders
+- Fix: Grid block preview column width now matches the front-end
+- Fix: Webpack now builds using a custom jsonp callback, fixing possible collisions with other projects
+- API: Change namespace, endpoints now accessed at `/wc-blocks/v1/*`
+- API: Add `catalog_visibility` parameter for fetching products
+- API: Update structure of attribute term endpoint to return `attribute.slug`, `attribute.name` etc
+- API: Update parameters to use full names, `category_operator`, `attribute_operator`
+- Components: Move SearchListControl to `@woocommerce/components` library
+- Components: Added new control component GridContentControl to manage content visibility
+- Build: Reorganize CSS into one file for editor preview, and one file for front-end styles
+- Build: Move registration code to a new class
+- Build: Update packages
 
 = 1.4.0 - 2019-02-12 =
 
