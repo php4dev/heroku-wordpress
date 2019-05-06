@@ -335,6 +335,7 @@
 			$sql = str_replace("AND postmeta.meta_value ", "AND NULLIF(postmeta.meta_value, '')::int ", $sql);
 			$sql = str_replace("AND meta_value < ", "AND NULLIF(meta_value, '')::int < ", $sql);
 			$sql = str_replace("min( meta_value+0 )", "min( NULLIF(meta_value, '')::int )", $sql);
+			$sql = str_replace("wp_termmeta.meta_value+0 )", "NULLIF(wp_termmeta.meta_value, '')::int", $sql);
 			
 			// MySQL 'LIKE' is case insensitive by default, whereas PostgreSQL 'LIKE' is
 			$sql = str_replace( ' LIKE ', ' ILIKE ', $sql);
