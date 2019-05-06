@@ -29,6 +29,8 @@
 		// For WPMU (starting with WP 3.2)
 		'tinyint(2)'	=> 'smallint',
 		'tinyint(1)'	=> 'smallint',
+		'decimal(10,2)'	=> 'numeric(10,2)',
+		'decimal(3,2)'	=> 'numeric(3,2)',
 		"enum('0','1')"	=> 'smallint',
 		'COLLATE utf8_general_ci'	=> '',
 
