@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1f6824ea47e4f9e309f072fadc50e868
+class ComposerStaticInit2dba50ba57466a48cbb5b63c2b704554
 {
     public static $files = array (
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
@@ -44,6 +44,7 @@ class ComposerStaticInit1f6824ea47e4f9e309f072fadc50e868
         'I' => 
         array (
             'Inpsyde\\BackWPup\\' => 17,
+            'Inpsyde\\BackWPupShared\\' => 23,
         ),
         'F' => 
         array (
@@ -99,6 +100,10 @@ class ComposerStaticInit1f6824ea47e4f9e309f072fadc50e868
         'Inpsyde\\BackWPup\\' => 
         array (
             0 => __DIR__ . '/../..' . '/inc',
+        ),
+        'Inpsyde\\BackWPupShared\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/inpsyde/backwpup-shared/src',
         ),
         'Firebase\\JWT\\' => 
         array (
@@ -1598,6 +1603,7 @@ class ComposerStaticInit1f6824ea47e4f9e309f072fadc50e868
         'HTTP_Request2_ResponseTest' => __DIR__ . '/..' . '/pear/http_request2/tests/Request2/ResponseTest.php',
         'HTTP_Request2_SOCKS5' => __DIR__ . '/..' . '/pear/http_request2/HTTP/Request2/SOCKS5.php',
         'HTTP_Request2_SocketWrapper' => __DIR__ . '/..' . '/pear/http_request2/HTTP/Request2/SocketWrapper.php',
+        'Inpsyde\\BackWPupShared\\File\\MimeTypeExtractor' => __DIR__ . '/..' . '/inpsyde/backwpup-shared/src/File/MimeTypeExtractor.php',
         'Inpsyde_PhoneHome_ActionController' => __DIR__ . '/..' . '/inpsyde/phone-home-client/src/ActionController.php',
         'Inpsyde_PhoneHome_Configuration' => __DIR__ . '/..' . '/inpsyde/phone-home-client/src/Configuration.php',
         'Inpsyde_PhoneHome_Consent' => __DIR__ . '/..' . '/inpsyde/phone-home-client/src/Consent/Consent.php',
@@ -2509,11 +2515,11 @@ class ComposerStaticInit1f6824ea47e4f9e309f072fadc50e868
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1f6824ea47e4f9e309f072fadc50e868::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1f6824ea47e4f9e309f072fadc50e868::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit1f6824ea47e4f9e309f072fadc50e868::$prefixesPsr0;
-            $loader->fallbackDirsPsr0 = ComposerStaticInit1f6824ea47e4f9e309f072fadc50e868::$fallbackDirsPsr0;
-            $loader->classMap = ComposerStaticInit1f6824ea47e4f9e309f072fadc50e868::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2dba50ba57466a48cbb5b63c2b704554::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2dba50ba57466a48cbb5b63c2b704554::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit2dba50ba57466a48cbb5b63c2b704554::$prefixesPsr0;
+            $loader->fallbackDirsPsr0 = ComposerStaticInit2dba50ba57466a48cbb5b63c2b704554::$fallbackDirsPsr0;
+            $loader->classMap = ComposerStaticInit2dba50ba57466a48cbb5b63c2b704554::$classMap;
 
         }, null, ClassLoader::class);
     }

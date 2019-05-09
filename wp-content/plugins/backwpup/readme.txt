@@ -1,12 +1,11 @@
 === BackWPup - WordPress Backup Plugin ===
-Contributors: inpsyde, danielhuesken, Bueltge, nullbyte
+Contributors: inpsyde, danielhuesken, Bueltge, nullbyte, wido, dinamiko
 Tags: backup, database backup, cloud backup, restore, wordpress backup
 Requires at least: 3.9
-Tested up to: 5.1.0
+Tested up to: 5.1.1
 Requires PHP: 5.3.3
-Stable tag: 3.6.8
-License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Stable tag: 3.6.9
+License: GPLv2+
 
 Schedule complete automatic backups of your WordPress installation. Decide which content will be stored (Dropbox, S3…). This is the free version
 
@@ -160,6 +159,24 @@ Yes. You need to have writing access to the wp-config.php file (usually residing
 [You can find a detailed tutorial in the BackWPup documentation.](https://backwpup.com/docs/install-backwpup-pro-activate-licence/)
 
 == Changelog ==
+
+= Version 3.6.9 =
+Release Date: May 7, 2019
+
+* Fixed: Google Drive destination automatically remove old backup files
+* Fixed: Do not expose destination data within the manifest file
+* Fixed: Update Dropbox Tokens
+* Fixed: Restore error: MIME returns html instead of event stream
+* Fixed: Log files name are predictable because of weak hash
+* Fixed: ZipArchive doesn't fallback to PclZip in Restore
+* Fixed: Session already started could cause issues during ajax calls
+* Fixed: Wrong vendor include path for PEAR using MS Azure
+* Fixed: Decryption Key prompt when any error occur during the first step of a Restore
+* Fixed: Phone home client notice and php 5 issue with php short echo tag
+* Fixed: mime_content_type function may not exists prevent backup decryption
+* Improve: Restore Log and produce report for user feedback
+* Changed: License changed to GPLv2+
+
 = Version 3.6.8 =
 Release Date: Feb 25, 2019
 
