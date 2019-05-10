@@ -258,6 +258,7 @@ WHERE pg_class.relname='$table_name' AND pg_attribute.attnum>=1 AND NOT pg_attri
 			$pattern = '/CREATE TABLE [`]?(\w+)[`]?/';
 			preg_match($pattern, $sql, $matches);
 			$table = $matches[1];
+			$sql = str_replace( "`virtual`", '"virtual"', $sql);
 			
 			// Remove trailing spaces
 			$sql = trim( $sql).';';
