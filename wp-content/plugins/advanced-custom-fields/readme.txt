@@ -1,8 +1,9 @@
 === Advanced Custom Fields ===
 Contributors: elliotcondon
 Tags: acf, advanced, custom, field, fields, form, repeater, content
-Requires at least: 4.4.0
-Tested up to: 4.9.9
+Requires at least: 4.7.0
+Tested up to: 5.2
+Requires PHP: 5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +66,32 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 5.8.0 =
+*Release Date - 8 May 2019*
+
+* New - Added ACF Blocks feature for ACF PRO.
+* Fix - Fixed bug causing duplicate "save metabox" AJAX requests in the Gutenberg editor.
+* Fix - Fixed bug causing incorrect Repeater field value order in AJAX requests.
+* Dev - Added JS filter `'relationship_ajax_data'` to customize Relationship field AJAX data.
+* Dev - Added `$field_group` parameter to `'acf/location/match_rule'` filter.
+* Dev - Bumped minimum supported PHP version to 5.4.0.
+* Dev - Bumped minimum supported WP version to 4.7.0.
+* i18n - Updated German translation thanks to Ralf Koller.
+* i18n - Updated Portuguese language thanks to Pedro Mendonça.
+
+= 5.7.13 =
+*Release Date - 6 March 2019*
+
+* Fix - Fixed bug causing issues with registered fields during `switch_to_blog()`.
+* Fix - Fixed bug preventing sub fields from being reused across multiple parents.
+* Fix - Fixed bug causing the `get_sub_field()` function to fail if a tab field exists with the same name as the selected field.
+* Fix - Fixed bug corrupting field settings since WP 5.1 when instructions contain `< a target="" >`.
+* Fix - Fixed bug in Gutenberg where custom metabox location (acf_after_title) did not show on initial page load.
+* Fix - Fixed bug causing issues when importing/syncing multiple field groups which contain a clone field.
+* Fix - Fixed bug preventing the AMP plugin preview from working.
+* Dev - Added new 'pre' filters to get, update and delete meta functions.
+* i18n - Update Turkish translation thanks to Emre Erkan.
 
 = 5.7.12 =
 *Release Date - 15 February 2019*

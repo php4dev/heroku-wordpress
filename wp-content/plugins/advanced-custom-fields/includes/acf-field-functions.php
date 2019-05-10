@@ -329,7 +329,7 @@ add_action('acf/validate_field', 'acf_translate_field');
  * @date	30/09/13
  * @since	5.0.0
  *
- * @param	array $parent The field group or field array.
+ * @param	(int|string|array) $parent The field group or field settings. Also accepts the field group ID or key.
  * @return	array
  */
 function acf_get_fields( $parent ) {
@@ -694,6 +694,7 @@ function acf_render_field_wrap( $field, $element = 'div', $instruction = 'label'
 	// Todo: Move from $wrapper out into $field.
 	$width = acf_extract_var( $wrapper, 'width' );
 	if( $width ) {
+		$width = acf_numval( $width );
 		if( $element !== 'tr' && $element !== 'td' ) {
 			$wrapper['data-width'] = $width;
 			$wrapper['style'] .= " width:{$width}%;";
@@ -989,6 +990,9 @@ function acf_update_field( $field, $specific = array() ) {
 		$save = acf_get_sub_array( $save, $specific );
 	}
 	
+	// Unhook wp_targeted_link_rel() filter from WP 5.1 corrupting serialized data.
+	remove_filter( 'content_save_pre', 'wp_targeted_link_rel' );
+	
 	// Slash data.
 	// WP expects all data to be slashed and will unslash it (fixes '\' character issues).
 	$save = wp_slash( $save );
@@ -1274,9 +1278,12 @@ acf_add_filter_variations( 'acf/get_sub_field', array('type'), 2 );
  */
 function acf_search_fields( $id, $fields ) {
 	
-	// Loop over fields.
-	foreach( $fields as $field ) {
-		foreach( array( 'key', 'name', '_name', '__name' ) as $key ) {
+	// Loop over searchable keys in order of priority.
+	// Important to search "name" on all fields before "_name" backup.
+	foreach( array( 'key', 'name', '_name', '__name' ) as $key ) {
+		
+		// Loop over fields and compare.
+		foreach( $fields as $field ) {
 			if( isset($field[$key]) && $field[$key] === $id ) {
 				return $field;
 			}
@@ -1324,7 +1331,7 @@ function acf_get_field_ancestors( $field ) {
 	$ancestors = array();
 	
 	// Loop over parents.
-	while( $field = acf_get_field($field['parent']) ) {
+	while( $field['parent'] && $field = acf_get_field($field['parent']) ) {
 		$ancestors[] = $field['ID'] ? $field['ID'] : $field['key'];
 	}
 	
@@ -1363,7 +1370,8 @@ function acf_duplicate_fields( $fields = array(), $parent_id = 0 ) {
 		
 	// Duplicate fields.
 	foreach( $fields as $field ) {
-		$duplicates[] = acf_duplicate_field( $field['ID'], $parent_id );
+		$field_id = $field['ID'] ? $field['ID'] : $field['key'];
+		$duplicates[] = acf_duplicate_field( $field_id, $parent_id );
 	}
 	
 	// Return.

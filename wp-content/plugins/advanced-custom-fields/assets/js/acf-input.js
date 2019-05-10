@@ -2097,7 +2097,7 @@
 	*  @return	bool
 	*/
 	acf.isGutenberg = function(){
-		return ( window.wp && wp.blocks );
+		return ( window.wp && wp.data && wp.data.select && wp.data.select( 'core/editor' ) );
 	};
 	
 	/**
@@ -5105,9 +5105,9 @@
 	}
 	
 	// vars
-	var globalFieldActions = [ 'prepare', 'ready', 'load', 'append', 'remove', 'sortstart', 'sortstop', 'show', 'hide', 'unload' ];
+	var globalFieldActions = [ 'prepare', 'ready', 'load', 'append', 'remove', 'unmount', 'remount', 'sortstart', 'sortstop', 'show', 'hide', 'unload' ];
 	var singleFieldActions = [ 'valid', 'invalid', 'enable', 'disable', 'new' ];
-	var singleFieldEvents = [ 'remove', 'sortstart', 'sortstop', 'show', 'hide', 'unload', 'valid', 'invalid', 'enable', 'disable' ];
+	var singleFieldEvents = [ 'remove', 'unmount', 'remount', 'sortstart', 'sortstop', 'show', 'hide', 'unload', 'valid', 'invalid', 'enable', 'disable' ];
 	
 	// add
 	globalFieldActions.map( addGlobalFieldAction );
@@ -6002,14 +6002,8 @@
 		
 		initialize: function(){
 			
-			// bail early if too early
-			if( !api.isReady() ) {
-				api.ready( this.initializeMap, this );
-				return;
-			}
-			
-			// initializeMap
-			this.initializeMap();
+			// Ensure Google API is loaded and then initialize map.
+			withAPI( this.initializeMap.bind(this) );
 		},
 		
 		newLatLng: function( lat, lng ){
@@ -6151,7 +6145,7 @@
 		    }, this);
 		    
 		    // query
-		    api.geocoder.geocode({ 'latLng' : latLng }, callback);
+		    geocoder.geocode({ 'latLng' : latLng }, callback);
 		},
 		
 		setPlace: function( place ){
@@ -6237,7 +6231,7 @@
 		    });
 		    
 		    // query
-		    api.geocoder.geocode({ 'address' : address }, callback);
+		    geocoder.geocode({ 'address' : address }, callback);
 		},
 		
 		searchLocation: function(){
@@ -6346,73 +6340,62 @@
 	
 	acf.registerFieldType( Field );
 	
-	var api = new acf.Model({
+	// Vars.
+	var loading = false;
+	var geocoder = false;
+	
+	/**
+	 * withAPI
+	 *
+	 * Loads the Google Maps API library and troggers callback.
+	 *
+	 * @date	28/3/19
+	 * @since	5.7.14
+	 *
+	 * @param	function callback The callback to excecute.
+	 * @return	void
+	 */
+	
+	function withAPI( callback ) {
 		
-		geocoder: false,
-		
-		data: {
-			status: false,
-		},
-		
-		getStatus: function(){
-			return this.get('status');
-		},
-		
-		setStatus: function( status ){
-			return this.set('status', status);
-		},
-		
-		isReady: function(){
-			
-			// loaded
-			if( this.getStatus() == 'ready' ) {
-				return true;
-			}
-			
-			// loading
-			if( this.getStatus() == 'loading' ) {
-				return false;
-			}
-			
-			// check exists (optimal)
-			if( acf.isset(window, 'google', 'maps', 'places') ) {
-				this.setStatus('ready');
-				return true;
-			}
-			
-			// load api
-			var url = acf.get('google_map_api');
-			if( url ) {
-				this.setStatus('loading');
-				
-				// enqueue
-				$.ajax({
-					url: url,
-					dataType: 'script',
-					cache: true,
-					context: this,
-					success: function(){
-						
-						// ready
-						this.setStatus('ready');
-						
-						// geocoder
-						this.geocoder = new google.maps.Geocoder();
-						
-						// action						
-						acf.doAction('google_map_api_loaded');
-					}
-				});
-			}
-			
-			// return
-			return false;
-		},
-		
-		ready: function( callback, context ){
-			acf.addAction('google_map_api_loaded', callback, 10, context);
+		// Check if geocoder exists.
+		if( geocoder ) {
+			return callback();
 		}
-	});
+		
+		// Check if geocoder API exists.
+		if( acf.isset(window, 'google', 'maps', 'Geocoder') ) {
+			geocoder = new google.maps.Geocoder();
+			return callback();
+		}
+		
+		// Geocoder will need to be loaded. Hook callback to action.
+		acf.addAction( 'google_map_api_loaded', callback );
+		
+		// Bail early if already loading API.
+		if( loading ) {
+			return;
+		}
+		
+		// load api
+		var url = acf.get('google_map_api');
+		if( url ) {
+			
+			// Set loading status.
+			loading = true;
+			
+			// Load API
+			$.ajax({
+				url: url,
+				dataType: 'script',
+				cache: true,
+				success: function(){
+					geocoder = new google.maps.Geocoder();
+					acf.doAction('google_map_api_loaded');
+				}
+			});
+		}
+	}
 	
 })(jQuery);
 
@@ -7215,7 +7198,7 @@
 			'change [data-filter]': 				'onChangeFilter',
 			'keyup [data-filter]': 					'onChangeFilter',
 			'click .choices-list .acf-rel-item': 	'onClickAdd',
-			'click [data-name="remove_item"]': 		'onClickRemove',
+			'click [data-name="remove_item"]': 	'onClickRemove',
 			'mouseover': 							'onHover'
 		},
 		
@@ -7391,15 +7374,16 @@
 		
 		onClickRemove: function( e, $el ){
 			
+			// Prevent default here because generic handler wont be triggered.
+			e.preventDefault();
+			
 			// vars
 			var $span = $el.parent();
 			var $li = $span.parent();
 			var id = $span.data('id');
 			
 			// remove value
-			setTimeout(function(){
-				$li.remove();
-			}, 1);
+			$li.remove();
 			
 			// show choice
 			this.$listItem('choices', id).removeClass('disabled');
@@ -7434,6 +7418,9 @@
 			// extra
 			ajaxData.action = 'acf/fields/relationship/query';
 			ajaxData.field_key = this.get('key');
+			
+			// Filter.
+			ajaxData = acf.applyFilters( 'relationship_ajax_data', ajaxData, this );
 			
 			// return
 			return ajaxData;
@@ -8746,8 +8733,8 @@
 		
 		events: {
 			'mousedown .acf-editor-wrap.delay':	'onMousedown',
-			'sortstartField': 'disableEditor',
-			'sortstopField': 'enableEditor',
+			'unmountField': 'disableEditor',
+			'remountField': 'enableEditor',
 			'removeField': 'disableEditor'
 		},
 		
@@ -11043,10 +11030,14 @@
 					
 					// Trigger action.
 					acf.doAction('append', $postbox);
+					acf.doAction('append_postbox', postbox);
 				}
 				
 				// show postbox
 				postbox.showEnable();
+				
+				// Do action.
+				acf.doAction('show_postbox', postbox);
 				
 				// append
 				visible.push( result.id );
@@ -11056,6 +11047,9 @@
 			acf.getPostboxes().map(function( postbox ){
 				if( visible.indexOf( postbox.get('id') ) === -1 ) {
 					postbox.hideDisable();
+					
+					// Do action.
+					acf.doAction('hide_postbox', postbox);
 				}
 			});
 			
@@ -11100,6 +11094,12 @@
 			acf.screen.getPostType = this.getPostType;
 			acf.screen.getPostFormat = this.getPostFormat;
 			acf.screen.getPostCoreTerms = this.getPostCoreTerms;
+			
+			// Disable unload
+			acf.unload.disable();
+			
+			// Add actions.
+			//this.addAction( 'append_postbox', acf.screen.refreshAvailableMetaBoxesPerLocation );
 		},
 		
 		onChange: function(){
@@ -11176,8 +11176,65 @@
 			
 			// return
 			return terms;
-		},
+		}
 	});
+	
+	/**
+	 * acf.screen.refreshAvailableMetaBoxesPerLocation
+	 *
+	 * Refreshes the WP data state based on metaboxes found in the DOM.
+	 *
+	 * Caution. Not safe to use.
+	 * Causes duplicate dispatch listeners when saving post resulting in duplicate postmeta.
+	 *
+	 * @date	6/3/19
+	 * @since	5.7.13
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	acf.screen.refreshAvailableMetaBoxesPerLocation = function() {
+		
+		// Extract vars.
+		var select = wp.data.select( 'core/edit-post' );
+		var dispatch = wp.data.dispatch( 'core/edit-post' );
+		
+		// Load current metabox locations and data.
+		var data = {};
+		select.getActiveMetaBoxLocations().map(function( location ){
+			data[ location ] = select.getMetaBoxesPerLocation( location );
+		});
+		
+		// Generate flat array of existing ids.
+		var ids = [];
+		for( var k in data ) {
+			ids = ids.concat( data[k].map(function(m){ return m.id; }) );
+		}
+		
+		// Append ACF metaboxes.
+		acf.getPostboxes().map(function( postbox ){
+			
+			// Ignore if already exists in data.
+			if( ids.indexOf( postbox.get('id') ) !== -1 ) {
+				return;
+			}
+			
+			// Get metabox location looking at parent form.
+			var location = postbox.$el.closest('form').attr('class').replace('metabox-location-', '');
+			
+			// Ensure location exists.
+			data[ location ] = data[ location ] || [];
+			
+			// Append.
+			data[ location ].push({
+				id: postbox.get('id'),
+				title: postbox.get('title')
+			});
+		});
+		
+		// Update state.
+		dispatch.setAvailableMetaBoxesPerLocation(data);	
+	};
 
 })(jQuery);
 
@@ -12097,14 +12154,23 @@
 					$textarea.trigger('change');
 				});
 				
-				$( ed.getWin() ).on('unload', function() {
-					acf.tinymce.remove( id );
+				// Fix bug where Gutenberg does not hear "mouseup" event and tries to select multiple blocks.
+				ed.on('mouseup', function(e) {
+					var event = new MouseEvent('mouseup');
+					window.dispatchEvent(event);
 				});
 				
+				// Temporarily comment out. May not be necessary due to wysiwyg field actions.
+				//ed.on('unload', function(e) {
+				//	acf.tinymce.remove( id );
+				//});				
 			};
 			
 			// disable wp_autoresize_on (no solution yet for fixed toolbar)
 			init.wp_autoresize_on = false;
+			
+			// Enable wpautop allowing value to save without <p> tags.
+			init.wpautop = true;
 			
 			// hook for 3rd party customization
 			init = acf.applyFilters('wysiwyg_tinymce_settings', init, id, field);
@@ -12331,6 +12397,12 @@
 			}
 		},
 		onReady: function(){
+			
+			// Restore wp.editor functions used by tinymce removed in WP5.
+			if( acf.isset(window,'wp','oldEditor') ) {
+				wp.editor.autop = wp.oldEditor.autop;
+				wp.editor.removep = wp.oldEditor.removep;
+			}
 			
 			// bail early if no tinymce
 			if( !acf.isset(window,'tinymce','on') ) return;
@@ -13075,7 +13147,7 @@
 			'click button[type="submit"]':	'onClickSubmit',
 			//'click #editor .editor-post-publish-button': 'onClickSubmitGutenberg',
 			'click #save-post':				'onClickSave',
-			'mousedown #post-preview':		'onClickPreview', // use mousedown to hook in before WP click event
+			'submit form#post':				'onSubmitPost',
 			'submit form':					'onSubmit',
 		},
 		
@@ -13239,27 +13311,6 @@
 		},
 		
 		/**
-		*  onClickPreview
-		*
-		*  Set ignore to true when previewing a post.
-		*
-		*  @date	4/9/18
-		*  @since	5.7.5
-		*
-		*  @param	object e The event object.
-		*  @param	jQuery $el The input element.
-		*  @return	void
-		*/
-		onClickPreview: function( e, $el ) {
-			this.set('ignore', true);
-			
-			// if post has previously been published but prevented by an error, WP core has
-			// added a custom 'submit.edit-post' event which causes the input buttons to become disabled.
-			// remove this event to prevent UX issues.
-			$('form#post').off('submit.edit-post');
-		},
-		
-		/**
 		*  onClickSubmitGutenberg
 		*
 		*  Custom validation event for the gutenberg editor.
@@ -13293,6 +13344,31 @@
 		},
 		
 		/**
+		 * onSubmitPost
+		 *
+		 * Callback when the 'post' form is submit.
+		 *
+		 * @date	5/3/19
+		 * @since	5.7.13
+		 *
+		 * @param	object e The event object.
+		 * @param	jQuery $el The input element.
+		 * @return	void
+		 */
+		onSubmitPost: function( e, $el ) {
+			
+			// Check if is preview.
+			if( $('input#wp-preview').val() === 'dopreview' ) {
+				
+				// Ignore validation.
+				this.set('ignore', true);
+				
+				// Unlock form to fix conflict with core "submit.edit-post" event causing all submit buttons to be disabled.
+				acf.unlockForm( $el )
+			}
+		},
+		
+		/**
 		*  onSubmit
 		*
 		*  Callback when the form is submit.
@@ -13306,27 +13382,54 @@
 		*/
 		onSubmit: function( e, $el ){
 			
-			// bail early if is disabled
-			if( !this.active ) {
-				return;
+			// Allow form to submit if...
+			if(
+				// Validation has been disabled.
+				!this.active	
+				
+				// Or this event is to be ignored.		
+				|| this.get('ignore')
+				
+				// Or this event has already been prevented.
+				|| e.isDefaultPrevented()
+			) {
+				// Return early and call reset function.
+				return this.allowSubmit();
 			}
 			
-			// bail early if is ignore
-			if( this.get('ignore') ) {
-				this.set('ignore', false);
-				return;
-			}
-			
-			// validate
+			// Validate form.
 			var valid = acf.validateForm({
 				form: $el,
 				event: this.get('originalEvent')
 			});
 			
-			// if not valid, stop event and allow validation to continue
+			// If not valid, stop event to prevent form submit.
 			if( !valid ) {
 				e.preventDefault();
 			}
+		},
+		
+		/**
+		 * allowSubmit
+		 *
+		 * Resets data during onSubmit when the form is allowed to submit.
+		 *
+		 * @date	5/3/19
+		 * @since	5.7.13
+		 *
+		 * @param	void
+		 * @return	void
+		 */
+		allowSubmit: function(){
+			
+			// Reset "ignore" state.
+			this.set('ignore', false);
+			
+			// Reset "originalEvent" object.
+			this.set('originalEvent', false);
+			
+			// Return true
+			return true;
 		}
 	});
 	
@@ -13363,6 +13466,30 @@
 		}
 	});
 	
+	/**
+	 * mountHelper
+	 *
+	 * Adds compatiblity for the 'unmount' and 'remount' actions added in 5.8.0
+	 *
+	 * @date	7/3/19
+	 * @since	5.7.14
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	var mountHelper = new acf.Model({
+		priority: 1,
+		actions: {
+			'sortstart': 'onSortstart',
+			'sortstop': 'onSortstop'
+		},
+		onSortstart: function( $item ){
+			acf.doAction('unmount', $item);
+		},
+		onSortstop: function( $item ){
+			acf.doAction('remount', $item);
+		}
+	});
 	
 	/**
 	*  sortableHelper
