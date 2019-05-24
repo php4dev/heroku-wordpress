@@ -433,3 +433,7 @@ ul.config-error li {
 .card .inside .form-table td {
 	padding: 10px 10px;
 }
+
+.card .checkboxes li {
+	margin: 0;
+}

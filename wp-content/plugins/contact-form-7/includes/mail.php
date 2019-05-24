@@ -213,7 +213,7 @@ function wpcf7_mail_replace_tags( $content, $args = '' ) {
 			$replaced_tags = $line->get_replaced_tags();
 
 			if ( empty( $replaced_tags )
-			or array_filter( $replaced_tags ) ) {
+			or array_filter( $replaced_tags, 'strlen' ) ) {
 				$content[$num] = $replaced;
 			} else {
 				unset( $content[$num] ); // Remove a line.

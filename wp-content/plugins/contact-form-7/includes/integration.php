@@ -150,7 +150,7 @@ class WPCF7_Service_OAuth2 extends WPCF7_Service {
 	}
 
 	public function is_active() {
-		return ! empty( $this->access_token );
+		return ! empty( $this->refresh_token );
 	}
 
 	protected function save_data() {
@@ -175,7 +175,19 @@ class WPCF7_Service_OAuth2 extends WPCF7_Service {
 				$this->request_token( $code );
 			}
 
-			wp_safe_redirect( $this->menu_page_url( 'action=setup' ) );
+			if ( ! empty( $this->access_token ) ) {
+				$message = 'success';
+			} else {
+				$message = 'failed';
+			}
+
+			wp_safe_redirect( $this->menu_page_url(
+				array(
+					'action' => 'setup',
+					'message' => $message,
+				)
+			) );
+
 			exit();
 		}
 	}
@@ -227,25 +239,30 @@ class WPCF7_Service_OAuth2 extends WPCF7_Service {
 		);
 
 		$response = wp_remote_post( esc_url_raw( $endpoint ), $request );
+		$response_code = (int) wp_remote_retrieve_response_code( $response );
+		$response_body = wp_remote_retrieve_body( $response );
+		$response_body = json_decode( $response_body, true );
 
-		if ( WP_DEBUG
-		and 400 <= (int) wp_remote_retrieve_response_code( $response ) ) {
+		if ( WP_DEBUG and 400 <= $response_code ) {
 			$this->log( $endpoint, $request, $response );
 		}
 
-		$response_body = wp_remote_retrieve_body( $response );
+		if ( 401 == $response_code ) { // Unauthorized
+			$this->access_token = null;
+			$this->refresh_token = null;
+		} else {
+			if ( isset( $response_body['access_token'] ) ) {
+				$this->access_token = $response_body['access_token'];
+			} else {
+				$this->access_token = null;
+			}
 
-		if ( empty( $response_body ) ) {
-			return $response;
+			if ( isset( $response_body['refresh_token'] ) ) {
+				$this->refresh_token = $response_body['refresh_token'];
+			} else {
+				$this->refresh_token = null;
+			}
 		}
-
-		$response_body = json_decode( $response_body, true );
-
-		$this->access_token = isset( $response_body['access_token'] )
-			? $response_body['access_token'] : null;
-
-		$this->refresh_token = isset( $response_body['refresh_token'] )
-			? $response_body['refresh_token'] : null;
 
 		$this->save_data();
 
@@ -268,47 +285,54 @@ class WPCF7_Service_OAuth2 extends WPCF7_Service {
 		);
 
 		$response = wp_remote_post( esc_url_raw( $endpoint ), $request );
+		$response_code = (int) wp_remote_retrieve_response_code( $response );
+		$response_body = wp_remote_retrieve_body( $response );
+		$response_body = json_decode( $response_body, true );
 
-		if ( WP_DEBUG
-		and 400 <= (int) wp_remote_retrieve_response_code( $response ) ) {
+		if ( WP_DEBUG and 400 <= $response_code ) {
 			$this->log( $endpoint, $request, $response );
 		}
 
-		$response_body = wp_remote_retrieve_body( $response );
+		if ( 401 == $response_code ) { // Unauthorized
+			$this->access_token = null;
+			$this->refresh_token = null;
+		} else {
+			if ( isset( $response_body['access_token'] ) ) {
+				$this->access_token = $response_body['access_token'];
+			} else {
+				$this->access_token = null;
+			}
 
-		if ( empty( $response_body ) ) {
-			return $response;
+			if ( isset( $response_body['refresh_token'] ) ) {
+				$this->refresh_token = $response_body['refresh_token'];
+			}
 		}
-
-		$response_body = json_decode( $response_body, true );
-
-		$this->access_token = isset( $response_body['access_token'] )
-			? $response_body['access_token'] : null;
-
-		$this->refresh_token = isset( $response_body['refresh_token'] )
-			? $response_body['refresh_token'] : null;
 
 		$this->save_data();
 
 		return $response;
 	}
 
-	protected function remote_request( $url, $args = array() ) {
-		$request = $args = wp_parse_args( $args, array(
-			'refresh_token' => true,
-		) );
+	protected function remote_request( $url, $request = array() ) {
+		static $refreshed = false;
 
-		unset( $request['refresh_token'] );
+		$request = wp_parse_args( $request, array() );
+
+		$request['headers'] = array_merge(
+			$request['headers'],
+			array(
+				'Authorization' => $this->get_http_authorization_header( 'bearer' ),
+			)
+		);
 
 		$response = wp_remote_request( esc_url_raw( $url ), $request );
 
 		if ( 401 === wp_remote_retrieve_response_code( $response )
-		and $args['refresh_token'] ) {
+		and ! $refreshed ) {
 			$this->refresh_token();
+			$refreshed = true;
 
-			$response = $this->remote_request( $url,
-				array_merge( $args, array( 'refresh_token' => false ) )
-			);
+			$response = $this->remote_request( $url, $request );
 		}
 
 		return $response;

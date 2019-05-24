@@ -12,6 +12,50 @@ function wpcf7_constant_contact_register_service() {
 	$integration->add_service( 'constant_contact', $service );
 }
 
+add_action( 'wpcf7_save_contact_form',
+	'wpcf7_constant_contact_save_contact_form', 10, 1 );
+
+function wpcf7_constant_contact_save_contact_form( $contact_form ) {
+	$service = WPCF7_ConstantContact::get_instance();
+
+	if ( ! $service->is_active() ) {
+		return;
+	}
+
+	$additional_settings = $contact_form->additional_setting(
+		'constant_contact',
+		false
+	);
+
+	$list_names = array();
+
+	$pattern = '/[\t ]*('
+		. "'[^']*'"
+		. '|'
+		. '"[^"]*"'
+		. '|'
+		. '[^,]*?'
+		. ')[\t ]*(?:[,]+|$)/';
+
+	foreach ( $additional_settings as $setting ) {
+		if ( preg_match_all( $pattern, $setting, $matches ) ) {
+			foreach ( $matches[1] as $match ) {
+				$name = trim( wpcf7_strip_quote( $match ) );
+
+				if ( '' !== $name ) {
+					$list_names[] = $name;
+				}
+			}
+		}
+	}
+
+	$list_names = array_unique( $list_names );
+
+	$key = sprintf( 'wpcf7_contact_form:%d', $contact_form->id() );
+
+	$service->update_contact_lists( array( $key => $list_names ) );
+}
+
 add_action( 'wpcf7_submit', 'wpcf7_constant_contact_submit', 10, 2 );
 
 function wpcf7_constant_contact_submit( $contact_form, $result ) {
@@ -30,6 +74,18 @@ function wpcf7_constant_contact_submit( $contact_form, $result ) {
 	if ( empty( $result['status'] )
 	or ! in_array( $result['status'], array( 'mail_sent' ) ) ) {
 		$do_submit = false;
+	}
+
+	$additional_settings = $contact_form->additional_setting(
+		'constant_contact',
+		false
+	);
+
+	foreach ( $additional_settings as $setting ) {
+		if ( in_array( $setting, array( 'off', 'false', '0' ), true ) ) {
+			$do_submit = false;
+			break;
+		}
 	}
 
 	$do_submit = apply_filters( 'wpcf7_constant_contact_submit',
@@ -90,6 +146,7 @@ class WPCF7_ConstantContact extends WPCF7_Service_OAuth2 {
 	const token_endpoint = 'https://idfed.constantcontact.com/as/token.oauth2';
 
 	private static $instance;
+	protected $contact_lists = array();
 
 	public static function get_instance() {
 		if ( empty( self::$instance ) ) {
@@ -119,6 +176,12 @@ class WPCF7_ConstantContact extends WPCF7_Service_OAuth2 {
 
 		if ( isset( $option['refresh_token'] ) ) {
 			$this->refresh_token = $option['refresh_token'];
+		}
+
+		if ( $this->is_active() ) {
+			if ( isset( $option['contact_lists'] ) ) {
+				$this->contact_lists = $option['contact_lists'];
+			}
 		}
 
 		add_action( 'wpcf7_admin_init', array( $this, 'auth_redirect' ) );
@@ -152,6 +215,7 @@ class WPCF7_ConstantContact extends WPCF7_Service_OAuth2 {
 				'client_secret' => $this->client_secret,
 				'access_token' => $this->access_token,
 				'refresh_token' => $this->refresh_token,
+				'contact_lists' => $this->contact_lists,
 			)
 		);
 
@@ -163,6 +227,7 @@ class WPCF7_ConstantContact extends WPCF7_Service_OAuth2 {
 		$this->client_secret = '';
 		$this->access_token = '';
 		$this->refresh_token = '';
+		$this->contact_lists = array();
 
 		$this->save_data();
 	}
@@ -224,6 +289,29 @@ class WPCF7_ConstantContact extends WPCF7_Service_OAuth2 {
 			wp_safe_redirect( $this->menu_page_url( 'action=setup' ) );
 			exit();
 		}
+
+		if ( 'edit' == $action and 'POST' == $_SERVER['REQUEST_METHOD'] ) {
+			check_admin_referer( 'wpcf7-constant-contact-edit' );
+
+			$list_ids = isset( $_POST['contact_lists'] )
+				? (array) $_POST['contact_lists']
+				: array();
+
+			$this->update_contact_lists( array( 'default' => $list_ids ) );
+
+			wp_safe_redirect( $this->menu_page_url(
+				array(
+					'action' => 'setup',
+					'message' => 'updated',
+				)
+			) );
+
+			exit();
+		}
+
+		if ( $this->is_active() ) {
+			$this->update_contact_lists();
+		}
 	}
 
 	public function email_exists( $email ) {
@@ -237,15 +325,17 @@ class WPCF7_ConstantContact extends WPCF7_Service_OAuth2 {
 			'headers' => array(
 				'Accept' => 'application/json',
 				'Content-Type' => 'application/json; charset=utf-8',
-				'Authorization' => $this->get_http_authorization_header( 'bearer' ),
 			),
 		);
 
-		$response = $this->remote_request( esc_url_raw( $endpoint ), $request );
+		$response = $this->remote_request( $endpoint, $request );
 
-		if ( WP_DEBUG
-		and 400 <= (int) wp_remote_retrieve_response_code( $response ) ) {
-			$this->log( $endpoint, $request, $response );
+		if ( 400 <= (int) wp_remote_retrieve_response_code( $response ) ) {
+			if ( WP_DEBUG ) {
+				$this->log( $endpoint, $request, $response );
+			}
+
+			return false;
 		}
 
 		$response_body = wp_remote_retrieve_body( $response );
@@ -267,16 +357,122 @@ class WPCF7_ConstantContact extends WPCF7_Service_OAuth2 {
 			'headers' => array(
 				'Accept' => 'application/json',
 				'Content-Type' => 'application/json; charset=utf-8',
-				'Authorization' => $this->get_http_authorization_header( 'bearer' ),
 			),
 			'body' => json_encode( $properties ),
 		);
 
-		$response = $this->remote_request( esc_url_raw( $endpoint ), $request );
+		$response = $this->remote_request( $endpoint, $request );
 
-		if ( WP_DEBUG
-		and 400 <= (int) wp_remote_retrieve_response_code( $response ) ) {
-			$this->log( $endpoint, $request, $response );
+		if ( 400 <= (int) wp_remote_retrieve_response_code( $response ) ) {
+			if ( WP_DEBUG ) {
+				$this->log( $endpoint, $request, $response );
+			}
+
+			return false;
+		}
+	}
+
+	public function get_contact_lists() {
+		$endpoint = 'https://api.cc.email/v3/contact_lists';
+
+		$request = array(
+			'method' => 'GET',
+			'headers' => array(
+				'Accept' => 'application/json',
+				'Content-Type' => 'application/json; charset=utf-8',
+			),
+		);
+
+		$response = $this->remote_request( $endpoint, $request );
+
+		if ( 400 <= (int) wp_remote_retrieve_response_code( $response ) ) {
+			if ( WP_DEBUG ) {
+				$this->log( $endpoint, $request, $response );
+			}
+
+			return false;
+		}
+
+		$response_body = wp_remote_retrieve_body( $response );
+
+		if ( empty( $response_body ) ) {
+			return false;
+		}
+
+		$response_body = json_decode( $response_body, true );
+
+		if ( ! empty( $response_body['lists'] ) ) {
+			return (array) $response_body['lists'];
+		} else {
+			return array();
+		}
+	}
+
+	public function update_contact_lists( $selection = array() ) {
+		$contact_lists = array();
+		$contact_lists_on_api = $this->get_contact_lists();
+
+		if ( false !== $contact_lists_on_api ) {
+			foreach ( (array) $contact_lists_on_api as $list ) {
+				if ( isset( $list['list_id'] ) ) {
+					$list_id = trim( $list['list_id'] );
+				} else {
+					continue;
+				}
+
+				if ( isset( $this->contact_lists[$list_id]['selected'] ) ) {
+					$list['selected'] = $this->contact_lists[$list_id]['selected'];
+				} else {
+					$list['selected'] = array();
+				}
+
+				$contact_lists[$list_id] = $list;
+			}
+		} else {
+			$contact_lists = $this->contact_lists;
+		}
+
+		foreach ( (array) $selection as $key => $ids_or_names ) {
+			foreach( $contact_lists as $list_id => $list ) {
+				if ( in_array( $list['list_id'], (array) $ids_or_names, true )
+				or in_array( $list['name'], (array) $ids_or_names, true ) ) {
+					$contact_lists[$list_id]['selected'][$key] = true;
+				} else {
+					unset( $contact_lists[$list_id]['selected'][$key] );
+				}
+			}
+		}
+
+		$this->contact_lists = $contact_lists;
+
+		if ( $selection ) {
+			$this->save_data();
+		}
+
+		return $this->contact_lists;
+	}
+
+	public function admin_notice( $message = '' ) {
+		switch ( $message ) {
+			case 'success':
+				echo sprintf(
+					'<div class="updated notice notice-success is-dismissible"><p>%s</p></div>',
+					esc_html( __( "Connection established.", 'contact-form-7' ) )
+				);
+				break;
+			case 'failed':
+				echo sprintf(
+					'<div class="error notice notice-error is-dismissible"><p><strong>%1$s</strong>: %2$s</p></div>',
+					esc_html( __( "ERROR", 'contact-form-7' ) ),
+					esc_html( __( "Failed to establish connection. Please double-check your configuration.", 'contact-form-7' ) )
+				);
+				break;
+			case 'updated':
+				echo sprintf(
+					'<div class="updated notice notice-success is-dismissible"><p>%s</p></div>',
+					esc_html( __( "Configuration updated.", 'contact-form-7' ) )
+				);
+				break;
 		}
 	}
 
@@ -292,7 +488,14 @@ class WPCF7_ConstantContact extends WPCF7_Service_OAuth2 {
 			)
 		) . '</p>';
 
-		if ( $this->is_active() or 'setup' == $action ) {
+		if ( $this->is_active() ) {
+			echo sprintf(
+				'<p class="dashicons-before dashicons-yes">%s</p>',
+				esc_html( __( "This site is connected to the Constant Contact API.", 'contact-form-7' ) )
+			);
+		}
+
+		if ( 'setup' == $action ) {
 			$this->display_setup();
 		} else {
 			echo sprintf(
@@ -359,11 +562,55 @@ class WPCF7_ConstantContact extends WPCF7_Service_OAuth2 {
 <?php
 		if ( $this->is_active() ) {
 			submit_button(
-				_x( 'Remove Keys', 'API keys', 'contact-form-7' ),
+				_x( 'Reset Keys', 'API keys', 'contact-form-7' ),
 				'small', 'reset'
 			);
 		} else {
-			submit_button( __( 'Connect to the Constant Contact API', 'contact-form-7' ) );
+			submit_button(
+				__( 'Connect to the Constant Contact API', 'contact-form-7' )
+			);
+		}
+?>
+</form>
+
+<?php
+		if ( $this->is_active() and ! empty( $this->contact_lists ) ) {
+?>
+<form method="post" action="<?php echo esc_url( $this->menu_page_url( 'action=edit' ) ); ?>">
+<?php wp_nonce_field( 'wpcf7-constant-contact-edit' ); ?>
+<table class="form-table">
+<tbody>
+<tr>
+	<th scope="row"><?php echo esc_html( _x( 'Contact Lists', 'Constant Contact', 'contact-form-7' ) ); ?></th>
+	<td>
+		<fieldset>
+		<legend class="screen-reader-text"><span><?php echo esc_html( _x( "Contact Lists: Select lists to which newly added contacts are to belong.", 'Constant Contact', 'contact-form-7' ) ); ?></span></legend>
+		<p class="description"><?php echo esc_html( __( "Select lists to which newly added contacts are to belong.", 'contact-form-7' ) ); ?></p>
+		<ul class="checkboxes"><?php
+			foreach ( $this->contact_lists as $list ) {
+				echo sprintf(
+					'<li><input %1$s /> <label for="%2$s">%3$s</label></li>',
+					wpcf7_format_atts( array(
+						'type' => 'checkbox',
+						'name' => 'contact_lists[]',
+						'value' => $list['list_id'],
+						'id' => 'contact_list_' . $list['list_id'],
+						'checked' => empty( $list['selected']['default'] )
+							? ''
+							: 'checked',
+					) ),
+					esc_attr( 'contact_list_' . $list['list_id'] ),
+					esc_html( $list['name'] )
+				);
+			}
+		?></ul>
+		</fieldset>
+	</td>
+</tr>
+</tbody>
+</table>
+<?php
+			submit_button();
 		}
 ?>
 </form>
@@ -457,6 +704,25 @@ class WPCF7_ConstantContact_ContactPostRequest {
 			isset( $posted_data['your-address-country'] )
 				? $posted_data['your-address-country'] : ''
 		);
+
+		$service_option = (array) WPCF7::get_option( 'constant_contact' );
+
+		$contact_lists = isset( $service_option['contact_lists'] )
+			? $service_option['contact_lists'] : array();
+
+		$contact_form = $submission->get_contact_form();
+
+		if ( $contact_form->additional_setting( 'constant_contact' ) ) {
+			$key = sprintf( 'wpcf7_contact_form:%d', $contact_form->id() );
+		} else {
+			$key = 'default';
+		}
+
+		foreach ( (array) $contact_lists as $list ) {
+			if ( ! empty( $list['selected'][$key] ) ) {
+				$this->add_list_membership( $list['list_id'] );
+			}
+		}
 	}
 
 	public function is_valid() {

@@ -210,12 +210,10 @@ function wpcf7_load_contact_form_admin() {
 			? $_POST['wpcf7-form'] : '';
 
 		$args['mail'] = isset( $_POST['wpcf7-mail'] )
-			? wpcf7_sanitize_mail( $_POST['wpcf7-mail'] )
-			: array();
+			? $_POST['wpcf7-mail'] : array();
 
 		$args['mail_2'] = isset( $_POST['wpcf7-mail-2'] )
-			? wpcf7_sanitize_mail( $_POST['wpcf7-mail-2'] )
-			: array();
+			? $_POST['wpcf7-mail-2'] : array();
 
 		$args['messages'] = isset( $_POST['wpcf7-messages'] )
 			? $_POST['wpcf7-messages'] : array();
@@ -321,8 +319,6 @@ function wpcf7_load_contact_form_admin() {
 		wp_safe_redirect( $redirect_to );
 		exit();
 	}
-
-	$_GET['post'] = isset( $_GET['post'] ) ? $_GET['post'] : '';
 
 	$post = null;
 
@@ -491,6 +487,10 @@ function wpcf7_admin_integration_page() {
 add_action( 'wpcf7_admin_notices', 'wpcf7_admin_updated_message', 10, 3 );
 
 function wpcf7_admin_updated_message( $page, $action, $object ) {
+	if ( ! in_array( $page, array( 'wpcf7', 'wpcf7-new' ) ) ) {
+		return;
+	}
+
 	if ( empty( $_REQUEST['message'] ) ) {
 		return;
 	}

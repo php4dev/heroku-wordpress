@@ -123,6 +123,14 @@ function wpcf7_flamingo_submit( $contact_form, $result ) {
 		'consent' => $submission->collect_consent(),
 	);
 
+	if ( $args['spam'] ) {
+		$args['spam_log'] = $submission->get_spam_log();
+	}
+
+	if ( isset( $submission->recaptcha ) ) {
+		$args['recaptcha'] = $submission->recaptcha;
+	}
+
 	$flamingo_inbound = Flamingo_Inbound_Message::add( $args );
 
 	$result += array(

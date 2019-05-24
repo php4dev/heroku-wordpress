@@ -175,6 +175,10 @@ class WPCF7_ConfigValidator {
 				unset( $this->errors[$section][$key] );
 			}
 		}
+
+		if ( empty( $this->errors[$section] ) ) {
+			unset( $this->errors[$section] );
+		}
 	}
 
 	public function validate() {

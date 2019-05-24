@@ -200,6 +200,7 @@ class autoptimizeImages
             if ( ! empty( $avail_imgopt ) && array_key_exists( 'hosts', $avail_imgopt ) && is_array( $avail_imgopt['hosts'] ) ) {
                 $imgopt_host = array_rand( array_flip( $avail_imgopt['hosts'] ) );
             }
+            $imgopt_host = apply_filters( 'autoptimize_filter_imgopt_host', $imgopt_host );
         }
 
         return $imgopt_host;
@@ -326,16 +327,12 @@ class autoptimizeImages
         // Do the work on cache miss only.
         if ( ! isset( $cache[ $in ] ) ) {
             // Default to what was given to us.
-            $result = $in;
+            $result = trim( $in );
             if ( autoptimizeUtils::is_protocol_relative( $in ) ) {
                 $result = $parsed_site_url['scheme'] . ':' . $in;
             } elseif ( 0 === strpos( $in, '/' ) ) {
                 // Root-relative...
-                $result = $parsed_site_url['scheme'] . '://' . $parsed_site_url['host'];
-                // Add the path for subfolder installs.
-                if ( isset( $parsed_site_url['path'] ) ) {
-                    $result .= $parsed_site_url['path'];
-                }
+                $result  = $parsed_site_url['scheme'] . '://' . $parsed_site_url['host'];
                 $result .= $in;
             } elseif ( ! empty( $cdn_domain ) && strpos( $in, $cdn_domain ) !== 0 ) {
                 $result = str_replace( $cdn_domain, $parsed_site_url['host'], $in );
@@ -464,8 +461,9 @@ class autoptimizeImages
 
     public function replace_img_callback( $matches, $width = 0, $height = 0 )
     {
+        $_normalized_img_url = $this->normalize_img_url( $matches[1] );
         if ( $this->can_optimize_image( $matches[1] ) ) {
-            return str_replace( $matches[1], $this->build_imgopt_url( $matches[1], $width, $height ), $matches[0] );
+            return str_replace( $matches[1], $this->build_imgopt_url( $_normalized_img_url, $width, $height ), $matches[0] );
         } else {
             return $matches[0];
         }
@@ -476,7 +474,6 @@ class autoptimizeImages
         /*
          * potential future functional improvements:
          *
-         * picture element.
          * filter for critical CSS.
          */
         $to_replace = array();
@@ -484,9 +481,9 @@ class autoptimizeImages
         // hide noscript tags to avoid nesting noscript tags (as lazyloaded images add noscript).
         if ( $this->should_lazyload() ) {
             $in = autoptimizeBase::replace_contents_with_marker_if_exists(
-                'NOSCRIPT',
-                '<noscript',
-                '#<noscript.*?<\/noscript>#is',
+                'SCRIPT',
+                '<script',
+                '#<(?:no)?script.*?<\/(?:no)?script>#is',
                 $in
             );
         }
@@ -536,14 +533,8 @@ class autoptimizeImages
                 }
 
                 // do lazyload stuff.
-                if ( $this->should_lazyload() && str_ireplace( $this->get_lazyload_exclusions(), '', $tag ) === $tag ) {
-                    $noscript_tag = '<noscript>' . $tag . '</noscript>';
-                    $tag          = str_replace( 'srcset=', 'data-srcset=', $tag );
-
-                    // add lazyload class.
-                    $tag = $this->inject_classes_in_tag( $tag, 'lazyload ' );
-
-                    // set placeholder.
+                if ( $this->should_lazyload( $in ) ) {
+                    // first do lpiq placeholder logic.
                     if ( strpos( $url, $this->get_imgopt_host() ) === 0 ) {
                         // if all img src have been replaced during srcset, we have to extract the
                         // origin url from the imgopt one to be able to set a lqip placeholder.
@@ -551,25 +542,23 @@ class autoptimizeImages
                     } else {
                         $_url = $url;
                     }
+
                     if ( $this->can_optimize_image( $_url ) && apply_filters( 'autoptimize_filter_imgopt_lazyload_dolqip', true ) ) {
-                        $placeholder = $this->get_imgopt_host() . 'client/q_lqip,ret_wait,w_' . $imgopt_w . ',h_' . $imgopt_h . '/' . $_url;
-                    } else {
-                        $placeholder = $this->get_default_lazyload_placeholder( $imgopt_w, $imgopt_h );
+                        $lqip_w = '';
+                        $lqip_h = '';
+                        if ( isset( $imgopt_w ) && ! empty( $imgopt_w ) ) {
+                            $lqip_w = ',w_' . $imgopt_w;
+                        }
+                        if ( isset( $imgopt_h ) && ! empty( $imgopt_h ) ) {
+                            $lqip_h = ',h_' . $imgopt_h;
+                        }
+                        $placeholder = $this->get_imgopt_host() . 'client/q_lqip,ret_wait' . $lqip_w . $lqip_h . '/' . $_url;
                     }
-                    $placeholder = ' src=\'' . apply_filters( 'autoptimize_filter_imgopt_lazyload_placeholder', $placeholder );
-
-                    // add min-heigth off by default as it can deform images, can be enabled with filter.
-                    $min_height = '';
-                    if ( apply_filters( 'autoptimize_filter_imgopt_lazyload_addminheight', false ) ) {
-                        $min_height = ' style="min-height:' . $imgopt_h . 'px;"';
-                    }
-
-                    // add noscript & placeholder.
-                    $tag = $noscript_tag . str_replace( ' src=', $min_height . $placeholder . '\' data-src=', $tag );
-                    $tag = apply_filters( 'autoptimize_filter_imgopt_lazyloaded_img', $tag );
+                    // then call add_lazyload-function with lpiq placeholder if set.
+                    $tag = $this->add_lazyload( $tag, $placeholder );
                 }
 
-                // add tag to array for later replacement.
+                // and add tag to array for later replacement.
                 if ( $tag !== $orig_tag ) {
                     $to_replace[ $orig_tag ] = $tag;
                 }
@@ -597,12 +586,16 @@ class autoptimizeImages
             );
         }
 
-        // and restore noscript tags if these were hidden for lazyload purposes.
+        // lazyload: restore noscript tags + lazyload picture source tags.
         if ( $this->should_lazyload() ) {
             $out = autoptimizeBase::restore_marked_content(
-                'NOSCRIPT',
+                'SCRIPT',
                 $out
             );
+
+            $out = $this->process_picture_tag( $out, true, true );
+        } else {
+            $out = $this->process_picture_tag( $out, true, false );
         }
 
         return $out;
@@ -648,20 +641,21 @@ class autoptimizeImages
     /**
      * Lazyload functions
      */
-    public function should_lazyload() {
+    public static function should_lazyload_wrapper() {
+        // needed in autoptimizeMain.php.
+        $self = new self();
+        return $self->should_lazyload();
+    }
+
+    public function should_lazyload( $context = '' ) {
         if ( ! empty( $this->options['autoptimize_imgopt_checkbox_field_3'] ) ) {
             $lazyload_return = true;
         } else {
             $lazyload_return = false;
         }
+        $lazyload_return = apply_filters( 'autoptimize_filter_imgopt_should_lazyload', $lazyload_return, $context );
 
         return $lazyload_return;
-    }
-
-    public static function should_lazyload_wrapper() {
-        // needed in autoptimizeMain.php.
-        $self = new self();
-        return $self->should_lazyload();
     }
 
     public function filter_lazyload_images( $in )
@@ -669,56 +663,70 @@ class autoptimizeImages
         // only used is image optimization is NOT active but lazyload is.
         $to_replace = array();
 
-        // hide noscript tags to avoid nesting noscript tags (as lazyloaded images add noscript).
+        // hide (no)script tags to avoid nesting noscript tags (as lazyloaded images add noscript).
         $out = autoptimizeBase::replace_contents_with_marker_if_exists(
-            'NOSCRIPT',
-            '<noscript',
-            '#<noscript.*?<\/noscript>#is',
+            'SCRIPT',
+            '<script',
+            '#<(?:no)?script.*?<\/(?:no)?script>#is',
             $in
         );
 
         // extract img tags and add lazyload attribs.
         if ( preg_match_all( '#<img[^>]*src[^>]*>#Usmi', $out, $matches ) ) {
             foreach ( $matches[0] as $tag ) {
-                $to_replace[ $tag ] = $this->add_lazyload( $tag );
+                if ( $this->should_lazyload( $out ) ) {
+                    $to_replace[ $tag ] = $this->add_lazyload( $tag );
+                }
             }
             $out = str_replace( array_keys( $to_replace ), array_values( $to_replace ), $out );
         }
 
+        // and also lazyload picture tag.
+        $out = $this->process_picture_tag( $out, false, true );
+
         // restore noscript tags.
         $out = autoptimizeBase::restore_marked_content(
-            'NOSCRIPT',
+            'SCRIPT',
             $out
         );
 
         return $out;
     }
 
-    public function add_lazyload( $tag ) {
+    public function add_lazyload( $tag, $placeholder = '' ) {
         // adds actual lazyload-attributes to an image node.
         if ( str_ireplace( $this->get_lazyload_exclusions(), '', $tag ) === $tag ) {
+            $tag = $this->maybe_fix_missing_quotes( $tag );
+
             // store original tag for use in noscript version.
             $noscript_tag = '<noscript>' . $tag . '</noscript>';
 
             // insert lazyload class.
             $tag = $this->inject_classes_in_tag( $tag, 'lazyload ' );
 
-            // get image width & heigth for placeholder fun (and to prevent content reflow).
-            $_get_size = $this->get_size_from_tag( $tag );
-            $width     = $_get_size['width'];
-            $height    = $_get_size['height'];
-            if ( false === $width ) {
-                $widht = 210; // default width for SVG placeholder.
-            }
-            if ( false === $height ) {
-                $heigth = $width / 3 * 2; // if no height, base it on width using the 3/2 aspect ratio.
-            }
+            if ( ! $placeholder || empty( $placeholder ) ) {
+                // get image width & heigth for placeholder fun (and to prevent content reflow).
+                $_get_size = $this->get_size_from_tag( $tag );
+                $width     = $_get_size['width'];
+                $height    = $_get_size['height'];
+                if ( false === $width ) {
+                    $widht = 210; // default width for SVG placeholder.
+                }
+                if ( false === $height ) {
+                    $heigth = $width / 3 * 2; // if no height, base it on width using the 3/2 aspect ratio.
+                }
 
-            // insert the actual lazyload stuff.
-            // see https://css-tricks.com/preventing-content-reflow-from-lazy-loaded-images/ for great read on why we're using empty svg's.
-            $placeholder = apply_filters( 'autoptimize_filter_imgopt_lazyload_placeholder', $this->get_default_lazyload_placeholder( $width, $height ) );
-            $tag         = str_replace( ' src=', ' src=\'' . $placeholder . '\' data-src=', $tag );
-            $tag         = str_replace( ' srcset=', ' data-srcset=', $tag );
+                // insert the actual lazyload stuff.
+                // see https://css-tricks.com/preventing-content-reflow-from-lazy-loaded-images/ for great read on why we're using empty svg's.
+                $placeholder = apply_filters( 'autoptimize_filter_imgopt_lazyload_placeholder', $this->get_default_lazyload_placeholder( $width, $height ) );
+            }
+            $tag = str_replace( ' src=', ' src=\'' . $placeholder . '\' data-src=', $tag );
+            $tag = str_replace( ' srcset=', ' data-srcset=', $tag );
+
+            // move sizes to data-sizes unless filter says no.
+            if ( apply_filters( 'autoptimize_filter_imgopt_lazyload_move_sizes', true ) ) {
+                $tag = str_replace( 'sizes=', 'data-sizes=', $tag );
+            }
 
             // add the noscript-tag from earlier.
             $tag = $noscript_tag . $tag;
@@ -756,7 +764,7 @@ class autoptimizeImages
             $options = $this->options;
 
             // set default exclusions.
-            $exclude_lazyload_array = array( 'skip-lazy', 'data-no-lazy', 'notlazy', 'data-src', 'data-srcset' );
+            $exclude_lazyload_array = array( 'skip-lazy', 'data-no-lazy', 'notlazy', 'data-src', 'data-srcset', 'data:image/', 'data-lazyload', 'rev-slidebg' );
 
             // add from setting.
             if ( array_key_exists( 'autoptimize_imgopt_text_field_5', $options ) ) {
@@ -800,6 +808,51 @@ class autoptimizeImages
         }
 
         return $webp_return;
+    }
+
+    public function process_picture_tag( $in, $imgopt = false, $lazy = false ) {
+        // check if "<picture" is present and if filter allows us to process <picture>.
+        if ( strpos( $in, '<picture' ) === false || apply_filters( 'autoptimize_filter_imgopt_dopicture', true ) === false ) {
+            return $in;
+        }
+
+        $_exclusions     = $this->get_lazyload_exclusions();
+        $to_replace_pict = array();
+
+        // extract and process each picture-node.
+        preg_match_all( '#<picture.*</picture>#Usmi', $in, $_pictures, PREG_SET_ORDER );
+        foreach ( $_pictures as $_picture ) {
+            $_picture = $this->maybe_fix_missing_quotes( $_picture );
+            if ( strpos( $_picture[0], '<source ' ) !== false && preg_match_all( '#<source .*srcset=(?:"|\')(?!data)(.*)(?:"|\').*>#Usmi', $_picture[0], $_sources, PREG_SET_ORDER ) !== false ) {
+                foreach ( $_sources as $_source ) {
+                    $_picture_replacement = $_source[0];
+
+                    // should we optimize the image?
+                    if ( $imgopt && $this->can_optimize_image( $_source[1] ) ) {
+                        $_picture_replacement = str_replace( $_source[1], $this->build_imgopt_url( $_source[1] ), $_picture_replacement );
+                    }
+                    // should we lazy-load?
+                    if ( $lazy && str_ireplace( $_exclusions, '', $_picture_replacement ) === $_picture_replacement ) {
+                        $_picture_replacement = str_replace( ' srcset=', ' data-srcset=', $_picture_replacement );
+                    }
+                    $to_replace_pict[ $_source[0] ] = $_picture_replacement;
+                }
+            }
+        }
+
+        // and return the fully procesed $in.
+        $out = str_replace( array_keys( $to_replace_pict ), array_values( $to_replace_pict ), $in );
+
+        return $out;
+    }
+
+    public function maybe_fix_missing_quotes( $tag_in ) {
+        // W3TC's Minify_HTML class removes quotes around attribute value, this re-adds them.
+        if ( file_exists( WP_PLUGIN_DIR . '/w3-total-cache/w3-total-cache.php' ) && class_exists( 'Minify_HTML' ) && apply_filters( 'autoptimize_filter_imgopt_fixquotes', true ) ) {
+            return preg_replace( '/=([^("|\')]*)(\s|>)/U', '=\'$1\'$2', $tag_in );
+        } else {
+            return $tag_in;
+        }
     }
 
     /**

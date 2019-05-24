@@ -13,6 +13,7 @@ class WPCF7_Submission {
 	private $invalid_fields = array();
 	private $meta = array();
 	private $consent = array();
+	private $spam_log = array();
 
 	private function __construct() {}
 
@@ -301,17 +302,45 @@ class WPCF7_Submission {
 
 		if ( strlen( $user_agent ) < 2 ) {
 			$spam = true;
+
+			$this->add_spam_log( array(
+				'agent' => 'wpcf7',
+				'reason' => __( "User-Agent string is unnaturally short.", 'contact-form-7' ),
+			) );
 		}
 
 		if ( ! $this->verify_nonce() ) {
 			$spam = true;
+
+			$this->add_spam_log( array(
+				'agent' => 'wpcf7',
+				'reason' => __( "Submitted nonce is invalid.", 'contact-form-7' ),
+			) );
 		}
 
 		if ( $this->is_blacklisted() ) {
 			$spam = true;
+
+			$this->add_spam_log( array(
+				'agent' => 'wpcf7',
+				'reason' => __( "Blacklisted words are used.", 'contact-form-7' ),
+			) );
 		}
 
 		return apply_filters( 'wpcf7_spam', $spam );
+	}
+
+	public function add_spam_log( $args = '' ) {
+		$args = wp_parse_args( $args, array(
+			'agent' => '',
+			'reason' => '',
+		) );
+
+		$this->spam_log[] = $args;
+	}
+
+	public function get_spam_log() {
+		return $this->spam_log;
 	}
 
 	private function verify_nonce() {

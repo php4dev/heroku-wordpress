@@ -155,7 +155,9 @@ class autoptimizeExtra
 
     public function filter_remove_dns_prefetch( $urls, $relation_type, $url_to_remove )
     {
-        if ( 'dns-prefetch' === $relation_type ) {
+        $url_to_remove = (string) $url_to_remove;
+
+        if ( ! empty( $url_to_remove ) && 'dns-prefetch' === $relation_type ) {
             $cnt = 0;
             foreach ( $urls as $url ) {
                 if ( false !== strpos( $url, $url_to_remove ) ) {
@@ -227,7 +229,7 @@ class autoptimizeExtra
                 $fonts_string  = $fonts_string . '&#038;subset=' . $subset_string;
             }
 
-            $fonts_string = str_replace( '|', '%7C', ltrim( $fonts_string, '|' ) );
+            $fonts_string = apply_filters( 'autoptimize_filter_extra_gfont_fontstring', str_replace( '|', '%7C', ltrim( $fonts_string, '|' ) ) );
 
             if ( ! empty( $fonts_string ) ) {
                 if ( '5' === $options['autoptimize_extra_radio_field_4'] ) {

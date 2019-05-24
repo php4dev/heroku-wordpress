@@ -48,7 +48,20 @@ function wpcf7_akismet( $spam ) {
 		}
 	}
 
-	return wpcf7_akismet_comment_check( $c );
+	if ( wpcf7_akismet_comment_check( $c ) ) {
+		$spam = true;
+
+		$submission = WPCF7_Submission::get_instance();
+
+		$submission->add_spam_log( array(
+			'agent' => 'akismet',
+			'reason' => __( "Akismet returns a spam response.", 'contact-form-7' ),
+		) );
+	} else {
+		$spam = false;
+	}
+
+	return $spam;
 }
 
 function wpcf7_akismet_is_available() {
