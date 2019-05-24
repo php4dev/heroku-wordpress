@@ -32,7 +32,7 @@
 		'decimal(10,2)'	=> 'numeric',
 		'decimal(3,2)'	=> 'numeric',
 		'decimal(3,2)'	=> 'numeric',
-		'double'	=> 'double precision',
+		'double'	=> 'numeric',
 		"enum('0','1')"	=> 'smallint',
 		'COLLATE utf8_general_ci'	=> '',
 
@@ -259,7 +259,10 @@ WHERE pg_class.relname='$table_name' AND pg_attribute.attnum>=1 AND NOT pg_attri
 			preg_match($pattern, $sql, $matches);
 			$table = $matches[1];
 			$sql = str_replace( "`virtual`", '`virtual1`', $sql);
-			
+			// Remove illegal characters
+			$sql = str_replace('KEY `onsale` (`onsale`),', 'KEY `onsale` (`onsale`)', $sql);
+			$sql = str_replace('KEY min_max_price (`min_price`, `max_price`)', '', $sql);
+			$sql = str_replace('`', '', $sql);
 			// Remove trailing spaces
 			$sql = trim( $sql).';';
 			
