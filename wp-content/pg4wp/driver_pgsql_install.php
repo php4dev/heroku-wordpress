@@ -260,8 +260,7 @@ WHERE pg_class.relname='$table_name' AND pg_attribute.attnum>=1 AND NOT pg_attri
 			$table = $matches[1];
 			$sql = str_replace( "`virtual`", '`virtual1`', $sql);
 			// Remove illegal characters
-			$sql = str_replace('KEY `onsale` (`onsale`),', 'KEY `onsale` (`onsale`)', $sql);
-			$sql = str_replace('KEY min_max_price (`min_price`, `max_price`)', '', $sql);
+			$sql = str_replace('`, `', '`,`', $sql);
 			$sql = str_replace('`', '', $sql);
 			// Remove trailing spaces
 			$sql = trim( $sql).';';
