@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Contact Form 7 - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-02-10 14:42:09+0000\n"
+"PO-Revision-Date: 2019-05-18 03:22:44+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,69 +11,124 @@ msgstr ""
 "Language: ru\n"
 "Project-Id-Version: Plugins - Contact Form 7 - Stable (latest release)\n"
 
-#. translators: 1: response code, 2: response message, 3: URL
-#: includes/functions.php:384
-msgid "HTTP Response: %1$s %2$s from %3$s"
-msgstr "HTTP-ответ: %1$s %2$s из %3$s"
+#: includes/submission.php:326
+msgid "Blacklisted words are used."
+msgstr "Использованы слова из черного списка."
 
-#: modules/recaptcha.php:440
+#: includes/submission.php:317
+msgid "Submitted nonce is invalid."
+msgstr "Отправленный код nonce неверен."
+
+#: includes/submission.php:308
+msgid "User-Agent string is unnaturally short."
+msgstr "Строка User-Agent неестественно коротка."
+
+#: modules/recaptcha.php:156
+msgid "reCAPTCHA score (%1$.2f) is lower than the threshold (%2$.2f)."
+msgstr "Баллы reCAPTCHA  (%1$.2f) ниже порогового значения (%2$.2f)."
+
+#: modules/akismet.php:58
+msgid "Akismet returns a spam response."
+msgstr "Akismet возвратил статус спама."
+
+#: modules/constant-contact.php:588
+msgid "Select lists to which newly added contacts are to belong."
+msgstr "Выберите списки, к которым должны быть добавлены новые контакты."
+
+#: modules/constant-contact.php:587
+msgctxt "Constant Contact"
+msgid "Contact Lists: Select lists to which newly added contacts are to belong."
+msgstr "Списки контактов: выберите списки, к которым должны быть добавлены новые контакты."
+
+#: modules/constant-contact.php:584
+msgctxt "Constant Contact"
+msgid "Contact Lists"
+msgstr "Списки контактов"
+
+#: modules/constant-contact.php:565
+msgctxt "API keys"
+msgid "Reset Keys"
+msgstr "Сбросить ключи"
+
+#: modules/constant-contact.php:494
+msgid "This site is connected to the Constant Contact API."
+msgstr "Этот сайт подключен к API Constant Contact."
+
+#: modules/constant-contact.php:473
+msgid "Configuration updated."
+msgstr "Конфигурация обновлена."
+
+#: modules/constant-contact.php:467
+msgid "Failed to establish connection. Please double-check your configuration."
+msgstr "Не удалось установить соединение. Пожалуйста, перепроверьте вашу конфигурацию."
+
+#: modules/constant-contact.php:460
+msgid "Connection established."
+msgstr "Соединение установлено."
+
+#. translators: 1: response code, 2: message, 3: body, 4: URL
+#: includes/functions.php:384
+msgid "HTTP Response: %1$s %2$s %3$s from %4$s"
+msgstr "HTTP-ответ: %1$s %2$s %3$s из %4$s"
+
+#: modules/recaptcha.php:512
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
-#: modules/recaptcha.php:370
+#: modules/recaptcha.php:442
 msgid "reCAPTCHA protects you against spam and other types of automated abuse. With Contact Form 7&#8217;s reCAPTCHA integration module, you can block abusive form submissions by spam bots. For details, see %s."
 msgstr "reCAPTCHA защищает вас от спама и другого рода автоматических злоупотреблений сообщениями. С модулем интеграции reCAPTCHA в Contact Form 7 можно блокировать попытки злоупотребления формой связи спам-ботами. Подробности здесь: %s."
 
-#: modules/recaptcha.php:175 modules/recaptcha.php:373
+#: modules/recaptcha.php:227 modules/recaptcha.php:445
 msgid "reCAPTCHA (v3)"
 msgstr "reCAPTCHA (v3)"
 
-#: modules/recaptcha.php:172
+#: modules/recaptcha.php:224
 msgid "API keys for reCAPTCHA v3 are different from those for v2; keys for v2 don&#8217;t work with the v3 API. You need to register your sites again to get new keys for v3. For details, see %s."
 msgstr "API-ключи для reCAPTCHA v3 отличаются от таковых v2; ключи v2 не работают с API v3. Вам следует зарегистрировать свой сайт повторно и получить ключи v3. Подробности здесь: %s."
 
-#: modules/constant-contact.php:366
+#: modules/constant-contact.php:570
 msgid "Connect to the Constant Contact API"
 msgstr "Подключение к Constant Contact API"
 
-#: modules/constant-contact.php:362 modules/recaptcha.php:436
+#: modules/recaptcha.php:508
 msgctxt "API keys"
 msgid "Remove Keys"
 msgstr "Удаление ключей"
 
-#: modules/constant-contact.php:354
+#: modules/constant-contact.php:557
 msgid "Set this URL as the redirect URI."
 msgstr "Установить этот URL как URI перенаправления."
 
-#: modules/constant-contact.php:347
+#: modules/constant-contact.php:550
 msgid "Redirect URI"
 msgstr "URI перенаправления"
 
-#: modules/constant-contact.php:330
+#: modules/constant-contact.php:533
 msgid "App Secret"
 msgstr "Секрет приложения (App Secret)"
 
-#: modules/constant-contact.php:313
+#: modules/constant-contact.php:516
 msgid "API Key"
 msgstr "API ключ"
 
-#: modules/constant-contact.php:301 modules/recaptcha.php:383
+#: modules/constant-contact.php:504 modules/recaptcha.php:455
 msgid "Setup Integration"
 msgstr "Настройки интеграции"
 
-#: modules/constant-contact.php:291
+#: modules/constant-contact.php:487
 msgid "Constant Contact Integration"
 msgstr "Интеграция Constant Contact"
 
-#: modules/constant-contact.php:287
+#: modules/constant-contact.php:483
 msgid "https://contactform7.com/constant-contact-integration/"
 msgstr "https://contactform7.com/constant-contact-integration/"
 
-#: modules/constant-contact.php:285
+#: modules/constant-contact.php:481
 msgid "The Constant Contact integration module allows you to send contact data collected through your contact forms to the Constant Contact API. You can create reliable email subscription services in a few easy steps. For details, see %s."
 msgstr "Модуль интеграции Constant Contact позволяет отправлять контактные данные, собранные с помощью ваших контактных форм, в API Constant Contact. Вы можете создать надежные услуги подписки по электронной почте в несколько простых шагов. Подробнее смотрите здесь: %s."
 
-#: modules/constant-contact.php:171
+#: modules/constant-contact.php:236
 msgid "Constant Contact"
 msgstr "Constant Contact"
 
@@ -81,7 +136,7 @@ msgstr "Constant Contact"
 msgid "Email Marketing"
 msgstr "Email-маркетинг"
 
-#: includes/config-validator.php:586
+#: includes/config-validator.php:590
 msgid "It is not allowed to use files outside the wp-content directory."
 msgstr "Запрещается использовать файлы вне каталога wp-content."
 
@@ -135,7 +190,7 @@ msgstr "Не одобрено"
 msgid "Consented"
 msgstr "Одобрено"
 
-#: includes/submission.php:205
+#: includes/submission.php:206
 msgid "Sending mail has been aborted."
 msgstr "Отправка почты была отменена."
 
@@ -244,16 +299,16 @@ msgstr "Невозможно создать существующую конта�
 msgid "You are not allowed to access contact forms."
 msgstr "У вас нет доступа к контактной форме."
 
-#: includes/config-validator.php:568
+#: includes/config-validator.php:572
 msgid "Attachment file does not exist at %path%."
 msgstr "По указанному пути %path% файл вложения не существует. "
 
-#: includes/config-validator.php:484
+#: includes/config-validator.php:488
 msgid "Invalid mailbox syntax is used in the %name% field."
 msgstr "Был использован некорректный синтаксис почтового адреса в поле %name%."
 
 #. translators: %names%: a list of form control names
-#: includes/config-validator.php:394
+#: includes/config-validator.php:398
 msgid "Unavailable names (%names%) are used for form controls."
 msgstr "Использованы недопустимые названия (%names%) элементов управления формы."
 
@@ -301,7 +356,7 @@ msgstr "Обнаружены %d ошибки конфигурации"
 msgid "1 configuration error detected"
 msgstr "Обнаружена 1 ошибка в конфигурации"
 
-#: includes/rest-api.php:138 includes/rest-api.php:214 admin/admin.php:512
+#: admin/admin.php:512 includes/rest-api.php:138 includes/rest-api.php:214
 msgid "There was an error saving the contact form."
 msgstr "Ошибка при сохранении контактной формы."
 
@@ -497,34 +552,34 @@ msgstr "Вам не доступна валидация конфигурации
 
 #. translators: links labeled 1: 'Akismet', 2: 'reCAPTCHA', 3: 'comment
 #. blacklist'
-#: modules/recaptcha.php:174 modules/recaptcha.php:372
-#: admin/includes/welcome-panel.php:26
+#: admin/includes/welcome-panel.php:26 modules/recaptcha.php:226
+#: modules/recaptcha.php:444
 msgid "https://contactform7.com/recaptcha/"
 msgstr "https://contactform7.com/recaptcha/"
 
-#: modules/recaptcha.php:415
+#: modules/recaptcha.php:487
 msgid "Secret Key"
 msgstr "Секретный ключ"
 
-#: modules/recaptcha.php:398
+#: modules/recaptcha.php:470
 msgid "Site Key"
 msgstr "Ключ сайта"
 
-#: modules/recaptcha.php:364
+#: modules/recaptcha.php:436
 msgid "Settings saved."
 msgstr "Настройки сохранены."
 
-#: modules/recaptcha.php:359
+#: modules/recaptcha.php:431
 msgid "Invalid key values."
 msgstr "Неправильное значение ключа."
 
-#: modules/recaptcha.php:358
+#: modules/constant-contact.php:466 modules/recaptcha.php:430
 msgid "ERROR"
 msgstr "ОШИБКА"
 
 #. translators: links labeled 1: 'Akismet', 2: 'reCAPTCHA', 3: 'comment
 #. blacklist'
-#: modules/recaptcha.php:207 admin/includes/welcome-panel.php:26
+#: admin/includes/welcome-panel.php:26 modules/recaptcha.php:260
 msgid "reCAPTCHA"
 msgstr "reCAPTCHA"
 
@@ -575,16 +630,16 @@ msgstr "Это поле требует имя автора"
 
 #. translators: links labeled 1: 'Akismet', 2: 'reCAPTCHA', 3: 'comment
 #. blacklist'
-#: modules/text.php:266 modules/text.php:269
-#: admin/includes/welcome-panel.php:26
+#: admin/includes/welcome-panel.php:26 modules/text.php:266
+#: modules/text.php:269
 msgid "Akismet"
 msgstr "Akismet"
 
-#: modules/textarea.php:141 modules/text.php:234
+#: modules/text.php:234 modules/textarea.php:141
 msgid "Text Fields"
 msgstr "Текстовое Поле"
 
-#: modules/textarea.php:141 modules/text.php:234
+#: modules/text.php:234 modules/textarea.php:141
 msgid "https://contactform7.com/text-fields/"
 msgstr "https://contactform7.com/text-fields/"
 
@@ -793,13 +848,13 @@ msgstr "Мин."
 msgid "Range"
 msgstr "Диапазон"
 
-#: modules/textarea.php:168 modules/date.php:178 modules/text.php:261
-#: modules/number.php:186
+#: modules/text.php:261 modules/date.php:178 modules/number.php:186
+#: modules/textarea.php:168
 msgid "Use this text as the placeholder of the field"
 msgstr "Используйте этот текст в качестве заполнителя поля"
 
-#: modules/textarea.php:166 modules/date.php:176 modules/text.php:259
-#: modules/number.php:184
+#: modules/text.php:259 modules/date.php:176 modules/number.php:184
+#: modules/textarea.php:166
 msgid "Default value"
 msgstr "Значение по умолчанию"
 
@@ -831,8 +886,8 @@ msgstr "Более ранняя дата установленного огран
 msgid "Date format that the sender entered is invalid"
 msgstr "Отправителем введён некорректный формат даты"
 
+#: modules/text.php:317 modules/date.php:222 modules/number.php:230
 #: modules/checkbox.php:346 modules/textarea.php:195 modules/select.php:224
-#: modules/date.php:222 modules/text.php:317 modules/number.php:230
 msgid "To use the value input through this field in a mail field, you need to insert the corresponding mail-tag (%s) into the field on the Mail tab."
 msgstr "Чтобы использовать значение, введенное через это поле в поле почты, вам нужно вставить соответствующий почтовый-тег (%s) в поле на вкладке Почта."
 
@@ -852,17 +907,17 @@ msgstr "Поставьте метку сначала, после - чекбок�
 msgid "One option per line."
 msgstr "Один вариант в каждой строке."
 
-#: modules/file.php:231 modules/checkbox.php:295 modules/textarea.php:155
-#: modules/select.php:177 modules/date.php:165 modules/text.php:248
-#: modules/number.php:173
+#: modules/text.php:248 modules/file.php:231 modules/date.php:165
+#: modules/number.php:173 modules/checkbox.php:295 modules/textarea.php:155
+#: modules/select.php:177
 msgid "Required field"
 msgstr "Обязательное поле"
 
-#: modules/file.php:227 modules/file.php:230 modules/checkbox.php:291
+#: modules/text.php:244 modules/text.php:247 modules/file.php:227
+#: modules/file.php:230 modules/date.php:161 modules/date.php:164
+#: modules/number.php:164 modules/number.php:167 modules/checkbox.php:291
 #: modules/checkbox.php:294 modules/textarea.php:151 modules/textarea.php:154
-#: modules/select.php:173 modules/select.php:176 modules/date.php:161
-#: modules/date.php:164 modules/text.php:244 modules/text.php:247
-#: modules/number.php:164 modules/number.php:167
+#: modules/select.php:173 modules/select.php:176
 msgid "Field type"
 msgstr "Тип поля"
 
@@ -919,7 +974,7 @@ msgstr "Генерируйте теги формы для CAPTCHA изображ
 msgid "To use CAPTCHA, you first need to install and activate %s plugin."
 msgstr "Чтобы использовать CAPTCHA, сначала необходимо установить и активировать плагин  %s."
 
-#: modules/recaptcha.php:9 modules/really-simple-captcha.php:272
+#: modules/really-simple-captcha.php:272 modules/recaptcha.php:9
 msgid "CAPTCHA"
 msgstr "CAPTCHA"
 
@@ -931,27 +986,27 @@ msgstr "Код введен неверно."
 msgid "The code that sender entered does not match the CAPTCHA"
 msgstr "Код, который ввел отправитель не совпадает с CAPTCHA"
 
-#: modules/submit.php:88 modules/acceptance.php:278 modules/file.php:270
-#: modules/checkbox.php:341 modules/quiz.php:234 modules/textarea.php:190
-#: modules/select.php:219 modules/date.php:217
-#: modules/really-simple-captcha.php:324 modules/text.php:312
-#: modules/number.php:225
+#: modules/quiz.php:234 modules/text.php:312 modules/submit.php:88
+#: modules/acceptance.php:278 modules/file.php:270 modules/date.php:217
+#: modules/number.php:225 modules/checkbox.php:341
+#: modules/really-simple-captcha.php:324 modules/textarea.php:190
+#: modules/select.php:219
 msgid "Insert Tag"
 msgstr "Вставить тег"
 
-#: modules/submit.php:75 modules/acceptance.php:265 modules/file.php:257
-#: modules/checkbox.php:328 modules/quiz.php:221 modules/textarea.php:177
-#: modules/select.php:206 modules/date.php:205
+#: modules/quiz.php:221 modules/text.php:299 modules/submit.php:75
+#: modules/acceptance.php:265 modules/file.php:257 modules/date.php:205
+#: modules/number.php:213 modules/checkbox.php:328
 #: modules/really-simple-captcha.php:297 modules/really-simple-captcha.php:312
-#: modules/text.php:299 modules/number.php:213
+#: modules/textarea.php:177 modules/select.php:206
 msgid "Class attribute"
 msgstr "Атрибут class"
 
-#: modules/submit.php:70 modules/acceptance.php:260 modules/file.php:252
-#: modules/checkbox.php:323 modules/quiz.php:216 modules/textarea.php:172
-#: modules/select.php:201 modules/date.php:200
+#: modules/quiz.php:216 modules/text.php:294 modules/submit.php:70
+#: modules/acceptance.php:260 modules/file.php:252 modules/date.php:200
+#: modules/number.php:208 modules/checkbox.php:323
 #: modules/really-simple-captcha.php:292 modules/really-simple-captcha.php:307
-#: modules/text.php:294 modules/number.php:208
+#: modules/textarea.php:172 modules/select.php:201
 msgid "Id attribute"
 msgstr "Атрибут Id"
 
@@ -961,10 +1016,10 @@ msgstr "Атрибут Id"
 msgid "Options"
 msgstr "Параметры"
 
-#: modules/acceptance.php:240 modules/file.php:237 modules/checkbox.php:302
-#: modules/quiz.php:200 modules/textarea.php:161 modules/select.php:183
-#: modules/date.php:171 modules/really-simple-captcha.php:282
-#: modules/text.php:254 modules/number.php:179
+#: modules/quiz.php:200 modules/text.php:254 modules/acceptance.php:240
+#: modules/file.php:237 modules/date.php:171 modules/number.php:179
+#: modules/checkbox.php:302 modules/really-simple-captcha.php:282
+#: modules/textarea.php:161 modules/select.php:183
 msgid "Name"
 msgstr "Имя"
 
@@ -1191,7 +1246,7 @@ msgstr "Тело письма"
 msgid "Additional Headers"
 msgstr "Дополнительные заголовки"
 
-#: includes/contact-form-template.php:40 admin/includes/editor.php:163
+#: admin/includes/editor.php:163 includes/contact-form-template.php:40
 msgid "Subject"
 msgstr "Тема"
 
@@ -1397,12 +1452,12 @@ msgstr "Контактная форма сохранена."
 msgid "Contact form created."
 msgstr "Контактная форма создана."
 
-#: admin/admin.php:418
+#: admin/admin.php:414
 msgid "Search Contact Forms"
 msgstr "Поиск формы"
 
 #. translators: %s: search keywords
-#: admin/admin.php:399
+#: admin/admin.php:395
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "Результаты поиска &#8220;%s&#8221;"
 
@@ -1410,15 +1465,15 @@ msgstr "Результаты поиска &#8220;%s&#8221;"
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr "Внесенные изменения будут потеряны, если вы уйдете с этой страницы."
 
-#: admin/admin.php:307
+#: admin/admin.php:305
 msgid "Error in deleting."
 msgstr "Ошибка при удалении."
 
-#: admin/admin.php:303
+#: admin/admin.php:301
 msgid "You are not allowed to delete this item."
 msgstr "Недостаточно прав для удаления."
 
-#: admin/admin.php:197 admin/admin.php:261
+#: admin/admin.php:197 admin/admin.php:259
 msgid "You are not allowed to edit this item."
 msgstr "Недостаточно прав для редактирования."
 
@@ -1426,11 +1481,11 @@ msgstr "Недостаточно прав для редактирования."
 msgid "Integration"
 msgstr "Интеграция"
 
-#: admin/admin.php:53 admin/admin.php:467
+#: admin/admin.php:53 admin/admin.php:463
 msgid "Integration with Other Services"
 msgstr "Интеграция с другими сервисами"
 
-#: admin/edit-contact-form.php:47 admin/admin.php:42 admin/admin.php:391
+#: admin/edit-contact-form.php:47 admin/admin.php:42 admin/admin.php:387
 msgid "Add New"
 msgstr "Добавить новую"
 
@@ -1438,7 +1493,7 @@ msgstr "Добавить новую"
 msgid "Add New Contact Form"
 msgstr "Добавить контактную форму"
 
-#: includes/contact-form.php:31 admin/admin.php:33 admin/admin.php:384
+#: admin/admin.php:33 admin/admin.php:380 includes/contact-form.php:31
 msgid "Contact Forms"
 msgstr "Контактные формы"
 
@@ -1451,6 +1506,6 @@ msgid "Contact"
 msgstr "Contact Form 7"
 
 #. Plugin Name of the plugin
-#: modules/flamingo.php:173 admin/admin.php:24
+#: admin/admin.php:24 modules/flamingo.php:181
 msgid "Contact Form 7"
 msgstr "Contact Form 7"
