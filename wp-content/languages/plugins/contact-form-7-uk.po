@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Contact Form 7 - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-05-18 03:23:01+0000\n"
+"PO-Revision-Date: 2019-05-29 13:14:30+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,9 +11,65 @@ msgstr ""
 "Language: uk_UA\n"
 "Project-Id-Version: Plugins - Contact Form 7 - Stable (latest release)\n"
 
+#: includes/submission.php:326
+msgid "Blacklisted words are used."
+msgstr "Використано слова з чорного списку."
+
+#: includes/submission.php:317
+msgid "Submitted nonce is invalid."
+msgstr "Відправлений код nonce невірний."
+
+#: includes/submission.php:308
+msgid "User-Agent string is unnaturally short."
+msgstr "Рядок User-Agent неприродно короткий."
+
+#: modules/recaptcha.php:156
+msgid "reCAPTCHA score (%1$.2f) is lower than the threshold (%2$.2f)."
+msgstr "Оцінка reCAPTCHA (%1$.2f) нижче порогового значення (%2$.2f)."
+
+#: modules/akismet.php:58
+msgid "Akismet returns a spam response."
+msgstr "Akismet повернув статус спаму."
+
+#: modules/constant-contact.php:588
+msgid "Select lists to which newly added contacts are to belong."
+msgstr "Виберіть списки, до яких повинні бути додані нові контакти."
+
+#: modules/constant-contact.php:587
+msgctxt "Constant Contact"
+msgid "Contact Lists: Select lists to which newly added contacts are to belong."
+msgstr "Списки контактів: виберіть списки, до яких повинні бути додані нові контакти."
+
+#: modules/constant-contact.php:584
+msgctxt "Constant Contact"
+msgid "Contact Lists"
+msgstr "Списки контактів"
+
+#: modules/constant-contact.php:565
+msgctxt "API keys"
+msgid "Reset Keys"
+msgstr "Скинути ключі"
+
+#: modules/constant-contact.php:494
+msgid "This site is connected to the Constant Contact API."
+msgstr "Цей сайт підключений до API Constant Contact."
+
 #: modules/constant-contact.php:473
 msgid "Configuration updated."
 msgstr "Конфігурацію оновлено."
+
+#: modules/constant-contact.php:467
+msgid "Failed to establish connection. Please double-check your configuration."
+msgstr "Не вдалося встановити з'єднання. Будь ласка, перевірте вашу конфігурацію."
+
+#: modules/constant-contact.php:460
+msgid "Connection established."
+msgstr "З'єднання встановлено."
+
+#. translators: 1: response code, 2: message, 3: body, 4: URL
+#: includes/functions.php:384
+msgid "HTTP Response: %1$s %2$s %3$s from %4$s"
+msgstr "HTTP-відповідь: %1$s %2$s %3$s з %4$s"
 
 #: modules/recaptcha.php:512
 msgid "Save Changes"
@@ -438,7 +494,7 @@ msgstr "Ви повинні прийняти умови та положення 
 
 #: includes/contact-form-template.php:161
 msgid "One or more fields have an error. Please check and try again."
-msgstr "Одне або декілька полів містять помилкові дані. Будь ласка перевірте їх і спробуйте ще раз."
+msgstr "Одне або декілька полів містять помилкові дані. Будь ласка, перевірте їх і спробуйте ще раз."
 
 #: includes/contact-form-template.php:154
 #: includes/contact-form-template.php:168
