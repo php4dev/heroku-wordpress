@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WooCommerce package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce 3.6.3\n"
+"Project-Id-Version: WooCommerce 3.6.4\n"
 "Report-Msgid-Bugs-To: https://github.com/woocommerce/woocommerce/issues\n"
-"POT-Creation-Date: 2019-05-16 17:15:30+00:00\n"
+"POT-Creation-Date: 2019-05-27 18:49:33+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5953,7 +5953,7 @@ msgid "Invalid coupon code"
 msgstr ""
 
 #: includes/abstracts/abstract-wc-order.php:939 includes/class-wc-ajax.php:1128
-#: includes/class-wc-ajax.php:1187 includes/class-wc-discounts.php:247
+#: includes/class-wc-ajax.php:1191 includes/class-wc-discounts.php:247
 msgid "Invalid coupon"
 msgstr ""
 
@@ -5962,7 +5962,7 @@ msgstr ""
 msgid "Coupon code already applied!"
 msgstr ""
 
-#: includes/abstracts/abstract-wc-order.php:1751
+#: includes/abstracts/abstract-wc-order.php:1766
 #: includes/admin/list-tables/class-wc-admin-list-table-orders.php:266
 #: includes/admin/list-tables/class-wc-admin-list-table-orders.php:318
 #: includes/admin/list-tables/class-wc-admin-list-table-orders.php:335
@@ -5973,26 +5973,26 @@ msgstr ""
 msgid "via %s"
 msgstr ""
 
-#: includes/abstracts/abstract-wc-order.php:1756
+#: includes/abstracts/abstract-wc-order.php:1771
 #: includes/class-wc-cart.php:1396 includes/class-wc-product-grouped.php:120
 msgid "Free!"
 msgstr ""
 
-#: includes/abstracts/abstract-wc-order.php:1785
+#: includes/abstracts/abstract-wc-order.php:1800
 msgid "Subtotal:"
 msgstr ""
 
-#: includes/abstracts/abstract-wc-order.php:1800
+#: includes/abstracts/abstract-wc-order.php:1815
 #: includes/admin/meta-boxes/views/html-order-items.php:146
 msgid "Discount:"
 msgstr ""
 
-#: includes/abstracts/abstract-wc-order.php:1815
+#: includes/abstracts/abstract-wc-order.php:1830
 #: includes/admin/meta-boxes/views/html-order-items.php:158
 msgid "Shipping:"
 msgstr ""
 
-#: includes/abstracts/abstract-wc-order.php:1876
+#: includes/abstracts/abstract-wc-order.php:1891
 #: templates/checkout/order-receipt.php:33 templates/checkout/thankyou.php:62
 msgid "Total:"
 msgstr ""
@@ -7742,7 +7742,7 @@ msgstr ""
 msgid "Reviews"
 msgstr ""
 
-#: includes/admin/class-wc-admin-notices.php:124
+#: includes/admin/class-wc-admin-notices.php:126
 #: includes/admin/class-wc-admin-status.php:296
 #: includes/admin/class-wc-admin-status.php:315
 #: includes/admin/class-wc-admin-status.php:331
@@ -7750,7 +7750,7 @@ msgstr ""
 msgid "Action failed. Please refresh the page and retry."
 msgstr ""
 
-#: includes/admin/class-wc-admin-notices.php:128
+#: includes/admin/class-wc-admin-notices.php:130
 #: includes/emails/class-wc-email.php:837
 msgid "You don&#8217;t have permission to do this."
 msgstr ""
@@ -7936,6 +7936,7 @@ msgstr ""
 #: includes/admin/views/html-notice-secure-connection.php:12
 #: includes/admin/views/html-notice-template-check.php:15
 #: includes/admin/views/html-notice-updated.php:14
+#: includes/admin/views/html-notice-wc-admin.php:14
 #: includes/wc-template-functions.php:1021
 msgid "Dismiss"
 msgstr ""
@@ -10775,7 +10776,7 @@ msgstr[1] ""
 #: includes/admin/list-tables/class-wc-admin-list-table-orders.php:751
 #: includes/admin/meta-boxes/class-wc-meta-box-order-data.php:296
 #: includes/admin/settings/views/html-keys-edit.php:43
-#: includes/class-wc-ajax.php:1639
+#: includes/class-wc-ajax.php:1643
 #. translators: 1: user display name 2: user ID 3: user email
 #. translators: $1: customer name, $2 customer id, $3: customer email
 msgid "%1$s (#%2$s &ndash; %3$s)"
@@ -11586,7 +11587,7 @@ msgstr ""
 #: includes/admin/views/html-admin-page-status-report.php:597
 #: includes/admin/views/html-admin-page-status-report.php:649
 #: includes/admin/views/html-admin-page-status-report.php:707
-#: includes/class-wc-ajax.php:1469 templates/content-widget-reviews.php:31
+#: includes/class-wc-ajax.php:1473 templates/content-widget-reviews.php:31
 #. translators: %s: note author
 #. translators: %s: plugin author
 #. translators: %s: note author
@@ -11594,7 +11595,7 @@ msgid "by %s"
 msgstr ""
 
 #: includes/admin/meta-boxes/views/html-order-notes.php:37
-#: includes/class-wc-ajax.php:1472
+#: includes/class-wc-ajax.php:1476
 msgid "Delete note"
 msgstr ""
 
@@ -14278,7 +14279,7 @@ msgid "Generate API key"
 msgstr ""
 
 #: includes/admin/settings/views/html-keys-edit.php:119
-#: includes/class-wc-ajax.php:2000
+#: includes/class-wc-ajax.php:2004
 msgid "Revoke key"
 msgstr ""
 
@@ -15798,6 +15799,20 @@ msgid ""
 "process may take a little while, so please be patient."
 msgstr ""
 
+#: includes/admin/views/html-notice-wc-admin.php:17
+msgid ""
+"Test drive the future of WooCommerce. A quicker, javascript powered "
+"interface with exciting new features and reports."
+msgstr ""
+
+#: includes/admin/views/html-notice-wc-admin.php:21
+msgid "Activate WooCommerce Admin"
+msgstr ""
+
+#: includes/admin/views/html-notice-wc-admin.php:32
+msgid "Install WooCommerce Admin"
+msgstr ""
+
 #: includes/admin/views/html-report-by-date.php:22
 #. translators: 1: start date 2: end date
 msgid "From %1$s to %2$s"
@@ -16274,7 +16289,7 @@ msgstr ""
 #: includes/api/v2/class-wc-rest-order-refunds-v2-controller.php:191
 #: includes/api/v2/class-wc-rest-order-refunds-v2-controller.php:273
 #: includes/wc-core-functions.php:146 includes/wc-order-functions.php:507
-#: includes/wc-order-functions.php:1058
+#: includes/wc-order-functions.php:1060
 msgid "Invalid order ID."
 msgstr ""
 
@@ -16341,7 +16356,7 @@ msgstr ""
 msgid "Coupon code is required."
 msgstr ""
 
-#: includes/api/class-wc-rest-orders-controller.php:160
+#: includes/api/class-wc-rest-orders-controller.php:162
 #: includes/api/legacy/class-wc-rest-legacy-orders-controller.php:249
 #: includes/api/legacy/v2/class-wc-api-orders.php:388
 #: includes/api/legacy/v2/class-wc-api-orders.php:535
@@ -16352,7 +16367,7 @@ msgstr ""
 msgid "Customer ID is invalid."
 msgstr ""
 
-#: includes/api/class-wc-rest-orders-controller.php:260
+#: includes/api/class-wc-rest-orders-controller.php:279
 msgid "Limit result set to orders which have specific statuses."
 msgstr ""
 
@@ -17871,7 +17886,7 @@ msgstr ""
 #: includes/api/legacy/v3/class-wc-api-resource.php:394
 #: includes/api/legacy/v3/class-wc-api-taxes.php:354
 #: includes/api/legacy/v3/class-wc-api-taxes.php:665
-#: includes/class-wc-ajax.php:1267
+#: includes/class-wc-ajax.php:1271
 #. translators: %s item name.
 msgid "Deleted %s"
 msgstr ""
@@ -20564,7 +20579,7 @@ msgstr ""
 #: includes/class-wc-ajax.php:866 includes/class-wc-ajax.php:873
 #: includes/class-wc-ajax.php:967 includes/class-wc-ajax.php:1029
 #: includes/class-wc-ajax.php:1071 includes/class-wc-ajax.php:1124
-#: includes/class-wc-ajax.php:1183 includes/class-wc-ajax.php:1224
+#: includes/class-wc-ajax.php:1187 includes/class-wc-ajax.php:1228
 msgid "Invalid order"
 msgstr ""
 
@@ -20586,60 +20601,60 @@ msgstr ""
 msgid "Invalid rate"
 msgstr ""
 
-#: includes/class-wc-ajax.php:1228
+#: includes/class-wc-ajax.php:1232
 msgid "Invalid items"
 msgstr ""
 
-#: includes/class-wc-ajax.php:1264
+#: includes/class-wc-ajax.php:1268
 #. translators: %1$s: item name %2$s: stock change
 msgid "Deleted %1$s and adjusted stock (%2$s)"
 msgstr ""
 
-#: includes/class-wc-ajax.php:1463
+#: includes/class-wc-ajax.php:1467
 #. translators: $1: Date created, $2 Time created
 msgid "added on %1$s at %2$s"
 msgstr ""
 
-#: includes/class-wc-ajax.php:1537
+#: includes/class-wc-ajax.php:1541
 #. Translators: %d stock amount
 msgid "Stock: %d"
 msgstr ""
 
-#: includes/class-wc-ajax.php:1817
+#: includes/class-wc-ajax.php:1821
 msgid "Invalid refund amount"
 msgstr ""
 
-#: includes/class-wc-ajax.php:1821
+#: includes/class-wc-ajax.php:1825
 msgid "Error processing refund. Please try again."
 msgstr ""
 
-#: includes/class-wc-ajax.php:1925
+#: includes/class-wc-ajax.php:1929
 msgid "Description is missing."
 msgstr ""
 
-#: includes/class-wc-ajax.php:1928
+#: includes/class-wc-ajax.php:1932
 msgid "User is missing."
 msgstr ""
 
-#: includes/class-wc-ajax.php:1931
+#: includes/class-wc-ajax.php:1935
 msgid "Permissions is missing."
 msgstr ""
 
-#: includes/class-wc-ajax.php:1942
+#: includes/class-wc-ajax.php:1946
 msgid "You do not have permission to assign API Keys to the selected user."
 msgstr ""
 
-#: includes/class-wc-ajax.php:1968
+#: includes/class-wc-ajax.php:1972
 msgid "API Key updated successfully."
 msgstr ""
 
-#: includes/class-wc-ajax.php:1999
+#: includes/class-wc-ajax.php:2003
 msgid ""
 "API Key generated successfully. Make sure to copy your new keys now as the "
 "secret key will be hidden once you leave this page."
 msgstr ""
 
-#: includes/class-wc-ajax.php:2086
+#: includes/class-wc-ajax.php:2090
 msgid "Dismiss this notice."
 msgstr ""
 
@@ -24770,7 +24785,7 @@ msgid ""
 "apologize for any inconvenience caused."
 msgstr ""
 
-#: includes/shortcodes/class-wc-shortcode-checkout.php:281
+#: includes/shortcodes/class-wc-shortcode-checkout.php:282
 msgid ""
 "The order totals have been updated. Please confirm your order by pressing "
 "the \"Place order\" button at the bottom of the page."
@@ -25627,12 +25642,16 @@ msgid "Item #%1$s stock increased from %2$s to %3$s."
 msgstr ""
 
 #: includes/wc-order-functions.php:775
+msgid "Order fully refunded."
+msgstr ""
+
+#: includes/wc-order-functions.php:781
 msgid ""
 "Order status set to refunded. To return funds to the customer you will need "
 "to issue a refund through your payment gateway."
 msgstr ""
 
-#: includes/wc-order-functions.php:905
+#: includes/wc-order-functions.php:907
 msgid "Unpaid order cancelled - time limit reached."
 msgstr ""
 

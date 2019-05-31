@@ -3,7 +3,7 @@ Contributors: automattic, mikejolley, jameskoster, claudiosanches, claudiulodro,
 Tags: ecommerce, e-commerce, store, sales, sell, shop, cart, checkout, downloadable, downloads, payments, paypal, storefront, stripe, woo commerce, woo
 Requires at least: 4.7
 Tested up to: 5.2
-Stable tag: 3.6.3
+Stable tag: 3.6.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -187,6 +187,18 @@ INTERESTED IN DEVELOPMENT?
 [Browse the code](https://plugins.trac.wordpress.org/browser/woocommerce/), check out the [SVN repository](https://plugins.svn.wordpress.org/woocommerce/), or subscribe to the [development log](https://plugins.trac.wordpress.org/log/woocommerce/) by [RSS](https://plugins.trac.wordpress.org/log/woocommerce/?limit=100&mode=stop_on_copy&format=rss).
 
 == Changelog ==
+
+= 3.6.4 - 2019-05-27 =
+* Enhancement - Add notice to install WooCommerce Admin. #23659
+* Fix - Tracks: Add check for OBW is-opting-in. #23772
+* Fix - Use HTTP protocol for schema.org's availability. #23774
+* Fix - Coupon usage limit checks based on email never ran when orders are created via wp-admin. #23775
+* Fix - Duplicate out of stock notices when navigating from cart to checkout and back to cart. #23791
+* Fix - Remove sensitive information from refund reason when manually refunding an order, and move it to an order note. #23739
+* Tweak - Tracks: set cookie on admin_init instead of wp_loaded. #23787
+* Dev - Fixed number of arguments for all occurrences of the woocommerce_valid_order_statuses_for_cancel filter. #23704
+* Dev - REST API - Stop order creation if invalid data is sent. #23325
+* Dev - Introduce new wc_load_cart function for dynamically loading and initializing the cart. #23794
 
 = 3.6.3 - 2019-05-16 =
 * Fix - State not required for Serbia. #23430
