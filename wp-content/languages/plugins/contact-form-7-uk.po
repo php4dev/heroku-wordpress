@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Contact Form 7 - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-05-29 13:14:30+0000\n"
+"PO-Revision-Date: 2019-06-08 19:46:11+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -499,11 +499,11 @@ msgstr "Одне або декілька полів містять помилк�
 #: includes/contact-form-template.php:154
 #: includes/contact-form-template.php:168
 msgid "There was an error trying to send your message. Please try again later."
-msgstr "Сталася помилка під час спроби відправити Ваше повідомлення. Будь ласка спробуйте ще раз пізніше."
+msgstr "Сталася помилка під час спроби відправити Ваше повідомлення. Будь ласка, спробуйте ще раз пізніше."
 
 #: includes/contact-form-template.php:147
 msgid "Thank you for your message. It has been sent."
-msgstr "Дякуємо за Ваше повідомлення. Воно було відправлено."
+msgstr "Дякуємо за Ваше повідомлення. Воно було надіслане."
 
 #: includes/contact-form-template.php:52 includes/contact-form-template.php:87
 msgctxt "mail subject"

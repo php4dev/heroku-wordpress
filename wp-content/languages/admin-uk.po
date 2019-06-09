@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-05-23 19:07:24+0000\n"
+"PO-Revision-Date: 2019-06-05 14:43:02+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4119,7 +4119,7 @@ msgstr[2] "Відгуків з оцінкою в %1$d зірок: %2$s. Поси
 
 #: wp-admin/includes/plugin-install.php:704
 msgid "Read all reviews on WordPress.org or write your own!"
-msgstr "Читати усі відгуки на WordPress.org або написати свій власний!"
+msgstr "Подивіться всі відгуки на WordPress.org або напишіть свій!"
 
 #: wp-admin/includes/plugin-install.php:703
 msgid "Reviews"
@@ -8047,7 +8047,7 @@ msgstr "Тепер вам слід оновити web.config"
 
 #: wp-admin/includes/plugin-install.php:681
 msgid "Plugin Homepage &#187;"
-msgstr "Домашня сторінка плагіну &#187;"
+msgstr "Сторінка плагіну &#187;"
 
 #. translators: 1: table name, 2: error message,
 #: wp-admin/maint/repair.php:116
@@ -10764,25 +10764,25 @@ msgstr "Плагінів не знайдено."
 #: wp-admin/includes/class-wp-plugins-list-table.php:445
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
-msgstr[0] "Недіючі <span class=\"count\">(%s)</span>"
-msgstr[1] "Недіючі <span class=\"count\">(%s)</span>"
-msgstr[2] "Недіючі <span class=\"count\">(%s)</span>"
+msgstr[0] "Неактивні <span class=\"count\">(%s)</span>"
+msgstr[1] "Неактивні <span class=\"count\">(%s)</span>"
+msgstr[2] "Неактивні <span class=\"count\">(%s)</span>"
 
 #. translators: %s: plugin count
 #: wp-admin/includes/class-wp-plugins-list-table.php:441
 msgid "Recently Active <span class=\"count\">(%s)</span>"
 msgid_plural "Recently Active <span class=\"count\">(%s)</span>"
-msgstr[0] "Нещодавно діючі <span class=\"count\">(%s)</span>"
-msgstr[1] "Нещодавно діючі <span class=\"count\">(%s)</span>"
-msgstr[2] "Нещодавно діючі <span class=\"count\">(%s)</span>"
+msgstr[0] "Нещодавно активний <span class=\"count\">(%s)</span>"
+msgstr[1] "Нещодавно активні <span class=\"count\">(%s)</span>"
+msgstr[2] "Нещодавно активних <span class=\"count\">(%s)</span>"
 
 #. translators: %s: plugin count
 #: wp-admin/includes/class-wp-plugins-list-table.php:437
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
-msgstr[0] "Діючі <span class=\"count\">(%s)</span>"
-msgstr[1] "Діючі <span class=\"count\">(%s)</span>"
-msgstr[2] "Діючі <span class=\"count\">(%s)</span>"
+msgstr[0] "Активні <span class=\"count\">(%s)</span>"
+msgstr[1] "Активні <span class=\"count\">(%s)</span>"
+msgstr[2] "Активні <span class=\"count\">(%s)</span>"
 
 #. translators: %s: plugin count
 #: wp-admin/includes/class-wp-plugins-list-table.php:433
@@ -11872,7 +11872,7 @@ msgstr "Максимальний рейтинг"
 
 #: wp-admin/includes/plugin-install.php:679
 msgid "WordPress.org Plugin Page &#187;"
-msgstr "Сторінка плагінів WordPress.org &#187;"
+msgstr "Сторінка на WordPress.org &#187;"
 
 #: wp-admin/includes/plugin-install.php:653
 msgid "Compatible up to:"
