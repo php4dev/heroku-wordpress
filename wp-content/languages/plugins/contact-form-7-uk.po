@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Contact Form 7 - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-06-08 19:46:11+0000\n"
+"PO-Revision-Date: 2019-06-17 20:43:42+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -669,7 +669,7 @@ msgstr "URL"
 
 #: modules/text.php:208
 msgid "email"
-msgstr "електронна пошта"
+msgstr "email"
 
 #: modules/text.php:206
 msgid "text"
@@ -1427,7 +1427,7 @@ msgstr "Contact Form 7 потребує вашої підтримки."
 
 #: admin/includes/welcome-panel.php:16
 msgid "Dismiss"
-msgstr "Закрити"
+msgstr "Відхилити"
 
 #. translators: 1: version of Contact Form 7, 2: version of WordPress, 3: URL
 #: admin/admin.php:578

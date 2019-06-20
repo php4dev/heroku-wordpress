@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-06-06 12:47:05+0000\n"
+"PO-Revision-Date: 2019-06-13 17:07:37+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -86,6 +86,10 @@ msgstr " "
 #: wp-includes/class-wp-locale.php:213
 msgid "number_format_decimal_point"
 msgstr ","
+
+#: wp-includes/customize/class-wp-customize-theme-control.php:97
+msgid "New version available."
+msgstr "Доступна новая версия."
 
 #: wp-includes/load.php:152
 msgid "Insufficient Requirements"
@@ -532,7 +536,7 @@ msgstr "Подробности ошибки"
 msgid "A recovery link was already sent %1$s ago. Please wait another %2$s before requesting a new email."
 msgstr "Ссылка восстановления уже отослана %1$s назад. Пожалуйста, подождите еще %2$s перед тем, как запрашивать новую."
 
-#: wp-includes/class-wp-recovery-mode-email-service.php:65
+#: wp-login.php:429 wp-includes/class-wp-recovery-mode-email-service.php:65
 msgid "The email could not be sent. Possible reason: your host may have disabled the mail() function."
 msgstr "Сообщение email не может быть отослано. Возможная причина: ваш хостинг отключил функцию mail()."
 
@@ -557,31 +561,31 @@ msgid "Recovery Mode not initialized."
 msgstr "Режим восстановления не инициализирован."
 
 #. translators: user role for subscriber
-#: wp-includes/capabilities.php:994
+#: wp-includes/capabilities.php:1019
 msgctxt "User role"
 msgid "Subscriber"
 msgstr "Подписчик"
 
 #. translators: user role for contributors
-#: wp-includes/capabilities.php:992
+#: wp-includes/capabilities.php:1017
 msgctxt "User role"
 msgid "Contributor"
 msgstr "Участник"
 
 #. translators: user role for authors
-#: wp-includes/capabilities.php:990
+#: wp-includes/capabilities.php:1015
 msgctxt "User role"
 msgid "Author"
 msgstr "Автор"
 
 #. translators: user role for editors
-#: wp-includes/capabilities.php:988
+#: wp-includes/capabilities.php:1013
 msgctxt "User role"
 msgid "Editor"
 msgstr "Редактор"
 
 #. translators: user role for administrators
-#: wp-includes/capabilities.php:986
+#: wp-includes/capabilities.php:1011
 msgctxt "User role"
 msgid "Administrator"
 msgstr "Администратор"
@@ -4223,8 +4227,8 @@ msgctxt "customizer changeset status"
 msgid "Scheduled"
 msgstr "Запланировано"
 
-#: wp-includes/customize/class-wp-customize-theme-control.php:115
-#: wp-includes/customize/class-wp-customize-theme-control.php:123
+#: wp-includes/customize/class-wp-customize-theme-control.php:122
+#: wp-includes/customize/class-wp-customize-theme-control.php:130
 msgctxt "theme"
 msgid "Installed"
 msgstr "Установлена"
@@ -5012,7 +5016,7 @@ msgstr "Назад к источникам тем"
 msgid "Search WordPress.org themes"
 msgstr "Поиск тем на WordPress.org"
 
-#: wp-includes/customize/class-wp-customize-theme-control.php:128
+#: wp-includes/customize/class-wp-customize-theme-control.php:135
 msgid "Install &amp; Preview"
 msgstr "Установка и предпросмотр"
 
@@ -7513,13 +7517,12 @@ msgstr "Фильтр тем"
 msgid "Change theme"
 msgstr "Сменить тему"
 
-#. translators: %s: "Update now" button
-#: wp-includes/customize/class-wp-customize-theme-control.php:97
+#: wp-includes/customize/class-wp-customize-theme-control.php:102
 msgid "Update now"
 msgstr "Обновить сейчас"
 
 #. translators: %s: "Update now" button
-#: wp-includes/customize/class-wp-customize-theme-control.php:97
+#: wp-includes/customize/class-wp-customize-theme-control.php:101
 msgid "New version available. %s"
 msgstr "Доступна новая версия. %s"
 
@@ -9819,7 +9822,7 @@ msgstr[1] "%1$s комментария на &laquo;%2$s&raquo;"
 msgstr[2] "%1$s комментариев на &laquo;%2$s&raquo;"
 
 #. translators: %s: theme name
-#: wp-includes/customize/class-wp-customize-theme-control.php:108
+#: wp-includes/customize/class-wp-customize-theme-control.php:115
 msgid "<span>Previewing:</span> %s"
 msgstr "<span>Предварительный просмотр:</span> %s"
 
@@ -10031,7 +10034,7 @@ msgid "Theme Details"
 msgstr "Информация о теме"
 
 #: wp-includes/script-loader.php:1767
-#: wp-includes/customize/class-wp-customize-theme-control.php:120
+#: wp-includes/customize/class-wp-customize-theme-control.php:127
 msgid "Live Preview"
 msgstr "Просмотреть"
 
@@ -11710,10 +11713,6 @@ msgstr "Браузер на вашем устройстве не поддерж�
 msgid "<strong>ERROR</strong>: Couldn&#8217;t register you&hellip; please contact the <a href=\"mailto:%s\">webmaster</a> !"
 msgstr "<strong>ОШИБКА</strong>: Регистрация не удалась. Пожалуйста, свяжитесь с <a href=\"mailto:%s\">администратором</a>!"
 
-#: wp-login.php:429
-msgid "Possible reason: your host may have disabled the mail() function."
-msgstr "Возможная причина: на сервере отключена функция mail()."
-
 #: wp-includes/post-template.php:298
 msgid "(more&hellip;)"
 msgstr "(далее&hellip;)"
@@ -12275,7 +12274,7 @@ msgid "Select file"
 msgstr "Выбрать файл"
 
 #: wp-includes/admin-bar.php:434
-#: wp-includes/customize/class-wp-customize-theme-control.php:112
+#: wp-includes/customize/class-wp-customize-theme-control.php:119
 msgid "Customize"
 msgstr "Настроить"
 
@@ -14155,10 +14154,6 @@ msgstr "<strong>ОШИБКА</strong>: Пожалуйста, введите ва
 #: wp-includes/user.php:3621
 msgid "Invalid key."
 msgstr "Неверный ключ."
-
-#: wp-login.php:429
-msgid "The email could not be sent."
-msgstr "Не удалось отправить письмо."
 
 #. translators: Password reset notification email subject. %s: Site title
 #: wp-login.php:399

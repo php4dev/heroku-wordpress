@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-06-07 14:45:13+0000\n"
+"PO-Revision-Date: 2019-06-17 19:34:53+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -86,6 +86,10 @@ msgstr " "
 #: wp-includes/class-wp-locale.php:213
 msgid "number_format_decimal_point"
 msgstr ","
+
+#: wp-includes/customize/class-wp-customize-theme-control.php:97
+msgid "New version available."
+msgstr "Доступна нова версія."
 
 #: wp-includes/load.php:152
 msgid "Insufficient Requirements"
@@ -532,7 +536,7 @@ msgstr "Деталі помилки"
 msgid "A recovery link was already sent %1$s ago. Please wait another %2$s before requesting a new email."
 msgstr "Посилання відновлення вже відіслане %1$s тому. Будь ласка, зачекайте ще %2$s перед тим, як запитати нове."
 
-#: wp-includes/class-wp-recovery-mode-email-service.php:65
+#: wp-login.php:429 wp-includes/class-wp-recovery-mode-email-service.php:65
 msgid "The email could not be sent. Possible reason: your host may have disabled the mail() function."
 msgstr "Повідомлення email не може бути відіслано. Можлива причина: ваш хостинг вимкнув функцію mail()."
 
@@ -557,31 +561,31 @@ msgid "Recovery Mode not initialized."
 msgstr "Режим відновлення не ініціалізовано."
 
 #. translators: user role for subscriber
-#: wp-includes/capabilities.php:994
+#: wp-includes/capabilities.php:1019
 msgctxt "User role"
 msgid "Subscriber"
 msgstr "Учасник"
 
 #. translators: user role for contributors
-#: wp-includes/capabilities.php:992
+#: wp-includes/capabilities.php:1017
 msgctxt "User role"
 msgid "Contributor"
 msgstr "Помічник"
 
 #. translators: user role for authors
-#: wp-includes/capabilities.php:990
+#: wp-includes/capabilities.php:1015
 msgctxt "User role"
 msgid "Author"
 msgstr "Автор"
 
 #. translators: user role for editors
-#: wp-includes/capabilities.php:988
+#: wp-includes/capabilities.php:1013
 msgctxt "User role"
 msgid "Editor"
 msgstr "Редактор"
 
 #. translators: user role for administrators
-#: wp-includes/capabilities.php:986
+#: wp-includes/capabilities.php:1011
 msgctxt "User role"
 msgid "Administrator"
 msgstr "Адміністратор"
@@ -1362,7 +1366,7 @@ msgstr "Розділіть вміст на кілька сторінок."
 #: wp-includes/js/dist/block-library.js:19007
 msgctxt "block name"
 msgid "More"
-msgstr "Тег «Далі»"
+msgstr "Читати далі"
 
 #: wp-includes/js/dist/block-library.js:5395
 msgid "Your site doesn’t include support for this block."
@@ -2798,7 +2802,7 @@ msgstr "Генерування перегляду..."
 
 #: wp-includes/js/dist/editor.js:9612
 msgid "Allow Pingbacks & Trackbacks"
-msgstr "Увімкнути сповіщення і зворотні посилання"
+msgstr "Дозволити сповіщення і зворотні посилання"
 
 #: wp-includes/js/dist/editor.js:12444
 msgid "Change Permalinks"
@@ -4223,8 +4227,8 @@ msgctxt "customizer changeset status"
 msgid "Scheduled"
 msgstr "Відкладено"
 
-#: wp-includes/customize/class-wp-customize-theme-control.php:115
-#: wp-includes/customize/class-wp-customize-theme-control.php:123
+#: wp-includes/customize/class-wp-customize-theme-control.php:122
+#: wp-includes/customize/class-wp-customize-theme-control.php:130
 msgctxt "theme"
 msgid "Installed"
 msgstr "Встановлена"
@@ -5012,7 +5016,7 @@ msgstr "Назад до джерел тем"
 msgid "Search WordPress.org themes"
 msgstr "Пошук тем на WordPress.org"
 
-#: wp-includes/customize/class-wp-customize-theme-control.php:128
+#: wp-includes/customize/class-wp-customize-theme-control.php:135
 msgid "Install &amp; Preview"
 msgstr "Встановлення і попередній перегляд"
 
@@ -7513,13 +7517,12 @@ msgstr "Фільтр тем"
 msgid "Change theme"
 msgstr "Змінити тему"
 
-#. translators: %s: "Update now" button
-#: wp-includes/customize/class-wp-customize-theme-control.php:97
+#: wp-includes/customize/class-wp-customize-theme-control.php:102
 msgid "Update now"
 msgstr "Оновити зараз"
 
 #. translators: %s: "Update now" button
-#: wp-includes/customize/class-wp-customize-theme-control.php:97
+#: wp-includes/customize/class-wp-customize-theme-control.php:101
 msgid "New version available. %s"
 msgstr "Доступна нова версія. %s"
 
@@ -8318,7 +8321,7 @@ msgstr "Відкладено"
 #: wp-includes/post.php:312
 msgctxt "post status"
 msgid "Published"
-msgstr "Оприлюднено"
+msgstr "Опубліковано"
 
 #: wp-includes/post-template.php:1713
 msgctxt "post password form"
@@ -9819,7 +9822,7 @@ msgstr[1] "%1$s відповіді до %2$s"
 msgstr[2] "%1$s відповідей до %2$s"
 
 #. translators: %s: theme name
-#: wp-includes/customize/class-wp-customize-theme-control.php:108
+#: wp-includes/customize/class-wp-customize-theme-control.php:115
 msgid "<span>Previewing:</span> %s"
 msgstr "<span>Попередній перегляд:</span> %s"
 
@@ -10031,7 +10034,7 @@ msgid "Theme Details"
 msgstr "Деталі теми"
 
 #: wp-includes/script-loader.php:1767
-#: wp-includes/customize/class-wp-customize-theme-control.php:120
+#: wp-includes/customize/class-wp-customize-theme-control.php:127
 msgid "Live Preview"
 msgstr "Попередній перегляд"
 
@@ -10763,7 +10766,7 @@ msgstr "Вставити шаблон"
 #: wp-includes/class-wp-editor.php:1207
 msgctxt "table footer"
 msgid "Footer"
-msgstr "Нижній колонтитул"
+msgstr "Підвал"
 
 #: wp-includes/class-wp-editor.php:1206
 msgctxt "table body"
@@ -10773,7 +10776,7 @@ msgstr "Тіло"
 #: wp-includes/class-wp-editor.php:1205
 msgctxt "table header"
 msgid "Header"
-msgstr "Верхній колонтитул"
+msgstr "Заголовок"
 
 #: wp-includes/class-wp-editor.php:1203
 msgctxt "table cell"
@@ -11710,10 +11713,6 @@ msgstr "Браузер на вашому пристрої не підтриму�
 msgid "<strong>ERROR</strong>: Couldn&#8217;t register you&hellip; please contact the <a href=\"mailto:%s\">webmaster</a> !"
 msgstr "<strong>ПОМИЛКА</strong>: Не вдалось зареєструвати вас&hellip; будь ласка, зв'яжіться з <a href=\"mailto:%s\">веб-майстром</a> !"
 
-#: wp-login.php:429
-msgid "Possible reason: your host may have disabled the mail() function."
-msgstr "Можлива причина: на Вашому хості може бути вимкнена функція mail()."
-
 #: wp-includes/post-template.php:298
 msgid "(more&hellip;)"
 msgstr "(більше&hellip;)"
@@ -12275,7 +12274,7 @@ msgid "Select file"
 msgstr "Вибрати файл"
 
 #: wp-includes/admin-bar.php:434
-#: wp-includes/customize/class-wp-customize-theme-control.php:112
+#: wp-includes/customize/class-wp-customize-theme-control.php:119
 msgid "Customize"
 msgstr "Налаштувати"
 
@@ -14156,10 +14155,6 @@ msgstr "<strong>ПОМИЛКА</strong>: Будь ласка, введіть с�
 msgid "Invalid key."
 msgstr "Невірний ключ."
 
-#: wp-login.php:429
-msgid "The email could not be sent."
-msgstr "Не виходить відправити листа по e-mail."
-
 #. translators: Password reset notification email subject. %s: Site title
 #: wp-login.php:399
 msgid "[%s] Password Reset"
@@ -15706,7 +15701,7 @@ msgstr "Ваш коментар очікує на схвалення."
 
 #: wp-includes/theme-compat/comments.php:69
 msgid "Comments are closed."
-msgstr "Коментарі закрито."
+msgstr "Коментарі закриті."
 
 #: wp-includes/script-loader.php:1797
 msgid "Select default color"
@@ -16080,7 +16075,7 @@ msgstr "Пошук"
 #: wp-includes/widgets/class-wp-widget-text.php:549
 #: wp-includes/class-wp-customize-manager.php:4200
 msgid "Dismiss"
-msgstr "Сховати"
+msgstr "Відхилити"
 
 #: wp-includes/taxonomy.php:551
 msgid "All Categories"

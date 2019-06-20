@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-06-05 14:43:02+0000\n"
+"PO-Revision-Date: 2019-06-17 10:49:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,91 +22,96 @@ msgctxt "start of week"
 msgid "1"
 msgstr "1"
 
+#. translators: %s: Recovery Mode exit link
+#: wp-admin/includes/update.php:854
+msgid "You are in recovery mode. This means there may be an error with a theme or plugin. To exit recovery mode, log out or use the Exit button. <a href=\"%s\">Exit Recovery Mode</a>"
+msgstr "Використовується режим відновлення. Це означає, що можливо виникла помилка з темою або плагіном. Для виходу з режиму відновлення вийдіть з облікового запису або використовуйте кнопку виходу. <a href=\"%s\">Вийти з режиму відновлення</a>."
+
 #. translators: 1: wp_body_open 2: <body>
-#: wp-admin/about.php:169
+#: wp-admin/about.php:194
 msgid "5.2 introduces a %1$s hook, which lets themes support injecting code right at the beginning of the %2$s element."
 msgstr "WordPress 5.2 представляє новий хук %1$s, що дозволяє темам виводити код прямо на початку елемента %2$s."
 
 #. translators: 1: link to /wp-admin/site-health.php 2: link to
 #. /wp-admin/site-health.php?tab=debug
-#: wp-admin/about.php:104
+#: wp-admin/about.php:129
 msgid " <a href=\"%1$s\">Check your site status</a>, and <a href=\"%2$s\">learn how to debug issues</a>."
 msgstr " <a href=\"%1$s\">Подивіться стан здоров'я сайту</a> та <a href=\"%2$s\">навчіться виконувати налагодження проблем</a>."
 
 #. translators: 1: link to the WordPress 5.1 release post
-#: wp-admin/about.php:97
+#: wp-admin/about.php:122
 msgid "Building on <a href=\"%1$s\">the Site Health features introduced in 5.1</a>, this release adds two new pages to help debug common configuration issues. It also adds space where developers can include debugging information for site maintainers."
 msgstr "Продовжуємо розвиток <a href=\"%1$s\">можливостей діагностики здоров'я сайту, доданих в WordPress 5.1</a>. У цьому випуску з'явилися дві нові сторінки для налагодження загальних проблем конфігурації. А розробникам з'явилося місце для включення інформації призначеної адміністраторам сайту."
 
-#: wp-admin/about.php:178
+#: wp-admin/about.php:203
 msgid "With the addition of webpack and Babel configurations in the @wordpress/scripts package, developers won&#8217;t have to worry about setting up complex build tools to write modern JavaScript."
 msgstr "З додаванням конфігурацій webpack і Babel в пакет @wordpress/scripts, розробникам більш не потрібно турбуватися про налаштування складних інструментів збірки при написанні сучасного JavaScript."
 
-#: wp-admin/about.php:177
+#: wp-admin/about.php:202
 msgid "Building JavaScript"
 msgstr "Створення JavaScript"
 
-#: wp-admin/about.php:164
+#: wp-admin/about.php:189
 msgid "New Body Tag Hook"
 msgstr "Новий хук до позначки body"
 
-#: wp-admin/about.php:159
+#: wp-admin/about.php:184
 msgid "A new theme page template, a conditional function, and two CSS classes make designing and customizing the Privacy Policy page easier."
 msgstr "Новий шаблон сторінки теми, умовна функція, а також два класи CSS зроблять розробку оформлення і налаштування сторінки \"Політики конфіденційності\" набагато простіше."
 
-#: wp-admin/about.php:158
+#: wp-admin/about.php:183
 msgid "Privacy Updates"
 msgstr "Оновлення конфіденційності"
 
-#: wp-admin/about.php:155
+#: wp-admin/about.php:180
 msgid "The minimum supported PHP version is now 5.6.20. As of WordPress 5.2, themes and plugins can safely take advantage of namespaces, anonymous functions, and more!"
 msgstr "Мінімально необхідна для WordPress 5.2 версія PHP &mdash; 5.6.20. Теми і плагіни тепер можуть безпечно використовувати переваги простору імен, анонімних функцій і інші можливості!"
 
-#: wp-admin/about.php:154
+#: wp-admin/about.php:179
 msgid "PHP Version Bump"
 msgstr "Підвищено вимоги до версії PHP"
 
-#: wp-admin/about.php:144
+#: wp-admin/about.php:169
 msgid "Thirteen new icons include Instagram, a suite of icons for BuddyPress, and rotated Earth icons for global inclusion. Find them in the Dashboard and have some fun!"
 msgstr "Тринадцять нових значків (включаючи Instagram), набір значків для BuddyPress і обертаючася Земля для використання скрізь і з задоволенням! Знайдіть їх в майстерні!"
 
-#: wp-admin/about.php:143
+#: wp-admin/about.php:168
 msgid "New Dashboard Icons"
 msgstr "Нові значки для майстерні"
 
-#: wp-admin/about.php:140
+#: wp-admin/about.php:165
 msgid "A number of changes work together to improve contextual awareness and keyboard navigation flow for those using screen readers and other assistive technologies."
 msgstr "Для тих, хто використовує програми читання з екрану та інші допоміжні технології, поліпшені розуміння контексту і навігація з клавіатури."
 
-#: wp-admin/about.php:139
+#: wp-admin/about.php:164
 msgid "Accessibility Updates"
 msgstr "Розширення доступності"
 
-#: wp-admin/about.php:135
+#: wp-admin/about.php:160
 msgid "Improvements for Everyone"
 msgstr "Покращення для всіх"
 
-#: wp-admin/about.php:129
-msgid "This administrator-focused update will let you safely fix or manage fatal errors without requiring developer time. It features better handling of the so-called “white screen of death,” and a way to enter recovery mode,  which pauses error-causing plugins or themes."
-msgstr "Ця, орієнтована на адміністраторів, можливість дозволить безпечно усунути або впоратися з критичними помилками не звертаючись до розробників. Ви зможете впоратися з проблемою \"Білого екрану\" використовуючи новий режим відновлення, в якому припиняється виконання коду проблемних плагінів або тем."
+#: wp-admin/about.php:154
+msgid "This administrator-focused update will let you safely fix or manage fatal errors without requiring developer time. It features better handling of the so-called “white screen of death”, and a way to enter recovery mode, which pauses error-causing plugins or themes."
+msgstr "Ця, орієнтована на адміністраторів, можливість дозволить безпечно усунути або впоратися з критичними помилками не звертаючись до розробників. Ви зможете впоратися з проблемою \"Білого екрану\" використовуючи новий режим відновлення, в якому призупиняється виконання коду проблемних плагінів або тем."
 
-#: wp-admin/about.php:128
+#: wp-admin/about.php:153
 msgid "PHP Error Protection"
 msgstr "Захист від помилок PHP"
 
-#: wp-admin/about.php:98
+#: wp-admin/about.php:123
 msgid "https://wordpress.org/news/2019/02/betty/"
 msgstr "https://wordpress.org/news/2019/02/betty/"
 
-#: wp-admin/about.php:92
+#: wp-admin/about.php:117
 msgid "Site Health Check"
 msgstr "Діагностика здоров'я сайту"
 
-#: wp-admin/about.php:82
+#: wp-admin/about.php:107
 msgid "WordPress 5.2 gives you even more robust tools for identifying and fixing configuration issues and fatal errors. Whether you are a developer helping clients or you manage your site solo, these tools can help get you the right information when you need it."
 msgstr "WordPress 5.2 надає вам ще більше надійних інструментів для пошуку і виправлення проблем в конфігурації і критичних помилок. Не важливо, розробник ви або просто самостійно керуєте своїм сайтом, ці інструменти допоможуть вам отримати інформацію, коли вона потрібна."
 
-#: wp-admin/about.php:81
+#: wp-admin/about.php:106
 msgid "Keeping Your Site Safe"
 msgstr "Підтримайте безпеку вашого сайту"
 
@@ -115,19 +120,14 @@ msgstr "Підтримайте безпеку вашого сайту"
 msgid "Congratulations on updating to WordPress %s! This update makes it easier than ever to fix your site if something goes wrong."
 msgstr "Вітаємо з оновленням до WordPress %s! З ним простіше виправлення вашого сайту, якщо щось піде не так."
 
-#. translators: 1: The filename of the package.
-#: wp-admin/includes/file.php:1191 wp-admin/includes/file.php:1222
-msgid "The authenticity of %1$s could not be verified as signature verification is unavailable on this system."
-msgstr "Справжність %1$s не може бути перевірена, оскільки перевірка підписів недоступна в даній системі."
-
 #. translators: tab heading for Site Health Status page
-#: wp-admin/site-health-info.php:52
+#: wp-admin/site-health-info.php:52 wp-admin/site-health.php:57
 msgctxt "Site Health"
 msgid "Status"
 msgstr "Статус"
 
 #. translators: tab heading for Site Health Info page
-#: wp-admin/site-health-info.php:59
+#: wp-admin/site-health-info.php:59 wp-admin/site-health.php:64
 msgctxt "Site Health"
 msgid "Info"
 msgstr "Інформація"
@@ -142,7 +142,7 @@ msgid "Closed"
 msgstr "Закриті"
 
 #. translators: %s: number of critical issues found
-#: wp-admin/site-health.php:96 wp-admin/js/site-health.js:68
+#: wp-admin/site-health.php:102 wp-admin/js/site-health.js:68
 msgid "%s Critical issue"
 msgid_plural "%s Critical issues"
 msgstr[0] "%s критична проблема"
@@ -187,6 +187,7 @@ msgid "PHP modules perform most of the tasks on the server that make your site r
 msgstr "Розширення PHP виконують багато завдань на сервері для забезпечення роботи вашого сайту. Зазвичай будь-які зміни в них вносяться системним адміністратором сервера."
 
 #: wp-admin/includes/class-wp-site-health.php:652
+#: wp-admin/includes/dashboard.php:1631
 msgid "PHP is the programming language we use to build and maintain WordPress. Newer versions of PHP are both faster and more secure, so updating will have a positive effect on your site&#8217;s performance."
 msgstr "PHP — мова програмування, на основі якої створено WordPress. Нові версії PHP і швидше і безпечніше, тому оновлення матиме позитивний ефект для продуктивності сайту."
 
@@ -262,7 +263,7 @@ msgstr "На вашому сайті одна встановлена тема, �
 msgid "Your site has 1 active plugin, and it is up to date."
 msgstr "На вашому сайті один встановлений плагін, в актуальному стані."
 
-#: wp-admin/site-health.php:117
+#: wp-admin/site-health.php:123
 msgid "Passed tests"
 msgstr "Успішні тести"
 
@@ -282,7 +283,7 @@ msgstr "Якщо вам потрібно експортувати інформа
 msgid "This page can show you every detail about the configuration of your WordPress website. If we see anything here that could be improved, we will let you know on the Site Health Status page."
 msgstr "Ця сторінка показує подробиці про конфігурацію вашого сайту WordPress. Якщо що-небудь може бути покращено, ви побачите це на сторінці стану сайту."
 
-#: wp-admin/site-health-info.php:68 wp-admin/site-health.php:67
+#: wp-admin/site-health-info.php:68 wp-admin/site-health.php:73
 msgid "The Site Health check requires JavaScript."
 msgstr "Відображення інформації про здоров'я сайту вимагає включеного JavaScript."
 
@@ -340,7 +341,8 @@ msgid "The authenticity of %s could not be verified as no signature was found."
 msgstr "Справжність %s не може бути перевірена, так як підпис не був знайдений."
 
 #. translators: %s: The filename of the package.
-#: wp-admin/includes/file.php:1171
+#: wp-admin/includes/file.php:1171 wp-admin/includes/file.php:1191
+#: wp-admin/includes/file.php:1222
 msgid "The authenticity of %s could not be verified as signature verification is unavailable on this system."
 msgstr "Справжність %s не може бути перевірена, так як можливість перевірки підписів недоступна в цій системі."
 
@@ -484,10 +486,6 @@ msgctxt "plugin"
 msgid "Cannot Update"
 msgstr "Неможливо оновити"
 
-#: wp-admin/includes/update.php:847
-msgid "You are in recovery mode. This means there may be an error with a theme or plugin. To exit recovery mode, log out or use the Exit button."
-msgstr "Використовується режим відновлення. Це означає, що можливо виникла помилка з темою або плагіном. Для виходу з режиму відновлення вийдіть з облікового запису або використовуйте кнопку \"Вихід з режиму відновлення\"."
-
 #: wp-admin/includes/update.php:458
 msgid "There is a new version of %1$s available, but it doesn&#8217;t work with your version of PHP. <a href=\"%2$s\" %3$s>View version %4$s details</a> or <a href=\"%5$s\">learn more about updating PHP</a>."
 msgstr "Доступна нова версія %1$s, але оновлення не працюватиме з вашою версією PHP. <a href=\"%2$s\" %3$s>Подивіться подробиці про версію %4$s</a> або <a href=\"%5$s\">інформацію про оновлення PHP</a>."
@@ -496,7 +494,7 @@ msgstr "Доступна нова версія %1$s, але оновлення �
 msgid "This plugin failed to load properly and is paused during recovery mode."
 msgstr "Код плагіну не міг бути коректно завантажений і призупинений в режимі відновлення."
 
-#: wp-admin/includes/theme.php:905
+#: wp-admin/includes/theme.php:910
 msgid "Go to the Themes screen"
 msgstr "Перейти на екран тем"
 
@@ -512,17 +510,12 @@ msgstr "Загальний розмір недоступний. Виникли �
 msgid "The size cannot be calculated. The directory is not accessible. Usually caused by invalid permissions."
 msgstr "Підрахунок використовуваного місця неможливий. Папка недоступна, можливо на неї встановлені невірні права доступу."
 
-#. translators: %s: number of ratings
-#: wp-admin/includes/theme.php:727
-msgid "(%s ratings) <span class=\"screen-reader-text\">link to view ratings opens in a new tab</span>"
-msgstr "(%s оцінок) <span class=\"screen-reader-text\">посилання на перегляд оцінок відкриється в новій вкладці</span>"
-
 #: wp-admin/includes/class-wp-debug-data.php:218
 msgid "These settings alter where and how parts of WordPress are loaded."
 msgstr "Ці налаштування змінюють звідки і як завантажуються компоненти WordPress."
 
 #. translators: %s: number of items with no issues
-#: wp-admin/site-health.php:126 wp-admin/js/site-health.js:72
+#: wp-admin/site-health.php:132 wp-admin/js/site-health.js:72
 msgid "%s Item with no issues detected"
 msgid_plural "%s Items with no issues detected"
 msgstr[0] "Виявлено %s елемент без проблем"
@@ -530,26 +523,26 @@ msgstr[1] "Виявлено %s елемента без проблем"
 msgstr[2] "Виявлено %s елементів без проблем"
 
 #. translators: %s: number of recommended improvements
-#: wp-admin/site-health.php:107 wp-admin/js/site-health.js:70
+#: wp-admin/site-health.php:113 wp-admin/js/site-health.js:70
 msgid "%s Recommended improvement"
 msgid_plural "%s Recommended improvements"
 msgstr[0] "%s рекомендоване поліпшення"
 msgstr[1] "%s рекомендованих поліпшення"
 msgstr[2] "%s рекомендованих поліпшень"
 
-#: wp-admin/site-health.php:90
+#: wp-admin/site-health.php:96
 msgid "The site health check shows critical information about your WordPress configuration and items that require your attention."
 msgstr "Стан здоров'я сайту показує критичну інформацію про конфігурацію WordPress і елементи, що вимагають вашої уваги."
 
-#: wp-admin/site-health.php:17 wp-admin/site-health.php:87
+#: wp-admin/site-health.php:17 wp-admin/site-health.php:93
 msgid "Site Health Status"
 msgstr "Стан здоров'я сайту"
 
-#: wp-admin/site-health.php:81
+#: wp-admin/site-health.php:87
 msgid "Everything is running smoothly here."
 msgstr "Все працює відмінно."
 
-#: wp-admin/site-health.php:77
+#: wp-admin/site-health.php:83
 msgid "Great job!"
 msgstr "Чудово!"
 
@@ -1698,10 +1691,6 @@ msgstr "Налаштуйте головну сторінку сайту"
 msgid "Learn more about updating PHP"
 msgstr "Дізнайтеся більше про оновлення PHP"
 
-#: wp-admin/includes/dashboard.php:1631
-msgid "PHP is the programming language we use to build and maintain WordPress. Newer versions of PHP are both faster and more secure, so updating will have a positive effect on your site’s performance."
-msgstr "PHP &mdash; мова програмування, на якій створено WordPress. Новіші версії PHP одночасно і швидше і безпечніше, тому оновлення дасть позитивний ефект на продуктивність вашого сайту."
-
 #: wp-admin/includes/dashboard.php:1630
 msgid "What is PHP and how does it affect my site?"
 msgstr "Що таке PHP і як це впливає на мій сайт?"
@@ -1828,6 +1817,7 @@ msgstr "Встановлення неможливе"
 #. translators: %s: WordPress version
 #: wp-admin/includes/update.php:267 wp-admin/install.php:242
 #: wp-admin/update-core.php:75 wp-admin/upgrade.php:84 wp-admin/about.php:72
+#: wp-admin/about.php:97
 msgid "https://wordpress.org/support/wordpress-version/version-%s/"
 msgstr "https://wordpress.org/support/wordpress-version/version-%s/"
 
@@ -1843,11 +1833,11 @@ msgctxt "plugin"
 msgid "Resume %s"
 msgstr "Продовжити виконання %s"
 
-#: wp-admin/includes/theme.php:903
+#: wp-admin/includes/theme.php:908
 msgid "You can find more details and make changes on the Themes screen."
 msgstr "Ви можете знайти подробиці проблеми і внести виправлення на екрані управління темами."
 
-#: wp-admin/includes/theme.php:902
+#: wp-admin/includes/theme.php:907
 msgid "One or more themes failed to load properly."
 msgstr "Завантаження однієї або кількох тем не вдалося."
 
@@ -1856,7 +1846,7 @@ msgstr "Завантаження однієї або кількох тем не 
 msgid "Deleting a category does not delete the posts in that category. Instead, posts that were only assigned to the deleted category are set to the default category %s. The default category cannot be deleted."
 msgstr "Видалення категорії не приводить до видалення записів цієї категорії, записи призначені видаленій категорії будуть переназначені на категорію за замовчуванням - %s. Категорія за замовчуванням не може бути видалена."
 
-#: wp-admin/includes/theme.php:875
+#: wp-admin/includes/theme.php:880
 msgid "Could not resume the theme."
 msgstr "Неможливо продовжити виконання теми."
 
@@ -2467,7 +2457,7 @@ msgstr "Не вдалося надіслати e-mail."
 #: wp-admin/includes/file.php:2358
 msgctxt "date/time"
 msgid "On"
-msgstr "О"
+msgstr "о"
 
 #: wp-admin/includes/file.php:2354
 msgctxt "website URL"
@@ -2964,7 +2954,7 @@ msgstr "https://codex.wordpress.org/Giving_WordPress_Its_Own_Directory"
 msgid "Enter the address here if you <a href=\"%s\">want your site home page to be different from your WordPress installation directory</a>."
 msgstr "Якщо ви хочете, щоб адреса сайту <a href=\"%s\">відрізнялась від директорії встановлення WordPress</a>, введіть адресу тут."
 
-#: wp-admin/about.php:150
+#: wp-admin/about.php:175
 msgid "Developer Happiness"
 msgstr "Радість розробникам"
 
@@ -3388,10 +3378,6 @@ msgstr "Якщо потрібно перевстановити версію %s, 
 msgid "You are using a development version of WordPress. You can update to the latest nightly build automatically:"
 msgstr "Ви використовуєте версію WordPress в розробці. Ви можете оновитися до останньої нічної збірки автоматично:"
 
-#: wp-admin/themes.php:323 wp-admin/themes.php:485
-msgid "New version available."
-msgstr "Доступна нова версія."
-
 #: wp-admin/theme-install.php:232
 msgid "Edit Filters"
 msgstr "Редагувати фільтри"
@@ -3410,7 +3396,7 @@ msgid "Choose either a city in the same timezone as you or a UTC timezone offset
 msgstr "Виберіть місто в тій же часовій зоні або зрушення від часу UTC."
 
 #. translators: %s: number of ratings
-#: wp-admin/theme-install.php:341
+#: wp-admin/includes/theme.php:729 wp-admin/theme-install.php:341
 msgid "(%s ratings)"
 msgstr "(%s рейтинг)"
 
@@ -3769,7 +3755,7 @@ msgstr "Це замінить поточний вміст редактора в�
 msgid "Close media attachment panel"
 msgstr "Закрити вікно прив'язки файлу"
 
-#: wp-admin/includes/ms.php:1075 wp-admin/site-health.php:59
+#: wp-admin/includes/ms.php:1075
 msgid "Info"
 msgstr "Інформація"
 
@@ -4363,7 +4349,7 @@ msgid "(Currently set to: %s)"
 msgstr "(Наразі встановлено: %s)"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:210
+#: wp-admin/about.php:235
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "У <strong>версії %s</strong> виправлено одну проблему безпеки."
 
@@ -4379,15 +4365,15 @@ msgstr "Ви можете змінити забраження свого обл�
 msgid "Profile Picture"
 msgstr "Зображення облікового запису"
 
-#: wp-admin/about.php:52 wp-admin/about.php:207
+#: wp-admin/about.php:52 wp-admin/about.php:232
 msgid "Maintenance and Security Releases"
 msgstr "Технічні оновлення безпеки"
 
-#: wp-admin/about.php:204
+#: wp-admin/about.php:229
 msgid "Security Releases"
 msgstr "Оновлення безпеки"
 
-#: wp-admin/about.php:201
+#: wp-admin/about.php:226
 msgid "Maintenance Releases"
 msgstr "Технічні оновлення"
 
@@ -6184,7 +6170,7 @@ msgstr "Коли використовується цей параметр, у в
 msgid "Accessibility Ready"
 msgstr "Підтримка спеціальних можливостей"
 
-#: wp-admin/includes/theme.php:741 wp-admin/themes.php:559
+#: wp-admin/includes/theme.php:746 wp-admin/themes.php:559
 msgid "This is a child theme of %s."
 msgstr "Це тема-нащадок теми %s."
 
@@ -6290,7 +6276,7 @@ msgstr "Показати наступну тему"
 msgid "Show previous theme"
 msgstr "Показати попередню тему"
 
-#: wp-admin/includes/theme.php:735 wp-admin/themes.php:552
+#: wp-admin/includes/theme.php:740 wp-admin/themes.php:552
 msgid "Update Available"
 msgstr "Доступне оновлення"
 
@@ -8125,7 +8111,7 @@ msgid "Show Toolbar when viewing site"
 msgstr "Показувати панель інструментів при перегляді сайту"
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:57 wp-admin/about.php:215
+#: wp-admin/about.php:57 wp-admin/about.php:82 wp-admin/about.php:240
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "У <strong>версії %1$s</strong> виправлено %2$s помилку."
@@ -8134,7 +8120,7 @@ msgstr[2] "У <strong>версії %1$s</strong> виправлено %2$s по�
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:227
+#: wp-admin/about.php:252
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "У <strong>версії %1$s</strong> вирішені кілька проблем з безпекою і виправлена %2$s помилка."
@@ -8143,13 +8129,13 @@ msgstr[2] "У <strong>версії %1$s</strong> вирішені кілька �
 
 #. translators: %s: HelpHub URL
 #. translators: %s: Codex URL
-#: wp-admin/about.php:69 wp-admin/about.php:233
+#: wp-admin/about.php:69 wp-admin/about.php:94 wp-admin/about.php:258
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Більше інформації можна отримати з <a href=\"%s\">деталей випуску</a>."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:221
+#: wp-admin/about.php:246
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "У <strong>версії %1$s</strong> виправлено проблему безпеки та %2$s помилку."
@@ -8161,15 +8147,15 @@ msgid "Welcome to your WordPress Dashboard! This is the screen you will see when
 msgstr "Ласкаво просимо до вашої Майстерні WordPress! Це розділ, який ви будете бачити, коли увійдете на свій сайт. Звідси є доступ до всіх елементів керування сайтом. Ви можете отримати допомогу по будь-якому розділу, натиснувши вкладку \"Допомога\" над заголовком розділу."
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:212
+#: wp-admin/about.php:237
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "У <strong>версії %s</strong> виправлено декілька проблем безпеки."
 
-#: wp-admin/about.php:200
+#: wp-admin/about.php:225
 msgid "Maintenance Release"
 msgstr "Випуск обслуговування"
 
-#: wp-admin/about.php:203
+#: wp-admin/about.php:228
 msgid "Security Release"
 msgstr "Випуск безпеки"
 
@@ -8177,7 +8163,7 @@ msgstr "Випуск безпеки"
 msgid "What&#8217;s New"
 msgstr "Що нового"
 
-#: wp-admin/about.php:206
+#: wp-admin/about.php:231
 msgid "Maintenance and Security Release"
 msgstr "Випуск обслуговування та безпеки"
 
@@ -8189,7 +8175,7 @@ msgstr "Цей розділ дозволяє вам обирати структ�
 msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
 msgstr "Ласкаво просимо до WordPress %1$s. <a href=\"%2$s\">Дізнатися більше</a>."
 
-#: wp-admin/about.php:187
+#: wp-admin/about.php:212
 msgid "Return to Updates"
 msgstr "Повернутися до поновлень"
 
@@ -8199,7 +8185,7 @@ msgstr "Тут можна завантажувати файли, не створ
 
 #: wp-admin/plugins.php:451
 msgid "Troubleshooting"
-msgstr "Вирішення проблем"
+msgstr "Усунення неполадок"
 
 #: wp-admin/edit-tags.php:291
 msgid "Adding Tags"
@@ -8457,11 +8443,11 @@ msgstr "Керування сторінками"
 msgid "Because this is a multisite installation, you may add accounts that already exist on the Network by specifying a username or email, and defining a role. For more options, such as specifying a password, you have to be a Network Administrator and use the hover link under an existing user&#8217;s name to Edit the user profile under Network Admin > All Users."
 msgstr "Оскільки це мережа сайтів, можна додавати існуючі в ній облікові записи, вказавши ім'я користувача або e-mail і вибравши роль. Щоб мати більше можливостей, наприклад призначати пароль, потрібно бути адміністратором мережі і використовувати випадаюче посилання для редагування облікового запису користувача в розділі \"Мережа сайтів\" > \"Всі користувачі\"."
 
-#: wp-admin/about.php:187
+#: wp-admin/about.php:212
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Повернутися до \"Майстерні\" &rarr; \"Оновлення\""
 
-#: wp-admin/about.php:190
+#: wp-admin/about.php:215
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Перейти до \"Майстерні\" &rarr; \"Домашня сторінка\""
 
@@ -8648,7 +8634,7 @@ msgid "Plugins %s"
 msgstr "Плагіни %s"
 
 #. translators: %s: plugin name
-#: wp-admin/includes/theme.php:763
+#: wp-admin/includes/theme.php:768
 #: wp-admin/includes/class-wp-theme-install-list-table.php:478
 #: wp-admin/includes/deprecated.php:1381 wp-admin/theme-install.php:299
 #: wp-admin/theme-install.php:319
@@ -8663,7 +8649,7 @@ msgstr "Всі користувачі"
 #: wp-admin/includes/class-wp-links-list-table.php:88
 #: wp-admin/includes/class-wp-links-list-table.php:323
 #: wp-admin/includes/class-wp-themes-list-table.php:200
-#: wp-admin/includes/theme.php:758
+#: wp-admin/includes/theme.php:763
 #: wp-admin/includes/class-wp-plugins-list-table.php:500
 #: wp-admin/includes/class-wp-plugins-list-table.php:654
 #: wp-admin/includes/class-wp-plugins-list-table.php:683
@@ -10304,7 +10290,7 @@ msgstr "Все"
 msgid "Please enter a valid menu name."
 msgstr "Будь ласка, введіть правильну назву меню."
 
-#: wp-admin/about.php:190
+#: wp-admin/about.php:215
 msgid "Go to Dashboard"
 msgstr "Перейти до майстерні"
 
@@ -10727,7 +10713,7 @@ msgstr "Оберіть тему для редагування:"
 msgid "Edit Themes"
 msgstr "Редагувати теми"
 
-#: wp-admin/includes/theme.php:747 wp-admin/themes.php:563
+#: wp-admin/includes/theme.php:752 wp-admin/themes.php:563
 msgid "Tags:"
 msgstr "Позначки:"
 
@@ -11612,11 +11598,11 @@ msgstr "Функції"
 
 #: wp-admin/includes/theme.php:297
 msgid "Right Sidebar"
-msgstr "Правий сайдбар"
+msgstr "Права бічна колонка"
 
 #: wp-admin/includes/theme.php:296
 msgid "Left Sidebar"
-msgstr "Лівий сайдбар"
+msgstr "Ліва бічна колонка"
 
 #: wp-admin/includes/theme.php:295
 msgid "Four Columns"
@@ -11638,7 +11624,7 @@ msgstr "Одна колонка"
 msgid "Feature Filter"
 msgstr "Налаштування фільтру"
 
-#: wp-admin/includes/class-wp-screen.php:939
+#: wp-admin/includes/class-wp-screen.php:932
 msgid "Screen Options"
 msgstr "Параметри екрану"
 

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-05-28 20:55:26+0000\n"
+"PO-Revision-Date: 2019-06-14 12:29:39+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -139,7 +139,7 @@ msgstr "Добавить позиции: %s"
 
 #: includes/emails/class-wc-email-cancelled-order.php:60
 msgid "[{site_title}]: Order #{order_number} has been cancelled"
-msgstr "[{site_title}]: Заказ #{order_number} отменен"
+msgstr "[{site_title}]: Заказ № {order_number} отменен"
 
 #: includes/admin/views/html-notice-update.php:36
 msgid "Learn more about updates"
@@ -562,7 +562,7 @@ msgstr "Надеемся, что клиент вернется. Дополнит
 #: templates/emails/admin-cancelled-order.php:28
 #: templates/emails/plain/admin-cancelled-order.php:25
 msgid "Alas. Just to let you know &mdash; order #%1$s belonging to %2$s has been cancelled:"
-msgstr "Увы. Сообщаем, что заказ №%1$s, оформленный %2$s, отменен:"
+msgstr "Увы. Сообщаем, что заказ № %1$s, оформленный %2$s, отменен:"
 
 #. translators: %s: Site title
 #: templates/emails/customer-completed-order.php:30
@@ -592,7 +592,7 @@ msgstr "Неверное изображение: %s"
 #: templates/emails/customer-processing-order.php:30
 #: templates/emails/plain/customer-processing-order.php:27
 msgid "Just to let you know &mdash; we've received your order #%s, and it is now being processed:"
-msgstr "Просто, чтобы вы знали &mdash; мы получили ваш заказ #%s, и теперь он обрабатывается:"
+msgstr "Просто, чтобы вы знали &mdash; мы получили ваш заказ № %s, и теперь он обрабатывается:"
 
 #: includes/api/v1/class-wc-rest-webhooks-controller.php:411
 msgid "Webhook status must be valid."
@@ -625,7 +625,7 @@ msgstr "Обновить базу данных"
 
 #: includes/emails/class-wc-email-customer-invoice.php:72
 msgid "Invoice for order #{order_number}"
-msgstr "Счёт на оплату по заказу {order_number}"
+msgstr "Счёт на оплату по заказу № {order_number}"
 
 #: includes/class-wc-ajax.php:1946
 msgid "You do not have permission to assign API Keys to the selected user."
@@ -670,7 +670,7 @@ msgstr "У вас недостаточно прав для редактиров�
 #. translators: %1$s: Order ID. %2$s: Order date
 #: templates/emails/plain/email-order-details.php:25
 msgid "[Order #%1$s] (%2$s)"
-msgstr "[Заказ #%1$s] (%2$s)"
+msgstr "[Заказ № %1$s] (%2$s)"
 
 #. translators: %s Auto generated password
 #: templates/emails/plain/customer-new-account.php:31
@@ -853,7 +853,7 @@ msgstr "Группа действий"
 
 #: includes/libraries/action-scheduler/classes/ActionScheduler_wpPostStore_PostTypeRegistrar.php:42
 msgid "No actions found in trash"
-msgstr "В корзине действия не найдены"
+msgstr "В урне действия не найдены"
 
 #: includes/libraries/action-scheduler/classes/ActionScheduler_wpPostStore_PostTypeRegistrar.php:41
 msgid "No actions found"
@@ -1229,15 +1229,15 @@ msgstr "Запланированные действия"
 
 #: includes/emails/class-wc-email-new-order.php:76
 msgid "New Order: #{order_number}"
-msgstr "Новый заказ: №{order_number}"
+msgstr "Новый заказ: № {order_number}"
 
 #: includes/emails/class-wc-email-failed-order.php:69
 msgid "Order Failed: #{order_number}"
-msgstr "Ошибка при заказе: №{order_number}"
+msgstr "Ошибка при заказе: № {order_number}"
 
 #: includes/emails/class-wc-email-failed-order.php:59
 msgid "[{site_title}]: Order #{order_number} has failed"
-msgstr "[{site_title}]: Ошибка при заказе #{order_number}"
+msgstr "[{site_title}]: Ошибка при заказе № {order_number}"
 
 #: includes/emails/class-wc-email-customer-reset-password.php:92
 msgid "Password Reset Request"
@@ -1266,7 +1266,7 @@ msgstr "Ваш последний {site_title} счёт"
 
 #: includes/emails/class-wc-email-customer-invoice.php:57
 msgid "Invoice for order #{order_number} on {site_title}"
-msgstr "Счёт за заказ # {order_number} на {site_title}"
+msgstr "Счёт по заказу № {order_number} на {site_title}"
 
 #: includes/emails/class-wc-email-customer-completed-order.php:93
 msgid "Thanks for shopping with us"
@@ -1278,7 +1278,7 @@ msgstr "Ваш {site_title} заказ выполнен"
 
 #: includes/emails/class-wc-email-cancelled-order.php:70
 msgid "Order Cancelled: #{order_number}"
-msgstr "Заказ отменён: №{order_number}"
+msgstr "Заказ № {order_number} отменён"
 
 #. translators: 1: error message 2: file name and path 3: line number
 #: includes/class-woocommerce.php:205
@@ -1382,7 +1382,7 @@ msgstr "Количество клиентов."
 
 #: includes/api/class-wc-rest-report-customers-totals-controller.php:138
 msgid "Customer type name."
-msgstr "Имя типа клиента."
+msgstr "Название типа клиента."
 
 #: includes/api/class-wc-rest-report-customers-totals-controller.php:79
 msgid "Non-paying customer"
@@ -1474,7 +1474,7 @@ msgstr "Объект не может быть удалён."
 
 #: includes/api/class-wc-rest-product-reviews-controller.php:646
 msgid "The object has already been trashed."
-msgstr "Объект уже отправлен в корзину."
+msgstr "Объект уже отправлен в урну."
 
 #. translators: %s: force=true
 #: includes/api/class-wc-rest-product-reviews-controller.php:642
@@ -2633,7 +2633,7 @@ msgstr "Сохранять выполненные заказы"
 
 #: includes/admin/settings/class-wc-settings-accounts.php:210
 msgid "Cancelled orders are unpaid and may have been cancelled by the store owner or customer. They will be trashed after the specified duration."
-msgstr "Отменённые заказы не оплачены. Они могут быть отменены владельцем магазина или покупателем. По завершении указанного периода времени они будут удалены."
+msgstr "Отменённые заказы не оплачены и могут быть отменены владельцем магазина или покупателем. По завершении указанного периода времени они будут перемещены в урну."
 
 #: includes/admin/settings/class-wc-settings-accounts.php:209
 msgid "Retain cancelled orders"
@@ -2641,7 +2641,7 @@ msgstr "Сохранять отменённые заказы"
 
 #: includes/admin/settings/class-wc-settings-accounts.php:201
 msgid "Failed orders are unpaid and may have been abandoned by the customer. They will be trashed after the specified duration."
-msgstr "Неудавшиеся заказы не оплачены. Покупатель может отказаться от неудавшегося заказа. По завершении указанного периода времени они будут удалены."
+msgstr "Неудавшиеся заказы не оплачены и могут быть брошены клиентами. По завершении указанного периода времени они будут перемещены в урну."
 
 #: includes/admin/settings/class-wc-settings-accounts.php:200
 msgid "Retain failed orders"
@@ -2649,7 +2649,7 @@ msgstr "Сохранять неудавшиеся заказы"
 
 #: includes/admin/settings/class-wc-settings-accounts.php:192
 msgid "Pending orders are unpaid and may have been abandoned by the customer. They will be trashed after the specified duration."
-msgstr "Ожидающие утверждения заказы не оплачены. Покупатель может отказаться от такого заказа. По завершении указанного периода времени они будут удалены."
+msgstr "Ожидающие утверждения заказы не оплачены. Покупатель может отказаться от такого заказа. По завершении указанного периода времени они будут перемещены в урну."
 
 #: includes/admin/settings/class-wc-settings-accounts.php:191
 msgid "Retain pending orders "
@@ -3373,7 +3373,7 @@ msgstr "Размер изображения для товаров в катал�
 #. translators: %s: regen thumbs url
 #: includes/customizer/class-wc-shop-customizer.php:525
 msgid "After publishing your changes, new image sizes may not be shown until you <a href=\"%s\" target=\"_blank\">Regenerate Thumbnails</a>."
-msgstr "После применения изменений может потребоваться выполнить действие <a href=\"%2$s\" target=\"_blank\">Повторно создать миниатюры</a>, чтобы изменился размер изображений."
+msgstr "После применения изменений может потребоваться выполнить действие <a href=\"%s\" target=\"_blank\">Повторно создать миниатюры</a>, чтобы изменился размер изображений."
 
 #. translators: 1: tools URL 2: regen thumbs url
 #: includes/customizer/class-wc-shop-customizer.php:522
@@ -3915,7 +3915,7 @@ msgstr "При необходимости здесь можно настроит
 #. translators: %s: post title
 #: includes/admin/class-wc-admin-duplicate-product.php:61
 msgid "Move &#8220;%s&#8221; to the Trash"
-msgstr "Переместить &#8220;%s&#8221; в удаленные"
+msgstr "Переместить &#8220;%s&#8221; в урну"
 
 #: includes/admin/class-wc-admin-attributes.php:377
 msgid "Attributes let you define extra product data, such as size or color. You can use these attributes in the shop sidebar using the \"layered nav\" widgets."
@@ -5425,7 +5425,7 @@ msgstr "Ваши товары сейчас импортируются..."
 
 #: includes/admin/importers/views/html-csv-import-progress.php:15
 msgid "Importing"
-msgstr "Импортируем"
+msgstr "Импорт"
 
 #: includes/admin/importers/views/html-csv-import-mapping.php:59
 msgid "Run the importer"
@@ -6497,7 +6497,7 @@ msgstr "PayPal песочница может быть использована �
 #. translators: %s: order ID.
 #: includes/gateways/paypal/includes/class-wc-gateway-paypal-ipn-handler.php:281
 msgid "Order #%s has been marked paid by PayPal IPN, but was previously cancelled. Admin handling required."
-msgstr "Заказ #%s отмечен в системе PayPal IPN как оплаченный, но перед этим он был отменён. Необходимо участие администратора."
+msgstr "Заказ № %s отмечен в системе PayPal IPN как оплаченный, но перед этим он был отменён. Необходимо участие администратора."
 
 #. translators: %s: order link.
 #: includes/gateways/paypal/includes/class-wc-gateway-paypal-ipn-handler.php:279
@@ -6604,7 +6604,7 @@ msgstr "Удалено"
 
 #: includes/cli/class-wc-cli-rest-command.php:149
 msgid "Trashed"
-msgstr "Удалено в корзину"
+msgstr "Удалено в урну"
 
 #: includes/class-wc-product-external.php:134
 msgid "External products cannot be backordered."
@@ -6837,11 +6837,11 @@ msgstr "Обзор товара не может быть удален."
 
 #: includes/api/v1/class-wc-rest-product-reviews-controller.php:390
 msgid "The comment has already been trashed."
-msgstr "Комментарий уже перемещен в удаленные."
+msgstr "Комментарий уже удалён в урну."
 
 #: includes/api/v1/class-wc-rest-product-reviews-controller.php:386
 msgid "The product review does not support trashing."
-msgstr "Отзывы на товары не поддерживают перемещение в удаленные."
+msgstr "Обзоры на товары не поддерживают удаление в урну."
 
 #: includes/api/v1/class-wc-rest-product-reviews-controller.php:366
 msgid "Invalid product review ID."
@@ -7161,7 +7161,7 @@ msgstr "Зона доставки заказа"
 
 #: includes/api/v2/class-wc-rest-shipping-zones-v2-controller.php:214
 msgid "Shipping zones do not support trashing."
-msgstr "Зоны доставки нельзя удалять."
+msgstr "Зоны доставки не поддерживают удаление в урну."
 
 #: includes/api/v2/class-wc-rest-shipping-zones-v2-controller.php:154
 msgid "Resource cannot be created. Check to make sure 'order' and 'name' are present."
@@ -7195,7 +7195,7 @@ msgstr "Идентификатор экземпляра способа дост�
 
 #: includes/api/v2/class-wc-rest-shipping-zone-methods-v2-controller.php:230
 msgid "Shipping methods do not support trashing."
-msgstr "Способы доставки нельзя удалять."
+msgstr "Способы доставки не поддерживают удаление в урну."
 
 #: includes/api/v2/class-wc-rest-shipping-zone-methods-v2-controller.php:177
 msgid "Resource cannot be created."
@@ -8763,7 +8763,7 @@ msgstr "Конечная точка для страницы Мой аккаун�
 
 #: templates/order/tracking.php:26 templates/myaccount/view-order.php:28
 msgid "Order #%1$s was placed on %2$s and is currently %3$s."
-msgstr "Заказ #%1$s был оформлен %2$s и сейчас %3$s."
+msgstr "Заказ № %1$s был оформлен %2$s и сейчас %3$s."
 
 #: templates/myaccount/payment-methods.php:72
 msgid "No saved methods found."
@@ -9721,7 +9721,7 @@ msgstr "Название налогового класса."
 #: includes/api/v1/class-wc-rest-tax-classes-controller.php:225
 #: includes/api/v1/class-wc-rest-taxes-controller.php:457
 msgid "Taxes do not support trashing."
-msgstr "Налоги не поддерживают перемещение в удаленные."
+msgstr "Налоги не поддерживают удаление в урну."
 
 #: includes/api/v1/class-wc-rest-reports-controller.php:163
 msgid "A human-readable description of the resource."
@@ -11249,7 +11249,7 @@ msgstr "Дата создания заметки к заказу в часово
 #: includes/api/v1/class-wc-rest-order-notes-controller.php:295
 #: includes/api/v1/class-wc-rest-webhooks-controller.php:455
 msgid "Webhooks do not support trashing."
-msgstr "Вебзацепы не поддерживают перемещение в удаленные."
+msgstr "Вебзацепы не поддерживают удаление в урну."
 
 #: includes/api/class-wc-rest-order-notes-controller.php:86
 #: includes/api/legacy/v2/class-wc-api-orders.php:1316
@@ -11532,7 +11532,7 @@ msgstr "ID, указанный для замены некорректен."
 
 #: includes/api/v1/class-wc-rest-customers-controller.php:466
 msgid "Customers do not support trashing."
-msgstr "Пользователи не поддерживают перемещение в удаленные."
+msgstr "Клиенты не поддерживают удаление в урну."
 
 #: includes/api/v1/class-wc-rest-customers-controller.php:412
 msgid "Username isn't editable."
@@ -11733,7 +11733,7 @@ msgstr "Код купона не может быть пустым. "
 #: includes/api/v1/class-wc-rest-product-reviews-controller.php:118
 #: includes/api/v1/class-wc-rest-products-controller.php:102
 msgid "Whether to bypass trash and force deletion."
-msgstr "Удалять навсегда, пропускать перемещение в удаленные."
+msgstr "Удалять навсегда, пропуская перемещение в урну."
 
 #: includes/api/legacy/v2/class-wc-api-authentication.php:384
 #: includes/api/legacy/v1/class-wc-api-authentication.php:386
@@ -12277,7 +12277,7 @@ msgstr "Этот ресурс не может быть удалён."
 #: includes/api/v1/class-wc-rest-product-attributes-controller.php:357
 #: includes/abstracts/abstract-wc-rest-terms-controller.php:539
 msgid "Resource does not support trashing."
-msgstr "Ресурс не поддерживает перемещение в удаленные. "
+msgstr "Ресурс не поддерживают удаление в урну."
 
 #: includes/abstracts/abstract-wc-rest-terms-controller.php:393
 #: includes/abstracts/abstract-wc-rest-terms-controller.php:490
@@ -12336,7 +12336,7 @@ msgstr "Вы не можете создать новый ресурс."
 #: includes/api/v1/class-wc-rest-customers-controller.php:104
 #: includes/abstracts/abstract-wc-rest-terms-controller.php:97
 msgid "Required to be true, as resource does not support trashing."
-msgstr "Необходимо сделать истиной, поскольку ресурс не поддерживает перемещение в удаленные."
+msgstr "Необходимо признать истиной, поскольку ресурс не поддерживают удаление в урну."
 
 #: includes/abstracts/abstract-wc-rest-posts-controller.php:706
 msgid "Use WP Query arguments to modify the response; private query vars require appropriate authorization."
@@ -12428,7 +12428,7 @@ msgstr "%s уже удалили до этого."
 #: includes/abstracts/abstract-wc-rest-posts-controller.php:451
 #: includes/abstracts/abstract-wc-rest-crud-controller.php:449
 msgid "The %s does not support trashing."
-msgstr "%s не поддерживает перемещение в удаленные."
+msgstr "%s не поддерживают удаление в урну."
 
 #. translators: %s: post type
 #: includes/api/v2/class-wc-rest-products-v2-controller.php:1387
@@ -12695,7 +12695,7 @@ msgstr "Очистить"
 #: templates/emails/admin-failed-order.php:28
 #: templates/emails/plain/admin-failed-order.php:25
 msgid "Payment for order #%1$s from %2$s has failed. The order was as follows:"
-msgstr "Оплата заказа #%1$d из %2$s не удалась. Заказ был таким:"
+msgstr "Оплата заказа № %1$s из %2$s не удалась. Заказ был таким:"
 
 #: templates/checkout/thankyou.php:29
 msgid "Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again."
@@ -12730,7 +12730,7 @@ msgstr "Неудавшийся заказ"
 
 #: includes/emails/class-wc-email-new-order.php:66
 msgid "[{site_title}]: New order #{order_number}"
-msgstr "[{site_title}]: Новый заказ #{order_number}"
+msgstr "[{site_title}]: Новый заказ № {order_number}"
 
 #: includes/api/class-wc-rest-product-reviews-controller.php:380
 #: includes/api/class-wc-rest-product-reviews-controller.php:540
@@ -14494,7 +14494,7 @@ msgstr "Кредитная карта"
 #. translators: %s: Order ID.
 #: templates/emails/email-order-details.php:36
 msgid "[Order #%s]"
-msgstr "[Заказ #%s]"
+msgstr "[Заказ № %s]"
 
 #: includes/gateways/paypal/includes/settings-paypal.php:141
 #: includes/gateways/paypal/includes/settings-paypal.php:149
@@ -14631,17 +14631,17 @@ msgstr "Ошибка проверки: суммы в PayPal не совпада�
 #. translators: %1$s: order ID, %2$s: order link.
 #: includes/gateways/paypal/includes/class-wc-gateway-paypal-ipn-handler.php:336
 msgid "Order #%1$s has had a reversal cancelled. Please check the status of payment and update the order status accordingly here: %2$s"
-msgstr "Заказ #%s был аннулирован. Пожалуйста, проверьте статус платежа и обновите статус заказа здесь: %s"
+msgstr "Заказ № %1$s был аннулирован. Пожалуйста, проверьте статус платежа и обновите статус заказа здесь: %2$s"
 
 #. translators: %s: order link.
 #: includes/gateways/paypal/includes/class-wc-gateway-paypal-ipn-handler.php:334
 msgid "Reversal cancelled for order #%s"
-msgstr "Аннулирование заказа #%s отменено"
+msgstr "Аннулирование заказа № %s отменено"
 
 #. translators: %1$s: order ID, %2$s: reason code.
 #: includes/gateways/paypal/includes/class-wc-gateway-paypal-ipn-handler.php:321
 msgid "Order #%1$s has been marked on-hold due to a reversal - PayPal reason code: %2$s"
-msgstr "Заказ #%1$s был поставлен на удержание в связи с аннулированием — код причины PayPal: %2$s"
+msgstr "Заказ № %1$s был поставлен на удержание в связи с аннулированием — код причины PayPal: %2$s"
 
 #. translators: %s: order link.
 #: includes/gateways/paypal/includes/class-wc-gateway-paypal-ipn-handler.php:319
@@ -14651,7 +14651,7 @@ msgstr "Платёж заказа #%s отменён"
 #. translators: %1$s: order ID, %2$s: reason code.
 #: includes/gateways/paypal/includes/class-wc-gateway-paypal-ipn-handler.php:302
 msgid "Order #%1$s has been marked as refunded - PayPal reason code: %2$s"
-msgstr "Заказ #%1$s был отмечен для возврата — код причины в PayPal: %2$s"
+msgstr "Заказ № %1$s был отмечен для возврата — код причины в PayPal: %2$s"
 
 #. translators: %s: payment status.
 #: includes/gateways/paypal/includes/class-wc-gateway-paypal-ipn-handler.php:237
@@ -15020,11 +15020,11 @@ msgstr "Возвращённый заказ"
 
 #: includes/emails/class-wc-email-customer-refunded-order.php:75
 msgid "Your {site_title} order #{order_number} has been refunded"
-msgstr "Ваш заказ на {site_title} #{order_number} был возвращен"
+msgstr "Ваш заказ на {site_title} № {order_number} был возвращен"
 
 #: includes/emails/class-wc-email-customer-refunded-order.php:73
 msgid "Your {site_title} order #{order_number} has been partially refunded"
-msgstr "Ваш заказ на {site_title} #{order_number} был частично возвращён"
+msgstr "Ваш заказ на {site_title} № {order_number} был частично возвращён"
 
 #: includes/emails/class-wc-email-customer-processing-order.php:70
 #: includes/emails/class-wc-email-customer-on-hold-order.php:68
@@ -15073,7 +15073,7 @@ msgstr "Заголовок письма (оплачено)"
 
 #: includes/emails/class-wc-email-customer-invoice.php:74
 msgid "Your invoice for order #{order_number}"
-msgstr "Счет на оплату по заказу #{order_number}"
+msgstr "Счет на оплату по заказу № {order_number}"
 
 #: includes/emails/class-wc-email-customer-invoice.php:33
 msgid "Customer invoice emails can be sent to customers containing their order information and payment links."
@@ -15177,7 +15177,7 @@ msgstr "Отменённый заказ"
 #: includes/admin/list-tables/class-wc-admin-list-table-orders.php:356
 #: includes/class-wc-query.php:115
 msgid "Order #%s"
-msgstr "Заказ #%s"
+msgstr "Заказ № %s"
 
 #: includes/class-wc-product-variable.php:60
 msgid "Select options"
@@ -15289,7 +15289,7 @@ msgstr "Родительский купон"
 
 #: includes/class-wc-post-types.php:454
 msgid "No coupons found in trash"
-msgstr "В удаленных нет купонов"
+msgstr "В урне купонов не обнаружено"
 
 #: includes/class-wc-post-types.php:453
 msgid "No coupons found"
@@ -15342,7 +15342,7 @@ msgstr "Родительские заказы"
 
 #: includes/class-wc-post-types.php:389
 msgid "No orders found in trash"
-msgstr "В удаленных нет заказов"
+msgstr "В урне заказов не обнаружено"
 
 #: includes/admin/class-wc-admin-dashboard.php:365
 #: includes/class-wc-post-types.php:388
@@ -15391,7 +15391,7 @@ msgstr "Родительский товар"
 
 #: includes/class-wc-post-types.php:324
 msgid "No products found in trash"
-msgstr "В удаленных нет товаров"
+msgstr "В урне товаров не обнаружено"
 
 #: includes/class-wc-post-types.php:323
 msgid "No products found"
@@ -15678,7 +15678,7 @@ msgstr "Адрес успешно изменён."
 #. translators: 1: product quantity 2: product name 3: order number
 #: includes/class-wc-emails.php:637
 msgid "%1$s units of %2$s have been backordered in order #%3$s."
-msgstr "%1$s шт. %2$s предзаказано в заказе №%3$s."
+msgstr "%1$s шт. %2$s предзаказано в заказе № %3$s."
 
 #: includes/class-wc-emails.php:635
 msgid "Product backorder"
@@ -20068,7 +20068,7 @@ msgstr "Вебзацеп создан %s"
 
 #: includes/admin/meta-boxes/class-wc-meta-box-order-actions.php:65
 msgid "Move to trash"
-msgstr "Переместить в корзину"
+msgstr "Отправить в урну"
 
 #. translators: %s: count
 #: includes/admin/class-wc-admin-webhooks-table-list.php:180
@@ -20700,7 +20700,7 @@ msgstr "Удалить навсегда"
 
 #: includes/admin/class-wc-admin-duplicate-product.php:62
 msgid "Trash"
-msgstr "Удалить"
+msgstr "В урну"
 
 #. Translators: %s Payment gateway name.
 #: includes/admin/settings/class-wc-settings-shipping.php:273
@@ -20893,17 +20893,17 @@ msgstr "Изображение"
 #: includes/admin/class-wc-admin-post-types.php:226
 msgid "%s coupon restored from the Trash."
 msgid_plural "%s coupons restored from the Trash."
-msgstr[0] "%s купон восстановлен из удаленных."
-msgstr[1] "%s купона восстановлено из удаленных."
-msgstr[2] "%s купонов восстановлено из удаленных."
+msgstr[0] "%s купон восстановлен из урны."
+msgstr[1] "%s купона восстановлено из урны."
+msgstr[2] "%s купонов восстановлено из урны."
 
 #. translators: %s: coupon count
 #: includes/admin/class-wc-admin-post-types.php:224
 msgid "%s coupon moved to the Trash."
 msgid_plural "%s coupons moved to the Trash."
-msgstr[0] "%s купон отправлен в удаленные."
-msgstr[1] "%s купона отправлено в удаленные."
-msgstr[2] "%s купонов отправлено в удаленные."
+msgstr[0] "%s купон отправлен в урну."
+msgstr[1] "%s купона отправлено в урну."
+msgstr[2] "%s купонов отправлено в урну."
 
 #. translators: %s: coupon count
 #: includes/admin/class-wc-admin-post-types.php:222
@@ -20933,17 +20933,17 @@ msgstr[2] "%s купонов обновлено."
 #: includes/admin/class-wc-admin-post-types.php:213
 msgid "%s order restored from the Trash."
 msgid_plural "%s orders restored from the Trash."
-msgstr[0] "%s заказ восстановлен из удаленных."
-msgstr[1] "%s заказа восстановлено из удаленных."
-msgstr[2] "%s заказов восстановлено из удаленных."
+msgstr[0] "%s заказ восстановлен из урны."
+msgstr[1] "%s заказа восстановлено из урны."
+msgstr[2] "%s заказов восстановлено из урны."
 
 #. translators: %s: order count
 #: includes/admin/class-wc-admin-post-types.php:211
 msgid "%s order moved to the Trash."
 msgid_plural "%s orders moved to the Trash."
-msgstr[0] "%s заказ отправлен в корзину."
-msgstr[1] "%s заказа отправлено в корзину."
-msgstr[2] "%s заказов отправлено в корзину."
+msgstr[0] "%s заказ отправлен в урну."
+msgstr[1] "%s заказа отправлено в урну."
+msgstr[2] "%s заказов отправлено в урну."
 
 #. translators: %s: order count
 #: includes/admin/class-wc-admin-post-types.php:209
@@ -20973,17 +20973,17 @@ msgstr[2] "%s заказов обновлено."
 #: includes/admin/class-wc-admin-post-types.php:200
 msgid "%s product restored from the Trash."
 msgid_plural "%s products restored from the Trash."
-msgstr[0] "%s товар восстановлен из удаленных."
-msgstr[1] "%s товара восстановлено из удаленных."
-msgstr[2] "%s товаров восстановлено из удаленных."
+msgstr[0] "%s товар восстановлен из урны."
+msgstr[1] "%s товара восстановлено из урны."
+msgstr[2] "%s товаров восстановлено из урны."
 
 #. translators: %s: product count
 #: includes/admin/class-wc-admin-post-types.php:198
 msgid "%s product moved to the Trash."
 msgid_plural "%s products moved to the Trash."
-msgstr[0] "%s товар отправлен в удаленные."
-msgstr[1] "%s товара отправлено в удаленные."
-msgstr[2] "%s товаров отправлено в удаленные."
+msgstr[0] "%s товар отправлен в урну."
+msgstr[1] "%s товара отправлено в урну."
+msgstr[2] "%s товаров отправлено в урну."
 
 #. translators: %s: product count
 #: includes/admin/class-wc-admin-post-types.php:196
@@ -22156,7 +22156,7 @@ msgstr "Номер карты"
 #. translators: 1: old order status 2: new order status
 #: includes/class-wc-order.php:364
 msgid "Order status changed from %1$s to %2$s."
-msgstr "Статус заказа изменен с %s на %s."
+msgstr "Статус заказа изменен с %1$s на %2$s."
 
 #. Plugin Name of the plugin
 #: includes/class-wc-privacy.php:31

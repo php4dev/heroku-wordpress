@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Seventeen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-04-11 10:12:31+0000\n"
+"PO-Revision-Date: 2019-06-17 18:16:53+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -255,7 +255,7 @@ msgstr "Сторінки:"
 msgid "Menu"
 msgstr "Меню"
 
-#: header.php:27
+#: header.php:28
 msgid "Skip to content"
 msgstr "Перейти до вмісту"
 
@@ -304,7 +304,7 @@ msgstr "Сторінка"
 
 #: 404.php:21
 msgid "Oops! That page can&rsquo;t be found."
-msgstr "Отакої! Сторінка не знайдена."
+msgstr "Отакої! Цю сторінку не знайдено."
 
 #: 404.php:24
 msgid "It looks like nothing was found at this location. Maybe try a search?"
