@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-06-14 12:29:39+0000\n"
+"PO-Revision-Date: 2019-06-25 22:41:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,7 +17,7 @@ msgstr "Активировать WooCommerce Admin"
 
 #: includes/admin/views/html-notice-wc-admin.php:17
 msgid "Test drive the future of WooCommerce. A quicker, javascript powered interface with exciting new features and reports."
-msgstr "Протестируйте будущее WooCommerce - быстрый, основаный на JavaScript, интерфейс с захватывающими новыми возможностями и отчётами."
+msgstr "Протестируйте будущее WooCommerce — быстрый интерфейс, основанный на JavaScript, с захватывающими новыми возможностями и отчётами."
 
 #: includes/wc-order-functions.php:775
 msgid "Order fully refunded."
@@ -13486,8 +13486,8 @@ msgstr "Распродажа!"
 msgid "Showing the single result"
 msgid_plural "Showing all %d results"
 msgstr[0] "Это единственный товар"
-msgstr[1] "Здесь все %d товара"
-msgstr[2] "Здесь все %d товаров"
+msgstr[1] "Всего %d товара"
+msgstr[2] "Всего %d товаров"
 
 #: templates/loop/no-products-found.php:23
 msgid "No products were found matching your selection."
