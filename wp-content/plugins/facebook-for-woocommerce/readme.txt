@@ -2,9 +2,9 @@
 Contributors: facebook, automattic, woothemes
 Tags: facebook, shop, catalog, advertise, pixel, product
 Requires at least: 4.4
-Tested up to: 4.9.8
-Stable tag: 1.9.14
-Requires PHP: 5.6
+Tested up to: 5.2.2
+Stable tag: 1.9.15
+Requires PHP: 5.6 or greater
 MySQL: 5.6 or greater
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,9 +38,15 @@ When opening a bug on GitHub, please give us as many details as possible.
 * Current version of Facebook-for-WooCommerce, WooCommerce, Wordpress, PHP
 
 == Changelog ==
+= 1.9.15 - 2019-06-27 =
+* CSRF handling for Ajax calls like ajax_woo_infobanner_post_click, ajax_woo_infobanner_post_xout, ajax_fb_toggle_visibility
+* use phpcs to adhere to WP coding standards
+* Minor UI changes on the iFrame
+
 = 1.9.14 - 2019-06-20 =
 * Revisit CSRF security issue
 * Remove rest controller which is not used
+* Tested installation in wordpress 5.2.2, WooCommerce 3.64, php 5.6/7.3 with browser Chrome v75/Safari v12.1/Firefox v67.
 
 = 1.9.13 - 2019-06-18 =
 * Fix security issue
@@ -58,7 +64,3 @@ When opening a bug on GitHub, please give us as many details as possible.
   https://wordpress.org/plugins/facebook-for-woocommerce/#developers
 * removing debug flags notice under facebook-for-woocommerce.php so that
   developers will be able to debug with debug logs
-
-= 1.9.10 - 2019-02-11 =
-* Add facebook support link, this will help merchants to reach out to facebook customer service.
-* Make plugin wordpress compatible by removing woocommerce updater and removing woo_include
