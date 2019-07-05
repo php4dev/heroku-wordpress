@@ -20,7 +20,7 @@ final class WooCommerce {
 	 *
 	 * @var string
 	 */
-	public $version = '3.6.4';
+	public $version = '3.6.5';
 
 	/**
 	 * The single instance of the class.
@@ -228,6 +228,8 @@ final class WooCommerce {
 		$this->define( 'WC_LOG_DIR', $upload_dir['basedir'] . '/wc-logs/' );
 		$this->define( 'WC_SESSION_CACHE_GROUP', 'wc_session_id' );
 		$this->define( 'WC_TEMPLATE_DEBUG_MODE', false );
+		$this->define( 'WC_NOTICE_MIN_PHP_VERSION', '5.6.20' );
+		$this->define( 'WC_NOTICE_MIN_WP_VERSION', '4.9' );
 	}
 
 	/**
