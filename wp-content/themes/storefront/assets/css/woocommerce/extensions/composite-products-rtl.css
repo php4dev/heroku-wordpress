@@ -30,7 +30,7 @@
       height: auto;
       margin-bottom: 0; }
 
-.composite_form .component:not(.selection_thumbnail_hidden) .component_summary .composited_product_details_wrapper .details {
+.composite_form .component:not(.selection_thumbnail_hidden) .component_summary .composited_product_details_wrapper > .details {
   padding: 0; }
 
 .composite_form .component .component_option_thumbnails .component_option_thumbnail {
@@ -38,7 +38,9 @@
   .composite_form .component .component_option_thumbnails .component_option_thumbnail.selected, .composite_form .component .component_option_thumbnails .component_option_thumbnail.selected:hover {
     box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.06); }
   .composite_form .component .component_option_thumbnails .component_option_thumbnail.selected:not(.loading) button {
-    border-radius: 50%; }
+    border-radius: 50%;
+    width: 0;
+    box-sizing: content-box; }
   .composite_form .component .component_option_thumbnails .component_option_thumbnail:hover {
     box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.03); }
   .composite_form .component .component_option_thumbnails .component_option_thumbnail.disabled, .composite_form .component .component_option_thumbnails .component_option_thumbnail.disabled:hover {
@@ -53,7 +55,7 @@
   float: right;
   margin-left: 5.2631578947%; }
 
-.composite_form .component:not(.selection_thumbnail_hidden) .component_summary .composited_product_details_wrapper .details {
+.composite_form .component:not(.selection_thumbnail_hidden) .component_summary .composited_product_details_wrapper > .details {
   width: 78.9473684211%;
   float: left;
   margin-left: 0; }
@@ -76,7 +78,7 @@ table.shop_table_responsive tr.component_table_item {
     width: 20%;
     float: right;
     margin-left: 6.6666666667%; }
-  .sp-product-gallery-stacked .composite_form .component:not(.selection_thumbnail_hidden) .component_summary .composited_product_details_wrapper .details, .storefront-full-width-content .composite_form .component:not(.selection_thumbnail_hidden) .component_summary .composited_product_details_wrapper .details, .page-template-template-fullwidth-php .composite_form .component:not(.selection_thumbnail_hidden) .component_summary .composited_product_details_wrapper .details {
+  .sp-product-gallery-stacked .composite_form .component:not(.selection_thumbnail_hidden) .component_summary .composited_product_details_wrapper > .details, .storefront-full-width-content .composite_form .component:not(.selection_thumbnail_hidden) .component_summary .composited_product_details_wrapper > .details, .page-template-template-fullwidth-php .composite_form .component:not(.selection_thumbnail_hidden) .component_summary .composited_product_details_wrapper > .details {
     width: 73.3333333333%;
     float: left;
     margin-left: 0; } }
@@ -90,7 +92,7 @@ table.shop_table_responsive tr.component_table_item {
     float: right;
     margin-right: 0;
     margin-left: 0; }
-  .composite_form .component:not(.selection_thumbnail_hidden) .component_summary .composited_product_details_wrapper .details {
+  .composite_form .component:not(.selection_thumbnail_hidden) .component_summary .composited_product_details_wrapper > .details {
     width: 100%;
     float: right;
     margin-right: 0;
