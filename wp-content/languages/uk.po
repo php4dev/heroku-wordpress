@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-06-17 19:34:53+0000\n"
+"PO-Revision-Date: 2019-06-28 16:47:49+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,7 +21,7 @@ msgstr "Noto Serif:400,400i,700,700i"
 #: wp-includes/comment-template.php:909
 msgctxt "Comment number declension: on or off"
 msgid "off"
-msgstr "off"
+msgstr "on"
 
 #. translators: Translate this to the correct language tag for your locale, *
 #. see https://www.w3.org/International/articles/language-tags/ for reference.
@@ -16256,7 +16256,7 @@ msgstr "Невідома стрічка"
 
 #: wp-includes/widgets/class-wp-widget-recent-comments.php:169
 msgid "Number of comments to show:"
-msgstr "Кількість коментарів:"
+msgstr "Кількість коментарів для показу:"
 
 #: wp-includes/comment-template.php:1097
 msgid "Trackback"

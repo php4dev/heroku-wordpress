@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Contact Form 7 - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-05-18 03:22:44+0000\n"
+"PO-Revision-Date: 2019-07-02 12:32:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,7 +25,7 @@ msgstr "Строка User-Agent неестественно коротка."
 
 #: modules/recaptcha.php:156
 msgid "reCAPTCHA score (%1$.2f) is lower than the threshold (%2$.2f)."
-msgstr "Баллы reCAPTCHA  (%1$.2f) ниже порогового значения (%2$.2f)."
+msgstr "Оценка reCAPTCHA (%1$.2f) ниже порогового значения (%2$.2f)."
 
 #: modules/akismet.php:58
 msgid "Akismet returns a spam response."

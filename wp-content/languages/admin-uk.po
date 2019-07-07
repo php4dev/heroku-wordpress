@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-06-21 12:25:27+0000\n"
+"PO-Revision-Date: 2019-07-02 22:19:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -93,7 +93,7 @@ msgstr "Покращення для всіх"
 
 #: wp-admin/about.php:154
 msgid "This administrator-focused update will let you safely fix or manage fatal errors without requiring a developer. It features better handling of the so-called “white screen of death”, and a way to enter recovery mode, which pauses error-causing plugins or themes."
-msgstr "Ця, орієнтована на адміністраторів, можливість дозволить безпечно усунути або впоратися з критичними помилками не звертаючись до розробників. Ви зможете впоратися з проблемою \"Білого екрану\" використовуючи новий режим відновлення, в якому призупиняється виконання коду проблемних плагінів або тем."
+msgstr "Ця, орієнтована на адміністраторів, можливість дозволить безпечно усунути або впоратися з критичними помилками не звертаючись до розробників. Ви зможете впоратися з проблемою \"Білого екрану\", використовуючи новий режим відновлення, в якому призупиняється виконання коду проблемних плагінів або тем."
 
 #: wp-admin/about.php:153
 msgid "PHP Error Protection"
@@ -9797,7 +9797,7 @@ msgstr "Дозволити коментарі"
 #: wp-admin/includes/class-language-pack-upgrader-skin.php:74
 #: wp-admin/includes/class-bulk-theme-upgrader-skin.php:48
 msgid "Return to WordPress Updates page"
-msgstr "Повернутися до сторінки оновлення WordPress"
+msgstr "Повернутися на сторінку &laquo;Оновлення WordPress&raquo;"
 
 #: wp-admin/edit-form-advanced.php:370
 msgid "<strong>Discussion</strong> &mdash; You can turn comments and pings on or off, and if there are comments on the post, you can see them here and moderate them."

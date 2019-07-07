@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-06-20 11:23:23+0000\n"
+"PO-Revision-Date: 2019-06-28 18:12:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -93,7 +93,7 @@ msgstr "Улучшения для всех"
 
 #: wp-admin/about.php:154
 msgid "This administrator-focused update will let you safely fix or manage fatal errors without requiring a developer. It features better handling of the so-called “white screen of death”, and a way to enter recovery mode, which pauses error-causing plugins or themes."
-msgstr "Эта, ориентированная на администраторов, возможность позволит безопасно устранить или справиться с критическими ошибками не привлекая разработчиков. Вы сможете справиться с проблемой \"Белого экрана\", используя новый режим восстановления, в котором приостанавливается выполнение кода проблемных плагинов или тем."
+msgstr "Эта, ориентированная на администраторов, возможность позволит безопасно устранить или справиться с критическими ошибками не привлекая к этому разработчиков. Вы сможете справиться с проблемой \"Белого экрана\", используя новый режим восстановления, в котором приостанавливается выполнение кода проблемных плагинов или тем."
 
 #: wp-admin/about.php:153
 msgid "PHP Error Protection"
