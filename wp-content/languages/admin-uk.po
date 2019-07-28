@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-07-02 22:19:40+0000\n"
+"PO-Revision-Date: 2019-07-21 15:14:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2961,7 +2961,7 @@ msgstr "Радість розробникам"
 #. translators: %s: https://wordpress.org/about/privacy
 #: wp-admin/freedoms.php:81
 msgid "We take privacy and transparency very seriously. To learn more about what data we collect, and how we use it, please visit <a href=\"%s\">WordPress.org/about/privacy</a>."
-msgstr "Ми дуже серйозно ставимося до приватності та прозорості збору даних. Щоби дізнатися більше про те, які дані ми збираємо та як ми їх використовуємо, будь ласка, відвідайте <a href=\"%s\">WordPress.org/about/privacy</a>."
+msgstr "Ми дуже серйозно ставимося до приватності та прозорості збору даних. Щоб дізнатися більше про те, які дані ми збираємо та як ми їх використовуємо, будь ласка, відвідайте <a href=\"%s\">WordPress.org/about/privacy</a>."
 
 #: wp-admin/freedoms.php:69
 msgid "From time to time, your WordPress site may send data to WordPress.org &#8212; including, but not limited to &#8212; the version of WordPress you are using, and a list of installed plugins and themes."
@@ -11274,7 +11274,7 @@ msgstr "Інші налаштування коментування"
 
 #: wp-admin/options-discussion.php:60
 msgid "These settings may be overridden for individual articles."
-msgstr "Ці налаштування можуть бути знехтувані для окремих статей."
+msgstr "Ці налаштування можуть бути змінені для кожної окремої статті."
 
 #: wp-admin/options-discussion.php:46 wp-admin/options-discussion.php:47
 msgid "Default article settings"

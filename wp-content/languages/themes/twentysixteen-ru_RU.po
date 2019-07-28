@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Sixteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-12-07 09:51:50+0000\n"
+"PO-Revision-Date: 2019-07-18 22:07:45+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -108,7 +108,7 @@ msgstr "Меню социальных ссылок в подвале"
 msgid "Footer Primary Menu"
 msgstr "Основное меню подвала"
 
-#: functions.php:246
+#: functions.php:267
 msgid "Add widgets here to appear in your sidebar."
 msgstr "Добавьте сюда виджеты, которые вы хотите разместить в боковой колонке."
 
@@ -257,46 +257,46 @@ msgstr "Следующее изображение"
 msgid "Previous Image"
 msgstr "Предыдущее изображение"
 
-#: header.php:49
+#: header.php:50
 msgid "Menu"
 msgstr "Меню"
 
-#: header.php:27
+#: header.php:28
 msgid "Skip to content"
 msgstr "Перейти к содержимому"
 
-#: functions.php:386
+#: functions.php:407
 msgid "expand child menu"
 msgstr "раскрыть дочернее меню"
 
-#: functions.php:387
+#: functions.php:408
 msgid "collapse child menu"
 msgstr "свернуть дочернее меню"
 
 #. translators: If there are characters in your language that are not supported
 #. by Inconsolata, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:306
+#: functions.php:327
 msgctxt "Inconsolata font: on or off"
 msgid "on"
-msgstr "on"
+msgstr "off"
 
-#: functions.php:256
+#: functions.php:277
 msgid "Content Bottom 1"
 msgstr "Под содержимым 1"
 
-#: functions.php:258 functions.php:270
+#: functions.php:279 functions.php:291
 msgid "Appears at the bottom of the content on posts and pages."
 msgstr "Отображается под содержимым на страницах и записях."
 
-#: functions.php:268
+#: functions.php:289
 msgid "Content Bottom 2"
 msgstr "Под содержимым 2"
 
 #. translators: If there are characters in your language that are not supported
 #. by Merriweather, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:296
+#: functions.php:317
 msgctxt "Merriweather font: on or off"
 msgid "on"
 msgstr "off"
@@ -304,20 +304,20 @@ msgstr "off"
 #. translators: If there are characters in your language that are not supported
 #. by Montserrat, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:301
+#: functions.php:322
 msgctxt "Montserrat font: on or off"
 msgid "on"
 msgstr "off"
 
-#: functions.php:244
+#: functions.php:265
 msgid "Sidebar"
 msgstr "Боковая колонка"
 
-#: functions.php:93 header.php:66
+#: functions.php:93 header.php:67
 msgid "Social Links Menu"
 msgstr "Меню социальных ссылок"
 
-#: functions.php:92 header.php:53
+#: functions.php:92 header.php:54
 msgid "Primary Menu"
 msgstr "Основное меню"
 

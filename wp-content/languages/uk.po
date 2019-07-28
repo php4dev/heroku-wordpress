@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-06-28 16:47:49+0000\n"
+"PO-Revision-Date: 2019-07-25 22:13:47+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -6483,7 +6483,7 @@ msgstr "+ %s"
 #: wp-includes/l10n.php:1467
 msgctxt "default site language"
 msgid "Site Default"
-msgstr "За замовчуванням для сайту"
+msgstr "Основна мова сайту"
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:470
 msgid "HTML description for the object, transformed for display."
@@ -10434,7 +10434,7 @@ msgstr "Редагувати деталі"
 
 #: wp-includes/media-template.php:476
 msgid "View attachment page"
-msgstr "Переглянути сторінку додатків"
+msgstr "Переглянути сторінку вкладення"
 
 #: wp-includes/media-template.php:460
 msgid "Uploaded To"
@@ -10644,7 +10644,7 @@ msgstr "Розмір Шрифту"
 
 #: wp-includes/class-wp-editor.php:1058
 msgid "Font Family"
-msgstr "Шрифт"
+msgstr "Сімейство шрифтів"
 
 #: wp-includes/class-wp-editor.php:1230
 msgctxt "table cell alignment attribute"
@@ -12757,7 +12757,7 @@ msgstr "%s перевищує максимальний ліміт розміру
 
 #: wp-includes/admin-bar.php:183
 msgid "Feedback"
-msgstr "Зворотній зв'язок"
+msgstr "Зворотний зв'язок"
 
 #: wp-includes/comment.php:3283
 msgid "<strong>ERROR</strong>: please fill the required fields (name, email)."

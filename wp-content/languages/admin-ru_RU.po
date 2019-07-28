@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-06-28 18:12:38+0000\n"
+"PO-Revision-Date: 2019-07-09 13:50:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2924,12 +2924,12 @@ msgstr "https://codex.wordpress.org/Update_Services"
 #. translators: 1: .htaccess, 2: Codex URL, 3: CTRL + a
 #: wp-admin/options-permalink.php:387
 msgid "If your %1$s file was <a href=\"%2$s\">writable</a>, we could do this automatically, but it isn&#8217;t so these are the mod_rewrite rules you should have in your %1$s file. Click in the field and press %3$s to select all."
-msgstr "Если файл %1$s был бы <a href=\"%2$s\">записываемый</a>, мы бы сделали это автоматически, но это не так, поэтому вот правила для mod_rewrite, которые у вас должны быть в файле %1$s. Нажмите поле, а затем %3$s для выбора всего текста."
+msgstr "Если бы ваш файл %1$s был <a href=\"%2$s\">доступен для записи</a>, мы могли бы выполнить следующий шаг автоматически, но это не так. Вот правила mod_rewrite, которые должны быть в файле %1$s. Кликните на поле и нажмите %3$s, чтобы выделить весь текст."
 
 #. translators: 1: Codex URL, 2: web.config, 3: CTRL + a
 #: wp-admin/options-permalink.php:355
 msgid "If the root directory of your site was <a href=\"%1$s\">writable</a>, we could do this automatically, but it isn&#8217;t so this is the url rewrite rule you should have in your %2$s file. Create a new file, called %2$s in the root directory of your site. Click in the field and press %3$s to select all. Then insert this code into the %2$s file."
-msgstr "Если бы корневая папка вашего сайта была бы <a href=\"%1$s\">записываема</a>, мы бы сделали это автоматически, но так как это не так, вот правила перезаписи URL, которые вам нужно разместить в файле %2$s. Создайте новый файл с именем %2$s в корневой папке вашего сайта, Нажмите поле, а затем %3$s для выбора всего текста. Вставьте текст в файл %2$s."
+msgstr "Если бы корневая директория вашего сайта была <a href=\"%1$s\">доступна для записи</a>, мы могли бы выполнить следующий шаг автоматически, но это не так. Вот правило преобразования ссылок, которое должно быть в файле %2$s. Создайте новый файл с именем %2$s в корневой директории вашего сайта. Кликните на поле и нажмите %3$s, чтобы выделить весь текст. Затем вставьте этот код в файл %2$s."
 
 #: wp-admin/options-permalink.php:331 wp-admin/options-permalink.php:356
 #: wp-admin/options-permalink.php:389
@@ -2939,7 +2939,7 @@ msgstr "https://codex.wordpress.org/Changing_File_Permissions"
 #. translators: 1: web.config, 2: Codex URL, 3: CTRL + a, 4: element code
 #: wp-admin/options-permalink.php:329
 msgid "If your %1$s file was <a href=\"%2$s\">writable</a>, we could do this automatically, but it isn&#8217;t so this is the url rewrite rule you should have in your %1$s file. Click in the field and press %3$s to select all. Then insert this rule inside of the %4$s element in %1$s file."
-msgstr "Если файл %1$s был бы <a href=\"%2$s\">записываемый</a>, мы бы сделали это автоматически, но это не так, поэтому вот правила перезаписи URL, которые вам нужно разместить в файле %1$s. Нажмите поле, а затем %3$s для выбора всего текста. Затем вставьте эти правила внутри элемента %4$s в файле %1$s."
+msgstr "Если бы ваш файл %1$s был <a href=\"%2$s\">доступен для записи</a>, мы могли бы выполнить следующий шаг автоматически, но это не так. Вот правило преобразования ссылок, которое должно быть в файле %1$s. Кликните на поле и нажмите %3$s, чтобы выделить весь текст. Затем вставьте это правило внутрь элемента %4$s в файле %1$s."
 
 #: wp-admin/options-permalink.php:177
 msgid "https://codex.wordpress.org/Using_Permalinks"

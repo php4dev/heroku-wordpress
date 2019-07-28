@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-06-13 17:07:37+0000\n"
+"PO-Revision-Date: 2019-07-22 10:38:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3787,7 +3787,7 @@ msgstr "Текущий пользователь может сменить авт
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2277
 msgid "The current user can sticky this post."
-msgstr "Текущий пользователь может сделать эту запись прикрепленной."
+msgstr "Текущий пользователь может сделать эту запись прилепленной."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2244
 msgid "The current user can publish this post."
@@ -6962,7 +6962,7 @@ msgstr "Защищённую паролем запись нельзя приле
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1069
 msgid "A sticky post can not be password protected."
-msgstr "Прикрепленная запись не может быть защищена паролем."
+msgstr "Прилепленная запись не может быть защищена паролем."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1065
 msgid "A post can not be sticky and have a password."
