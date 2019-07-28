@@ -5,79 +5,82 @@
  * file that was distributed with this source code.
  */
 
-window.BWU = window.BWU || {}
+window.BWU = window.BWU || {};
 window.BWU.Functions = window.BWU.Functions || {};
 
 (
-  function iife (BWU, $) {
-    'use strict'
+    function iife(BWU, $) {
+        'use strict';
 
-    BWU.Functions = {
+        BWU.Functions = {
 
-      /**
-       * Remove previously printed messages
-       */
-      removeMessages: function () {
-        $(document.body).find('#bwu_response').remove()
-      },
+            /**
+             * Remove previously printed messages
+             */
+            removeMessages: function () {
+                $(document.body)
+                    .find('#bwu_response')
+                    .remove();
+            },
 
-      /**
-       * Print Error Messages
-       *
-       * @param {string} message The message to print.
-       *
-       * @return {void}
-       */
-      printMessageError: function (message, container) {
-        var $container = $(container)
+            /**
+             * Print Error Messages
+             *
+             * @param {string} message The message to print.
+             *
+             * @return {void}
+             */
+            printMessageError: function (message, container) {
 
-        if (!message) {
-          return
-        }
+                var $container = $(container);
 
-        this.removeMessages()
+                if (!message) {
+                    return;
+                }
 
-        $container.append(
-          '<p id="bwu_response" class="response response-error">' + message +
-          '</p>')
-      },
+                this.removeMessages();
 
-      /**
-       * Print Success Messages
-       *
-       * @param {string} message The message to print.
-       *
-       * @return {void}
-       */
-      printMessageSuccess: function (message, container) {
-        var $container = $(container)
+                $container
+                    .append(
+                        '<p id="bwu_response" class="response response-error">' + message + '</p>');
+            },
 
-        if (!message) {
-          return
-        }
+            /**
+             * Print Success Messages
+             *
+             * @param {string} message The message to print.
+             *
+             * @return {void}
+             */
+            printMessageSuccess: function (message, container) {
+                var $container = $(container);
 
-        this.removeMessages()
+                if (!message) {
+                    return;
+                }
 
-        $container.append(
-          '<p id="bwu_response" class="response response-success">' + message +
-          '</p>')
-      },
+                this.removeMessages();
 
-      /**
-       * Create a constant property
-       * @param value
-       * @returns {{value: *, writable: boolean, configurable: boolean, enumerable: boolean}}
-       */
-      makeConstant: function (value) {
-        return {
-          value: value,
-          writable: false,
-          configurable: false,
-          enumerable: false,
-        }
-      },
-    }
+                $container
+                    .append(
+                        '<p id="bwu_response" class="response response-success">' + message + '</p>');
+            },
 
-    Object.freeze(BWU.Functions)
-  }(window.BWU, window.jQuery)
-)
+            /**
+             * Create a constant property
+             * @param value
+             * @returns {{value: *, writable: boolean, configurable: boolean, enumerable: boolean}}
+             */
+            makeConstant: function (value) {
+                return {
+                    value: value,
+                    writable: false,
+                    configurable: false,
+                    enumerable: false
+                };
+            }
+        };
+
+        Object.freeze(BWU.Functions);
+    }(window.BWU, window.jQuery)
+);
