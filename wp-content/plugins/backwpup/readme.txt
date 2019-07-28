@@ -2,9 +2,9 @@
 Contributors: inpsyde, danielhuesken, Bueltge, nullbyte, wido, dinamiko
 Tags: backup, database backup, cloud backup, restore, wordpress backup
 Requires at least: 3.9
-Tested up to: 5.1.1
-Requires PHP: 5.3.3
-Stable tag: 3.6.9
+Tested up to: 5.2.2
+Requires PHP: 5.6
+Stable tag: 3.6.10
 License: GPLv2+
 
 Schedule complete automatic backups of your WordPress installation. Decide which content will be stored (Dropbox, S3…). This is the free version
@@ -159,6 +159,17 @@ Yes. You need to have writing access to the wp-config.php file (usually residing
 [You can find a detailed tutorial in the BackWPup documentation.](https://backwpup.com/docs/install-backwpup-pro-activate-licence/)
 
 == Changelog ==
+
+= Version 3.6.10 =
+Release Date: July 8, 2019
+
+* Fixed: Azure Supports https on uploading
+* Fixed: Auto remove old backup files not working when archive file name have prefix "backwpup"
+* Added: Filter to extend list of S3 destinations
+* Removed: S3 multipart upload checkbox, now in destination definition
+* Updated: Amazon AWS SDK for S3 services, now PHP 5.5+ is needed
+* Added: Filter to extend list of Glacier destinations (Pro version)
+* Updated: Amazon AWS SDK for Glacier, now PHP 5.5+ is needed (Pro version)
 
 = Version 3.6.9 =
 Release Date: May 7, 2019
