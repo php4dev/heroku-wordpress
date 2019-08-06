@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-07-22 10:38:09+0000\n"
+"PO-Revision-Date: 2019-08-04 19:46:18+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1017,15 +1017,15 @@ msgstr "Значок блока"
 
 #: wp-includes/js/dist/block-editor.js:7884
 msgid "Align text right"
-msgstr "Выровнять текст вправо"
+msgstr "Выравнивание текста по правому краю"
 
 #: wp-includes/js/dist/block-editor.js:7880
 msgid "Align text center"
-msgstr "Выровнять текст по центру"
+msgstr "Выравнивание текста по центру"
 
 #: wp-includes/js/dist/block-editor.js:7876
 msgid "Align text left"
-msgstr "Выровнять текст влево"
+msgstr "Выравнивание текста по левому краю"
 
 #: wp-includes/js/dist/block-library.js:19127
 msgid "Page Break"

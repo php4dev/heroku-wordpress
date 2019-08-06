@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-07-26 11:21:35+0000\n"
+"PO-Revision-Date: 2019-08-04 13:36:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -244,7 +244,7 @@ msgstr "Создать товар"
 
 #: includes/admin/class-wc-admin-assets.php:449
 msgid "Dismiss this suggestion"
-msgstr "Отклонить"
+msgstr "Закрыть"
 
 #: includes/admin/class-wc-admin-assets.php:347
 msgid "Enter a coupon code to apply. Discounts are applied to line totals, before taxes."
@@ -4511,7 +4511,7 @@ msgstr "Эта опция удалит ВСЕ ваши налоговые ста
 
 #: includes/api/v2/class-wc-rest-system-status-tools-v2-controller.php:181
 msgid "Delete tax rates"
-msgstr "Удалить ставки налогов"
+msgstr "Удалить налоговые ставки"
 
 #: includes/api/v2/class-wc-rest-system-status-tools-v2-controller.php:172
 msgid "Create pages"
@@ -9733,7 +9733,7 @@ msgstr "Почтовый индекс."
 #: includes/api/class-wc-rest-data-continents-controller.php:324
 #: includes/api/class-wc-rest-data-countries-controller.php:222
 msgid "State code."
-msgstr "Код региона."
+msgstr "Код области."
 
 #: includes/api/v1/class-wc-rest-taxes-controller.php:582
 msgid "Country ISO 3166 code."
@@ -12792,7 +12792,7 @@ msgstr "Индекс"
 
 #: includes/class-wc-countries.php:1077
 msgid "State / Zone"
-msgstr "Регион / Зона"
+msgstr "Область / Зона"
 
 #: includes/api/legacy/v3/class-wc-api-taxes.php:681
 msgid "You do not have permission to read the tax classes count"
@@ -14785,7 +14785,7 @@ msgstr "Оплата наличными (или иным методом) по ф
 
 #: includes/gateways/cheque/class-wc-gateway-cheque.php:74
 msgid "Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode."
-msgstr "Пожалуйста, отправьте ваш чек, указав данные магазина: название, улицу, город, область/регион, страну, почтовый индекс."
+msgstr "Пожалуйста, отправьте ваш чек, указав данные магазина: название, улицу, город, область / район, страну, почтовый индекс."
 
 #: includes/gateways/cheque/class-wc-gateway-cheque.php:60
 msgid "Enable check payments"
@@ -15936,7 +15936,7 @@ msgstr "Почтовый индекс"
 #: includes/admin/meta-boxes/class-wc-meta-box-order-data.php:130
 #: includes/class-wc-countries.php:683
 msgid "State / County"
-msgstr "Область / Район"
+msgstr "Область / район"
 
 #: includes/class-wc-countries.php:675
 msgid "Town / City"
@@ -16200,7 +16200,7 @@ msgstr "Просмотр купонов"
 
 #: includes/class-wc-ajax.php:2090
 msgid "Dismiss this notice."
-msgstr "Закрыть данное уведомление."
+msgstr "Закрыть это уведомление."
 
 #: includes/class-wc-ajax.php:1972
 msgid "API Key updated successfully."
@@ -17648,7 +17648,7 @@ msgstr "Имя налога"
 #: includes/admin/settings/class-wc-settings-tax.php:194
 #: includes/admin/settings/views/html-settings-tax.php:27
 msgid "State code"
-msgstr "Код региона"
+msgstr "Код области"
 
 #: includes/admin/settings/class-wc-settings-tax.php:193
 msgid "Country code"
@@ -20278,7 +20278,7 @@ msgstr "PayPal Email"
 #: includes/class-wc-countries.php:782 includes/class-wc-countries.php:1055
 #: includes/class-wc-countries.php:1196
 msgid "State"
-msgstr "Регион"
+msgstr "Область"
 
 #: includes/admin/settings/class-wc-settings-products.php:360
 msgid "yd"
@@ -20519,7 +20519,7 @@ msgstr "Email"
 #: includes/admin/class-wc-admin-profile.php:81
 #: includes/admin/class-wc-admin-profile.php:141
 msgid "State / County or state code"
-msgstr "Код области/региона"
+msgstr "Код области / района"
 
 #: templates/cart/shipping-calculator.php:31
 #: includes/admin/class-wc-admin-profile.php:77

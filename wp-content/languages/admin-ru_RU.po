@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-07-09 13:50:09+0000\n"
+"PO-Revision-Date: 2019-08-03 12:24:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -563,7 +563,7 @@ msgstr "Петлевой запрос вернул неожиданный отв
 
 #: wp-admin/includes/class-wp-site-health.php:1963
 msgid "The loopback request to your site failed, this means features relying on them are not currently working as expected."
-msgstr "Петлевой запрос к вашему сайту не удался, возможности, зависящие от его работоспособности сейчас не работают как нужно."
+msgstr "Петлевой запрос к вашему сайту не удался. Возможности, зависящие от его работоспособности, не могут работать так, как должны."
 
 #: wp-admin/includes/class-wp-site-health.php:1883
 msgid "No scheduled events exist on this site."
