@@ -2,7 +2,7 @@
 Contributors: mattkeys
 Tags: Advanced Custom Fields, ACF, Font Awesome, FontAwesome
 Requires at least: 3.5
-Tested up to: 5.0
+Tested up to: 5.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -50,6 +50,13 @@ This ACF field type is compatible with:
 2. Searchable list of all icons, including large live preview
 
 == Changelog ==
+
+= 3.1.1 =
+* Fixed bug where Duotone icons were not available to existing users of this plugin due to cached versions of the icons from before this plugin could properly parse the duotone icons.
+
+= 3.1.0 =
+* Added support for new FontAwesome Duotone icons (FontAwesome Pro subscription required)
+* Added support for ACF 'acf/settings/capability' filter on the settings page
 
 = 3.0.2 =
 * Fixed bug causing PHP warning of undefined constant
@@ -174,6 +181,16 @@ This ACF field type is compatible with:
 * Initial Release.
 
 == Upgrade Notice ==
+
+= 3.1.1 =
+* Fixed bug where Duotone icons were not available to existing users of this plugin due to cached versions of the icons from before this plugin could properly parse the duotone icons.
+
+= 3.1.0 =
+* Added support for new FontAwesome Duotone icons (FontAwesome Pro subscription required)
+* Added support for ACF 'acf/settings/capability' filter on the settings page
+
+= 3.0.2 =
+* Fixed bug causing PHP warning of undefined constant
 
 = 3.0.1 =
 * Fixed bug where the FontAwesome field would not successfully register on sites which force ACF to initialize itself early (usually by calling get_field function in the theme functions.php file)

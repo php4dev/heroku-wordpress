@@ -65,9 +65,21 @@ function wpcf7_acceptance_form_tag_handler( $tag ) {
 	$content = trim( $content );
 
 	if ( $content ) {
+		if ( $tag->has_option( 'label_first' ) ) {
+			$html = sprintf(
+				'<span class="wpcf7-list-item-label">%2$s</span><input %1$s />',
+				$item_atts, $content );
+		} else {
+			$html = sprintf(
+				'<input %1$s /><span class="wpcf7-list-item-label">%2$s</span>',
+				$item_atts, $content );
+		}
+
 		$html = sprintf(
-			'<span class="wpcf7-list-item"><label><input %1$s /><span class="wpcf7-list-item-label">%2$s</span></label></span>',
-			$item_atts, $content );
+			'<span class="wpcf7-list-item"><label>%s</label></span>',
+			$html
+		);
+
 	} else {
 		$html = sprintf(
 			'<span class="wpcf7-list-item"><input %1$s /></span>',

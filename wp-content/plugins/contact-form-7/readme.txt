@@ -4,7 +4,7 @@ Donate link: https://contactform7.com/donate/
 Tags: contact, form, contact form, feedback, email, ajax, captcha, akismet, multilingual
 Requires at least: 4.9
 Tested up to: 5.2
-Stable tag: 5.1.3
+Stable tag: 5.1.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -74,6 +74,16 @@ Do you have questions or issues with Contact Form 7? Use these support channels 
 == Changelog ==
 
 For more information, see [Releases](https://contactform7.com/category/releases/).
+
+= 5.1.4 =
+
+* reCAPTCHA: introduces the WPCF7_RECAPTCHA_SITEKEY and WPCF7_RECAPTCHA_SECRET constants.
+* reCAPTCHA: Introduces the wpcf7_recaptcha_sitekey and wpcf7_recaptcha_secret filter hooks.
+* Adds $status parameter to the wpcf7_form_response_output filter.
+* Creates a nonce only when the submitter is a logged-in user.
+* Introduces WPCF7_ContactForm::unit_tag(), a public method that returns a unit tag.
+* reCAPTCHA: gives a different spam log message for cases where the response token is empty.
+* Acceptance Checkbox: supports the label_first option in an acceptance form-tag.
 
 = 5.1.3 =
 

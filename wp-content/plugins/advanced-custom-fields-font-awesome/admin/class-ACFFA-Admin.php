@@ -90,11 +90,13 @@ class ACFFA_Admin
 
 	public function add_settings_page()
 	{
+		$capability = apply_filters( 'acf/settings/capability', 'manage_options' );
+
 		add_submenu_page(
 			'edit.php?post_type=acf-field-group',
 			'FontAwesome Settings',
 			'FontAwesome Settings',
-			'manage_options',
+			$capability,
 			'fontawesome-settings',
 			array( $this, 'fontawesome_settings' )
 		);
@@ -340,7 +342,7 @@ class ACFFA_Admin
 							echo '<optgroup label="' . $optgroup_label . '">';
 
 							foreach( $icons as $k => $v ) {
-								$value = str_replace( array( 'fas ', 'far ', 'fab ', 'fal ', 'fa-' ), '', $k );
+								$value = str_replace( array( 'fas ', 'far ', 'fab ', 'fal ', 'fad ', 'fa-' ), '', $k );
 								?>
 								<option value="<?php echo $k; ?>"><?php echo $value; ?></option>
 								<?php

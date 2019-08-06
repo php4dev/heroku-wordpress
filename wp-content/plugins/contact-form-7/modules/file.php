@@ -446,7 +446,7 @@ function wpcf7_cleanup_upload_files( $seconds = 60, $max = 100 ) {
 				continue;
 			}
 
-			$mtime = filemtime( path_join( $dir, $file ) );
+			$mtime = @filemtime( path_join( $dir, $file ) );
 
 			if ( $mtime and time() < $mtime + $seconds ) { // less than $seconds old
 				continue;

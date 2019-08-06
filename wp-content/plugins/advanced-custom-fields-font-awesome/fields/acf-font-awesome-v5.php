@@ -69,6 +69,7 @@ if ( ! class_exists( 'acf_field_font_awesome' ) ) :
 					'fas'		=> __( 'Solid', 'acf-font-awesome' ),
 					'far'		=> __( 'Regular', 'acf-font-awesome' ),
 					'fal'		=> __( 'Light (FontAwesome Pro License Required)', 'acf-font-awesome' ),
+					'fad'		=> __( 'Duotone (FontAwesome Pro License Required)', 'acf-font-awesome' ),
 					'fab'		=> __( 'Brands', 'acf-font-awesome' ),
 					'custom'	=> __( 'Custom Icon Set', 'acf-font-awesome' )
 				);

@@ -4,7 +4,7 @@
 Plugin Name: Advanced Custom Fields: Font Awesome
 Plugin URI: https://wordpress.org/plugins/advanced-custom-fields-font-awesome/
 Description: Adds a new 'Font Awesome Icon' field to the popular Advanced Custom Fields plugin.
-Version: 3.0.2
+Version: 3.1.1
 Author: mattkeys
 Author URI: http://mattkeys.me/
 License: GPLv2 or later
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'ACFFA_VERSION' ) ) {
-	define( 'ACFFA_VERSION', '3.0.0' );
+	define( 'ACFFA_VERSION', '3.1.1' );
 }
 
 if ( ! defined( 'ACFFA_PUBLIC_PATH' ) ) {
@@ -39,6 +39,8 @@ if ( ! class_exists('acf_plugin_font_awesome') ) :
 		{
 			$acffa_major_version = $this->get_major_version();
 
+			$this->check_for_updates( $acffa_major_version );
+
 			if ( version_compare( $acffa_major_version, 5, '<' ) ) {
 				require 'assets/inc/class-ACFFA-Loader-4.php';
 			} else {
@@ -56,7 +58,7 @@ if ( ! class_exists('acf_plugin_font_awesome') ) :
 			include_once('fields/acf-font-awesome-v5.php');
 		}
 		
-		public function get_major_version()
+		private function get_major_version()
 		{
 			$current_version		= get_option( 'ACFFA_current_version' );
 			$acffa_settings			= get_option( 'acffa_settings', array() );
@@ -95,6 +97,30 @@ if ( ! class_exists('acf_plugin_font_awesome') ) :
 			}
 
 			return $acffa_major_version;
+		}
+
+		private function check_for_updates( $acffa_major_version )
+		{
+			$acffa_settings			= get_option( 'acffa_settings', array() );
+			$acffa_internal_version	= isset( $acffa_settings['acffa_plugin_version'] ) ? $acffa_settings['acffa_plugin_version'] : false;
+
+			if ( ! $acffa_internal_version ) {
+				return;
+			}
+
+			switch ( $acffa_major_version ) {
+				case 5:
+					if ( version_compare( $acffa_internal_version, '3.1.1', '<' ) ) {
+						define( 'ACFFA_FORCE_REFRESH', true );
+						do_action( 'ACFFA_refresh_latest_icons' );
+					}
+					break;
+			}
+
+			if ( $acffa_internal_version !== ACFFA_VERSION ) {
+				$acffa_settings['acffa_plugin_version'] = ACFFA_VERSION;
+				update_option( 'acffa_settings', $acffa_settings, false );
+			}
 		}
 	}
 
