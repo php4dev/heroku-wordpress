@@ -145,7 +145,7 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 			$product->save_meta_data();
 			$product->apply_changes();
 
-			do_action( 'woocommerce_new_product', $id );
+			do_action( 'woocommerce_new_product', $id, $product );
 		}
 	}
 
@@ -185,6 +185,8 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 		$this->read_product_data( $product );
 		$this->read_extra_data( $product );
 		$product->set_object_read( true );
+
+		do_action( 'woocommerce_product_read', $product->get_id() );
 	}
 
 	/**
@@ -262,7 +264,7 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 
 		$product->apply_changes();
 
-		do_action( 'woocommerce_update_product', $product->get_id() );
+		do_action( 'woocommerce_update_product', $product->get_id(), $product );
 	}
 
 	/**
@@ -1066,32 +1068,27 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 			if ( ! $attribute->get_variation() ) {
 				continue;
 			}
-
-			$attribute_field_name = 'attribute_' . sanitize_title( $attribute->get_name() );
-
-			if ( ! isset( $match_attributes[ $attribute_field_name ] ) ) {
-				return 0;
-			}
-
-			$meta_attribute_names[] = $attribute_field_name;
+			$meta_attribute_names[] = 'attribute_' . sanitize_title( $attribute->get_name() );
 		}
 
 		// Get the attributes of the variations.
 		$query = $wpdb->prepare(
 			"
-			SELECT post_id, meta_key, meta_value FROM {$wpdb->postmeta}
-			WHERE post_id IN (
+			SELECT postmeta.post_id, postmeta.meta_key, postmeta.meta_value, posts.menu_order FROM {$wpdb->postmeta} as postmeta
+			LEFT JOIN {$wpdb->posts} as posts ON postmeta.post_id=posts.ID
+			WHERE postmeta.post_id IN (
 				SELECT ID FROM {$wpdb->posts}
 				WHERE {$wpdb->posts}.post_parent = %d
 				AND {$wpdb->posts}.post_status = 'publish'
 				AND {$wpdb->posts}.post_type = 'product_variation'
-				ORDER BY menu_order ASC, ID ASC
 			)
 			",
 			$product->get_id()
 		);
 
-		$query .= ' AND meta_key IN ( "' . implode( '","', array_map( 'esc_sql', $meta_attribute_names ) ) . '" );';
+		$query .= ' AND postmeta.meta_key IN ( "' . implode( '","', array_map( 'esc_sql', $meta_attribute_names ) ) . '" )';
+
+		$query.=' ORDER BY posts.menu_order ASC, postmeta.post_id ASC;';
 
 		$attributes = $wpdb->get_results( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
@@ -1113,10 +1110,17 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 		foreach ( $sorted_meta as $variation_id => $variation ) {
 			$match = true;
 
-			foreach ( $match_attributes as $attribute_key => $attribute_value ) {
-				if ( array_key_exists( $attribute_key, $variation ) ) {
-					if ( $variation[ $attribute_key ] !== $attribute_value && ( '0' === $variation[ $attribute_key ] || $variation[ $attribute_key ] ) ) {
-						$match = false;
+			// Loop over the variation meta keys and values i.e. what is saved to the products. Note: $attribute_value is empty when 'any' is in use.
+			foreach ( $variation as $attribute_key => $attribute_value ) {
+				$match_any_value = empty( $attribute_value );
+
+				if ( ! $match_any_value && ! array_key_exists( $attribute_key, $match_attributes ) ) {
+					$match = false; // Requires a selection but no value was provide.
+				}
+
+				if ( array_key_exists( $attribute_key, $match_attributes ) ) { // Value to match was provided.
+					if ( ! $match_any_value && $match_attributes[ $attribute_key ] !== $attribute_value ) {
+						$match = false; // Provided value does not match variation.
 					}
 				}
 			}
@@ -1133,6 +1137,8 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 			 */
 			return ( array_map( 'sanitize_title', $match_attributes ) === $match_attributes ) ? 0 : $this->find_matching_product_variation( $product, array_map( 'sanitize_title', $match_attributes ) );
 		}
+
+		return 0;
 	}
 
 	/**
@@ -1543,12 +1549,22 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 			return $custom_results;
 		}
 
-		$post_types    = $include_variations ? array( 'product', 'product_variation' ) : array( 'product' );
-		$post_statuses = current_user_can( 'edit_private_products' ) ? array( 'private', 'publish' ) : array( 'publish' );
-		$type_where    = '';
-		$status_where  = '';
-		$limit_query   = '';
-		$term          = wc_strtolower( $term );
+		$post_types   = $include_variations ? array( 'product', 'product_variation' ) : array( 'product' );
+		$type_where   = '';
+		$status_where = '';
+		$limit_query  = '';
+		$term         = wc_strtolower( $term );
+
+		/**
+		 * Hook woocommerce_search_products_post_statuses.
+		 *
+		 * @since 3.7.0
+		 * @param array $post_statuses List of post statuses.
+		 */
+		$post_statuses = apply_filters(
+			'woocommerce_search_products_post_statuses',
+			current_user_can( 'edit_private_products' ) ? array( 'private', 'publish' ) : array( 'publish' )
+		);
 
 		// See if search term contains OR keywords.
 		if ( strstr( $term, ' or ' ) ) {
