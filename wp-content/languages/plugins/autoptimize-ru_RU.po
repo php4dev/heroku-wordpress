@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Autoptimize - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-06-23 08:04:48+0000\n"
+"PO-Revision-Date: 2019-08-15 11:16:47+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -68,6 +68,25 @@ msgstr "Изображения"
 #. Description of the plugin
 msgid "Makes your site faster by optimizing CSS, JS, Images, Google fonts and more."
 msgstr "Делает ваш сайт быстрее за счет оптимизации CSS, JS, изображений, шрифтов Google и многого другого."
+
+#. translators: "disable  Jetpack's site accelerator for images" will appear in
+#. a "a href" linking to the jetpack settings page.
+#: classes/autoptimizeImages.php:918
+msgid "Please %1$sdisable Jetpack's site accelerator for images%2$s to be able to use Autoptomize's advanced image optimization features below."
+msgstr "Для использования расширенных функций оптимизации изображений Autoptomize, перечисленных ниже, необходимо %1$sотключить оптимизацию изображений плагином Jetpack%2$s."
+
+#: classes/autoptimizeImages.php:1002
+msgid "Automatically serve \"next-gen\" WebP image format to any browser that supports it (requires lazy load to be active)."
+msgstr "Автоматически использовать формат изображений \"next-gen\" WebP во всех поддерживающих технологию браузеров (ленивая загрузка должна быть активна)."
+
+#: classes/autoptimizeImages.php:1008
+msgid "Image lazy-loading will delay the loading of non-visible images to allow the browser to optimally load all resources for the \"above the fold\"-page first."
+msgstr "Ленивая загрузка изображений будет задерживать загрузку изображений, находящихся вне поля видимости для более скорой загрузки браузером видимой части страницы."
+
+#. translators: link points to shortpixel.
+#: classes/autoptimizeImages.php:954
+msgid "Get more Google love and improve your website's loading speed by having the images optimized on the fly (also in the \"next-gen\" WebP image format) by %1$sShortPixel%2$s and then cached and served fast from Shortpixel's global CDN."
+msgstr "Получите больше любви от поисковиков и ускорьте свой сайт путём оптимизации изображений налету (также в формате \"next-gen\" WebP) от %1$sShortPixel%2$s и последующего кеширования и быстрой доставки из глобальной CDN Shortpixel."
 
 #: classes/autoptimizeImages.php:1072
 msgid "based on status at "

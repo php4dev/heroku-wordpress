@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-08-04 19:46:18+0000\n"
+"PO-Revision-Date: 2019-08-15 18:30:22+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1908,7 +1908,7 @@ msgstr "Обложка"
 
 #: wp-includes/js/dist/block-library.js:7003
 msgid "Add a block that displays content in multiple columns, then add whatever content blocks you’d like."
-msgstr "Добавьте блок, который отображает контент в нескольких колонках, а затем в этот блок добавьте любые другие блоки с контентом, которые вы хотите."
+msgstr "Добавьте блок, который отображает содержимое в нескольких столбцах, а затем добавьте в него любые другие блоки с желаемым содержимым."
 
 #: wp-includes/js/dist/block-library.js:7135
 msgid "A single column within a columns block."
