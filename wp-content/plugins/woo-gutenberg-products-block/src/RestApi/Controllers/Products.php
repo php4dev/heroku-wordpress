@@ -207,6 +207,7 @@ class Products extends WC_REST_Products_Controller {
 			'price_html'     => $product->get_price_html(),
 			'images'         => $this->get_images( $product ),
 			'average_rating' => $product->get_average_rating(),
+			'review_count'   => $product->get_review_count(),
 		);
 	}
 
@@ -260,7 +261,7 @@ class Products extends WC_REST_Products_Controller {
 	 */
 	public function get_collection_params() {
 		$params                       = parent::get_collection_params();
-		$params['orderby']['enum']    = array_merge( $params['orderby']['enum'], array( 'price', 'popularity', 'rating', 'menu_order' ) );
+		$params['orderby']['enum']    = array_merge( $params['orderby']['enum'], array( 'menu_order', 'comment_count' ) );
 		$params['category_operator']  = array(
 			'description'       => __( 'Operator to compare product category terms.', 'woo-gutenberg-products-block' ),
 			'type'              => 'string',
@@ -288,7 +289,7 @@ class Products extends WC_REST_Products_Controller {
 		$params['catalog_visibility'] = array(
 			'description'       => __( 'Determines if hidden or visible catalog products are shown.', 'woo-gutenberg-products-block' ),
 			'type'              => 'string',
-			'enum'              => array( 'visible', 'catalog', 'search', 'hidden' ),
+			'enum'              => array( 'any', 'visible', 'catalog', 'search', 'hidden' ),
 			'sanitize_callback' => 'sanitize_key',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
@@ -355,6 +356,12 @@ class Products extends WC_REST_Products_Controller {
 				'average_rating' => array(
 					'description' => __( 'Reviews average rating.', 'woo-gutenberg-products-block' ),
 					'type'        => 'string',
+					'context'     => array( 'view', 'edit' ),
+					'readonly'    => true,
+				),
+				'review_count'   => array(
+					'description' => __( 'Amount of reviews that the product has.', 'woo-gutenberg-products-block' ),
+					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),

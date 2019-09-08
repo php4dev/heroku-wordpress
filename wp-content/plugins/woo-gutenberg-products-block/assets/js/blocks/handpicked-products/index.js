@@ -3,6 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
+import { DEFAULT_COLUMNS } from '@woocommerce/block-settings';
 
 /**
  * Internal dependencies
@@ -41,7 +42,7 @@ registerBlockType( 'woocommerce/handpicked-products', {
 		 */
 		columns: {
 			type: 'number',
-			default: wc_product_block_data.default_columns,
+			default: DEFAULT_COLUMNS,
 		},
 
 		/**
@@ -99,7 +100,7 @@ registerBlockType( 'woocommerce/handpicked-products', {
 				},
 				columns: {
 					type: 'number',
-					default: wc_product_block_data.default_columns,
+					default: DEFAULT_COLUMNS,
 				},
 				editMode: {
 					type: 'boolean',

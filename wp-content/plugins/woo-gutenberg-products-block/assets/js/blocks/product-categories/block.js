@@ -4,11 +4,12 @@
 import { __ } from '@wordpress/i18n';
 import { Component, createRef, Fragment } from 'react';
 import classnames from 'classnames';
+import { HOME_URL } from '@woocommerce/block-settings';
 
 /**
  * Internal dependencies
  */
-import withComponentId from '../../utils/with-component-id';
+import withComponentId from '../../base/hocs/with-component-id';
 
 /**
  * Component displaying the categories as dropdown or list.
@@ -28,7 +29,7 @@ class ProductCategoriesBlock extends Component {
 		if ( 'false' === url ) {
 			return;
 		}
-		const home = wc_product_block_data.homeUrl;
+		const home = HOME_URL;
 
 		if ( ! isPreview && 0 === url.indexOf( home ) ) {
 			document.location.href = url;

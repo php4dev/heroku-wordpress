@@ -4,6 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import Gridicon from 'gridicons';
 import { registerBlockType } from '@wordpress/blocks';
+import { DEFAULT_COLUMNS, DEFAULT_ROWS } from '@woocommerce/block-settings';
 
 /**
  * Internal dependencies
@@ -52,7 +53,7 @@ registerBlockType( blockTypeName, {
 		 */
 		columns: {
 			type: 'number',
-			default: wc_product_block_data.default_columns,
+			default: DEFAULT_COLUMNS,
 		},
 
 		/**
@@ -89,7 +90,7 @@ registerBlockType( blockTypeName, {
 		 */
 		rows: {
 			type: 'number',
-			default: wc_product_block_data.default_rows,
+			default: DEFAULT_ROWS,
 		},
 
 		/**
@@ -115,7 +116,7 @@ registerBlockType( blockTypeName, {
 				},
 				columns: {
 					type: 'number',
-					default: wc_product_block_data.default_columns,
+					default: DEFAULT_COLUMNS,
 				},
 				editMode: {
 					type: 'boolean',
@@ -136,7 +137,7 @@ registerBlockType( blockTypeName, {
 				},
 				rows: {
 					type: 'number',
-					default: wc_product_block_data.default_rows,
+					default: DEFAULT_ROWS,
 				},
 			},
 			save: deprecatedConvertToShortcode( blockTypeName ),
