@@ -277,3 +277,25 @@ ul.wp-block-latest-posts {
     height: 2px; }
     .wp-block .wp-block-separator:not(.is-style-dots) {
       height: 1px; }
+
+.wc-block-grid__products .wc-block-grid__product .wp-block-button__link {
+  color: #333333; }
+
+.wc-block-grid__products .wc-block-grid__product .wc-block-grid__product-onsale {
+  border: 1px solid;
+  border-color: #43454b;
+  color: #43454b;
+  background: transparent;
+  padding: 0.202em 0.6180469716em;
+  font-size: 0.875em;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 1em;
+  border-radius: 3px;
+  position: relative; }
+
+.wc-block-grid__products .wc-block-grid__product .wc-block-grid__product-title {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #000000; }
