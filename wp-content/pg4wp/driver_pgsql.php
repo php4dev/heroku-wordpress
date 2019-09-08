@@ -390,6 +390,7 @@
 			$sql = str_replace("meta_value = meta_value - 1.000000", "meta_value = CAST(NULLIF(meta_value, '')::int - 1 AS TEXT)", $sql);
 			$sql = str_replace("SET meta_value = meta_value + 1.000000", "SET meta_value = CAST(NULLIF(meta_value, '')::int + 1 AS TEXT)", $sql);
 			$sql = str_replace("ORDER BY menu_order ASC, post_date_gmt ASC, ID ASC", '', $sql);
+			$sql = str_replace("UPDATE wp_posts SET post_password = '' WHERE ID IN", "UPDATE wp_posts SET post_password = '' WHERE \"ID\" IN", $sql);
 			if( 0 === strpos($sql, "SELECT  posts.id as refund_id, meta__refund_amount.meta_value as total_refund, "
 				. "posts.post_date as post_date, order_items.order_item_type as item_type, meta__order_total.meta_value as total_sales, "
 				. "meta__order_shipping.meta_value as total_shipping, meta__order_tax.meta_value as total_tax, "
