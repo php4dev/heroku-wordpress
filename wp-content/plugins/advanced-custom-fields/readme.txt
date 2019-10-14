@@ -67,6 +67,28 @@ From your WordPress dashboard
 
 == Changelog ==
 
+= 5.8.5 =
+*Release Date - 8 October 2019*
+
+* New - Added new choice "Add" to the User Form location rule.
+* New - Optimized `acf_form()` logic when used in combination with `acf_register_form()`.
+* Fix - Fixed bug causing incorrect field order after sync.
+* Fix - Fixed bug reverting the first field type to Text in Firefox version 69.0.1.
+* Fix - Fixed bug causing tinymce issues when changing between block modes.
+* Fix - Fixed bug preventing block registration when category does not exist.
+* Fix - Fixed bug preventing block registration when no icon is declared.
+* Dev - Added RegExp compatibility for innerBlocks.
+
+= 5.8.4 =
+*Release Date - 3 September 2019*
+
+* New - Optimized Relationship field by delaying AJAX call until UI is visible.
+* Fix - Fixed bug incorrectly escaping HTML in the Link field title.
+* Fix - Fixed bug showing Discussion and Comment metaboxes for newly imported field groups.
+* Fix - Fixed PHP warning when loading meta from Post 0.
+* Dev - Ensure Checkbox field value is an array even when empty.
+* Dev - Added new `ACF_MAJOR_VERSION` constant.
+
 = 5.8.3 =
 *Release Date - 7 August 2019*
 

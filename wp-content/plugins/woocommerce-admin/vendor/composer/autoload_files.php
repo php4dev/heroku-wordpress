@@ -9,4 +9,5 @@ return array(
     'fd9f5df955e5151499fd2f642091d0a0' => $baseDir . '/includes/core-functions.php',
     'b907791bfd099af1d822ca201c3f03f0' => $baseDir . '/includes/feature-config.php',
     'c440206b9a4cb2ee803d8c41ad1f292a' => $baseDir . '/includes/page-controller-functions.php',
+    '57b93ef9148e0607a2b45af997e2c1c3' => $baseDir . '/includes/wc-admin-update-functions.php',
 );

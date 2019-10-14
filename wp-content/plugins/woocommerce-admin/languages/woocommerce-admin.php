@@ -14,8 +14,8 @@ $generated_i18n_strings = array(
 	__( 'There was an error getting your stats. Please try again.', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/components/report-error/index.js:26
-	// Reference: client/header/activity-panel/panels/inbox.js:118
-	// Reference: client/header/activity-panel/panels/orders.js:202
+	// Reference: client/header/activity-panel/panels/inbox.js:123
+	// Reference: client/header/activity-panel/panels/orders.js:203
 	// Reference: client/header/activity-panel/panels/reviews.js:234
 	// Reference: client/header/activity-panel/panels/stock/index.js:56
 	__( 'Reload', 'woocommerce-admin' ),
@@ -27,30 +27,30 @@ $generated_i18n_strings = array(
 	__( 'View Orders', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/components/report-summary/index.js:93
-	// Reference: client/dashboard/store-performance/index.js:123
+	// Reference: client/dashboard/store-performance/index.js:127
 	// Reference: packages/components/build-module/summary/number.js:171
 	__( 'Previous Period:', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/components/report-summary/index.js:94
-	// Reference: client/dashboard/store-performance/index.js:124
+	// Reference: client/dashboard/store-performance/index.js:128
 	__( 'Previous Year:', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/categories/config.js:21
 	// Reference: client/analytics/report/categories/table.js:42
 	// Reference: client/analytics/report/orders/table.js:69
 	// Reference: client/analytics/report/products/config.js:21
-	// Reference: client/analytics/report/products/table-variations.js:46
-	// Reference: client/analytics/report/products/table.js:51
+	// Reference: client/analytics/report/products/table-variations.js:50
+	// Reference: client/analytics/report/products/table.js:55
 	// Reference: client/dashboard/dashboard-charts/config.js:52
 	__( 'Items Sold', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/categories/config.js:28
 	// Reference: client/analytics/report/categories/table.js:50
-	// Reference: client/analytics/report/orders/config.js:27
+	// Reference: client/analytics/report/orders/config.js:26
 	// Reference: client/analytics/report/orders/table.js:84
 	// Reference: client/analytics/report/products/config.js:28
-	// Reference: client/analytics/report/products/table-variations.js:55
-	// Reference: client/analytics/report/products/table.js:60
+	// Reference: client/analytics/report/products/table-variations.js:59
+	// Reference: client/analytics/report/products/table.js:64
 	// Reference: client/analytics/report/revenue/config.js:49
 	// Reference: client/analytics/report/revenue/table.js:88
 	// Reference: client/dashboard/dashboard-charts/config.js:37
@@ -59,26 +59,26 @@ $generated_i18n_strings = array(
 	// Reference: client/analytics/report/categories/config.js:35
 	// Reference: client/analytics/report/categories/table.js:62
 	// Reference: client/analytics/report/coupons/table.js:42
-	// Reference: client/analytics/report/customers/table.js:61
-	// Reference: client/analytics/report/index.js:51
-	// Reference: client/analytics/report/orders/config.js:22
+	// Reference: client/analytics/report/customers/table.js:64
+	// Reference: client/analytics/report/index.js:53
+	// Reference: client/analytics/report/orders/config.js:21
 	// Reference: client/analytics/report/orders/table.js:282
 	// Reference: client/analytics/report/products/config.js:35
-	// Reference: client/analytics/report/products/table-variations.js:62
-	// Reference: client/analytics/report/products/table.js:67
+	// Reference: client/analytics/report/products/table-variations.js:66
+	// Reference: client/analytics/report/products/table.js:71
 	// Reference: client/analytics/report/revenue/table.js:46
 	// Reference: client/analytics/report/taxes/config.js:43
 	// Reference: client/analytics/report/taxes/table.js:62
 	// Reference: client/dashboard/dashboard-charts/config.js:42
-	// Reference: client/header/activity-panel/index.js:127
-	// Reference: client/header/activity-panel/panels/orders.js:222
+	// Reference: client/header/activity-panel/index.js:131
+	// Reference: client/header/activity-panel/panels/orders.js:223
 	__( 'Orders', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/categories/config.js:44
 	// Reference: client/analytics/report/coupons/config.js:36
-	// Reference: client/analytics/report/customers/config.js:21
+	// Reference: client/analytics/report/customers/config.js:24
 	// Reference: client/analytics/report/downloads/config.js:28
-	// Reference: client/analytics/report/orders/config.js:48
+	// Reference: client/analytics/report/orders/config.js:47
 	// Reference: client/analytics/report/products/config.js:43
 	// Reference: client/analytics/report/stock/config.js:15
 	// Reference: client/analytics/report/taxes/config.js:52
@@ -128,14 +128,14 @@ $generated_i18n_strings = array(
 
 	// Reference: client/analytics/report/categories/table.js:122
 	// Reference: client/analytics/report/orders/table.js:238
-	// Reference: client/analytics/report/products/table-variations.js:158
-	// Reference: client/analytics/report/products/table.js:223
+	// Reference: client/analytics/report/products/table-variations.js:161
+	// Reference: client/analytics/report/products/table.js:226
 	_n_noop( 'item sold', 'items sold', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/categories/table.js:126
 	// Reference: client/analytics/report/orders/table.js:246
-	// Reference: client/analytics/report/products/table-variations.js:162
-	// Reference: client/analytics/report/products/table.js:227
+	// Reference: client/analytics/report/products/table-variations.js:165
+	// Reference: client/analytics/report/products/table.js:230
 	// Reference: client/analytics/report/revenue/table.js:196
 	__( 'net revenue', 'woocommerce-admin' ),
 
@@ -150,19 +150,19 @@ $generated_i18n_strings = array(
 	__( 'Search by category name', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/categories/table.js:161
-	// Reference: client/analytics/report/index.js:56
+	// Reference: client/analytics/report/index.js:58
 	__( 'Categories', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/categories/table.js:35
-	// Reference: client/analytics/report/products/table.js:73
+	// Reference: client/analytics/report/products/table.js:77
 	// Reference: node_modules/newspack-components/node_modules/@wordpress/components/build-module/query-controls/index.js:66
 	__( 'Category', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/categories/table.js:56
-	// Reference: client/analytics/report/index.js:46
-	// Reference: client/analytics/report/orders/config.js:98
+	// Reference: client/analytics/report/index.js:48
+	// Reference: client/analytics/report/orders/config.js:97
 	// Reference: client/analytics/report/orders/table.js:63
-	// Reference: client/analytics/report/products/table.js:271
+	// Reference: client/analytics/report/products/table.js:274
 	__( 'Products', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/coupons/config.js:20
@@ -191,8 +191,8 @@ $generated_i18n_strings = array(
 	__( '%d coupons', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/coupons/table.js:120
-	// Reference: client/analytics/report/products/table.js:207
-	// Reference: client/analytics/report/stock/table.js:110
+	// Reference: client/analytics/report/products/table.js:210
+	// Reference: client/analytics/report/stock/table.js:112
 	// Reference: packages/components/build-module/summary/number.js:101
 	__( 'N/A', 'woocommerce-admin' ),
 
@@ -213,7 +213,7 @@ $generated_i18n_strings = array(
 	__( 'Fixed product', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/coupons/table.js:178
-	// Reference: client/analytics/report/index.js:61
+	// Reference: client/analytics/report/index.js:63
 	// Reference: client/analytics/report/orders/table.js:77
 	// Reference: client/analytics/report/revenue/config.js:29
 	// Reference: client/analytics/report/revenue/table.js:67
@@ -235,14 +235,20 @@ $generated_i18n_strings = array(
 	__( 'Type', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/customers/config.js:100
+	__( 'Remove country filter', 'woocommerce-admin' ),
+
+	// Reference: client/analytics/report/customers/config.js:101
+	__( 'Select a country filter match', 'woocommerce-admin' ),
+
+	// Reference: client/analytics/report/customers/config.js:103
 	/* A sentence describing a Product filter. See screen shot for context: https://cloudup.com/cCsm3GeXJbE */
 	__( '{{title}}Country{{/title}} {{rule /}} {{filter /}}', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:101
+	// Reference: client/analytics/report/customers/config.js:104
 	__( 'Select country', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/customers/config.js:136
-	// Reference: client/analytics/report/customers/table.js:41
+	// Reference: client/analytics/report/customers/table.js:44
 	// Reference: client/analytics/report/downloads/config.js:77
 	__( 'Username', 'woocommerce-admin' ),
 
@@ -268,7 +274,7 @@ $generated_i18n_strings = array(
 	__( 'Select customer username', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/customers/config.js:164
-	// Reference: client/analytics/report/customers/table.js:57
+	// Reference: client/analytics/report/customers/table.js:60
 	__( 'Email', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/customers/config.js:165
@@ -300,7 +306,7 @@ $generated_i18n_strings = array(
 	__( '{{title}}No. of Orders{{/title}} {{rule /}} {{filter /}}', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/customers/config.js:226
-	// Reference: client/analytics/report/customers/table.js:67
+	// Reference: client/analytics/report/customers/table.js:70
 	__( 'Total Spend', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/customers/config.js:227
@@ -313,7 +319,7 @@ $generated_i18n_strings = array(
 	__( '{{title}}Total Spend{{/title}} {{rule /}} {{filter /}}', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/customers/config.js:254
-	// Reference: client/analytics/report/customers/table.js:73
+	// Reference: client/analytics/report/customers/table.js:76
 	__( 'AOV', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/customers/config.js:255
@@ -324,9 +330,6 @@ $generated_i18n_strings = array(
 
 	// Reference: client/analytics/report/customers/config.js:257
 	__( '{{title}}AOV{{/title}} {{rule /}} {{filter /}}', 'woocommerce-admin' ),
-
-	// Reference: client/analytics/report/customers/config.js:26
-	__( 'All Customers', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/customers/config.js:283
 	__( 'Registered', 'woocommerce-admin' ),
@@ -340,6 +343,9 @@ $generated_i18n_strings = array(
 	// Reference: client/analytics/report/customers/config.js:287
 	/* A sentence describing a Product filter. See screen shot for context: https://cloudup.com/cCsm3GeXJbE */
 	__( '{{title}}Registered{{/title}} {{rule /}} {{filter /}}', 'woocommerce-admin' ),
+
+	// Reference: client/analytics/report/customers/config.js:29
+	__( 'All Customers', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/customers/config.js:313
 	__( 'Last active', 'woocommerce-admin' ),
@@ -357,86 +363,80 @@ $generated_i18n_strings = array(
 	// Reference: client/analytics/report/customers/config.js:318
 	__( 'Select registered date', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:42
+	// Reference: client/analytics/report/customers/config.js:45
 	__( 'Type to search for a customer', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:43
+	// Reference: client/analytics/report/customers/config.js:46
 	__( 'Single Customer', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:49
+	// Reference: client/analytics/report/customers/config.js:52
 	// Reference: client/analytics/report/downloads/config.js:34
-	// Reference: client/analytics/report/orders/config.js:54
+	// Reference: client/analytics/report/orders/config.js:53
 	__( 'Advanced Filters', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:64
-	// Reference: client/analytics/report/customers/table.js:34
+	// Reference: client/analytics/report/customers/config.js:67
+	// Reference: client/analytics/report/customers/table.js:37
 	__( 'Name', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:66
+	// Reference: client/analytics/report/customers/config.js:69
 	__( 'Remove customer name filter', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:67
+	// Reference: client/analytics/report/customers/config.js:70
 	__( 'Select a customer name filter match', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:69
+	// Reference: client/analytics/report/customers/config.js:72
 	/* A sentence describing a Product filter. See screen shot for context: https://cloudup.com/cCsm3GeXJbE */
 	__( '{{title}}Name{{/title}} {{rule /}} {{filter /}}', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:70
+	// Reference: client/analytics/report/customers/config.js:73
 	__( 'Select customer name', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:95
-	// Reference: client/analytics/report/customers/table.js:79
+	// Reference: client/analytics/report/customers/config.js:98
+	// Reference: client/analytics/report/customers/table.js:82
 	__( 'Country', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:96
+	// Reference: client/analytics/report/customers/config.js:99
 	// Reference: client/analytics/report/downloads/config.js:50
 	__( 'Search', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:97
-	__( 'Remove country filter', 'woocommerce-admin' ),
-
-	// Reference: client/analytics/report/customers/config.js:98
-	__( 'Select a country filter match', 'woocommerce-admin' ),
-
-	// Reference: client/analytics/report/customers/table.js:220
+	// Reference: client/analytics/report/customers/table.js:221
 	_n_noop( 'customer', 'customers', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/table.js:224
+	// Reference: client/analytics/report/customers/table.js:225
 	_n_noop( 'average order', 'average orders', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/table.js:228
+	// Reference: client/analytics/report/customers/table.js:229
 	__( 'average lifetime spend', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/table.js:232
+	// Reference: client/analytics/report/customers/table.js:233
 	__( 'average order value', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/table.js:250
+	// Reference: client/analytics/report/customers/table.js:251
 	__( 'Search by customer name', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/table.js:252
-	// Reference: client/analytics/report/index.js:83
+	// Reference: client/analytics/report/customers/table.js:253
+	// Reference: client/analytics/report/index.js:85
 	__( 'Customers', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/table.js:46
+	// Reference: client/analytics/report/customers/table.js:49
 	__( 'Last Active', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/table.js:52
+	// Reference: client/analytics/report/customers/table.js:55
 	__( 'Sign Up', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/table.js:74
-	// Reference: client/analytics/report/orders/config.js:34
+	// Reference: client/analytics/report/customers/table.js:77
+	// Reference: client/analytics/report/orders/config.js:33
 	// Reference: client/dashboard/dashboard-charts/config.js:47
 	__( 'Average Order Value', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/table.js:84
-	// Reference: client/dashboard/components/settings/general/store-address.js:102
+	// Reference: client/analytics/report/customers/table.js:87
+	// Reference: client/dashboard/components/settings/general/store-address.js:106
 	__( 'City', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/table.js:90
+	// Reference: client/analytics/report/customers/table.js:93
 	__( 'Region', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/table.js:96
+	// Reference: client/analytics/report/customers/table.js:99
 	__( 'Postal Code', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/downloads/config.js:105
@@ -479,7 +479,7 @@ $generated_i18n_strings = array(
 
 	// Reference: client/analytics/report/downloads/config.js:21
 	// Reference: client/analytics/report/downloads/table.js:165
-	// Reference: client/analytics/report/index.js:88
+	// Reference: client/analytics/report/index.js:90
 	// Reference: client/dashboard/dashboard-charts/config.js:92
 	__( 'Downloads', 'woocommerce-admin' ),
 
@@ -493,11 +493,11 @@ $generated_i18n_strings = array(
 	__( 'Remove product filter', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/downloads/config.js:52
-	// Reference: client/analytics/report/orders/config.js:101
+	// Reference: client/analytics/report/orders/config.js:100
 	__( 'Select a product filter match', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/downloads/config.js:54
-	// Reference: client/analytics/report/orders/config.js:103
+	// Reference: client/analytics/report/orders/config.js:102
 	/* A sentence describing a Product filter. See screen shot for context: https://cloudup.com/cSsUY9VeCVJ */
 	__( '{{title}}Product{{/title}} {{rule /}} {{filter /}}', 'woocommerce-admin' ),
 
@@ -518,7 +518,7 @@ $generated_i18n_strings = array(
 	__( 'Date', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/downloads/table.js:43
-	// Reference: client/analytics/report/products/table.js:38
+	// Reference: client/analytics/report/products/table.js:42
 	__( 'Product Title', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/downloads/table.js:49
@@ -538,127 +538,127 @@ $generated_i18n_strings = array(
 	// Reference: client/analytics/report/downloads/table.js:62
 	__( 'IP', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/index.js:41
+	// Reference: client/analytics/report/index.js:43
 	// Reference: client/analytics/report/revenue/table.js:213
 	__( 'Revenue', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/index.js:66
+	// Reference: client/analytics/report/index.js:68
 	// Reference: client/analytics/report/revenue/config.js:36
 	// Reference: client/analytics/report/revenue/table.js:74
 	// Reference: client/analytics/report/taxes/table.js:162
 	__( 'Taxes', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/index.js:77
-	// Reference: client/analytics/report/products/table-variations.js:75
-	// Reference: client/analytics/report/products/table.js:89
-	// Reference: client/analytics/report/stock/table.js:158
-	// Reference: client/header/activity-panel/index.js:134
+	// Reference: client/analytics/report/index.js:79
+	// Reference: client/analytics/report/products/table-variations.js:79
+	// Reference: client/analytics/report/products/table.js:93
+	// Reference: client/analytics/report/stock/table.js:160
+	// Reference: client/header/activity-panel/index.js:138
 	// Reference: client/header/activity-panel/panels/stock/index.js:76
 	__( 'Stock', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:100
-	__( 'Remove products filter', 'woocommerce-admin' ),
-
-	// Reference: client/analytics/report/orders/config.js:104
+	// Reference: client/analytics/report/orders/config.js:103
 	__( 'Select products', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:126
+	// Reference: client/analytics/report/orders/config.js:125
 	__( 'Coupon Codes', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:127
+	// Reference: client/analytics/report/orders/config.js:126
 	__( 'Search coupons', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:128
+	// Reference: client/analytics/report/orders/config.js:127
 	__( 'Remove coupon filter', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:129
+	// Reference: client/analytics/report/orders/config.js:128
 	__( 'Select a coupon filter match', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:131
+	// Reference: client/analytics/report/orders/config.js:130
 	/* A sentence describing a Coupon filter. See screen shot for context: https://cloudup.com/cSsUY9VeCVJ */
 	__( '{{title}}Coupon Code{{/title}} {{rule /}} {{filter /}}', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:132
+	// Reference: client/analytics/report/orders/config.js:131
 	__( 'Select coupon codes', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:154
+	// Reference: client/analytics/report/orders/config.js:153
 	__( 'Customer Type', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:155
+	// Reference: client/analytics/report/orders/config.js:154
 	__( 'Remove customer filter', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:156
+	// Reference: client/analytics/report/orders/config.js:155
 	__( 'Select a customer filter match', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:158
+	// Reference: client/analytics/report/orders/config.js:157
 	/* A sentence describing a Customer filter. See screen shot for context: https://cloudup.com/cSsUY9VeCVJ */
 	__( '{{title}}Customer is{{/title}} {{filter /}}', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:159
+	// Reference: client/analytics/report/orders/config.js:158
 	__( 'Select a customer type', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:164
+	// Reference: client/analytics/report/orders/config.js:163
 	__( 'New', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:165
+	// Reference: client/analytics/report/orders/config.js:164
 	__( 'Returning', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:172
+	// Reference: client/analytics/report/orders/config.js:171
 	// Reference: client/analytics/report/revenue/config.js:22
 	// Reference: client/analytics/report/revenue/table.js:60
 	// Reference: client/dashboard/dashboard-charts/config.js:57
 	__( 'Refunds', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:173
+	// Reference: client/analytics/report/orders/config.js:172
 	__( 'Remove refunds filter', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:174
+	// Reference: client/analytics/report/orders/config.js:173
 	__( 'Select a refund filter match', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:175
+	// Reference: client/analytics/report/orders/config.js:174
 	__( '{{title}}Refunds{{/title}} {{filter /}}', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:176
+	// Reference: client/analytics/report/orders/config.js:175
 	__( 'Select a refund type', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:181
+	// Reference: client/analytics/report/orders/config.js:180
 	// Reference: node_modules/newspack-components/node_modules/@wordpress/components/build-module/query-controls/index.js:67
-	// Reference: packages/components/build-module/advanced-filters/index.js:45
+	// Reference: packages/components/build-module/advanced-filters/index.js:46
 	__( 'All', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:182
+	// Reference: client/analytics/report/orders/config.js:181
 	__( 'Partially refunded', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:183
+	// Reference: client/analytics/report/orders/config.js:182
 	__( 'Fully refunded', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:184
+	// Reference: client/analytics/report/orders/config.js:183
 	__( 'None', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:39
+	// Reference: client/analytics/report/orders/config.js:38
 	__( 'Average Items Per Order', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:53
+	// Reference: client/analytics/report/orders/config.js:52
 	__( 'All Orders', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:69
+	// Reference: client/analytics/report/orders/config.js:68
 	__( 'Order Status', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:70
+	// Reference: client/analytics/report/orders/config.js:69
 	__( 'Remove order status filter', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:71
+	// Reference: client/analytics/report/orders/config.js:70
 	__( 'Select an order status filter match', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:73
+	// Reference: client/analytics/report/orders/config.js:72
 	/* A sentence describing an Order Status filter. See screen shot for context: https://cloudup.com/cSsUY9VeCVJ */
 	__( '{{title}}Order Status{{/title}} {{rule /}} {{filter /}}', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:74
+	// Reference: client/analytics/report/orders/config.js:73
 	__( 'Select an order status', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:99
+	// Reference: client/analytics/report/orders/config.js:98
 	__( 'Search products', 'woocommerce-admin' ),
+
+	// Reference: client/analytics/report/orders/config.js:99
+	__( 'Remove products filter', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/orders/table.js:177
 	__( '%s× %s', 'woocommerce-admin' ),
@@ -670,14 +670,14 @@ $generated_i18n_strings = array(
 	_n_noop( 'returning customer', 'returning customers', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/orders/table.js:234
-	// Reference: client/analytics/report/products/table.js:219
-	// Reference: client/analytics/report/stock/table.js:121
+	// Reference: client/analytics/report/products/table.js:222
+	// Reference: client/analytics/report/stock/table.js:123
 	_n_noop( 'product', 'products', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/orders/table.js:50
-	// Reference: client/analytics/report/products/table-variations.js:69
-	// Reference: client/analytics/report/products/table.js:83
-	// Reference: client/analytics/report/stock/table.js:45
+	// Reference: client/analytics/report/products/table-variations.js:73
+	// Reference: client/analytics/report/products/table.js:87
+	// Reference: client/analytics/report/stock/table.js:48
 	__( 'Status', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/orders/table.js:56
@@ -690,12 +690,12 @@ $generated_i18n_strings = array(
 	__( 'Coupon(s)', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/orders/table.js:83
-	// Reference: client/analytics/report/products/table-variations.js:54
-	// Reference: client/analytics/report/products/table.js:59
+	// Reference: client/analytics/report/products/table-variations.js:58
+	// Reference: client/analytics/report/products/table.js:63
 	__( 'N. Revenue', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/products/config.js:110
-	// Reference: client/analytics/report/products/table-variations.js:176
+	// Reference: client/analytics/report/products/table-variations.js:179
 	__( 'Check at least two variations below to compare', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/products/config.js:111
@@ -715,7 +715,7 @@ $generated_i18n_strings = array(
 	__( 'Single Product', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/products/config.js:80
-	// Reference: client/analytics/report/products/table.js:248
+	// Reference: client/analytics/report/products/table.js:251
 	__( 'Check at least two products below to compare', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/products/config.js:81
@@ -730,29 +730,29 @@ $generated_i18n_strings = array(
 	// Reference: client/analytics/report/products/index.js:39
 	__( '%d variations', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/products/table-variations.js:154
+	// Reference: client/analytics/report/products/table-variations.js:157
 	_n_noop( 'variation sold', 'variations sold', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/products/table-variations.js:166
-	// Reference: client/analytics/report/products/table.js:231
+	// Reference: client/analytics/report/products/table-variations.js:169
+	// Reference: client/analytics/report/products/table.js:234
 	_n_noop( 'orders', 'orders', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/products/table-variations.js:177
+	// Reference: client/analytics/report/products/table-variations.js:180
 	__( 'Search by variation name or SKU', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/products/table-variations.js:201
-	// Reference: client/analytics/report/products/table.js:77
+	// Reference: client/analytics/report/products/table-variations.js:204
+	// Reference: client/analytics/report/products/table.js:81
 	__( 'Variations', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/products/table-variations.js:34
+	// Reference: client/analytics/report/products/table-variations.js:38
 	__( 'Product / Variation Title', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/products/table-variations.js:40
-	// Reference: client/analytics/report/products/table.js:45
-	// Reference: client/analytics/report/stock/table.js:40
+	// Reference: client/analytics/report/products/table-variations.js:44
+	// Reference: client/analytics/report/products/table.js:49
+	// Reference: client/analytics/report/stock/table.js:43
 	__( 'SKU', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/products/table.js:249
+	// Reference: client/analytics/report/products/table.js:252
 	__( 'Search by product name or SKU', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/revenue/config.js:15
@@ -792,20 +792,20 @@ $generated_i18n_strings = array(
 	// Reference: client/analytics/report/stock/config.js:24
 	__( 'On Backorder', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/stock/table.js:125
+	// Reference: client/analytics/report/stock/table.js:127
 	__( 'out of stock', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/stock/table.js:129
+	// Reference: client/analytics/report/stock/table.js:131
 	__( 'low stock', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/stock/table.js:133
+	// Reference: client/analytics/report/stock/table.js:135
 	__( 'on backorder', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/stock/table.js:137
-	// Reference: client/header/activity-panel/panels/stock/card.js:120
+	// Reference: client/analytics/report/stock/table.js:139
+	// Reference: client/header/activity-panel/panels/stock/card.js:121
 	__( 'in stock', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/stock/table.js:33
+	// Reference: client/analytics/report/stock/table.js:36
 	__( 'Product / Variation', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/taxes/config.js:22
@@ -860,29 +860,29 @@ $generated_i18n_strings = array(
 	// Reference: packages/components/build-module/search/autocompleters/utils.js:29
 	__( 'TAX', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/settings/config.js:107
-	__( 'Default Date Range:', 'woocommerce-admin' ),
-
-	// Reference: client/analytics/settings/config.js:110
-	__( 'Select a default date range. When no range is selected, reports will be viewed by the default date range.', 'woocommerce-admin' ),
-
-	// Reference: client/analytics/settings/config.js:47
-	__( 'Exclude the %s status from reports', 'woocommerce-admin' ),
-
-	// Reference: client/analytics/settings/config.js:56
-	__( 'Excluded Statuses:', 'woocommerce-admin' ),
-
-	// Reference: client/analytics/settings/config.js:70
-	__( 'Orders with these statuses are excluded from the totals in your reports. The {{strong}}Refunded{{/strong}} status can not be excluded.', 'woocommerce-admin' ),
-
-	// Reference: client/analytics/settings/config.js:84
-	__( 'Actionable Statuses:', 'woocommerce-admin' ),
-
-	// Reference: client/analytics/settings/config.js:93
+	// Reference: client/analytics/settings/config.js:100
 	__( 'Custom Statuses', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/settings/config.js:97
+	// Reference: client/analytics/settings/config.js:104
 	__( 'Orders with these statuses require action on behalf of the store admin.These orders will show up in the Orders tab under the activity panel.', 'woocommerce-admin' ),
+
+	// Reference: client/analytics/settings/config.js:114
+	__( 'Default Date Range:', 'woocommerce-admin' ),
+
+	// Reference: client/analytics/settings/config.js:117
+	__( 'Select a default date range. When no range is selected, reports will be viewed by the default date range.', 'woocommerce-admin' ),
+
+	// Reference: client/analytics/settings/config.js:54
+	__( 'Exclude the %s status from reports', 'woocommerce-admin' ),
+
+	// Reference: client/analytics/settings/config.js:63
+	__( 'Excluded Statuses:', 'woocommerce-admin' ),
+
+	// Reference: client/analytics/settings/config.js:77
+	__( 'Orders with these statuses are excluded from the totals in your reports. The {{strong}}Refunded{{/strong}} status can not be excluded.', 'woocommerce-admin' ),
+
+	// Reference: client/analytics/settings/config.js:91
+	__( 'Actionable Statuses:', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/settings/historical-data/actions.js:29
 	__( 'Stop Import', 'woocommerce-admin' ),
@@ -911,7 +911,7 @@ $generated_i18n_strings = array(
 	// Reference: client/analytics/settings/historical-data/index.js:23
 	// Reference: packages/components/build-module/advanced-filters/date-filter.js:37
 	// Reference: packages/components/build-module/date-range-filter-picker/index.js:30
-	// Reference: packages/date/build-module/index.js:586
+	// Reference: packages/date/build-module/index.js:593
 	__( 'MM/DD/YYYY', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/settings/historical-data/index.js:92
@@ -966,49 +966,49 @@ $generated_i18n_strings = array(
 	// Reference: client/analytics/settings/historical-data/status.js:33
 	__( 'Status:', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/settings/index.js:102
+	// Reference: client/analytics/settings/index.js:103
 	__( 'There was an error saving your settings.  Please try again.', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/settings/index.js:174
+	// Reference: client/analytics/settings/index.js:177
 	__( 'Analytics Settings', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/settings/index.js:186
+	// Reference: client/analytics/settings/index.js:189
 	__( 'Reset Defaults', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/settings/index.js:189
+	// Reference: client/analytics/settings/index.js:192
 	__( 'Save Settings', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/settings/index.js:67
+	// Reference: client/analytics/settings/index.js:68
 	__( 'You have unsaved changes. If you proceed, they will be lost.', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/settings/index.js:78
+	// Reference: client/analytics/settings/index.js:79
 	__( 'Are you sure you want to reset all settings to default values?', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/settings/index.js:96
+	// Reference: client/analytics/settings/index.js:97
 	__( 'Your settings have been successfully saved.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/components/settings/general/store-address.js:108
+	// Reference: client/dashboard/components/settings/general/store-address.js:112
 	__( 'Post code', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/components/settings/general/store-address.js:20
+	// Reference: client/dashboard/components/settings/general/store-address.js:27
 	__( 'Please add an address', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/components/settings/general/store-address.js:23
+	// Reference: client/dashboard/components/settings/general/store-address.js:30
 	__( 'Please select a country and state', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/components/settings/general/store-address.js:26
+	// Reference: client/dashboard/components/settings/general/store-address.js:33
 	__( 'Please add a city', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/components/settings/general/store-address.js:29
+	// Reference: client/dashboard/components/settings/general/store-address.js:36
 	__( 'Please add a post code', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/components/settings/general/store-address.js:83
+	// Reference: client/dashboard/components/settings/general/store-address.js:86
 	__( 'Address line 1', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/components/settings/general/store-address.js:89
+	// Reference: client/dashboard/components/settings/general/store-address.js:92
 	__( 'Address line 2 (optional)', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/components/settings/general/store-address.js:95
+	// Reference: client/dashboard/components/settings/general/store-address.js:98
 	__( 'Country / State', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/customizable.js:161
@@ -1028,27 +1028,27 @@ $generated_i18n_strings = array(
 	__( 'Gross discounted', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/dashboard-charts/index.js:116
-	// Reference: packages/components/build-module/chart/index.js:300
+	// Reference: packages/components/build-module/chart/index.js:303
 	__( 'By hour', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/dashboard-charts/index.js:117
-	// Reference: packages/components/build-module/chart/index.js:301
+	// Reference: packages/components/build-module/chart/index.js:304
 	__( 'By day', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/dashboard-charts/index.js:118
-	// Reference: packages/components/build-module/chart/index.js:302
+	// Reference: packages/components/build-module/chart/index.js:305
 	__( 'By week', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/dashboard-charts/index.js:119
-	// Reference: packages/components/build-module/chart/index.js:303
+	// Reference: packages/components/build-module/chart/index.js:306
 	__( 'By month', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/dashboard-charts/index.js:120
-	// Reference: packages/components/build-module/chart/index.js:304
+	// Reference: packages/components/build-module/chart/index.js:307
 	__( 'By quarter', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/dashboard-charts/index.js:121
-	// Reference: packages/components/build-module/chart/index.js:305
+	// Reference: packages/components/build-module/chart/index.js:308
 	__( 'By year', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/dashboard-charts/index.js:155
@@ -1056,11 +1056,11 @@ $generated_i18n_strings = array(
 	__( 'Charts', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/dashboard-charts/index.js:171
-	// Reference: packages/components/build-module/chart/index.js:450
+	// Reference: packages/components/build-module/chart/index.js:453
 	__( 'Line chart', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/dashboard-charts/index.js:182
-	// Reference: packages/components/build-module/chart/index.js:462
+	// Reference: packages/components/build-module/chart/index.js:465
 	__( 'Bar chart', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/dashboard-charts/index.js:66
@@ -1070,13 +1070,13 @@ $generated_i18n_strings = array(
 	__( 'Performance', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/default-sections.js:59
-	// Reference: client/dashboard/leaderboards/index.js:144
+	// Reference: client/dashboard/leaderboards/index.js:145
 	__( 'Leaderboards', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/leaderboards/index.js:60
+	// Reference: client/dashboard/leaderboards/index.js:61
 	__( 'Choose which leaderboards to display and other settings', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/leaderboards/index.js:89
+	// Reference: client/dashboard/leaderboards/index.js:90
 	__( 'Rows Per Table', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/profile-wizard/index.js:111
@@ -1097,188 +1097,192 @@ $generated_i18n_strings = array(
 	// Reference: client/dashboard/profile-wizard/index.js:63
 	__( 'Theme', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:107
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:110
 	__( 'This field is required', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:133
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:136
 	__( 'Facebook for WooCommerce', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:134
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:137
 	__( 'Mailchimp for WooCommerce', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:144
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:147
 	__( 'The following plugins will be installed for free: %s', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:159
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:162
 	__( 'Market on Facebook', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:161
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:164
 	__( 'Grow your business by targeting the right people and driving sales with Facebook.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:168
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:171
 	__( 'Contact customers with Mailchimp', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:170
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:173
 	__( 'Send targeted campaigns, recover abandoned carts and much more with Mailchimp.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:256
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:259
 	__( 'No', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:260
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:263
 	__( 'Yes, on another platform', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:264
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:267
 	__( 'Yes, in person at physical stores and/or events', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:268
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:271
 	__( 'Yes, on another platform and in person at physical stores and/or events', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:278
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:281
 	__( 'Shopify', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:282
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:285
 	__( 'BigCommerce', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:286
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:289
 	__( 'Magento', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:290
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:293
 	__( 'Wix', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:294
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:297
 	__( 'Other', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:310
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:313
 	__( 'Tell us about your business', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:313
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:316
 	__( 'We\'d love to know if you are just getting started or you already have a business in place.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:321
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:324
 	__( 'How many products do you plan to add?', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:328
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:331
 	__( 'Currently selling elsewhere?', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:338
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:341
 	__( 'What\'s your current annual revenue?', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:347
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:350
 	__( 'Which platform is the store using?', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:361
-	// Reference: client/dashboard/profile-wizard/steps/industry.js:105
-	// Reference: client/dashboard/profile-wizard/steps/product-types.js:138
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:365
+	// Reference: client/dashboard/profile-wizard/steps/industry.js:112
+	// Reference: client/dashboard/profile-wizard/steps/product-types.js:140
 	// Reference: client/dashboard/profile-wizard/steps/store-details.js:104
+	// Reference: client/dashboard/task-list/tasks/payments/klarna.js:68
 	// Reference: client/dashboard/task-list/tasks/steps/location.js:88
 	__( 'Continue', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:83
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:86
 	__( 'There was a problem updating your business details.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/industry.js:46
+	// Reference: client/dashboard/profile-wizard/steps/industry.js:53
 	__( 'There was a problem updating your industries.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/industry.js:54
+	// Reference: client/dashboard/profile-wizard/steps/industry.js:61
 	__( 'Please select at least one industry', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/industry.js:85
+	// Reference: client/dashboard/profile-wizard/steps/industry.js:92
 	__( 'In which industry does the store operate?', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/industry.js:88
-	// Reference: client/dashboard/profile-wizard/steps/product-types.js:96
+	// Reference: client/dashboard/profile-wizard/steps/industry.js:95
+	// Reference: client/dashboard/profile-wizard/steps/product-types.js:97
 	__( 'Choose any that apply', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/plugins.js:112
+	// Reference: client/dashboard/profile-wizard/steps/plugins.js:111
 	__( 'Enhance your store setup', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/plugins.js:122
+	// Reference: client/dashboard/profile-wizard/steps/plugins.js:121
 	__( 'Install %s', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/plugins.js:126
+	// Reference: client/dashboard/profile-wizard/steps/plugins.js:125
 	__( 'Activate %s', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/plugins.js:135
-	// Reference: client/dashboard/task-list/tasks/steps/connect.js:41
+	// Reference: client/dashboard/profile-wizard/steps/plugins.js:134
+	// Reference: client/dashboard/task-list/tasks/steps/connect.js:44
 	// Reference: client/dashboard/task-list/tasks/steps/plugins.js:91
 	__( 'Retry', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/plugins.js:141
+	// Reference: client/dashboard/profile-wizard/steps/plugins.js:140
 	__( 'Activate & continue', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/product-types.js:113
-	// Reference: client/header/activity-panel/panels/orders.js:56
+	// Reference: client/dashboard/profile-wizard/steps/product-types.js:114
+	// Reference: client/header/activity-panel/panels/orders.js:57
 	// Reference: client/header/activity-panel/panels/reviews.js:194
 	__( 'Learn more', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/product-types.js:36
+	// Reference: client/dashboard/profile-wizard/steps/product-types.js:37
 	__( 'Please select at least one product type', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/product-types.js:58
+	// Reference: client/dashboard/profile-wizard/steps/product-types.js:59
 	__( 'There was a problem updating your product types.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/product-types.js:94
+	// Reference: client/dashboard/profile-wizard/steps/product-types.js:95
 	__( 'What type of products will be listed?', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:117
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:120
 	__( 'Security', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:119
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:122
 	__( 'Jetpack automatically blocks brute force attacks to protect your store from unauthorized access.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:126
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:129
 	__( 'Sales Tax', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:128
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:131
 	__( 'With WooCommerce Services we ensure that the correct rate of tax is charged on all of your orders.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:135
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:138
 	__( 'Speed', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:137
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:140
 	__( 'Cache your images and static files on our own powerful global network of servers and speed up your site.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:144
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:147
 	__( 'Mobile App', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:146
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:149
 	__( 'Your store in your pocket. Manage orders, receive sales notifications, and more. Only with a Jetpack connection.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:153
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:156
 	__( 'Print your own shipping labels', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:155
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:158
 	__( 'Save time at the Post Office by printing USPS shipping labels at home.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:163
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:166
 	__( 'Simple payment setup', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:165
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:168
 	__( 'WooCommerce Services enables us to provision Stripe and Paypal accounts quickly and easily for you.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:189
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:192
 	// Reference: client/wc-api/onboarding/constants.js:12
 	__( 'WooCommerce Services', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:190
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:193
 	__( 'Jetpack & WooCommerce Services', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:193
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:196
 	__( 'Help improve WooCommerce with {{link}}usage tracking{{/link}}', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:207
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:210
 	__( 'Start setting up your WooCommerce store', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:213
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:216
 	__( 'Simplify and enhance the setup of your store with the free features and benefits offered by {{strong}}%s{{/strong}}.', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/profile-wizard/steps/start/index.js:251
+	__( 'By connecting your site you agree to our fascinating {{tosLink}}Terms of Service{{/tosLink}} and to {{detailsLink}}share details{{/detailsLink}} with WordPress.com. ', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:274
 	__( 'Get started', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:257
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:280
 	__( 'Proceed without %s', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/start/index.js:88
+	// Reference: client/dashboard/profile-wizard/steps/start/index.js:91
 	__( 'There was a problem updating your preferences.', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/profile-wizard/steps/store-details.js:71
@@ -1293,44 +1297,44 @@ $generated_i18n_strings = array(
 	// Reference: client/dashboard/profile-wizard/steps/store-details.js:99
 	__( 'I\'m setting up a store for a client', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:105
+	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:106
 	// Reference: client/dashboard/profile-wizard/steps/theme/preview.js:90
 	__( 'Choose', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:109
+	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:110
 	__( 'Live Demo', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:123
+	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:124
 	__( 'Currently active theme', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:126
+	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:127
 	__( 'Installed', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:128
+	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:129
 	__( 'Free', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:131
+	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:132
 	__( '%s per year', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:177
+	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:178
 	__( 'Choose a theme', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:180
+	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:181
 	__( 'Choose how your store appears to customers. And don\'t worry, you can always switch themes and edit them later.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:192
+	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:193
 	__( 'All themes', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:196
+	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:197
 	__( 'Paid themes', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:200
+	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:201
 	__( 'Free themes', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:57
+	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:58
 	__( 'There was a problem selecting your store theme.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:88
+	// Reference: client/dashboard/profile-wizard/steps/theme/index.js:89
 	__( 'This theme does not support WooCommerce.', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/profile-wizard/steps/theme/preview.js:68
@@ -1366,112 +1370,117 @@ $generated_i18n_strings = array(
 	// Reference: client/dashboard/section-controls.js:64
 	__( 'Remove section', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/store-performance/index.js:178
+	// Reference: client/dashboard/store-performance/index.js:182
 	__( 'Store Performance', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/store-performance/index.js:54
+	// Reference: client/dashboard/store-performance/index.js:58
 	__( 'Choose which analytics to display and the section name', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/store-performance/index.js:60
+	// Reference: client/dashboard/store-performance/index.js:64
 	__( 'Display Stats:', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/index.js:104
-	__( 'Set up tax', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/index.js:105
-	__( 'Choose how to configure tax rates - manually or automatically', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/index.js:117
-	__( 'Set up payments', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/index.js:118
-	__( 'Select which payment providers you’d like to use and configure them', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/index.js:154
-	__( 'Set up your store and start selling', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/index.js:155
-	__( 'Below you’ll find a list of the most important steps to get your store up and running.', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/index.js:46
-	__( 'Connect your store to WooCommerce.com', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/index.js:47
-	__( 'Install and manage your extensions directly from your Dashboard', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/index.js:59
-	__( 'Add your first product', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/index.js:60
-	__( 'Add products manually, import from a sheet or migrate from another platform', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/index.js:77
+	// Reference: client/dashboard/task-list/index.js:106
 	__( 'Personalize your store', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/index.js:78
+	// Reference: client/dashboard/task-list/index.js:107
 	__( 'Create a custom homepage and upload your logo', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/index.js:88
+	// Reference: client/dashboard/task-list/index.js:117
 	__( 'Set up shipping', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/index.js:89
+	// Reference: client/dashboard/task-list/index.js:118
 	__( 'Configure some basic shipping rates to get started', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:109
+	// Reference: client/dashboard/task-list/index.js:133
+	__( 'Set up tax', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/index.js:134
+	__( 'Choose how to configure tax rates - manually or automatically', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/index.js:146
+	__( 'Set up payments', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/index.js:147
+	__( 'Select which payment providers you’d like to use and configure them', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/index.js:184
+	__( 'Set up your store and start selling', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/index.js:185
+	__( 'Below you’ll find a list of the most important steps to get your store up and running.', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/index.js:75
+	__( 'Connect your store to WooCommerce.com', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/index.js:76
+	__( 'Install and manage your extensions directly from your Dashboard', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/index.js:88
+	__( 'Add your first product', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/index.js:89
+	__( 'Add products manually, import from a sheet or migrate from another platform', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/appearance.js:115
 	__( 'There was an error importing some of the demo products.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:114
+	// Reference: client/dashboard/task-list/tasks/appearance.js:120
 	__( 'All demo products have been imported.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:174
+	// Reference: client/dashboard/task-list/tasks/appearance.js:191
 	__( 'Import demo products', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:175
+	// Reference: client/dashboard/task-list/tasks/appearance.js:192
 	__( 'We’ll add some products that it will make it easier to see what your store looks like.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:182
+	// Reference: client/dashboard/task-list/tasks/appearance.js:199
 	__( 'Import products', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:193
+	// Reference: client/dashboard/task-list/tasks/appearance.js:210
 	__( 'Create a custom homepage', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:194
+	// Reference: client/dashboard/task-list/tasks/appearance.js:211
 	__( 'Create a new homepage and customize it to suit your needs', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:201
+	// Reference: client/dashboard/task-list/tasks/appearance.js:218
 	__( 'Create homepage', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:212
+	// Reference: client/dashboard/task-list/tasks/appearance.js:234
 	__( 'Upload a logo', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:213
+	// Reference: client/dashboard/task-list/tasks/appearance.js:235
 	__( 'Ensure your store is on-brand by adding your logo', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:218
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:228
+	// Reference: client/dashboard/task-list/tasks/appearance.js:240
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:348
+	// Reference: client/dashboard/task-list/tasks/payments/paypal.js:205
+	// Reference: client/dashboard/task-list/tasks/payments/stripe.js:297
 	__( 'Proceed', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:221
+	// Reference: client/dashboard/task-list/tasks/appearance.js:243
+	// Reference: client/dashboard/task-list/tasks/payments/paypal.js:213
+	// Reference: client/dashboard/task-list/tasks/payments/square.js:109
+	// Reference: client/dashboard/task-list/tasks/payments/stripe.js:305
 	__( 'Skip', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:229
+	// Reference: client/dashboard/task-list/tasks/appearance.js:251
 	__( 'Set a store notice', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:230
+	// Reference: client/dashboard/task-list/tasks/appearance.js:252
 	__( 'Optionally display a prominent notice across all pages of your store', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:238
+	// Reference: client/dashboard/task-list/tasks/appearance.js:260
 	__( 'Store notice text', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:243
-	// Reference: client/dashboard/task-list/tasks/shipping/rates.js:214
-	// Reference: client/dashboard/task-list/tasks/tax.js:166
+	// Reference: client/dashboard/task-list/tasks/appearance.js:265
+	// Reference: client/dashboard/task-list/tasks/shipping/rates.js:228
+	// Reference: client/dashboard/task-list/tasks/tax.js:178
 	__( 'Complete task', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:72
+	// Reference: client/dashboard/task-list/tasks/appearance.js:75
 	__( 'Store logo updated sucessfully.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/appearance.js:78
+	// Reference: client/dashboard/task-list/tasks/appearance.js:84
 	__( 'Store notice updated sucessfully.', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/task-list/tasks/connect.js:30
@@ -1483,122 +1492,207 @@ $generated_i18n_strings = array(
 	// Reference: client/dashboard/task-list/tasks/connect.js:98
 	__( 'Store connected to WooCommerce.com and extensions are being installed.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:111
-	__( 'Create a Paypal account for me', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:117
-	__( 'Email address', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:130
-	__( 'Credit cards - powered by Stripe', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:133
-	__( 'Accept debit and credit cards in 135+ currencies, methods such as Alipay, and one-touch checkout with Apple Pay.', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:146
-	__( 'PayPal Checkout', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:149
-	__( 'Safe and secure payments using credit cards or your customer\'s PayPal account.', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:161
-	__( 'Klarna Checkout', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:171
-	__( 'Klarna Payments', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:172
-	__( 'Choose the payment that you want, pay now, pay later or slice it. No credit card numbers, no passwords, no worries.', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:181
-	__( 'Square', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:182
-	__( 'Securely accept credit and debit cards with one low rate, no surprise fees (custom rates available). Sell online and in store and track sales and inventory in one place.', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:222
-	__( 'Choose payment methods', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:223
-	__( 'Select which payment methods you\'d like to use', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:236
-	__( 'Install selected methods', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:237
-	__( 'Install plugins required to offer the selected payment methods', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:252
-	__( 'Configure payment methods', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:253
-	__( 'Set up your chosen payment methods', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/payments/index.js:83
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:183
 	__( 'Create a Stripe account for me', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/products.js:16
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:189
+	__( 'Email address', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:203
+	__( 'Credit cards - powered by Stripe', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:206
+	__( 'Accept debit and credit cards in 135+ currencies, methods such as Alipay, and one-touch checkout with Apple Pay.', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:220
+	__( 'PayPal Checkout', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:223
+	__( 'Safe and secure payments using credit cards or your customer\'s PayPal account.', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:235
+	__( 'Klarna Checkout', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:246
+	__( 'Klarna Payments', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:247
+	__( 'Choose the payment that you want, pay now, pay later or slice it. No credit card numbers, no passwords, no worries.', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:257
+	__( 'Square', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:258
+	__( 'Securely accept credit and debit cards with one low rate, no surprise fees (custom rates available). Sell online and in store and track sales and inventory in one place.', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:342
+	__( 'Choose payment methods', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:343
+	__( 'Select which payment methods you\'d like to use', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:356
+	__( 'Install selected methods', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:357
+	__( 'Install plugins required to offer the selected payment methods', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:375
+	__( 'Configure payment methods', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:376
+	__( 'Set up your chosen payment methods', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:382
+	__( 'Enable Stripe', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:383
+	__( 'Connect your store to your Stripe account', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:399
+	__( 'Enable PayPal Checkout', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:400
+	__( 'Connect your store to your PayPal account', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:411
+	__( 'Enable Square', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:412
+	__( 'Connect your store to your Square account', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/index.js:436
+	__( 'Klarna', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/klarna.js:55
+	__( 'Klarna can be configured under your {{link}}store settings{{/link}}. Figure out {{helpLink}}what you need{{/helpLink}}.', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/paypal.js:110
+	// Reference: client/dashboard/task-list/tasks/payments/square.js:101
+	// Reference: client/dashboard/task-list/tasks/payments/stripe.js:210
+	// Reference: client/dashboard/task-list/tasks/steps/connect.js:49
+	__( 'Connect', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/paypal.js:134
+	__( 'PayPal connected successfully.', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/paypal.js:140
+	// Reference: client/dashboard/task-list/tasks/payments/stripe.js:240
+	__( 'There was a problem saving your payment settings.', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/paypal.js:156
+	__( 'Please enter your API username', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/paypal.js:159
+	__( 'Please enter your API password', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/paypal.js:175
+	__( 'Your API details can be obtained from your {{link}}PayPal account{{/link}}', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/paypal.js:194
+	__( 'API Username', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/paypal.js:199
+	__( 'API Password', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/square.js:40
+	__( 'Square connected successfully.', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/square.js:68
+	__( 'There was an error connecting to Square. Please try again or skip to connect later in store settings.', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/stripe.js:145
+	__( 'Stripe', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/stripe.js:148
+	__( 'We tried to create a Stripe account automatically for {{strong}}%s{{/strong}}, but an error occured. Please try connecting manually to continue.', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/stripe.js:160
+	__( 'You already have a Stripe account', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/stripe.js:163
+	__( 'We tried to create a Stripe account automatically for {{strong}}%s{{/strong}}, but one already exists. Please sign in and connect to continue.', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/stripe.js:199
+	__( 'OK', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/stripe.js:234
+	__( 'Stripe connected successfully.', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/stripe.js:256
+	__( 'Please enter your publishable key', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/stripe.js:259
+	__( 'Please enter your secret key', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/stripe.js:267
+	__( 'Your API details can be obtained from your {{link}}Stripe account{{/link}}', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/stripe.js:286
+	__( 'Live Publishable Key', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/payments/stripe.js:291
+	__( 'Live Secret Key', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/products.js:21
 	__( 'Add manually (recommended)', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/products.js:17
+	// Reference: client/dashboard/task-list/tasks/products.js:22
 	__( 'For small stores we recommend adding products manually', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/products.js:23
+	// Reference: client/dashboard/task-list/tasks/products.js:29
 	__( 'Import', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/products.js:24
+	// Reference: client/dashboard/task-list/tasks/products.js:30
 	__( 'For larger stores we recommend importing all products at once via CSV file', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/products.js:35
+	// Reference: client/dashboard/task-list/tasks/products.js:42
 	__( 'Migrate', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/products.js:36
+	// Reference: client/dashboard/task-list/tasks/products.js:43
 	__( 'For stores currently selling elsewhere we suggest using a product migration service', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/shipping/index.js:148
-	// Reference: client/dashboard/task-list/tasks/tax.js:178
+	// Reference: client/dashboard/task-list/tasks/shipping/index.js:150
+	// Reference: client/dashboard/task-list/tasks/tax.js:190
 	__( 'Set store location', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/shipping/index.js:149
-	// Reference: client/dashboard/task-list/tasks/tax.js:179
+	// Reference: client/dashboard/task-list/tasks/shipping/index.js:151
+	// Reference: client/dashboard/task-list/tasks/tax.js:191
 	__( 'The address from which your business operates', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/shipping/index.js:155
+	// Reference: client/dashboard/task-list/tasks/shipping/index.js:166
 	__( 'Set shipping costs', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/shipping/index.js:156
+	// Reference: client/dashboard/task-list/tasks/shipping/index.js:167
 	__( 'Define how much customers pay to ship to different destinations', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/shipping/index.js:171
+	// Reference: client/dashboard/task-list/tasks/shipping/index.js:182
 	__( 'Enable shipping label printing', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/shipping/index.js:172
+	// Reference: client/dashboard/task-list/tasks/shipping/index.js:183
 	__( 'With WooCommerce Services and Jetpack you can save time at the Post Office by printing your shipping labels at home', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/shipping/index.js:188
-	// Reference: client/dashboard/task-list/tasks/tax.js:212
+	// Reference: client/dashboard/task-list/tasks/shipping/index.js:205
+	// Reference: client/dashboard/task-list/tasks/tax.js:232
 	__( 'Connect your store', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/shipping/index.js:189
+	// Reference: client/dashboard/task-list/tasks/shipping/index.js:206
 	__( 'Connect your store to WordPress.com to enable label printing', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/shipping/index.js:66
+	// Reference: client/dashboard/task-list/tasks/shipping/index.js:68
 	__( 'Rest of the world', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/shipping/rates.js:108
-	__( 'Free shipping', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/shipping/rates.js:143
-	__( 'Shipping rates can not be negative numbers.', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/shipping/rates.js:194
-	__( 'Shipping cost', 'woocommerce-admin' ),
-
-	// Reference: client/dashboard/task-list/tasks/shipping/rates.js:78
+	// Reference: client/dashboard/task-list/tasks/shipping/rates.js:103
 	__( 'Your shipping rates have been updated.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/steps/connect.js:46
-	__( 'Connect', 'woocommerce-admin' ),
+	// Reference: client/dashboard/task-list/tasks/shipping/rates.js:122
+	__( 'Free shipping', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/shipping/rates.js:157
+	__( 'Shipping rates can not be negative numbers.', 'woocommerce-admin' ),
+
+	// Reference: client/dashboard/task-list/tasks/shipping/rates.js:208
+	__( 'Shipping cost', 'woocommerce-admin' ),
 
 	// Reference: client/dashboard/task-list/tasks/steps/location.js:46
 	__( 'There was a problem saving your store location.', 'woocommerce-admin' ),
@@ -1612,122 +1706,122 @@ $generated_i18n_strings = array(
 	// Reference: client/dashboard/task-list/tasks/steps/plugins.js:61
 	__( 'Plugins were successfully installed and activated.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:129
+	// Reference: client/dashboard/task-list/tasks/tax.js:132
 	__( 'Your tax settings have been updated.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:138
+	// Reference: client/dashboard/task-list/tasks/tax.js:141
 	__( 'There was a problem updating your tax settings.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:156
+	// Reference: client/dashboard/task-list/tasks/tax.js:159
 	__( 'Automate sales tax calculations', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:192
+	// Reference: client/dashboard/task-list/tasks/tax.js:208
 	__( 'Install Jetpack and WooCommerce Services', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:193
+	// Reference: client/dashboard/task-list/tasks/tax.js:209
 	__( 'Jetpack and WooCommerce services allow you to automate sales tax calculations', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:205
+	// Reference: client/dashboard/task-list/tasks/tax.js:225
 	__( 'Set up tax rates manually', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:213
+	// Reference: client/dashboard/task-list/tasks/tax.js:233
 	__( 'Connect your store to WordPress.com to enable automated sales tax calculations', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:222
+	// Reference: client/dashboard/task-list/tasks/tax.js:249
 	__( 'Enable automated tax calculations', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:223
+	// Reference: client/dashboard/task-list/tasks/tax.js:250
 	__( 'Sales taxes will be calculated automatically when a customer checks out', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:232
+	// Reference: client/dashboard/task-list/tasks/tax.js:259
 	__( 'Congifure tax rates', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:233
+	// Reference: client/dashboard/task-list/tasks/tax.js:260
 	__( 'Head over to the tax rate settings screen to configure your tax rates', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:242
+	// Reference: client/dashboard/task-list/tasks/tax.js:272
 	__( 'Configure', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:276
+	// Reference: client/dashboard/task-list/tasks/tax.js:306
 	__( 'Good news!', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:280
+	// Reference: client/dashboard/task-list/tasks/tax.js:310
 	__( '{{strong}}Jetpack{{/strong}} and {{strong}}WooCommerce Services{{/strong}} can automate your sales tax calculations for you.', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:296
+	// Reference: client/dashboard/task-list/tasks/tax.js:329
 	__( 'Yes please', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/task-list/tasks/tax.js:303
+	// Reference: client/dashboard/task-list/tasks/tax.js:339
 	__( 'No thanks, I\'ll configure taxes manually', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/index.js:121
-	// Reference: client/header/activity-panel/panels/inbox.js:138
+	// Reference: client/header/activity-panel/index.js:125
+	// Reference: client/header/activity-panel/panels/inbox.js:143
 	__( 'Inbox', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/index.js:142
+	// Reference: client/header/activity-panel/index.js:146
 	// Reference: client/header/activity-panel/panels/reviews.js:253
 	__( 'Reviews', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/index.js:231
+	// Reference: client/header/activity-panel/index.js:235
 	// Reference: client/header/activity-panel/wordpress-notices.js:212
 	__( 'unread activity', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/index.js:248
+	// Reference: client/header/activity-panel/index.js:252
 	__( 'View Activity Panel, you have unread activity', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/index.js:249
+	// Reference: client/header/activity-panel/index.js:253
 	__( 'View Activity Panel', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/index.js:254
+	// Reference: client/header/activity-panel/index.js:258
 	__( 'Store Activity', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/index.js:266
+	// Reference: client/header/activity-panel/index.js:270
 	__( 'Close Activity Panel', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/inbox.js:114
+	// Reference: client/header/activity-panel/panels/inbox.js:119
 	__( 'There was an error getting your inbox. Please try again.', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/inbox.js:52
+	// Reference: client/header/activity-panel/panels/inbox.js:57
 	__( 'Your inbox is empty', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/inbox.js:55
+	// Reference: client/header/activity-panel/panels/inbox.js:60
 	__( 'As things begin to happen in your store your inbox will start to fill up. You\'ll see things like achievements, new feature announcements, extension recommendations and more!', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/orders.js:111
+	// Reference: client/header/activity-panel/panels/orders.js:112
 	__( 'Order {{orderLink}}#%(orderNumber)s{{/orderLink}} %(customerString)s {{destinationFlag/}}', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/orders.js:150
+	// Reference: client/header/activity-panel/panels/orders.js:151
 	_n_noop( '%d product', '%d products', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/orders.js:162
+	// Reference: client/header/activity-panel/panels/orders.js:163
 	__( 'Begin fulfillment', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/orders.js:174
+	// Reference: client/header/activity-panel/panels/orders.js:175
 	__( 'Manage all orders', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/orders.js:187
+	// Reference: client/header/activity-panel/panels/orders.js:188
 	__( 'You currently don\'t have any actionable statuses. To display orders here, select orders that require further review in settings.', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/orders.js:192
+	// Reference: client/header/activity-panel/panels/orders.js:193
 	// Reference: client/layout/controller.js:64
 	__( 'Settings', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/orders.js:198
+	// Reference: client/header/activity-panel/panels/orders.js:199
 	__( 'There was an error getting your orders. Please try again.', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/orders.js:223
+	// Reference: client/header/activity-panel/panels/orders.js:224
 	__( 'No orders to ship', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/orders.js:40
+	// Reference: client/header/activity-panel/panels/orders.js:41
 	__( 'Good job, you\'ve fulfilled all of your new orders!', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/orders.js:48
+	// Reference: client/header/activity-panel/panels/orders.js:49
 	__( 'You have no orders to fulfill', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/orders.js:60
+	// Reference: client/header/activity-panel/panels/orders.js:61
 	__( 'You\'re still waiting for your customers to make their first orders. While you wait why not learn how to manage orders?', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/orders.js:86
+	// Reference: client/header/activity-panel/panels/orders.js:87
 	__( 'placed by {{customerLink}}%(customerName)s{{/customerLink}}', 'woocommerce-admin' ),
 
 	// Reference: client/header/activity-panel/panels/reviews.js:100
@@ -1778,16 +1872,16 @@ $generated_i18n_strings = array(
 	// Reference: client/header/activity-panel/panels/reviews.js:99
 	__( 'Unapprove', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/stock/card.js:127
+	// Reference: client/header/activity-panel/panels/stock/card.js:128
 	__( '%d in stock', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/stock/card.js:88
+	// Reference: client/header/activity-panel/panels/stock/card.js:89
 	__( 'Save', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/stock/card.js:90
+	// Reference: client/header/activity-panel/panels/stock/card.js:91
 	__( 'Cancel', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/panels/stock/card.js:96
+	// Reference: client/header/activity-panel/panels/stock/card.js:97
 	__( 'Update stock', 'woocommerce-admin' ),
 
 	// Reference: client/header/activity-panel/panels/stock/index.js:30
@@ -1805,7 +1899,7 @@ $generated_i18n_strings = array(
 	// Reference: client/header/activity-panel/wordpress-notices.js:211
 	__( 'Notices', 'woocommerce-admin' ),
 
-	// Reference: client/header/index.js:80
+	// Reference: client/header/index.js:81
 	__( '%1$s &lsaquo; %2$s &#8212; WooCommerce', 'woocommerce-admin' ),
 
 	// Reference: client/layout/controller.js:53
@@ -1814,28 +1908,28 @@ $generated_i18n_strings = array(
 	// Reference: client/layout/controller.js:76
 	__( 'Analytics', 'woocommerce-admin' ),
 
-	// Reference: client/layout/store-alerts/index.js:108
+	// Reference: client/layout/store-alerts/index.js:109
 	__( 'Next Week', 'woocommerce-admin' ),
 
-	// Reference: client/layout/store-alerts/index.js:118
+	// Reference: client/layout/store-alerts/index.js:119
 	__( 'Next Month', 'woocommerce-admin' ),
 
-	// Reference: client/layout/store-alerts/index.js:146
+	// Reference: client/layout/store-alerts/index.js:147
 	__( 'Remind Me Later', 'woocommerce-admin' ),
 
-	// Reference: client/layout/store-alerts/index.js:208
+	// Reference: client/layout/store-alerts/index.js:209
 	__( 'Previous Alert', 'woocommerce-admin' ),
 
-	// Reference: client/layout/store-alerts/index.js:216
+	// Reference: client/layout/store-alerts/index.js:217
 	__( '{{current /}} of {{total /}}', 'woocommerce-admin' ),
 
-	// Reference: client/layout/store-alerts/index.js:227
+	// Reference: client/layout/store-alerts/index.js:228
 	__( 'Next Alert', 'woocommerce-admin' ),
 
-	// Reference: client/layout/store-alerts/index.js:88
+	// Reference: client/layout/store-alerts/index.js:89
 	__( 'Later Today', 'woocommerce-admin' ),
 
-	// Reference: client/layout/store-alerts/index.js:98
+	// Reference: client/layout/store-alerts/index.js:99
 	__( 'Tomorrow', 'woocommerce-admin' ),
 
 	// Reference: client/wc-api/items/mutations.js:35
@@ -1858,14 +1952,14 @@ $generated_i18n_strings = array(
 
 	// Reference: node_modules/newspack-components/node_modules/@wordpress/components/build-module/autocomplete/index.js:287
 	// Reference: node_modules/newspack-components/node_modules/@wordpress/components/build-module/form-token-field/index.js:257
-	// Reference: packages/components/build-module/autocomplete/index.js:148
 	// Reference: packages/components/build-module/search/autocomplete.js:146
+	// Reference: packages/components/build-module/select-control/index.js:184
 	_n_noop( '%d result found, use up and down arrow keys to navigate.', '%d results found, use up and down arrow keys to navigate.', 'woocommerce-admin' ),
 
 	// Reference: node_modules/newspack-components/node_modules/@wordpress/components/build-module/autocomplete/index.js:289
 	// Reference: node_modules/newspack-components/node_modules/@wordpress/components/build-module/form-token-field/index.js:259
-	// Reference: packages/components/build-module/autocomplete/index.js:150
 	// Reference: packages/components/build-module/search/autocomplete.js:148
+	// Reference: packages/components/build-module/select-control/index.js:186
 	__( 'No results.', 'woocommerce-admin' ),
 
 	// Reference: node_modules/newspack-components/node_modules/@wordpress/components/build-module/color-palette/index.js:100
@@ -2081,8 +2175,8 @@ $generated_i18n_strings = array(
 	__( 'Remove item', 'woocommerce-admin' ),
 
 	// Reference: node_modules/newspack-components/node_modules/@wordpress/components/build-module/form-token-field/token.js:54
-	// Reference: packages/components/build-module/autocomplete/tags.js:90
 	// Reference: packages/components/build-module/search/index.js:176
+	// Reference: packages/components/build-module/select-control/tags.js:90
 	__( '%1$s (%2$s of %3$s)', 'woocommerce-admin' ),
 
 	// Reference: node_modules/newspack-components/node_modules/@wordpress/components/build-module/modal/header.js:20
@@ -2119,10 +2213,10 @@ $generated_i18n_strings = array(
 	__( 'Error loading block: %s', 'woocommerce-admin' ),
 
 	// Reference: packages/components/build-module/advanced-filters/date-filter.js:35
-	// Reference: packages/date/build-module/index.js:132
+	// Reference: packages/date/build-module/index.js:137
 	__( 'MMM D, YYYY', 'woocommerce-admin' ),
 
-	// Reference: packages/components/build-module/advanced-filters/index.js:174
+	// Reference: packages/components/build-module/advanced-filters/index.js:176
 	__( 'Choose to apply any or all filters', 'woocommerce-admin' ),
 
 	// Reference: packages/components/build-module/advanced-filters/index.js:364
@@ -2134,26 +2228,16 @@ $generated_i18n_strings = array(
 	// Reference: packages/components/build-module/advanced-filters/index.js:392
 	__( 'Clear all filters', 'woocommerce-admin' ),
 
-	// Reference: packages/components/build-module/advanced-filters/index.js:48
+	// Reference: packages/components/build-module/advanced-filters/index.js:49
 	__( 'Any', 'woocommerce-admin' ),
 
-	// Reference: packages/components/build-module/advanced-filters/number-filter.js:215
+	// Reference: packages/components/build-module/advanced-filters/number-filter.js:216
 	/* Sentence fragment, "range start" refers to the first of two numeric values the field must be between. Screenshot for context: https://cloudup.com/cmv5CLyMPNQ */
 	__( '%(field)s range start', 'woocommerce-admin' ),
 
-	// Reference: packages/components/build-module/advanced-filters/number-filter.js:227
+	// Reference: packages/components/build-module/advanced-filters/number-filter.js:228
 	/* Sentence fragment, "range end" refers to the second of two numeric values the field must be between. Screenshot for context: https://cloudup.com/cmv5CLyMPNQ */
 	__( '%(field)s range end', 'woocommerce-admin' ),
-
-	// Reference: packages/components/build-module/autocomplete/control.js:165
-	// Reference: packages/components/build-module/search/index.js:301
-	__( 'Move backward for selected items', 'woocommerce-admin' ),
-
-	// Reference: packages/components/build-module/autocomplete/tags.js:106
-	// Reference: packages/components/build-module/compare-filter/index.js:153
-	// Reference: packages/components/build-module/search-list-control/index.js:244
-	// Reference: packages/components/build-module/search/index.js:321
-	__( 'Clear all', 'woocommerce-admin' ),
 
 	// Reference: packages/components/build-module/calendar/date-picker.js:117
 	__( 'Choose a date', 'woocommerce-admin' ),
@@ -2252,9 +2336,15 @@ $generated_i18n_strings = array(
 	// Reference: packages/components/build-module/chart/d3chart/legend.js:115
 	__( 'You may select up to %d items.', 'woocommerce-admin' ),
 
-	// Reference: packages/components/build-module/chart/index.js:474
+	// Reference: packages/components/build-module/chart/index.js:477
 	// Reference: packages/components/build-module/table/index.js:467
 	__( 'Your requested data is loading', 'woocommerce-admin' ),
+
+	// Reference: packages/components/build-module/compare-filter/index.js:153
+	// Reference: packages/components/build-module/search-list-control/index.js:244
+	// Reference: packages/components/build-module/search/index.js:321
+	// Reference: packages/components/build-module/select-control/tags.js:106
+	__( 'Clear all', 'woocommerce-admin' ),
 
 	// Reference: packages/components/build-module/count/index.js:21
 	__( 'Total %d', 'woocommerce-admin' ),
@@ -2264,7 +2354,7 @@ $generated_i18n_strings = array(
 	__( 'compare to', 'woocommerce-admin' ),
 
 	// Reference: packages/components/build-module/date-range-filter-picker/content.js:102
-	// Reference: packages/date/build-module/index.js:63
+	// Reference: packages/date/build-module/index.js:68
 	__( 'Custom', 'woocommerce-admin' ),
 
 	// Reference: packages/components/build-module/date-range-filter-picker/content.js:148
@@ -2348,9 +2438,9 @@ $generated_i18n_strings = array(
 	// Reference: packages/components/build-module/search/autocompleters/taxes.js:45
 	__( 'All taxes with codes that include {{query /}}', 'woocommerce-admin' ),
 
-	// Reference: packages/components/build-module/simple-select-control/index.js:145
-	/* Label: Current Value for a Select Dropddown */
-	__( '%s: %s', 'woocommerce-admin' ),
+	// Reference: packages/components/build-module/search/index.js:301
+	// Reference: packages/components/build-module/select-control/control.js:221
+	__( 'Move backward for selected items', 'woocommerce-admin' ),
 
 	// Reference: packages/components/build-module/summary/index.js:87
 	__( 'Performance Indicators', 'woocommerce-admin' ),
@@ -2406,85 +2496,85 @@ $generated_i18n_strings = array(
 	// Reference: packages/components/build-module/view-more-list/index.js:25
 	__( '+%d more', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:134
+	// Reference: packages/date/build-module/index.js:139
 	__( 'MMM D', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:33
+	// Reference: packages/date/build-module/index.js:38
 	__( 'Today', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:36
+	// Reference: packages/date/build-module/index.js:41
 	__( 'Yesterday', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:39
+	// Reference: packages/date/build-module/index.js:44
 	__( 'Week to Date', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:42
+	// Reference: packages/date/build-module/index.js:47
 	__( 'Last Week', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:45
+	// Reference: packages/date/build-module/index.js:50
 	__( 'Month to Date', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:48
+	// Reference: packages/date/build-module/index.js:53
 	__( 'Last Month', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:51
-	__( 'Quarter to Date', 'woocommerce-admin' ),
-
-	// Reference: packages/date/build-module/index.js:54
-	__( 'Last Quarter', 'woocommerce-admin' ),
-
-	// Reference: packages/date/build-module/index.js:546
+	// Reference: packages/date/build-module/index.js:552
 	__( 'Week of %B %-d, %Y', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:57
-	__( 'Year to Date', 'woocommerce-admin' ),
+	// Reference: packages/date/build-module/index.js:56
+	__( 'Quarter to Date', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:587
+	// Reference: packages/date/build-module/index.js:59
+	__( 'Last Quarter', 'woocommerce-admin' ),
+
+	// Reference: packages/date/build-module/index.js:594
 	__( 'MMMM D, YYYY', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:588
+	// Reference: packages/date/build-module/index.js:595
 	__( 'D MMMM YYYY LT', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:589
+	// Reference: packages/date/build-module/index.js:596
 	__( 'dddd, D MMMM YYYY LT', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:590
+	// Reference: packages/date/build-module/index.js:597
 	__( 'HH:mm', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:598
+	// Reference: packages/date/build-module/index.js:605
 	__( 'Invalid date', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:599
+	// Reference: packages/date/build-module/index.js:606
 	__( 'Select a date in the past', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:60
-	__( 'Last Year', 'woocommerce-admin' ),
-
-	// Reference: packages/date/build-module/index.js:601
+	// Reference: packages/date/build-module/index.js:608
 	__( 'Start date must be before end date', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:67
+	// Reference: packages/date/build-module/index.js:62
+	__( 'Year to Date', 'woocommerce-admin' ),
+
+	// Reference: packages/date/build-module/index.js:65
+	__( 'Last Year', 'woocommerce-admin' ),
+
+	// Reference: packages/date/build-module/index.js:72
 	__( 'Previous Period', 'woocommerce-admin' ),
 
-	// Reference: packages/date/build-module/index.js:70
+	// Reference: packages/date/build-module/index.js:75
 	__( 'Previous Year', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:56
+	// Reference: client/analytics/report/customers/config.js:59
 	_x( 'Customers Match {{select /}} Filters', 'A sentence describing filters for Customers. See screen shot for context: https://cloudup.com/cCsm3GeXJbE', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:76
+	// Reference: client/analytics/report/customers/config.js:79
 	/* Sentence fragment, logical, "Includes" refers to customer names including a given name(s). Screenshot for context: https://cloudup.com/cCsm3GeXJbE */
 	_x( 'Includes', 'customer names', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:81
+	// Reference: client/analytics/report/customers/config.js:84
 	/* Sentence fragment, logical, "Excludes" refers to customer names excluding a given name(s). Screenshot for context: https://cloudup.com/cCsm3GeXJbE */
 	_x( 'Excludes', 'customer names', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:107
+	// Reference: client/analytics/report/customers/config.js:110
 	/* Sentence fragment, logical, "Includes" refers to countries including a given country or countries. Screenshot for context: https://cloudup.com/cCsm3GeXJbE */
 	_x( 'Includes', 'countries', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/customers/config.js:112
+	// Reference: client/analytics/report/customers/config.js:115
 	/* Sentence fragment, logical, "Excludes" refers to countries excluding a given country or countries. Screenshot for context: https://cloudup.com/cCsm3GeXJbE */
 	_x( 'Excludes', 'countries', 'woocommerce-admin' ),
 
@@ -2557,12 +2647,12 @@ $generated_i18n_strings = array(
 	_x( 'Downloads Match {{select /}} Filters', 'A sentence describing filters for Downloads. See screen shot for context: https://cloudup.com/ccxhyH2mEDg', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/downloads/config.js:61
-	// Reference: client/analytics/report/orders/config.js:110
+	// Reference: client/analytics/report/orders/config.js:109
 	/* Sentence fragment, logical, "Includes" refers to orders including a given product(s). Screenshot for context: https://cloudup.com/cSsUY9VeCVJ */
 	_x( 'Includes', 'products', 'woocommerce-admin' ),
 
 	// Reference: client/analytics/report/downloads/config.js:66
-	// Reference: client/analytics/report/orders/config.js:115
+	// Reference: client/analytics/report/orders/config.js:114
 	/* Sentence fragment, logical, "Excludes" refers to orders excluding a given product(s). Screenshot for context: https://cloudup.com/cSsUY9VeCVJ */
 	_x( 'Excludes', 'products', 'woocommerce-admin' ),
 
@@ -2582,22 +2672,22 @@ $generated_i18n_strings = array(
 	/* Sentence fragment, logical, "Excludes" refers to IP addresses excluding a given address(s). Screenshot for context: https://cloudup.com/ccxhyH2mEDg */
 	_x( 'Excludes', 'IP addresses', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:61
+	// Reference: client/analytics/report/orders/config.js:60
 	_x( 'Orders Match {{select /}} Filters', 'A sentence describing filters for Orders. See screen shot for context: https://cloudup.com/cSsUY9VeCVJ', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:80
+	// Reference: client/analytics/report/orders/config.js:79
 	/* Sentence fragment, logical, "Is" refers to searching for orders matching a chosen order status. Screenshot for context: https://cloudup.com/cSsUY9VeCVJ */
 	_x( 'Is', 'order status', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:85
+	// Reference: client/analytics/report/orders/config.js:84
 	/* Sentence fragment, logical, "Is Not" refers to searching for orders that don\'t match a chosen order status. Screenshot for context: https://cloudup.com/cSsUY9VeCVJ */
 	_x( 'Is Not', 'order status', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:138
+	// Reference: client/analytics/report/orders/config.js:137
 	/* Sentence fragment, logical, "Includes" refers to orders including a given coupon code(s). Screenshot for context: https://cloudup.com/cSsUY9VeCVJ */
 	_x( 'Includes', 'coupon code', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/orders/config.js:143
+	// Reference: client/analytics/report/orders/config.js:142
 	/* Sentence fragment, logical, "Excludes" refers to orders excluding a given coupon code(s). Screenshot for context: https://cloudup.com/cSsUY9VeCVJ */
 	_x( 'Excludes', 'coupon code', 'woocommerce-admin' ),
 
@@ -2610,27 +2700,27 @@ $generated_i18n_strings = array(
 	// Reference: client/analytics/report/orders/table.js:98
 	_x( 'Returning', 'customer type', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/products/table-variations.js:132
-	// Reference: client/analytics/report/products/table.js:132
-	// Reference: client/analytics/report/stock/table.js:88
+	// Reference: client/analytics/report/products/table-variations.js:135
+	// Reference: client/analytics/report/products/table.js:135
+	// Reference: client/analytics/report/stock/table.js:90
 	_x( 'Low', 'Indication of a low quantity', 'woocommerce-admin' ),
 
-	// Reference: client/analytics/report/products/table.js:176
+	// Reference: client/analytics/report/products/table.js:179
 	_x( '+%d more', 'categories', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:120
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:123
 	_x( '%s+', 'store product count', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:124
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:127
 	_x( '%s - %s', 'store product count', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:221
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:224
 	_x( '%s (I\'m just getting started)', '$0 revenue amount', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:228
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:231
 	_x( 'Up to %s', 'Up to a certain revenue amount', 'woocommerce-admin' ),
 
-	// Reference: client/dashboard/profile-wizard/steps/business-details.js:247
+	// Reference: client/dashboard/profile-wizard/steps/business-details.js:250
 	_x( 'More than %s', 'More than a certain revenue amount', 'woocommerce-admin' ),
 
 	// Reference: node_modules/newspack-components/node_modules/@wordpress/components/build-module/date-time/index.js:73
@@ -2645,14 +2735,14 @@ $generated_i18n_strings = array(
 	// Reference: packages/components/build-module/advanced-filters/date-filter.js:77
 	_x( '{{after /}}{{span}} and {{/span}}{{before /}}', 'Date range inputs arranged on a single line', 'woocommerce-admin' ),
 
-	// Reference: packages/components/build-module/advanced-filters/number-filter.js:46
+	// Reference: packages/components/build-module/advanced-filters/number-filter.js:47
 	_x( '{{rangeStart /}}{{span}} and {{/span}}{{rangeEnd /}}', 'Numerical range inputs arranged on a single line', 'woocommerce-admin' ),
 
-	// Reference: packages/components/build-module/advanced-filters/number-filter.js:166
+	// Reference: packages/components/build-module/advanced-filters/number-filter.js:167
 	/* Sentence fragment, "maximum amount" refers to a numeric value the field must be less than. Screenshot for context: https://cloudup.com/cmv5CLyMPNQ */
 	_x( '%(field)s maximum amount', 'maximum value input', 'woocommerce-admin' ),
 
-	// Reference: packages/components/build-module/advanced-filters/number-filter.js:171
+	// Reference: packages/components/build-module/advanced-filters/number-filter.js:172
 	/* Sentence fragment, "minimum amount" refers to a numeric value the field must be more than. Screenshot for context: https://cloudup.com/cmv5CLyMPNQ */
 	_x( '%(field)s minimum amount', 'minimum value input', 'woocommerce-admin' )
 );

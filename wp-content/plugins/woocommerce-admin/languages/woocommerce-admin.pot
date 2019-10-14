@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WooCommerce Admin package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Admin 0.19.0\n"
+"Project-Id-Version: WooCommerce Admin 0.20.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wc-admin\n"
-"POT-Creation-Date: 2019-09-24 00:17:05+00:00\n"
+"POT-Creation-Date: 2019-10-13 21:03:42+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: includes/connect-existing-pages.php:17 languages/woocommerce-admin.php:1713
+#: includes/connect-existing-pages.php:17 languages/woocommerce-admin.php:1807
 #: src/Features/Analytics.php:142
 msgid "Settings"
 msgstr ""
@@ -40,7 +40,7 @@ msgstr ""
 
 #: includes/connect-existing-pages.php:31
 #: includes/connect-existing-pages.php:457 languages/woocommerce-admin.php:166
-#: src/Features/Analytics.php:100
+#: src/Features/Analytics.php:100 src/ReportCSVEmail.php:36
 msgid "Products"
 msgstr ""
 
@@ -134,7 +134,7 @@ msgstr ""
 #: includes/connect-existing-pages.php:350 languages/woocommerce-admin.php:75
 #: src/API/Leaderboards.php:128 src/API/Leaderboards.php:258
 #: src/API/Reports/Orders/Stats/Controller.php:162
-#: src/Features/Analytics.php:94
+#: src/Features/Analytics.php:94 src/ReportCSVEmail.php:35
 msgid "Orders"
 msgstr ""
 
@@ -149,7 +149,7 @@ msgid "Edit Order"
 msgstr ""
 
 #: includes/connect-existing-pages.php:318 languages/woocommerce-admin.php:220
-#: src/Features/Analytics.php:112
+#: src/Features/Analytics.php:112 src/ReportCSVEmail.php:38
 msgid "Coupons"
 msgstr ""
 
@@ -162,17 +162,17 @@ msgid "Reports"
 msgstr ""
 
 #: includes/connect-existing-pages.php:362 languages/woocommerce-admin.php:419
-#: src/Features/Analytics.php:136
+#: src/Features/Analytics.php:136 src/ReportCSVEmail.php:42
 msgid "Customers"
 msgstr ""
 
 #: includes/connect-existing-pages.php:372 languages/woocommerce-admin.php:557
-#: src/Features/Analytics.php:130
+#: src/Features/Analytics.php:130 src/ReportCSVEmail.php:41
 msgid "Stock"
 msgstr ""
 
 #: includes/connect-existing-pages.php:382 languages/woocommerce-admin.php:549
-#: src/Features/Analytics.php:118
+#: src/Features/Analytics.php:118 src/ReportCSVEmail.php:39
 msgid "Taxes"
 msgstr ""
 
@@ -239,6 +239,15 @@ msgstr ""
 
 #: includes/connect-existing-pages.php:558
 msgid "Edit attribute"
+msgstr ""
+
+#: includes/emails/html-admin-report-export-download.php:17
+msgid "Download your %s Report"
+msgstr ""
+
+#: includes/emails/plain-admin-report-export-download.php:15
+#. translators: %1$s: report name, %2$s: download URL
+msgid "Download your %1$s Report: %2$s"
 msgstr ""
 
 #: languages/woocommerce-admin.php:5
@@ -359,6 +368,7 @@ msgid "Search by category name"
 msgstr ""
 
 #: languages/woocommerce-admin.php:154 src/Features/Analytics.php:106
+#: src/ReportCSVEmail.php:37
 msgid "Categories"
 msgstr ""
 
@@ -445,196 +455,196 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: languages/woocommerce-admin.php:239
-msgid "{{title}}Country{{/title}} {{rule /}} {{filter /}}"
-msgstr ""
-
-#: languages/woocommerce-admin.php:242
-msgid "Select country"
-msgstr ""
-
-#: languages/woocommerce-admin.php:247
-msgid "Username"
-msgstr ""
-
-#: languages/woocommerce-admin.php:251
-msgid "Search customer username"
-msgstr ""
-
-#: languages/woocommerce-admin.php:255
-msgid "Remove customer username filter"
-msgstr ""
-
-#: languages/woocommerce-admin.php:259
-msgid "Select a customer username filter match"
-msgstr ""
-
-#: languages/woocommerce-admin.php:264
-msgid "{{title}}Username{{/title}} {{rule /}} {{filter /}}"
-msgstr ""
-
-#: languages/woocommerce-admin.php:268
-msgid "Select customer username"
-msgstr ""
-
-#: languages/woocommerce-admin.php:272
-msgid "Email"
-msgstr ""
-
-#: languages/woocommerce-admin.php:275
-msgid "Search customer email"
-msgstr ""
-
-#: languages/woocommerce-admin.php:278
-msgid "Remove customer email filter"
-msgstr ""
-
-#: languages/woocommerce-admin.php:281
-msgid "Select a customer email filter match"
-msgstr ""
-
-#: languages/woocommerce-admin.php:285
-msgid "{{title}}Email{{/title}} {{rule /}} {{filter /}}"
-msgstr ""
-
-#: languages/woocommerce-admin.php:288
-msgid "Select customer email"
-msgstr ""
-
-#: languages/woocommerce-admin.php:291
-msgid "No. of Orders"
-msgstr ""
-
-#: languages/woocommerce-admin.php:294
-msgid "Remove order filter"
-msgstr ""
-
-#: languages/woocommerce-admin.php:297
-msgid "Select an order count filter match"
-msgstr ""
-
-#: languages/woocommerce-admin.php:300
-msgid "{{title}}No. of Orders{{/title}} {{rule /}} {{filter /}}"
-msgstr ""
-
-#: languages/woocommerce-admin.php:304 src/API/Leaderboards.php:261
-msgid "Total Spend"
-msgstr ""
-
-#: languages/woocommerce-admin.php:307
-msgid "Remove total spend filter"
-msgstr ""
-
-#: languages/woocommerce-admin.php:310
-msgid "Select a total spend filter match"
-msgstr ""
-
-#: languages/woocommerce-admin.php:313
-msgid "{{title}}Total Spend{{/title}} {{rule /}} {{filter /}}"
-msgstr ""
-
-#: languages/woocommerce-admin.php:317
-msgid "AOV"
-msgstr ""
-
-#: languages/woocommerce-admin.php:320
-msgid "Remove average order value filter"
-msgstr ""
-
-#: languages/woocommerce-admin.php:323
-msgid "Select an average order value filter match"
-msgstr ""
-
-#: languages/woocommerce-admin.php:326
-msgid "{{title}}AOV{{/title}} {{rule /}} {{filter /}}"
-msgstr ""
-
-#: languages/woocommerce-admin.php:329
-msgid "All Customers"
-msgstr ""
-
-#: languages/woocommerce-admin.php:332
-msgid "Registered"
-msgstr ""
-
-#: languages/woocommerce-admin.php:335
-msgid "Remove registered filter"
-msgstr ""
-
-#: languages/woocommerce-admin.php:338
-msgid "Select a registered filter match"
-msgstr ""
-
-#: languages/woocommerce-admin.php:342
-msgid "{{title}}Registered{{/title}} {{rule /}} {{filter /}}"
-msgstr ""
-
-#: languages/woocommerce-admin.php:345
-msgid "Last active"
-msgstr ""
-
-#: languages/woocommerce-admin.php:348
-msgid "Remove last active filter"
-msgstr ""
-
-#: languages/woocommerce-admin.php:351
-msgid "Select a last active filter match"
-msgstr ""
-
-#: languages/woocommerce-admin.php:355
-msgid "{{title}}Last active{{/title}} {{rule /}} {{filter /}}"
-msgstr ""
-
-#: languages/woocommerce-admin.php:358
-msgid "Select registered date"
-msgstr ""
-
-#: languages/woocommerce-admin.php:361
-msgid "Type to search for a customer"
-msgstr ""
-
-#: languages/woocommerce-admin.php:364
-msgid "Single Customer"
-msgstr ""
-
-#: languages/woocommerce-admin.php:369
-msgid "Advanced Filters"
-msgstr ""
-
-#: languages/woocommerce-admin.php:373
-msgid "Name"
-msgstr ""
-
-#: languages/woocommerce-admin.php:376
-msgid "Remove customer name filter"
-msgstr ""
-
-#: languages/woocommerce-admin.php:379
-msgid "Select a customer name filter match"
-msgstr ""
-
-#: languages/woocommerce-admin.php:383
-msgid "{{title}}Name{{/title}} {{rule /}} {{filter /}}"
-msgstr ""
-
-#: languages/woocommerce-admin.php:386
-msgid "Select customer name"
-msgstr ""
-
-#: languages/woocommerce-admin.php:390
-msgid "Country"
-msgstr ""
-
-#: languages/woocommerce-admin.php:394
-msgid "Search"
-msgstr ""
-
-#: languages/woocommerce-admin.php:397
+#: languages/woocommerce-admin.php:238
 msgid "Remove country filter"
 msgstr ""
 
-#: languages/woocommerce-admin.php:400
+#: languages/woocommerce-admin.php:241
 msgid "Select a country filter match"
+msgstr ""
+
+#: languages/woocommerce-admin.php:245
+msgid "{{title}}Country{{/title}} {{rule /}} {{filter /}}"
+msgstr ""
+
+#: languages/woocommerce-admin.php:248
+msgid "Select country"
+msgstr ""
+
+#: languages/woocommerce-admin.php:253
+msgid "Username"
+msgstr ""
+
+#: languages/woocommerce-admin.php:257
+msgid "Search customer username"
+msgstr ""
+
+#: languages/woocommerce-admin.php:261
+msgid "Remove customer username filter"
+msgstr ""
+
+#: languages/woocommerce-admin.php:265
+msgid "Select a customer username filter match"
+msgstr ""
+
+#: languages/woocommerce-admin.php:270
+msgid "{{title}}Username{{/title}} {{rule /}} {{filter /}}"
+msgstr ""
+
+#: languages/woocommerce-admin.php:274
+msgid "Select customer username"
+msgstr ""
+
+#: languages/woocommerce-admin.php:278
+msgid "Email"
+msgstr ""
+
+#: languages/woocommerce-admin.php:281
+msgid "Search customer email"
+msgstr ""
+
+#: languages/woocommerce-admin.php:284
+msgid "Remove customer email filter"
+msgstr ""
+
+#: languages/woocommerce-admin.php:287
+msgid "Select a customer email filter match"
+msgstr ""
+
+#: languages/woocommerce-admin.php:291
+msgid "{{title}}Email{{/title}} {{rule /}} {{filter /}}"
+msgstr ""
+
+#: languages/woocommerce-admin.php:294
+msgid "Select customer email"
+msgstr ""
+
+#: languages/woocommerce-admin.php:297
+msgid "No. of Orders"
+msgstr ""
+
+#: languages/woocommerce-admin.php:300
+msgid "Remove order filter"
+msgstr ""
+
+#: languages/woocommerce-admin.php:303
+msgid "Select an order count filter match"
+msgstr ""
+
+#: languages/woocommerce-admin.php:306
+msgid "{{title}}No. of Orders{{/title}} {{rule /}} {{filter /}}"
+msgstr ""
+
+#: languages/woocommerce-admin.php:310 src/API/Leaderboards.php:261
+msgid "Total Spend"
+msgstr ""
+
+#: languages/woocommerce-admin.php:313
+msgid "Remove total spend filter"
+msgstr ""
+
+#: languages/woocommerce-admin.php:316
+msgid "Select a total spend filter match"
+msgstr ""
+
+#: languages/woocommerce-admin.php:319
+msgid "{{title}}Total Spend{{/title}} {{rule /}} {{filter /}}"
+msgstr ""
+
+#: languages/woocommerce-admin.php:323
+msgid "AOV"
+msgstr ""
+
+#: languages/woocommerce-admin.php:326
+msgid "Remove average order value filter"
+msgstr ""
+
+#: languages/woocommerce-admin.php:329
+msgid "Select an average order value filter match"
+msgstr ""
+
+#: languages/woocommerce-admin.php:332
+msgid "{{title}}AOV{{/title}} {{rule /}} {{filter /}}"
+msgstr ""
+
+#: languages/woocommerce-admin.php:335
+msgid "Registered"
+msgstr ""
+
+#: languages/woocommerce-admin.php:338
+msgid "Remove registered filter"
+msgstr ""
+
+#: languages/woocommerce-admin.php:341
+msgid "Select a registered filter match"
+msgstr ""
+
+#: languages/woocommerce-admin.php:345
+msgid "{{title}}Registered{{/title}} {{rule /}} {{filter /}}"
+msgstr ""
+
+#: languages/woocommerce-admin.php:348
+msgid "All Customers"
+msgstr ""
+
+#: languages/woocommerce-admin.php:351
+msgid "Last active"
+msgstr ""
+
+#: languages/woocommerce-admin.php:354
+msgid "Remove last active filter"
+msgstr ""
+
+#: languages/woocommerce-admin.php:357
+msgid "Select a last active filter match"
+msgstr ""
+
+#: languages/woocommerce-admin.php:361
+msgid "{{title}}Last active{{/title}} {{rule /}} {{filter /}}"
+msgstr ""
+
+#: languages/woocommerce-admin.php:364
+msgid "Select registered date"
+msgstr ""
+
+#: languages/woocommerce-admin.php:367
+msgid "Type to search for a customer"
+msgstr ""
+
+#: languages/woocommerce-admin.php:370
+msgid "Single Customer"
+msgstr ""
+
+#: languages/woocommerce-admin.php:375
+msgid "Advanced Filters"
+msgstr ""
+
+#: languages/woocommerce-admin.php:379
+msgid "Name"
+msgstr ""
+
+#: languages/woocommerce-admin.php:382
+msgid "Remove customer name filter"
+msgstr ""
+
+#: languages/woocommerce-admin.php:385
+msgid "Select a customer name filter match"
+msgstr ""
+
+#: languages/woocommerce-admin.php:389
+msgid "{{title}}Name{{/title}} {{rule /}} {{filter /}}"
+msgstr ""
+
+#: languages/woocommerce-admin.php:392
+msgid "Select customer name"
+msgstr ""
+
+#: languages/woocommerce-admin.php:396
+msgid "Country"
+msgstr ""
+
+#: languages/woocommerce-admin.php:400
+msgid "Search"
 msgstr ""
 
 #: languages/woocommerce-admin.php:403
@@ -735,7 +745,8 @@ msgstr ""
 
 #: languages/woocommerce-admin.php:484
 #: src/API/Reports/Downloads/Stats/Controller.php:146
-#: src/Features/Analytics.php:124 src/Features/Onboarding.php:131
+#: src/Features/Analytics.php:124 src/Features/Onboarding.php:137
+#: src/ReportCSVEmail.php:40
 msgid "Downloads"
 msgstr ""
 
@@ -804,136 +815,137 @@ msgid "IP"
 msgstr ""
 
 #: languages/woocommerce-admin.php:543 src/Features/Analytics.php:88
+#: src/ReportCSVEmail.php:34
 msgid "Revenue"
 msgstr ""
 
 #: languages/woocommerce-admin.php:560
-msgid "Remove products filter"
-msgstr ""
-
-#: languages/woocommerce-admin.php:563
 msgid "Select products"
 msgstr ""
 
-#: languages/woocommerce-admin.php:566
+#: languages/woocommerce-admin.php:563
 msgid "Coupon Codes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:569
+#: languages/woocommerce-admin.php:566
 msgid "Search coupons"
 msgstr ""
 
-#: languages/woocommerce-admin.php:572
+#: languages/woocommerce-admin.php:569
 msgid "Remove coupon filter"
 msgstr ""
 
-#: languages/woocommerce-admin.php:575
+#: languages/woocommerce-admin.php:572
 msgid "Select a coupon filter match"
 msgstr ""
 
-#: languages/woocommerce-admin.php:579
+#: languages/woocommerce-admin.php:576
 msgid "{{title}}Coupon Code{{/title}} {{rule /}} {{filter /}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:582
+#: languages/woocommerce-admin.php:579
 msgid "Select coupon codes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:585
+#: languages/woocommerce-admin.php:582
 msgid "Customer Type"
 msgstr ""
 
-#: languages/woocommerce-admin.php:588
+#: languages/woocommerce-admin.php:585
 msgid "Remove customer filter"
 msgstr ""
 
-#: languages/woocommerce-admin.php:591
+#: languages/woocommerce-admin.php:588
 msgid "Select a customer filter match"
 msgstr ""
 
-#: languages/woocommerce-admin.php:595
+#: languages/woocommerce-admin.php:592
 msgid "{{title}}Customer is{{/title}} {{filter /}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:598
+#: languages/woocommerce-admin.php:595
 msgid "Select a customer type"
 msgstr ""
 
-#: languages/woocommerce-admin.php:601
+#: languages/woocommerce-admin.php:598
 msgid "New"
 msgstr ""
 
-#: languages/woocommerce-admin.php:604
+#: languages/woocommerce-admin.php:601
 msgid "Returning"
 msgstr ""
 
-#: languages/woocommerce-admin.php:610
+#: languages/woocommerce-admin.php:607
 #: src/API/Reports/Revenue/Stats/Controller.php:190
 msgid "Refunds"
 msgstr ""
 
-#: languages/woocommerce-admin.php:613
+#: languages/woocommerce-admin.php:610
 msgid "Remove refunds filter"
 msgstr ""
 
-#: languages/woocommerce-admin.php:616
+#: languages/woocommerce-admin.php:613
 msgid "Select a refund filter match"
 msgstr ""
 
-#: languages/woocommerce-admin.php:619
+#: languages/woocommerce-admin.php:616
 msgid "{{title}}Refunds{{/title}} {{filter /}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:622
+#: languages/woocommerce-admin.php:619
 msgid "Select a refund type"
 msgstr ""
 
-#: languages/woocommerce-admin.php:627
+#: languages/woocommerce-admin.php:624
 msgid "All"
 msgstr ""
 
-#: languages/woocommerce-admin.php:630
+#: languages/woocommerce-admin.php:627
 msgid "Partially refunded"
 msgstr ""
 
-#: languages/woocommerce-admin.php:633
+#: languages/woocommerce-admin.php:630
 msgid "Fully refunded"
 msgstr ""
 
-#: languages/woocommerce-admin.php:636
+#: languages/woocommerce-admin.php:633
 msgid "None"
 msgstr ""
 
-#: languages/woocommerce-admin.php:639
+#: languages/woocommerce-admin.php:636
 msgid "Average Items Per Order"
 msgstr ""
 
-#: languages/woocommerce-admin.php:642
+#: languages/woocommerce-admin.php:639
 msgid "All Orders"
 msgstr ""
 
-#: languages/woocommerce-admin.php:645
+#: languages/woocommerce-admin.php:642
 msgid "Order Status"
 msgstr ""
 
-#: languages/woocommerce-admin.php:648
+#: languages/woocommerce-admin.php:645
 msgid "Remove order status filter"
 msgstr ""
 
-#: languages/woocommerce-admin.php:651
+#: languages/woocommerce-admin.php:648
 msgid "Select an order status filter match"
 msgstr ""
 
-#: languages/woocommerce-admin.php:655
+#: languages/woocommerce-admin.php:652
 msgid "{{title}}Order Status{{/title}} {{rule /}} {{filter /}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:658
+#: languages/woocommerce-admin.php:655
 msgid "Select an order status"
 msgstr ""
 
-#: languages/woocommerce-admin.php:661
+#: languages/woocommerce-admin.php:658
 msgid "Search products"
+msgstr ""
+
+#: languages/woocommerce-admin.php:661
+msgid "Remove products filter"
 msgstr ""
 
 #: languages/woocommerce-admin.php:664
@@ -1173,41 +1185,41 @@ msgid "TAX"
 msgstr ""
 
 #: languages/woocommerce-admin.php:864
-msgid "Default Date Range:"
+msgid "Custom Statuses"
 msgstr ""
 
 #: languages/woocommerce-admin.php:867
+msgid ""
+"Orders with these statuses require action on behalf of the store "
+"admin.These orders will show up in the Orders tab under the activity panel."
+msgstr ""
+
+#: languages/woocommerce-admin.php:870
+msgid "Default Date Range:"
+msgstr ""
+
+#: languages/woocommerce-admin.php:873
 msgid ""
 "Select a default date range. When no range is selected, reports will be "
 "viewed by the default date range."
 msgstr ""
 
-#: languages/woocommerce-admin.php:870
+#: languages/woocommerce-admin.php:876
 msgid "Exclude the %s status from reports"
 msgstr ""
 
-#: languages/woocommerce-admin.php:873
+#: languages/woocommerce-admin.php:879
 msgid "Excluded Statuses:"
 msgstr ""
 
-#: languages/woocommerce-admin.php:876
+#: languages/woocommerce-admin.php:882
 msgid ""
 "Orders with these statuses are excluded from the totals in your reports. "
 "The {{strong}}Refunded{{/strong}} status can not be excluded."
 msgstr ""
 
-#: languages/woocommerce-admin.php:879
-msgid "Actionable Statuses:"
-msgstr ""
-
-#: languages/woocommerce-admin.php:882
-msgid "Custom Statuses"
-msgstr ""
-
 #: languages/woocommerce-admin.php:885
-msgid ""
-"Orders with these statuses require action on behalf of the store "
-"admin.These orders will show up in the Orders tab under the activity panel."
+msgid "Actionable Statuses:"
 msgstr ""
 
 #: languages/woocommerce-admin.php:888
@@ -1545,7 +1557,7 @@ msgstr ""
 msgid "Wix"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1149 src/Features/Onboarding.php:113
+#: languages/woocommerce-admin.php:1149 src/Features/Onboarding.php:119
 msgid "Other"
 msgstr ""
 
@@ -1575,51 +1587,51 @@ msgstr ""
 msgid "Which platform is the store using?"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1174
+#: languages/woocommerce-admin.php:1175
 msgid "Continue"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1177
+#: languages/woocommerce-admin.php:1178
 msgid "There was a problem updating your business details."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1180
+#: languages/woocommerce-admin.php:1181
 msgid "There was a problem updating your industries."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1183
+#: languages/woocommerce-admin.php:1184
 msgid "Please select at least one industry"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1186
+#: languages/woocommerce-admin.php:1187
 msgid "In which industry does the store operate?"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1190
+#: languages/woocommerce-admin.php:1191
 msgid "Choose any that apply"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1193
+#: languages/woocommerce-admin.php:1194
 msgid "Enhance your store setup"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1196
+#: languages/woocommerce-admin.php:1197
 msgid "Install %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1199
+#: languages/woocommerce-admin.php:1200
 msgid "Activate %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1204
+#: languages/woocommerce-admin.php:1205
 msgid "Retry"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1207
+#: languages/woocommerce-admin.php:1208
 msgid "Activate & continue"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1212
+#: languages/woocommerce-admin.php:1213
 #: src/Notes/WC_Admin_Notes_Facebook_Extension.php:71
 #: src/Notes/WC_Admin_Notes_Mobile_App.php:56
 #: src/Notes/WC_Admin_Notes_Order_Milestones.php:241
@@ -1627,1692 +1639,1813 @@ msgstr ""
 msgid "Learn more"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1215
+#: languages/woocommerce-admin.php:1216
 msgid "Please select at least one product type"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1218
+#: languages/woocommerce-admin.php:1219
 msgid "There was a problem updating your product types."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1221
+#: languages/woocommerce-admin.php:1222
 msgid "What type of products will be listed?"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1224
+#: languages/woocommerce-admin.php:1225
 msgid "Security"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1227
+#: languages/woocommerce-admin.php:1228
 msgid ""
 "Jetpack automatically blocks brute force attacks to protect your store from "
 "unauthorized access."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1230
+#: languages/woocommerce-admin.php:1231
 msgid "Sales Tax"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1233
+#: languages/woocommerce-admin.php:1234
 msgid ""
 "With WooCommerce Services we ensure that the correct rate of tax is charged "
 "on all of your orders."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1236
+#: languages/woocommerce-admin.php:1237
 msgid "Speed"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1239
+#: languages/woocommerce-admin.php:1240
 msgid ""
 "Cache your images and static files on our own powerful global network of "
 "servers and speed up your site."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1242
+#: languages/woocommerce-admin.php:1243
 msgid "Mobile App"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1245
+#: languages/woocommerce-admin.php:1246
 msgid ""
 "Your store in your pocket. Manage orders, receive sales notifications, and "
 "more. Only with a Jetpack connection."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1248
+#: languages/woocommerce-admin.php:1249
 msgid "Print your own shipping labels"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1251
+#: languages/woocommerce-admin.php:1252
 msgid "Save time at the Post Office by printing USPS shipping labels at home."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1254
+#: languages/woocommerce-admin.php:1255
 msgid "Simple payment setup"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1257
+#: languages/woocommerce-admin.php:1258
 msgid ""
 "WooCommerce Services enables us to provision Stripe and Paypal accounts "
 "quickly and easily for you."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1261
+#: languages/woocommerce-admin.php:1262
 msgid "WooCommerce Services"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1264
+#: languages/woocommerce-admin.php:1265
 msgid "Jetpack & WooCommerce Services"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1267
+#: languages/woocommerce-admin.php:1268
 msgid "Help improve WooCommerce with {{link}}usage tracking{{/link}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1270
+#: languages/woocommerce-admin.php:1271
 msgid "Start setting up your WooCommerce store"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1273
+#: languages/woocommerce-admin.php:1274
 msgid ""
 "Simplify and enhance the setup of your store with the free features and "
 "benefits offered by {{strong}}%s{{/strong}}."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1276
+#: languages/woocommerce-admin.php:1277
+msgid ""
+"By connecting your site you agree to our fascinating {{tosLink}}Terms of "
+"Service{{/tosLink}} and to {{detailsLink}}share details{{/detailsLink}} "
+"with WordPress.com. "
+msgstr ""
+
+#: languages/woocommerce-admin.php:1280
 msgid "Get started"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1279
+#: languages/woocommerce-admin.php:1283
 msgid "Proceed without %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1282
+#: languages/woocommerce-admin.php:1286
 msgid "There was a problem updating your preferences."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1285
+#: languages/woocommerce-admin.php:1289
 msgid "There was a problem saving your store details."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1288
+#: languages/woocommerce-admin.php:1292
 msgid "Where is your store based?"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1291
+#: languages/woocommerce-admin.php:1295
 msgid "This will help us configure your store and get you started quickly"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1294
+#: languages/woocommerce-admin.php:1298
 msgid "I'm setting up a store for a client"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1298
+#: languages/woocommerce-admin.php:1302
 msgid "Choose"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1301
+#: languages/woocommerce-admin.php:1305
 msgid "Live Demo"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1304
+#: languages/woocommerce-admin.php:1308
 msgid "Currently active theme"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1307
+#: languages/woocommerce-admin.php:1311
 msgid "Installed"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1310
+#: languages/woocommerce-admin.php:1314
 msgid "Free"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1313
+#: languages/woocommerce-admin.php:1317
 msgid "%s per year"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1316
+#: languages/woocommerce-admin.php:1320
 msgid "Choose a theme"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1319
+#: languages/woocommerce-admin.php:1323
 msgid ""
 "Choose how your store appears to customers. And don't worry, you can always "
 "switch themes and edit them later."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1322
+#: languages/woocommerce-admin.php:1326
 msgid "All themes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1325
+#: languages/woocommerce-admin.php:1329
 msgid "Paid themes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1328
+#: languages/woocommerce-admin.php:1332
 msgid "Free themes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1331
+#: languages/woocommerce-admin.php:1335
 msgid "There was a problem selecting your store theme."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1334
+#: languages/woocommerce-admin.php:1338
 msgid "This theme does not support WooCommerce."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1337
+#: languages/woocommerce-admin.php:1341
 msgid "{{strong}}%s{{/strong}} developed by WooCommerce"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1340
+#: languages/woocommerce-admin.php:1344
 msgid "Upload a theme"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1343
+#: languages/woocommerce-admin.php:1347
 msgid "Drop a theme zip file here to upload"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1346
+#: languages/woocommerce-admin.php:1350
 msgid "Drop your theme zip file here"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1349
+#: languages/woocommerce-admin.php:1353
 msgid "Uploading theme"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1352
+#: languages/woocommerce-admin.php:1356
 msgid "Your theme is being uploaded"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1355
+#: languages/woocommerce-admin.php:1359
 msgid "Section Title"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1358
+#: languages/woocommerce-admin.php:1362
 msgid "Move up"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1361
+#: languages/woocommerce-admin.php:1365
 msgid "Move Down"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1364
+#: languages/woocommerce-admin.php:1368
 msgid "Remove block"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1367
+#: languages/woocommerce-admin.php:1371
 msgid "Remove section"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1370
+#: languages/woocommerce-admin.php:1374
 msgid "Store Performance"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1373
+#: languages/woocommerce-admin.php:1377
 msgid "Choose which analytics to display and the section name"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1376
+#: languages/woocommerce-admin.php:1380
 msgid "Display Stats:"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1379
+#: languages/woocommerce-admin.php:1383
+msgid "Personalize your store"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1386
+msgid "Create a custom homepage and upload your logo"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1389
+msgid "Set up shipping"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1392
+msgid "Configure some basic shipping rates to get started"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1395
 msgid "Set up tax"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1382
+#: languages/woocommerce-admin.php:1398
 msgid "Choose how to configure tax rates - manually or automatically"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1385
+#: languages/woocommerce-admin.php:1401
 msgid "Set up payments"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1388
+#: languages/woocommerce-admin.php:1404
 msgid "Select which payment providers you’d like to use and configure them"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1391
+#: languages/woocommerce-admin.php:1407
 msgid "Set up your store and start selling"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1394
+#: languages/woocommerce-admin.php:1410
 msgid ""
 "Below you’ll find a list of the most important steps to get your store up "
 "and running."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1397
+#: languages/woocommerce-admin.php:1413
 msgid "Connect your store to WooCommerce.com"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1400
+#: languages/woocommerce-admin.php:1416
 msgid "Install and manage your extensions directly from your Dashboard"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1403
+#: languages/woocommerce-admin.php:1419
 msgid "Add your first product"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1406
+#: languages/woocommerce-admin.php:1422
 msgid "Add products manually, import from a sheet or migrate from another platform"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1409
-msgid "Personalize your store"
-msgstr ""
-
-#: languages/woocommerce-admin.php:1412
-msgid "Create a custom homepage and upload your logo"
-msgstr ""
-
-#: languages/woocommerce-admin.php:1415
-msgid "Set up shipping"
-msgstr ""
-
-#: languages/woocommerce-admin.php:1418
-msgid "Configure some basic shipping rates to get started"
-msgstr ""
-
-#: languages/woocommerce-admin.php:1421
+#: languages/woocommerce-admin.php:1425
 msgid "There was an error importing some of the demo products."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1424
+#: languages/woocommerce-admin.php:1428
 msgid "All demo products have been imported."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1427
+#: languages/woocommerce-admin.php:1431
 msgid "Import demo products"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1430
+#: languages/woocommerce-admin.php:1434
 msgid ""
 "We’ll add some products that it will make it easier to see what your store "
 "looks like."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1433
+#: languages/woocommerce-admin.php:1437
 msgid "Import products"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1436
+#: languages/woocommerce-admin.php:1440
 msgid "Create a custom homepage"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1439
+#: languages/woocommerce-admin.php:1443
 msgid "Create a new homepage and customize it to suit your needs"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1442
+#: languages/woocommerce-admin.php:1446
 msgid "Create homepage"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1445
+#: languages/woocommerce-admin.php:1449
 msgid "Upload a logo"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1448
+#: languages/woocommerce-admin.php:1452
 msgid "Ensure your store is on-brand by adding your logo"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1452
+#: languages/woocommerce-admin.php:1458
 msgid "Proceed"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1455
+#: languages/woocommerce-admin.php:1464
 msgid "Skip"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1458
+#: languages/woocommerce-admin.php:1467
 msgid "Set a store notice"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1461
+#: languages/woocommerce-admin.php:1470
 msgid "Optionally display a prominent notice across all pages of your store"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1464
+#: languages/woocommerce-admin.php:1473
 msgid "Store notice text"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1469
+#: languages/woocommerce-admin.php:1478
 msgid "Complete task"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1472
+#: languages/woocommerce-admin.php:1481
 msgid "Store logo updated sucessfully."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1475
+#: languages/woocommerce-admin.php:1484
 msgid "Store notice updated sucessfully."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1478
+#: languages/woocommerce-admin.php:1487
 msgid ""
 "You must click approve to install your extensions and connect to "
 "WooCommerce.com."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1481 src/API/OnboardingPlugins.php:309
-#: src/API/OnboardingPlugins.php:314 src/API/OnboardingPlugins.php:371
-#: src/API/OnboardingPlugins.php:376 src/API/OnboardingPlugins.php:392
+#: languages/woocommerce-admin.php:1490 src/API/OnboardingPlugins.php:337
+#: src/API/OnboardingPlugins.php:342 src/API/OnboardingPlugins.php:399
+#: src/API/OnboardingPlugins.php:404 src/API/OnboardingPlugins.php:420
 msgid "There was an error connecting to WooCommerce.com. Please try again."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1484
+#: languages/woocommerce-admin.php:1493
 msgid "Store connected to WooCommerce.com and extensions are being installed."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1487
-msgid "Create a Paypal account for me"
+#: languages/woocommerce-admin.php:1496
+msgid "Create a Stripe account for me"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1490
+#: languages/woocommerce-admin.php:1499
 msgid "Email address"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1493
+#: languages/woocommerce-admin.php:1502
 msgid "Credit cards - powered by Stripe"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1496
+#: languages/woocommerce-admin.php:1505
 msgid ""
 "Accept debit and credit cards in 135+ currencies, methods such as Alipay, "
 "and one-touch checkout with Apple Pay."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1499
+#: languages/woocommerce-admin.php:1508
 msgid "PayPal Checkout"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1502
+#: languages/woocommerce-admin.php:1511
 msgid ""
 "Safe and secure payments using credit cards or your customer's PayPal "
 "account."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1505
+#: languages/woocommerce-admin.php:1514
 msgid "Klarna Checkout"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1508
+#: languages/woocommerce-admin.php:1517
 msgid "Klarna Payments"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1511
+#: languages/woocommerce-admin.php:1520
 msgid ""
 "Choose the payment that you want, pay now, pay later or slice it. No credit "
 "card numbers, no passwords, no worries."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1514
+#: languages/woocommerce-admin.php:1523
 msgid "Square"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1517
+#: languages/woocommerce-admin.php:1526
 msgid ""
 "Securely accept credit and debit cards with one low rate, no surprise fees "
 "(custom rates available). Sell online and in store and track sales and "
 "inventory in one place."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1520
+#: languages/woocommerce-admin.php:1529
 msgid "Choose payment methods"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1523
+#: languages/woocommerce-admin.php:1532
 msgid "Select which payment methods you'd like to use"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1526
+#: languages/woocommerce-admin.php:1535
 msgid "Install selected methods"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1529
+#: languages/woocommerce-admin.php:1538
 msgid "Install plugins required to offer the selected payment methods"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1532
+#: languages/woocommerce-admin.php:1541
 msgid "Configure payment methods"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1535
+#: languages/woocommerce-admin.php:1544
 msgid "Set up your chosen payment methods"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1538
-msgid "Create a Stripe account for me"
-msgstr ""
-
-#: languages/woocommerce-admin.php:1541
-msgid "Add manually (recommended)"
-msgstr ""
-
-#: languages/woocommerce-admin.php:1544
-msgid "For small stores we recommend adding products manually"
-msgstr ""
-
 #: languages/woocommerce-admin.php:1547
-msgid "Import"
+msgid "Enable Stripe"
 msgstr ""
 
 #: languages/woocommerce-admin.php:1550
-msgid "For larger stores we recommend importing all products at once via CSV file"
+msgid "Connect your store to your Stripe account"
 msgstr ""
 
 #: languages/woocommerce-admin.php:1553
-msgid "Migrate"
+msgid "Enable PayPal Checkout"
 msgstr ""
 
 #: languages/woocommerce-admin.php:1556
+msgid "Connect your store to your PayPal account"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1559
+msgid "Enable Square"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1562
+msgid "Connect your store to your Square account"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1565
+msgid "Klarna"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1568
+msgid ""
+"Klarna can be configured under your {{link}}store settings{{/link}}. Figure "
+"out {{helpLink}}what you need{{/helpLink}}."
+msgstr ""
+
+#: languages/woocommerce-admin.php:1574 src/Features/Onboarding.php:552
+#: src/Features/Onboarding.php:556
+#: src/Notes/WC_Admin_Notes_Woo_Subscriptions_Notes.php:193
+msgid "Connect"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1577
+msgid "PayPal connected successfully."
+msgstr ""
+
+#: languages/woocommerce-admin.php:1581
+msgid "There was a problem saving your payment settings."
+msgstr ""
+
+#: languages/woocommerce-admin.php:1584
+msgid "Please enter your API username"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1587
+msgid "Please enter your API password"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1590
+msgid "Your API details can be obtained from your {{link}}PayPal account{{/link}}"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1593
+msgid "API Username"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1596
+msgid "API Password"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1599
+msgid "Square connected successfully."
+msgstr ""
+
+#: languages/woocommerce-admin.php:1602
+msgid ""
+"There was an error connecting to Square. Please try again or skip to "
+"connect later in store settings."
+msgstr ""
+
+#: languages/woocommerce-admin.php:1605
+msgid "Stripe"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1608
+msgid ""
+"We tried to create a Stripe account automatically for "
+"{{strong}}%s{{/strong}}, but an error occured. Please try connecting "
+"manually to continue."
+msgstr ""
+
+#: languages/woocommerce-admin.php:1611
+msgid "You already have a Stripe account"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1614
+msgid ""
+"We tried to create a Stripe account automatically for "
+"{{strong}}%s{{/strong}}, but one already exists. Please sign in and connect "
+"to continue."
+msgstr ""
+
+#: languages/woocommerce-admin.php:1617
+msgid "OK"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1620
+msgid "Stripe connected successfully."
+msgstr ""
+
+#: languages/woocommerce-admin.php:1623
+msgid "Please enter your publishable key"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1626
+msgid "Please enter your secret key"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1629
+msgid "Your API details can be obtained from your {{link}}Stripe account{{/link}}"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1632
+msgid "Live Publishable Key"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1635
+msgid "Live Secret Key"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1638
+msgid "Add manually (recommended)"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1641
+msgid "For small stores we recommend adding products manually"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1644
+msgid "Import"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1647
+msgid "For larger stores we recommend importing all products at once via CSV file"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1650
+msgid "Migrate"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1653
 msgid ""
 "For stores currently selling elsewhere we suggest using a product migration "
 "service"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1560
+#: languages/woocommerce-admin.php:1657
 msgid "Set store location"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1564
+#: languages/woocommerce-admin.php:1661
 msgid "The address from which your business operates"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1567
+#: languages/woocommerce-admin.php:1664
 msgid "Set shipping costs"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1570
+#: languages/woocommerce-admin.php:1667
 msgid "Define how much customers pay to ship to different destinations"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1573
+#: languages/woocommerce-admin.php:1670
 msgid "Enable shipping label printing"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1576
+#: languages/woocommerce-admin.php:1673
 msgid ""
 "With WooCommerce Services and Jetpack you can save time at the Post Office "
 "by printing your shipping labels at home"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1580
+#: languages/woocommerce-admin.php:1677
 msgid "Connect your store"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1583
+#: languages/woocommerce-admin.php:1680
 msgid "Connect your store to WordPress.com to enable label printing"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1586
+#: languages/woocommerce-admin.php:1683
 msgid "Rest of the world"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1589
-msgid "Free shipping"
-msgstr ""
-
-#: languages/woocommerce-admin.php:1592
-msgid "Shipping rates can not be negative numbers."
-msgstr ""
-
-#: languages/woocommerce-admin.php:1595
-msgid "Shipping cost"
-msgstr ""
-
-#: languages/woocommerce-admin.php:1598
+#: languages/woocommerce-admin.php:1686
 msgid "Your shipping rates have been updated."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1601 src/Features/Onboarding.php:455
-#: src/Features/Onboarding.php:459
-#: src/Notes/WC_Admin_Notes_Woo_Subscriptions_Notes.php:193
-msgid "Connect"
+#: languages/woocommerce-admin.php:1689
+msgid "Free shipping"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1604
+#: languages/woocommerce-admin.php:1692
+msgid "Shipping rates can not be negative numbers."
+msgstr ""
+
+#: languages/woocommerce-admin.php:1695
+msgid "Shipping cost"
+msgstr ""
+
+#: languages/woocommerce-admin.php:1698
 msgid "There was a problem saving your store location."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1607
+#: languages/woocommerce-admin.php:1701
 msgid "Install & enable"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1610
+#: languages/woocommerce-admin.php:1704
 msgid "No thanks"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1613
+#: languages/woocommerce-admin.php:1707
 msgid "Plugins were successfully installed and activated."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1616
+#: languages/woocommerce-admin.php:1710
 msgid "Your tax settings have been updated."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1619
+#: languages/woocommerce-admin.php:1713
 msgid "There was a problem updating your tax settings."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1622
+#: languages/woocommerce-admin.php:1716
 msgid "Automate sales tax calculations"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1625
+#: languages/woocommerce-admin.php:1719
 msgid "Install Jetpack and WooCommerce Services"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1628
+#: languages/woocommerce-admin.php:1722
 msgid ""
 "Jetpack and WooCommerce services allow you to automate sales tax "
 "calculations"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1631
+#: languages/woocommerce-admin.php:1725
 msgid "Set up tax rates manually"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1634
+#: languages/woocommerce-admin.php:1728
 msgid ""
 "Connect your store to WordPress.com to enable automated sales tax "
 "calculations"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1637
+#: languages/woocommerce-admin.php:1731
 msgid "Enable automated tax calculations"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1640
+#: languages/woocommerce-admin.php:1734
 msgid "Sales taxes will be calculated automatically when a customer checks out"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1643
+#: languages/woocommerce-admin.php:1737
 msgid "Congifure tax rates"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1646
+#: languages/woocommerce-admin.php:1740
 msgid "Head over to the tax rate settings screen to configure your tax rates"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1649
+#: languages/woocommerce-admin.php:1743
 msgid "Configure"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1652
+#: languages/woocommerce-admin.php:1746
 msgid "Good news!"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1655
+#: languages/woocommerce-admin.php:1749
 msgid ""
 "{{strong}}Jetpack{{/strong}} and {{strong}}WooCommerce Services{{/strong}} "
 "can automate your sales tax calculations for you."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1658
+#: languages/woocommerce-admin.php:1752
 msgid "Yes please"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1661
+#: languages/woocommerce-admin.php:1755
 msgid "No thanks, I'll configure taxes manually"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1665
+#: languages/woocommerce-admin.php:1759
 msgid "Inbox"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1669
+#: languages/woocommerce-admin.php:1763
 msgid "Reviews"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1673
+#: languages/woocommerce-admin.php:1767
 msgid "unread activity"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1676
+#: languages/woocommerce-admin.php:1770
 msgid "View Activity Panel, you have unread activity"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1679
+#: languages/woocommerce-admin.php:1773
 msgid "View Activity Panel"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1682
+#: languages/woocommerce-admin.php:1776
 msgid "Store Activity"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1685
+#: languages/woocommerce-admin.php:1779
 msgid "Close Activity Panel"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1688
+#: languages/woocommerce-admin.php:1782
 msgid "There was an error getting your inbox. Please try again."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1691
+#: languages/woocommerce-admin.php:1785
 msgid "Your inbox is empty"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1694
+#: languages/woocommerce-admin.php:1788
 msgid ""
 "As things begin to happen in your store your inbox will start to fill up. "
 "You'll see things like achievements, new feature announcements, extension "
 "recommendations and more!"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1697
+#: languages/woocommerce-admin.php:1791
 msgid ""
 "Order {{orderLink}}#%(orderNumber)s{{/orderLink}} %(customerString)s "
 "{{destinationFlag/}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1700
+#: languages/woocommerce-admin.php:1794
 msgid "%d product"
 msgid_plural "%d products"
 msgstr[0] ""
 msgstr[1] ""
 
-#: languages/woocommerce-admin.php:1703
+#: languages/woocommerce-admin.php:1797
 msgid "Begin fulfillment"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1706
+#: languages/woocommerce-admin.php:1800
 msgid "Manage all orders"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1709
+#: languages/woocommerce-admin.php:1803
 msgid ""
 "You currently don't have any actionable statuses. To display orders here, "
 "select orders that require further review in settings."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1716
+#: languages/woocommerce-admin.php:1810
 msgid "There was an error getting your orders. Please try again."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1719
+#: languages/woocommerce-admin.php:1813
 msgid "No orders to ship"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1722
+#: languages/woocommerce-admin.php:1816
 msgid "Good job, you've fulfilled all of your new orders!"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1725
+#: languages/woocommerce-admin.php:1819
 msgid "You have no orders to fulfill"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1728
+#: languages/woocommerce-admin.php:1822
 msgid ""
 "You're still waiting for your customers to make their first orders. While "
 "you wait why not learn how to manage orders?"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1731
+#: languages/woocommerce-admin.php:1825
 msgid "placed by {{customerLink}}%(customerName)s{{/customerLink}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1734
+#: languages/woocommerce-admin.php:1828
 msgid "Approve"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1737
+#: languages/woocommerce-admin.php:1831
 msgid "Select an action"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1740
+#: languages/woocommerce-admin.php:1834
 msgid "Reply"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1743
+#: languages/woocommerce-admin.php:1837
 msgid "Spam"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1746
+#: languages/woocommerce-admin.php:1840
 msgid "Trash"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1749
+#: languages/woocommerce-admin.php:1843
 msgid "You have no reviews to moderate"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1752
+#: languages/woocommerce-admin.php:1846
 msgid "We noticed that it's been a while since your products had any reviews."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1755
+#: languages/woocommerce-admin.php:1849
 msgid "View all Reviews"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1758
+#: languages/woocommerce-admin.php:1852
 msgid ""
 "Awesome, you've moderated all of your product reviews. How about responding "
 "to some of those negative reviews?"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1761
+#: languages/woocommerce-admin.php:1855
 msgid "Your customers haven't started reviewing your products."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1764
+#: languages/woocommerce-admin.php:1858
 msgid ""
 "Take some time to learn about best practices for collecting and using your "
 "reviews."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1767
+#: languages/woocommerce-admin.php:1861
 msgid "There was an error getting your reviews. Please try again."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1770
+#: languages/woocommerce-admin.php:1864
 msgid "No reviews to moderate"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1773
+#: languages/woocommerce-admin.php:1867
 msgid ""
 "{{productLink}}%s{{/productLink}} reviewed by "
 "{{authorLink}}%s{{/authorLink}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1776
+#: languages/woocommerce-admin.php:1870
 msgid "Verified customer"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1779
+#: languages/woocommerce-admin.php:1873
 msgid "Unapprove"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1782
+#: languages/woocommerce-admin.php:1876
 msgid "%d in stock"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1785
+#: languages/woocommerce-admin.php:1879
 msgid "Save"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1788
+#: languages/woocommerce-admin.php:1882
 msgid "Cancel"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1791
+#: languages/woocommerce-admin.php:1885
 msgid "Update stock"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1794
+#: languages/woocommerce-admin.php:1888
 msgid "Your stock is in good shape."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1797
+#: languages/woocommerce-admin.php:1891
 msgid "You currently have no products running low on stock."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1800
+#: languages/woocommerce-admin.php:1894
 msgid "There was an error getting your low stock products. Please try again."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1803
+#: languages/woocommerce-admin.php:1897
 msgid "No products with low stock"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1806
+#: languages/woocommerce-admin.php:1900
 msgid "Notices"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1809
+#: languages/woocommerce-admin.php:1903
 msgid "%1$s &lsaquo; %2$s &#8212; WooCommerce"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1812 src/Features/AnalyticsDashboard.php:85
+#: languages/woocommerce-admin.php:1906 src/Features/AnalyticsDashboard.php:85
 msgid "Dashboard"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1815 src/Features/Analytics.php:81
+#: languages/woocommerce-admin.php:1909 src/Features/Analytics.php:81
 msgid "Analytics"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1818
+#: languages/woocommerce-admin.php:1912
 msgid "Next Week"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1821
+#: languages/woocommerce-admin.php:1915
 msgid "Next Month"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1824
+#: languages/woocommerce-admin.php:1918
 msgid "Remind Me Later"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1827
+#: languages/woocommerce-admin.php:1921
 msgid "Previous Alert"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1830
+#: languages/woocommerce-admin.php:1924
 msgid "{{current /}} of {{total /}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1833
+#: languages/woocommerce-admin.php:1927
 msgid "Next Alert"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1836
+#: languages/woocommerce-admin.php:1930
 msgid "Later Today"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1839
+#: languages/woocommerce-admin.php:1933
 msgid "Tomorrow"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1842
+#: languages/woocommerce-admin.php:1936
 msgid "%s stock updated."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1845
+#: languages/woocommerce-admin.php:1939
 msgid "%s stock could not be updated."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1848 src/API/OnboardingPlugins.php:279
+#: languages/woocommerce-admin.php:1942 src/API/OnboardingPlugins.php:307
 msgid "Jetpack"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1851
+#: languages/woocommerce-admin.php:1945
 msgid "There was an error installing %s. Please try again."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1854
+#: languages/woocommerce-admin.php:1948
 msgid "There was an error connecting to %s. Please try again."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1857
+#: languages/woocommerce-admin.php:1951
 msgid "There was an error activating %s. Please try again."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1863
+#: languages/woocommerce-admin.php:1957
 msgid "%d result found, use up and down arrow keys to navigate."
 msgid_plural "%d results found, use up and down arrow keys to navigate."
 msgstr[0] ""
 msgstr[1] ""
 
-#: languages/woocommerce-admin.php:1869
+#: languages/woocommerce-admin.php:1963
 msgid "No results."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1872
+#: languages/woocommerce-admin.php:1966
 msgid "Clear"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1875
+#: languages/woocommerce-admin.php:1969
 msgid "Custom color picker"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1879
+#: languages/woocommerce-admin.php:1973
 msgid "Color: %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1883
+#: languages/woocommerce-admin.php:1977
 msgid "Color code: %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1886
+#: languages/woocommerce-admin.php:1980
 msgid "Custom Color"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1889
+#: languages/woocommerce-admin.php:1983
 msgid "Alpha value, from 0 (transparent) to 1 (fully opaque)."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1892
+#: languages/woocommerce-admin.php:1986
 msgid "Hue value in degrees, from 0 to 359."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1895
+#: languages/woocommerce-admin.php:1989
 msgid "Move the arrow left or right to change hue."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1898
+#: languages/woocommerce-admin.php:1992
 msgid "Hue/saturation/lightness mode active"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1901
+#: languages/woocommerce-admin.php:1995
 msgid "Hex color mode active"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1904
+#: languages/woocommerce-admin.php:1998
 msgid "RGB mode active"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1907
+#: languages/woocommerce-admin.php:2001
 msgid "Color value in hexadecimal"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1910
+#: languages/woocommerce-admin.php:2004
 msgid "Color value in RGB"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1913
+#: languages/woocommerce-admin.php:2007
 msgid "Color value in HSL"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1916
+#: languages/woocommerce-admin.php:2010
 msgid "Change color format"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1919
+#: languages/woocommerce-admin.php:2013
 msgid "Choose a shade"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1922
+#: languages/woocommerce-admin.php:2016
 msgid ""
 "Use your arrow keys to change the base color. Move up to lighten the color, "
 "down to darken, left to decrease saturation, and right to increase "
 "saturation."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1925
+#: languages/woocommerce-admin.php:2019
 msgid "Click to Select"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1928
+#: languages/woocommerce-admin.php:2022
 msgid ""
 "Click the right or left arrows to select other months in the past or the "
 "future."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1931
+#: languages/woocommerce-admin.php:2025
 msgid "Click the desired day to select it."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1934
+#: languages/woocommerce-admin.php:2028
 msgid "Navigating with a keyboard"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1938
+#: languages/woocommerce-admin.php:2032
 msgid "Select the date in focus."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1941
+#: languages/woocommerce-admin.php:2035
 msgid "Left and Right Arrows"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1944
+#: languages/woocommerce-admin.php:2038
 msgid "Move backward (left) or forward (right) by one day."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1947
+#: languages/woocommerce-admin.php:2041
 msgid "Up and Down Arrows"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1950
+#: languages/woocommerce-admin.php:2044
 msgid "Move backward (up) or forward (down) by one week."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1953
+#: languages/woocommerce-admin.php:2047
 msgid "Page Up and Page Down"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1956
+#: languages/woocommerce-admin.php:2050
 msgid "PgUp/PgDn"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1959
+#: languages/woocommerce-admin.php:2053
 msgid "Move backward (PgUp) or forward (PgDn) by one month."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1962
+#: languages/woocommerce-admin.php:2056
 msgid "Home and End"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1965
+#: languages/woocommerce-admin.php:2059
 msgid "Home/End"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1968
+#: languages/woocommerce-admin.php:2062
 msgid "Go to the first (home) or last (end) day of a week."
 msgstr ""
 
-#: languages/woocommerce-admin.php:1972
+#: languages/woocommerce-admin.php:2066
 msgid "Close"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1975
+#: languages/woocommerce-admin.php:2069
 msgid "Calendar Help"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1978
+#: languages/woocommerce-admin.php:2072
 msgid "Month"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1981
+#: languages/woocommerce-admin.php:2075
 msgid "January"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1984
+#: languages/woocommerce-admin.php:2078
 msgid "February"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1987
+#: languages/woocommerce-admin.php:2081
 msgid "March"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1990
+#: languages/woocommerce-admin.php:2084
 msgid "April"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1993
+#: languages/woocommerce-admin.php:2087
 msgid "May"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1996
+#: languages/woocommerce-admin.php:2090
 msgid "June"
 msgstr ""
 
-#: languages/woocommerce-admin.php:1999
+#: languages/woocommerce-admin.php:2093
 msgid "July"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2002
+#: languages/woocommerce-admin.php:2096
 msgid "August"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2005
+#: languages/woocommerce-admin.php:2099
 msgid "September"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2008
+#: languages/woocommerce-admin.php:2102
 msgid "October"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2011
+#: languages/woocommerce-admin.php:2105
 msgid "November"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2014
+#: languages/woocommerce-admin.php:2108
 msgid "December"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2017
+#: languages/woocommerce-admin.php:2111
 msgid "Day"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2020
+#: languages/woocommerce-admin.php:2114
 msgid "Year"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2023
+#: languages/woocommerce-admin.php:2117
 msgid "Time"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2026
+#: languages/woocommerce-admin.php:2120
 msgid "Hours"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2029
+#: languages/woocommerce-admin.php:2123
 msgid "Minutes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2032
+#: languages/woocommerce-admin.php:2126
 msgid "AM"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2035
+#: languages/woocommerce-admin.php:2129
 msgid "PM"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2038
+#: languages/woocommerce-admin.php:2132
 msgid "Drop files to upload"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2042
+#: languages/woocommerce-admin.php:2136
 msgid "(opens in a new tab)"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2045
+#: languages/woocommerce-admin.php:2139
 msgid "Horizontal Pos."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2048
+#: languages/woocommerce-admin.php:2142
 msgid "Vertical Pos."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2051
+#: languages/woocommerce-admin.php:2145
 msgid "Custom font size"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2056
+#: languages/woocommerce-admin.php:2150
 msgid "Reset"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2059
+#: languages/woocommerce-admin.php:2153
 msgid "Custom Size"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2062
+#: languages/woocommerce-admin.php:2156
 msgid "Font Size"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2066
+#: languages/woocommerce-admin.php:2160
 msgid "Font size: %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2069
+#: languages/woocommerce-admin.php:2163
 msgid "Add item"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2072
+#: languages/woocommerce-admin.php:2166
 msgid "Separate with commas"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2075
+#: languages/woocommerce-admin.php:2169
 msgid "Item added."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2078
+#: languages/woocommerce-admin.php:2172
 msgid "Item removed."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2081
+#: languages/woocommerce-admin.php:2175
 msgid "Remove item"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2086
+#: languages/woocommerce-admin.php:2180
 msgid "%1$s (%2$s of %3$s)"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2089
+#: languages/woocommerce-admin.php:2183
 msgid "Close dialog"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2092
+#: languages/woocommerce-admin.php:2186
 msgid "Dismiss this notice"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2095
+#: languages/woocommerce-admin.php:2189
 msgid "Order by"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2098
+#: languages/woocommerce-admin.php:2192
 msgid "Newest to Oldest"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2101
+#: languages/woocommerce-admin.php:2195
 msgid "Oldest to Newest"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2105
+#: languages/woocommerce-admin.php:2199
 msgid "A → Z"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2109
+#: languages/woocommerce-admin.php:2203
 msgid "Z → A"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2112
+#: languages/woocommerce-admin.php:2206
 msgid "Number of items"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2115
+#: languages/woocommerce-admin.php:2209
 msgid "Block rendered as empty."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2119
+#: languages/woocommerce-admin.php:2213
 msgid "Error loading block: %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2123
+#: languages/woocommerce-admin.php:2217
 msgid "MMM D, YYYY"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2126
+#: languages/woocommerce-admin.php:2220
 msgid "Choose to apply any or all filters"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2129
+#: languages/woocommerce-admin.php:2223
 msgid "Add a Filter"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2132
+#: languages/woocommerce-admin.php:2226
 msgid "Filter"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2135
+#: languages/woocommerce-admin.php:2229
 msgid "Clear all filters"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2138
+#: languages/woocommerce-admin.php:2232
 msgid "Any"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2142
+#: languages/woocommerce-admin.php:2236
 msgid "%(field)s range start"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2146
+#: languages/woocommerce-admin.php:2240
 msgid "%(field)s range end"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2150
-msgid "Move backward for selected items"
-msgstr ""
-
-#: languages/woocommerce-admin.php:2156
-msgid "Clear all"
-msgstr ""
-
-#: languages/woocommerce-admin.php:2159
+#: languages/woocommerce-admin.php:2243
 msgid "Choose a date"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2162
+#: languages/woocommerce-admin.php:2246
 msgid "Date input describing a selected date in format %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2165
+#: languages/woocommerce-admin.php:2249
 msgid "select a date"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2168
+#: languages/woocommerce-admin.php:2252
 msgid "Start Date"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2171
+#: languages/woocommerce-admin.php:2255
 msgid "Date input describing a selected date range's start date in format %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2174
+#: languages/woocommerce-admin.php:2258
 msgid "to"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2177
+#: languages/woocommerce-admin.php:2261
 msgid "End Date"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2180
+#: languages/woocommerce-admin.php:2264
 msgid "Date input describing a selected date range's end date in format %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2183
+#: languages/woocommerce-admin.php:2267
 msgid "Interact with the calendar and select start and end dates."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2186
+#: languages/woocommerce-admin.php:2270
 msgid "Clear Date"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2189
+#: languages/woocommerce-admin.php:2273
 msgid "Clear Dates"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2192
+#: languages/woocommerce-admin.php:2276
 msgid "Move backward to switch to the previous month."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2195
+#: languages/woocommerce-admin.php:2279
 msgid "Move forward to switch to the next month."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2198
+#: languages/woocommerce-admin.php:2282
 msgid "Enter key"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2201
+#: languages/woocommerce-admin.php:2285
 msgid "Right and left arrow keys"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2204
+#: languages/woocommerce-admin.php:2288
 msgid "up and down arrow keys"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2207
+#: languages/woocommerce-admin.php:2291
 msgid "page up and page down keys"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2210
+#: languages/woocommerce-admin.php:2294
 msgid "Home and end keys"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2213
+#: languages/woocommerce-admin.php:2297
 msgid "Escape key"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2216
+#: languages/woocommerce-admin.php:2300
 msgid "Question mark"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2219
+#: languages/woocommerce-admin.php:2303
 msgid "Move backward (left) and forward (right) by one day."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2222
+#: languages/woocommerce-admin.php:2306
 msgid "Move backward (up) and forward (down) by one week."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2225
+#: languages/woocommerce-admin.php:2309
 msgid "Switch months."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2228
+#: languages/woocommerce-admin.php:2312
 msgid "Go to the first or last day of a week."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2231
+#: languages/woocommerce-admin.php:2315
 msgid "Return to the date input field."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2234
+#: languages/woocommerce-admin.php:2318
 msgid ""
 "Press the down arrow key to interact with the calendar and\n"
 "  select a date."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2238
+#: languages/woocommerce-admin.php:2322
 msgid "Select %s as a start date."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2241
+#: languages/woocommerce-admin.php:2325
 msgid "Select %s as an end date."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2244
+#: languages/woocommerce-admin.php:2328
 msgid "%s is not selectable."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2247
+#: languages/woocommerce-admin.php:2331
 msgid "Selected. %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2250
+#: languages/woocommerce-admin.php:2334
 msgid "Calendar"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2253
+#: languages/woocommerce-admin.php:2337
 msgid "You may select up to %d items."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2257
+#: languages/woocommerce-admin.php:2341
 msgid "Your requested data is loading"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2260
+#: languages/woocommerce-admin.php:2347
+msgid "Clear all"
+msgstr ""
+
+#: languages/woocommerce-admin.php:2350
 msgid "Total %d"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2264
+#: languages/woocommerce-admin.php:2354
 msgid "compare to"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2268
+#: languages/woocommerce-admin.php:2358
 msgid "Custom"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2271
+#: languages/woocommerce-admin.php:2361
 msgid "Update"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2274
+#: languages/woocommerce-admin.php:2364
 msgid "Select date range and comparison"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2277
+#: languages/woocommerce-admin.php:2367
 msgid "select a date range"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2280
+#: languages/woocommerce-admin.php:2370
 msgid "Presets"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2283
+#: languages/woocommerce-admin.php:2373
 msgid "vs."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2286
+#: languages/woocommerce-admin.php:2376
 msgid "Date Range"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2289
+#: languages/woocommerce-admin.php:2379
 msgid "select a preset period"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2292
+#: languages/woocommerce-admin.php:2382
 msgid "filter report to show:"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2295
+#: languages/woocommerce-admin.php:2385
 msgid "Filters"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2298
+#: languages/woocommerce-admin.php:2388
 msgid "Page %d of %d"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2301
+#: languages/woocommerce-admin.php:2391
 msgid "Previous Page"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2304
+#: languages/woocommerce-admin.php:2394
 msgid "Next Page"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2307
+#: languages/woocommerce-admin.php:2397
 msgid "Go to page"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2310
+#: languages/woocommerce-admin.php:2400
 msgid "Rows per page"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2313
+#: languages/woocommerce-admin.php:2403
 msgid "%1$s out of %2$s stars."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2316
+#: languages/woocommerce-admin.php:2406
 msgid "Clear all selected items"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2319
+#: languages/woocommerce-admin.php:2409
 msgid "Results"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2322
+#: languages/woocommerce-admin.php:2412
 msgid "No items found."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2325
+#: languages/woocommerce-admin.php:2415
 msgid "No results for %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2328
+#: languages/woocommerce-admin.php:2418
 msgid "Search for items"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2331
+#: languages/woocommerce-admin.php:2421
 msgid "%d item selected"
 msgid_plural "%d items selected"
 msgstr[0] ""
 msgstr[1] ""
 
-#: languages/woocommerce-admin.php:2334
+#: languages/woocommerce-admin.php:2424
 msgid "Search results updated."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2337
+#: languages/woocommerce-admin.php:2427
 msgid "All categories with titles that include {{query /}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2340
+#: languages/woocommerce-admin.php:2430
 msgid "All coupons with codes that include {{query /}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2343
+#: languages/woocommerce-admin.php:2433
 msgid "All customers with names that include {{query /}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2346
+#: languages/woocommerce-admin.php:2436
 msgid "All products with titles that include {{query /}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2349
+#: languages/woocommerce-admin.php:2439
 msgid "All taxes with codes that include {{query /}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2353
-msgid "%s: %s"
+#: languages/woocommerce-admin.php:2443
+msgid "Move backward for selected items"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2356
+#: languages/woocommerce-admin.php:2446
 msgid "Performance Indicators"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2359
+#: languages/woocommerce-admin.php:2449
 msgid ""
 "List of data points available for filtering. Use arrow keys to cycle "
 "through the list. Click a data point for a detailed report."
 msgstr ""
 
-#: languages/woocommerce-admin.php:2362
+#: languages/woocommerce-admin.php:2452
 msgid "Up %d%% from %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2365
+#: languages/woocommerce-admin.php:2455
 msgid "Down %d%% from %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2368
+#: languages/woocommerce-admin.php:2458
 msgid "No change from %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2371
+#: languages/woocommerce-admin.php:2461
 msgid "%d%%"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2374
+#: languages/woocommerce-admin.php:2464
 msgid "Select All"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2377
+#: languages/woocommerce-admin.php:2467
 msgid "Check at least two items below to compare"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2380
+#: languages/woocommerce-admin.php:2470
 msgid "Search by item name"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2383
+#: languages/woocommerce-admin.php:2473
 msgid "Download"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2386
+#: languages/woocommerce-admin.php:2476
 msgid "Choose which values to display"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2389
+#: languages/woocommerce-admin.php:2479
 msgid "Columns:"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2392
+#: languages/woocommerce-admin.php:2482
 msgid "(scroll to see more)"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2395
+#: languages/woocommerce-admin.php:2485
 msgid "Sort by %s in ascending order"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2398
+#: languages/woocommerce-admin.php:2488
 msgid "Sort by %s in descending order"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2401
+#: languages/woocommerce-admin.php:2491
 msgid "No data to display"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2404
+#: languages/woocommerce-admin.php:2494
 msgid "Remove %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2407
+#: languages/woocommerce-admin.php:2497
 msgid "+%d more"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2410
+#: languages/woocommerce-admin.php:2500
 msgid "MMM D"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2413
+#: languages/woocommerce-admin.php:2503
 msgid "Today"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2416
+#: languages/woocommerce-admin.php:2506
 msgid "Yesterday"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2419
+#: languages/woocommerce-admin.php:2509
 msgid "Week to Date"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2422
+#: languages/woocommerce-admin.php:2512
 msgid "Last Week"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2425
+#: languages/woocommerce-admin.php:2515
 msgid "Month to Date"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2428
+#: languages/woocommerce-admin.php:2518
 msgid "Last Month"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2431
-msgid "Quarter to Date"
-msgstr ""
-
-#: languages/woocommerce-admin.php:2434
-msgid "Last Quarter"
-msgstr ""
-
-#: languages/woocommerce-admin.php:2437
+#: languages/woocommerce-admin.php:2521
 msgid "Week of %B %-d, %Y"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2440
-msgid "Year to Date"
+#: languages/woocommerce-admin.php:2524
+msgid "Quarter to Date"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2443
+#: languages/woocommerce-admin.php:2527
+msgid "Last Quarter"
+msgstr ""
+
+#: languages/woocommerce-admin.php:2530
 msgid "MMMM D, YYYY"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2446
+#: languages/woocommerce-admin.php:2533
 msgid "D MMMM YYYY LT"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2449
+#: languages/woocommerce-admin.php:2536
 msgid "dddd, D MMMM YYYY LT"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2452
+#: languages/woocommerce-admin.php:2539
 msgid "HH:mm"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2455
+#: languages/woocommerce-admin.php:2542
 msgid "Invalid date"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2458
+#: languages/woocommerce-admin.php:2545
 msgid "Select a date in the past"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2461
-msgid "Last Year"
-msgstr ""
-
-#: languages/woocommerce-admin.php:2464
+#: languages/woocommerce-admin.php:2548
 msgid "Start date must be before end date"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2467
+#: languages/woocommerce-admin.php:2551
+msgid "Year to Date"
+msgstr ""
+
+#: languages/woocommerce-admin.php:2554
+msgid "Last Year"
+msgstr ""
+
+#: languages/woocommerce-admin.php:2557
 msgid "Previous Period"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2470
+#: languages/woocommerce-admin.php:2560
 msgid "Previous Year"
 msgstr ""
 
@@ -3671,51 +3804,60 @@ msgstr ""
 msgid "Task status."
 msgstr ""
 
-#: src/API/OnboardingPlugins.php:127
+#: src/API/OnboardingPlugins.php:154
 msgid "Sorry, you cannot manage plugins."
 msgstr ""
 
-#: src/API/OnboardingPlugins.php:142
+#: src/API/OnboardingPlugins.php:169
 msgid "Invalid plugin."
 msgstr ""
 
-#: src/API/OnboardingPlugins.php:176 src/API/OnboardingPlugins.php:183
+#: src/API/OnboardingPlugins.php:203 src/API/OnboardingPlugins.php:210
 msgid "The requested plugin could not be installed."
 msgstr ""
 
-#: src/API/OnboardingPlugins.php:218
+#: src/API/OnboardingPlugins.php:245
 msgid "Invalid plugins."
 msgstr ""
 
-#: src/API/OnboardingPlugins.php:229
+#: src/API/OnboardingPlugins.php:257
+#. translators: %s: plugin slug (example: woocommerce-services)
 msgid "Invalid plugin %s."
 msgstr ""
 
-#: src/API/OnboardingPlugins.php:234
+#: src/API/OnboardingPlugins.php:262
 msgid "The requested plugins could not be activated."
 msgstr ""
 
-#: src/API/OnboardingPlugins.php:252
+#: src/API/OnboardingPlugins.php:280
 msgid "Jetpack is not installed or active."
 msgstr ""
 
-#: src/API/OnboardingPlugins.php:292 src/API/OnboardingPlugins.php:355
+#: src/API/OnboardingPlugins.php:320 src/API/OnboardingPlugins.php:383
 msgid "There was an error loading the WooCommerce.com Helper API."
 msgstr ""
 
-#: src/API/OnboardingPlugins.php:417
+#: src/API/OnboardingPlugins.php:440
+msgid "There was an error connecting to PayPal."
+msgstr ""
+
+#: src/API/OnboardingPlugins.php:471
+msgid "There was an error connecting to Square."
+msgstr ""
+
+#: src/API/OnboardingPlugins.php:517
 msgid "Plugin slug."
 msgstr ""
 
-#: src/API/OnboardingPlugins.php:423
+#: src/API/OnboardingPlugins.php:523
 msgid "Plugin name."
 msgstr ""
 
-#: src/API/OnboardingPlugins.php:429
+#: src/API/OnboardingPlugins.php:529
 msgid "Plugin status."
 msgstr ""
 
-#: src/API/OnboardingPlugins.php:449
+#: src/API/OnboardingPlugins.php:549
 msgid "Action that should be completed to connect Jetpack."
 msgstr ""
 
@@ -3899,12 +4041,12 @@ msgstr ""
 msgid "Add additional piece of info about each category to the report."
 msgstr ""
 
-#: src/API/Reports/Categories/DataStore.php:303
-#: src/API/Reports/Orders/Stats/DataStore.php:274
-#: src/API/Reports/Orders/Stats/DataStore.php:336
-#: src/API/Reports/Products/Stats/DataStore.php:177
-#: src/API/Reports/Products/Stats/DataStore.php:205
-#: src/API/Reports/Taxes/Stats/DataStore.php:225
+#: src/API/Reports/Categories/DataStore.php:314
+#: src/API/Reports/Orders/Stats/DataStore.php:286
+#: src/API/Reports/Orders/Stats/DataStore.php:348
+#: src/API/Reports/Products/Stats/DataStore.php:181
+#: src/API/Reports/Products/Stats/DataStore.php:209
+#: src/API/Reports/Taxes/Stats/DataStore.php:236
 msgid "Sorry, fetching revenue data failed."
 msgstr ""
 
@@ -4531,8 +4673,8 @@ msgstr ""
 msgid "Limit response to objects that don't have the specified customer ids."
 msgstr ""
 
-#: src/API/Reports/Downloads/Stats/DataStore.php:127
-#: src/API/Reports/Downloads/Stats/DataStore.php:155
+#: src/API/Reports/Downloads/Stats/DataStore.php:138
+#: src/API/Reports/Downloads/Stats/DataStore.php:166
 msgid "Sorry, fetching downloads data failed."
 msgstr ""
 
@@ -4540,33 +4682,37 @@ msgstr ""
 msgid "Parameters to pass on to the exported report."
 msgstr ""
 
-#: src/API/Reports/Export/Controller.php:98
+#: src/API/Reports/Export/Controller.php:84
+msgid "When true, email a link to download the export to the requesting user."
+msgstr ""
+
+#: src/API/Reports/Export/Controller.php:103
 #: src/API/Reports/Import/Controller.php:218
 msgid "Regeneration status."
 msgstr ""
 
-#: src/API/Reports/Export/Controller.php:104
+#: src/API/Reports/Export/Controller.php:109
 #: src/API/Reports/Import/Controller.php:224
 msgid "Regenerate data message."
 msgstr ""
 
-#: src/API/Reports/Export/Controller.php:127
+#: src/API/Reports/Export/Controller.php:132
 msgid "Percentage complete."
 msgstr ""
 
-#: src/API/Reports/Export/Controller.php:133
+#: src/API/Reports/Export/Controller.php:138
 msgid "Export download URL."
 msgstr ""
 
-#: src/API/Reports/Export/Controller.php:161
+#: src/API/Reports/Export/Controller.php:167
 msgid "There is no data to export for the given request."
 msgstr ""
 
-#: src/API/Reports/Export/Controller.php:169
+#: src/API/Reports/Export/Controller.php:175
 msgid "Your report file is being generated."
 msgstr ""
 
-#: src/API/Reports/Export/Controller.php:204
+#: src/API/Reports/Export/Controller.php:210
 msgid "Sorry, there is no export with that ID."
 msgstr ""
 
@@ -4799,12 +4945,12 @@ msgstr ""
 msgid "Add additional piece of info about each product to the report."
 msgstr ""
 
-#: src/API/Reports/Products/DataStore.php:218
+#: src/API/Reports/Products/DataStore.php:226
 #. translators: %s is product name
 msgid "%s (Deleted)"
 msgstr ""
 
-#: src/API/Reports/Products/DataStore.php:218
+#: src/API/Reports/Products/DataStore.php:226
 msgid "(Deleted)"
 msgstr ""
 
@@ -4944,21 +5090,21 @@ msgid ""
 "taxes taxonomy."
 msgstr ""
 
-#: src/API/Reports/Taxes/Stats/DataStore.php:259
+#: src/API/Reports/Taxes/Stats/DataStore.php:270
 msgid "Sorry, fetching tax data failed."
 msgstr ""
 
-#: src/API/Reports/TimeInterval.php:599 src/API/Reports/TimeInterval.php:631
+#: src/API/Reports/TimeInterval.php:585 src/API/Reports/TimeInterval.php:617
 #. translators: 1: parameter name
 msgid "%1$s is not a numerically indexed array."
 msgstr ""
 
-#: src/API/Reports/TimeInterval.php:611
+#: src/API/Reports/TimeInterval.php:597
 #. translators: %s: parameter name
 msgid "%s must contain 2 numbers."
 msgstr ""
 
-#: src/API/Reports/TimeInterval.php:643
+#: src/API/Reports/TimeInterval.php:629
 #. translators: %s: parameter name
 msgid "%s must contain 2 valid dates."
 msgstr ""
@@ -4999,14 +5145,14 @@ msgstr ""
 msgid "A zip file of the theme to be uploaded."
 msgstr ""
 
-#: src/FeaturePlugin.php:248
+#: src/FeaturePlugin.php:252
 #. translators: URL of WooCommerce plugin
 msgid ""
 "The WooCommerce Admin feature plugin requires <a "
 "href=\"%s\">WooCommerce</a> 3.6 or greater to be installed and active."
 msgstr ""
 
-#: src/FeaturePlugin.php:254
+#: src/FeaturePlugin.php:258
 #. translators: 1: URL of WordPress.org, 2: URL of WooCommerce plugin
 msgid ""
 "The WooCommerce Admin feature plugin requires both <a "
@@ -5014,7 +5160,7 @@ msgid ""
 "href=\"%2$s\">WooCommerce</a> 3.6 or greater to be installed and active."
 msgstr ""
 
-#: src/FeaturePlugin.php:266
+#: src/FeaturePlugin.php:270
 msgid ""
 "You have installed a development version of WooCommerce Admin which "
 "requires files to be built. From the plugin directory, run <code>npm "
@@ -5022,115 +5168,115 @@ msgid ""
 "the files."
 msgstr ""
 
-#: src/FeaturePlugin.php:269
+#: src/FeaturePlugin.php:273
 #. translators: 1: URL of GitHub Repository build page
 msgid ""
 "Or you can download a pre-built version of the plugin by visiting <a "
 "href=\"%1$s\">the releases page in the repository</a>."
 msgstr ""
 
-#: src/Features/Onboarding.php:107
+#: src/Features/Onboarding.php:113
 msgid "Fashion, apparel & accessories"
 msgstr ""
 
-#: src/Features/Onboarding.php:108
+#: src/Features/Onboarding.php:114
 msgid "Health & beauty"
 msgstr ""
 
-#: src/Features/Onboarding.php:109
+#: src/Features/Onboarding.php:115
 msgid "Art, music, & photography"
 msgstr ""
 
-#: src/Features/Onboarding.php:110
+#: src/Features/Onboarding.php:116
 msgid "Electronics & computers"
 msgstr ""
 
-#: src/Features/Onboarding.php:111
+#: src/Features/Onboarding.php:117
 msgid "Food & drink"
 msgstr ""
 
-#: src/Features/Onboarding.php:112
+#: src/Features/Onboarding.php:118
 msgid "Home, furniture & garden"
 msgstr ""
 
-#: src/Features/Onboarding.php:127
+#: src/Features/Onboarding.php:133
 msgid "Physical products"
 msgstr ""
 
-#: src/Features/Onboarding.php:128
+#: src/Features/Onboarding.php:134
 msgid "Products you ship to customers."
 msgstr ""
 
-#: src/Features/Onboarding.php:132
+#: src/Features/Onboarding.php:138
 msgid "Virtual products that customers download."
 msgstr ""
 
-#: src/Features/Onboarding.php:135
+#: src/Features/Onboarding.php:141
 msgid "Subscriptions"
 msgstr ""
 
-#: src/Features/Onboarding.php:139
+#: src/Features/Onboarding.php:145
 msgid "Memberships"
 msgstr ""
 
-#: src/Features/Onboarding.php:143
+#: src/Features/Onboarding.php:149
 msgid "Composite Products"
 msgstr ""
 
-#: src/Features/Onboarding.php:147
+#: src/Features/Onboarding.php:153
 msgid "Bookings"
 msgstr ""
 
-#: src/Features/Onboarding.php:293
+#: src/Features/Onboarding.php:299
 #. translators: Amount of product per year (e.g. Bookings - $240.00 per year)
 msgid " — %s per year"
 msgstr ""
 
-#: src/Features/Onboarding.php:434
+#: src/Features/Onboarding.php:532
 msgid "WooCommerce Onboarding"
 msgstr ""
 
-#: src/Features/Onboarding.php:436
+#: src/Features/Onboarding.php:534
 msgid "Profile Setup Wizard"
 msgstr ""
 
-#: src/Features/Onboarding.php:437
+#: src/Features/Onboarding.php:535
 msgid ""
 "If you need to enable or disable the setup wizard again, please click on "
 "the button below."
 msgstr ""
 
-#: src/Features/Onboarding.php:439 src/Features/Onboarding.php:447
+#: src/Features/Onboarding.php:537 src/Features/Onboarding.php:545
 msgid "Disable"
 msgstr ""
 
-#: src/Features/Onboarding.php:440 src/Features/Onboarding.php:446
+#: src/Features/Onboarding.php:538 src/Features/Onboarding.php:544
 msgid "Enable"
 msgstr ""
 
-#: src/Features/Onboarding.php:443
+#: src/Features/Onboarding.php:541
 msgid "Task List"
 msgstr ""
 
-#: src/Features/Onboarding.php:444
+#: src/Features/Onboarding.php:542
 msgid ""
 "If you need to enable or disable the task list, please click on the button "
 "below."
 msgstr ""
 
-#: src/Features/Onboarding.php:452
+#: src/Features/Onboarding.php:549
 msgid "Calypso / WordPress.com"
 msgstr ""
 
-#: src/Features/Onboarding.php:454
+#: src/Features/Onboarding.php:551
 msgid "Quickly access the Jetpack connection flow in Calypso."
 msgstr ""
 
-#: src/Features/Onboarding.php:458
+#: src/Features/Onboarding.php:555
 msgid "Quickly access the WooCommerce.com connection flow in Calypso."
 msgstr ""
 
-#: src/Features/Onboarding.php:506 src/Features/Onboarding.php:512
+#: src/Features/Onboarding.php:603 src/Features/Onboarding.php:609
 msgid "WooCommerce Helper was not able to connect to WooCommerce.com."
 msgstr ""
 
@@ -5138,7 +5284,7 @@ msgstr ""
 msgid "WooCommerce"
 msgstr ""
 
-#: src/Loader.php:500
+#: src/Loader.php:519
 #. translators: %1$s: updated title, %2$s: blog info name
 msgid "%1$s &lsaquo; %2$s"
 msgstr ""
@@ -5147,27 +5293,27 @@ msgstr ""
 msgid "WooCommerce Admin"
 msgstr ""
 
-#: src/Loader.php:589
+#: src/Loader.php:635
 msgid "Settings for WooCommerce admin reporting."
 msgstr ""
 
-#: src/Loader.php:605
+#: src/Loader.php:651
 msgid "Excluded report order statuses"
 msgstr ""
 
-#: src/Loader.php:606
+#: src/Loader.php:652
 msgid "Statuses that should not be included when calculating report totals."
 msgstr ""
 
-#: src/Loader.php:614
+#: src/Loader.php:660
 msgid "Actionable order statuses"
 msgstr ""
 
-#: src/Loader.php:615
+#: src/Loader.php:661
 msgid "Statuses that require extra action on behalf of the store admin."
 msgstr ""
 
-#: src/Loader.php:623 src/Loader.php:624
+#: src/Loader.php:669 src/Loader.php:670
 msgid "Default Date Range"
 msgstr ""
 
@@ -5403,19 +5549,27 @@ msgid ""
 "hook."
 msgstr ""
 
-#: src/ReportsSync.php:142
+#: src/ReportCSVEmail.php:74
+msgid "Your Report Download"
+msgstr ""
+
+#: src/ReportCSVEmail.php:83
+msgid "[{site_title}]: Your {report_name} Report download is ready"
+msgstr ""
+
+#: src/ReportsSync.php:143
 msgid ""
 "An import is already in progress.  Please allow the previous import to "
 "complete before beginning a new one."
 msgstr ""
 
-#: src/ReportsSync.php:149
+#: src/ReportsSync.php:150
 msgid ""
 "Report table data is being rebuilt.  Please allow some time for data to "
 "fully populate."
 msgstr ""
 
-#: src/ReportsSync.php:270
+#: src/ReportsSync.php:271
 msgid "Report table data is being deleted."
 msgstr ""
 
@@ -5441,258 +5595,258 @@ msgstr ""
 msgid "https://woocommerce.com/"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2473
+#: languages/woocommerce-admin.php:2563
 msgctxt ""
 "A sentence describing filters for Customers. See screen shot for context: "
 "https://cloudup.com/cCsm3GeXJbE"
 msgid "Customers Match {{select /}} Filters"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2477
+#: languages/woocommerce-admin.php:2567
 msgctxt "customer names"
 msgid "Includes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2481
+#: languages/woocommerce-admin.php:2571
 msgctxt "customer names"
 msgid "Excludes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2485
+#: languages/woocommerce-admin.php:2575
 msgctxt "countries"
 msgid "Includes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2489
+#: languages/woocommerce-admin.php:2579
 msgctxt "countries"
 msgid "Excludes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2494
+#: languages/woocommerce-admin.php:2584
 msgctxt "customer usernames"
 msgid "Includes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2499
+#: languages/woocommerce-admin.php:2589
 msgctxt "customer usernames"
 msgid "Excludes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2503
+#: languages/woocommerce-admin.php:2593
 msgctxt "customer emails"
 msgid "Includes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2507
+#: languages/woocommerce-admin.php:2597
 msgctxt "customer emails"
 msgid "Excludes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2511
+#: languages/woocommerce-admin.php:2601
 msgctxt "number of orders"
 msgid "Less Than"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2515
+#: languages/woocommerce-admin.php:2605
 msgctxt "number of orders"
 msgid "More Than"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2519
+#: languages/woocommerce-admin.php:2609
 msgctxt "number of orders"
 msgid "Between"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2523
+#: languages/woocommerce-admin.php:2613
 msgctxt "total spend by customer"
 msgid "Less Than"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2527
+#: languages/woocommerce-admin.php:2617
 msgctxt "total spend by customer"
 msgid "More Than"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2531
+#: languages/woocommerce-admin.php:2621
 msgctxt "total spend by customer"
 msgid "Between"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2535
+#: languages/woocommerce-admin.php:2625
 msgctxt "average order value of customer"
 msgid "Less Than"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2538
+#: languages/woocommerce-admin.php:2628
 msgctxt "average order value of customer"
 msgid "More Than"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2542
+#: languages/woocommerce-admin.php:2632
 msgctxt "average order value of customer"
 msgid "Between"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2546
+#: languages/woocommerce-admin.php:2636
 msgctxt "date"
 msgid "Before"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2550
+#: languages/woocommerce-admin.php:2640
 msgctxt "date"
 msgid "After"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2554
+#: languages/woocommerce-admin.php:2644
 msgctxt "date"
 msgid "Between"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2557
+#: languages/woocommerce-admin.php:2647
 msgctxt ""
 "A sentence describing filters for Downloads. See screen shot for context: "
 "https://cloudup.com/ccxhyH2mEDg"
 msgid "Downloads Match {{select /}} Filters"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2562
+#: languages/woocommerce-admin.php:2652
 msgctxt "products"
 msgid "Includes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2567
+#: languages/woocommerce-admin.php:2657
 msgctxt "products"
 msgid "Excludes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2571
+#: languages/woocommerce-admin.php:2661
 msgctxt "order numbers"
 msgid "Includes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2575
+#: languages/woocommerce-admin.php:2665
 msgctxt "order numbers"
 msgid "Excludes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2579
+#: languages/woocommerce-admin.php:2669
 msgctxt "IP addresses"
 msgid "Includes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2583
+#: languages/woocommerce-admin.php:2673
 msgctxt "IP addresses"
 msgid "Excludes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2586
+#: languages/woocommerce-admin.php:2676
 msgctxt ""
 "A sentence describing filters for Orders. See screen shot for context: "
 "https://cloudup.com/cSsUY9VeCVJ"
 msgid "Orders Match {{select /}} Filters"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2590
+#: languages/woocommerce-admin.php:2680
 msgctxt "order status"
 msgid "Is"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2594
+#: languages/woocommerce-admin.php:2684
 msgctxt "order status"
 msgid "Is Not"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2598
+#: languages/woocommerce-admin.php:2688
 msgctxt "coupon code"
 msgid "Includes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2602
+#: languages/woocommerce-admin.php:2692
 msgctxt "coupon code"
 msgid "Excludes"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2605
+#: languages/woocommerce-admin.php:2695
 msgctxt "customer type"
 msgid "N/A"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2608
+#: languages/woocommerce-admin.php:2698
 msgctxt "customer type"
 msgid "New"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2611
+#: languages/woocommerce-admin.php:2701
 msgctxt "customer type"
 msgid "Returning"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2616
+#: languages/woocommerce-admin.php:2706
 msgctxt "Indication of a low quantity"
 msgid "Low"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2619
+#: languages/woocommerce-admin.php:2709
 msgctxt "categories"
 msgid "+%d more"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2622
+#: languages/woocommerce-admin.php:2712
 msgctxt "store product count"
 msgid "%s+"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2625
+#: languages/woocommerce-admin.php:2715
 msgctxt "store product count"
 msgid "%s - %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2628
+#: languages/woocommerce-admin.php:2718
 msgctxt "$0 revenue amount"
 msgid "%s (I'm just getting started)"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2631
+#: languages/woocommerce-admin.php:2721
 msgctxt "Up to a certain revenue amount"
 msgid "Up to %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2634
+#: languages/woocommerce-admin.php:2724
 msgctxt "More than a certain revenue amount"
 msgid "More than %s"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2637
+#: languages/woocommerce-admin.php:2727
 msgctxt "keyboard button"
 msgid "Enter"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2640
+#: languages/woocommerce-admin.php:2730
 msgctxt "font size name"
 msgid "Normal"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2643
+#: languages/woocommerce-admin.php:2733
 msgctxt "font size name"
 msgid "Custom"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2646
+#: languages/woocommerce-admin.php:2736
 msgctxt "Date range inputs arranged on a single line"
 msgid "{{after /}}{{span}} and {{/span}}{{before /}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2649
+#: languages/woocommerce-admin.php:2739
 msgctxt "Numerical range inputs arranged on a single line"
 msgid "{{rangeStart /}}{{span}} and {{/span}}{{rangeEnd /}}"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2653
+#: languages/woocommerce-admin.php:2743
 msgctxt "maximum value input"
 msgid "%(field)s maximum amount"
 msgstr ""
 
-#: languages/woocommerce-admin.php:2657
+#: languages/woocommerce-admin.php:2747
 msgctxt "minimum value input"
 msgid "%(field)s minimum amount"
 msgstr ""
