@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-10-03 13:35:49+0000\n"
+"PO-Revision-Date: 2019-10-19 14:39:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,11 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: ru\n"
 "Project-Id-Version: WordPress - 5.2.x - Administration\n"
+
+#. translators: 1: error message, 2: line number
+#: wp-admin/link-parse-opml.php:89
+msgid "XML Error: %1$s at line %2$s"
+msgstr "Ошибка XML: %1$s в строке %2$s"
 
 #: wp-admin/user-edit.php:571
 msgid "<a href=\"%s\">You can change your profile picture on Gravatar</a>."
@@ -1353,7 +1358,7 @@ msgstr "Загрузить новый медиафайл"
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:57 wp-admin/about.php:277
+#: wp-admin/about.php:77 wp-admin/about.php:297
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "В <strong>версии %1$s</strong> решены несколько проблем с безопасностью и исправлена %2$s ошибка."
@@ -1362,7 +1367,7 @@ msgstr[2] "В <strong>версии %1$s</strong> решены несколько
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:271
+#: wp-admin/about.php:291
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "В <strong>версии %1$s</strong> решена проблема с безопасностью и исправлена %2$s ошибка."
@@ -1370,159 +1375,159 @@ msgstr[1] "В <strong>версии %1$s</strong> решена проблема �
 msgstr[2] "В <strong>версии %1$s</strong> решена проблема с безопасностью и исправлены %2$s ошибок."
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:262
+#: wp-admin/about.php:57 wp-admin/about.php:282
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "В <strong>версии %s</strong> решены несколько проблем с безопасностью."
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:260
+#: wp-admin/about.php:280
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "В <strong>версии %s</strong> решена проблема с безопасностью."
 
-#: wp-admin/about.php:256
+#: wp-admin/about.php:276
 msgid "Maintenance and Security Release"
 msgstr "Техническое обновление безопасности"
 
-#: wp-admin/about.php:254
+#: wp-admin/about.php:274
 msgid "Security Releases"
 msgstr "Обновления безопасности"
 
-#: wp-admin/about.php:253
+#: wp-admin/about.php:273
 msgid "Security Release"
 msgstr "Обновление безопасности"
 
-#: wp-admin/about.php:251
+#: wp-admin/about.php:271
 msgid "Maintenance Releases"
 msgstr "Технические обновления"
 
-#: wp-admin/about.php:250
+#: wp-admin/about.php:270
 msgid "Maintenance Release"
 msgstr "Техническое обновление"
 
-#: wp-admin/about.php:240
+#: wp-admin/about.php:260
 msgid "Go to Dashboard"
 msgstr "Перейти на страницу &laquo;Консоль&raquo;"
 
-#: wp-admin/about.php:240
+#: wp-admin/about.php:260
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Перейти на страницу &laquo;Консоль&raquo; &rarr; &laquo;Главная&raquo;"
 
-#: wp-admin/about.php:237
+#: wp-admin/about.php:257
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Вернуться на страницу &laquo;Консоль&raquo; &rarr; &laquo;Обновления&raquo;"
 
-#: wp-admin/about.php:237
+#: wp-admin/about.php:257
 msgid "Return to Updates"
 msgstr "Вернуться на страницу &laquo;Обновления&raquo;"
 
-#: wp-admin/about.php:228
+#: wp-admin/about.php:248
 msgid "With the addition of webpack and Babel configurations in the @wordpress/scripts package, developers won&#8217;t have to worry about setting up complex build tools to write modern JavaScript."
 msgstr "С добавлением конфигураций webpack и Babel в пакет @wordpress/scripts, разработчикам более не нужно беспокоиться о настройке сложных инструментов сборки при написании современного JavaScript."
 
-#: wp-admin/about.php:227
+#: wp-admin/about.php:247
 msgid "Building JavaScript"
 msgstr "Создание JavaScript"
 
 #. translators: 1: wp_body_open 2: <body>
-#: wp-admin/about.php:219
+#: wp-admin/about.php:239
 msgid "5.2 introduces a %1$s hook, which lets themes support injecting code right at the beginning of the %2$s element."
 msgstr "WordPress 5.2 предоставляет новый хук %1$s, позволяющий темам выводить код прямо в начале элемента %2$s."
 
-#: wp-admin/about.php:214
+#: wp-admin/about.php:234
 msgid "New Body Tag Hook"
 msgstr "Новый хук к тегу body"
 
-#: wp-admin/about.php:209
+#: wp-admin/about.php:229
 msgid "A new theme page template, a conditional function, and two CSS classes make designing and customizing the Privacy Policy page easier."
 msgstr "Новый шаблон страницы темы, условная функция, а также два класса CSS сделают разработку оформления и настройку страницы \"Политики конфиденциальности\" гораздо проще."
 
-#: wp-admin/about.php:208
+#: wp-admin/about.php:228
 msgid "Privacy Updates"
 msgstr "Улучшение конфиденциальности"
 
-#: wp-admin/about.php:205
+#: wp-admin/about.php:225
 msgid "The minimum supported PHP version is now 5.6.20. As of WordPress 5.2, themes and plugins can safely take advantage of namespaces, anonymous functions, and more!"
 msgstr "Минимально требуемая для WordPress 5.2 версия PHP &mdash; 5.6.20. Темы и плагины теперь могут безопасно использовать преимущества пространства имён, анонимных функций и другие возможности!"
 
-#: wp-admin/about.php:204
+#: wp-admin/about.php:224
 msgid "PHP Version Bump"
 msgstr "Повышены требования к версии PHP"
 
-#: wp-admin/about.php:200
+#: wp-admin/about.php:220
 msgid "Developer Happiness"
 msgstr "Радость разработчикам"
 
-#: wp-admin/about.php:194
+#: wp-admin/about.php:214
 msgid "Thirteen new icons include Instagram, a suite of icons for BuddyPress, and rotated Earth icons for global inclusion. Find them in the Dashboard and have some fun!"
 msgstr "Тринадцать новых значков (включая Instagram), набор значков для BuddyPress и вращающаяся Земля для использования везде и с удовольствием! Найдите их в консоли!"
 
-#: wp-admin/about.php:193
+#: wp-admin/about.php:213
 msgid "New Dashboard Icons"
 msgstr "Новые значки для консоли"
 
-#: wp-admin/about.php:190
+#: wp-admin/about.php:210
 msgid "A number of changes work together to improve contextual awareness and keyboard navigation flow for those using screen readers and other assistive technologies."
 msgstr "Для тех, кто использует программы чтения с экрана и другие вспомогательные технологии, улучшены понимание контекста и навигация с клавиатуры."
 
-#: wp-admin/about.php:189
+#: wp-admin/about.php:209
 msgid "Accessibility Updates"
 msgstr "Расширение доступности"
 
-#: wp-admin/about.php:185
+#: wp-admin/about.php:205
 msgid "Improvements for Everyone"
 msgstr "Улучшения для всех"
 
-#: wp-admin/about.php:179
+#: wp-admin/about.php:199
 msgid "This administrator-focused update will let you safely fix or manage fatal errors without requiring a developer. It features better handling of the so-called “white screen of death”, and a way to enter recovery mode, which pauses error-causing plugins or themes."
 msgstr "Эта, ориентированная на администраторов, возможность позволит безопасно устранить или справиться с критическими ошибками не привлекая к этому разработчиков. Вы сможете справиться с проблемой \"Белого экрана\", используя новый режим восстановления, в котором приостанавливается выполнение кода проблемных плагинов или тем."
 
-#: wp-admin/about.php:178
+#: wp-admin/about.php:198
 msgid "PHP Error Protection"
 msgstr "Защита от ошибок PHP"
 
 #. translators: 1: link to /wp-admin/site-health.php 2: link to
 #. /wp-admin/site-health.php?tab=debug
-#: wp-admin/about.php:154
+#: wp-admin/about.php:174
 msgid " <a href=\"%1$s\">Check your site status</a>, and <a href=\"%2$s\">learn how to debug issues</a>."
 msgstr " <a href=\"%1$s\">Посмотрите состояние здоровья сайта</a> и <a href=\"%2$s\">научитесь выполнять отладку проблем</a>."
 
-#: wp-admin/about.php:148
+#: wp-admin/about.php:168
 msgid "https://wordpress.org/news/2019/02/betty/"
 msgstr "https://wordpress.org/news/2019/02/betty/"
 
 #. translators: 1: link to the WordPress 5.1 release post
-#: wp-admin/about.php:147
+#: wp-admin/about.php:167
 msgid "Building on <a href=\"%1$s\">the Site Health features introduced in 5.1</a>, this release adds two new pages to help debug common configuration issues. It also adds space where developers can include debugging information for site maintainers."
 msgstr "Продолжаем развитие <a href=\"%1$s\">возможностей диагностики здоровья сайта, добавленных в WordPress 5.1</a>. В этом выпуске появились две новые страницы для отладки общих проблем конфигурации. А разработчикам появилось место для включения информации предназначенной администраторам сайта."
 
-#: wp-admin/about.php:142
+#: wp-admin/about.php:162
 msgid "Site Health Check"
 msgstr "Диагностика здоровья сайта"
 
-#: wp-admin/about.php:132
+#: wp-admin/about.php:152
 msgid "WordPress 5.2 gives you even more robust tools for identifying and fixing configuration issues and fatal errors. Whether you are a developer helping clients or you manage your site solo, these tools can help get you the right information when you need it."
 msgstr "WordPress 5.2 предоставляет вам ещё больше надёжных инструментов для поиска и исправления проблем в конфигурации и критических ошибок. Не важно, разработчик вы или просто самостоятельно управляете своим сайтом, эти инструменты помогут вам получить информацию, когда она требуется."
 
-#: wp-admin/about.php:131
+#: wp-admin/about.php:151
 msgid "Keeping Your Site Safe"
 msgstr "Поддержите безопасность вашего сайта"
 
 #. translators: %s: HelpHub URL
 #. translators: %s: Codex URL
-#: wp-admin/about.php:69 wp-admin/about.php:94 wp-admin/about.php:119
-#: wp-admin/about.php:283
+#: wp-admin/about.php:64 wp-admin/about.php:89 wp-admin/about.php:114
+#: wp-admin/about.php:139 wp-admin/about.php:303
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Дополнительную информацию можно найти в <a href=\"%s\">заметке о выпуске</a>."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:82 wp-admin/about.php:107 wp-admin/about.php:265
+#: wp-admin/about.php:102 wp-admin/about.php:127 wp-admin/about.php:285
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "В <strong>версии %1$s</strong> исправлена %2$s ошибка."
 msgstr[1] "В <strong>версии %1$s</strong> исправлены %2$s ошибки."
 msgstr[2] "В <strong>версии %1$s</strong> исправлены %2$s ошибок."
 
-#: wp-admin/about.php:52 wp-admin/about.php:257
+#: wp-admin/about.php:52 wp-admin/about.php:277
 msgid "Maintenance and Security Releases"
 msgstr "Технические обновления безопасности"
 
@@ -11183,8 +11188,8 @@ msgstr "Доступен <a href=\"%1$s\">WordPress %2$s</a>! <a href=\"%3$s\" a
 
 #. translators: %s: WordPress version
 #: wp-admin/includes/update.php:267 wp-admin/install.php:239
-#: wp-admin/update-core.php:75 wp-admin/upgrade.php:84 wp-admin/about.php:72
-#: wp-admin/about.php:97 wp-admin/about.php:122
+#: wp-admin/update-core.php:75 wp-admin/upgrade.php:84 wp-admin/about.php:67
+#: wp-admin/about.php:92 wp-admin/about.php:117 wp-admin/about.php:142
 msgid "https://wordpress.org/support/wordpress-version/version-%s/"
 msgstr "https://wordpress.org/support/wordpress-version/version-%s/"
 
