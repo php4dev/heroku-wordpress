@@ -67,6 +67,12 @@ class MailChimp_WooCommerce_Admin extends MailChimp_WooCommerce_Options {
 		update_option('mailchimp-woocommerce-sync.completed_at', false);
 		update_option('mailchimp-woocommerce-resource-last-updated', false);
 
+		if (($store_id = mailchimp_get_store_id()) && ($mc = mailchimp_get_api()))  {
+            if ($mc->deleteStore($store_id)) {
+                mailchimp_log('store.disconnected', 'Store id ' . mailchimp_get_store_id() . ' has been disconnected');
+            }
+        }
+
 		return $options;
 	}
 	
@@ -221,6 +227,47 @@ class MailChimp_WooCommerce_Admin extends MailChimp_WooCommerce_Options {
 				update_option( $this->plugin_name.'_woo_currency_update', true);
 			} 
 		}
+
+		if($wpdb->get_var("SHOW TABLES LIKE '{$wpdb->prefix}mailchimp_jobs';") != $wpdb->prefix.'mailchimp_jobs') {
+			MailChimp_WooCommerce_Activator::create_queue_tables();
+			MailChimp_WooCommerce_Activator::migrate_jobs();
+		}
+
+		if (defined( 'DISABLE_WP_HTTP_WORKER' ) || defined( 'MAILCHIMP_USE_CURL' ) || defined( 'MAILCHIMP_REST_LOCALHOST' ) || defined( 'MAILCHIMP_REST_IP' ) || defined( 'MAILCHIMP_DISABLE_QUEUE') && true === MAILCHIMP_DISABLE_QUEUE) {
+			$constants_used = array();
+			
+			if (defined( 'DISABLE_WP_HTTP_WORKER')) {
+				$constants_used[] = 'DISABLE_WP_HTTP_WORKER';
+			}
+
+			if (defined( 'MAILCHIMP_DISABLE_QUEUE')) {
+				$constants_used[] = 'MAILCHIMP_DISABLE_QUEUE';
+			}
+
+			if (defined( 'MAILCHIMP_USE_CURL')) {
+				$constants_used[] = 'MAILCHIMP_USE_CURL';
+			}
+
+			if (defined( 'MAILCHIMP_REST_LOCALHOST')) {
+				$constants_used[] = 'MAILCHIMP_REST_LOCALHOST';
+			}
+
+			if (defined( 'MAILCHIMP_REST_IP')) {
+				$constants_used[] = 'MAILCHIMP_REST_IP';
+			}
+			
+			$text = __('Mailchimp for Woocommerce','mc-woocommerce').'<br/>'.
+			'<p id="http-worker-deprecated-message">'.__('We dectected that this site has the following constants defined, likely at wp-config.php file' ,'mc-woocommerce').': '.
+			implode(' | ', $constants_used).'<br/>'.
+			__('These constants are deprecated since Mailchimp for Woocommerce version 2.3. Please refer to the <a href="https://github.com/mailchimp/mc-woocommerce/wiki/">plugin official wiki</a> for further details.' ,'mc-woocommerce').'</p>';
+			
+			add_settings_error('mailchimp-woocommerce_notice', $this->plugin_name, $text, 'notice-info');
+			
+			if (!isset($_GET['page']) || $_GET['page'] != 'mailchimp-woocommerce') {
+				settings_errors();
+			}
+		}
+		
 	}
 
 	/**
@@ -399,14 +446,6 @@ class MailChimp_WooCommerce_Admin extends MailChimp_WooCommerce_Options {
 			'mailchimp_account_info_id' => null,
 			'mailchimp_account_info_username' => null,
 		);
-
-        if (($failure = mailchimp_woocommerce_check_if_http_worker_fails())) {
-            unset($data['mailchimp_api_key']);
-            $data['active_tab'] = 'api_key';
-            $data['api_ping_error'] = $failure;
-            mailchimp_error('admin@validateCanUseHttpWorker', $failure);
-            return $data;
-        }
 
 		$api = new MailChimp_WooCommerce_MailChimpApi($data['mailchimp_api_key']);
 
@@ -689,8 +728,8 @@ class MailChimp_WooCommerce_Admin extends MailChimp_WooCommerce_Options {
 		$data = array(
 			'mailchimp_list' => isset($input['mailchimp_list']) ? $input['mailchimp_list'] : $this->getOption('mailchimp_list', ''),
 			'newsletter_label' => (isset($input['newsletter_label']) && $input['newsletter_label'] != '') ? wp_kses($input['newsletter_label'], $allowed_html) : $this->getOption('newsletter_label', __('Subscribe to our newsletter', 'mc-woocommerce')),
-            'mailchimp_auto_subscribe' => isset($input['mailchimp_auto_subscribe']) ? (bool) $input['mailchimp_auto_subscribe'] : false,
-            'mailchimp_checkbox_defaults' => $checkbox,
+			'mailchimp_auto_subscribe' => isset($input['mailchimp_auto_subscribe']) ? (bool) $input['mailchimp_auto_subscribe'] : $this->getOption('mailchimp_auto_subscribe', '0'),
+			'mailchimp_checkbox_defaults' => $checkbox,
 			'mailchimp_checkbox_action' => isset($input['mailchimp_checkbox_action']) ? $input['mailchimp_checkbox_action'] : $this->getOption('mailchimp_checkbox_action', 'woocommerce_after_checkout_billing_form'),
 			'mailchimp_user_tags' => isset($input['mailchimp_user_tags']) ? implode(",",$sanitized_tags) : $this->getOption('mailchimp_user_tags'),
             'mailchimp_product_image_key' => isset($input['mailchimp_product_image_key']) ? $input['mailchimp_product_image_key'] : 'medium',
@@ -721,6 +760,7 @@ class MailChimp_WooCommerce_Admin extends MailChimp_WooCommerce_Options {
                 $this->setData('sync.config.resync', false);
                 $this->setData('sync.orders.current_page', 1);
                 $this->setData('sync.products.current_page', 1);
+				$this->setData('sync.coupons.current_page', 1);
                 $this->setData('sync.syncing', true);
                 $this->setData('sync.started_at', time());
 
@@ -1251,7 +1291,7 @@ class MailChimp_WooCommerce_Admin extends MailChimp_WooCommerce_Options {
         $coupon_sync->flagStartSync();
 
         // queue up the jobs
-        mailchimp_handle_or_queue($coupon_sync, 0, true);
+        mailchimp_handle_or_queue($coupon_sync, 0);
 	}
 
 	/**
