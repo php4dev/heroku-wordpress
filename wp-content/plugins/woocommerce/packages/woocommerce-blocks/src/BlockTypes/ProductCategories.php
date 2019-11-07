@@ -32,7 +32,7 @@ class ProductCategories extends AbstractBlock {
 				'editor_script'   => 'wc-' . $this->block_name,
 				'editor_style'    => 'wc-block-editor',
 				'style'           => 'wc-block-style',
-				'script'          => 'wc-frontend',
+				'script'          => 'wc-' . $this->block_name . '-frontend',
 			)
 		);
 	}
@@ -45,7 +45,7 @@ class ProductCategories extends AbstractBlock {
 	 * @return string Rendered block type output.
 	 */
 	public function render( $attributes = array(), $content = '' ) {
-		\Automattic\WooCommerce\Blocks\Assets::register_block_script( 'frontend' );
+		\Automattic\WooCommerce\Blocks\Assets::register_block_script( $this->block_name . '-frontend' );
 
 		return $content;
 	}

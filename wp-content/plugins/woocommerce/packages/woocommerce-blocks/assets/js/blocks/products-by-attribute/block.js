@@ -46,7 +46,7 @@ class ProductsByAttributeBlock extends Component {
 		return (
 			<InspectorControls key="inspector">
 				<PanelBody
-					title={ __( 'Layout', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Layout', 'woocommerce' ) }
 					initialOpen
 				>
 					<GridLayoutControl
@@ -57,7 +57,7 @@ class ProductsByAttributeBlock extends Component {
 					/>
 				</PanelBody>
 				<PanelBody
-					title={ __( 'Content', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Content', 'woocommerce' ) }
 					initialOpen
 				>
 					<GridContentControl
@@ -68,7 +68,7 @@ class ProductsByAttributeBlock extends Component {
 				<PanelBody
 					title={ __(
 						'Filter by Product Attribute',
-						'woo-gutenberg-products-block'
+						'woocommerce'
 					) }
 					initialOpen={ false }
 				>
@@ -88,7 +88,7 @@ class ProductsByAttributeBlock extends Component {
 					/>
 				</PanelBody>
 				<PanelBody
-					title={ __( 'Order By', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Order By', 'woocommerce' ) }
 					initialOpen={ false }
 				>
 					<ProductOrderbyControl
@@ -108,7 +108,7 @@ class ProductsByAttributeBlock extends Component {
 			debouncedSpeak(
 				__(
 					'Showing Products by Attribute block preview.',
-					'woo-gutenberg-products-block'
+					'woocommerce'
 				)
 			);
 		};
@@ -116,12 +116,12 @@ class ProductsByAttributeBlock extends Component {
 		return (
 			<Placeholder
 				icon={ <Gridicon icon="custom-post-type" /> }
-				label={ __( 'Products by Attribute', 'woo-gutenberg-products-block' ) }
+				label={ __( 'Products by Attribute', 'woocommerce' ) }
 				className="wc-block-products-grid wc-block-products-by-attribute"
 			>
 				{ __(
 					'Display a grid of products from your selected attributes.',
-					'woo-gutenberg-products-block'
+					'woocommerce'
 				) }
 				<div className="wc-block-products-by-attribute__selection">
 					<ProductAttributeControl
@@ -139,7 +139,7 @@ class ProductsByAttributeBlock extends Component {
 						}
 					/>
 					<Button isDefault onClick={ onDone }>
-						{ __( 'Done', 'woo-gutenberg-products-block' ) }
+						{ __( 'Done', 'woocommerce' ) }
 					</Button>
 				</div>
 			</Placeholder>

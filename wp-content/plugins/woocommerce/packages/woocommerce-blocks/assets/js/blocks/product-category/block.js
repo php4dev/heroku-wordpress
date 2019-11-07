@@ -30,16 +30,27 @@ import ProductOrderbyControl from '../../components/product-orderby-control';
  * Component to handle edit mode of "Products by Category".
  */
 class ProductByCategoryBlock extends Component {
-	constructor() {
-		super( ...arguments );
-		this.state = {
-			changedAttributes: {},
-			isEditing: false,
-		};
-		this.startEditing = this.startEditing.bind( this );
-		this.stopEditing = this.stopEditing.bind( this );
-		this.setChangedAttributes = this.setChangedAttributes.bind( this );
-		this.save = this.save.bind( this );
+	static propTypes = {
+		/**
+		 * The attributes for this block
+		 */
+		attributes: PropTypes.object.isRequired,
+		/**
+		 * The register block name.
+		 */
+		name: PropTypes.string.isRequired,
+		/**
+		 * A callback to update attributes
+		 */
+		setAttributes: PropTypes.func.isRequired,
+
+		// from withSpokenMessages
+		debouncedSpeak: PropTypes.func.isRequired,
+	}
+
+	state = {
+		changedAttributes: {},
+		isEditing: false,
 	}
 
 	componentDidMount() {
@@ -51,27 +62,27 @@ class ProductByCategoryBlock extends Component {
 		}
 	}
 
-	startEditing() {
+	startEditing = () => {
 		this.setState( {
 			isEditing: true,
 			changedAttributes: {},
 		} );
 	}
 
-	stopEditing() {
+	stopEditing = () => {
 		this.setState( {
 			isEditing: false,
 			changedAttributes: {},
 		} );
 	}
 
-	setChangedAttributes( attributes ) {
+	setChangedAttributes = ( attributes ) => {
 		this.setState( ( prevState ) => {
 			return { changedAttributes: { ...prevState.changedAttributes, ...attributes } };
 		} );
 	}
 
-	save() {
+	save = () => {
 		const { changedAttributes } = this.state;
 		const { setAttributes } = this.props;
 
@@ -94,7 +105,7 @@ class ProductByCategoryBlock extends Component {
 		return (
 			<InspectorControls key="inspector">
 				<PanelBody
-					title={ __( 'Product Category', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Product Category', 'woocommerce' ) }
 					initialOpen={ ! attributes.categories.length && ! isEditing }
 				>
 					<ProductCategoryControl
@@ -116,7 +127,7 @@ class ProductByCategoryBlock extends Component {
 					/>
 				</PanelBody>
 				<PanelBody
-					title={ __( 'Layout', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Layout', 'woocommerce' ) }
 					initialOpen
 				>
 					<GridLayoutControl
@@ -127,7 +138,7 @@ class ProductByCategoryBlock extends Component {
 					/>
 				</PanelBody>
 				<PanelBody
-					title={ __( 'Content', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Content', 'woocommerce' ) }
 					initialOpen
 				>
 					<GridContentControl
@@ -136,7 +147,7 @@ class ProductByCategoryBlock extends Component {
 					/>
 				</PanelBody>
 				<PanelBody
-					title={ __( 'Order By', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Order By', 'woocommerce' ) }
 					initialOpen={ false }
 				>
 					<ProductOrderbyControl
@@ -157,7 +168,7 @@ class ProductByCategoryBlock extends Component {
 			debouncedSpeak(
 				__(
 					'Showing Products by Category block preview.',
-					'woo-gutenberg-products-block'
+					'woocommerce'
 				)
 			);
 		};
@@ -166,7 +177,7 @@ class ProductByCategoryBlock extends Component {
 			debouncedSpeak(
 				__(
 					'Showing Products by Category block preview.',
-					'woo-gutenberg-products-block'
+					'woocommerce'
 				)
 			);
 		};
@@ -174,12 +185,12 @@ class ProductByCategoryBlock extends Component {
 		return (
 			<Placeholder
 				icon="category"
-				label={ __( 'Products by Category', 'woo-gutenberg-products-block' ) }
+				label={ __( 'Products by Category', 'woocommerce' ) }
 				className="wc-block-products-grid wc-block-products-category"
 			>
 				{ __(
-					'Display a grid of products from your selected categories',
-					'woo-gutenberg-products-block'
+					'Display a grid of products from your selected categories.',
+					'woocommerce'
 				) }
 				<div className="wc-block-products-category__selection">
 					<ProductCategoryControl
@@ -194,14 +205,14 @@ class ProductByCategoryBlock extends Component {
 						}
 					/>
 					<Button isDefault onClick={ onDone }>
-						{ __( 'Done', 'woo-gutenberg-products-block' ) }
+						{ __( 'Done', 'woocommerce' ) }
 					</Button>
 					<Button
 						className="wc-block-products-category__cancel-button"
 						isTertiary
 						onClick={ onCancel }
 					>
-						{ __( 'Cancel', 'woo-gutenberg-products-block' ) }
+						{ __( 'Cancel', 'woocommerce' ) }
 					</Button>
 				</div>
 			</Placeholder>
@@ -219,7 +230,7 @@ class ProductByCategoryBlock extends Component {
 				) : (
 					__(
 						'Select at least one category to display its products.',
-						'woo-gutenberg-products-block'
+						'woocommerce'
 					)
 				) }
 			</Disabled>
@@ -253,23 +264,5 @@ class ProductByCategoryBlock extends Component {
 		);
 	}
 }
-
-ProductByCategoryBlock.propTypes = {
-	/**
-	 * The attributes for this block
-	 */
-	attributes: PropTypes.object.isRequired,
-	/**
-	 * The register block name.
-	 */
-	name: PropTypes.string.isRequired,
-	/**
-	 * A callback to update attributes
-	 */
-	setAttributes: PropTypes.func.isRequired,
-
-	// from withSpokenMessages
-	debouncedSpeak: PropTypes.func.isRequired,
-};
 
 export default withSpokenMessages( ProductByCategoryBlock );

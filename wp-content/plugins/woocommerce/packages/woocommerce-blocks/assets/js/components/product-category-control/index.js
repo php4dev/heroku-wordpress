@@ -9,6 +9,7 @@ import { find } from 'lodash';
 import PropTypes from 'prop-types';
 import { SearchListControl, SearchListItem } from '@woocommerce/components';
 import { SelectControl } from '@wordpress/components';
+import { ENDPOINTS } from '@woocommerce/block-settings';
 
 /**
  * Internal dependencies
@@ -27,7 +28,7 @@ class ProductCategoryControl extends Component {
 
 	componentDidMount() {
 		apiFetch( {
-			path: addQueryArgs( '/wc/blocks/products/categories', { per_page: -1 } ),
+			path: addQueryArgs( `${ ENDPOINTS.products }/categories`, { per_page: -1 } ),
 		} )
 			.then( ( list ) => {
 				this.setState( { list, loading: false } );
@@ -63,7 +64,7 @@ class ProductCategoryControl extends Component {
 						'%s, has %d product',
 						'%s, has %d products',
 						item.count,
-						'woo-gutenberg-products-block'
+						'woocommerce'
 					),
 					accessibleName,
 					item.count
@@ -77,15 +78,15 @@ class ProductCategoryControl extends Component {
 		const { onChange, onOperatorChange, operator, selected, isSingle } = this.props;
 
 		const messages = {
-			clear: __( 'Clear all product categories', 'woo-gutenberg-products-block' ),
-			list: __( 'Product Categories', 'woo-gutenberg-products-block' ),
+			clear: __( 'Clear all product categories', 'woocommerce' ),
+			list: __( 'Product Categories', 'woocommerce' ),
 			noItems: __(
 				"Your store doesn't have any product categories.",
-				'woo-gutenberg-products-block'
+				'woocommerce'
 			),
 			search: __(
 				'Search for product categories',
-				'woo-gutenberg-products-block'
+				'woocommerce'
 			),
 			selected: ( n ) =>
 				sprintf(
@@ -93,13 +94,13 @@ class ProductCategoryControl extends Component {
 						'%d category selected',
 						'%d categories selected',
 						n,
-						'woo-gutenberg-products-block'
+						'woocommerce'
 					),
 					n
 				),
 			updated: __(
 				'Category search results updated.',
-				'woo-gutenberg-products-block'
+				'woocommerce'
 			),
 		};
 
@@ -120,17 +121,17 @@ class ProductCategoryControl extends Component {
 					<div className={ selected.length < 2 ? 'screen-reader-text' : '' }>
 						<SelectControl
 							className="woocommerce-product-categories__operator"
-							label={ __( 'Display products matching', 'woo-gutenberg-products-block' ) }
-							help={ __( 'Pick at least two categories to use this setting.', 'woo-gutenberg-products-block' ) }
+							label={ __( 'Display products matching', 'woocommerce' ) }
+							help={ __( 'Pick at least two categories to use this setting.', 'woocommerce' ) }
 							value={ operator }
 							onChange={ onOperatorChange }
 							options={ [
 								{
-									label: __( 'Any selected categories', 'woo-gutenberg-products-block' ),
+									label: __( 'Any selected categories', 'woocommerce' ),
 									value: 'any',
 								},
 								{
-									label: __( 'All selected categories', 'woo-gutenberg-products-block' ),
+									label: __( 'All selected categories', 'woocommerce' ),
 									value: 'all',
 								},
 							] }

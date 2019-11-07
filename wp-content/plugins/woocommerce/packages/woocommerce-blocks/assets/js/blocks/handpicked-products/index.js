@@ -3,6 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
+import { DEFAULT_COLUMNS } from '@woocommerce/block-settings';
 
 /**
  * Internal dependencies
@@ -13,16 +14,16 @@ import { deprecatedConvertToShortcode } from '../../utils/deprecations';
 import { IconWidgets } from '../../components/icons';
 
 registerBlockType( 'woocommerce/handpicked-products', {
-	title: __( 'Hand-picked Products', 'woo-gutenberg-products-block' ),
+	title: __( 'Hand-picked Products', 'woocommerce' ),
 	icon: {
 		src: <IconWidgets />,
 		foreground: '#96588a',
 	},
 	category: 'woocommerce',
-	keywords: [ __( 'WooCommerce', 'woo-gutenberg-products-block' ) ],
+	keywords: [ __( 'WooCommerce', 'woocommerce' ) ],
 	description: __(
 		'Display a selection of hand-picked products in a grid.',
-		'woo-gutenberg-products-block'
+		'woocommerce'
 	),
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -41,7 +42,7 @@ registerBlockType( 'woocommerce/handpicked-products', {
 		 */
 		columns: {
 			type: 'number',
-			default: wc_product_block_data.default_columns,
+			default: DEFAULT_COLUMNS,
 		},
 
 		/**
@@ -99,7 +100,7 @@ registerBlockType( 'woocommerce/handpicked-products', {
 				},
 				columns: {
 					type: 'number',
-					default: wc_product_block_data.default_columns,
+					default: DEFAULT_COLUMNS,
 				},
 				editMode: {
 					type: 'boolean',

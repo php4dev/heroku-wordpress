@@ -209,12 +209,19 @@ class OnboardingProfile extends \WC_REST_Data_Controller {
 				'readonly'          => true,
 				'validate_callback' => 'rest_validate_request_arg',
 			),
-			'skipped'             => array(
-				'type'              => 'boolean',
-				'description'       => __( 'Whether or not the profile was skipped.', 'woocommerce-admin' ),
+			'plugins'             => array(
+				'type'              => 'string',
+				'description'       => __( 'How the Jetpack/WooCommerce Services step was handled.', 'woocommerce-admin' ),
 				'context'           => array( 'view' ),
 				'readonly'          => true,
 				'validate_callback' => 'rest_validate_request_arg',
+				'enum'              => array(
+					'skipped',
+					'skipped-wcs',
+					'already-installed',
+					'installed-wcs',
+					'installed',
+				),
 			),
 			'account_type'        => array(
 				'type'              => 'string',
@@ -259,6 +266,7 @@ class OnboardingProfile extends \WC_REST_Data_Controller {
 				'readonly'          => true,
 				'validate_callback' => 'rest_validate_request_arg',
 				'enum'              => array(
+					'0',
 					'1-10',
 					'11-100',
 					'101-1000',
@@ -278,7 +286,7 @@ class OnboardingProfile extends \WC_REST_Data_Controller {
 					'brick-mortar-other',
 				),
 			),
-			'revenue'      => array(
+			'revenue'             => array(
 				'type'              => 'string',
 				'description'       => __( 'Current annual revenue of the store.', 'woocommerce-admin' ),
 				'context'           => array( 'view' ),
@@ -315,7 +323,7 @@ class OnboardingProfile extends \WC_REST_Data_Controller {
 				'sanitize_callback' => 'wp_parse_slug_list',
 				'validate_callback' => 'rest_validate_request_arg',
 				'items'             => array(
-					'enum' => array( 'mailchimp', 'facebook' ),
+					'enum' => array( 'mailchimp-for-woocommerce', 'facebook-for-woocommerce' ),
 					'type' => 'string',
 				),
 			),

@@ -9,6 +9,7 @@ import { debounce, find } from 'lodash';
 import PropTypes from 'prop-types';
 import { SearchListControl, SearchListItem } from '@woocommerce/components';
 import { SelectControl, Spinner } from '@wordpress/components';
+import { ENDPOINTS } from '@woocommerce/block-settings';
 
 /**
  * Internal dependencies
@@ -34,7 +35,7 @@ class ProductAttributeControl extends Component {
 	componentDidMount() {
 		const { selected } = this.props;
 		apiFetch( {
-			path: addQueryArgs( '/wc/blocks/products/attributes', { per_page: -1 } ),
+			path: addQueryArgs( `${ ENDPOINTS.products }/attributes`, { per_page: -1 } ),
 		} )
 			.then( ( list ) => {
 				list = list.map( ( item ) => ( { ...item, parent: 0 } ) );
@@ -49,6 +50,10 @@ class ProductAttributeControl extends Component {
 			.catch( () => {
 				this.setState( { list: [], loading: false } );
 			} );
+	}
+
+	componentWillUnmount() {
+		this.debouncedGetTerms.cancel();
 	}
 
 	componentDidUpdate( prevProps, prevState ) {
@@ -67,7 +72,7 @@ class ProductAttributeControl extends Component {
 		}
 
 		apiFetch( {
-			path: addQueryArgs( `/wc/blocks/products/attributes/${ attribute }/terms`, {
+			path: addQueryArgs( `${ ENDPOINTS.products }/attributes/${ attribute }/terms`, {
 				per_page: -1,
 			} ),
 		} )
@@ -122,7 +127,7 @@ class ProductAttributeControl extends Component {
 							'%s, has %d term',
 							'%s, has %d terms',
 							item.count,
-							'woo-gutenberg-products-block'
+							'woocommerce'
 						),
 						item.name,
 						item.count
@@ -159,15 +164,15 @@ class ProductAttributeControl extends Component {
 		const currentList = [ ...list, ...currentTerms ];
 
 		const messages = {
-			clear: __( 'Clear all product attributes', 'woo-gutenberg-products-block' ),
-			list: __( 'Product Attributes', 'woo-gutenberg-products-block' ),
+			clear: __( 'Clear all product attributes', 'woocommerce' ),
+			list: __( 'Product Attributes', 'woocommerce' ),
 			noItems: __(
 				"Your store doesn't have any product attributes.",
-				'woo-gutenberg-products-block'
+				'woocommerce'
 			),
 			search: __(
 				'Search for product attributes',
-				'woo-gutenberg-products-block'
+				'woocommerce'
 			),
 			selected: ( n ) =>
 				sprintf(
@@ -175,13 +180,13 @@ class ProductAttributeControl extends Component {
 						'%d attribute selected',
 						'%d attributes selected',
 						n,
-						'woo-gutenberg-products-block'
+						'woocommerce'
 					),
 					n
 				),
 			updated: __(
 				'Product attribute search results updated.',
-				'woo-gutenberg-products-block'
+				'woocommerce'
 			),
 		};
 
@@ -205,11 +210,11 @@ class ProductAttributeControl extends Component {
 							className="woocommerce-product-attributes__operator"
 							label={ __(
 								'Display products matching',
-								'woo-gutenberg-products-block'
+								'woocommerce'
 							) }
 							help={ __(
 								'Pick at least two attributes to use this setting.',
-								'woo-gutenberg-products-block'
+								'woocommerce'
 							) }
 							value={ operator }
 							onChange={ onOperatorChange }
@@ -217,14 +222,14 @@ class ProductAttributeControl extends Component {
 								{
 									label: __(
 										'Any selected attributes',
-										'woo-gutenberg-products-block'
+										'woocommerce'
 									),
 									value: 'any',
 								},
 								{
 									label: __(
 										'All selected attributes',
-										'woo-gutenberg-products-block'
+										'woocommerce'
 									),
 									value: 'all',
 								},

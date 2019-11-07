@@ -19,6 +19,7 @@ import {
 } from '@wordpress/components';
 import { Component, Fragment } from '@wordpress/element';
 import PropTypes from 'prop-types';
+import { MAX_COLUMNS, MIN_COLUMNS } from '@woocommerce/block-settings';
 
 /**
  * Internal dependencies
@@ -39,27 +40,27 @@ class ProductsBlock extends Component {
 		return (
 			<InspectorControls key="inspector">
 				<PanelBody
-					title={ __( 'Layout', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Layout', 'woocommerce' ) }
 					initialOpen
 				>
 					<RangeControl
-						label={ __( 'Columns', 'woo-gutenberg-products-block' ) }
+						label={ __( 'Columns', 'woocommerce' ) }
 						value={ columns }
 						onChange={ ( value ) => setAttributes( { columns: value } ) }
-						min={ wc_product_block_data.min_columns }
-						max={ wc_product_block_data.max_columns }
+						min={ MIN_COLUMNS }
+						max={ MAX_COLUMNS }
 					/>
 					<ToggleControl
-						label={ __( 'Align Add to Cart buttons', 'woo-gutenberg-products-block' ) }
+						label={ __( 'Align Add to Cart buttons', 'woocommerce' ) }
 						help={
 							alignButtons ?
 								__(
 									'Buttons are aligned vertically.',
-									'woo-gutenberg-products-block'
+									'woocommerce'
 								) :
 								__(
 									'Buttons follow content.',
-									'woo-gutenberg-products-block'
+									'woocommerce'
 								)
 						}
 						checked={ alignButtons }
@@ -67,7 +68,7 @@ class ProductsBlock extends Component {
 					/>
 				</PanelBody>
 				<PanelBody
-					title={ __( 'Content', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Content', 'woocommerce' ) }
 					initialOpen
 				>
 					<GridContentControl
@@ -76,7 +77,7 @@ class ProductsBlock extends Component {
 					/>
 				</PanelBody>
 				<PanelBody
-					title={ __( 'Order By', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Order By', 'woocommerce' ) }
 					initialOpen={ false }
 				>
 					<ProductOrderbyControl
@@ -85,7 +86,7 @@ class ProductsBlock extends Component {
 					/>
 				</PanelBody>
 				<PanelBody
-					title={ __( 'Products', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Products', 'woocommerce' ) }
 					initialOpen={ false }
 				>
 					<ProductsControl
@@ -107,7 +108,7 @@ class ProductsBlock extends Component {
 			debouncedSpeak(
 				__(
 					'Showing Hand-picked Products block preview.',
-					'woo-gutenberg-products-block'
+					'woocommerce'
 				)
 			);
 		};
@@ -115,12 +116,12 @@ class ProductsBlock extends Component {
 		return (
 			<Placeholder
 				icon={ <IconWidgets /> }
-				label={ __( 'Hand-picked Products', 'woo-gutenberg-products-block' ) }
+				label={ __( 'Hand-picked Products', 'woocommerce' ) }
 				className="wc-block-products-grid wc-block-handpicked-products"
 			>
 				{ __(
-					'Display a selection of hand-picked products in a grid',
-					'woo-gutenberg-products-block'
+					'Display a selection of hand-picked products in a grid.',
+					'woocommerce'
 				) }
 				<div className="wc-block-handpicked-products__selection">
 					<ProductsControl
@@ -131,7 +132,7 @@ class ProductsBlock extends Component {
 						} }
 					/>
 					<Button isDefault onClick={ onDone }>
-						{ __( 'Done', 'woo-gutenberg-products-block' ) }
+						{ __( 'Done', 'woocommerce' ) }
 					</Button>
 				</div>
 			</Placeholder>

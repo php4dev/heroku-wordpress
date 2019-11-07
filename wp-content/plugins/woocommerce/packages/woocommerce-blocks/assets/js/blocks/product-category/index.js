@@ -17,16 +17,16 @@ import sharedAttributes, { sharedAttributeBlockTypes } from '../../utils/shared-
  * Register and run the "Products by Category" block.
  */
 registerBlockType( 'woocommerce/product-category', {
-	title: __( 'Products by Category', 'woo-gutenberg-products-block' ),
+	title: __( 'Products by Category', 'woocommerce' ),
 	icon: {
 		src: 'category',
 		foreground: '#96588a',
 	},
 	category: 'woocommerce',
-	keywords: [ __( 'WooCommerce', 'woo-gutenberg-products-block' ) ],
+	keywords: [ __( 'WooCommerce', 'woocommerce' ) ],
 	description: __(
 		'Display a grid of products from your selected categories.',
-		'woo-gutenberg-products-block'
+		'woocommerce'
 	),
 	supports: {
 		align: [ 'wide', 'full' ],

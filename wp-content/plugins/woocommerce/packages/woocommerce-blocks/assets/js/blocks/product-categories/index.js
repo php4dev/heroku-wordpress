@@ -13,16 +13,16 @@ import edit from './edit.js';
 import { IconFolder } from '../../components/icons';
 
 registerBlockType( 'woocommerce/product-categories', {
-	title: __( 'Product Categories List', 'woo-gutenberg-products-block' ),
+	title: __( 'Product Categories List', 'woocommerce' ),
 	icon: {
 		src: <IconFolder />,
 		foreground: '#96588a',
 	},
 	category: 'woocommerce',
-	keywords: [ __( 'WooCommerce', 'woo-gutenberg-products-block' ) ],
+	keywords: [ __( 'WooCommerce', 'woocommerce' ) ],
 	description: __(
 		'Show your product categories as a list or dropdown.',
-		'woo-gutenberg-products-block'
+		'woocommerce'
 	),
 	supports: {
 		align: [ 'wide', 'full' ],

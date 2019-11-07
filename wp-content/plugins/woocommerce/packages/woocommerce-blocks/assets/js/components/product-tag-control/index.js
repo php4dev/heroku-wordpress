@@ -7,12 +7,13 @@ import { debounce, find } from 'lodash';
 import PropTypes from 'prop-types';
 import { SearchListControl, SearchListItem } from '@woocommerce/components';
 import { SelectControl } from '@wordpress/components';
+import { LIMIT_TAGS } from '@woocommerce/block-settings';
 
 /**
  * Internal dependencies
  */
+import { getProductTags } from '../utils';
 import './style.scss';
-import { limitTags, getProductTags } from '../utils';
 
 /**
  * Component to handle searching and selecting product tags.
@@ -79,7 +80,7 @@ class ProductTagControl extends Component {
 						'%d product tagged as %s',
 						'%d products tagged as %s',
 						item.count,
-						'woo-gutenberg-products-block'
+						'woocommerce'
 					),
 					item.count,
 					accessibleName,
@@ -93,15 +94,15 @@ class ProductTagControl extends Component {
 		const { onChange, onOperatorChange, operator, selected } = this.props;
 
 		const messages = {
-			clear: __( 'Clear all product tags', 'woo-gutenberg-products-block' ),
-			list: __( 'Product Tags', 'woo-gutenberg-products-block' ),
+			clear: __( 'Clear all product tags', 'woocommerce' ),
+			list: __( 'Product Tags', 'woocommerce' ),
 			noItems: __(
 				"Your store doesn't have any product tags.",
-				'woo-gutenberg-products-block'
+				'woocommerce'
 			),
 			search: __(
 				'Search for product tags',
-				'woo-gutenberg-products-block'
+				'woocommerce'
 			),
 			selected: ( n ) =>
 				sprintf(
@@ -109,13 +110,13 @@ class ProductTagControl extends Component {
 						'%d tag selected',
 						'%d tags selected',
 						n,
-						'woo-gutenberg-products-block'
+						'woocommerce'
 					),
 					n
 				),
 			updated: __(
 				'Tag search results updated.',
-				'woo-gutenberg-products-block'
+				'woocommerce'
 			),
 		};
 
@@ -127,7 +128,7 @@ class ProductTagControl extends Component {
 					isLoading={ loading }
 					selected={ selected.map( ( id ) => find( list, { id } ) ).filter( Boolean ) }
 					onChange={ onChange }
-					onSearch={ limitTags ? this.debouncedOnSearch : null }
+					onSearch={ LIMIT_TAGS ? this.debouncedOnSearch : null }
 					renderItem={ this.renderItem }
 					messages={ messages }
 					isHierarchical
@@ -136,17 +137,17 @@ class ProductTagControl extends Component {
 					<div className={ selected.length < 2 ? 'screen-reader-text' : '' }>
 						<SelectControl
 							className="woocommerce-product-tags__operator"
-							label={ __( 'Display products matching', 'woo-gutenberg-products-block' ) }
-							help={ __( 'Pick at least two tags to use this setting.', 'woo-gutenberg-products-block' ) }
+							label={ __( 'Display products matching', 'woocommerce' ) }
+							help={ __( 'Pick at least two tags to use this setting.', 'woocommerce' ) }
 							value={ operator }
 							onChange={ onOperatorChange }
 							options={ [
 								{
-									label: __( 'Any selected tags', 'woo-gutenberg-products-block' ),
+									label: __( 'Any selected tags', 'woocommerce' ),
 									value: 'any',
 								},
 								{
-									label: __( 'All selected tags', 'woo-gutenberg-products-block' ),
+									label: __( 'All selected tags', 'woocommerce' ),
 									value: 'all',
 								},
 							] }

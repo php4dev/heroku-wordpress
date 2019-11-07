@@ -14,16 +14,16 @@ import { deprecatedConvertToShortcode } from '../../utils/deprecations';
 import sharedAttributes, { sharedAttributeBlockTypes } from '../../utils/shared-attributes';
 
 registerBlockType( 'woocommerce/product-best-sellers', {
-	title: __( 'Best Selling Products', 'woo-gutenberg-products-block' ),
+	title: __( 'Best Selling Products', 'woocommerce' ),
 	icon: {
 		src: <Gridicon icon="stats-up-alt" />,
 		foreground: '#96588a',
 	},
 	category: 'woocommerce',
-	keywords: [ __( 'WooCommerce', 'woo-gutenberg-products-block' ) ],
+	keywords: [ __( 'WooCommerce', 'woocommerce' ) ],
 	description: __(
 		'Display a grid of your all-time best selling products.',
-		'woo-gutenberg-products-block'
+		'woocommerce'
 	),
 	supports: {
 		align: [ 'wide', 'full' ],

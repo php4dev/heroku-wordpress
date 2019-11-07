@@ -4,6 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import { InnerBlocks } from '@wordpress/editor';
 import { registerBlockType } from '@wordpress/blocks';
+import { DEFAULT_HEIGHT } from '@woocommerce/block-settings';
 
 /**
  * Internal dependencies
@@ -17,16 +18,16 @@ import { IconFolderStar } from '../../components/icons';
  * Register and run the "Featured Category" block.
  */
 registerBlockType( 'woocommerce/featured-category', {
-	title: __( 'Featured Category', 'woo-gutenberg-products-block' ),
+	title: __( 'Featured Category', 'woocommerce' ),
 	icon: {
 		src: <IconFolderStar />,
 		foreground: '#96588a',
 	},
 	category: 'woocommerce',
-	keywords: [ __( 'WooCommerce', 'woo-gutenberg-products-block' ) ],
+	keywords: [ __( 'WooCommerce', 'woocommerce' ) ],
 	description: __(
 		'Visually highlight a product category and encourage prompt action.',
-		'woo-gutenberg-products-block'
+		'woocommerce'
 	),
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -69,7 +70,7 @@ registerBlockType( 'woocommerce/featured-category', {
 		 */
 		height: {
 			type: 'number',
-			default: wc_product_block_data.default_height,
+			default: DEFAULT_HEIGHT,
 		},
 
 		/**
@@ -107,7 +108,7 @@ registerBlockType( 'woocommerce/featured-category', {
 		 */
 		linkText: {
 			type: 'string',
-			default: __( 'Shop now', 'woo-gutenberg-products-block' ),
+			default: __( 'Shop now', 'woocommerce' ),
 		},
 
 		/**

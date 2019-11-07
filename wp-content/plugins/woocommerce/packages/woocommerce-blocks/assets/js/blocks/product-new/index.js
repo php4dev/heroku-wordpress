@@ -16,16 +16,16 @@ import sharedAttributes, {
 } from '../../utils/shared-attributes';
 
 registerBlockType( 'woocommerce/product-new', {
-	title: __( 'Newest Products', 'woo-gutenberg-products-block' ),
+	title: __( 'Newest Products', 'woocommerce' ),
 	icon: {
 		src: <IconNewReleases />,
 		foreground: '#96588a',
 	},
 	category: 'woocommerce',
-	keywords: [ __( 'WooCommerce', 'woo-gutenberg-products-block' ) ],
+	keywords: [ __( 'WooCommerce', 'woocommerce' ) ],
 	description: __(
 		'Display a grid of your newest products.',
-		'woo-gutenberg-products-block'
+		'woocommerce'
 	),
 	supports: {
 		align: [ 'wide', 'full' ],

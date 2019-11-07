@@ -7,6 +7,7 @@
 }
 
 .wc-block-grid__product {
+	box-sizing: border-box;
 	padding: 0 $gap 0 0;
 	margin: 0 0 $gap-large 0;
 	float: none;
@@ -112,6 +113,7 @@
 		font-weight: 400;
 		display: inline-block;
 		margin: 0 auto;
+		text-align: left;
 
 		&::before {
 			content: "\53\53\53\53\53";

@@ -4,11 +4,12 @@
 import { __ } from '@wordpress/i18n';
 import { Component, createRef, Fragment } from 'react';
 import classnames from 'classnames';
+import { HOME_URL } from '@woocommerce/block-settings';
 
 /**
  * Internal dependencies
  */
-import withComponentId from '../../utils/with-component-id';
+import withComponentId from '../../base/hocs/with-component-id';
 
 /**
  * Component displaying the categories as dropdown or list.
@@ -28,7 +29,7 @@ class ProductCategoriesBlock extends Component {
 		if ( 'false' === url ) {
 			return;
 		}
-		const home = wc_product_block_data.homeUrl;
+		const home = HOME_URL;
 
 		if ( ! isPreview && 0 === url.indexOf( home ) ) {
 			document.location.href = url;
@@ -91,11 +92,11 @@ class ProductCategoriesBlock extends Component {
 							<Fragment>
 								<div className="wc-block-product-categories__dropdown">
 									<label className="screen-reader-text" htmlFor={ selectId }>
-										{ __( 'Select a category', 'woo-gutenberg-products-block' ) }
+										{ __( 'Select a category', 'woocommerce' ) }
 									</label>
 									<select id={ selectId } ref={ this.select }>
 										<option value="false" hidden>
-											{ __( 'Select a category', 'woo-gutenberg-products-block' ) }
+											{ __( 'Select a category', 'woocommerce' ) }
 										</option>
 										{ this.renderOptions( categories ) }
 									</select>
@@ -103,7 +104,7 @@ class ProductCategoriesBlock extends Component {
 								<button
 									type="button"
 									className="wc-block-product-categories__button"
-									aria-label={ __( 'Go to category', 'woo-gutenberg-products-block' ) }
+									aria-label={ __( 'Go to category', 'woocommerce' ) }
 									icon="arrow-right-alt2"
 									onClick={ this.onNavigate }
 								>

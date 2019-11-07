@@ -49,18 +49,19 @@ class Onboarding {
 	 * Hook into WooCommerce.
 	 */
 	public function __construct() {
+		// Include WC Admin Onboarding classes.
+		if ( self::should_show_tasks() ) {
+			OnboardingTasks::get_instance();
+		}
+
 		if ( ! is_admin() ) {
 			return;
 		}
 
-		// Include WC Admin Onboarding classes.
-		if ( $this->should_show_tasks() ) {
-			OnboardingTasks::get_instance();
-		}
-		// old settings injection.
+		// Old settings injection.
 		// Run after Automattic\WooCommerce\Admin\Loader.
 		add_filter( 'woocommerce_components_settings', array( $this, 'component_settings' ), 20 );
-		// new settings injection.
+		// New settings injection.
 		add_filter( 'woocommerce_shared_settings', array( $this, 'component_settings' ), 20 );
 		add_filter( 'woocommerce_component_settings_preload_endpoints', array( $this, 'add_preload_endpoints' ) );
 		add_filter( 'woocommerce_admin_preload_options', array( $this, 'preload_options' ) );
@@ -77,27 +78,26 @@ class Onboarding {
 	}
 
 	/**
-	 * Returns true if the profiler should be displayed (not completed and not skipped).
+	 * Returns true if the profiler should be displayed (not completed).
 	 *
 	 * @return bool
 	 */
-	public function should_show_profiler() {
+	public static function should_show_profiler() {
 		$onboarding_data = get_option( 'wc_onboarding_profile', array() );
 
 		$is_completed = isset( $onboarding_data['completed'] ) && true === $onboarding_data['completed'];
-		$is_skipped   = isset( $onboarding_data['skipped'] ) && true === $onboarding_data['skipped'];
 
 		// @todo When merging to WooCommerce Core, we should set the `completed` flag to true during the upgrade progress.
 		// https://github.com/woocommerce/woocommerce-admin/pull/2300#discussion_r287237498.
-		return $is_completed || $is_skipped ? false : true;
+		return ! $is_completed;
 	}
 
 	/**
-	 * Returns true if the task list should be displayed (not completed or hidden off the dashboard.
+	 * Returns true if the task list should be displayed (not completed or hidden off the dashboard).
 	 *
 	 * @return bool
 	 */
-	public function should_show_tasks() {
+	public static function should_show_tasks() {
 		return 'no' === get_option( 'woocommerce_task_list_hidden', 'no' );
 	}
 
@@ -110,12 +110,12 @@ class Onboarding {
 		return apply_filters(
 			'woocommerce_admin_onboarding_industries',
 			array(
-				'fashion-apparel-accessories' => __( 'Fashion, apparel & accessories', 'woocommerce-admin' ),
+				'fashion-apparel-accessories' => __( 'Fashion, apparel, & accessories', 'woocommerce-admin' ),
 				'health-beauty'               => __( 'Health & beauty', 'woocommerce-admin' ),
 				'art-music-photography'       => __( 'Art, music, & photography', 'woocommerce-admin' ),
 				'electronics-computers'       => __( 'Electronics & computers', 'woocommerce-admin' ),
 				'food-drink'                  => __( 'Food & drink', 'woocommerce-admin' ),
-				'home-furniture-garden'       => __( 'Home, furniture & garden', 'woocommerce-admin' ),
+				'home-furniture-garden'       => __( 'Home, furniture, & garden', 'woocommerce-admin' ),
 				'other'                       => __( 'Other', 'woocommerce-admin' ),
 			)
 		);
@@ -172,6 +172,12 @@ class Onboarding {
 
 			if ( ! is_wp_error( $theme_data ) ) {
 				$theme_data = json_decode( $theme_data['body'] );
+				usort( $theme_data->products, function ($product_1, $product_2) {
+					if ( 'Storefront' === $product_1->slug ) {
+						return -1;
+					}
+					return $product_1->id < $product_2->id ? 1 : -1;
+				} );
 
 				foreach ( $theme_data->products as $theme ) {
 					$slug                                       = sanitize_title( $theme->slug );
@@ -325,21 +331,22 @@ class Onboarding {
 		$profile['wccom_connected'] = empty( $wccom_auth['access_token'] ) ? false : true;
 
 		$settings['onboarding'] = array(
-			'industries'     => self::get_allowed_industries(),
-			'profile'        => $profile,
-			'taskListHidden' => ! $this->should_show_tasks(),
+			'industries' => self::get_allowed_industries(),
+			'profile'    => $profile,
 		);
 
 		// Only fetch if the onboarding wizard is incomplete.
-		if ( $this->should_show_profiler() ) {
+		if ( self::should_show_profiler() ) {
 			$settings['onboarding']['productTypes'] = self::get_allowed_product_types();
 			$settings['onboarding']['themes']       = self::get_themes();
 			$settings['onboarding']['activeTheme']  = get_option( 'stylesheet' );
 		}
 
 		// Only fetch if the onboarding wizard OR the task list is incomplete.
-		if ( $this->should_show_profiler() || $this->should_show_tasks() ) {
-			$settings['onboarding']['activePlugins'] = self::get_active_plugins();
+		if ( self::should_show_profiler() || self::should_show_tasks() ) {
+			$settings['onboarding']['activePlugins']            = self::get_active_plugins();
+			$settings['onboarding']['stripeSupportedCountries'] = self::get_stripe_supported_countries();
+			$settings['onboarding']['euCountries']              = WC()->countries->get_european_union_countries();
 		}
 
 		return $settings;
@@ -352,11 +359,19 @@ class Onboarding {
 	 * @return array
 	 */
 	public function preload_options( $options ) {
-		if ( ! $this->should_show_tasks() ) {
+		$options[] = 'woocommerce_task_list_hidden';
+
+		if ( ! self::should_show_tasks() && ! self::should_show_profiler() ) {
 			return $options;
 		}
+
+		$options[] = 'wc_connect_options';
+		$options[] = 'woocommerce_task_list_prompt_shown';
 		$options[] = 'woocommerce_onboarding_payments';
+		$options[] = 'woocommerce_allow_tracking';
 		$options[] = 'woocommerce_stripe_settings';
+		$options[] = 'woocommerce_default_country';
+
 		return $options;
 	}
 
@@ -375,6 +390,20 @@ class Onboarding {
 	}
 
 	/**
+	 * Returns a list of Stripe supported countries. This method can be removed once merged to core.
+	 *
+	 * @param array $endpoints Array of preloaded endpoints.
+	 * @return array
+	 */
+	private static function get_stripe_supported_countries() {
+		// https://stripe.com/global.
+		return array(
+			'AU', 'AT', 'BE', 'CA', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HK', 'IE', 'IT', 'JP', 'LV', 'LT', 'LU', 'MY', 'NL', 'NZ', 'NO',
+			'PL', 'PT', 'SG', 'SK', 'SI', 'ES', 'SE', 'CH', 'GB', 'US',
+		);
+	}
+
+	/**
 	 * Gets an array of plugins that can be installed & activated via the onboarding wizard.
 	 *
 	 * @todo Handle edgecase of where installed plugins may have versioned folder names (i.e. `jetpack-master/jetpack.php`).
@@ -384,6 +413,7 @@ class Onboarding {
 			'woocommerce_onboarding_plugins_whitelist',
 			array(
 				'facebook-for-woocommerce'        => 'facebook-for-woocommerce/facebook-for-woocommerce.php',
+				'mailchimp-for-woocommerce'       => 'mailchimp-for-woocommerce/mailchimp-woocommerce.php',
 				'jetpack'                         => 'jetpack/jetpack.php',
 				'woocommerce-services'            => 'woocommerce-services/woocommerce-services.php',
 				'woocommerce-gateway-stripe'      => 'woocommerce-gateway-stripe/woocommerce-gateway-stripe.php',
@@ -419,7 +449,7 @@ class Onboarding {
 	 * @return bool
 	 */
 	public function is_loading( $is_loading ) {
-		$show_profiler = $this->should_show_profiler();
+		$show_profiler = self::should_show_profiler();
 		$is_dashboard  = ! isset( $_GET['path'] ); // WPCS: csrf ok.
 
 		if ( ! $show_profiler || ! $is_dashboard ) {
@@ -526,8 +556,7 @@ class Onboarding {
 			$task_list_hidden = get_option( 'woocommerce_task_list_hidden', 'no' );
 			$onboarding_data  = get_option( 'wc_onboarding_profile', array() );
 			$is_completed     = isset( $onboarding_data['completed'] ) && true === $onboarding_data['completed'];
-			$is_skipped       = isset( $onboarding_data['skipped'] ) && true === $onboarding_data['skipped'];
-			$is_enabled       = $is_completed || $is_skipped ? false : true;
+			$is_enabled       = ! $is_completed;
 
 			$help_tab['content'] = '<h2>' . __( 'WooCommerce Onboarding', 'woocommerce-admin' ) . '</h2>';
 
@@ -564,7 +593,8 @@ class Onboarding {
 	 * Allows quick access to testing the calypso parts of onboarding.
 	 */
 	public static function calypso_tests() {
-		$calypso_env = defined( 'WOOCOMMERCE_CALYPSO_ENVIRONMENT' ) && in_array( WOOCOMMERCE_CALYPSO_ENVIRONMENT, array( 'development', 'wpcalypso', 'horizon', 'stage' ) ) ? WOOCOMMERCE_CALYPSO_ENVIRONMENT : 'production';
+		// @todo When implementing user-facing split testing, this should be abled to a default of 'production'.
+		$calypso_env = defined( 'WOOCOMMERCE_CALYPSO_ENVIRONMENT' ) && in_array( WOOCOMMERCE_CALYPSO_ENVIRONMENT, array( 'development', 'wpcalypso', 'horizon', 'stage' ) ) ? WOOCOMMERCE_CALYPSO_ENVIRONMENT : 'wpcalypso';
 
 		if ( Loader::is_admin_page() && class_exists( 'Jetpack' ) && isset( $_GET['test_wc_jetpack_connect'] ) && 1 === absint( $_GET['test_wc_jetpack_connect'] ) ) { // WPCS: CSRF ok.
 			$redirect_url = esc_url_raw(
@@ -638,15 +668,23 @@ class Onboarding {
 			return;
 		}
 
-		$new_value = 1 === absint( $_GET['reset_profiler'] ) ? false : true;
+		$previous  = 1 === absint( $_GET['reset_profiler'] );
+		$new_value = ! $previous;
+
+		wc_admin_record_tracks_event(
+			'wcadmin_storeprofiler_toggled',
+			array(
+				'previous'  => $previous,
+				'new_value' => $new_value,
+			)
+		);
 
 		$request = new \WP_REST_Request( 'POST', '/wc-admin/v1/onboarding/profile' );
 		$request->set_headers( array( 'content-type' => 'application/json' ) );
 		$request->set_body(
 			wp_json_encode(
 				array(
-					'completed' => false,
-					'skipped'   => $new_value,
+					'completed' => $new_value,
 				)
 			)
 		);

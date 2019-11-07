@@ -17,6 +17,7 @@ import {
 } from '@wordpress/components';
 import { Component, Fragment } from '@wordpress/element';
 import PropTypes from 'prop-types';
+import { HAS_TAGS } from '@woocommerce/block-settings';
 
 /**
  * Internal dependencies
@@ -25,7 +26,6 @@ import GridContentControl from '../../components/grid-content-control';
 import GridLayoutControl from '../../components/grid-layout-control';
 import ProductTagControl from '../../components/product-tag-control';
 import ProductOrderbyControl from '../../components/product-orderby-control';
-import { hasTags } from '../../components/utils';
 
 /**
  * Component to handle edit mode of "Products by Tag".
@@ -96,7 +96,7 @@ class ProductsByTagBlock extends Component {
 		return (
 			<InspectorControls key="inspector">
 				<PanelBody
-					title={ __( 'Product Tag', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Product Tag', 'woocommerce' ) }
 					initialOpen={ ! attributes.tags.length && ! isEditing }
 				>
 					<ProductTagControl
@@ -112,7 +112,7 @@ class ProductsByTagBlock extends Component {
 					/>
 				</PanelBody>
 				<PanelBody
-					title={ __( 'Layout', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Layout', 'woocommerce' ) }
 					initialOpen
 				>
 					<GridLayoutControl
@@ -123,7 +123,7 @@ class ProductsByTagBlock extends Component {
 					/>
 				</PanelBody>
 				<PanelBody
-					title={ __( 'Content', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Content', 'woocommerce' ) }
 					initialOpen
 				>
 					<GridContentControl
@@ -132,7 +132,7 @@ class ProductsByTagBlock extends Component {
 					/>
 				</PanelBody>
 				<PanelBody
-					title={ __( 'Order By', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Order By', 'woocommerce' ) }
 					initialOpen={ false }
 				>
 					<ProductOrderbyControl
@@ -153,7 +153,7 @@ class ProductsByTagBlock extends Component {
 			debouncedSpeak(
 				__(
 					'Showing Products by Tag block preview.',
-					'woo-gutenberg-products-block'
+					'woocommerce'
 				)
 			);
 		};
@@ -162,7 +162,7 @@ class ProductsByTagBlock extends Component {
 			debouncedSpeak(
 				__(
 					'Showing Products by Tag block preview.',
-					'woo-gutenberg-products-block'
+					'woocommerce'
 				)
 			);
 		};
@@ -170,12 +170,12 @@ class ProductsByTagBlock extends Component {
 		return (
 			<Placeholder
 				icon="tag"
-				label={ __( 'Products by Tag', 'woo-gutenberg-products-block' ) }
+				label={ __( 'Products by Tag', 'woocommerce' ) }
 				className="wc-block-products-grid wc-block-product-tag"
 			>
 				{ __(
-					'Display a grid of products from your selected tags',
-					'woo-gutenberg-products-block'
+					'Display a grid of products from your selected tags.',
+					'woocommerce'
 				) }
 				<div className="wc-block-product-tag__selection">
 					<ProductTagControl
@@ -190,14 +190,14 @@ class ProductsByTagBlock extends Component {
 						}
 					/>
 					<Button isDefault onClick={ onDone }>
-						{ __( 'Done', 'woo-gutenberg-products-block' ) }
+						{ __( 'Done', 'woocommerce' ) }
 					</Button>
 					<Button
 						className="wc-block-product-tag__cancel-button"
 						isTertiary
 						onClick={ onCancel }
 					>
-						{ __( 'Cancel', 'woo-gutenberg-products-block' ) }
+						{ __( 'Cancel', 'woocommerce' ) }
 					</Button>
 				</div>
 			</Placeholder>
@@ -215,10 +215,10 @@ class ProductsByTagBlock extends Component {
 				) : (
 					<Placeholder
 						icon="tag"
-						label={ __( 'Products by Tag', 'woo-gutenberg-products-block' ) }
+						label={ __( 'Products by Tag', 'woocommerce' ) }
 						className="wc-block-products-grid wc-block-product-tag"
 					>
-						{ __( 'This block displays products from selected tags. Select at least one tag to display its products.', 'woo-gutenberg-products-block' ) }
+						{ __( 'This block displays products from selected tags. Select at least one tag to display its products.', 'woocommerce' ) }
 
 					</Placeholder>
 				) }
@@ -231,7 +231,7 @@ class ProductsByTagBlock extends Component {
 
 		return (
 			<Fragment>
-				{ hasTags ? (
+				{ HAS_TAGS ? (
 					<Fragment>
 						<BlockControls>
 							<Toolbar
@@ -255,10 +255,10 @@ class ProductsByTagBlock extends Component {
 				) : (
 					<Placeholder
 						icon="tag"
-						label={ __( 'Products by Tag', 'woo-gutenberg-products-block' ) }
+						label={ __( 'Products by Tag', 'woocommerce' ) }
 						className="wc-block-products-grid wc-block-product-tag"
 					>
-						{ __( "This block displays products from selected tags. In order to preview this you'll first need to create a product and assign it some tags.", 'woo-gutenberg-products-block' ) }
+						{ __( "This block displays products from selected tags. In order to preview this you'll first need to create a product and assign it some tags.", 'woocommerce' ) }
 
 					</Placeholder>
 				) }

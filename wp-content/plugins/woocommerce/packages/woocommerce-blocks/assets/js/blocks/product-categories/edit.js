@@ -23,50 +23,50 @@ export default function( { attributes, setAttributes } ) {
 		<Fragment>
 			<InspectorControls key="inspector">
 				<PanelBody
-					title={ __( 'Content', 'woo-gutenberg-products-block' ) }
+					title={ __( 'Content', 'woocommerce' ) }
 					initialOpen
 				>
 					<ToggleControl
-						label={ __( 'Show product count', 'woo-gutenberg-products-block' ) }
+						label={ __( 'Show product count', 'woocommerce' ) }
 						help={
 							hasCount ?
-								__( 'Product count is visible.', 'woo-gutenberg-products-block' ) :
-								__( 'Product count is hidden.', 'woo-gutenberg-products-block' )
+								__( 'Product count is visible.', 'woocommerce' ) :
+								__( 'Product count is hidden.', 'woocommerce' )
 						}
 						checked={ hasCount }
 						onChange={ () => setAttributes( { hasCount: ! hasCount } ) }
 					/>
 					<ToggleControl
-						label={ __( 'Show hierarchy', 'woo-gutenberg-products-block' ) }
+						label={ __( 'Show hierarchy', 'woocommerce' ) }
 						help={
 							isHierarchical ?
-								__( 'Hierarchy is visible.', 'woo-gutenberg-products-block' ) :
-								__( 'Hierarchy is hidden.', 'woo-gutenberg-products-block' )
+								__( 'Hierarchy is visible.', 'woocommerce' ) :
+								__( 'Hierarchy is hidden.', 'woocommerce' )
 						}
 						checked={ isHierarchical }
 						onChange={ () => setAttributes( { isHierarchical: ! isHierarchical } ) }
 					/>
 					<ToggleControl
-						label={ __( 'Show empty categories', 'woo-gutenberg-products-block' ) }
+						label={ __( 'Show empty categories', 'woocommerce' ) }
 						help={
 							hasEmpty ?
-								__( 'Empty categories are visible.', 'woo-gutenberg-products-block' ) :
-								__( 'Empty categories are hidden.', 'woo-gutenberg-products-block' )
+								__( 'Empty categories are visible.', 'woocommerce' ) :
+								__( 'Empty categories are hidden.', 'woocommerce' )
 						}
 						checked={ hasEmpty }
 						onChange={ () => setAttributes( { hasEmpty: ! hasEmpty } ) }
 					/>
 				</PanelBody>
 				<PanelBody
-					title={ __( 'List Settings', 'woo-gutenberg-products-block' ) }
+					title={ __( 'List Settings', 'woocommerce' ) }
 					initialOpen
 				>
 					<ToggleButtonControl
-						label={ __( 'Display style', 'woo-gutenberg-products-block' ) }
+						label={ __( 'Display style', 'woocommerce' ) }
 						value={ isDropdown ? 'dropdown' : 'list' }
 						options={ [
-							{ label: __( 'List', 'woo-gutenberg-products-block' ), value: 'list' },
-							{ label: __( 'Dropdown', 'woo-gutenberg-products-block' ), value: 'dropdown' },
+							{ label: __( 'List', 'woocommerce' ), value: 'list' },
+							{ label: __( 'Dropdown', 'woocommerce' ), value: 'dropdown' },
 						] }
 						onChange={ ( value ) => setAttributes( { isDropdown: 'dropdown' === value } ) }
 					/>
@@ -78,9 +78,9 @@ export default function( { attributes, setAttributes } ) {
 				<Placeholder
 					className="wc-block-product-categories"
 					icon={ <IconFolder /> }
-					label={ __( 'Product Categories List', 'woo-gutenberg-products-block' ) }
+					label={ __( 'Product Categories List', 'woocommerce' ) }
 				>
-					{ __( "This block shows product categories for your store. In order to preview this you'll first need to create a product and assign it to a category.", 'woo-gutenberg-products-block' ) }
+					{ __( "This block shows product categories for your store. In order to preview this you'll first need to create a product and assign it to a category.", 'woocommerce' ) }
 				</Placeholder>
 			) }
 		</Fragment>

@@ -19,7 +19,7 @@ class Package {
 	 *
 	 * @var string
 	 */
-	const VERSION = '2.3.0';
+	const VERSION = '2.4.5';
 
 	/**
 	 * Stores if init has ran yet.
@@ -40,7 +40,7 @@ class Package {
 		self::remove_core_blocks();
 
 		if ( ! self::is_built() ) {
-			return self::add_build_notice();
+			self::add_build_notice();
 		}
 
 		Library::init();
