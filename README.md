@@ -10,7 +10,7 @@ This project is a template for installing and running [WordPress](http://wordpre
 
 Clone the repository from Github
 
-    $ git clone git://github.com/itsiky/heroku-wordpress.git
+    $ git clone git://github.com/php4dev/heroku-wordpress.git
 
 With the [Heroku gem](http://devcenter.heroku.com/articles/heroku-command), create your app
 
