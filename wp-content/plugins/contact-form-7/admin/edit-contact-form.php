@@ -254,8 +254,8 @@ if ( $post ) :
 
 		$panels['additional-settings-panel'] = array(
 			'title' => $additional_settings
-				/* translators: %d: number of additional settings */
 				? sprintf(
+					/* translators: %d: number of additional settings */
 					__( 'Additional Settings (%d)', 'contact-form-7' ),
 					$additional_settings )
 				: __( 'Additional Settings', 'contact-form-7' ),

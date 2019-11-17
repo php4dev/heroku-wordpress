@@ -211,12 +211,13 @@ function wpcf7_acceptance_mail_tag( $replaced, $submitted, $html, $mail_tag ) {
 	$content = trim( $content );
 
 	if ( $content ) {
-		/* translators: 1: 'Consented' or 'Not consented', 2: conditions */
 		$replaced = sprintf(
+			/* translators: 1: 'Consented' or 'Not consented', 2: conditions */
 			_x( '%1$s: %2$s', 'mail output for acceptance checkboxes',
 				'contact-form-7' ),
 			$replaced,
-			$content );
+			$content
+		);
 	}
 
 	return $replaced;

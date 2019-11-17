@@ -472,7 +472,6 @@ The CSSTransition element creates a containing div without a class
     padding: 3px 0 3px 24px;
     font-size: 13px;
     -webkit-user-select: none;
-       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
     width: 100%; }
@@ -762,7 +761,6 @@ The CSSTransition element creates a containing div without a class
   text-align: center; }
 
 .woocommerce-ellipsis-menu__toggle {
-  height: 24px;
   justify-content: center;
   vertical-align: middle;
   width: 24px; }
@@ -1796,6 +1794,8 @@ button.woocommerce-filters-date__tab {
       max-width: 100%; }
     .woocommerce-select-control .components-base-control .components-base-control__label {
       position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
       color: #646970;
       font-size: 16px; }
     .woocommerce-select-control .components-base-control .woocommerce-select-control__control-input {
@@ -1825,6 +1825,9 @@ button.woocommerce-filters-date__tab {
     .woocommerce-select-control .components-base-control.has-tags .components-base-control__label {
       font-size: 12px;
       margin-top: -12px; }
+  .woocommerce-select-control .woocommerce-select-control__autofill-input {
+    position: absolute;
+    z-index: -1; }
   .woocommerce-select-control .woocommerce-select-control__tags {
     position: relative;
     margin: 12px 0; }
@@ -1975,16 +1978,27 @@ button.woocommerce-filters-date__tab {
 .woocommerce-split-button.is-primary .dashicons-arrow-down {
   fill: #fff; }
 
+/** @format */
 .woocommerce-stepper .woocommerce-stepper__steps {
   display: flex;
   justify-content: space-around;
   margin-bottom: 24px; }
 
 .woocommerce-stepper .woocommerce-stepper__step {
-  display: inline-flex;
   padding: 8px;
   font-weight: 400;
   position: relative; }
+  .woocommerce-stepper .woocommerce-stepper__step .woocommerce-stepper__step-label-wrapper {
+    display: flex;
+    text-align: left;
+    border: 0;
+    background-color: transparent;
+    padding: 0; }
+    .woocommerce-stepper .woocommerce-stepper__step .woocommerce-stepper__step-label-wrapper:focus {
+      outline: none;
+      box-shadow: none; }
+  .woocommerce-stepper .woocommerce-stepper__step button.woocommerce-stepper__step-label-wrapper {
+    cursor: pointer; }
   .woocommerce-stepper .woocommerce-stepper__step .woocommerce-stepper__step-text {
     width: 100%; }
   .woocommerce-stepper .woocommerce-stepper__step .woocommerce-stepper__step-label {
@@ -2003,7 +2017,7 @@ button.woocommerce-filters-date__tab {
     display: block;
     margin-right: 12px;
     max-height: 24px;
-    min-width: auto;
+    min-width: 24px;
     width: 24px;
     border-radius: 50%;
     background: #2271b1; }
@@ -2081,7 +2095,8 @@ button.woocommerce-filters-date__tab {
   display: block; }
 
 .woocommerce-stepper.is-vertical .woocommerce-stepper_content {
-  margin-top: 8px; }
+  margin-top: 8px;
+  margin-left: 36px; }
 
 @keyframes rotate {
   0% {

@@ -2,7 +2,7 @@
 Contributors: automattic
 Tags: ecommerce, e-commerce, store, sales, reports, analytics, dashboard, activity, notices, insights, stats, woo commerce, woocommerce
 Requires at least: 5.2.0
-Tested up to: 5.2.4
+Tested up to: 5.3.0
 Requires PHP: 5.6.20
 Stable tag: 1.0.0
 License: GPLv3
@@ -36,7 +36,7 @@ WooCommerce Admin also allows store owners to customize a new dashboard screen w
 
 * WordPress 5.2
 * WooCommerce 3.6.0 or greater
-* PHP version 5.4 or greater. PHP 7.2 or greater is recommended
+* PHP version 5.6.20 or greater. PHP 7.2 or greater is recommended
 * MySQL version 5.0 or greater. MySQL 5.6 or greater is recommended
 
 Visit the [WooCommerce server requirements documentation](https://docs.woocommerce.com/document/server-requirements/) for a detailed list of server requirements.
@@ -47,7 +47,7 @@ Automatic installation is the easiest option, as WordPress handles the file tran
 1. Log in to your WordPress dashboard.
 2. Go to: Plugins > Add New.
 3. Enter “WooCommerce Admin” in the Search field, and view details about its point release, the rating and description.
-4. Select “Install Now” when you’re ready
+4. Select “Install Now” when you’re ready.
 
 = Manual installation =
 
@@ -70,6 +70,23 @@ Release and roadmap notes are available on the [WooCommerce Developers Blog](htt
 3. Analytics
 
 == Changelog ==
+
+= 0.22.0 2019-11-13 =
+
+- Fix: Incorrect calculation of tax summary on Taxes screen. #3158 (Analytics)
+- Fix: Correct product and coupon count on edited orders. #3103 (Analytics)
+- Bug: Update filter picker to use key instead of id #3214 (Analytics, Components, Packages)
+- Enhancement: prompt stores to add their first product(s). #3119 (Inbox)
+- Dev: Move Analytics REST endpoints to `wc-analytics` namespace. #3204 (Components, Packages)
+- Tweak: add usage tracking inbox notice. #3112 (Activity Panel, Inbox)
+- Task: Fix PHP linter errors. #3188
+- Enhancement: Add query filters to data stores.
+- Dev: Refactor data store classes. #2961 (REST API)
+- Dev: WooCommerce Admin has been marked as compatible with WooCommerce 3.8.0. #3201
+- Bug: Fix ellipsis menu style #3141 (Analytics, Components, Packages)
+- Tweak: Field misalignment in product edit screen. #3145
+- Dev: update tested to version for WC and WP #3162
+- none needed. #3138 (Documentation)
 
 = 0.21.0 2019-10-30 =
 

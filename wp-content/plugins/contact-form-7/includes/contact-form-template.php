@@ -47,10 +47,12 @@ class WPCF7_ContactFormTemplate {
 	public static function mail() {
 		$template = array(
 			'subject' =>
-				/* translators: 1: blog name, 2: [your-subject] */
 				sprintf(
+					/* translators: 1: blog name, 2: [your-subject] */
 					_x( '%1$s "%2$s"', 'mail subject', 'contact-form-7' ),
-					get_bloginfo( 'name' ), '[your-subject]' ),
+					get_bloginfo( 'name' ),
+					'[your-subject]'
+				),
 			'sender' => sprintf( '%s <%s>',
 				get_bloginfo( 'name' ), self::from_email() ),
 			'body' =>
@@ -63,11 +65,12 @@ class WPCF7_ContactFormTemplate {
 				. __( 'Message Body:', 'contact-form-7' )
 					. "\n" . '[your-message]' . "\n\n"
 				. '-- ' . "\n"
-				/* translators: 1: blog name, 2: blog URL */
 				. sprintf(
+					/* translators: 1: blog name, 2: blog URL */
 					__( 'This e-mail was sent from a contact form on %1$s (%2$s)', 'contact-form-7' ),
 					get_bloginfo( 'name' ),
-					get_bloginfo( 'url' ) ),
+					get_bloginfo( 'url' )
+				),
 			'recipient' => get_option( 'admin_email' ),
 			'additional_headers' => 'Reply-To: [your-email]',
 			'attachments' => '',
@@ -82,21 +85,24 @@ class WPCF7_ContactFormTemplate {
 		$template = array(
 			'active' => false,
 			'subject' =>
-				/* translators: 1: blog name, 2: [your-subject] */
 				sprintf(
+					/* translators: 1: blog name, 2: [your-subject] */
 					_x( '%1$s "%2$s"', 'mail subject', 'contact-form-7' ),
-					get_bloginfo( 'name' ), '[your-subject]' ),
+					get_bloginfo( 'name' ),
+					'[your-subject]'
+				),
 			'sender' => sprintf( '%s <%s>',
 				get_bloginfo( 'name' ), self::from_email() ),
 			'body' =>
 				__( 'Message Body:', 'contact-form-7' )
 					. "\n" . '[your-message]' . "\n\n"
 				. '-- ' . "\n"
-				/* translators: 1: blog name, 2: blog URL */
 				. sprintf(
+					/* translators: 1: blog name, 2: blog URL */
 					__( 'This e-mail was sent from a contact form on %1$s (%2$s)', 'contact-form-7' ),
 					get_bloginfo( 'name' ),
-					get_bloginfo( 'url' ) ),
+					get_bloginfo( 'url' )
+				),
 			'recipient' => '[your-email]',
 			'additional_headers' => sprintf( 'Reply-To: %s',
 				get_option( 'admin_email' ) ),

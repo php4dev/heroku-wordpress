@@ -257,7 +257,7 @@ class WPCF7_FormTagsManager {
 
 	private function tag_regex() {
 		$tagnames = array_keys( $this->tag_types );
-		$tagregexp = join( '|', array_map( 'preg_quote', $tagnames ) );
+		$tagregexp = implode( '|', array_map( 'preg_quote', $tagnames ) );
 
 		return '(\[?)'
 			. '\[(' . $tagregexp . ')(?:[\r\n\t ](.*?))?(?:[\r\n\t ](\/))?\]'

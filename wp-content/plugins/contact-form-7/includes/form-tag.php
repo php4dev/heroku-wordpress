@@ -322,6 +322,30 @@ class WPCF7_FormTag implements ArrayAccess {
 		return apply_filters( 'wpcf7_form_tag_data_option', null, $options, $args );
 	}
 
+	public function get_limit_option( $default = 1048576 ) { // 1048576 = 1 MB
+		$pattern = '/^limit:([1-9][0-9]*)([kKmM]?[bB])?$/';
+
+		$matches = $this->get_first_match_option( $pattern );
+
+		if ( $matches ) {
+			$size = (int) $matches[1];
+
+			if ( ! empty( $matches[2] ) ) {
+				$kbmb = strtolower( $matches[2] );
+
+				if ( 'kb' == $kbmb ) {
+					$size *= 1024;
+				} elseif ( 'mb' == $kbmb ) {
+					$size *= 1024 * 1024;
+				}
+			}
+
+			return $size;
+		}
+
+		return (int) $default;
+	}
+
 	public function get_first_match_option( $pattern ) {
 		foreach( (array) $this->options as $option ) {
 			if ( preg_match( $pattern, $option, $matches ) ) {

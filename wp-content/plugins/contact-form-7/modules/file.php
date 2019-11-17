@@ -110,31 +110,9 @@ function wpcf7_file_validation_filter( $result, $tag ) {
 
 	/* File size validation */
 
-	$allowed_size = 1048576; // default size 1 MB
+	$allowed_size = $tag->get_limit_option();
 
-	if ( $file_size_a = $tag->get_option( 'limit' ) ) {
-		$limit_pattern = '/^([1-9][0-9]*)([kKmM]?[bB])?$/';
-
-		foreach ( $file_size_a as $file_size ) {
-			if ( preg_match( $limit_pattern, $file_size, $matches ) ) {
-				$allowed_size = (int) $matches[1];
-
-				if ( ! empty( $matches[2] ) ) {
-					$kbmb = strtolower( $matches[2] );
-
-					if ( 'kb' == $kbmb ) {
-						$allowed_size *= 1024;
-					} elseif ( 'mb' == $kbmb ) {
-						$allowed_size *= 1024 * 1024;
-					}
-				}
-
-				break;
-			}
-		}
-	}
-
-	if ( $file['size'] > $allowed_size ) {
+	if ( $allowed_size < $file['size'] ) {
 		$result->invalidate( $tag, wpcf7_get_message( 'upload_file_too_large' ) );
 		return $result;
 	}

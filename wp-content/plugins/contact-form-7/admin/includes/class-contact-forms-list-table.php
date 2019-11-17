@@ -117,9 +117,11 @@ class WPCF7_Contact_Form_List_Table extends WP_List_Table {
 		$output = sprintf(
 			'<a class="row-title" href="%1$s" aria-label="%2$s">%3$s</a>',
 			esc_url( $edit_link ),
-			/* translators: %s: title of contact form */
-			esc_attr( sprintf( __( 'Edit &#8220;%s&#8221;', 'contact-form-7' ),
-				$item->title() ) ),
+			esc_attr( sprintf(
+				/* translators: %s: title of contact form */
+				__( 'Edit &#8220;%s&#8221;', 'contact-form-7' ),
+				$item->title()
+			) ),
 			esc_html( $item->title() )
 		);
 
@@ -132,8 +134,8 @@ class WPCF7_Contact_Form_List_Table extends WP_List_Table {
 
 			if ( $count_errors = $config_validator->count_errors() ) {
 				$error_notice = sprintf(
-					/* translators: %s: number of errors detected */
 					_n(
+						/* translators: %s: number of errors detected */
 						'%s configuration error detected',
 						'%s configuration errors detected',
 						$count_errors, 'contact-form-7' ),
