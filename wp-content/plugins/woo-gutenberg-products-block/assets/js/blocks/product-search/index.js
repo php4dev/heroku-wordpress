@@ -6,6 +6,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/editor';
 import { PanelBody, ToggleControl } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
+import { IconProductSearch } from '@woocommerce/block-components/icons';
 
 /**
  * Internal dependencies
@@ -17,7 +18,7 @@ import Block from './block.js';
 registerBlockType( 'woocommerce/product-search', {
 	title: __( 'Product Search', 'woo-gutenberg-products-block' ),
 	icon: {
-		src: 'search',
+		src: <IconProductSearch />,
 		foreground: '#96588a',
 	},
 	category: 'woocommerce',
@@ -29,7 +30,11 @@ registerBlockType( 'woocommerce/product-search', {
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
-
+	example: {
+		attributes: {
+			hasLabel: true,
+		},
+	},
 	attributes: {
 		/**
 		 * Whether to show the field label.
@@ -79,19 +84,32 @@ registerBlockType( 'woocommerce/product-search', {
 			<Fragment>
 				<InspectorControls key="inspector">
 					<PanelBody
-						title={ __( 'Content', 'woo-gutenberg-products-block' ) }
+						title={ __(
+							'Content',
+							'woo-gutenberg-products-block'
+						) }
 						initialOpen
 					>
-
 						<ToggleControl
-							label={ __( 'Show search field label', 'woo-gutenberg-products-block' ) }
+							label={ __(
+								'Show search field label',
+								'woo-gutenberg-products-block'
+							) }
 							help={
-								hasLabel ?
-									__( 'Label is visible.', 'woo-gutenberg-products-block' ) :
-									__( 'Label is hidden.', 'woo-gutenberg-products-block' )
+								hasLabel
+									? __(
+											'Label is visible.',
+											'woo-gutenberg-products-block'
+									  )
+									: __(
+											'Label is hidden.',
+											'woo-gutenberg-products-block'
+									  )
 							}
 							checked={ hasLabel }
-							onChange={ () => setAttributes( { hasLabel: ! hasLabel } ) }
+							onChange={ () =>
+								setAttributes( { hasLabel: ! hasLabel } )
+							}
 						/>
 					</PanelBody>
 				</InspectorControls>

@@ -1,3 +1,6 @@
+/**
+ * External dependencies
+ */
 import trimHtml from 'trim-html';
 
 /**
@@ -21,12 +24,17 @@ export const truncateHtml = ( html, length, ellipsis = '...' ) => {
  * value of the lines prop. Content is updated once limited.
  *
  * @param {string} originalContent Content to be clamped.
- * @param {object} targetElement Element which will contain the clamped content.
+ * @param {Object} targetElement Element which will contain the clamped content.
  * @param {integer} maxHeight Max height of the clamped content.
  * @param {string} ellipsis Character to append to clamped content.
  * @return {string} clamped content
  */
-export const clampLines = ( originalContent, targetElement, maxHeight, ellipsis ) => {
+export const clampLines = (
+	originalContent,
+	targetElement,
+	maxHeight,
+	ellipsis
+) => {
 	const length = calculateLength( originalContent, targetElement, maxHeight );
 
 	return truncateHtml( originalContent, length - ellipsis.length, ellipsis );
@@ -36,7 +44,7 @@ export const clampLines = ( originalContent, targetElement, maxHeight, ellipsis 
  * Calculate how long the content can be based on the maximum number of lines allowed, and client height.
  *
  * @param {string} originalContent Content to be clamped.
- * @param {object} targetElement Element which will contain the clamped content.
+ * @param {Object} targetElement Element which will contain the clamped content.
  * @param {integer} maxHeight Max height of the clamped content.
  */
 const calculateLength = ( originalContent, targetElement, maxHeight ) => {
@@ -50,7 +58,10 @@ const calculateLength = ( originalContent, targetElement, maxHeight ) => {
 		markers.middle = Math.floor( ( markers.start + markers.end ) / 2 );
 
 		// We set the innerHTML directly in the DOM here so we can reliably check the clientHeight later in moveMarkers.
-		targetElement.innerHTML = truncateHtml( originalContent, markers.middle );
+		targetElement.innerHTML = truncateHtml(
+			originalContent,
+			markers.middle
+		);
 
 		markers = moveMarkers( markers, targetElement.clientHeight, maxHeight );
 	}
@@ -61,7 +72,7 @@ const calculateLength = ( originalContent, targetElement, maxHeight ) => {
 /**
  * Move string markers. Used by calculateLength.
  *
- * @param {object} markers Markers for clamped content.
+ * @param {Object} markers Markers for clamped content.
  * @param {integer} currentHeight Current height of clamped content.
  * @param {integer} maxHeight Max height of the clamped content.
  */

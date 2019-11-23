@@ -8,13 +8,18 @@ import TestRenderer from 'react-test-renderer';
  */
 import withReviews from '../with-reviews';
 import * as mockUtils from '../../../blocks/reviews/utils';
+import * as mockBaseUtils from '../../utils/errors';
 
 jest.mock( '../../../blocks/reviews/utils', () => ( {
-	getOrderArgs: () => ( {
+	getSortArgs: () => ( {
 		order: 'desc',
 		orderby: 'date_gmt',
 	} ),
 	getReviews: jest.fn(),
+} ) );
+
+jest.mock( '../../utils/errors', () => ( {
+	formatError: jest.fn(),
 } ) );
 
 const mockReviews = [
@@ -30,19 +35,22 @@ const defaultArgs = {
 	product_id: 1,
 };
 const TestComponent = withReviews( ( props ) => {
-	return <div
-		error={ props.error }
-		getReviews={ props.getReviews }
-		appendReviews={ props.appendReviews }
-		onChangeArgs={ props.onChangeArgs }
-		isLoading={ props.isLoading }
-		reviews={ props.reviews }
-		totalReviews={ props.totalReviews }
-	/>;
+	return (
+		<div
+			error={ props.error }
+			getReviews={ props.getReviews }
+			appendReviews={ props.appendReviews }
+			onChangeArgs={ props.onChangeArgs }
+			isLoading={ props.isLoading }
+			reviews={ props.reviews }
+			totalReviews={ props.totalReviews }
+		/>
+	);
 } );
 const render = () => {
 	return TestRenderer.create(
 		<TestComponent
+			attributes={ {} }
 			order="desc"
 			orderby="date_gmt"
 			productId={ 1 }
@@ -59,11 +67,19 @@ describe( 'withReviews Component', () => {
 
 	describe( 'lifecycle events', () => {
 		beforeEach( () => {
-			mockUtils.getReviews.mockImplementationOnce(
-				() => Promise.resolve( { reviews: mockReviews.slice( 0, 2 ), totalReviews: mockReviews.length } )
-			).mockImplementationOnce(
-				() => Promise.resolve( { reviews: mockReviews.slice( 2, 3 ), totalReviews: mockReviews.length } )
-			);
+			mockUtils.getReviews
+				.mockImplementationOnce( () =>
+					Promise.resolve( {
+						reviews: mockReviews.slice( 0, 2 ),
+						totalReviews: mockReviews.length,
+					} )
+				)
+				.mockImplementationOnce( () =>
+					Promise.resolve( {
+						reviews: mockReviews.slice( 2, 3 ),
+						totalReviews: mockReviews.length,
+					} )
+				);
 			renderer = render();
 		} );
 
@@ -85,15 +101,22 @@ describe( 'withReviews Component', () => {
 				/>
 			);
 
-			expect( getReviews ).toHaveBeenNthCalledWith( 2, { ...defaultArgs, offset: 2, per_page: 1 } );
+			expect( getReviews ).toHaveBeenNthCalledWith( 2, {
+				...defaultArgs,
+				offset: 2,
+				per_page: 1,
+			} );
 			expect( getReviews ).toHaveBeenCalledTimes( 2 );
 		} );
 	} );
 
 	describe( 'when the API returns product data', () => {
 		beforeEach( () => {
-			mockUtils.getReviews.mockImplementation(
-				() => Promise.resolve( { reviews: mockReviews.slice( 0, 2 ), totalReviews: mockReviews.length } )
+			mockUtils.getReviews.mockImplementation( () =>
+				Promise.resolve( {
+					reviews: mockReviews.slice( 0, 2 ),
+					totalReviews: mockReviews.length,
+				} )
 			);
 			renderer = render();
 		} );
@@ -109,21 +132,31 @@ describe( 'withReviews Component', () => {
 	} );
 
 	describe( 'when the API returns an error', () => {
+		const error = { message: 'There was an error.' };
+		const getReviewsPromise = Promise.reject( error );
+		const formattedError = { message: 'There was an error.', type: 'api' };
+
 		beforeEach( () => {
-			mockUtils.getReviews.mockImplementation(
-				() => Promise.reject( {
-					json: () => Promise.resolve( { message: 'There was an error.' } ),
-				} )
+			mockUtils.getReviews.mockImplementation( () => getReviewsPromise );
+			mockBaseUtils.formatError.mockImplementation(
+				() => formattedError
 			);
 			renderer = render();
 		} );
 
-		it( 'sets the error prop', () => {
-			const props = renderer.root.findByType( 'div' ).props;
+		it( 'sets the error prop', ( done ) => {
+			const { formatError } = mockBaseUtils;
+			getReviewsPromise.catch( () => {
+				const props = renderer.root.findByType( 'div' ).props;
 
-			expect( props.error ).toEqual( { apiMessage: 'There was an error.' } );
-			expect( props.isLoading ).toBe( false );
-			expect( props.reviews ).toEqual( [] );
+				expect( formatError ).toHaveBeenCalledWith( error );
+				expect( formatError ).toHaveBeenCalledTimes( 1 );
+				expect( props.error ).toEqual( formattedError );
+				expect( props.isLoading ).toBe( false );
+				expect( props.reviews ).toEqual( [] );
+
+				done();
+			} );
 		} );
 	} );
 } );

@@ -3,11 +3,13 @@
  * Plugin Name: WooCommerce Blocks
  * Plugin URI: https://github.com/woocommerce/woocommerce-gutenberg-products-block
  * Description: WooCommerce blocks for the Gutenberg editor.
- * Version: 2.4.4
+ * Version: 2.5.0
  * Author: Automattic
  * Author URI: https://woocommerce.com
  * Text Domain:  woo-gutenberg-products-block
- * WC requires at least: 3.6
+ * Requires at least: 5.0
+ * Requires PHP: 5.6
+ * WC requires at least: 3.7
  * WC tested up to: 3.8
  *
  * @package WooCommerce\Blocks
@@ -16,9 +18,50 @@
 
 defined( 'ABSPATH' ) || exit;
 
-if ( version_compare( PHP_VERSION, '5.6.0', '<' ) ) {
+$minimum_wp_version = '5.0';
+
+/**
+ * Whether notices must be displayed in the current page (plugins and WooCommerce pages).
+ *
+ * @since 2.5.0
+ */
+function should_display_compatibility_notices() {
+	$current_screen = get_current_screen();
+
+	if ( ! isset( $current_screen ) ) {
+		return false;
+	}
+
+	$is_plugins_page     =
+		property_exists( $current_screen, 'id' ) &&
+		'plugins' === $current_screen->id;
+	$is_woocommerce_page =
+		property_exists( $current_screen, 'parent_base' ) &&
+		'woocommerce' === $current_screen->parent_base;
+
+	return $is_plugins_page || $is_woocommerce_page;
+}
+
+if ( version_compare( $GLOBALS['wp_version'], $minimum_wp_version, '<' ) ) {
+	/**
+	 * Outputs for an admin notice about running WooCommerce Blocks on outdated WordPress.
+	 *
+	 * @since 2.5.0
+	 */
+	function woocommerce_blocks_admin_unsupported_wp_notice() {
+		if ( should_display_compatibility_notices() ) {
+			?>
+			<div class="notice notice-error is-dismissible">
+				<p><?php esc_html_e( 'WooCommerce Blocks requires a more recent version of WordPress and has been paused. Please update WordPress to continue enjoying WooCommerce Blocks.', 'woo-gutenberg-products-block' ); ?></p>
+			</div>
+			<?php
+		}
+	}
+	add_action( 'admin_notices', 'woocommerce_blocks_admin_unsupported_wp_notice' );
 	return;
 }
+
+define( 'WC_BLOCKS_PLUGIN_FILE', __FILE__ );
 
 /**
  * Autoload packages.
@@ -69,3 +112,4 @@ if ( is_readable( $autoloader ) ) {
 }
 
 add_action( 'plugins_loaded', array( '\Automattic\WooCommerce\Blocks\Package', 'init' ) );
+
