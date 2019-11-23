@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.3.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-11-13 14:22:00+0000\n"
+"PO-Revision-Date: 2019-11-21 00:01:20+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -9114,7 +9114,7 @@ msgstr "Пользователь добавлен."
 #: wp-admin/themes.php:338 wp-admin/themes.php:505 wp-admin/themes.php:568
 #: wp-admin/theme-install.php:274 wp-admin/theme-install.php:329
 msgid "By %s"
-msgstr "от %s"
+msgstr "Автор: %s"
 
 #. translators: %s: Plugin version number.
 #. translators: %s: Theme version number.
