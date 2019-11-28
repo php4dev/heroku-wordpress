@@ -4,7 +4,7 @@ Tags: gutenberg, woocommerce, woo commerce, products, blocks, woocommerce blocks
 Requires at least: 5.0
 Tested up to: 5.2
 Requires PHP: 5.6
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -115,6 +115,19 @@ Release and roadmap notes available on the [WooCommerce Developers Blog](https:/
 5. WooCommerce Product Blocks in the block inserter menu
 
 == Changelog ==
+
+= 2.5.1 - 2019-11-26 =
+- Fix Products by Tag, Products by Attribute and Handpicked products blocks showing an invalid attributes error. #1254
+- Fix the price slider updating instantly even when filter button was enabled. #1228
+- Fix price slider layout in narrow columns. #1231
+- Honor CSS classes in the editor for blocks added in 2.5. #1227
+- Fix variable products price format in All Products block. #1210
+- Allow the feature plugin to use WooCommerce Core translated strings. #1242
+- Reduce number of queries ran by multiple filter blocks with All Products block. #1233
+- Fix heading level setting for the All Products Title Block. #1230
+- Fix editor styles (background color) for titles of "Filter by…" blocks. #1256
+- Fix bug with cart not updating. #1258
+- Fix issue in the Filter by Attribute selector that was preventing to reselect the currently selected attribute. #1264
 
 = 2.5.0 - 2019-11-19 =
 

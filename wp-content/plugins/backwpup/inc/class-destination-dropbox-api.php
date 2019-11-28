@@ -84,7 +84,7 @@ final class BackWPup_Destination_Dropbox_API {
 	/**
 	 * List a folder
 	 *
-	 * This is a helper method to use filesListFolder and
+	 * This is a functions method to use filesListFolder and
 	 * filesListFolderContinue to construct an array of files within a given
 	 * folder path.
 	 *
@@ -757,7 +757,7 @@ final class BackWPup_Destination_Dropbox_API {
 				$message,
 				$code,
 				null,
-				isset( $output['error'] ) ? $output['error'] : null
+                isset($output['error']) ? $output['error'] : ['.tag' => 'other']
 			);
 		} else {
 			curl_close( $ch );

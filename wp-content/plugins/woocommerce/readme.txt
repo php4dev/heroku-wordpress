@@ -2,9 +2,9 @@
 Contributors: automattic, mikejolley, jameskoster, claudiosanches, kloon, rodrigosprimo, peterfabian1000, vedjain
 Tags: ecommerce, e-commerce, store, sales, sell, shop, cart, checkout, downloadable, downloads, payments, paypal, storefront, stripe, woo commerce, woo
 Requires at least: 4.9
-Tested up to: 5.2
+Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 3.8.0
+Stable tag: 3.8.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -179,7 +179,13 @@ INTERESTED IN DEVELOPMENT?
 
 == Changelog ==
 
-= 3.8.0 - 2019-01-10 =
+= 3.8.1 - 2019-11-27 =
+* Tweak - Include 5 latest reviews to Product's schema. - #24278
+* Fix - Improve select2 style and admin screen button alignments in WP 5.3 #25125
+* Fix - Fix order action button centering for WP 5.3. #25119
+* Fix - Improved WooCommerce and Twenty twenty styling. #25085
+
+= 3.8.0 - 2019-11-05 =
 * Enhancement - Show error message in "My Account - view order" if order does not exist. #24435
 * Enhancement - Add support to allow connect and install for in-app purchase flow. #24451
 * Enhancement - Declared support to Unicode CLDR. #24564
