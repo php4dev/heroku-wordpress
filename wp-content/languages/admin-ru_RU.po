@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.3.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-11-21 00:01:20+0000\n"
+"PO-Revision-Date: 2019-11-25 14:14:28+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,6 +21,11 @@ msgstr "3"
 msgctxt "start of week"
 msgid "1"
 msgstr "1"
+
+#: wp-admin/includes/media.php:1697 wp-admin/upgrade.php:77
+#: wp-admin/upgrade.php:153
+msgid "Continue"
+msgstr "Продолжить"
 
 #: wp-admin/about.php:93
 msgid "Heading blocks now offer controls for text color"
@@ -245,7 +250,7 @@ msgstr "<a href=\"https://wordpress.org/support/article/media-library-screen/\">
 
 #: wp-admin/revision.php:145
 msgid "<a href=\"https://wordpress.org/support/article/revisions/\">Revisions Management</a>"
-msgstr "<a href=\"https://wordpress.org/support/article/revisions/\">Об управлении редакциями</a>"
+msgstr "<a href=\"https://ru.wordpress.org/support/article/revisions/\">Об управлении редакциями</a>"
 
 #: wp-admin/media.php:96 wp-admin/edit-form-advanced.php:349
 msgid "<a href=\"https://wordpress.org/support/article/edit-media/\">Documentation on Edit Media</a>"
@@ -362,7 +367,7 @@ msgstr "https://wordpress.org/support/article/giving-wordpress-its-own-directory
 msgid "<a href=\"https://wordpress.org/support/article/settings-general-screen/\">Documentation on General Settings</a>"
 msgstr "<a href=\"https://wordpress.org/support/article/settings-general-screen/\">Документация по общим настройкам</a>"
 
-#: wp-admin/includes/dashboard.php:1820
+#: wp-admin/includes/dashboard.php:1809
 msgid "https://wordpress.org/support/article/first-steps-with-wordpress-b/"
 msgstr "https://wordpress.org/support/article/first-steps-with-wordpress-b/"
 
@@ -486,7 +491,7 @@ msgstr "https://wordpress.org/support/article/introduction-to-blogging/#comments
 
 #: wp-admin/includes/meta-boxes.php:685
 msgid "https://wordpress.org/support/article/excerpt/"
-msgstr "https://wordpress.org/support/article/excerpt/"
+msgstr "https://ru.wordpress.org/support/article/excerpt/"
 
 #. translators: Post date information. %s: Date on which the post is to be
 #. published.
@@ -5275,7 +5280,7 @@ msgstr "Только для сети"
 msgid "Network Active"
 msgstr "Активирован для сети"
 
-#: wp-admin/includes/class-wp-list-table.php:731
+#: wp-admin/includes/class-wp-list-table.php:734
 msgid "No pending comments"
 msgstr "Ожидающих комментариев нет"
 
@@ -5483,18 +5488,18 @@ msgstr "Выйти на других устройствах"
 msgid "You will need this password to log&nbsp;in. Please store it in a secure location."
 msgstr "Этот пароль понадобится вам для входа. Сохраните его в надёжном месте."
 
-#: wp-admin/includes/class-wp-list-table.php:708
+#: wp-admin/includes/class-wp-list-table.php:711
 msgid "No approved comments"
 msgstr "Одобренных комментариев нет"
 
-#: wp-admin/includes/class-wp-list-table.php:686
-#: wp-admin/includes/class-wp-list-table.php:708
-#: wp-admin/includes/class-wp-list-table.php:731
+#: wp-admin/includes/class-wp-list-table.php:689
+#: wp-admin/includes/class-wp-list-table.php:711
+#: wp-admin/includes/class-wp-list-table.php:734
 msgid "No comments"
 msgstr "Комментариев нет"
 
 #. translators: %s: Number of comments.
-#: wp-admin/includes/class-wp-list-table.php:678
+#: wp-admin/includes/class-wp-list-table.php:681
 msgid "%s pending comment"
 msgid_plural "%s pending comments"
 msgstr[0] "%s непроверенный комментарий"
@@ -5502,7 +5507,7 @@ msgstr[1] "%s непроверенных комментария"
 msgstr[2] "%s непроверенных комментариев"
 
 #. translators: %s: Number of comments.
-#: wp-admin/includes/class-wp-list-table.php:672
+#: wp-admin/includes/class-wp-list-table.php:675
 msgid "%s approved comment"
 msgid_plural "%s approved comments"
 msgstr[0] "%s одобренный комментарий"
@@ -5510,7 +5515,7 @@ msgstr[1] "%s одобренных комментария"
 msgstr[2] "%s одобренных комментариев"
 
 #. translators: %s: Number of comments.
-#: wp-admin/includes/class-wp-list-table.php:666
+#: wp-admin/includes/class-wp-list-table.php:669
 msgid "%s comment"
 msgid_plural "%s comments"
 msgstr[0] "%s комментарий"
@@ -5534,7 +5539,7 @@ msgstr "Когда вы будете править файл %1$s, заодно 
 #: wp-admin/includes/update.php:796
 #: wp-admin/includes/class-wp-comments-list-table.php:762
 #: wp-admin/includes/class-wp-list-table.php:528
-#: wp-admin/includes/class-wp-list-table.php:1376
+#: wp-admin/includes/class-wp-list-table.php:1379
 msgid "Show more details"
 msgstr "Показать больше деталей"
 
@@ -5560,11 +5565,11 @@ msgstr[2] "%s записей этого автора"
 msgid "Live Preview &#8220;%s&#8221;"
 msgstr "Просмотреть &#8220;%s&#8221;"
 
-#: wp-admin/includes/class-wp-list-table.php:903
+#: wp-admin/includes/class-wp-list-table.php:906
 msgid "Last page"
 msgstr "Последняя страница"
 
-#: wp-admin/includes/class-wp-list-table.php:851
+#: wp-admin/includes/class-wp-list-table.php:854
 msgid "First page"
 msgstr "Первая страница"
 
@@ -6388,11 +6393,11 @@ msgstr "Изменить видимость"
 msgid "Edit status"
 msgstr "Изменить статус"
 
-#: wp-admin/includes/dashboard.php:1812
+#: wp-admin/includes/dashboard.php:1804
 msgid "Manage menus"
 msgstr "Управление меню"
 
-#: wp-admin/includes/dashboard.php:1810
+#: wp-admin/includes/dashboard.php:1801
 msgid "Manage widgets"
 msgstr "Управление виджетами"
 
@@ -7506,11 +7511,6 @@ msgstr "Поворот изображения на вашем сервере н�
 msgid "If you are looking to use the link manager, please install the <a href=\"%s\">Link Manager</a> plugin."
 msgstr "Если вы ищете страницу управления ссылками, установите плагин <a href=\"%s\">Link Manager</a>."
 
-#. translators: 1: URL to Widgets screen, 2: URL to Menus screen.
-#: wp-admin/includes/dashboard.php:1805
-msgid "Manage <a href=\"%1$s\">widgets</a> or <a href=\"%2$s\">menus</a>"
-msgstr "Настройте <a href=\"%1$s\">виджеты</a> и <a href=\"%2$s\">меню</a>"
-
 #: wp-admin/widgets.php:77
 msgid "When changing themes, there is often some variation in the number and setup of widget areas/sidebars and sometimes these conflicts make the transition a bit less smooth. If you changed themes and seem to be missing widgets, scroll down on this screen to the Inactive Widgets area, where all of your widgets and their settings will have been saved."
 msgstr "При смене темы часто также меняются настройки и количество областей виджетов. Иногда эти конфликты делают переход к новой теме не таким гладким. Если вы сменили тему и у вас пропали виджеты, прокрутите этот экран вниз до панели &laquo;Неактивные виджеты&raquo;, где вы найдёте все свои виджеты с сохранёнными настройками."
@@ -7586,11 +7586,11 @@ msgstr "Также можно выбрать цвет фона, нажав кн�
 msgid "You can choose whether or not your site will be crawled by robots, ping services, and spiders. If you want those services to ignore your site, click the checkbox next to &#8220;Discourage search engines from indexing this site&#8221; and click the Save Changes button at the bottom of the screen. Note that your privacy is not complete; your site is still visible on the web."
 msgstr "Вы можете выбрать, должен ли ваш сайт индексироваться роботами, сервисами уведомлений и веб-пауками. Если вы хотите, чтобы эти службы игнорировали ваш сайт, поставьте галочку &laquo;Попросить поисковые системы не индексировать сайт&raquo; и нажмите кнопку &laquo;Сохранить изменения&raquo; в нижней части экрана. Обратите внимание, что для полной приватности этого недостаточно; ваш сайт всё равно виден другим посетителям."
 
-#: wp-admin/includes/dashboard.php:1820
+#: wp-admin/includes/dashboard.php:1809
 msgid "Learn more about getting started"
 msgstr "Узнайте больше о работе с WordPress"
 
-#: wp-admin/includes/dashboard.php:1818
+#: wp-admin/includes/dashboard.php:1807
 msgid "Turn comments on or off"
 msgstr "Включите или выключите комментарии"
 
@@ -7979,7 +7979,7 @@ msgstr "<strong>ОШИБКА</strong>: Пожалуйста, введите ни
 msgid "https://wordpress.org/about/"
 msgstr "https://ru.wordpress.org/about/"
 
-#: wp-admin/includes/class-wp-list-table.php:1125
+#: wp-admin/includes/class-wp-list-table.php:1128
 #: wp-admin/includes/nav-menu.php:655 wp-admin/includes/nav-menu.php:884
 #: wp-admin/update-core.php:321 wp-admin/update-core.php:429
 #: wp-admin/update-core.php:471 wp-admin/update-core.php:511
@@ -9433,7 +9433,7 @@ msgid "&larr; Back to Users"
 msgstr "&larr; Назад к списку пользователей"
 
 #. translators: 1: Current page, 2: Total pages.
-#: wp-admin/includes/class-wp-list-table.php:881
+#: wp-admin/includes/class-wp-list-table.php:884
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr "%1$s из %2$s"
@@ -9715,8 +9715,8 @@ msgstr "Чтобы осуществить запрошенное действи�
 msgid "No themes match your request."
 msgstr "Нет тем, удовлетворяющих вашему запросу."
 
-#: wp-admin/includes/class-wp-list-table.php:869
-#: wp-admin/includes/class-wp-list-table.php:873
+#: wp-admin/includes/class-wp-list-table.php:872
+#: wp-admin/includes/class-wp-list-table.php:876
 msgid "Current Page"
 msgstr "Текущая страница"
 
@@ -13348,11 +13348,6 @@ msgstr "Попробовать ещё раз"
 #: wp-admin/includes/import.php:183
 msgid "Blogger"
 msgstr "Blogger"
-
-#: wp-admin/includes/media.php:1697 wp-admin/upgrade.php:77
-#: wp-admin/upgrade.php:153
-msgid "Continue"
-msgstr "Продолжить"
 
 #: wp-admin/import.php:96
 msgid "No importers are available."

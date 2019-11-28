@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.3.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-10-31 14:29:14+0000\n"
+"PO-Revision-Date: 2019-11-25 10:51:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1112,7 +1112,7 @@ msgstr "Предварительный просмотр вложения"
 msgid "Your browser cannot upload files"
 msgstr "Ваш браузер не может загружать файлы"
 
-#: wp-includes/class-wp-xmlrpc-server.php:615 wp-includes/option.php:2081
+#: wp-includes/class-wp-xmlrpc-server.php:615 wp-includes/option.php:2084
 msgid "Allow people to submit comments on new posts."
 msgstr "Разрешить оставлять комментарии к новым записям."
 
@@ -6590,7 +6590,7 @@ msgid "Featured Image"
 msgstr "Изображение записи"
 
 #. translators: 1: $sanitize_callback, 2: register_setting()
-#: wp-includes/option.php:2233
+#: wp-includes/option.php:2236
 msgid "%1$s is deprecated. The callback from %2$s is used instead."
 msgstr "%1$s устарело. Вместо этого используйте обратный вызов %2$s."
 
@@ -6721,7 +6721,7 @@ msgstr[2] "Ваша тема имеет %s других областей для 
 msgid "Your theme has 1 other widget area, but this particular page doesn&#8217;t display it."
 msgstr "Ваша тема имеет одну другую область для виджетов, но эта страница не показывает ее."
 
-#: wp-includes/option.php:1955
+#: wp-includes/option.php:1958
 msgid "This address is used for admin purposes, like new user notification."
 msgstr "Этот адрес используется в целях администрирования. Например, для уведомления о новых пользователях."
 
@@ -6913,11 +6913,11 @@ msgstr "Описание вложения."
 msgid "The attachment caption."
 msgstr "Подпись вложения."
 
-#: wp-includes/option.php:2032
+#: wp-includes/option.php:2035
 msgid "Default post category."
 msgstr "Рубрика для записей по умолчанию."
 
-#: wp-includes/option.php:1922
+#: wp-includes/option.php:1925
 msgid "Site tagline."
 msgstr "Слоган сайта."
 
@@ -8272,48 +8272,48 @@ msgstr "%1$s %2$s, %3$s назад (%4$s)"
 
 #. translators: %s: misc
 #. translators: %s: privacy
-#: wp-includes/option.php:2150 wp-includes/option.php:2163
-#: wp-includes/option.php:2203 wp-includes/option.php:2216
+#: wp-includes/option.php:2153 wp-includes/option.php:2166
+#: wp-includes/option.php:2206 wp-includes/option.php:2219
 msgid "The \"%s\" options group has been removed. Use another settings group."
 msgstr "Группа настроек \"%s\" была удалена. Используйте другую группу настроек."
 
-#: wp-includes/option.php:2067
+#: wp-includes/option.php:2070
 msgid "Allow link notifications from other blogs (pingbacks and trackbacks) on new articles."
 msgstr "Разрешить ссылки оповещения с других блогов (уведомления и обратные ссылки) на новые статьи."
 
-#: wp-includes/option.php:2052
+#: wp-includes/option.php:2055
 msgid "Blog pages show at most."
 msgstr "Максимум страниц блога для показа."
 
-#: wp-includes/option.php:2042
+#: wp-includes/option.php:2045
 msgid "Default post format."
 msgstr "Формат записей по умолчанию."
 
-#: wp-includes/option.php:2021
+#: wp-includes/option.php:2024
 msgid "Convert emoticons like :-) and :-P to graphics on display."
 msgstr "Преобразовывать смайлики наподобие :-) и :-P в картинки при показе."
 
-#: wp-includes/option.php:2010
+#: wp-includes/option.php:2013
 msgid "WordPress locale code."
 msgstr "Код локали WordPress."
 
-#: wp-includes/option.php:1998
+#: wp-includes/option.php:2001
 msgid "A day number of the week that the week should start on."
 msgstr "Первый день недели."
 
-#: wp-includes/option.php:1988
+#: wp-includes/option.php:1991
 msgid "A time format for all time strings."
 msgstr "Общий формат времени."
 
-#: wp-includes/option.php:1978
+#: wp-includes/option.php:1981
 msgid "A date format for all date strings."
 msgstr "Общий формат даты."
 
-#: wp-includes/option.php:1968
+#: wp-includes/option.php:1971
 msgid "A city in the same timezone as you."
 msgstr "Город в той же временной зоне что и у вас."
 
-#: wp-includes/option.php:1910
+#: wp-includes/option.php:1913
 msgid "Site title."
 msgstr "Название сайта."
 
@@ -10594,7 +10594,7 @@ msgstr "Консоль пользователя: %s"
 
 #: wp-includes/js/dist/editor.js:7806
 msgid "https://codex.wordpress.org/Excerpt"
-msgstr "https://codex.wordpress.org/Отрывок"
+msgstr "https://ru.wordpress.org/support/article/excerpt/"
 
 #: wp-includes/query.php:871
 msgid "https://codex.wordpress.org/Function_Reference/is_main_query"
@@ -14253,7 +14253,7 @@ msgstr "Извините, вам не разрешено публиковать 
 msgid "Sorry, you are not allowed to post on this site."
 msgstr "Извините, вам не разрешено публиковаться на этом сайте."
 
-#: wp-includes/option.php:1938
+#: wp-includes/option.php:1941
 msgid "Site URL."
 msgstr "Адрес сайта (URL)"
 
