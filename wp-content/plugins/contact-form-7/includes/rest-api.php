@@ -268,8 +268,13 @@ function wpcf7_rest_delete_contact_form( WP_REST_Request $request ) {
 }
 
 function wpcf7_rest_create_feedback( WP_REST_Request $request ) {
-	$id = (int) $request->get_param( 'id' );
-	$item = wpcf7_contact_form( $id );
+	$url_params = $request->get_url_params();
+
+	$item = null;
+
+	if ( ! empty( $url_params['id'] ) ) {
+		$item = wpcf7_contact_form( $url_params['id'] );
+	}
 
 	if ( ! $item ) {
 		return new WP_Error( 'wpcf7_not_found',
