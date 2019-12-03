@@ -1,0 +1,4683 @@
+# Translation of Plugins - Elementor Page Builder - Stable (latest release) in Ukrainian
+# This file is distributed under the same license as the Plugins - Elementor Page Builder - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-08-27 20:20:21+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: uk_UA\n"
+"Project-Id-Version: Plugins - Elementor Page Builder - Stable (latest release)\n"
+
+#: includes/editor-templates/panel.php:171
+msgid "Need Help"
+msgstr "Потрібна допомога"
+
+#: includes/admin-templates/beta-tester.php:31
+msgid "Your Email"
+msgstr "Ваш email"
+
+#: core/editor/notice-bar.php:25
+msgid "Get Pro"
+msgstr "Отримати Pro"
+
+#: core/admin/admin.php:798
+msgid "Don't Show Again"
+msgstr "Не показувати знову"
+
+#: core/editor/editor.php:717
+msgid "My Libraries"
+msgstr "Мої бібліотеки"
+
+#: core/editor/editor.php:718
+msgid "Upload"
+msgstr "Завантажити"
+
+#: includes/controls/media.php:153
+msgid "Choose Video"
+msgstr "Вибрати відео"
+
+#: includes/managers/icons.php:175
+msgid "All Icons"
+msgstr "Всі іконки"
+
+#: core/admin/admin.php:797 includes/admin-templates/beta-tester.php:36
+msgid "Sign Up"
+msgstr "Зареєструватися"
+
+#: includes/base/widget-base.php:787
+msgid "Deprecated"
+msgstr "Застарілий"
+
+#: includes/template-library/sources/local.php:528
+msgid "Template not exist."
+msgstr "Шаблон не існує."
+
+#: includes/controls/icons.php:80
+msgid "Upload SVG"
+msgstr "Завантажити SVG"
+
+#: core/editor/editor.php:202
+msgid "Document not found."
+msgstr "Документ не знайдено."
+
+#: core/debug/classes/theme-missing.php:22
+msgid "Some of your theme files are missing."
+msgstr "Деякі файли вашої тематики відсутні."
+
+#: core/files/assets/svg/svg-handler.php:159
+msgid "Invalid SVG Format, file not uploaded for security reasons"
+msgstr "Недійсний формат SVG, файл не завантажений з міркувань безпеки"
+
+#: core/files/assets/svg/svg-handler.php:154
+msgid "SVG file is not allowed for security reasons"
+msgstr "Файл SVG не дозволений з міркувань безпеки"
+
+#: includes/controls/groups/background.php:583
+msgid "Play Once"
+msgstr "Грати один раз"
+
+#: core/editor/editor.php:716 includes/controls/icons.php:79
+msgid "Icon Library"
+msgstr "Бібліотека іконок"
+
+#: includes/managers/icons.php:413
+msgid "Font Awesome 5 Migration"
+msgstr "Font Awesome 5 Міграція"
+
+#: includes/managers/icons.php:367
+msgid "Upgrade To Font Awesome 5"
+msgstr "Оновитись до Font Awesome 5"
+
+#: includes/managers/icons.php:345 includes/managers/icons.php:349
+#: includes/managers/icons.php:361
+msgid "Font Awesome Upgrade"
+msgstr "Font Awesome оновлення"
+
+#: includes/managers/icons.php:330
+msgid "Load Font Awesome 4 Support"
+msgstr "Завантажити підтримку Font Awesome 4"
+
+#: includes/managers/icons.php:113
+msgid "Font Awesome - Brands"
+msgstr "Font Awesome - Бренди"
+
+#: includes/managers/icons.php:101
+msgid "Font Awesome - Solid"
+msgstr "Font Awesome - Суцільний"
+
+#: includes/managers/icons.php:89
+msgid "Font Awesome - Regular"
+msgstr "Font Awesome - Звичайний"
+
+#: core/editor/editor.php:597 includes/settings/settings.php:605
+msgid "Enable SVG Uploads"
+msgstr "Увімкнути SVG завантаження"
+
+#: includes/admin-templates/beta-tester.php:28
+msgid "Get Beta Updates"
+msgstr "Отримайте бета оновлення"
+
+#: core/debug/classes/htaccess.php:11
+msgid "Your site's .htaccess file appears to be missing."
+msgstr "На вашому сайті відсутній файл .htaccess"
+
+#: core/editor/editor.php:601
+msgid "Elementor's New Icon Library"
+msgstr "Нова бібліотека іконок Elementor"
+
+#: includes/managers/icons.php:412
+msgid "I understand that by upgrading to Font Awesome 5,"
+msgstr "Я розумію, що, оновившись до Font Awesome 5,"
+
+#: core/editor/editor.php:571
+msgid "Elementor 2.5 introduces key changes to the layout using CSS Flexbox. Your existing pages might have been affected, please review your page before publishing."
+msgstr "Elementor 2.5 вводить ключові зміни в макет за допомогою CSS Flexbox. Можливо, це вплинуло на існуючі сторінки, перегляньте сторінку перед публікацією."
+
+#: core/editor/editor.php:570
+msgid "Note: Flexbox Changes"
+msgstr "Примітка: Зміни в Flexbox"
+
+#: includes/elements/section.php:437
+msgid "Overflow"
+msgstr "Переход"
+
+#: includes/settings/settings.php:177
+msgid "Get Help"
+msgstr "Отримати допомогу"
+
+#: includes/widgets/common.php:465
+msgid "Custom positioning is not considered best practice for responsive web design and should not be used too frequently."
+msgstr "Користувацьке позиціонування не вважається найкращою практикою для адаптивного веб-дизайну його не слід використовувати занадто часто."
+
+#: includes/widgets/common.php:465
+msgid "Please note!"
+msgstr "Будь ласка, занотуйте!"
+
+#: includes/elements/column.php:182
+msgid "Horizontal Align"
+msgstr "Вирівняти Горизонтально"
+
+#: includes/elements/column.php:166 includes/elements/column.php:192
+msgid "Space Evenly"
+msgstr "Простір між"
+
+#: includes/elements/column.php:165 includes/elements/column.php:191
+msgid "Space Around"
+msgstr "Простір навколо"
+
+#: includes/widgets/common.php:601
+msgid "Vertical Orientation"
+msgstr "Вертикальна орієнтація"
+
+#: includes/widgets/common.php:523 includes/widgets/common.php:562
+#: includes/widgets/common.php:626 includes/widgets/common.php:664
+msgid "Offset"
+msgstr "Зсув"
+
+#: includes/widgets/common.php:497
+msgid "Horizontal Orientation"
+msgstr "Горизонтальна орієнтація"
+
+#: includes/widgets/common.php:484
+msgid "Fixed"
+msgstr "Фіксоване"
+
+#: includes/widgets/common.php:483
+msgid "Absolute"
+msgstr "Абсолютне"
+
+#: includes/elements/section.php:421 includes/elements/column.php:156
+#: includes/widgets/common.php:435 includes/widgets/image-carousel.php:505
+msgid "Vertical Align"
+msgstr "Вирівняти Вертикально"
+
+#: includes/widgets/common.php:398
+msgid "Custom Width"
+msgstr "Власна ширина"
+
+#: core/editor/editor.php:721 includes/widgets/common.php:368
+msgid "Custom Positioning"
+msgstr "Власне позиціонування"
+
+#: includes/elements/section.php:1191 includes/elements/column.php:788
+#: includes/widgets/common.php:145
+msgid "Motion Effects"
+msgstr "Ефекти руху"
+
+#: includes/settings/controls.php:227
+msgid "Super Admin"
+msgstr "Супер адмін"
+
+#: includes/settings/settings.php:257
+msgid "Get the Full Guide"
+msgstr "Отримати Всю Інструкцію"
+
+#: includes/elements/section.php:442
+msgid "Hidden"
+msgstr "Приховано"
+
+#: core/common/modules/connect/apps/connect.php:25
+msgid "Connected to Elementor as %s"
+msgstr "Підключено до Elementor як %s"
+
+#: modules/safe-mode/module.php:339
+msgid "Having problems loading Elementor? Please enable Safe Mode to troubleshoot."
+msgstr "Виникли проблеми з завантаженням Elementor? Щоб усунути несправність, увімкніть безпечний режим."
+
+#: modules/safe-mode/module.php:266
+msgid "The issue was probably caused by one of your plugins or theme."
+msgstr "Проблему, ймовірно, спричинив один з ваших плагінів або тем."
+
+#: includes/widgets/menu-anchor.php:105
+msgid "Note: The ID link ONLY accepts these chars: %s"
+msgstr "Примітка: ID посилання приймає ТІЛЬКИ ці символи: %s"
+
+#: includes/widgets/image-gallery.php:173
+msgid "Order By"
+msgstr "Сортувати за"
+
+#: includes/widgets/video.php:199
+msgid "Choose File"
+msgstr "Оберіть файл"
+
+#: includes/widgets/video.php:188
+msgid "External URL"
+msgstr "Зовнішній URL"
+
+#: includes/widgets/read-more.php:101
+msgid "Read More Text"
+msgstr "Текст Читати далі"
+
+#: includes/widgets/read-more.php:41 includes/widgets/read-more.php:83
+msgid "Read More"
+msgstr "Читати далі"
+
+#: includes/widgets/google-maps.php:111
+msgid "Location"
+msgstr "Місцезнаходження"
+
+#. translators: %s: Name of current post
+#: includes/frontend.php:1194
+msgid "Continue reading %s"
+msgstr "Читати далі %s"
+
+#: includes/frontend.php:1187
+msgid "(more&hellip;)"
+msgstr "(більше&hellip;)"
+
+#: includes/template-library/sources/local.php:1283
+msgctxt "Template Library"
+msgid "Filter by category"
+msgstr "Сортувати за категоріями"
+
+#: includes/template-library/sources/local.php:298
+msgctxt "Template Library"
+msgid "All Categories"
+msgstr "Всі категорії"
+
+#: includes/template-library/sources/local.php:230
+msgctxt "Template Library"
+msgid "Templates"
+msgstr "Шаблони"
+
+#: includes/controls/groups/background.php:355
+msgctxt "Background Control"
+msgid "Y Position"
+msgstr "Позиція Y"
+
+#: includes/controls/groups/background.php:289
+msgctxt "Background Control"
+msgid "X Position"
+msgstr "Позиція X"
+
+#: includes/settings/settings.php:300
+msgid "Get Popup Builder"
+msgstr "Отримайте Popup Builder"
+
+#: includes/settings/settings.php:150
+msgid "Theme Templates"
+msgstr "Шаблон теми"
+
+#: modules/safe-mode/module.php:333
+msgid "Can't Edit?"
+msgstr "Неможливо змінити?"
+
+#: modules/safe-mode/module.php:277
+msgid "Please note! We couldn't deactivate all of your plugins on Safe Mode. Please <a href=\"%s\" target=\"_blank\">read more</a> about this issue."
+msgstr "Будь ласка, запиши! Не вдалося вимкнути всі плагіни в Безпечному режимі. <a href=\"%s\" target=\"_blank\">Докладніше</a> про цю проблему."
+
+#: modules/safe-mode/module.php:266 modules/safe-mode/module.php:270
+msgid "<a href=\"%s\" target=\"_blank\">Click here</a> to troubleshoot"
+msgstr "<a href=\"%s\" target=\"_blank\">Натисніть тут,</a> щоб вирішити проблему"
+
+#: modules/safe-mode/module.php:269
+msgid "Still experiencing issues?"
+msgstr "Виникають проблеми?"
+
+#: modules/safe-mode/module.php:265
+msgid "Editor successfully loaded?"
+msgstr "Редактор успішно завантажено?"
+
+#: modules/safe-mode/module.php:258 modules/safe-mode/module.php:439
+msgid "Disable Safe Mode"
+msgstr "Вимкнути Безпечний режим"
+
+#: modules/safe-mode/module.php:89
+msgid "Cannot enable Safe Mode"
+msgstr "Не вдається ввімкнути безпечний режим"
+
+#: modules/safe-mode/module.php:49
+msgid "Safe Mode allows you to troubleshoot issues by only loading the editor, without loading the theme or any other plugin."
+msgstr "Безпечний режим дозволяє усунути неполадки, лише завантаживши редактор, не завантажуючи тему або будь-який інший плагін."
+
+#: modules/safe-mode/module.php:40
+msgid "Safe Mode"
+msgstr "Безпечний режим"
+
+#: core/admin/admin.php:795
+msgid "Please note that you are switching to WordPress default editor. Your current layout, design and content might break."
+msgstr "Зверніть увагу, що ви переходите до редактора за замовчуванням WordPress. Ваш поточний макет, дизайн і вміст можуть зірватися."
+
+#: core/admin/admin.php:792
+msgid "Continue"
+msgstr "Продовжити"
+
+#. translators: %d: interval
+#: core/base/background-task.php:314
+msgid "Every %d minutes"
+msgstr "Кожні %d хвилин"
+
+#: includes/libraries/wp-background-process/wp-background-process.php:432
+msgid "Every %d Minutes"
+msgstr "Кожні %d Хвилин"
+
+#: core/base/db-upgrades-manager.php:75
+msgid "%s Your site database needs to be updated to the latest version."
+msgstr "%s База даних вашого сайту має бути оновлена до останньої версії."
+
+#: includes/widgets/read-more.php:93
+msgid "Note: This widget only affects themes that use `%s` in archive pages."
+msgstr "Примітка: Цей віджет впливає лише на теми, які використовують `%s` в архівних сторінках."
+
+#: includes/template-library/sources/local.php:297
+msgctxt "Template Library"
+msgid "Category"
+msgstr "Категорія"
+
+#: includes/controls/groups/background.php:276
+#: includes/controls/groups/background.php:481
+msgctxt "Background Control"
+msgid "Custom"
+msgstr "Користувацький"
+
+#: core/upgrade/manager.php:38
+msgid "Elementor Data Updater"
+msgstr "Оновлення даних Elementor"
+
+#: core/base/db-upgrades-manager.php:83
+msgid "%s Database update process is running in the background."
+msgstr "%s Оновлення бази даних виконується у фоновому режимі."
+
+#: core/base/db-upgrades-manager.php:92
+msgid "%s The database update process is now complete. Thank you for updating to the latest version!"
+msgstr "%s Процес оновлення бази даних завершено. Дякую за оновлення до останньої версії!"
+
+#: includes/template-library/sources/local.php:296
+msgctxt "Template Library"
+msgid "Categories"
+msgstr "Категорії"
+
+#: modules/safe-mode/module.php:256
+msgid "Safe Mode ON"
+msgstr "Безпечний режим УВІМК."
+
+#: modules/safe-mode/module.php:335
+msgid "Enable Safe Mode"
+msgstr "Увімкнути безпечний режим"
+
+#: core/common/modules/finder/categories/general.php:44
+msgctxt "Template Library"
+msgid "Saved Templates"
+msgstr "Збережені шаблони"
+
+#: includes/settings/settings.php:150
+#: includes/template-library/sources/local.php:1580
+msgid "Theme Builder"
+msgstr "Конструктор тем"
+
+#: includes/settings/settings.php:321
+msgid "Get Theme Builder"
+msgstr "Отримати конструктор тем"
+
+#: includes/settings/settings.php:322
+msgid "Theme Builder is the industry leading all-in-one solution that lets you customize every part of your WordPress theme visually: Header, Footer, Single, Archive & WooCommerce."
+msgstr "Конструктор тем - це провідне в галузі рішення «все в одному», яке дозволяє візуально налаштувати кожну частину вашої теми WordPress: шапку, підвал, одиночний запис або сторінку, архіви та WooCommerce."
+
+#: includes/settings/settings.php:151
+#: includes/template-library/sources/local.php:1581
+msgid "Popups"
+msgstr "Вспливаючі вікна"
+
+#: includes/settings/settings.php:301
+msgid "Popup Builder lets you take advantage of all the amazing features in Elementor, so you can build beautiful & highly converting popups. Go pro and start designing your popups today."
+msgstr "Конструктор вспливаючих вікон дає змогу скористатися всіма дивовижними функціями в Elementor, щоб можна було створювати красиві та високо конвертуються вспливаючі вікна. Зайдіть за професійну програму і почніть розробляти свої вспливаючі вікна сьогодні."
+
+#: includes/widgets/read-more.php:87
+msgid "Continue reading"
+msgstr "Читати далі"
+
+#: modules/library/documents/not-supported.php:68
+msgid "Not Supported"
+msgstr "Не підтримується"
+
+#: core/common/modules/finder/categories/site.php:80
+msgid "Users"
+msgstr "Користувачі"
+
+#: core/common/modules/finder/categories/site.php:74
+msgid "Plugins"
+msgstr "Плагіни"
+
+#: includes/widgets/video.php:387
+msgid "Any Video"
+msgstr "Будь-яке відео"
+
+#: includes/widgets/video.php:386
+msgid "Current Video Channel"
+msgstr "Поточний відеоканал"
+
+#: includes/widgets/star-rating.php:91
+msgid "Rating Scale"
+msgstr "Рейтингова шкала"
+
+#: core/common/modules/connect/apps/connect.php:30
+msgid "Connect to Elementor"
+msgstr "Підключіться до Elementor"
+
+#: core/common/modules/connect/apps/connect.php:26
+msgid "Disconnect"
+msgstr "Від’єднатися"
+
+#: core/common/modules/connect/apps/base-app.php:143
+msgid "Disconnected Successfully."
+msgstr "Від'єднано успішно."
+
+#: core/common/modules/connect/apps/base-app.php:131
+msgid "Connected Successfully."
+msgstr "З'єднано успішно."
+
+#: core/common/modules/connect/apps/connect.php:31
+#: core/common/modules/connect/apps/connect.php:36
+#: core/common/modules/connect/admin.php:24
+#: core/common/modules/connect/admin.php:25
+msgid "Connect"
+msgstr "Підключити"
+
+#: includes/widgets/image.php:161 includes/widgets/image.php:170
+msgid "Custom Caption"
+msgstr "Користувальницький підпис"
+
+#: includes/widgets/image.php:160
+msgid "Attachment Caption"
+msgstr "Заголовок вкладення"
+
+#: core/base/document.php:470
+msgid "Future"
+msgstr "Майбутнє"
+
+#: includes/widgets/star-rating.php:303
+msgid "Unmarked Color"
+msgstr "Непомічений колір"
+
+#: includes/widgets/star-rating.php:248
+msgid "Stars"
+msgstr "Зірки"
+
+#: includes/widgets/star-rating.php:141
+msgid "Outline"
+msgstr "Контур"
+
+#: includes/widgets/star-rating.php:132
+msgid "Unmarked Style"
+msgstr "Непомічений Стиль"
+
+#: includes/widgets/star-rating.php:84 includes/widgets/star-rating.php:104
+msgid "Rating"
+msgstr "Оцінка"
+
+#: includes/widgets/star-rating.php:41
+msgid "Star Rating"
+msgstr "Зірки рейтингу"
+
+#: includes/editor-templates/hotkeys.php:152
+msgid "Quit"
+msgstr "Вийти"
+
+#: core/editor/editor.php:706 includes/editor-templates/hotkeys.php:144
+msgid "Keyboard Shortcuts"
+msgstr "Комбінації клавіш"
+
+#: includes/editor-templates/hotkeys.php:100
+msgid "Show / Hide Panel"
+msgstr "Показати/Сховати Панель"
+
+#: includes/editor-templates/hotkeys.php:26
+msgid "Redo"
+msgstr "Переробляти"
+
+#: includes/editor-templates/hotkeys.php:18
+msgid "Undo"
+msgstr "Скасувати"
+
+#: core/common/modules/finder/template.php:13
+msgid "Type to find anything in Elementor"
+msgstr "Введіть, щоб знайти щось у Elementor"
+
+#: core/common/modules/finder/module.php:115
+#: includes/editor-templates/hotkeys.php:92
+msgid "Finder"
+msgstr "Шукач"
+
+#: core/common/modules/finder/categories/site.php:68
+msgid "Customizer"
+msgstr "Налаштування теми"
+
+#: core/common/modules/finder/categories/site.php:56
+msgid "Menus"
+msgstr "Меню"
+
+#: core/common/modules/finder/categories/site.php:50
+msgid "Dashboard"
+msgstr "Майстерня"
+
+#: core/common/modules/finder/categories/site.php:44
+msgid "Homepage"
+msgstr "Домашня сторінка"
+
+#: core/common/modules/finder/categories/create.php:28
+msgid "Create"
+msgstr "Створити"
+
+#: core/editor/editor.php:581 includes/editor-templates/hotkeys.php:88
+msgid "Go To"
+msgstr "Перейти"
+
+#: includes/widgets/video.php:454
+msgid "Poster"
+msgstr "Афіша"
+
+#: includes/widgets/video.php:134 includes/widgets/video.php:155
+#: includes/widgets/video.php:176 includes/widgets/video.php:232
+msgid "Enter your URL"
+msgstr "Введіть ваш URL"
+
+#: core/editor/editor.php:586
+msgid "Inner Section"
+msgstr "Внутрішня секція"
+
+#: includes/settings/settings.php:601
+msgid "Show editing handles when hovering over the element edit button"
+msgstr "Показувати ручки редагування під час наведення курсору над кнопкою редагування елемента"
+
+#. translators: %d: Breakpoint value
+#: includes/settings/settings.php:543
+msgid "Sets the breakpoint between tablet and mobile devices. Below this breakpoint mobile layout will appear (Default: %dpx)."
+msgstr "Встановлює точку останова між планшетом і мобільними пристроями. Нижче цієї точки припинення з'явиться мобільна макет (За умовчанням: %dpx)."
+
+#. translators: %d: Breakpoint value
+#: includes/settings/settings.php:528
+msgid "Sets the breakpoint between desktop and tablet devices. Below this breakpoint tablet layout will appear (Default: %dpx)."
+msgstr "Встановлює точку останова між настільними та планшетними пристроями. Нижче цієї точки перерви з&#39;явиться макетування планшета (За замовчуванням: %dpx)."
+
+#: includes/settings/settings.php:245
+msgid "We recommend you watch this 2 minute getting started video, and then try the editor yourself by dragging and dropping elements to create your first page."
+msgstr "Ми рекомендуємо вам подивитися цей 2-хвилинний початок відео, а потім спробувати редактор самостійно, перетягнувши елементи, щоб створити свою першу сторінку."
+
+#: includes/editor-templates/navigator.php:46
+msgid "Empty"
+msgstr "Порожньо"
+
+#: core/editor/editor.php:699 includes/editor-templates/hotkeys.php:126
+#: includes/editor-templates/panel.php:61
+#: includes/editor-templates/panel.php:63
+#: includes/editor-templates/navigator.php:12
+msgid "Navigator"
+msgstr "Навігатор"
+
+#: includes/settings/settings.php:238 includes/settings/settings.php:239
+#: includes/editor-templates/library-layout.php:13
+msgid "Skip"
+msgstr "Пропустити"
+
+#: includes/controls/url.php:68
+msgid "Paste URL or type"
+msgstr "Вставьте URL чи тип"
+
+#: core/admin/feedback.php:237
+msgid "Hide Notification"
+msgstr "Сховати Сповіщення"
+
+#: core/admin/feedback.php:236
+msgid "Happy To Help"
+msgstr "Раді допомогти"
+
+#: core/admin/feedback.php:234
+msgid "You created over 10 pages with Elementor. Great job! If you can spare a minute, please help us by leaving a five star review on WordPress.org."
+msgstr "Ви створили більше 10 сторінок з Elementor. Чудова робота! Якщо Ви можете заощадити хвилину, будь ласка, допоможіть нам, залишивши п'ятизірковий відгук на WordPress.org."
+
+#: includes/editor-templates/navigator.php:52
+msgid "Once you fill your page with content, this window will give you an overview display of all the page elements. This way, you can easily move around any section, column, or widget."
+msgstr "Після заповнення вашої сторінки вмістом це вікно надасть вам загальний огляд усіх елементів сторінки. Таким чином, ви можете легко пересувати будь-який розділ, стовпець або віджет."
+
+#: core/admin/feedback.php:234
+msgid "Congrats!"
+msgstr "Вітаємо!"
+
+#: includes/widgets/video.php:510
+msgid "Lazy Load"
+msgstr "Ліниве завантаження"
+
+#: includes/settings/settings.php:593
+msgid "Editing Handles"
+msgstr "Кнопки управління"
+
+#: includes/settings/settings.php:168 includes/settings/settings.php:235
+msgid "Getting Started"
+msgstr "Привітання"
+
+#: includes/settings/settings.php:223
+msgid "Create Your First Post"
+msgstr "Створіть Ваш перший запис"
+
+#: includes/settings/settings.php:220
+msgid "Create Your First Page"
+msgstr "Створіть Вашу першу сторінку"
+
+#: includes/settings/settings.php:244
+msgid "Welcome to Elementor"
+msgstr "Ласкаво просимо в Elementor"
+
+#: includes/editor-templates/navigator.php:51
+msgid "Easy Navigation is Here!"
+msgstr "Проста навігація тут як тут!"
+
+#: includes/controls/groups/css-filter.php:132
+msgctxt "Filter Control"
+msgid "Hue"
+msgstr "Кольоровий тон"
+
+#: core/debug/inspector.php:49
+msgid "Debug Bar"
+msgstr "Панель налагодження"
+
+#: includes/widgets/google-maps.php:128
+msgid "Zoom"
+msgstr "Збільшити"
+
+#: core/debug/inspector.php:57
+msgid "Debug Bar adds an admin bar menu that lists all the templates that are used on a page that is being displayed."
+msgstr "Налагоджувальна панель додає меню адміністратора, в якому перераховані всі шаблони, які використовуються на сторінці, яка відображається."
+
+#: core/document-types/post.php:43
+msgid "Single"
+msgstr "Одинарний"
+
+#: includes/widgets/video.php:344
+msgid "Logo"
+msgstr "Логотип"
+
+#: modules/history/module.php:61
+msgid "All Content"
+msgstr "Весь вміст"
+
+#: modules/history/module.php:59
+msgid "Style Pasted"
+msgstr "Стиль вставлений"
+
+#: modules/history/module.php:60
+msgid "Style Reset"
+msgstr "Скинути стиль"
+
+#: includes/widgets/video.php:318
+msgid "Video Info"
+msgstr "Інформація про відео"
+
+#: includes/widgets/video.php:332
+msgid "Modest Branding"
+msgstr "Приховати логотип"
+
+#: includes/widgets/video.php:218
+msgid "URL"
+msgstr "URL"
+
+#: includes/widgets/video.php:117
+msgid "Self Hosted"
+msgstr "Власний хостинг"
+
+#: includes/widgets/button.php:252
+msgid "Button ID"
+msgstr "ID Кнопки"
+
+#: includes/managers/elements.php:287
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: includes/settings/settings.php:532
+msgid "Mobile Breakpoint"
+msgstr "Точка зупинки Телефон"
+
+#: includes/settings/settings.php:517
+msgid "Tablet Breakpoint"
+msgstr "Точка зупинки Планшет"
+
+#: includes/widgets/audio.php:185
+msgid "Artwork"
+msgstr "Артворк"
+
+#: includes/widgets/video.php:110
+msgid "Source"
+msgstr "Джерело"
+
+#: includes/elements/section.php:635 includes/elements/column.php:369
+#: includes/widgets/heading.php:255
+msgid "Blend Mode"
+msgstr "Режим накладання"
+
+#: core/editor/editor.php:703
+msgid "Now you can access all editing actions using right click."
+msgstr "Тепер ви можете отримати доступ до всіх способів редагування за допомогою правої кнопкою миші"
+
+#: core/editor/editor.php:561
+msgid "Got It"
+msgstr "Зрозуміло"
+
+#: core/editor/editor.php:697
+msgid "Copy All Content"
+msgstr "Копіювати весь вміст"
+
+#: core/editor/editor.php:693
+msgid "Reset Style"
+msgstr "Скинути стиль"
+
+#: core/editor/editor.php:689 includes/editor-templates/hotkeys.php:35
+msgid "Copy"
+msgstr "Копіювати"
+
+#: includes/controls/groups/css-filter.php:115
+msgctxt "Filter Control"
+msgid "Saturation"
+msgstr "Насиченість"
+
+#: includes/controls/groups/css-filter.php:98
+msgctxt "Filter Control"
+msgid "Contrast"
+msgstr "Контраст"
+
+#: includes/controls/groups/css-filter.php:81
+msgctxt "Filter Control"
+msgid "Brightness"
+msgstr "Яскравість"
+
+#: includes/controls/groups/background.php:574 includes/widgets/video.php:257
+msgid "Specify an end time (in seconds)"
+msgstr "Вкажіть час завершення (в сек.)"
+
+#: includes/controls/groups/background.php:572 includes/widgets/video.php:255
+msgid "End Time"
+msgstr "Час завершення"
+
+#: includes/controls/groups/background.php:563 includes/widgets/video.php:245
+msgid "Specify a start time (in seconds)"
+msgstr "Вкажіть час початку (в сек.)"
+
+#: includes/controls/groups/background.php:561 includes/widgets/video.php:243
+msgid "Start Time"
+msgstr "Час початку"
+
+#: core/admin/feedback.php:119
+msgid "Wait! Don't deactivate Elementor. You have to activate both Elementor and Elementor Pro in order for the plugin to work."
+msgstr "Зачекайте! Не вимикайте Elementor. Для того, щоб плагін працював, потрібно активувати як Elementor, так і Elementor Pro."
+
+#: core/admin/feedback.php:117
+msgid "I have Elementor Pro"
+msgstr "У мене вже є Elementor Pro"
+
+#: includes/managers/elements.php:276
+msgid "Pro"
+msgstr "Pro"
+
+#: core/editor/editor.php:694
+msgid "Save as a Global"
+msgstr "Зберегти як глобальний"
+
+#: core/editor/editor.php:691
+msgid "Copy Style"
+msgstr "Скопіювати стиль"
+
+#: includes/widgets/button.php:260
+msgid "Please make sure the ID is unique and not used elsewhere on the page this form is displayed. This field allows <code>A-z 0-9</code> & underscore chars without spaces."
+msgstr "Переконайтеся, що ID унікальний і не використовується в іншому місці на сторінці де відображається ця форма. Це поле дозволяє вводити <code>A-z 0-9</code> та символи підкреслення без пропусків."
+
+#: core/editor/editor.php:702
+msgid "Meet Right Click"
+msgstr "Зустрічайте правий клік"
+
+#: includes/editor-templates/global.php:31
+msgid "Drag widget here"
+msgstr "Перетягніть віджет"
+
+#: includes/controls/groups/css-filter.php:62
+msgctxt "Filter Control"
+msgid "Blur"
+msgstr "Розмиття"
+
+#: includes/controls/groups/css-filter.php:166
+msgctxt "Filter Control"
+msgid "CSS Filters"
+msgstr "CSS фільтри"
+
+#: includes/editor-templates/panel.php:85
+#: includes/editor-templates/panel.php:90
+msgid "Preview for %s"
+msgstr "Попередній перегляд %s"
+
+#: includes/widgets/video.php:116
+msgid "Dailymotion"
+msgstr "Dailymotion"
+
+#: core/debug/inspector.php:115
+msgid "Elementor Debugger"
+msgstr "Elementor Відладчик"
+
+#: core/common/modules/finder/categories/site.php:28
+#: includes/managers/elements.php:283
+msgid "Site"
+msgstr "Сайт"
+
+#: core/admin/admin.php:151 core/admin/admin.php:796
+msgid "Back to WordPress Editor"
+msgstr "Повернутися в редактор WordPress"
+
+#. translators: %s: Document title
+#: core/documents-manager.php:355
+msgid "Elementor %s"
+msgstr "Elementor %s"
+
+#. translators: %s the title of the post type
+#. translators: %s: Template type label.
+#: core/common/modules/finder/categories/create.php:62
+#: includes/template-library/sources/local.php:1255
+msgid "Add New %s"
+msgstr "Додати новий %s"
+
+#. translators: %d: Number of rows
+#: includes/utils.php:245
+msgid "%d row affected."
+msgid_plural "%d rows affected."
+msgstr[0] "Затронут %d ряд."
+msgstr[1] "Затронуто %d рядов."
+msgstr[2] "Затронуто %d рядов."
+
+#: includes/elements/section.php:604 includes/elements/section.php:675
+#: includes/elements/column.php:338 includes/elements/column.php:409
+#: includes/widgets/image-box.php:297 includes/widgets/image-box.php:351
+#: includes/widgets/image.php:330 includes/widgets/image.php:364
+msgid "Opacity"
+msgstr "Непрозорість"
+
+#: core/base/module.php:124 core/base/module.php:137 includes/plugin.php:423
+#: includes/plugin.php:436
+msgid "Something went wrong."
+msgstr "Щось пішло не так."
+
+#: modules/page-templates/module.php:145
+msgctxt "Page Template"
+msgid "Elementor Full Width"
+msgstr "Elementor Повна Ширина"
+
+#: modules/page-templates/module.php:144
+msgctxt "Page Template"
+msgid "Elementor Canvas"
+msgstr "Полотно Elementor"
+
+#: includes/widgets/image.php:287
+msgid "Max Width"
+msgstr "Максимальна Ширина"
+
+#: includes/widgets/common.php:478 includes/widgets/image-carousel.php:383
+#: includes/widgets/image-carousel.php:445
+msgid "Position"
+msgstr "Позиція"
+
+#: includes/admin-templates/new-template.php:41
+msgid "Templates Help You <span>Work Efficiently</span>"
+msgstr "Шаблони вам допоможуть <span>Працюйте ефективно</span>"
+
+#: core/admin/admin.php:794
+msgid "New Template"
+msgstr "Новий шаблон"
+
+#. translators: %s: Element type.
+#: core/editor/editor.php:569
+msgid "Delete %s"
+msgstr "Видалити %s"
+
+#. translators: 1: Elementor, 2: Link to plugin review
+#: core/admin/admin.php:424
+msgid "Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!"
+msgstr "Подобається %1$s? Поставте нам %2$s. Ми дуже цінуємо вашу підтримку!"
+
+#: core/common/modules/finder/categories/general.php:62
+msgid "Knowledge Base"
+msgstr "База знань"
+
+#: modules/page-templates/module.php:298
+msgid "No header, no footer, just Elementor"
+msgstr "Нема шапки, немає підвалу, тільки Elementor"
+
+#: modules/page-templates/module.php:285
+msgid "Default Page Template from your theme"
+msgstr "Шаблон сторінки за замовчуванням з вашої теми"
+
+#: modules/page-templates/module.php:274
+msgid "Page Layout"
+msgstr "Макет сторінки"
+
+#: modules/history/views/revisions-panel-template.php:53
+msgid "Current"
+msgstr "Поточний"
+
+#: modules/page-templates/module.php:311
+msgid "This template includes the header, full-width content and footer"
+msgstr "Цей шаблон включає шапку, вміст в повну ширину і підвал"
+
+#: includes/widgets/video.php:865
+msgid "Play Video"
+msgstr "Відтворити відео"
+
+#: includes/widgets/common.php:382 includes/widgets/icon-list.php:101
+msgid "Inline"
+msgstr "В лінію"
+
+#: includes/widgets/counter.php:166
+msgid "Separator"
+msgstr "Розділювач"
+
+#: includes/template-library/sources/local.php:1251
+msgid "Add templates and reuse them across your website. Easily export and import them to any other project, for an optimized workflow."
+msgstr "Додайте шаблони та повторно використайте їх на своєму веб-сайті. Легко експортуйте та імпортуйте їх в будь-який інший проект для оптимізованого робочого процесу."
+
+#: includes/template-library/sources/local.php:218
+msgctxt "Template Library"
+msgid "My Templates"
+msgstr "Мої шаблони"
+
+#: includes/admin-templates/new-template.php:89
+msgid "Create Template"
+msgstr "Створити шаблон"
+
+#: includes/admin-templates/new-template.php:86
+msgid "Enter template name (optional)"
+msgstr "Введіть назву шаблону (необов'язково)"
+
+#: includes/admin-templates/new-template.php:83
+msgid "Name your template"
+msgstr "Назвіть свій шаблон"
+
+#: includes/admin-templates/new-template.php:58
+msgid "Select the type of template you want to work on"
+msgstr "Виберіть тип шаблону, з яким ви хочете працювати"
+
+#: includes/admin-templates/new-template.php:56
+msgid "Choose Template Type"
+msgstr "Виберіть тип шаблону"
+
+#: includes/admin-templates/new-template.php:42
+msgid "Use templates to create the different pieces of your site, and reuse them with one click whenever needed."
+msgstr "Використовуйте шаблони для створення різних частин вашого сайту та повторного використання їх одним кліком, коли це необхідно."
+
+#: includes/settings/settings.php:280
+msgid "Custom Fonts allows you to add your self-hosted fonts and use them on your Elementor projects to create a unique brand language."
+msgstr "Користувацькі шрифти дозволяють вам додавати власні шрифти та використовувати їх у ваших проектах Elementor для створення унікальної мови бренда."
+
+#: includes/settings/settings.php:279
+msgid "Add Your Custom Fonts"
+msgstr "Додайте власні шрифти"
+
+#: includes/settings/settings.php:134 includes/settings/settings.php:135
+msgid "Custom Fonts"
+msgstr "Користувацькі шрифти"
+
+#: core/editor/editor.php:613
+msgid "Category"
+msgstr "Категорія"
+
+#: includes/editor-templates/templates.php:177
+msgid "More actions"
+msgstr "Більше дій"
+
+#: includes/editor-templates/templates.php:100
+msgid "Search Templates:"
+msgstr "Пошук шаблонів:"
+
+#: core/editor/editor.php:635
+msgid "Pages"
+msgstr "Сторінки"
+
+#: core/editor/editor.php:634
+msgid "Blocks"
+msgstr "Блоки"
+
+#: includes/editor-templates/panel.php:255
+msgid "Dynamic"
+msgstr "Динамічний"
+
+#: includes/editor-templates/global.php:52
+msgid "This tag has no settings."
+msgstr "Ця мітка немає налаштувань."
+
+#: includes/controls/groups/border.php:68
+msgctxt "Border Control"
+msgid "Groove"
+msgstr "Опуклість"
+
+#. translators: %s: Document title
+#: core/settings/page/model.php:126 core/base/document.php:834
+#: includes/editor-templates/panel.php:59
+msgid "%s Settings"
+msgstr "%s Налаштування"
+
+#: core/role-manager/role-manager.php:167
+msgid "Want to give access only to content?"
+msgstr "Хочете надати доступ лише до вмісту?"
+
+#: core/role-manager/role-manager.php:132
+msgid "No access to editor"
+msgstr "Немає доступу до редактора"
+
+#: core/role-manager/role-manager.php:125
+msgid "Role Excluded"
+msgstr "Роль виключена"
+
+#: core/role-manager/role-manager.php:89
+msgid "Manage What Your Users Can Edit In Elementor"
+msgstr "Керуйте тим, що можуть редагувати ваші користувачі в Elementor"
+
+#: core/common/modules/finder/categories/general.php:56
+#: core/role-manager/role-manager.php:31
+msgid "Role Manager"
+msgstr "Менеджер ролей"
+
+#: core/dynamic-tags/tag.php:107
+msgid "Fallback"
+msgstr "Відступ"
+
+#: core/document-types/post.php:207
+msgid "Featured Image"
+msgstr "Рекомендоване зображення"
+
+#: core/document-types/post.php:140
+msgid "Body Style"
+msgstr "Стиль сторінки"
+
+#: core/base/document.php:108
+msgid "Document"
+msgstr "Документ"
+
+#: core/common/modules/ajax/module.php:161
+msgid "Action not found."
+msgstr "Дії не знайдено."
+
+#: includes/template-library/manager.php:543
+msgid "Post not found."
+msgstr "Запису не знайдено."
+
+#: core/common/modules/ajax/module.php:130
+msgid "Token Expired."
+msgstr "Токен закінчився."
+
+#: includes/template-library/sources/local.php:1159
+msgid "All"
+msgstr "Всі"
+
+#. translators: %s: Template type label.
+#: includes/template-library/sources/local.php:1248
+msgid "Create Your First %s"
+msgstr "Створіть Ваш перший %s"
+
+#: includes/widgets/image-carousel.php:145
+msgid "Set how many slides are scrolled per swipe."
+msgstr "Встановіть, скільки слайдів прокручуються за один раз."
+
+#: core/admin/admin.php:485
+msgid "Create New Post"
+msgstr "Створити нову Публікацію"
+
+#: includes/controls/groups/background.php:441
+msgid "Note: Attachment Fixed works only on desktop."
+msgstr "Примітка: Фіксований Додаток працює тільки на робочому столі."
+
+#: includes/fonts.php:69
+msgid "Google Early Access"
+msgstr "Примітка: Фіксований додаток працює тільки на робочому столі"
+
+#: core/editor/editor.php:685
+msgid "Unknown Error"
+msgstr "Невідома помилка"
+
+#: core/editor/editor.php:683
+msgid "Server Error"
+msgstr "Помилка серверу"
+
+#: core/editor/editor.php:684
+msgid "Connection Lost"
+msgstr "З'єднання втрачено"
+
+#: core/editor/editor.php:680
+msgid "Saving has been disabled until you’re reconnected."
+msgstr "Збереження відключено до відновлення з'єднання."
+
+#: modules/history/revisions-manager.php:376
+msgid "There is an autosave of this post that is more recent than the version below. You can restore the saved data fron the Revisions panel"
+msgstr "Існує більш пізнє автозбереження цього документа, ніж версія нижче. Ви можете відновити збережені дані в панелі «Редакції»"
+
+#: modules/history/revisions-manager.php:375
+msgid "Restore Auto Saved Data"
+msgstr "Відновити дані автозбереження"
+
+#: modules/history/revisions-manager.php:374
+msgid "Restore"
+msgstr "Відновити"
+
+#: modules/history/revisions-manager.php:373
+msgid "Current Version"
+msgstr "Поточна версія"
+
+#: modules/history/revisions-manager.php:370
+msgid "Edit Published"
+msgstr "Редагувати опублікований"
+
+#: modules/history/revisions-manager.php:369
+msgid "Edit Draft"
+msgstr "Редагувати чернетку"
+
+#: includes/widgets/video.php:373
+msgid "When you turn on privacy mode, YouTube won't store information about visitors on your website unless they play the video."
+msgstr "Коли ви включаєте прихований режим, YouTube не зберігатиме інформацію про відвідувачів вашого сайту, якщо вони не відтворюють відео."
+
+#: includes/widgets/video.php:371
+msgid "Privacy Mode"
+msgstr "Прихований режим"
+
+#: includes/widgets/shortcode.php:106
+msgid "Enter your shortcode"
+msgstr "Введіть шорткод"
+
+#: includes/widgets/image.php:173
+msgid "Enter your image caption"
+msgstr "Введіть підпис до зображення"
+
+#: includes/widgets/html.php:95
+msgid "Enter your code"
+msgstr "Введіть ваш код"
+
+#: includes/widgets/heading.php:114
+msgid "Add Your Heading Text Here"
+msgstr "Введіть текст заголовка"
+
+#: includes/widgets/alert.php:302 includes/widgets/alert.php:334
+msgid "Dismiss alert"
+msgstr "Відхилити попередження"
+
+#: includes/widgets/alert.php:122 includes/widgets/icon-box.php:158
+#: includes/widgets/image-box.php:135
+msgid "Enter your description"
+msgstr "Введіть опис"
+
+#: includes/widgets/alert.php:112
+msgid "This is an Alert"
+msgstr "Це блок Попередження"
+
+#: includes/widgets/accordion.php:161 includes/widgets/toggle.php:158
+msgid "Active Icon"
+msgstr "Іконка активного"
+
+#. translators: 1: Editing date, 2: Author display name
+#: core/base/document.php:1090
+msgid "Last edited on %1$s by %2$s"
+msgstr "Відредаговано %1$s, автор: %2$s"
+
+#. translators: 1: Saving date, 2: Author display name
+#: core/base/document.php:1087
+msgid "Draft saved on %1$s by %2$s"
+msgstr "Чернетка збережена %1$s, автор %2$s"
+
+#: core/common/modules/connect/apps/base-app.php:75 core/editor/editor.php:679
+msgid "Dismiss"
+msgstr "Відхилити"
+
+#: core/editor/editor.php:678
+msgid "View All Revisions"
+msgstr "Подивитися всі редакції"
+
+#: core/editor/editor.php:677
+msgid "Have a look"
+msgstr "Погляньте"
+
+#: core/editor/editor.php:676
+msgid "Keep Editing"
+msgstr "Продовжити редагування"
+
+#: core/editor/editor.php:675
+msgid "This is just a draft. Play around and when you're done - click update."
+msgstr "Це всього лише чернетка. Пограйте з ним, і коли закінчите - натисніть оновити."
+
+#: core/editor/editor.php:674
+msgid "Submit"
+msgstr "Відправити"
+
+#: core/editor/editor.php:672
+msgid "Update"
+msgstr "Оновити"
+
+#: core/editor/editor.php:641
+msgid "Proceed Anyway"
+msgstr "Все одно продовжити"
+
+#: core/editor/editor.php:640
+msgid "Your browser isn't compatible with all of Elementor's editing features. We recommend you switch to another browser like Chrome or Firefox."
+msgstr "Ваш браузер несумісний з усіма функціями редактора Elementor. Ми рекомендуємо перейти на інший браузер, наприклад, Chrome або Firefox."
+
+#: core/editor/editor.php:639
+msgid "Your browser isn't compatible"
+msgstr "Ваш браузер несумісний"
+
+#: core/common/modules/finder/template.php:19 core/editor/editor.php:631
+msgid "No Results Found"
+msgstr "Результатів не знайдено"
+
+#: core/editor/editor.php:630
+msgid "Please make sure your search is spelled correctly or try a different words."
+msgstr "Переконайтеся, що шукаєте правильно або спробуйте ввести інші слова."
+
+#: core/editor/editor.php:629
+msgid "No Favorite Templates"
+msgstr "Немає Обраних Шаблонів"
+
+#: core/editor/editor.php:628
+msgid "You can mark any pre-designed template as a favorite."
+msgstr "Ви можете додати будь-який готовий шаблон в Обране."
+
+#: core/editor/editor.php:616
+msgid "Import Document Settings"
+msgstr "Імпортувати Параметри Документа"
+
+#: core/editor/editor.php:605
+msgid "Show Panel"
+msgstr "Показати Панель"
+
+#: core/editor/editor.php:576
+msgid "Dashboard Settings"
+msgstr "Налаштування консолі"
+
+#: includes/editor-templates/templates.php:239
+msgid "Select File"
+msgstr "Виберіть файл"
+
+#: includes/editor-templates/templates.php:238
+msgid "or"
+msgstr "або"
+
+#: includes/editor-templates/templates.php:237
+msgid "Drag & drop your .JSON or .zip template file"
+msgstr "Перетягніть файл шаблону .JSON або .zip"
+
+#: includes/editor-templates/templates.php:236
+msgid "Import Template to Your Library"
+msgstr "Імпортувати шаблон у Вашу Бібліотеку"
+
+#: includes/editor-templates/templates.php:227
+#: includes/editor-templates/templates.php:243
+#: includes/editor-templates/templates.php:256 includes/widgets/button.php:138
+#: includes/widgets/button.php:139
+msgid "Click here"
+msgstr "Натисніть тут"
+
+#: includes/editor-templates/templates.php:226
+#: includes/editor-templates/templates.php:242
+#: includes/editor-templates/templates.php:255
+msgid "Want to learn more about the Elementor library?"
+msgstr "Хочете дізнатись більше про бібліотеку Elementor?"
+
+#: includes/editor-templates/templates.php:155
+msgid "Favorite"
+msgstr "Вибране"
+
+#: includes/editor-templates/templates.php:121
+msgid "Creation Date"
+msgstr "Дата створення"
+
+#: includes/editor-templates/templates.php:117
+msgid "Created By"
+msgstr "Створений"
+
+#: includes/editor-templates/templates.php:101
+msgid "Search"
+msgstr "Пошук"
+
+#: includes/editor-templates/templates.php:92
+msgid "My Favorites"
+msgstr "Моє Обране"
+
+#: includes/editor-templates/templates.php:70
+msgid "Popular"
+msgstr "Популярний"
+
+#: includes/editor-templates/templates.php:68
+msgid "Trend"
+msgstr "Тенденція"
+
+#: includes/editor-templates/templates.php:66
+msgid "New"
+msgstr "Нові"
+
+#: includes/editor-templates/templates.php:10
+#: includes/editor-templates/templates.php:11
+msgid "Import Template"
+msgstr "Імпортувати Шаблон"
+
+#: includes/controls/media.php:139 includes/controls/icons.php:73
+#: includes/editor-templates/repeater.php:27
+msgid "Remove"
+msgstr "Видалити"
+
+#: core/editor/editor.php:688 includes/editor-templates/repeater.php:21
+#: includes/editor-templates/hotkeys.php:67
+msgid "Duplicate"
+msgstr "Подвоїти"
+
+#: includes/editor-templates/repeater.php:14
+msgid "Drag & Drop"
+msgstr "Перетягнути"
+
+#: core/editor/editor.php:606 includes/editor-templates/panel.php:142
+#: includes/editor-templates/panel.php:143
+msgid "Hide Panel"
+msgstr "Сховати панель"
+
+#: core/editor/editor.php:695 includes/editor-templates/panel.php:132
+msgid "Save as Template"
+msgstr "Зберегти як Шаблон"
+
+#: includes/editor-templates/panel.php:128
+msgid "Save Draft"
+msgstr "Зберегти Чернетку"
+
+#: includes/editor-templates/panel.php:112
+#: includes/editor-templates/panel.php:114
+msgid "Save Options"
+msgstr "Зберегти Параметри"
+
+#: core/editor/editor.php:669 includes/editor-templates/panel.php:107
+msgid "Publish"
+msgstr "Опублікувати"
+
+#: includes/editor-templates/panel.php:95
+#: includes/editor-templates/panel.php:98
+msgid "Preview Changes"
+msgstr "Попередній перегляд Змін"
+
+#: core/editor/editor.php:583
+msgid "Exit To Dashboard"
+msgstr "Вихід до інформаційної Панелі"
+
+#: includes/editor-templates/panel-elements.php:36
+msgid "Search Widget:"
+msgstr "Пошук віджетів:"
+
+#: includes/controls/popover-toggle.php:72
+#: includes/controls/popover-toggle.php:74
+msgid "Back to default"
+msgstr "Повернутися до стандартного"
+
+#: includes/controls/groups/typography.php:171
+msgctxt "Typography Control"
+msgid "Line Through"
+msgstr "Перекреслений"
+
+#: includes/controls/groups/typography.php:170
+msgctxt "Typography Control"
+msgid "Overline"
+msgstr "Лінія вище"
+
+#: includes/controls/groups/typography.php:169
+msgctxt "Typography Control"
+msgid "Underline"
+msgstr "Підкреслений"
+
+#: includes/controls/groups/typography.php:164
+msgctxt "Typography Control"
+msgid "Decoration"
+msgstr "Оформлення"
+
+#: includes/controls/dimensions.php:128
+msgid "Unlinked values"
+msgstr "Незв'язані значення"
+
+#: core/admin/admin.php:569
+msgid "Blog"
+msgstr "Блог"
+
+#: core/admin/admin.php:550
+msgid "(opens in a new window)"
+msgstr "(відкривається в новому вікні)"
+
+#: core/admin/admin.php:531
+msgid "News & Updates"
+msgstr "Новини та Оновлення"
+
+#: core/admin/admin.php:513
+msgid "Recently Edited"
+msgstr "Нещодавно відредаговано"
+
+#: core/admin/admin.php:482
+msgid "Create New Page"
+msgstr "Створити Нову Сторінку"
+
+#: core/admin/admin.php:444
+msgid "Elementor Overview"
+msgstr "Огляд Elementor"
+
+#: core/admin/admin.php:387
+msgid "Update Elementor Now"
+msgstr "Оновити Elementor"
+
+#: core/document-types/post.php:195
+msgid "Excerpt"
+msgstr "Витяг"
+
+#: core/base/document.php:1082
+msgctxt "revision date format"
+msgid "M j, H:i"
+msgstr "M j, H:i"
+
+#: core/admin/admin.php:520
+msgctxt "Dashboard Overview Widget Recently Date"
+msgid "M jS"
+msgstr "M jS"
+
+#. translators: %s: the document title.
+#: core/base/document.php:91
+msgid "Hurray! Your %s is live."
+msgstr "Ура! Ваша сторінка %s тепер опублікована."
+
+#: core/editor/editor.php:668
+msgid "Published"
+msgstr "Опубліковано"
+
+#: modules/history/revisions-manager.php:248
+#: modules/history/revisions-manager.php:280
+#: includes/template-library/sources/local.php:447
+#: includes/template-library/sources/local.php:522
+#: includes/template-library/sources/local.php:660
+msgid "Access denied."
+msgstr "Доступ Заборонено."
+
+#: includes/settings/settings.php:429
+msgid "Disable Default Fonts"
+msgstr "Вимкнути Шрифти за замовчуванням"
+
+#: includes/elements/column.php:189 includes/widgets/common.php:448
+#: includes/widgets/image-carousel.php:518 includes/widgets/accordion.php:331
+#: includes/widgets/toggle.php:351
+msgid "End"
+msgstr "Кінець"
+
+#: includes/elements/column.php:187 includes/widgets/common.php:440
+#: includes/widgets/image-carousel.php:510 includes/widgets/accordion.php:327
+#: includes/widgets/toggle.php:347
+msgid "Start"
+msgstr "Почати"
+
+#: core/editor/editor.php:609
+msgid "Type Here"
+msgstr "Друкуйте тут"
+
+#: core/editor/editor.php:726
+msgid "Reload Page"
+msgstr "Перезавантажити сторінку"
+
+#: core/editor/editor.php:728
+msgid "Your session has expired. Please reload the page to continue editing."
+msgstr "Термін дії вашої сесії минув. Перезавантажте сторінку, щоб продовжити редагування."
+
+#: core/editor/editor.php:727
+msgid "Timeout"
+msgstr "Час вийшов"
+
+#: core/debug/loading-inspection-manager.php:36
+msgid "We're sorry, but something went wrong. Click on 'Learn more' and follow each of the steps to quickly solve it."
+msgstr "Ми вибачаємося, але щось пішло не так. Клацніть на \"Дізнатися більше\" та дотримуйтесь усіх кроків, щоб швидко все вирішити."
+
+#: core/debug/classes/inspection-base.php:25
+#: core/debug/loading-inspection-manager.php:37
+msgid "The preview could not be loaded"
+msgstr "Попередній перегляд неможливо завантажити"
+
+#: core/editor/editor.php:577
+msgid "Default Colors"
+msgstr "Кольори за замовчуванням"
+
+#: core/admin/admin.php:373
+msgid "Update Notification"
+msgstr "Оновити сповіщення"
+
+#: core/editor/editor.php:730
+msgid "Unknown Value"
+msgstr "Невідоме значення"
+
+#. Author URI of the plugin
+msgid "https://elementor.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash"
+msgstr "https://elementor.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash"
+
+#. Plugin URI of the plugin
+msgid "https://elementor.com/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash"
+msgstr "https://elementor.com/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash"
+
+#: modules/history/views/history-panel-template.php:23
+msgid "Once you start working, you'll be able to redo / undo any action you make in the editor."
+msgstr "Як тільки ви почнете працювати, ви зможете переробляти / скасувати будь-які дії, які ви виконуєте в редакторі."
+
+#: modules/history/views/history-panel-template.php:17
+msgid "Switch to Revisions tab for older versions"
+msgstr "Перейдіть на вкладку \"Перегляд\" для старіших версій"
+
+#: modules/history/views/history-panel-template.php:10
+#: modules/history/views/revisions-panel-template.php:26
+msgid "Revisions"
+msgstr "Редакції"
+
+#: modules/history/views/history-panel-template.php:9
+#: includes/editor-templates/templates.php:124
+#: includes/editor-templates/hotkeys.php:14
+msgid "Actions"
+msgstr "Дії"
+
+#: modules/history/module.php:57
+msgid "Moved"
+msgstr "Переміщено"
+
+#: modules/history/module.php:54
+msgid "Added"
+msgstr "Додано"
+
+#: core/editor/editor.php:725
+msgid "Documentation"
+msgstr "Документація"
+
+#: modules/history/module.php:52 includes/editor-templates/hotkeys.php:117
+#: includes/editor-templates/panel.php:65
+#: includes/editor-templates/panel.php:67
+msgid "History"
+msgstr "Історія"
+
+#: core/settings/general/model.php:168 includes/widgets/video.php:703
+msgid "UI Hover Color"
+msgstr "Колір кнопок при наведенні"
+
+#: core/settings/general/model.php:161 includes/widgets/video.php:692
+msgid "UI Color"
+msgstr "Колір кнопок"
+
+#: modules/history/module.php:56
+msgid "Edited"
+msgstr "Відредаговано"
+
+#: modules/history/module.php:58
+msgid "Editing Started"
+msgstr "Редагування почалося"
+
+#: modules/history/views/history-panel-template.php:22
+msgid "No History Yet"
+msgstr "Історії поки немає"
+
+#: includes/widgets/video.php:653
+msgctxt "Text Shadow Control"
+msgid "Shadow"
+msgstr "Тінь"
+
+#: includes/widgets/video.php:285
+msgid "Mute"
+msgstr "Німий"
+
+#: includes/template-library/sources/local.php:893
+msgid "Choose an Elementor template JSON file or a .zip archive of Elementor templates, and add them to the list of templates available in your library."
+msgstr "Виберіть шаблон Elementor JSON або архів архіву шаблонів Elementor і додайте їх до списку шаблонів, доступних у вашій бібліотеці."
+
+#: includes/settings/settings.php:553
+msgid "You can customize the lightbox design by going to: Top-left hamburger icon > Global Settings > Lightbox."
+msgstr "Ви можете налаштувати дизайн лайтбоксу, перейшовши на: піктограму \"гамбургера\" вгорі та ліворуч> Загальні налаштування> Lightbox."
+
+#: includes/controls/groups/text-shadow.php:61
+#: includes/controls/groups/text-shadow.php:85
+msgctxt "Text Shadow Control"
+msgid "Text Shadow"
+msgstr "Тінь від тексту"
+
+#: core/settings/general/model.php:148
+msgid "Enable In Editor"
+msgstr "Увімкнути в Редакторі"
+
+#: core/settings/general/model.php:144 includes/settings/settings.php:552
+msgid "Open all image links in a lightbox popup window. The lightbox will automatically work on any link that leads to an image file."
+msgstr "Відкрийте всі посилання на зображення в спливаючому вікні лайтбоксу. Лайтбокс автоматично працюватиме на будь-якому посиланні, що веде до файлу зображення."
+
+#: core/settings/general/model.php:141 includes/settings/settings.php:547
+msgid "Image Lightbox"
+msgstr "Лайтбокс із зображенням"
+
+#: core/settings/general/model.php:67
+msgid "Global Settings"
+msgstr "Загальні налаштування"
+
+#: includes/settings/tools.php:261
+msgid "Please Note: We do not recommend updating to a beta version on production sites."
+msgstr "Зауважте: ми не рекомендуємо оновлювати до бета-версії на працюючих сайтах."
+
+#: includes/settings/tools.php:253
+msgid "Beta Tester"
+msgstr "Бета-тестер"
+
+#: includes/settings/tools.php:244
+msgid "Turn-on Beta Tester, to get notified when a new beta version of Elementor or E-Pro is available. The Beta version will not install automatically. You always have the option to ignore it."
+msgstr "Увімкніть бета-тестування, щоб отримати повідомлення про вихід нової бета-версії Elementor або E-Pro. Бета-версія не буде встановлюватися автоматично. У вас завжди буде можливість її ігнорувати."
+
+#: includes/settings/tools.php:242
+msgid "Become a Beta Tester"
+msgstr "Стати бета-тестером"
+
+#: includes/settings/tools.php:236
+msgid "Warning: Please backup your database before making the rollback."
+msgstr "Попередження. Будь ласка, створіть резервну копію бази даних, перш ніж робити відкат."
+
+#. translators: %s: Elementor previous stable version
+#: includes/settings/tools.php:232
+msgid "Reinstall v%s"
+msgstr "Перевстановити v%s"
+
+#: includes/settings/tools.php:224
+msgid "Rollback Version"
+msgstr "Відкат версії"
+
+#. translators: %s: Elementor version
+#: includes/settings/tools.php:215
+msgid "Experiencing an issue with Elementor version %s? Rollback to a previous version before the issue appeared."
+msgstr "Виникли проблеми з версією Elementor %s? Відкат до попередньої версії до появи проблеми."
+
+#: core/common/modules/finder/categories/tools.php:59
+#: includes/settings/tools.php:208
+msgid "Version Control"
+msgstr "Контроль версії"
+
+#: includes/settings/settings.php:582
+msgid "Switch Editor Loader Method"
+msgstr "Змінити метод завантаження Редактора"
+
+#: includes/settings/settings.php:561
+msgid "Integrations"
+msgstr "Об'єднання"
+
+#: core/settings/general/model.php:113 includes/settings/settings.php:491
+msgid "Sets the default space between widgets (Default: 20)"
+msgstr "Встановлює простір між віджетами (за замовчуванням: 20)"
+
+#: includes/settings/settings.php:483
+msgid "Space Between Widgets"
+msgstr "Простір між віджетами"
+
+#: core/admin/admin.php:791 includes/settings/tools.php:115
+#: includes/settings/tools.php:211 includes/rollback.php:165
+msgid "Rollback to Previous Version"
+msgstr "Відкат до попередньої версії"
+
+#: includes/elements/section.php:1226 includes/elements/column.php:823
+#: includes/widgets/common.php:180
+msgid "Animation Delay"
+msgstr "Затримка анімації"
+
+#: includes/elements/section.php:1144 includes/elements/column.php:721
+#: includes/widgets/common.php:99
+msgid "Z-Index"
+msgstr "Z-Index"
+
+#: includes/elements/section.php:550 includes/elements/section.php:706
+#: includes/elements/section.php:812 includes/elements/column.php:284
+#: includes/elements/column.php:440 includes/elements/column.php:547
+#: includes/widgets/google-maps.php:214 includes/widgets/common.php:240
+#: includes/widgets/common.php:344 includes/widgets/image-box.php:315
+#: includes/widgets/image.php:390
+msgid "Transition Duration"
+msgstr "Тривалість переходу"
+
+#: core/settings/general/model.php:109 includes/elements/column.php:203
+msgid "Widgets Space"
+msgstr "Відступ Віджетів"
+
+#. translators: %s: Element type.
+#: core/editor/editor.php:563
+msgid "Add %s"
+msgstr "Додати %s"
+
+#: core/editor/editor.php:618
+msgid "Attention: Importing may override previous settings."
+msgstr "Увага: Імпорт може замінити попередні налаштування."
+
+#: core/editor/editor.php:617
+msgid "Do you want to also import the document settings of the template?"
+msgstr "Ви хочете також імпортувати параметри документа шаблону?"
+
+#: includes/controls/url.php:114
+msgid "Add nofollow"
+msgstr "Додати nofollow"
+
+#: includes/controls/url.php:110
+msgid "Open in new window"
+msgstr "Відкрити в новому вікні"
+
+#: includes/controls/url.php:103
+msgid "Link Options"
+msgstr "Параметри посилання"
+
+#: includes/controls/groups/box-shadow.php:72
+msgctxt "Box Shadow Control"
+msgid "Outline"
+msgstr "Зовнішня"
+
+#: includes/controls/groups/box-shadow.php:69
+msgctxt "Box Shadow Control"
+msgid "Position"
+msgstr "Позиція"
+
+#. translators: %s: Element name.
+#: core/editor/editor.php:565
+msgid "Edit %s"
+msgstr "Редагувати %s"
+
+#. translators: %s: Element type.
+#: core/editor/editor.php:567
+msgid "Duplicate %s"
+msgstr "Подвоювати %s"
+
+#: core/admin/admin.php:790
+msgid "Are you sure you want to reinstall previous version?"
+msgstr "Ви впевнені, що хочете перевстановити попередню версію?"
+
+#. translators: %s: WordPress version
+#: elementor.php:97
+msgid "Elementor requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING."
+msgstr "Elementor вимагає WordPress версії %s+. Оскільки ви використовуєте попередню версію, плагін наразі НЕ АКТИВОВАН."
+
+#: includes/settings/settings.php:578
+msgid "Use internal CSS that is embedded in the head of the page. For troubleshooting server configuration conflicts and managing development environments."
+msgstr "Використовуйте внутрішню CSS, вбудовану в head сторінки. Для усунення конфліктів конфігурації сервера та керування середовищами розробки."
+
+#: includes/settings/settings.php:578
+msgid "Use external CSS files for all generated stylesheets. Choose this setting for better performance (recommended)."
+msgstr "Використовуйте зовнішні файли CSS для всіх створених таблиць стилів. Виберіть цей параметр для підвищення продуктивності (рекомендовано)."
+
+#: includes/settings/settings.php:576
+msgid "Internal Embedding"
+msgstr "Вбудовування в код"
+
+#: includes/settings/settings.php:575
+msgid "External File"
+msgstr "Зовнішній файл"
+
+#: includes/settings/settings.php:570
+msgid "CSS Print Method"
+msgstr "Метод генерації CSS"
+
+#: includes/settings/settings.php:589
+msgid "For troubleshooting server configuration conflicts."
+msgstr "Для усунення конфліктів конфігурації сервера."
+
+#: core/debug/inspector.php:55 core/editor/editor.php:673
+#: modules/safe-mode/module.php:46 includes/settings/tools.php:259
+#: includes/settings/settings.php:587 includes/settings/settings.php:611
+msgid "Enable"
+msgstr "Увімкнути"
+
+#: core/debug/inspector.php:54 modules/safe-mode/module.php:45
+#: includes/settings/tools.php:258 includes/settings/settings.php:586
+#: includes/settings/settings.php:610
+msgid "Disable"
+msgstr "Відключити"
+
+#: core/base/document.php:476
+msgid "Status"
+msgstr "Стан"
+
+#: includes/widgets/text-editor.php:328 includes/widgets/spacer.php:108
+msgid "Space"
+msgstr "Простір"
+
+#: includes/widgets/text-editor.php:120 includes/widgets/text-editor.php:243
+msgid "Drop Cap"
+msgstr "Буквиця"
+
+#: core/settings/general/model.php:130 includes/settings/settings.php:513
+msgid "Elementor lets you hide the page title. This works for themes that have \"h1.entry-title\" selector. If your theme's selector is different, please enter it above."
+msgstr "Elementor дозволяє приховати заголовок сторінки. Це працює для тих, селектор заголовка в яких - \"h1.entry-title\". Якщо селектор вашої теми відрізняється, введіть його вище."
+
+#: core/settings/general/model.php:127 includes/settings/settings.php:506
+msgid "Page Title Selector"
+msgstr "Селектор заголовка сторінки"
+
+#: core/common/modules/finder/categories/edit.php:115
+#: modules/history/module.php:53
+msgid "Template"
+msgstr "Шаблон"
+
+#. translators: %s: Setting page link
+#: core/document-types/post.php:118
+msgid "Not working? You can set a different selector for the title in the <a href=\"%s\" target=\"_blank\">Settings page</a>."
+msgstr "Не працює? Ви можете встановити інший селектор для заголовка на <a href=\"%s\" target=\"_blank\"> сторінці налаштувань </a>."
+
+#: includes/maintenance-mode.php:239
+msgid "Choose Template"
+msgstr "Виберіть шаблон"
+
+#: includes/maintenance-mode.php:358
+msgid "Select one or go ahead and <a target=\"_blank\" href=\"%s\">create one</a> now."
+msgstr "Виберіть один або перейдіть вперед і <a target=\"_blank\" href=\"%s\">create one</a> зараз."
+
+#: includes/maintenance-mode.php:357
+msgid "To enable maintenance mode you have to set a template for the maintenance mode page."
+msgstr "Щоб увімкнути режим технічного обслуговування, вам слід встановити шаблон для сторінки режиму технічного обслуговування."
+
+#: includes/maintenance-mode.php:279 includes/maintenance-mode.php:356
+msgid "Edit Template"
+msgstr "Редагувати Шаблон"
+
+#: includes/maintenance-mode.php:231
+msgid "Roles"
+msgstr "Ролі"
+
+#: includes/maintenance-mode.php:225
+msgid "Logged In"
+msgstr "Авторизовані"
+
+#: includes/maintenance-mode.php:219
+msgid "Who Can Access"
+msgstr "У кого є доступ"
+
+#: includes/maintenance-mode.php:214
+msgid "Coming Soon returns HTTP 200 code, meaning the site is ready to be indexed."
+msgstr "«Скоро відкриття» повертає код HTTP 200, що означає, що сайт готовий до індексування."
+
+#: includes/maintenance-mode.php:211
+msgid "Maintenance Mode returns HTTP 503 code, so search engines know to come back a short time later. It is not recommended to use this mode for more than a couple of days."
+msgstr "«Режим обслуговування» повертає код HTTP 503, тому пошуковий робот розуміє, що потрібно повернуться через деякий час. Не рекомендується використовувати цей режим більш ніж на кілька днів."
+
+#: includes/maintenance-mode.php:208
+msgid "Choose between Coming Soon mode (returning HTTP 200 code) or Maintenance Mode (returning HTTP 503 code)."
+msgstr "Виберіть режим «Скоро» (повернення коду HTTP 200) або «Режим технічного обслуговування» (повернення коду HTTP 503)."
+
+#: includes/maintenance-mode.php:205
+msgid "Maintenance"
+msgstr "Технічне обслуговування"
+
+#: includes/maintenance-mode.php:204
+msgid "Coming Soon"
+msgstr "Незабаром"
+
+#: includes/maintenance-mode.php:203
+msgid "Disabled"
+msgstr "Вимкнено"
+
+#: includes/maintenance-mode.php:199
+msgid "Choose Mode"
+msgstr "Виберіть режим"
+
+#: includes/maintenance-mode.php:195
+msgid "Set your entire website as MAINTENANCE MODE, meaning the site is offline temporarily for maintenance, or set it as COMING SOON mode, meaning the site is offline until it is ready to be launched."
+msgstr "Встановіть весь ваш веб-сайт в режимі ТЕХНІЧНОГО РЕЖИМУ, тобто сайт тимчасово підтримується, або встановіть його як режим НЕЗАБАРОМ, тобто веб-сайт офлайн, поки він не буде готовий до запуску."
+
+#: core/common/modules/finder/categories/tools.php:65
+#: includes/maintenance-mode.php:190 includes/maintenance-mode.php:194
+msgid "Maintenance Mode"
+msgstr "Режим технічного обслуговування"
+
+#: core/document-types/post.php:114
+msgid "Hide Title"
+msgstr "Сховати заголовок"
+
+#: includes/maintenance-mode.php:270
+msgid "Maintenance Mode ON"
+msgstr "Режим технічного обслуговування УВІМК."
+
+#: core/editor/editor.php:692 includes/editor-templates/hotkeys.php:51
+msgid "Paste Style"
+msgstr "Вставити стиль"
+
+#: includes/settings/controls.php:156
+#: includes/admin-templates/new-template.php:61
+msgid "Select"
+msgstr "Вибрати"
+
+#: includes/elements/section.php:987
+msgid "Bring to Front"
+msgstr "На передній план"
+
+#: core/settings/general/model.php:138 core/settings/general/manager.php:208
+#: includes/widgets/image-gallery.php:156
+#: includes/widgets/image-carousel.php:215 includes/widgets/video.php:547
+#: includes/widgets/video.php:668 includes/widgets/image.php:216
+msgid "Lightbox"
+msgstr "Лайтбокс"
+
+#: includes/elements/column.php:164 includes/elements/column.php:190
+#: includes/widgets/icon-list.php:202 includes/widgets/toggle.php:233
+msgid "Space Between"
+msgstr "Простір між"
+
+#: includes/widgets/icon-list.php:194
+msgid "List"
+msgstr "Перелік"
+
+#: includes/shapes.php:208
+msgctxt "Shapes"
+msgid "Book"
+msgstr "Книга"
+
+#: includes/shapes.php:204
+msgctxt "Shapes"
+msgid "Split"
+msgstr "Розрив"
+
+#: includes/shapes.php:200
+msgctxt "Shapes"
+msgid "Arrow"
+msgstr "Стрілка"
+
+#: includes/shapes.php:196
+msgctxt "Shapes"
+msgid "Waves Pattern"
+msgstr "Візерунок хвиль"
+
+#: includes/shapes.php:192
+msgctxt "Shapes"
+msgid "Waves Brush"
+msgstr "Хвилі кисті"
+
+#: includes/shapes.php:187
+msgctxt "Shapes"
+msgid "Waves"
+msgstr "Хвилі"
+
+#: includes/shapes.php:178
+msgctxt "Shapes"
+msgid "Curve"
+msgstr "Крива"
+
+#: includes/shapes.php:175
+msgctxt "Shapes"
+msgid "Fan Opacity"
+msgstr "Непрозорість вентилятора"
+
+#: includes/shapes.php:171
+msgctxt "Shapes"
+msgid "Tilt Opacity"
+msgstr "Непрозорий нахил"
+
+#: includes/shapes.php:166
+msgctxt "Shapes"
+msgid "Tilt"
+msgstr "Нахил"
+
+#: includes/shapes.php:161
+msgctxt "Shapes"
+msgid "Triangle Asymmetrical"
+msgstr "Асиметричний Трикутник"
+
+#: includes/shapes.php:157
+msgctxt "Shapes"
+msgid "Triangle"
+msgstr "Трикутник"
+
+#: includes/shapes.php:152
+msgctxt "Shapes"
+msgid "Pyramids"
+msgstr "Піраміди"
+
+#: includes/shapes.php:149
+msgctxt "Shapes"
+msgid "Zigzag"
+msgstr "Зигзаг"
+
+#: includes/shapes.php:143
+msgctxt "Shapes"
+msgid "Clouds"
+msgstr "Хмари"
+
+#: includes/shapes.php:137
+msgctxt "Shapes"
+msgid "Drops"
+msgstr "Краплі"
+
+#: includes/shapes.php:133
+msgctxt "Shapes"
+msgid "Mountains"
+msgstr "Гори"
+
+#: includes/elements/section.php:974
+msgid "Invert"
+msgstr "Інвертувати"
+
+#: includes/elements/section.php:960
+msgid "Flip"
+msgstr "Перевернути"
+
+#: includes/elements/section.php:856
+msgid "Shape Divider"
+msgstr "Роздільник форми"
+
+#: includes/elements/section.php:1019 includes/elements/column.php:602
+msgid "Note: The following colors won't work if Default Colors are enabled."
+msgstr "Примітка. Наступні кольори не працюватимуть, якщо ввімкнено кольори за замовчуванням."
+
+#: includes/shapes.php:182
+msgctxt "Shapes"
+msgid "Curve Asymmetrical"
+msgstr "Асиметрична Крива"
+
+#: includes/widgets/tabs.php:171
+msgid "Navigation Width"
+msgstr "Ширина навігації"
+
+#: includes/elements/section.php:535 includes/elements/section.php:660
+#: includes/elements/section.php:777 includes/elements/column.php:269
+#: includes/elements/column.php:394 includes/elements/column.php:512
+#: includes/widgets/button.php:334 includes/widgets/google-maps.php:199
+#: includes/widgets/icon-box.php:300 includes/widgets/icon.php:247
+#: includes/widgets/common.php:225 includes/widgets/common.php:309
+#: includes/widgets/image-box.php:336 includes/widgets/icon-list.php:399
+#: includes/widgets/icon-list.php:484 includes/widgets/image.php:357
+msgid "Hover"
+msgstr "Наведіть курсор миші"
+
+#: includes/elements/section.php:1163 includes/elements/column.php:740
+#: includes/widgets/button.php:258 includes/widgets/common.php:119
+msgid "Add your custom id WITHOUT the Pound key. e.g: my-id"
+msgstr "Додайте свій користувальницький ідентифікатор без решітки. Наприклад: my-id"
+
+#: includes/elements/section.php:1157 includes/elements/column.php:734
+#: includes/widgets/common.php:113
+msgid "CSS ID"
+msgstr "SS ID"
+
+#: includes/controls/groups/background.php:196
+msgctxt "Background Control"
+msgid "Angle"
+msgstr "Кут"
+
+#: includes/controls/groups/background.php:185
+msgctxt "Background Control"
+msgid "Radial"
+msgstr "Радіальний"
+
+#: includes/controls/groups/background.php:184
+msgctxt "Background Control"
+msgid "Linear"
+msgstr "Лінійний"
+
+#: includes/controls/groups/background.php:181
+msgctxt "Background Control"
+msgid "Type"
+msgstr "Тип"
+
+#: includes/controls/groups/background.php:155
+msgctxt "Background Control"
+msgid "Second Color"
+msgstr "Другий колір"
+
+#: includes/controls/groups/background.php:140
+#: includes/controls/groups/background.php:166
+msgctxt "Background Control"
+msgid "Location"
+msgstr "Місцезнаходження"
+
+#: includes/controls/groups/background.php:96
+msgctxt "Background Control"
+msgid "Gradient"
+msgstr "Градієнт"
+
+#: includes/settings/settings.php:433
+msgid "Checking this box will disable Elementor's Default Fonts, and make Elementor inherit the fonts from your theme."
+msgstr "Якщо встановити цей прапорець, буде вимкнено стандартні шрифти Elementor, а Elementor буде успадкувати шрифти з вашої теми."
+
+#: includes/settings/settings.php:425
+msgid "Checking this box will disable Elementor's Default Colors, and make Elementor inherit the colors from your theme."
+msgstr "Якщо позначити цей прапорець, буде вимкнено стандартні кольори Elementor, а Elementor буде наслідувати кольори з вашої теми."
+
+#: core/admin/admin.php:300
+msgid "Video Tutorials"
+msgstr "Відео-підручники"
+
+#: core/admin/admin.php:300
+msgid "View Elementor Video Tutorials"
+msgstr "Перегляньте відеоролики Elementor"
+
+#: core/admin/admin.php:299
+msgid "Docs & FAQs"
+msgstr "Документи і питання, що часто задаються"
+
+#: core/admin/admin.php:299
+msgid "View Elementor Documentation"
+msgstr "Переглянути документацію до Elementor"
+
+#: includes/utils.php:220
+msgid "The `from` and `to` URL's must be different"
+msgstr "URL-адреси \"від\" та \"до\" повинні бути різними"
+
+#: includes/settings/tools.php:200
+msgid "Enter your old and new URLs for your WordPress installation, to update all Elementor data (Relevant for domain transfers or move to 'HTTPS')."
+msgstr "Введіть ваші старі та нові URL-адреси для встановлення WordPress, щоб оновити всі дані Elementor (релевантні для передачі домену або перейти до \"HTTPS\")."
+
+#: includes/settings/tools.php:196
+msgid "Update Site Address (URL)"
+msgstr "Оновити адресу сайту (URL)"
+
+#. translators: %s: Codex URL
+#: includes/settings/tools.php:186
+msgid "<strong>Important:</strong> It is strongly recommended that you <a target=\"_blank\" href=\"%s\">backup your database</a> before using Replace URL."
+msgstr "<strong>Важливо:</strong> Настійно рекомендується <a target=\"_blank\" href=\"%s\">скопіювати вашу базу даних</a> перед використанням заміни URL-адреси."
+
+#: core/common/modules/finder/categories/tools.php:53
+#: includes/settings/tools.php:180 includes/settings/tools.php:191
+#: includes/settings/tools.php:199
+msgid "Replace URL"
+msgstr "Замінити URL-адресу"
+
+#. translators: 1: Minimum recommended_memory, 2: Codex URL
+#: includes/settings/system-info/classes/wordpress.php:91
+msgctxt "System Info"
+msgid "We recommend setting memory to at least %1$s. For more information, read about <a href=\"%2$s\">how to Increase memory allocated to PHP</a>."
+msgstr "Ми рекомендуємо встановити пам'ять щонайменше %1$s. Щоб отримати додаткові відомості, прочитайте про <a href=\"%2$s\">як збільшити обсяг пам'яті, що виділяється для PHP</a>."
+
+#. translators: 1: Human readable time difference, 2: Date
+#: modules/history/revisions-manager.php:171
+msgid "%1$s ago (%2$s)"
+msgstr "%1$s ago (%2$s)"
+
+#: modules/history/revisions-manager.php:146
+msgctxt "revision date format"
+msgid "M j @ H:i"
+msgstr "M j @ H:i"
+
+#: core/editor/editor.php:724
+msgid "Autosave"
+msgstr "Автозбереження"
+
+#: modules/history/revisions-manager.php:377
+msgid "Revision"
+msgstr "Редакція"
+
+#: modules/history/revisions-manager.php:379
+msgid "It looks like the post revision feature is unavailable in your website."
+msgstr "Схоже, функція перегляду публікацій недоступна на вашому веб-сайті."
+
+#: modules/history/revisions-manager.php:372
+msgid "Start designing your page and you'll be able to see the entire revision history here."
+msgstr "Почніть розробку вашої сторінки, і ви зможете переглянути всю історію перегляду тут."
+
+#: modules/history/revisions-manager.php:371
+msgid "Revision history lets you save your previous versions of your work, and restore them any time."
+msgstr "Історія редагування дозволяє зберігати попередні версії вашої роботи та відновлювати їх у будь-який час."
+
+#: modules/history/views/revisions-panel-template.php:48
+msgid "By"
+msgstr "Від"
+
+#: modules/history/views/revisions-panel-template.php:34
+msgid "No Revisions Saved Yet"
+msgstr "Ще не збережено жодних змін"
+
+#. translators: %s: Codex URL
+#: modules/history/revisions-manager.php:382
+msgid "Learn more about <a target=\"_blank\" href=\"%s\">WordPress revisions</a>"
+msgstr "Дізнайтеся більше про <a target=\"_blank\" href=\"%s\">версії WordPress </a>"
+
+#: modules/history/revisions-manager.php:286
+msgid "Cannot delete this revision."
+msgstr "Неможливо видалити цю версію."
+
+#: includes/utils.php:225
+msgid "The `from` and `to` URL's must be valid URL's"
+msgstr "URL \"від\" і \"до\" має бути дійсною URL-адресою"
+
+#: includes/widgets/counter.php:155
+msgid "Thousand Separator"
+msgstr "Роздільник тисяч"
+
+#: includes/controls/groups/background.php:266
+#: includes/controls/groups/background.php:425
+#: includes/controls/groups/background.php:456
+#: includes/controls/groups/background.php:477
+msgctxt "Background Control"
+msgid "Default"
+msgstr "За замовчуванням"
+
+#: includes/managers/controls.php:902
+msgid "Custom CSS lets you add CSS code to any widget, and see it render live right in the editor."
+msgstr "Користувальницький CSS дозволяє вам додати код CSS до будь-якого віджета та побачити, як він відображається прямо в редакторі."
+
+#: includes/managers/controls.php:899
+msgid "Meet Our Custom CSS"
+msgstr "Знайомтеся з нашою користувацькою CSS"
+
+#: includes/managers/controls.php:887
+msgid "Custom CSS"
+msgstr "Користувацький CSS"
+
+#: includes/editor-templates/panel-elements.php:57
+#: includes/managers/controls.php:905
+msgid "This feature is only available on Elementor Pro."
+msgstr "Ця функція доступна лише в Elementor Pro."
+
+#: includes/editor-templates/panel-elements.php:56
+msgid "With this feature, you can save a widget as global, then add it to multiple areas. All areas will be editable from one single place."
+msgstr "За допомогою цієї функції ви можете зберегти віджет як глобальний, а потім додати його до кількох областей. Всі області будуть редаговані з одного місця."
+
+#: includes/editor-templates/panel-elements.php:55
+msgid "Meet Our Global Widget"
+msgstr "Знайомтеся з нашим глобальним віджетом"
+
+#: core/role-manager/role-manager.php:168 core/editor/editor.php:720
+#: core/admin/admin.php:274 core/admin/admin.php:580
+#: includes/settings/settings.php:144 includes/settings/settings.php:281
+#: includes/settings/settings.php:302 includes/settings/settings.php:323
+#: includes/editor-templates/templates.php:204
+#: includes/editor-templates/panel-elements.php:26
+#: includes/editor-templates/panel-elements.php:58
+#: includes/managers/controls.php:908
+msgid "Go Pro"
+msgstr "Перейти на Pro"
+
+#: includes/editor-templates/panel-elements.php:25
+msgid "Get more with Elementor Pro"
+msgstr "Отримайте більше з Elementor Pro"
+
+#: includes/editor-templates/panel-elements.php:14
+msgid "Global"
+msgstr "Загальні"
+
+#: includes/widgets/text-editor.php:123 includes/widgets/video.php:551
+#: includes/widgets/icon-list.php:249
+msgid "On"
+msgstr "Увімк."
+
+#: includes/widgets/text-editor.php:122 includes/widgets/video.php:550
+#: includes/widgets/icon-list.php:248
+msgid "Off"
+msgstr "Вимк."
+
+#: includes/widgets/button.php:93
+msgid "Extra Large"
+msgstr "Дуже великий"
+
+#: includes/widgets/button.php:89
+msgid "Extra Small"
+msgstr "Дуже малий"
+
+#: includes/settings/tools.php:164
+msgid "Styles set in Elementor are saved in CSS files in the uploads folder. Recreate those files, according to the most recent settings."
+msgstr "Стилі, встановлені в Elementor, зберігаються у файлах CSS у папці завантажень. Відтворити ці файли відповідно до найновіших налаштувань."
+
+#: includes/settings/tools.php:163
+msgid "Regenerate Files"
+msgstr "Відновлювати файли"
+
+#: includes/settings/tools.php:160
+msgid "Regenerate CSS"
+msgstr "Відновити CSS"
+
+#: includes/settings/settings.php:439
+msgid "Improve Elementor"
+msgstr "Покращити Elementor"
+
+#: includes/frontend.php:987
+msgid "Invalid Data: The Template ID cannot be the same as the currently edited template. Please choose a different one."
+msgstr "Недійсні дані: ідентифікатор шаблону не може бути таким самим, як поточний редагований шаблон. Будь ласка, виберіть інший."
+
+#: includes/base/widget-base.php:256 includes/base/widget-base.php:265
+msgid "Skin"
+msgstr "Обкладинка"
+
+#: includes/schemes/color-picker.php:66
+msgid "Choose which colors appear in the editor's color picker. This makes accessing the colors you chose for the site much easier."
+msgstr "Виберіть, які кольори відображатимуться у колірному редакторі редактора. Це спрощує доступ до кольорів, які ви обрали для сайту."
+
+#: core/editor/editor.php:590
+msgid "Descending order"
+msgstr "У порядку зменшення"
+
+#: core/editor/editor.php:589
+msgid "Ascending order"
+msgstr "В порядку зростання"
+
+#: core/editor/editor.php:594
+msgid "Attention: We are going to DELETE ALL CONTENT from this page. Are you sure you want to do that?"
+msgstr "Увага: ми будемо видаляти весь вміст з цієї сторінки. Ви впевнені, що хочете це зробити?"
+
+#: core/editor/editor.php:593 core/editor/editor.php:698
+msgid "Delete All Content"
+msgstr "Видалити весь вміст"
+
+#: includes/editor-templates/panel.php:180
+msgid "%s are disabled"
+msgstr "{0} вимкнено"
+
+#: includes/editor-templates/panel.php:161
+msgid "Update changes to page"
+msgstr "Оновити зміни до сторінки"
+
+#: core/editor/editor.php:575 includes/schemes/color-picker.php:228
+msgid "Color Picker"
+msgstr "Вибір кольору"
+
+#: includes/tracker.php:294
+msgid "No thanks"
+msgstr "Ні, дякую"
+
+#: includes/elements/section.php:245
+msgid "Stretch Section"
+msgstr "Розтягнути розділ"
+
+#: includes/elements/section.php:251
+msgid "Stretch the section to the full width of the page using JS."
+msgstr "Розтягнути розділ до повної ширини сторінки використовуючи JS."
+
+#: core/settings/general/model.php:103 includes/settings/settings.php:479
+msgid "Sets the default width of the content area (Default: 1140)"
+msgstr "Встановити типову ширину області контенту (Типово: 1140)"
+
+#: core/settings/general/model.php:122 includes/settings/settings.php:502
+msgid "Enter parent element selector to which stretched sections will fit to (e.g. #primary / .wrapper / main etc). Leave blank to fit to page width."
+msgstr "Введіть елемент батьківського елемента, до якого підходять розтягнені розділи (наприклад, #primary / .wrapper / main тощо). Залиште порожнім, щоб відповідати ширині сторінки."
+
+#: core/settings/general/model.php:119 includes/settings/settings.php:495
+msgid "Stretched Section Fit To"
+msgstr "Розтягнути секції щодо"
+
+#: includes/controls/groups/background.php:593
+msgid "This cover image will replace the background video on mobile and tablet devices."
+msgstr "Це зображення для обкладинки замінить фонове відео на мобільних і планшетних пристроях."
+
+#: includes/settings/settings.php:447 includes/elements/section.php:251
+#: includes/tracker.php:292
+msgid "Learn more."
+msgstr "Вивчити більше."
+
+#: includes/editor-templates/panel.php:89 includes/elements/section.php:1264
+msgid "Mobile"
+msgstr "Мобільний"
+
+#: includes/elements/section.php:1253 includes/elements/section.php:1264
+msgid "Reverse Columns"
+msgstr "Зворотний порядок стовпців"
+
+#: includes/editor-templates/panel.php:79
+msgid "Default Preview"
+msgstr "Типовий перегляд"
+
+#: includes/controls/dimensions.php:121 includes/controls/dimensions.php:124
+msgid "Link values together"
+msgstr "З'єднайте значення разом"
+
+#: includes/widgets/shortcode.php:42 includes/widgets/shortcode.php:99
+msgid "Shortcode"
+msgstr "Шордкод"
+
+#: includes/editor-templates/global.php:28
+msgid "Add Template"
+msgstr "Додати шаблон"
+
+#: includes/editor-templates/global.php:34
+msgid "Select your Structure"
+msgstr "Оберіть вашу структуру"
+
+#: includes/editor-templates/global.php:22
+#: includes/editor-templates/library-layout.php:15
+#: includes/editor-templates/library-layout.php:16
+msgid "Close"
+msgstr "Закрити"
+
+#: core/editor/editor.php:619
+msgid "Library"
+msgstr "Бібліотека"
+
+#: core/editor/editor.php:636
+msgid "My Templates"
+msgstr "Мої шаблони"
+
+#: includes/editor-templates/templates.php:173
+#: includes/editor-templates/templates.php:197
+msgid "Insert"
+msgstr "Вставити"
+
+#: includes/editor-templates/templates.php:37
+msgid "Back to Library"
+msgstr "Повернутись до бібліотеки"
+
+#: includes/editor-templates/templates.php:132
+msgid "Stay tuned! More awesome templates coming real soon."
+msgstr "Залишайтесь на зв'язку! Дуже скоро з'явиться ще більше вражаючих шаблонів."
+
+#: includes/template-library/sources/local.php:1078
+#: includes/editor-templates/templates.php:187
+msgid "Export"
+msgstr "Експорт"
+
+#: core/editor/editor.php:624
+msgid "Your designs will be available for export and reuse on any page or website"
+msgstr "Ваші дизайни будуть доступні для експорту та повторного використання на будь-якій сторінці або веб-сайті"
+
+#: includes/editor-templates/templates.php:217
+msgid "Enter Template Name"
+msgstr "Введіть назву шаблону"
+
+#: core/editor/editor.php:615
+msgid "Are you sure you want to delete this template?"
+msgstr "Ви впевнені, що хочете видалити цей шаблон?"
+
+#: core/common/modules/finder/categories/tools.php:29
+#: core/common/modules/finder/categories/tools.php:47
+#: includes/settings/tools.php:36 includes/settings/tools.php:37
+#: includes/settings/tools.php:282
+msgid "Tools"
+msgstr "Інструменти"
+
+#: includes/settings/tools.php:168 includes/settings/tools.php:171
+#: includes/editor-templates/templates.php:14
+#: includes/editor-templates/templates.php:15
+msgid "Sync Library"
+msgstr "Синхронізувати біблотеку"
+
+#: includes/settings/tools.php:172
+msgid "Elementor Library automatically updates on a daily basis. You can also manually update it by clicking on the sync button."
+msgstr "Бібліотека Elementor автоматично оновлюється кожного дня. Ви також можете вручну оновити її натиснувши на кнопку синхронізації."
+
+#: includes/template-library/sources/local.php:219
+msgctxt "Template Library"
+msgid "Template"
+msgstr "Шаблон"
+
+#: includes/template-library/sources/local.php:220
+msgctxt "Template Library"
+msgid "Add New"
+msgstr "Додати новий"
+
+#: includes/template-library/sources/local.php:221
+msgctxt "Template Library"
+msgid "Add New Template"
+msgstr "Додати новий шаблон"
+
+#: includes/template-library/sources/local.php:222
+msgctxt "Template Library"
+msgid "Edit Template"
+msgstr "Редагувати шаблон"
+
+#: includes/template-library/sources/local.php:223
+msgctxt "Template Library"
+msgid "New Template"
+msgstr "Новий шаблон"
+
+#: includes/template-library/sources/local.php:224
+msgctxt "Template Library"
+msgid "All Templates"
+msgstr "Всі шаблони"
+
+#: includes/template-library/sources/local.php:225
+msgctxt "Template Library"
+msgid "View Template"
+msgstr "Переглянути шаблон"
+
+#: includes/template-library/sources/local.php:226
+msgctxt "Template Library"
+msgid "Search Template"
+msgstr "Шукати шаблон"
+
+#: core/editor/editor.php:621 core/document-types/post.php:64
+#: modules/library/documents/page.php:65
+msgid "Page"
+msgstr "Сторінка"
+
+#: includes/template-library/sources/local.php:451
+msgid "(no title)"
+msgstr "(немає заголовку)"
+
+#: includes/template-library/sources/local.php:863
+msgid "Export Template"
+msgstr "Експортувати шаблон"
+
+#: includes/template-library/sources/local.php:891
+msgid "Import Templates"
+msgstr "Імпортувати шаблон"
+
+#: includes/template-library/sources/local.php:227
+msgctxt "Template Library"
+msgid "No Templates found"
+msgstr "Шаблони не знайдені"
+
+#: includes/template-library/sources/local.php:268
+msgctxt "Template Library"
+msgid "Type"
+msgstr "Тип"
+
+#: includes/template-library/sources/local.php:228
+msgctxt "Template Library"
+msgid "No Templates found in Trash"
+msgstr "У корзині шаблонів не знайдено"
+
+#: includes/template-library/sources/local.php:900
+msgid "Import Now"
+msgstr "Імпотувати зараз"
+
+#: includes/template-library/sources/remote.php:46
+msgid "Remote"
+msgstr "Віддалений"
+
+#: includes/template-library/sources/local.php:200
+msgid "Local"
+msgstr "Місцевий"
+
+#: core/editor/editor.php:614
+msgid "Delete Template"
+msgstr "Видалити шаблон"
+
+#: core/editor/editor.php:632
+msgid "The following error(s) occurred while processing the request:"
+msgstr "Під час обробки запиту сталася наступна помилка:"
+
+#: core/editor/editor.php:612 includes/utils.php:238
+msgid "An error occurred"
+msgstr "Виникла помилка"
+
+#: core/editor/editor.php:626
+msgid "This is where your templates should be. Design it. Save it. Reuse it."
+msgstr "Тут повинні бути ваші шаблони. Дизайн його. Збережи це. Повторне використання."
+
+#: core/editor/editor.php:627
+msgid "Haven’t Saved Templates Yet?"
+msgstr "Чи не зберегли шаблони?"
+
+#: includes/editor-templates/hotkeys.php:135
+msgid "Template Library"
+msgstr "Бібліотека Шаблонів"
+
+#. translators: %s: Template type.
+#: core/editor/editor.php:623
+msgid "Save Your %s to Library"
+msgstr "Зберегти %s в бібліотеку"
+
+#: includes/template-library/sources/local.php:363
+#: includes/template-library/sources/local.php:1579
+msgid "Saved Templates"
+msgstr "Збережені шаблони"
+
+#. translators: %s: Codex URL
+#: includes/settings/system-info/classes/theme.php:192
+msgctxt "System Info"
+msgid "If you want to modify the source code of your theme, we recommend using a <a href=\"%s\">child theme</a>."
+msgstr "Якщо ви хочете змінити початковий код вашої теми, то ми рекомендуємо використовувати  <a href=\"%s\">дочірну тему</a>."
+
+#: core/editor/editor.php:602 core/editor/editor.php:644
+#: modules/safe-mode/module.php:340
+#: modules/safe-mode/mu-plugin/elementor-safe-mode.php:88
+msgid "Learn More"
+msgstr "Детальніше"
+
+#: includes/widgets/button.php:378 includes/widgets/icon-box.php:336
+#: includes/widgets/icon.php:285 includes/widgets/image-box.php:273
+#: includes/widgets/social-icons.php:501 includes/widgets/image.php:407
+msgid "Hover Animation"
+msgstr "Анімація при наведенні"
+
+#: includes/controls/groups/background.php:480
+msgctxt "Background Control"
+msgid "Contain"
+msgstr "Розмістити"
+
+#: includes/elements/section.php:1212 includes/elements/column.php:809
+#: includes/widgets/common.php:166
+msgid "Slow"
+msgstr "Повільно"
+
+#: includes/elements/section.php:1214 includes/elements/column.php:811
+#: includes/widgets/common.php:168
+msgid "Fast"
+msgstr "Швидко"
+
+#: core/admin/feedback.php:82
+msgid "Submit & Deactivate"
+msgstr "Додати та деактивувати"
+
+#: core/admin/feedback.php:83
+msgid "Skip & Deactivate"
+msgstr "Пропустити та деактивувати"
+
+#: includes/controls/box-shadow.php:78 includes/controls/text-shadow.php:66
+msgid "Blur"
+msgstr "Розмити"
+
+#: includes/controls/box-shadow.php:68 includes/controls/text-shadow.php:71
+#: includes/widgets/tabs.php:150
+msgid "Horizontal"
+msgstr "Горизонтально"
+
+#: includes/controls/box-shadow.php:73 includes/controls/text-shadow.php:76
+#: includes/widgets/tabs.php:151
+msgid "Vertical"
+msgstr "Вертикально"
+
+#: includes/controls/groups/box-shadow.php:73
+msgctxt "Box Shadow Control"
+msgid "Inset"
+msgstr "Так"
+
+#: includes/editor-templates/panel.php:181
+msgid "You can enable it from the <a href=\"%s\" target=\"_blank\">Elementor settings page</a>."
+msgstr "{0} відключені. Ви можете ввімкнути їх зі <a href=\"%s\">сторінки налаштувань Elementor</a>."
+
+#: includes/elements/section.php:1199 includes/elements/column.php:796
+#: includes/widgets/common.php:153 includes/widgets/video.php:753
+msgid "Entrance Animation"
+msgstr "Анімація появи"
+
+#: includes/schemes/color.php:78
+msgid "Color Palettes"
+msgstr "Палітри кольорів"
+
+#: core/editor/editor.php:578 includes/schemes/typography.php:78
+msgid "Default Fonts"
+msgstr "Типові шрифти"
+
+#: includes/settings/settings.php:421
+msgid "Disable Default Colors"
+msgstr "Відвлючення типових шрифтів"
+
+#: includes/controls/groups/box-shadow.php:61
+#: includes/controls/groups/box-shadow.php:96
+msgctxt "Box Shadow Control"
+msgid "Box Shadow"
+msgstr "Тінь об'єкта"
+
+#: includes/controls/box-shadow.php:83
+msgid "Spread"
+msgstr "Розмах"
+
+#: includes/widgets/progress.php:98
+msgid "My Skill"
+msgstr "Мій навик"
+
+#: includes/widgets/social-icons.php:42 includes/widgets/social-icons.php:85
+#: includes/widgets/social-icons.php:230
+msgid "Social Icons"
+msgstr "Соціальні іконки"
+
+#: includes/widgets/social-icons.php:264
+msgid "Rounded"
+msgstr "Закруглений"
+
+#: includes/widgets/social-icons.php:192 includes/widgets/social-icons.php:324
+msgid "Official Color"
+msgstr "Офіційний колір"
+
+#: includes/widgets/testimonial.php:168
+msgid "Aside"
+msgstr "Вбік"
+
+#: includes/widgets/testimonial.php:42 includes/widgets/testimonial.php:85
+msgid "Testimonial"
+msgstr "Відгуки"
+
+#. translators: %s: Elementor version
+#: core/admin/admin.php:382
+msgid "View Elementor version %s details"
+msgstr "Дивитися деталі версії Elementor %s"
+
+#. translators: 1: Details URL, 2: Accessibility text, 3: Version number, 4:
+#. Update URL, 5: Accessibility text
+#: core/admin/admin.php:378
+msgid "There is a new version of Elementor Page Builder available. <a href=\"%1$s\" class=\"thickbox open-plugin-details-modal\" aria-label=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s\" class=\"update-link\" aria-label=\"%5$s\">update now</a>."
+msgstr "Доступна нова версія Elementor Page Builder. <a href=\"%1$s\" class=\"thickbox open-plugin-details-modal\" aria-label=\"%2$s\">Дивитись деталі версії %3$s</a> or <a href=\"%4$s\" class=\"update-link\" aria-label=\"%5$s\">оновити зараз</a>."
+
+#: core/base/db-upgrades-manager.php:76 core/admin/admin.php:395
+msgid "Update Now"
+msgstr "Оновити зараз"
+
+#: core/admin/feedback.php:101
+msgid "I no longer need the plugin"
+msgstr "Мені більше не потрібен цей плагін"
+
+#: core/admin/feedback.php:105
+msgid "I found a better plugin"
+msgstr "Я знайшов кращий плагін"
+
+#: core/admin/feedback.php:106
+msgid "Please share which plugin"
+msgstr "Будь ласка, поділіться який саме плагін"
+
+#: core/admin/feedback.php:109
+msgid "I couldn't get the plugin to work"
+msgstr "Я не міг змусити плагін працювати"
+
+#: core/admin/feedback.php:113
+msgid "It's a temporary deactivation"
+msgstr "Це тимчасова деактивація"
+
+#: core/admin/feedback.php:122
+msgid "Other"
+msgstr "Інше"
+
+#: core/admin/feedback.php:123
+msgid "Please share the reason"
+msgstr "Будь ласка, поділіться причиною"
+
+#: core/admin/feedback.php:131
+msgid "Quick Feedback"
+msgstr "Швидкий відгук"
+
+#: core/admin/feedback.php:139
+msgid "If you have a moment, please share why you are deactivating Elementor:"
+msgstr "Якщо у вас є час, будь ласка, поділіться, чому ви деактивуєте Elementor:"
+
+#: includes/elements/section.php:303
+msgid "Extended"
+msgstr "Розширений"
+
+#: includes/elements/section.php:576 includes/elements/column.php:310
+msgid "Background Overlay"
+msgstr "Накладення фону"
+
+#: includes/widgets/audio.php:53 includes/widgets/audio.php:96
+msgid "SoundCloud"
+msgstr "SoundCloud"
+
+#: includes/widgets/audio.php:122
+msgid "Visual Player"
+msgstr "Візуальний плеєр"
+
+#: includes/widgets/audio.php:152
+msgid "Buy Button"
+msgstr "Кнопка Купити"
+
+#: includes/widgets/audio.php:163
+msgid "Like Button"
+msgstr "Кнопка Подобається"
+
+#: includes/widgets/audio.php:174 includes/widgets/video.php:441
+msgid "Download Button"
+msgstr "Кнопка Завантажити"
+
+#: includes/widgets/audio.php:199
+msgid "Share Button"
+msgstr "Кнопка Поділитись"
+
+#: includes/widgets/audio.php:210
+msgid "Comments"
+msgstr "Коментарі"
+
+#: includes/widgets/audio.php:232
+msgid "Username"
+msgstr "Ім'я користувача"
+
+#: includes/widgets/audio.php:221
+msgid "Play Counts"
+msgstr "Кількість прослуховувань"
+
+#: includes/elements/section.php:305
+msgid "Wider"
+msgstr "Ширше"
+
+#: includes/elements/section.php:491 includes/elements/column.php:242
+#: includes/widgets/common.php:198 includes/widgets/accordion.php:248
+#: includes/widgets/accordion.php:396 includes/widgets/toggle.php:268
+#: includes/widgets/toggle.php:416
+msgid "Background"
+msgstr "Фон"
+
+#: includes/widgets/image-carousel.php:194 includes/widgets/image.php:192
+msgid "Custom URL"
+msgstr "Користувацький URL"
+
+#: core/common/modules/finder/categories/general.php:28
+#: core/role-manager/role-manager.php:57 includes/settings/tools.php:155
+#: includes/settings/settings.php:400 includes/managers/elements.php:279
+msgid "General"
+msgstr "Загальний"
+
+#: core/editor/editor.php:690 includes/editor-templates/hotkeys.php:43
+msgid "Paste"
+msgstr "Вставити"
+
+#: core/editor/editor.php:646
+msgid "You must call 'the_content' function in the current template, in order for Elementor to work on this page."
+msgstr "Ви повинні викликати метод «the_content» в поточному шаблоні для того щоб дозволити Elementor працювати на цій сторінці."
+
+#: includes/controls/groups/image-size.php:276
+msgid "You can crop the original image size to any custom size. You can also set a single value for height or width in order to keep the original size ratio."
+msgstr "Ви можете обрізати оригінальний розмір зображення до будь-якого нестандартного розміру. Ви також можете встановити єдине значення для висоти або ширини для того, щоб зберегти оригінальне співвідношення розміру."
+
+#: includes/widgets/image-carousel.php:334
+msgid "Animation Speed"
+msgstr "Швидкість анімації"
+
+#: includes/widgets/image-carousel.php:43
+#: includes/widgets/image-carousel.php:100
+msgid "Image Carousel"
+msgstr "Карусель зображення"
+
+#: includes/widgets/image-carousel.php:159
+msgid "Image Stretch"
+msgstr "Розтягнути зображення"
+
+#: includes/elements/section.php:1208 includes/elements/column.php:805
+#: includes/widgets/common.php:162 includes/widgets/counter.php:144
+msgid "Animation Duration"
+msgstr "Тривалість анімації"
+
+#: includes/widgets/alert.php:186
+msgid "Left Border Width"
+msgstr "Ширина лівої рамки"
+
+#: includes/widgets/image-carousel.php:176
+msgid "Arrows and Dots"
+msgstr "Стрілки та крапки"
+
+#: includes/widgets/audio.php:135 includes/widgets/image-carousel.php:258
+msgid "Additional Options"
+msgstr "Додаткові опції"
+
+#: includes/widgets/image-carousel.php:344
+msgid "Direction"
+msgstr "Напрямок"
+
+#: includes/widgets/image-carousel.php:387
+#: includes/widgets/image-carousel.php:450
+msgid "Inside"
+msgstr "Всередині"
+
+#: includes/widgets/image-carousel.php:388
+#: includes/widgets/image-carousel.php:449
+msgid "Outside"
+msgstr "Зовні"
+
+#: includes/widgets/icon-box.php:348 includes/widgets/icon-box.php:515
+#: includes/widgets/image-gallery.php:205 includes/widgets/image-box.php:222
+#: includes/widgets/image-box.php:436 includes/widgets/social-icons.php:407
+#: includes/widgets/image-carousel.php:534 includes/widgets/accordion.php:368
+#: includes/widgets/image.php:538 includes/widgets/star-rating.php:273
+#: includes/widgets/toggle.php:388
+msgid "Spacing"
+msgstr "Відстань"
+
+#: includes/widgets/video.php:427
+msgid "Intro Byline"
+msgstr "Від кого"
+
+#: core/editor/editor.php:645
+msgid "Sorry, the content area was not found in your page."
+msgstr "На жаль, область контенту не знайдена на вашій сторінці."
+
+#: core/editor/editor.php:653
+msgid "No Images Selected"
+msgstr "Зображення не обрані"
+
+#: includes/controls/groups/border.php:64
+msgctxt "Border Control"
+msgid "Solid"
+msgstr "Суцільний"
+
+#: includes/controls/groups/border.php:65
+msgctxt "Border Control"
+msgid "Double"
+msgstr "Подвійний"
+
+#: includes/controls/groups/border.php:66
+msgctxt "Border Control"
+msgid "Dotted"
+msgstr "Пунктирний"
+
+#: includes/controls/groups/image-size.php:357
+msgctxt "Image Size Control"
+msgid "Custom"
+msgstr "Користувацький"
+
+#: includes/controls/groups/image-size.php:274
+msgctxt "Image Size Control"
+msgid "Image Dimension"
+msgstr "Розмір зображення"
+
+#. translators: %s: The number of images.
+#: core/editor/editor.php:652
+msgid "%s Images Selected"
+msgstr "{0} зображень обрано"
+
+#: core/editor/editor.php:654
+msgid "Insert Media"
+msgstr "Вставити медіа"
+
+#: includes/controls/image-dimensions.php:81
+msgid "The server does not have ImageMagick or GD installed and/or enabled! Any of these libraries are required for WordPress to be able to resize images. Please contact your server administrator to enable this before continuing."
+msgstr "На сервері не встановлено та/або не активовано ImageMagick чи GD. Будь-яка з цих бібліотек потрібна, щоб мати можливість змінювати розмір зображення для WordPress. Будь ласка, зверніться до адміністратора сервера, щоб включити їх, перш ніж продовжити."
+
+#: includes/widgets/image-gallery.php:277
+msgid "Display"
+msgstr "Відображення"
+
+#: includes/widgets/video.php:44 includes/widgets/video.php:103
+#: includes/widgets/video.php:565
+msgid "Video"
+msgstr "Відео"
+
+#: includes/widgets/video.php:115
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: includes/widgets/video.php:268
+msgid "Video Options"
+msgstr "Параметри відео"
+
+#: includes/widgets/video.php:293
+msgid "Loop"
+msgstr "Цикл"
+
+#: includes/widgets/audio.php:243 includes/widgets/video.php:358
+msgid "Controls Color"
+msgstr "Основний колір"
+
+#: includes/widgets/video.php:413
+msgid "Intro Portrait"
+msgstr "Лого автора"
+
+#: includes/widgets/video.php:399
+msgid "Intro Title"
+msgstr "Заголовок"
+
+#: includes/controls/groups/border.php:67
+msgctxt "Border Control"
+msgid "Dashed"
+msgstr "Підкреслений"
+
+#: includes/controls/groups/image-size.php:354
+msgctxt "Image Size Control"
+msgid "Full"
+msgstr "Повне"
+
+#: includes/widgets/image-carousel.php:322
+msgid "Fade"
+msgstr "Вицвітання"
+
+#: core/editor/editor.php:650
+msgid "Are you sure you want to reset this gallery?"
+msgstr "Ви впевнені, що хочете скинути цю галерею?"
+
+#: core/editor/editor.php:649
+msgid "Reset Gallery"
+msgstr "Скинути галерею"
+
+#: includes/widgets/image-carousel.php:317
+msgid "Effect"
+msgstr "Ефект"
+
+#: includes/widgets/image-carousel.php:178
+#: includes/widgets/image-carousel.php:433
+msgid "Dots"
+msgstr "Крапки"
+
+#: includes/widgets/image-carousel.php:303
+msgid "Infinite Loop"
+msgstr "Нескінченний цикл"
+
+#: includes/widgets/icon-box.php:491 includes/widgets/image-box.php:412
+msgid "Vertical Alignment"
+msgstr "Вирівнювання по вертикалі"
+
+#: includes/controls/groups/image-size.php:268
+msgctxt "Image Size Control"
+msgid "Image Size"
+msgstr "Розмір зображення"
+
+#: includes/controls/structure.php:54
+msgid "Reset Structure"
+msgstr "Скидання структури"
+
+#: includes/controls/groups/typography.php:172
+msgctxt "Typography Control"
+msgid "None"
+msgstr "Ні"
+
+#: includes/elements/section.php:1180 includes/elements/column.php:757
+#: includes/widgets/common.php:135
+msgid "Add your custom class WITHOUT the dot. e.g: my-class"
+msgstr "Додайте ваш користувацький клас БЕЗ крапки. Наприклад: мій-клас"
+
+#: includes/widgets/icon-box.php:143 includes/widgets/image-box.php:120
+msgid "This is the heading"
+msgstr "Це заголовок"
+
+#: includes/widgets/icon-box.php:157 includes/widgets/text-editor.php:114
+#: includes/widgets/image-box.php:134 includes/widgets/accordion.php:124
+#: includes/widgets/accordion.php:128 includes/widgets/tabs.php:123
+#: includes/widgets/tabs.php:127 includes/widgets/toggle.php:121
+#: includes/widgets/toggle.php:125
+msgid "Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+msgstr "Натисніть кнопку редагування, щоб змінити цей текст. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+
+#: includes/widgets/icon-box.php:216 includes/widgets/image-box.php:183
+#: includes/widgets/accordion.php:177 includes/widgets/toggle.php:174
+msgid "Title HTML Tag"
+msgstr "HTML-тег заголовка"
+
+#: includes/managers/elements.php:308
+msgid "Pojo Themes"
+msgstr "Теми Pojo"
+
+#: core/settings/general/model.php:96 includes/settings/settings.php:466
+msgid "The list of fonts used if the chosen font is not available."
+msgstr "Список використаних шрифтів, якщо обраний шрифт недоступний."
+
+#: core/settings/general/model.php:93 includes/settings/settings.php:461
+msgid "Default Generic Fonts"
+msgstr "Загальні шрифти за умовчанням"
+
+#: includes/editor-templates/panel-elements.php:13
+msgid "Elements"
+msgstr "Елементи"
+
+#: includes/controls/groups/background.php:551
+msgid "YouTube link or video file (mp4 is recommended)."
+msgstr "Вставте посилання на YouTube або на відео файл (рекомендуємо формат mp4)"
+
+#: includes/settings/system-info/classes/server.php:122
+msgctxt "System Info"
+msgid "We recommend to use php 5.4 or higher"
+msgstr "Ми рекомендуємо використовувати php 5.4 або вище"
+
+#: includes/widgets/wordpress.php:225
+msgid "Form"
+msgstr "Форма"
+
+#: core/common/modules/finder/categories/settings.php:28
+#: core/dynamic-tags/base-tag.php:170 core/editor/editor.php:580
+#: core/admin/admin.php:270 includes/settings/settings.php:363
+#: includes/editor-templates/panel.php:57 includes/managers/controls.php:304
+msgid "Settings"
+msgstr "Налаштування"
+
+#: includes/settings/settings.php:447
+msgid "Opt-in to our anonymous plugin data collection and to updates. We guarantee no sensitive data is collected."
+msgstr "Увійдіть до нашого анонімного збору даних плагінів та до оновлень. Ми гарантуємо, що не збираються конфіденційні дані."
+
+#. Description of the plugin
+msgid "The most advanced frontend drag & drop page builder. Create high-end, pixel perfect websites at record speeds. Any theme, any page, any design."
+msgstr "Самий просунутий візуальний конструктор сторінок. Створюйте високоякісні, з точністю до пікселя веб-сайти на рекордних швидкостях. Будь-яка тема, будь-яка сторінка, будь-який дизайн."
+
+#: includes/controls/groups/typography.php:144
+msgctxt "Typography Control"
+msgid "Uppercase"
+msgstr "Прописні"
+
+#: includes/controls/groups/typography.php:145
+msgctxt "Typography Control"
+msgid "Lowercase"
+msgstr "Рядкові"
+
+#: includes/controls/groups/typography.php:158
+msgctxt "Typography Control"
+msgid "Italic"
+msgstr "Курсив"
+
+#: includes/controls/groups/typography.php:147
+#: includes/controls/groups/typography.php:157
+msgctxt "Typography Control"
+msgid "Normal"
+msgstr "Нормальний"
+
+#: includes/controls/groups/typography.php:146
+msgctxt "Typography Control"
+msgid "Capitalize"
+msgstr "Великими літерами"
+
+#: includes/controls/groups/typography.php:159
+msgctxt "Typography Control"
+msgid "Oblique"
+msgstr "Похилий шрифт"
+
+#: includes/elements/section.php:304
+msgid "Wide"
+msgstr "Широкий"
+
+#: includes/widgets/tabs.php:122
+msgid "Tab #1"
+msgstr "Tab #1"
+
+#: includes/widgets/accordion.php:123
+msgid "Accordion #1"
+msgstr "Accordion #1"
+
+#. Author of the plugin
+msgid "Elementor.com"
+msgstr "Elementor.com"
+
+#. Plugin Name of the plugin
+#: core/upgrade/manager.php:34 core/editor/editor.php:558
+#: core/documents-manager.php:351 core/admin/admin.php:222
+#: core/admin/admin.php:425 core/admin/admin.php:493
+#: includes/settings/settings.php:74 includes/settings/settings.php:75
+#: includes/settings/settings.php:634
+#: includes/editor-templates/editor-wrapper.php:33 includes/plugin.php:655
+msgid "Elementor"
+msgstr "Elementor"
+
+#: includes/controls/gallery.php:83
+msgid "Clear"
+msgstr "Очистити"
+
+#: includes/widgets/button.php:146 includes/widgets/audio.php:103
+#: includes/widgets/icon-box.php:168 includes/widgets/icon.php:153
+#: includes/widgets/image-gallery.php:142 includes/widgets/image-box.php:145
+#: includes/widgets/social-icons.php:172 includes/widgets/heading.php:121
+#: includes/widgets/image-carousel.php:188
+#: includes/widgets/image-carousel.php:202 includes/widgets/video.php:125
+#: includes/widgets/video.php:146 includes/widgets/video.php:167
+#: includes/widgets/icon-list.php:146 includes/widgets/image.php:186
+#: includes/widgets/image.php:200 includes/widgets/testimonial.php:152
+msgid "Link"
+msgstr "Посилання"
+
+#: includes/fonts.php:67
+msgid "System"
+msgstr "Система"
+
+#: includes/fonts.php:68
+msgid "Google"
+msgstr "Google"
+
+#: includes/controls/groups/background.php:92
+msgctxt "Background Control"
+msgid "Classic"
+msgstr "Класичний"
+
+#: includes/controls/groups/background.php:100
+msgctxt "Background Control"
+msgid "Background Video"
+msgstr "Фонове відео"
+
+#: includes/controls/groups/background.php:120
+msgctxt "Background Control"
+msgid "Background Type"
+msgstr "Тип фону"
+
+#: includes/controls/groups/background.php:127
+msgctxt "Background Control"
+msgid "Color"
+msgstr "Колір"
+
+#: includes/controls/groups/background.php:130
+msgctxt "Background Control"
+msgid "Background Color"
+msgstr "Колір фону"
+
+#: includes/controls/groups/background.php:244
+msgctxt "Background Control"
+msgid "Image"
+msgstr "Зображення"
+
+#: includes/controls/groups/background.php:250
+msgctxt "Background Control"
+msgid "Background Image"
+msgstr "Фонове зображення"
+
+#: includes/controls/groups/background.php:219
+#: includes/controls/groups/background.php:261
+msgctxt "Background Control"
+msgid "Position"
+msgstr "Положення"
+
+#: includes/controls/groups/background.php:478
+msgctxt "Background Control"
+msgid "Auto"
+msgstr "Автоматично"
+
+#: includes/controls/groups/background.php:479
+msgctxt "Background Control"
+msgid "Cover"
+msgstr "Обкладинка"
+
+#: includes/controls/groups/background.php:548
+msgctxt "Background Control"
+msgid "Video Link"
+msgstr "Відео посилання"
+
+#: includes/controls/groups/background.php:592
+msgctxt "Background Control"
+msgid "Background Fallback"
+msgstr "Відступ фону"
+
+#: includes/controls/groups/border.php:60
+msgctxt "Border Control"
+msgid "Border Type"
+msgstr "Тип рамки"
+
+#: includes/controls/animation.php:149 includes/controls/groups/border.php:63
+#: includes/controls/hover-animation.php:119 includes/elements/section.php:864
+#: includes/widgets/image-gallery.php:148
+#: includes/widgets/image-carousel.php:179
+#: includes/widgets/image-carousel.php:192
+#: includes/widgets/image-carousel.php:236 includes/widgets/image.php:159
+#: includes/widgets/image.php:190
+msgid "None"
+msgstr "Нічого"
+
+#: includes/widgets/divider.php:112 includes/widgets/icon-list.php:263
+#: includes/widgets/star-rating.php:137
+msgid "Solid"
+msgstr "Суцільна"
+
+#: includes/widgets/divider.php:113 includes/widgets/icon-list.php:264
+msgid "Double"
+msgstr "Подвійна"
+
+#: includes/widgets/divider.php:114 includes/widgets/icon-list.php:265
+msgid "Dotted"
+msgstr "Пунктирна (з точок)"
+
+#: includes/widgets/divider.php:115 includes/widgets/icon-list.php:266
+msgid "Dashed"
+msgstr "Пунктирна (з ліній)"
+
+#: includes/controls/groups/border.php:76
+msgctxt "Border Control"
+msgid "Width"
+msgstr "Ширина"
+
+#: includes/controls/groups/border.php:88
+msgctxt "Border Control"
+msgid "Color"
+msgstr "Колір"
+
+#: includes/controls/groups/typography.php:105
+msgctxt "Typography Control"
+msgid "Size"
+msgstr "Розмір"
+
+#: includes/controls/groups/typography.php:98
+msgctxt "Typography Control"
+msgid "Family"
+msgstr "Шрифтова сім'я"
+
+#: includes/controls/groups/typography.php:132
+msgctxt "Typography Control"
+msgid "Weight"
+msgstr "Насиченість"
+
+#: includes/editor-templates/panel-elements.php:37
+msgid "Search Widget..."
+msgstr "Шукати віджет…"
+
+#: includes/editor-templates/panel.php:46
+#: includes/editor-templates/panel.php:47
+msgid "Menu"
+msgstr "Меню"
+
+#: includes/editor-templates/panel.php:51
+#: includes/editor-templates/panel.php:52
+msgid "Widgets Panel"
+msgstr "Панель віджетів"
+
+#: includes/editor-templates/hotkeys.php:108
+#: includes/editor-templates/panel.php:70
+#: includes/editor-templates/panel.php:72
+msgid "Responsive Mode"
+msgstr "Адаптивний режим"
+
+#: includes/controls/dimensions.php:88 includes/elements/section.php:407
+#: includes/elements/section.php:426 includes/elements/section.php:872
+#: includes/elements/column.php:161 includes/widgets/icon-box.php:190
+#: includes/widgets/icon-box.php:494 includes/widgets/common.php:608
+#: includes/widgets/image-box.php:167 includes/widgets/image-box.php:415
+#: includes/widgets/video.php:739 includes/widgets/testimonial.php:169
+msgid "Top"
+msgstr "Верх"
+
+#: includes/controls/dimensions.php:89 includes/elements/section.php:1089
+#: includes/elements/column.php:672 includes/widgets/button.php:173
+#: includes/widgets/icon-box.php:194 includes/widgets/icon-box.php:474
+#: includes/widgets/icon.php:177 includes/widgets/text-editor.php:154
+#: includes/widgets/image-gallery.php:305 includes/widgets/common.php:491
+#: includes/widgets/common.php:492 includes/widgets/image-box.php:171
+#: includes/widgets/image-box.php:395 includes/widgets/social-icons.php:287
+#: includes/widgets/heading.php:185 includes/widgets/divider.php:202
+#: includes/widgets/image-carousel.php:349
+#: includes/widgets/image-carousel.php:621 includes/widgets/icon-list.php:235
+#: includes/widgets/icon-list.php:444 includes/widgets/image.php:143
+#: includes/widgets/image.php:476 includes/widgets/star-rating.php:173
+#: includes/widgets/testimonial.php:195
+msgid "Right"
+msgstr "Право"
+
+#: includes/controls/dimensions.php:90 includes/elements/section.php:409
+#: includes/elements/section.php:428 includes/elements/section.php:873
+#: includes/elements/column.php:163 includes/widgets/icon-box.php:496
+#: includes/widgets/common.php:612 includes/widgets/image-box.php:417
+msgid "Bottom"
+msgstr "Низ"
+
+#: includes/controls/groups/background.php:472
+msgctxt "Background Control"
+msgid "Size"
+msgstr "Розмір"
+
+#: includes/controls/groups/typography.php:139
+msgctxt "Typography Control"
+msgid "Transform"
+msgstr "Трансформувати"
+
+#: includes/controls/groups/typography.php:152
+msgctxt "Typography Control"
+msgid "Style"
+msgstr "Стиль"
+
+#: includes/controls/dimensions.php:91 includes/elements/section.php:1081
+#: includes/elements/column.php:664 includes/widgets/button.php:165
+#: includes/widgets/icon-box.php:186 includes/widgets/icon-box.php:466
+#: includes/widgets/icon.php:169 includes/widgets/text-editor.php:146
+#: includes/widgets/image-gallery.php:297 includes/widgets/common.php:491
+#: includes/widgets/common.php:492 includes/widgets/image-box.php:163
+#: includes/widgets/image-box.php:387 includes/widgets/social-icons.php:279
+#: includes/widgets/heading.php:177 includes/widgets/divider.php:194
+#: includes/widgets/image-carousel.php:348
+#: includes/widgets/image-carousel.php:613 includes/widgets/icon-list.php:227
+#: includes/widgets/icon-list.php:436 includes/widgets/image.php:135
+#: includes/widgets/image.php:468 includes/widgets/star-rating.php:165
+#: includes/widgets/testimonial.php:187
+msgid "Left"
+msgstr "Ліво"
+
+#: includes/elements/section.php:501 includes/elements/section.php:589
+#: includes/elements/section.php:638 includes/elements/section.php:742
+#: includes/elements/section.php:1213 includes/elements/column.php:252
+#: includes/elements/column.php:323 includes/elements/column.php:372
+#: includes/elements/column.php:475 includes/elements/column.php:810
+#: includes/widgets/button.php:298 includes/widgets/google-maps.php:183
+#: includes/widgets/icon-box.php:258 includes/widgets/icon.php:203
+#: includes/widgets/common.php:167 includes/widgets/common.php:208
+#: includes/widgets/common.php:272 includes/widgets/image-box.php:282
+#: includes/widgets/heading.php:258 includes/widgets/image.php:323
+msgid "Normal"
+msgstr "Нормальний"
+
+#: includes/controls/groups/typography.php:177
+msgctxt "Typography Control"
+msgid "Line-Height"
+msgstr "Міжрядковий інтервал"
+
+#: includes/controls/groups/typography.php:199
+msgctxt "Typography Control"
+msgid "Letter Spacing"
+msgstr "Міжбуквений інтервал"
+
+#: includes/controls/groups/typography.php:289
+msgctxt "Typography Control"
+msgid "Typography"
+msgstr "Типографіка"
+
+#: includes/maintenance-mode.php:226 includes/widgets/image-gallery.php:209
+#: includes/widgets/common.php:383 includes/widgets/social-icons.php:193
+#: includes/widgets/social-icons.php:325
+#: includes/widgets/image-carousel.php:538
+msgid "Custom"
+msgstr "Користувацький"
+
+#: includes/controls/icon.php:872 includes/controls/icon.php:873
+msgid "Select Icon"
+msgstr "Виберіть іконку"
+
+#: core/editor/editor.php:559
+#: modules/history/views/revisions-panel-template.php:56
+#: includes/editor-templates/templates.php:182
+#: includes/editor-templates/hotkeys.php:60
+msgid "Delete"
+msgstr "Видалити"
+
+#: includes/controls/repeater.php:172
+msgid "Add Item"
+msgstr "Додати елемент"
+
+#: includes/controls/structure.php:60
+msgid "More Structures"
+msgstr "Інші структури"
+
+#: modules/history/views/revisions-panel-template.php:13
+#: includes/schemes/base.php:168
+msgid "Discard"
+msgstr "Відмінити"
+
+#: modules/history/views/revisions-panel-template.php:18
+#: includes/controls/image-dimensions.php:104
+#: includes/editor-templates/panel.php:163 includes/schemes/base.php:172
+msgid "Apply"
+msgstr "Застосувати"
+
+#: includes/schemes/color.php:284
+msgid "Color Palette"
+msgstr "Палітра кольорів"
+
+#. translators: %s: Template type.
+#: core/editor/editor.php:664
+msgid "Are you sure you want to remove this %s?"
+msgstr "Ви впевнені, що хочете видалити це {0}?"
+
+#: core/editor/editor.php:560 core/admin/admin.php:793
+msgid "Cancel"
+msgstr "Відмінити"
+
+#: core/editor/editor.php:659
+msgid "Go Back"
+msgstr "Повернутись"
+
+#: core/editor/editor.php:671
+msgid "Saved"
+msgstr "Збережено"
+
+#: core/editor/editor.php:667
+msgid "Please note: All unsaved changes will be lost."
+msgstr "Зверніть увагу: Всі незбережені зміни будуть втрачені."
+
+#: includes/schemes/color.php:64
+msgid "Colors"
+msgstr "Кольори"
+
+#: core/editor/editor.php:729
+msgid "Soon"
+msgstr "Незабаром"
+
+#: modules/history/module.php:55
+msgid "Removed"
+msgstr "Видалити"
+
+#: includes/elements/section.php:1009 includes/elements/column.php:591
+#: includes/schemes/typography.php:64
+msgid "Typography"
+msgstr "Типографіка"
+
+#: includes/elements/section.php:1028 includes/elements/column.php:611
+msgid "Heading Color"
+msgstr "Колір заголовку"
+
+#: includes/elements/section.php:1053 includes/elements/column.php:636
+msgid "Link Color"
+msgstr "Колір посилання"
+
+#: includes/elements/section.php:1077 includes/elements/column.php:660
+msgid "Text Align"
+msgstr "Вирівнювання тексту"
+
+#: includes/elements/section.php:1113 includes/elements/column.php:697
+#: includes/widgets/common.php:75
+msgid "Margin"
+msgstr "Зовнішній відступ"
+
+#: includes/elements/section.php:1041 includes/elements/column.php:624
+#: includes/widgets/button.php:305 includes/widgets/button.php:341
+#: includes/widgets/alert.php:213 includes/widgets/alert.php:243
+#: includes/widgets/text-editor.php:171 includes/widgets/image-gallery.php:326
+#: includes/widgets/progress.php:268 includes/widgets/heading.php:222
+#: includes/widgets/image-carousel.php:639 includes/widgets/icon-list.php:468
+#: includes/widgets/counter.php:212 includes/widgets/counter.php:246
+#: includes/widgets/image.php:494 includes/widgets/star-rating.php:204
+#: includes/widgets/testimonial.php:227 includes/widgets/testimonial.php:316
+#: includes/widgets/testimonial.php:352
+msgid "Text Color"
+msgstr "Колір тексту"
+
+#: includes/elements/section.php:1085 includes/elements/column.php:188
+#: includes/elements/column.php:668 includes/widgets/button.php:169
+#: includes/widgets/icon-box.php:470 includes/widgets/icon.php:173
+#: includes/widgets/text-editor.php:150 includes/widgets/image-gallery.php:301
+#: includes/widgets/common.php:444 includes/widgets/image-box.php:391
+#: includes/widgets/social-icons.php:283 includes/widgets/heading.php:181
+#: includes/widgets/divider.php:198 includes/widgets/image-carousel.php:514
+#: includes/widgets/image-carousel.php:617 includes/widgets/video.php:738
+#: includes/widgets/icon-list.php:231 includes/widgets/icon-list.php:440
+#: includes/widgets/image.php:139 includes/widgets/image.php:472
+#: includes/widgets/star-rating.php:169 includes/widgets/testimonial.php:191
+msgid "Center"
+msgstr "По центру"
+
+#: core/document-types/post.php:163 includes/elements/section.php:1132
+#: includes/elements/column.php:709 includes/widgets/button.php:419
+#: includes/widgets/icon-box.php:388 includes/widgets/icon.php:314
+#: includes/widgets/common.php:87 includes/widgets/social-icons.php:379
+#: includes/widgets/accordion.php:298 includes/widgets/accordion.php:431
+#: includes/widgets/toggle.php:318 includes/widgets/toggle.php:451
+msgid "Padding"
+msgstr "Внутрішній відступ"
+
+#: includes/elements/section.php:1173 includes/elements/column.php:750
+#: includes/widgets/common.php:129
+msgid "CSS Classes"
+msgstr "Класи CSS"
+
+#: includes/elements/column.php:128
+msgid "Column Width"
+msgstr "Ширина колонки"
+
+#: core/admin/admin.php:174 modules/gutenberg/module.php:115
+#: includes/editor-templates/editor-wrapper.php:53
+#: includes/editor-templates/templates.php:50
+msgid "Loading"
+msgstr "Завантаження"
+
+#: includes/editor-templates/global.php:25
+msgid "Add New Section"
+msgstr "Додати новий розділ"
+
+#: core/admin/admin.php:573
+msgid "Help"
+msgstr "Допомога"
+
+#: core/editor/editor.php:574
+msgid "About Elementor"
+msgstr "Про Elementor"
+
+#: modules/history/revisions-manager.php:378
+msgid "Revision History"
+msgstr "Історія змін"
+
+#: includes/widgets/text-editor.php:199 includes/widgets/image-gallery.php:132
+msgid "Columns"
+msgstr "Колонки"
+
+#: includes/managers/controls.php:299 includes/widgets/alert.php:120
+#: includes/widgets/icon-box.php:454 includes/widgets/image-box.php:129
+#: includes/widgets/image-box.php:375 includes/widgets/accordion.php:108
+#: includes/widgets/accordion.php:388 includes/widgets/tabs.php:106
+#: includes/widgets/tabs.php:285 includes/widgets/testimonial.php:92
+#: includes/widgets/testimonial.php:219 includes/widgets/toggle.php:105
+#: includes/widgets/toggle.php:408
+msgid "Content"
+msgstr "Вміст"
+
+#: core/settings/general/model.php:90
+#: core/common/modules/finder/categories/settings.php:51
+#: core/editor/editor.php:579 includes/settings/settings.php:456
+#: includes/managers/controls.php:300 includes/widgets/divider.php:109
+#: includes/widgets/icon-list.php:260
+msgid "Style"
+msgstr "Стиль"
+
+#: includes/controls/structure.php:47 includes/elements/section.php:478
+msgid "Structure"
+msgstr "Структура"
+
+#: core/editor/editor.php:625 modules/library/documents/section.php:44
+#: includes/elements/section.php:78
+msgid "Section"
+msgstr "Розділ"
+
+#: includes/elements/column.php:58
+msgid "Column"
+msgstr "Колонка"
+
+#: includes/elements/section.php:302
+msgid "Narrow"
+msgstr "Вузький"
+
+#: includes/controls/image-dimensions.php:102 includes/elements/section.php:313
+#: includes/elements/section.php:363 includes/elements/section.php:941
+#: includes/widgets/google-maps.php:146 includes/widgets/progress.php:204
+#: includes/widgets/icon-list.php:324
+msgid "Height"
+msgstr "Висота"
+
+#: includes/elements/section.php:318
+msgid "Fit To Screen"
+msgstr "За розміром екрану"
+
+#: includes/elements/section.php:319 includes/elements/section.php:368
+msgid "Min Height"
+msgstr "Мінімальна висота"
+
+#: includes/elements/section.php:329 includes/elements/section.php:378
+msgid "Minimum Height"
+msgstr "Мінімальна висота"
+
+#: includes/elements/section.php:402
+msgid "Column Position"
+msgstr "Позиція колонки"
+
+#: includes/elements/section.php:406
+msgid "Stretch"
+msgstr "Розтягнути"
+
+#: includes/elements/section.php:408 includes/elements/section.php:427
+#: includes/elements/column.php:162 includes/widgets/icon-box.php:495
+#: includes/widgets/image-box.php:416
+msgid "Middle"
+msgstr "Середина"
+
+#: includes/widgets/video.php:734
+msgid "Content Position"
+msgstr "Позиція вмісту"
+
+#: includes/elements/section.php:1275
+msgid "Visibility"
+msgstr "Видимість"
+
+#: includes/widgets/image-carousel.php:172
+#: includes/widgets/image-carousel.php:360
+msgid "Navigation"
+msgstr "Навігація"
+
+#: includes/editor-templates/templates.php:109
+#: includes/widgets/testimonial.php:128 includes/widgets/testimonial.php:308
+msgid "Name"
+msgstr "І'мя"
+
+#: core/editor/editor.php:633 includes/controls/switcher.php:75
+#: includes/managers/icons.php:336 includes/widgets/audio.php:126
+#: includes/widgets/image-gallery.php:161
+#: includes/widgets/image-carousel.php:164
+#: includes/widgets/image-carousel.php:220
+#: includes/widgets/image-carousel.php:269
+#: includes/widgets/image-carousel.php:283
+#: includes/widgets/image-carousel.php:307 includes/widgets/image.php:221
+msgid "Yes"
+msgstr "Так"
+
+#: core/editor/editor.php:620 includes/controls/switcher.php:74
+#: includes/managers/icons.php:335 includes/widgets/audio.php:127
+#: includes/widgets/image-gallery.php:162
+#: includes/widgets/image-carousel.php:163
+#: includes/widgets/image-carousel.php:221
+#: includes/widgets/image-carousel.php:270
+#: includes/widgets/image-carousel.php:284
+#: includes/widgets/image-carousel.php:308 includes/widgets/image.php:222
+msgid "No"
+msgstr "Ні"
+
+#: core/common/modules/finder/categories/general.php:50
+#: includes/settings/system-info/main.php:153
+#: includes/settings/system-info/main.php:318
+msgid "System Info"
+msgstr "Системна інформація"
+
+#: includes/widgets/accordion.php:43 includes/widgets/accordion.php:86
+#: includes/widgets/accordion.php:198
+msgid "Accordion"
+msgstr "Акордеон"
+
+#: includes/settings/settings.php:412
+msgid "Post Types"
+msgstr "Типи записів"
+
+#: includes/widgets/button.php:121 includes/widgets/alert.php:97
+#: includes/widgets/progress.php:111
+msgid "Info"
+msgstr "Інформація"
+
+#: includes/template-library/sources/local.php:1550
+#: includes/editor-templates/templates.php:113
+#: includes/elements/section.php:887 includes/widgets/button.php:116
+#: includes/widgets/alert.php:93 includes/widgets/progress.php:106
+#: includes/widgets/tabs.php:146
+msgid "Type"
+msgstr "Тип"
+
+#: includes/widgets/alert.php:109 includes/widgets/icon-box.php:138
+#: includes/widgets/image-box.php:115 includes/widgets/accordion.php:95
+#: includes/widgets/tabs.php:95 includes/widgets/toggle.php:95
+msgid "Title & Description"
+msgstr "Заголовок та опис"
+
+#: includes/widgets/alert.php:123
+msgid "I am a description. Click the edit button to change this text."
+msgstr "Я — опис. Натисніть кнопку редагування, щоб змінити цей текст."
+
+#: includes/widgets/button.php:189 includes/widgets/icon-box.php:371
+#: includes/widgets/icon.php:297 includes/widgets/text-editor.php:306
+#: includes/widgets/social-icons.php:362 includes/widgets/heading.php:136
+#: includes/widgets/image-carousel.php:399
+#: includes/widgets/image-carousel.php:461 includes/widgets/video.php:628
+#: includes/widgets/icon-list.php:412 includes/widgets/star-rating.php:256
+msgid "Size"
+msgstr "Розмір"
+
+#: includes/settings/settings.php:598 includes/elements/section.php:1297
+#: includes/elements/section.php:1310 includes/elements/section.php:1323
+#: includes/widgets/alert.php:137 includes/widgets/audio.php:154
+#: includes/widgets/audio.php:165 includes/widgets/audio.php:176
+#: includes/widgets/audio.php:187 includes/widgets/audio.php:201
+#: includes/widgets/audio.php:212 includes/widgets/audio.php:223
+#: includes/widgets/audio.php:234 includes/widgets/image-gallery.php:282
+#: includes/widgets/progress.php:138 includes/widgets/video.php:306
+#: includes/widgets/video.php:320 includes/widgets/video.php:346
+#: includes/widgets/video.php:401 includes/widgets/video.php:415
+#: includes/widgets/video.php:429 includes/widgets/video.php:443
+#: includes/widgets/video.php:485 includes/widgets/counter.php:159
+msgid "Hide"
+msgstr "Сховати"
+
+#: includes/settings/settings.php:599 includes/elements/section.php:1298
+#: includes/elements/section.php:1311 includes/elements/section.php:1324
+#: includes/widgets/alert.php:136 includes/widgets/audio.php:155
+#: includes/widgets/audio.php:166 includes/widgets/audio.php:177
+#: includes/widgets/audio.php:188 includes/widgets/audio.php:202
+#: includes/widgets/audio.php:213 includes/widgets/audio.php:224
+#: includes/widgets/audio.php:235 includes/widgets/image-gallery.php:281
+#: includes/widgets/progress.php:137 includes/widgets/video.php:307
+#: includes/widgets/video.php:321 includes/widgets/video.php:347
+#: includes/widgets/video.php:402 includes/widgets/video.php:416
+#: includes/widgets/video.php:430 includes/widgets/video.php:444
+#: includes/widgets/video.php:486 includes/widgets/counter.php:158
+msgid "Show"
+msgstr "Показати"
+
+#: core/base/document.php:453 includes/elements/section.php:236
+#: includes/elements/column.php:119 includes/widgets/alert.php:205
+#: includes/widgets/icon-box.php:506 includes/widgets/common.php:66
+#: includes/widgets/image-box.php:427 includes/widgets/progress.php:92
+#: includes/widgets/heading.php:101 includes/widgets/heading.php:108
+#: includes/widgets/heading.php:214 includes/widgets/image-carousel.php:237
+#: includes/widgets/counter.php:182 includes/widgets/counter.php:238
+#: includes/widgets/accordion.php:240 includes/widgets/star-rating.php:152
+#: includes/widgets/star-rating.php:193 includes/widgets/tabs.php:237
+#: includes/widgets/testimonial.php:140 includes/widgets/testimonial.php:344
+#: includes/widgets/toggle.php:260
+msgid "Title"
+msgstr "Заголовок"
+
+#: includes/widgets/button.php:200 includes/widgets/icon-box.php:92
+#: includes/widgets/icon-box.php:238 includes/widgets/icon.php:42
+#: includes/widgets/icon.php:101 includes/widgets/icon.php:108
+#: includes/widgets/icon.php:193 includes/widgets/social-icons.php:94
+#: includes/widgets/social-icons.php:312 includes/widgets/icon-list.php:132
+#: includes/widgets/icon-list.php:374 includes/widgets/accordion.php:147
+#: includes/widgets/accordion.php:312 includes/widgets/star-rating.php:116
+#: includes/widgets/toggle.php:144 includes/widgets/toggle.php:332
+msgid "Icon"
+msgstr "Іконка"
+
+#: core/dynamic-tags/tag.php:93 includes/widgets/button.php:214
+msgid "Before"
+msgstr "До"
+
+#: core/dynamic-tags/tag.php:100 includes/widgets/button.php:215
+msgid "After"
+msgstr "Після"
+
+#: includes/controls/media.php:151 includes/widgets/image-box.php:92
+#: includes/widgets/video.php:493 includes/widgets/image.php:108
+#: includes/widgets/testimonial.php:105
+msgid "Choose Image"
+msgstr "Оберіть зображення"
+
+#: includes/controls/gallery.php:86 includes/widgets/image-gallery.php:108
+#: includes/widgets/image-carousel.php:107
+msgid "Add Images"
+msgstr "Додати зображення"
+
+#: includes/widgets/image-gallery.php:197
+msgid "Images"
+msgstr "Зображення"
+
+#: includes/widgets/image-gallery.php:177
+msgid "Random"
+msgstr "Випадково"
+
+#: includes/controls/box-shadow.php:110 includes/controls/text-shadow.php:103
+#: includes/elements/section.php:898 includes/widgets/icon-box.php:532
+#: includes/widgets/icon-box.php:566 includes/widgets/image-box.php:453
+#: includes/widgets/image-box.php:487 includes/widgets/social-icons.php:188
+#: includes/widgets/social-icons.php:320 includes/widgets/progress.php:178
+#: includes/widgets/progress.php:236 includes/widgets/divider.php:147
+#: includes/widgets/image-carousel.php:419
+#: includes/widgets/image-carousel.php:481 includes/widgets/video.php:613
+#: includes/widgets/icon-list.php:353 includes/widgets/icon-list.php:382
+#: includes/widgets/accordion.php:259 includes/widgets/accordion.php:344
+#: includes/widgets/accordion.php:407 includes/widgets/star-rating.php:291
+#: includes/widgets/tabs.php:246 includes/widgets/tabs.php:294
+#: includes/widgets/toggle.php:279 includes/widgets/toggle.php:364
+#: includes/widgets/toggle.php:427
+msgid "Color"
+msgstr "Колір"
+
+#: includes/widgets/divider.php:127 includes/widgets/icon-list.php:282
+msgid "Weight"
+msgstr "Вага"
+
+#: includes/widgets/image-carousel.php:177
+#: includes/widgets/image-carousel.php:371
+msgid "Arrows"
+msgstr "Стрілки"
+
+#: includes/widgets/button.php:43 includes/widgets/button.php:109
+#: includes/widgets/button.php:271
+msgid "Button"
+msgstr "Кнопка"
+
+#: includes/controls/image-dimensions.php:96 includes/elements/section.php:912
+#: includes/widgets/common.php:376 includes/widgets/image-box.php:245
+#: includes/widgets/divider.php:163 includes/widgets/icon-list.php:306
+#: includes/widgets/image.php:252
+msgid "Width"
+msgstr "Ширина"
+
+#: includes/widgets/html.php:42
+msgid "HTML"
+msgstr "HTML"
+
+#: includes/widgets/testimonial.php:266
+msgid "Image Size"
+msgstr "Розмір зображення"
+
+#: includes/widgets/video.php:534 includes/widgets/video.php:600
+msgid "Play Icon"
+msgstr "Іконка програти"
+
+#: includes/widgets/video.php:476 includes/widgets/video.php:483
+msgid "Image Overlay"
+msgstr "Накладення зображення"
+
+#: includes/widgets/video.php:383
+msgid "Suggested Videos"
+msgstr "Рекомендоване відео"
+
+#: includes/widgets/video.php:573
+msgid "Aspect Ratio"
+msgstr "Співвідношення сторін"
+
+#: includes/widgets/video.php:114
+msgid "YouTube"
+msgstr "YouTube"
+
+#: includes/widgets/toggle.php:107
+msgid "Toggle Content"
+msgstr "Вміст спойлера"
+
+#: includes/widgets/toggle.php:97
+msgid "Toggle Title"
+msgstr "Заголовок спойлера"
+
+#: includes/widgets/toggle.php:124
+msgid "Toggle #2"
+msgstr "Спойлер #2"
+
+#: includes/widgets/toggle.php:120
+msgid "Toggle #1"
+msgstr "Спойлер #1"
+
+#: includes/widgets/toggle.php:115
+msgid "Toggle Items"
+msgstr "Елементи спойлера"
+
+#: includes/widgets/toggle.php:43 includes/widgets/toggle.php:86
+#: includes/widgets/toggle.php:195
+msgid "Toggle"
+msgstr "Спойлер"
+
+#: includes/widgets/text-editor.php:43 includes/widgets/text-editor.php:102
+#: includes/widgets/text-editor.php:134
+msgid "Text Editor"
+msgstr "Текстовий редактор"
+
+#: includes/widgets/tabs.php:107 includes/widgets/tabs.php:108
+msgid "Tab Content"
+msgstr "Вміст вкладки"
+
+#: includes/widgets/tabs.php:97 includes/widgets/tabs.php:98
+msgid "Tab Title"
+msgstr "Заголовок вкладки"
+
+#: includes/widgets/tabs.php:126
+msgid "Tab #2"
+msgstr "Вкладка #2"
+
+#: includes/widgets/tabs.php:117
+msgid "Tabs Items"
+msgstr "Елементи вкладок"
+
+#: includes/widgets/tabs.php:43 includes/widgets/tabs.php:86
+#: includes/widgets/tabs.php:163
+msgid "Tabs"
+msgstr "Вкладки"
+
+#: includes/widgets/image-carousel.php:265
+msgid "Pause on Hover"
+msgstr "Пауза на наведенні курсора"
+
+#: includes/widgets/image-carousel.php:293
+msgid "Autoplay Speed"
+msgstr "Швидкість гортання"
+
+#: includes/widgets/image-carousel.php:321
+msgid "Slide"
+msgstr "Ковзання"
+
+#: includes/widgets/sidebar.php:89 includes/widgets/sidebar.php:107
+msgid "Choose Sidebar"
+msgstr "Виберіть сайдбар"
+
+#: includes/widgets/sidebar.php:87
+msgid "No sidebars were found"
+msgstr "Сайдбарі не знайдені"
+
+#: includes/widgets/progress.php:260
+msgid "Title Style"
+msgstr "Стиль заголовка"
+
+#: includes/widgets/progress.php:151
+msgid "Web Designer"
+msgstr "Веб-дизайнер"
+
+#: includes/widgets/progress.php:150
+msgid "e.g. Web Designer"
+msgstr "наприклад, Веб-дизайнер"
+
+#: includes/widgets/progress.php:145 includes/widgets/progress.php:227
+msgid "Inner Text"
+msgstr "Текст всередині"
+
+#: includes/widgets/progress.php:133
+msgid "Display Percentage"
+msgstr "Показати відсотки"
+
+#: includes/widgets/progress.php:122
+msgid "Percentage"
+msgstr "Відсоток"
+
+#: includes/widgets/progress.php:42 includes/widgets/progress.php:85
+#: includes/widgets/progress.php:170
+msgid "Progress Bar"
+msgstr "Індикатор виконання"
+
+#: includes/widgets/menu-anchor.php:95
+msgid "For Example: About"
+msgstr "Наприклад: про"
+
+#: includes/widgets/menu-anchor.php:93
+msgid "The ID of Menu Anchor."
+msgstr "Ідентифікатор якоря меню."
+
+#: includes/widgets/menu-anchor.php:96
+msgid "This ID will be the CSS ID you will have to use in your own page, Without #."
+msgstr "Цей ID може бути використаний як CSS ID. Пишіть його БЕЗ #."
+
+#: includes/widgets/menu-anchor.php:86
+msgid "Anchor"
+msgstr "Якорь"
+
+#: includes/widgets/menu-anchor.php:43
+msgid "Menu Anchor"
+msgstr "Якорь меню"
+
+#: includes/widgets/image-box.php:158 includes/widgets/testimonial.php:164
+msgid "Image Position"
+msgstr "Позиція зображення"
+
+#: includes/widgets/image-gallery.php:222
+#: includes/widgets/image-carousel.php:550
+msgid "Image Spacing"
+msgstr "Відступ від зображення"
+
+#: includes/widgets/image-box.php:42 includes/widgets/image-box.php:85
+msgid "Image Box"
+msgstr "Картинка з текстом"
+
+#: includes/widgets/social-icons.php:447
+msgid "Icon Hover"
+msgstr "Іконка при наведенні"
+
+#: includes/widgets/icon-box.php:423 includes/widgets/icon.php:356
+#: includes/widgets/text-editor.php:367 includes/widgets/accordion.php:206
+#: includes/widgets/tabs.php:194 includes/widgets/toggle.php:203
+msgid "Border Width"
+msgstr "Товщина межі"
+
+#: includes/widgets/icon-box.php:408 includes/widgets/icon.php:334
+msgid "Rotate"
+msgstr "Повернути"
+
+#: includes/widgets/icon-box.php:282 includes/widgets/icon-box.php:320
+#: includes/widgets/icon.php:228 includes/widgets/icon.php:268
+#: includes/widgets/text-editor.php:291 includes/widgets/social-icons.php:215
+#: includes/widgets/social-icons.php:347 includes/widgets/social-icons.php:470
+msgid "Secondary Color"
+msgstr "Вторинний колір"
+
+#: includes/widgets/icon-box.php:265 includes/widgets/icon-box.php:307
+#: includes/widgets/icon.php:210 includes/widgets/icon.php:254
+#: includes/widgets/text-editor.php:272 includes/widgets/social-icons.php:201
+#: includes/widgets/social-icons.php:333 includes/widgets/social-icons.php:455
+msgid "Primary Color"
+msgstr "Основний колір"
+
+#: includes/widgets/icon-box.php:124 includes/widgets/icon.php:140
+#: includes/widgets/social-icons.php:265
+msgid "Square"
+msgstr "Квадрат"
+
+#: includes/widgets/icon-box.php:123 includes/widgets/icon.php:139
+#: includes/widgets/social-icons.php:266
+msgid "Circle"
+msgstr "Коло"
+
+#: includes/widgets/icon-box.php:120 includes/widgets/icon.php:136
+#: includes/widgets/social-icons.php:260
+msgid "Shape"
+msgstr "Форма"
+
+#: includes/widgets/icon-box.php:110 includes/widgets/icon.php:126
+#: includes/widgets/text-editor.php:259
+msgid "Framed"
+msgstr "Обрамлена"
+
+#: includes/widgets/icon-box.php:109 includes/widgets/icon.php:125
+#: includes/widgets/text-editor.php:258
+msgid "Stacked"
+msgstr "Вписана"
+
+#: includes/widgets/icon-list.php:496
+msgid "Text Indent"
+msgstr "Відступ тексту"
+
+#: includes/widgets/icon-list.php:121 includes/widgets/icon-list.php:122
+msgid "List Item"
+msgstr "Список елементів"
+
+#: includes/widgets/icon-list.php:178
+msgid "List Item #3"
+msgstr "Список позиції №3"
+
+#: includes/widgets/icon-list.php:171
+msgid "List Item #2"
+msgstr "Список позиції №2"
+
+#: includes/widgets/icon-list.php:164
+msgid "List Item #1"
+msgstr "Список позиції №1"
+
+#: includes/widgets/icon-list.php:42 includes/widgets/icon-list.php:85
+msgid "Icon List"
+msgstr "Список іконок"
+
+#: includes/widgets/button.php:151 includes/widgets/icon-box.php:173
+#: includes/widgets/icon.php:158 includes/widgets/image-box.php:150
+#: includes/widgets/social-icons.php:181
+#: includes/widgets/image-carousel.php:204 includes/widgets/icon-list.php:152
+#: includes/widgets/image.php:205 includes/widgets/testimonial.php:157
+msgid "https://your-link.com"
+msgstr "https://your-link.com"
+
+#: includes/widgets/button.php:226
+msgid "Icon Spacing"
+msgstr "Відступ від іконки"
+
+#: includes/widgets/icon-box.php:42 includes/widgets/icon-box.php:85
+msgid "Icon Box"
+msgstr "Іконка з текстом"
+
+#: includes/widgets/html.php:85
+msgid "HTML Code"
+msgstr "HTML код"
+
+#: includes/elements/section.php:468 includes/elements/column.php:230
+#: includes/widgets/heading.php:153
+msgid "HTML Tag"
+msgstr "Тег HTML"
+
+#: includes/widgets/alert.php:111 includes/widgets/icon-box.php:144
+#: includes/widgets/image-box.php:121 includes/widgets/progress.php:97
+#: includes/widgets/heading.php:113
+msgid "Enter your title"
+msgstr "Введіть свій заголовок"
+
+#: includes/widgets/heading.php:42
+msgid "Heading"
+msgstr "Заголовок"
+
+#: includes/widgets/google-maps.php:107
+msgid "London Eye, London, United Kingdom"
+msgstr "London Eye, Лондон, Великобританія"
+
+#: includes/widgets/google-maps.php:103 includes/widgets/google-maps.php:174
+msgid "Map"
+msgstr "Мапа"
+
+#: includes/widgets/google-maps.php:44
+msgid "Google Maps"
+msgstr "Google-мапи"
+
+#: includes/widgets/image-gallery.php:269
+#: includes/widgets/image-carousel.php:232
+#: includes/widgets/image-carousel.php:238
+#: includes/widgets/image-carousel.php:598 includes/widgets/image.php:156
+#: includes/widgets/image.php:453
+msgid "Caption"
+msgstr "Підпис"
+
+#: includes/widgets/image-gallery.php:146
+#: includes/widgets/image-carousel.php:193 includes/widgets/image.php:191
+msgid "Media File"
+msgstr "Медіафайл"
+
+#: includes/controls/groups/background.php:426
+msgctxt "Background Control"
+msgid "Scroll"
+msgstr "Прокрутити"
+
+#: includes/controls/groups/background.php:421
+msgctxt "Background Control"
+msgid "Attachment"
+msgstr "Вкладення"
+
+#: includes/controls/groups/background.php:459
+msgctxt "Background Control"
+msgid "Repeat-x"
+msgstr "Повторити горизонтально"
+
+#: includes/controls/groups/background.php:457
+msgctxt "Background Control"
+msgid "No-repeat"
+msgstr "Не повторювати"
+
+#: core/editor/editor.php:670 includes/editor-templates/templates.php:18
+#: includes/editor-templates/templates.php:19
+#: includes/editor-templates/templates.php:211
+#: includes/editor-templates/templates.php:222
+#: includes/editor-templates/hotkeys.php:75
+msgid "Save"
+msgstr "Зберегти"
+
+#: includes/editor-templates/panel.php:83 includes/elements/section.php:1253
+msgid "Tablet"
+msgstr "Планшет"
+
+#: includes/editor-templates/panel.php:78
+msgid "Desktop"
+msgstr "Комп'ютер"
+
+#. translators: %s: User name.
+#: core/editor/editor.php:658
+msgid "%s has taken over and is currently editing. Do you want to take over this page editing?"
+msgstr "{0} зайняв сторінку і в даний час її редагує. Ви хочете взяти на себе редагування цієї сторінки?"
+
+#: includes/schemes/base.php:162
+msgid "Reset"
+msgstr "Скинути"
+
+#: includes/editor-templates/templates.php:169
+msgid "Preview"
+msgstr "Попередній перегляд"
+
+#: includes/managers/elements.php:272
+msgid "Basic"
+msgstr "Основний"
+
+#: includes/elements/section.php:301
+msgid "No Gap"
+msgstr "Немає розриву"
+
+#: includes/elements/section.php:296 includes/widgets/text-editor.php:212
+msgid "Columns Gap"
+msgstr "Розрив колонок"
+
+#: includes/elements/section.php:732 includes/elements/column.php:465
+#: includes/widgets/common.php:262
+msgid "Border"
+msgstr "Межа"
+
+#: includes/widgets/button.php:210 includes/widgets/icon-box.php:181
+msgid "Icon Position"
+msgstr "Позиції піктограми"
+
+#: includes/widgets/image-gallery.php:147
+msgid "Attachment Page"
+msgstr "Сторінка вкладення"
+
+#: includes/widgets/image-gallery.php:42 includes/widgets/image-gallery.php:101
+msgid "Image Gallery"
+msgstr "Галерея зображень"
+
+#: includes/widgets/divider.php:216 includes/widgets/star-rating.php:228
+msgid "Gap"
+msgstr "Відступи"
+
+#: includes/widgets/spacer.php:42 includes/widgets/spacer.php:101
+msgid "Spacer"
+msgstr "Розпірка"
+
+#: includes/widgets/divider.php:43 includes/widgets/divider.php:102
+#: includes/widgets/icon-list.php:246
+msgid "Divider"
+msgstr "Розділювач"
+
+#: includes/widgets/counter.php:204
+msgid "Number"
+msgstr "Номер"
+
+#: includes/widgets/counter.php:137
+msgid "Plus"
+msgstr "Плюс"
+
+#: includes/widgets/counter.php:134
+msgid "Number Suffix"
+msgstr "Суфікс номера"
+
+#: includes/widgets/counter.php:124
+msgid "Number Prefix"
+msgstr "Префікс номера"
+
+#: includes/widgets/counter.php:115
+msgid "Ending Number"
+msgstr "Кінцева цифра"
+
+#: includes/widgets/counter.php:106
+msgid "Starting Number"
+msgstr "Початкова цифра"
+
+#: includes/widgets/counter.php:42 includes/widgets/counter.php:99
+msgid "Counter"
+msgstr "Лічильник"
+
+#: includes/widgets/audio.php:144 includes/widgets/image-carousel.php:279
+#: includes/widgets/video.php:277
+msgid "Autoplay"
+msgstr "Автоматичне відтворення"
+
+#: includes/widgets/image-carousel.php:143
+msgid "Slides to Scroll"
+msgstr "Прокручування слайдів"
+
+#: includes/widgets/image-carousel.php:131
+msgid "Slides to Show"
+msgstr "Показ слайдів"
+
+#: includes/widgets/button.php:177 includes/widgets/icon-box.php:478
+#: includes/widgets/text-editor.php:158 includes/widgets/image-gallery.php:309
+#: includes/widgets/image-box.php:399 includes/widgets/heading.php:189
+#: includes/widgets/image-carousel.php:625 includes/widgets/image.php:480
+#: includes/widgets/star-rating.php:177
+msgid "Justified"
+msgstr "За шириною"
+
+#: includes/widgets/button.php:161 includes/widgets/icon-box.php:462
+#: includes/widgets/icon.php:165 includes/widgets/text-editor.php:142
+#: includes/widgets/image-gallery.php:293 includes/widgets/image-box.php:383
+#: includes/widgets/social-icons.php:275 includes/widgets/heading.php:173
+#: includes/widgets/divider.php:190 includes/widgets/image-carousel.php:609
+#: includes/widgets/icon-list.php:223 includes/widgets/icon-list.php:432
+#: includes/widgets/accordion.php:323 includes/widgets/image.php:131
+#: includes/widgets/image.php:464 includes/widgets/star-rating.php:161
+#: includes/widgets/testimonial.php:182 includes/widgets/toggle.php:343
+msgid "Alignment"
+msgstr "Вирівнювання"
+
+#: includes/widgets/heading.php:145
+msgid "XXL"
+msgstr "XXL"
+
+#: includes/widgets/heading.php:144
+msgid "XL"
+msgstr "XL"
+
+#: includes/widgets/button.php:92 includes/widgets/heading.php:143
+msgid "Large"
+msgstr "Великий"
+
+#: includes/widgets/button.php:91 includes/widgets/heading.php:142
+msgid "Medium"
+msgstr "Середній"
+
+#: includes/widgets/button.php:90 includes/widgets/heading.php:141
+msgid "Small"
+msgstr "Малий"
+
+#: core/common/modules/finder/categories/edit.php:30
+#: includes/controls/popover-toggle.php:69
+msgid "Edit"
+msgstr "Редагувати"
+
+#: includes/elements/section.php:1319 includes/elements/column.php:884
+#: includes/widgets/common.php:747
+msgid "Hide On Mobile"
+msgstr "Сховати на мобільнику"
+
+#: includes/elements/section.php:1306 includes/elements/column.php:871
+#: includes/widgets/common.php:734
+msgid "Hide On Tablet"
+msgstr "Сховати на планшеті"
+
+#: includes/elements/section.php:1293 includes/elements/column.php:858
+#: includes/widgets/common.php:721
+msgid "Hide On Desktop"
+msgstr "Сховати на комп'ютері"
+
+#: includes/compatibility.php:162 includes/widgets/alert.php:235
+#: includes/widgets/icon-box.php:557 includes/widgets/image-box.php:478
+#: includes/widgets/image-carousel.php:239
+msgid "Description"
+msgstr "Опис"
+
+#: core/settings/general/model.php:154 includes/widgets/button.php:317
+#: includes/widgets/button.php:353 includes/widgets/alert.php:164
+#: includes/widgets/progress.php:193 includes/widgets/video.php:681
+#: includes/widgets/image.php:510 includes/widgets/tabs.php:225
+msgid "Background Color"
+msgstr "Фоновий колір"
+
+#: includes/widgets/alert.php:132
+msgid "Dismiss Button"
+msgstr "Кнопка відхилити"
+
+#: includes/widgets/button.php:124 includes/widgets/alert.php:100
+#: includes/widgets/progress.php:114
+msgid "Danger"
+msgstr "Небезпека"
+
+#: includes/widgets/button.php:122 includes/widgets/alert.php:98
+#: includes/widgets/progress.php:112
+msgid "Success"
+msgstr "Успіх"
+
+#: includes/widgets/alert.php:43 includes/widgets/alert.php:86
+#: includes/widgets/alert.php:156
+msgid "Alert"
+msgstr "Сповіщення"
+
+#: includes/widgets/accordion.php:274 includes/widgets/accordion.php:356
+#: includes/widgets/tabs.php:261 includes/widgets/toggle.php:294
+#: includes/widgets/toggle.php:376
+msgid "Active Color"
+msgstr "Активний колір"
+
+#: includes/widgets/button.php:364 includes/widgets/alert.php:175
+#: includes/widgets/social-icons.php:486 includes/widgets/accordion.php:225
+#: includes/widgets/tabs.php:214 includes/widgets/toggle.php:221
+msgid "Border Color"
+msgstr "Колір межі"
+
+#: includes/widgets/button.php:243 includes/widgets/alert.php:145
+#: includes/widgets/google-maps.php:163 includes/widgets/audio.php:251
+#: includes/widgets/icon-box.php:105 includes/widgets/icon.php:121
+#: includes/widgets/text-editor.php:254 includes/widgets/spacer.php:128
+#: includes/widgets/image-gallery.php:186 includes/widgets/image-box.php:203
+#: includes/widgets/social-icons.php:301 includes/widgets/progress.php:159
+#: includes/widgets/heading.php:203 includes/widgets/divider.php:236
+#: includes/widgets/image-carousel.php:247 includes/widgets/video.php:465
+#: includes/widgets/counter.php:193 includes/widgets/accordion.php:138
+#: includes/widgets/image.php:233 includes/widgets/tabs.php:137
+#: includes/widgets/testimonial.php:207 includes/widgets/toggle.php:135
+msgid "View"
+msgstr "Вид"
+
+#: includes/widgets/accordion.php:110
+msgid "Accordion Content"
+msgstr "Вміст акордеона"
+
+#: includes/widgets/accordion.php:97
+msgid "Accordion Title"
+msgstr "Заголовок акордеона"
+
+#: includes/widgets/accordion.php:127
+msgid "Accordion #2"
+msgstr "Акордеон №2"
+
+#: includes/widgets/accordion.php:118
+msgid "Accordion Items"
+msgstr "Елементи акордеона"
+
+#: includes/tracker.php:294
+msgid "Sure! I'd love to help"
+msgstr "Звичайно! Я хотів би допомогти"
+
+#: includes/settings/system-info/main.php:178
+msgid "Download System Info"
+msgstr "Завантажте інформацію про систему"
+
+#: includes/settings/system-info/main.php:157
+msgid "You can copy the below info as simple text with Ctrl+C / Ctrl+V:"
+msgstr "Ви можете скопіювати наступну інформацію як простий текст за допомогою комбінації клавіш Ctrl + C / Ctrl + V:"
+
+#: includes/settings/system-info/main.php:155
+msgid "Copy & Paste Info"
+msgstr "Копіювати та вставити інформацію"
+
+#: includes/settings/settings.php:442
+msgid "Usage Data Tracking"
+msgstr "Відстеження використання даних"
+
+#: core/role-manager/role-manager.php:62
+msgid "Exclude Roles"
+msgstr "Виключити ролі"
+
+#: includes/schemes/typography.php:96
+msgid "Accent Text"
+msgstr "Акцентований текст"
+
+#: includes/schemes/typography.php:95
+msgid "Body Text"
+msgstr "Основний текст"
+
+#: includes/schemes/typography.php:94
+msgid "Secondary Headline"
+msgstr "Вторинний заголовок"
+
+#: includes/schemes/typography.php:93
+msgid "Primary Headline"
+msgstr "Основний заголовок"
+
+#: includes/schemes/color.php:96
+msgid "Accent"
+msgstr "Акцент"
+
+#: includes/schemes/color.php:95 includes/widgets/button.php:133
+#: includes/widgets/icon-list.php:118 includes/widgets/icon-list.php:460
+msgid "Text"
+msgstr "Текст"
+
+#: includes/schemes/color.php:94
+msgid "Secondary"
+msgstr "Вторинний"
+
+#: includes/schemes/color.php:93
+msgid "Primary"
+msgstr "Основний"
+
+#: core/settings/general/model.php:100 includes/settings/settings.php:470
+#: includes/elements/section.php:260 includes/elements/section.php:274
+#: includes/widgets/video.php:715
+msgid "Content Width"
+msgstr "Ширина вмісту"
+
+#: includes/elements/section.php:265 includes/widgets/common.php:381
+msgid "Full Width"
+msgstr "Повна ширина"
+
+#: includes/elements/section.php:264
+msgid "Boxed"
+msgstr "Обмежена"
+
+#: includes/managers/controls.php:303 includes/elements/section.php:228
+#: includes/elements/column.php:111 includes/widgets/icon-list.php:92
+msgid "Layout"
+msgstr "Макет"
+
+#: includes/controls/groups/background.php:451
+#: includes/controls/groups/background.php:458
+msgctxt "Background Control"
+msgid "Repeat"
+msgstr "Повторити"
+
+#: includes/controls/groups/background.php:427
+msgctxt "Background Control"
+msgid "Fixed"
+msgstr "Закріпити"
+
+#: core/base/document.php:445
+#: core/common/modules/finder/categories/settings.php:46
+msgid "General Settings"
+msgstr "Загальні налаштування"
+
+#: includes/managers/controls.php:302 includes/elements/section.php:1245
+#: includes/elements/column.php:841 includes/widgets/common.php:704
+msgid "Responsive"
+msgstr "Aдаптивний"
+
+#: includes/widgets/counter.php:185 includes/widgets/counter.php:186
+msgid "Cool Number"
+msgstr "Ось це цифра"
+
+#: includes/widgets/image-box.php:214 includes/widgets/image-carousel.php:497
+#: includes/widgets/image.php:42 includes/widgets/image.php:101
+#: includes/widgets/image.php:244 includes/widgets/testimonial.php:255
+msgid "Image"
+msgstr "Зображення"
+
+#: includes/tracker.php:271
+msgid "Love using Elementor? Become a super contributor by opting in to our anonymous plugin data collection and to our updates. We guarantee no sensitive data is collected."
+msgstr "Любите Elementor? Станьте нашим супер помічником, включивши збір анонімних даних плагіном. Ми гарантуємо, що конфіденційні дані збиратися НЕ будуть."
+
+#: includes/elements/section.php:1065 includes/elements/column.php:648
+msgid "Link Hover Color"
+msgstr "Колір Посилання при наведенні"
+
+#: includes/schemes/color.php:145
+msgid "More Palettes"
+msgstr "Більше палітр"
+
+#: core/base/document.php:400 core/admin/admin.php:155 core/admin/admin.php:163
+#: modules/gutenberg/module.php:94 modules/gutenberg/module.php:104
+#: includes/frontend.php:941
+msgid "Edit with Elementor"
+msgstr "Редагувати в Elementor"
+
+#: core/editor/editor.php:696
+msgid "Add New Column"
+msgstr "Додати нову колонку"
+
+#: includes/elements/section.php:756 includes/elements/section.php:792
+#: includes/elements/column.php:490 includes/elements/column.php:527
+#: includes/widgets/button.php:399 includes/widgets/icon-box.php:437
+#: includes/widgets/icon.php:370 includes/widgets/text-editor.php:348
+#: includes/widgets/image-gallery.php:255 includes/widgets/common.php:287
+#: includes/widgets/common.php:324 includes/widgets/social-icons.php:433
+#: includes/widgets/progress.php:215 includes/widgets/image-carousel.php:584
+#: includes/widgets/image.php:428 includes/widgets/testimonial.php:293
+msgid "Border Radius"
+msgstr "Скруглення кутів"
+
+#: core/common/modules/finder/categories/settings.php:56
+#: core/dynamic-tags/tag.php:86 includes/settings/settings.php:565
+#: includes/managers/controls.php:301 includes/elements/section.php:1105
+#: includes/elements/column.php:688 includes/widgets/common.php:58
+msgid "Advanced"
+msgstr "Розширений"
+
+#: includes/widgets/video.php:304
+msgid "Player Controls"
+msgstr "Управління Плеєром"
+
+#: core/editor/editor.php:582
+msgid "View Page"
+msgstr "Переглянути сторінку"
+
+#: includes/settings/system-info/main.php:196
+msgid "You don't have permissions to download this file"
+msgstr "У вас немає дозволів на завантаження цього файлу"
+
+#: core/common/modules/finder/categories/site.php:62
+msgid "Themes"
+msgstr "Теми"
+
+#: includes/controls/groups/background.php:493
+msgctxt "Background Control"
+msgid "Width"
+msgstr "Ширина"
+
+#: includes/managers/elements.php:313
+msgid "WordPress"
+msgstr "WordPress"
+
+#: includes/widgets/button.php:123 includes/widgets/alert.php:99
+#: includes/widgets/progress.php:113
+msgid "Warning"
+msgstr "Увага"
+
+#: includes/controls/groups/background.php:225
+#: includes/controls/groups/background.php:268
+msgctxt "Background Control"
+msgid "Top Center"
+msgstr "Верх Центр"
+
+#: includes/controls/groups/background.php:226
+#: includes/controls/groups/background.php:267
+msgctxt "Background Control"
+msgid "Top Left"
+msgstr "Верх зліва"
+
+#: includes/controls/groups/background.php:227
+#: includes/controls/groups/background.php:269
+msgctxt "Background Control"
+msgid "Top Right"
+msgstr "Верх зправа"
+
+#: includes/controls/groups/background.php:222
+#: includes/controls/groups/background.php:271
+msgctxt "Background Control"
+msgid "Center Center"
+msgstr "Центр центр"
+
+#: includes/controls/groups/background.php:223
+#: includes/controls/groups/background.php:270
+msgctxt "Background Control"
+msgid "Center Left"
+msgstr "Центр зліва"
+
+#: includes/controls/groups/background.php:224
+#: includes/controls/groups/background.php:272
+msgctxt "Background Control"
+msgid "Center Right"
+msgstr "Центр зправа"
+
+#: includes/controls/groups/background.php:228
+#: includes/controls/groups/background.php:274
+msgctxt "Background Control"
+msgid "Bottom Center"
+msgstr "Внизу центр"
+
+#: includes/controls/groups/background.php:229
+#: includes/controls/groups/background.php:273
+msgctxt "Background Control"
+msgid "Bottom Left"
+msgstr "Внизу зліва"
+
+#: includes/controls/groups/background.php:230
+#: includes/controls/groups/background.php:275
+msgctxt "Background Control"
+msgid "Bottom Right"
+msgstr "Внизу зправа"
+
+#: includes/controls/groups/background.php:460
+msgctxt "Background Control"
+msgid "Repeat-y"
+msgstr "Повторювати вертикально"
+
+#: includes/widgets/sidebar.php:42 includes/widgets/sidebar.php:102
+msgid "Sidebar"
+msgstr "Бічна колонка"
+
+#: modules/gutenberg/module.php:91
+msgid "&#8592; Back to WordPress Editor"
+msgstr "&#8592; Повернутися до редактора WordPress"
+
+#: modules/page-templates/module.php:259 includes/base/widget-base.php:241
+#: includes/controls/font.php:67 includes/controls/animation.php:148
+#: includes/controls/groups/typography.php:124
+#: includes/controls/groups/typography.php:143
+#: includes/controls/groups/typography.php:156
+#: includes/controls/groups/typography.php:168
+#: includes/editor-templates/panel.php:220 includes/elements/section.php:300
+#: includes/elements/section.php:317 includes/elements/section.php:367
+#: includes/elements/section.php:425 includes/elements/section.php:441
+#: includes/elements/section.php:462 includes/elements/column.php:160
+#: includes/elements/column.php:186 includes/elements/column.php:224
+#: includes/widgets/button.php:120 includes/widgets/icon-box.php:108
+#: includes/widgets/icon.php:124 includes/widgets/text-editor.php:194
+#: includes/widgets/text-editor.php:257 includes/widgets/image-gallery.php:160
+#: includes/widgets/image-gallery.php:176
+#: includes/widgets/image-gallery.php:208 includes/widgets/common.php:380
+#: includes/widgets/common.php:482 includes/widgets/progress.php:110
+#: includes/widgets/heading.php:140 includes/widgets/image-carousel.php:134
+#: includes/widgets/image-carousel.php:147
+#: includes/widgets/image-carousel.php:219
+#: includes/widgets/image-carousel.php:537 includes/widgets/icon-list.php:97
+#: includes/widgets/image.php:220
+msgid "Default"
+msgstr "За замовчуванням"
+
+#: core/editor/editor.php:660
+msgid "Take Over"
+msgstr "Взяти на себе"
+
+#. translators: %s: PHP version
+#: elementor.php:81
+msgid "Elementor requires PHP version %s+, plugin is currently NOT RUNNING."
+msgstr "Elementor вимагає PHP версії %s+, плагін на даний момент НЕ АКТИВОВАНО."

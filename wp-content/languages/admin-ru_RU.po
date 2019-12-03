@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.3.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-11-25 14:14:28+0000\n"
+"PO-Revision-Date: 2019-11-28 11:24:58+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -157,7 +157,7 @@ msgstr "Хорошо"
 
 #: wp-admin/export.php:57
 msgid "<a href=\"https://wordpress.org/support/article/tools-export-screen/\">Documentation on Export</a>"
-msgstr "<a href=\"https://wordpress.org/support/article/tools-export-screen/\">Документация по экспорту</a>"
+msgstr "<a href=\"https://ru.wordpress.org/support/article/tools-export-screen/\">Документация по экспорту</a>"
 
 #: wp-admin/plugin-install.php:109
 msgid "<a href=\"https://wordpress.org/support/article/plugins-add-new-screen/\">Documentation on Installing Plugins</a>"
@@ -209,11 +209,11 @@ msgstr "<a href=\"https://wordpress.org/support/article/appearance-widgets-scree
 
 #: wp-admin/import.php:31
 msgid "<a href=\"https://wordpress.org/support/article/tools-import-screen/\">Documentation on Import</a>"
-msgstr "<a href=\"https://wordpress.org/support/article/tools-import-screen/\">Документация по импорту</a>"
+msgstr "<a href=\"https://ru.wordpress.org/support/article/tools-import-screen/\">Документация по импорту</a>"
 
 #: wp-admin/tools.php:52
 msgid "<a href=\"https://wordpress.org/support/article/tools-screen/\">Documentation on Tools</a>"
-msgstr "<a href=\"https://wordpress.org/support/article/tools-screen/\">Документация по инструментам</a>"
+msgstr "<a href=\"https://ru.wordpress.org/support/article/tools-screen/\">Документация по инструментам</a>"
 
 #: wp-admin/options.php:323
 msgid "This page allows direct access to your site settings. You can break things here. Please be cautious!"
