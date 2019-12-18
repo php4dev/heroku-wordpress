@@ -4,7 +4,7 @@ Tags: move, clone, migrate, copy, backup, restore, auto backup, cloud backup
 Requires at least: 4.5
 Tested up to: 5.3
 Requires PHP: 5.3
-Stable tag: 0.9.29
+Stable tag: 0.9.30
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -166,6 +166,11 @@ Thank you for translating WPvivid Backup Plugin to your languages!
 * [Andrew Galas](https://profiles.wordpress.org/andrewgalas) (Polish)
 
 == Changelog ==
+= 0.9.30 =
+- Added an option to select database accessing method for a backup or restore process.
+- Optimized plugin code and set the autoload attribute to no.
+- Improved the success rate of backing up the uploads folder when the optimization mode for web hosting/shared hosting is enabled.
+- Fixed some bugs in plugin code.
 = 0.9.29 =
 - Successfully tested with WordPress 5.3.
 - Fixed: Locked backups were deleted automatically.

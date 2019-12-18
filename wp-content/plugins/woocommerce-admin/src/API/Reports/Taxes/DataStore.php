@@ -63,7 +63,7 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 	 * Assign report columns once full table name has been assigned.
 	 */
 	protected function assign_report_columns() {
-		$table_name = self::get_db_table_name();
+		$table_name           = self::get_db_table_name();
 		$this->report_columns = array(
 			'tax_rate_id'  => "{$table_name}.tax_rate_id",
 			'name'         => 'tax_rate_name as name',
@@ -82,7 +82,7 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 	 * Set up all the hooks for maintaining and populating table data.
 	 */
 	public static function init() {
-		add_action( 'woocommerce_reports_delete_order_stats', array( __CLASS__, 'sync_on_order_delete' ), 15 );
+		add_action( 'woocommerce_analytics_delete_order_stats', array( __CLASS__, 'sync_on_order_delete' ), 15 );
 	}
 
 	/**
@@ -91,7 +91,7 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 	 * @param array  $query_args          Query arguments supplied by the user.
 	 * @param string $order_status_filter Order status subquery.
 	 */
-	protected function get_from_sql_params( $query_args, $order_status_filter ) {
+	protected function add_from_sql_params( $query_args, $order_status_filter ) {
 		global $wpdb;
 		$table_name = self::get_db_table_name();
 
@@ -111,16 +111,16 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 	 *
 	 * @param array $query_args Query arguments supplied by the user.
 	 */
-	protected function get_sql_query_params( $query_args ) {
+	protected function add_sql_query_params( $query_args ) {
 		global $wpdb;
 
 		$order_tax_lookup_table = self::get_db_table_name();
 
-		$this->get_time_period_sql_params( $query_args, $order_tax_lookup_table );
+		$this->add_time_period_sql_params( $query_args, $order_tax_lookup_table );
 		$this->get_limit_sql_params( $query_args );
-		$this->get_order_by_sql_params( $query_args );
+		$this->add_order_by_sql_params( $query_args );
 		$order_status_filter = $this->get_status_subquery( $query_args );
-		$this->get_from_sql_params( $query_args, $order_status_filter );
+		$this->add_from_sql_params( $query_args, $order_status_filter );
 
 		if ( isset( $query_args['taxes'] ) && ! empty( $query_args['taxes'] ) ) {
 			$allowed_taxes = self::get_filtered_ids( $query_args, 'taxes' );
@@ -174,7 +174,7 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 				'page_no' => 0,
 			);
 
-			$this->get_sql_query_params( $query_args );
+			$this->add_sql_query_params( $query_args );
 			$params = $this->get_limit_params( $query_args );
 
 			if ( isset( $query_args['taxes'] ) && ! empty( $query_args['taxes'] ) ) {
@@ -307,7 +307,7 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 			 * @param int $tax_rate_id Tax Rate ID.
 			 * @param int $order_id    Order ID.
 			 */
-			do_action( 'woocommerce_reports_update_tax', $tax_item->get_rate_id(), $order->get_id() );
+			do_action( 'woocommerce_analytics_update_tax', $tax_item->get_rate_id(), $order->get_id() );
 
 			// Sum the rows affected. Using REPLACE can affect 2 rows if the row already exists.
 			$num_updated += 2 === intval( $result ) ? 1 : intval( $result );
@@ -332,7 +332,7 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 		 * @param int $tax_rate_id Tax Rate ID.
 		 * @param int $order_id    Order ID.
 		 */
-		do_action( 'woocommerce_reports_delete_tax', 0, $order_id );
+		do_action( 'woocommerce_analytics_delete_tax', 0, $order_id );
 
 		ReportsCache::invalidate();
 	}

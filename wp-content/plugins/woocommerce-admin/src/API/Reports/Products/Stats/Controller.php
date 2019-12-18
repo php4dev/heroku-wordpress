@@ -48,7 +48,7 @@ class Controller extends \WC_REST_Reports_Controller {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'woocommerce_reports_products_stats_select_query', array( $this, 'set_default_report_data' ) );
+		add_filter( 'woocommerce_analytics_products_stats_select_query', array( $this, 'set_default_report_data' ) );
 	}
 
 	/**
@@ -165,7 +165,7 @@ class Controller extends \WC_REST_Reports_Controller {
 				'indicator'   => true,
 			),
 			'net_revenue'  => array(
-				'description' => __( 'Net revenue.', 'woocommerce-admin' ),
+				'description' => __( 'Net Sales.', 'woocommerce-admin' ),
 				'type'        => 'number',
 				'context'     => array( 'view', 'edit' ),
 				'readonly'    => true,

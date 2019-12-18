@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alienware`x
- * Date: 2019/6/10
- * Time: 13:04
- */
 
 class WPvivid_DB_Method
 {
@@ -13,43 +7,42 @@ class WPvivid_DB_Method
 
     public function connect_db()
     {
-        $client_flags = defined( 'MYSQL_CLIENT_FLAGS' ) ? MYSQL_CLIENT_FLAGS : 0;
-        if($client_flags)
-        {
+        $common_setting = WPvivid_Setting::get_setting(false, 'wpvivid_common_setting');
+        $db_connect_method = isset($common_setting['options']['wpvivid_common_setting']['db_connect_method']) ? $common_setting['options']['wpvivid_common_setting']['db_connect_method'] : 'wpdb';
+        if($db_connect_method === 'wpdb'){
             global $wpdb;
             $this->db_handle=$wpdb;
             $this->type='wpdb';
-
             return array('result'=>WPVIVID_SUCCESS);
         }
+        else{
+            if(class_exists('PDO')) {
+                $extensions=get_loaded_extensions();
+                if(array_search('pdo_mysql',$extensions)) {
+                    $res = explode(':',DB_HOST);
+                    $db_host = $res[0];
+                    $db_port = empty($res[1])?'':$res[1];
 
-        if(class_exists('PDO'))
-        {
-            $extensions=get_loaded_extensions();
-            if(array_search('pdo_mysql',$extensions))
-            {
-                $res = explode(':',DB_HOST);
-                $db_host = $res[0];
-                $db_port = empty($res[1])?'':$res[1];
+                    if(!empty($db_port)) {
+                        $dsn='mysql:host=' . $db_host . ';port=' . $db_port . ';dbname=' . DB_NAME;
+                    }
+                    else{
+                        $dsn='mysql:host=' . $db_host . ';dbname=' . DB_NAME;
+                    }
 
-                if(!empty($db_port)) {
-                    $dsn='mysql:host=' . $db_host . ';port=' . $db_port . ';dbname=' . DB_NAME;
+                    $this->db_handle=new PDO($dsn, DB_USER, DB_PASSWORD);
+
+                    $this->type='pdo_mysql';
+                    return array('result'=>WPVIVID_SUCCESS);
                 }
                 else{
-                    $dsn='mysql:host=' . $db_host . ';dbname=' . DB_NAME;
+                    return array('result'=>WPVIVID_FAILED, 'error'=>'The pdo_mysql extension is not detected. Please install the extension first or choose wpdb option for Database connection method.');
                 }
-
-                $this->db_handle=new PDO($dsn, DB_USER, DB_PASSWORD);
-
-                $this->type='pdo_mysql';
-                return array('result'=>WPVIVID_SUCCESS);
+            }
+            else{
+                return array('result'=>WPVIVID_FAILED, 'error'=>'The pdo_mysql extension is not detected. Please install the extension first or choose wpdb option for Database connection method.');
             }
         }
-        global $wpdb;
-        $this->db_handle=$wpdb;
-        $this->type='wpdb';
-
-        return array('result'=>WPVIVID_SUCCESS);
     }
 
     public function check_db($fcgi)

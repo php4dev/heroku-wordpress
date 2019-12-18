@@ -9,7 +9,7 @@
 .quickbackup{width:calc(100% - 290px);float:left; box-sizing:border-box;margin-right:10px; padding:10px;}
 .quickbackup label{display:inline-block;margin-bottom:10px;}
 .qucikbackup-schedule{width:280px; float:left; box-sizing:border-box; min-width:280px;}
-.quickstart-archive-block{width:33%;padding:10px; float:left; position:relative; box-sizing:border-box; }
+.quickstart-archive-block{width:33%;float:left; position:relative; box-sizing:border-box; }
 .quickstart-storage-block{width:33%;padding:10px; float:left; position:relative; box-sizing:border-box;}
 .quickstart-btn{width:33%;padding:10px; float:left; position:relative; box-sizing:border-box;}
 .quickbackup-btn{display:block !important; margin:0 auto !important;width:150px;height:50px !important; line-height:48px !important; font-size:20px !important;}

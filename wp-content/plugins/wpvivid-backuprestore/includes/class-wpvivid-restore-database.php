@@ -84,7 +84,7 @@ class WPvivid_RestoreDB
 
                 $this->enable_plugins();
                 unset($this->db_method);
-                do_action('wpvivid_restore_database_finish',$options);
+                //do_action('wpvivid_restore_database_finish',$options);
             }
             return $result;
         }
@@ -182,6 +182,8 @@ class WPvivid_RestoreDB
 
         $upload_dir  = wp_upload_dir();
         $this->new_upload_url=untrailingslashit($upload_dir['baseurl']);
+
+        $wpdb->query('SET FOREIGN_KEY_CHECKS=0;');
 
         $result = $wpdb->get_results("SHOW ENGINES", OBJECT_K);
         foreach ($result as $key=>$value)
@@ -317,9 +319,9 @@ class WPvivid_RestoreDB
         }
 
         WPvivid_Setting::import_json_to_setting($this->current_setting);
+
         do_action('wpvivid_reset_schedule');
         do_action('wpvivid_do_after_restore_db');
-
 
         fclose($sql_handle);
         $ret['result']=WPVIVID_SUCCESS;
@@ -1271,45 +1273,12 @@ class WPvivid_RestoreDB
         return $skip_rows;
     }
 
-    /*
-    private function check_max_allow_packet()
-    {
-        //$max_allow_packet
-        global $wpvivid_plugin;
-        $max_allowed_packet = $this->db->query("SELECT @@session.max_allowed_packet;");
-        if($max_allowed_packet)
-        {
-            $max_allowed_packet = $max_allowed_packet -> fetchAll();
-            if(is_array($max_allowed_packet)&&isset($max_allowed_packet[0])&&isset($max_allowed_packet[0][0]))
-            {
-                if($max_allowed_packet[0][0]<1048576)
-                {
-                    $wpvivid_plugin->restore_data->write_log('warning: max_allowed_packet less than 1M :'.size_format($max_allowed_packet[0][0],2),'notice');
-                }
-                else if($max_allowed_packet[0][0]<33554432)
-                {
-                    $wpvivid_plugin->restore_data->write_log('max_allowed_packet less than 32M :'.size_format($max_allowed_packet[0][0],2),'notice');
-                }
-                $this->max_allow_packet=$max_allowed_packet[0][0];
-            }
-            else
-            {
-                $wpvivid_plugin->restore_data->write_log('get max_allowed_packet failed ','notice');
-                $this->max_allow_packet=1048576;
-            }
-        }
-        else
-        {
-            $wpvivid_plugin->restore_data->write_log('get max_allowed_packet failed ','notice');
-            $this->max_allow_packet=1048576;
-        }
-    }
-    */
     public function check_max_allow_packet_ex()
     {
         $max_all_packet_warning=false;
         include_once WPVIVID_PLUGIN_DIR . '/includes/class-wpvivid-restore-db-method.php';
         $this->db_method=new WPvivid_Restore_DB_Method();
+
         $this->db_method->set_skip_query(0);
 
         $ret=$this->db_method->connect_db();

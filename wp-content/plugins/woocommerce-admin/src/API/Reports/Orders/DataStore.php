@@ -45,7 +45,7 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 		'status'           => 'strval',
 		'customer_id'      => 'intval',
 		'net_total'        => 'floatval',
-		'gross_total'      => 'floatval',
+		'total_sales'      => 'floatval',
 		'num_items_sold'   => 'intval',
 		'customer_type'    => 'strval',
 	);
@@ -71,7 +71,7 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 			'status'           => "REPLACE({$table_name}.status, 'wc-', '') as status",
 			'customer_id'      => "{$table_name}.customer_id",
 			'net_total'        => "{$table_name}.net_total",
-			'gross_total'      => "{$table_name}.gross_total",
+			'total_sales'      => "{$table_name}.total_sales",
 			'num_items_sold'   => "{$table_name}.num_items_sold",
 			'customer_type'    => "(CASE WHEN {$table_name}.returning_customer = 1 THEN 'returning' WHEN {$table_name}.returning_customer = 0 THEN 'new' ELSE '' END) as customer_type",
 		);
@@ -82,17 +82,18 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 	 *
 	 * @param array $query_args Query arguments supplied by the user.
 	 */
-	protected function get_sql_query_params( $query_args ) {
+	protected function add_sql_query_params( $query_args ) {
 		global $wpdb;
 		$order_stats_lookup_table   = self::get_db_table_name();
 		$order_coupon_lookup_table  = $wpdb->prefix . 'wc_order_coupon_lookup';
 		$order_product_lookup_table = $wpdb->prefix . 'wc_order_product_lookup';
+		$order_tax_lookup_table     = $wpdb->prefix . 'wc_order_tax_lookup';
 		$operator                   = $this->get_match_operator( $query_args );
 		$where_subquery             = array();
 
-		$this->get_time_period_sql_params( $query_args, $order_stats_lookup_table );
+		$this->add_time_period_sql_params( $query_args, $order_stats_lookup_table );
 		$this->get_limit_sql_params( $query_args );
-		$this->get_order_by_sql_params( $query_args );
+		$this->add_order_by_sql_params( $query_args );
 
 		$status_subquery = $this->get_status_subquery( $query_args );
 		if ( $status_subquery ) {
@@ -148,6 +149,18 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 			$where_subquery[] = "{$order_product_lookup_table}.product_id NOT IN ({$excluded_products})";
 		}
 
+		$included_tax_rates = ! empty( $query_args['tax_rate_includes'] ) ? implode( ',', $query_args['tax_rate_includes'] ) : false;
+		$excluded_tax_rates = ! empty( $query_args['tax_rate_excludes'] ) ? implode( ',', $query_args['tax_rate_excludes'] ) : false;
+		if ( $included_tax_rates || $excluded_tax_rates ) {
+			$this->subquery->add_sql_clause( 'join', "LEFT JOIN {$order_tax_lookup_table} ON {$order_stats_lookup_table}.order_id = {$order_tax_lookup_table}.order_id" );
+		}
+		if ( $included_tax_rates ) {
+			$where_subquery[] = "{$order_tax_lookup_table}.tax_rate_id IN ({$included_tax_rates})";
+		}
+		if ( $excluded_tax_rates ) {
+			$where_subquery[] = "{$order_tax_lookup_table}.tax_rate_id NOT IN ({$excluded_tax_rates}) OR {$order_tax_lookup_table}.tax_rate_id IS NULL";
+		}
+
 		if ( 0 < count( $where_subquery ) ) {
 			$this->subquery->add_sql_clause( 'where', 'AND (' . implode( " {$operator} ", $where_subquery ) . ')' );
 		}
@@ -166,23 +179,25 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 
 		// These defaults are only partially applied when used via REST API, as that has its own defaults.
 		$defaults   = array(
-			'per_page'         => get_option( 'posts_per_page' ),
-			'page'             => 1,
-			'order'            => 'DESC',
-			'orderby'          => 'date_created',
-			'before'           => '',
-			'after'            => '',
-			'fields'           => '*',
-			'product_includes' => array(),
-			'product_excludes' => array(),
-			'coupon_includes'  => array(),
-			'coupon_excludes'  => array(),
-			'customer_type'    => null,
-			'status_is'        => array(),
-			'extended_info'    => false,
-			'refunds'          => null,
-			'order_includes'   => array(),
-			'order_excludes'   => array(),
+			'per_page'          => get_option( 'posts_per_page' ),
+			'page'              => 1,
+			'order'             => 'DESC',
+			'orderby'           => 'date_created',
+			'before'            => '',
+			'after'             => '',
+			'fields'            => '*',
+			'product_includes'  => array(),
+			'product_excludes'  => array(),
+			'coupon_includes'   => array(),
+			'coupon_excludes'   => array(),
+			'tax_rate_includes' => array(),
+			'tax_rate_excludes' => array(),
+			'customer_type'     => null,
+			'status_is'         => array(),
+			'extended_info'     => false,
+			'refunds'           => null,
+			'order_includes'    => array(),
+			'order_excludes'    => array(),
 		);
 		$query_args = wp_parse_args( $query_args, $defaults );
 		$this->normalize_timezones( $query_args, $defaults );
@@ -206,7 +221,7 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 
 			$selections = $this->selected_columns( $query_args );
 			$params     = $this->get_limit_params( $query_args );
-			$this->get_sql_query_params( $query_args );
+			$this->add_sql_query_params( $query_args );
 			$db_records_count = (int) $wpdb->get_var(
 				"SELECT COUNT(*) FROM (
 					{$this->subquery->get_query_statement()}

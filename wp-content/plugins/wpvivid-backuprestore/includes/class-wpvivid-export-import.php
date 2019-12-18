@@ -65,6 +65,7 @@ class WPvivid_Export_Import
         $menu['title']='Export & Import';
         $menu['tab']= 'admin.php?page=wpvivid-export-import';
         $menu['href']=$admin_url . 'admin.php?page=wpvivid-export-import';
+        $menu['capability']='administrator';
         $menu['index']=3;
         $toolbar_menus[$menu['parent']]['child'][$menu['id']]=$menu;
         return $toolbar_menus;
@@ -86,21 +87,22 @@ class WPvivid_Export_Import
     public function init_page()
     {
         ?>
-        <div class="wrap">
+        <div class="wrap" style="max-width:1720px;">
             <h1><?php
                 $plugin_display_name = 'WPvivid Backup Plugin';
                 $plugin_display_name = apply_filters('wpvivid_display_pro_name', $plugin_display_name);
                 _e($plugin_display_name);
                 ?></h1>
             <div id="wpvivid_export_notice"></div>
+            <?php
+            $args['is_parent_tab']=1;
+            $this->main_tab=new WPvivid_Tab_Page_Container();
+            $this->main_tab->add_tab('Export','export',array($this, 'output_export'), $args);
+            $this->main_tab->add_tab('Import','import',array($this, 'output_import'), $args);
+            $this->main_tab->display();
+            ?>
         </div>
-
         <?php
-        $args['is_parent_tab']=1;
-        $this->main_tab=new WPvivid_Tab_Page_Container();
-        $this->main_tab->add_tab('Export','export',array($this, 'output_export'), $args);
-        $this->main_tab->add_tab('Import','import',array($this, 'output_import'), $args);
-        $this->main_tab->display();
     }
 
     //export
@@ -110,10 +112,10 @@ class WPvivid_Export_Import
         ?>
         <div class="postbox export-import-block">
             <div>
-                <div class="wpvivid-element-space-bottom wpvivid-element-space-right" style="float: left;">
+                <div class="wpvivid-element-space-bottom wpvivid-element-space-right" style="float: left; width: 50px;">
                     <img src="<?php echo esc_url(WPVIVID_PLUGIN_IMAGES_URL.'export-import.png'); ?>" style="width:50px;height:50px;">
                 </div>
-                <div style="float: left; box-sizing: border-box;">
+                <div style="box-sizing: border-box; margin-left: 60px;">
                     <div class="wpvivid-text-space-bottom">Export posts or pages with images in bulk.
                         <span class="wpvivid-feature-pro">
                             <a href="https://wpvivid.com/export-content" target="_blank" style="text-decoration: none;">Learn more</a>
@@ -818,7 +820,7 @@ class WPvivid_Export_Import
                     $list_cache[$id]['checked']=$checked;
                 }
             }
-            update_option('wpvivid_list_cache',$list_cache);
+            WPvivid_Setting::update_option('wpvivid_list_cache',$list_cache);
 
             $post_count=0;
 
@@ -953,7 +955,7 @@ class WPvivid_Export_Import
             $post_id['checked']=0;
             $list_cache[$id]=$post_id;
         }
-        update_option('wpvivid_list_cache',$list_cache);
+        WPvivid_Setting::update_option('wpvivid_list_cache',$list_cache);
         $page=1;
 
         $arg['screen']=$post_type;
@@ -996,7 +998,7 @@ class WPvivid_Export_Import
 
         $list_cache=get_option('wpvivid_list_cache',array());
 
-        update_option('wpvivid_list_cache',$list_cache);
+        WPvivid_Setting::update_option('wpvivid_list_cache',$list_cache);
 
         $page=$_POST['page'];
 
@@ -1376,7 +1378,7 @@ class WPvivid_Export_Import
                         }
                     }
                     unset($list[$id]);
-                    update_option('wpvivid_import_list_cache',$list);
+                    WPvivid_Setting::update_option('wpvivid_import_list_cache',$list);
                     $ret['result']='success';
                 }
                 else
@@ -1459,15 +1461,15 @@ class WPvivid_Export_Import
     public function output_import()
     {
         $import_dir = WP_CONTENT_DIR.DIRECTORY_SEPARATOR.WPvivid_Setting::get_backupdir().DIRECTORY_SEPARATOR.WPVIVID_IMPORT_EXPORT_DIR;
-        update_option('wpvivid_import_list_cache',array());
-        update_option('wpvivid_importer_task_list', array());
+        WPvivid_Setting::update_option('wpvivid_import_list_cache',array());
+        WPvivid_Setting::update_option('wpvivid_importer_task_list', array());
         ?>
         <div class="postbox export-import-block">
             <div>
-                <div class="wpvivid-element-space-bottom wpvivid-element-space-right" style="float: left;">
+                <div class="wpvivid-element-space-bottom wpvivid-element-space-right" style="float: left; width: 50px;">
                     <img src="<?php echo esc_url(WPVIVID_PLUGIN_IMAGES_URL.'export-import.png'); ?>" style="width:50px;height:50px;">
                 </div>
-                <div style="box-sizing: border-box;">
+                <div style="box-sizing: border-box; margin-left: 60px;">
                     <div class="wpvivid-element-space-bottom wpvivid-element-space-right">Import posts or pages with images in bulk.
                         <span class="wpvivid-feature-pro">
                             <a href="https://wpvivid.com/import-content" target="_blank" style="text-decoration: none;">Learn more</a>
@@ -2368,7 +2370,7 @@ class WPvivid_Export_Import
         }
 
         $data = array();
-        update_option('wpvivid_import_list_cache', $data);
+        WPvivid_Setting::update_option('wpvivid_import_list_cache', $data);
         $page=1;
         $display_list=new WPvivid_Export_List();
         $display_list->set_parent('wpvivid_import_list');
@@ -2446,7 +2448,7 @@ class WPvivid_Export_Import
             $ret['result']=WPVIVID_FAILED;
             $ret['error']='Failed to get local storage directory.';
         }
-        update_option('wpvivid_import_list_cache', $data);
+        WPvivid_Setting::update_option('wpvivid_import_list_cache', $data);
         $page=1;
         $display_list=new WPvivid_Export_List();
         $display_list->set_parent('wpvivid_import_list');

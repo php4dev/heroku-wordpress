@@ -108,7 +108,7 @@ class WPvivid_Backup_Database
         } else {
             $prefix = $wpdb->get_blog_prefix(0);
         }
-        $exclude = array('/^(?!' . $prefix . ')/');
+        $exclude = array('/^(?!' . $prefix . ')/i');
         return $exclude;
     }
 }

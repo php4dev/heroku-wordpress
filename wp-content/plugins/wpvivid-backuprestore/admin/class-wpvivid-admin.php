@@ -99,6 +99,7 @@ class WPvivid_Admin {
         $menu['title']='Backup & Restore';
         $menu['tab']='admin.php?page=WPvivid&tab-backup';
         $menu['href']=$admin_url . 'admin.php?page=WPvivid&tab-backup';
+        $menu['capability']='administrator';
         $menu['index']=1;
         $toolbar_menus[$menu['parent']]['child'][$menu['id']]=$menu;
 
@@ -271,7 +272,7 @@ class WPvivid_Admin {
     function add_toolbar_items($wp_admin_bar)
     {
         global $wpvivid_plugin;
-        if(is_admin() && current_user_can('administrator'))
+        if(is_admin())
         {
             $show_admin_bar = $wpvivid_plugin->get_admin_bar_setting();
             if ($show_admin_bar === true)
@@ -296,12 +297,14 @@ class WPvivid_Admin {
                                 return -1;
                         });
                         foreach ($menu['child'] as $child_menu) {
-                            $wp_admin_bar->add_menu(array(
-                                'id' => $child_menu['id'],
-                                'parent' => $menu['id'],
-                                'title' => $child_menu['title'],
-                                'href' => $child_menu['href']
-                            ));
+                            if(isset($child_menu['capability']) && current_user_can($child_menu['capability'])) {
+                                $wp_admin_bar->add_menu(array(
+                                    'id' => $child_menu['id'],
+                                    'parent' => $menu['id'],
+                                    'title' => $child_menu['title'],
+                                    'href' => $child_menu['href']
+                                ));
+                            }
                         }
                     }
                 }
@@ -517,6 +520,8 @@ class WPvivid_Admin {
 
     public function check_extensions()
     {
+        $common_setting = WPvivid_Setting::get_setting(false, 'wpvivid_common_setting');
+        $db_connect_method = isset($common_setting['options']['wpvivid_common_setting']['db_connect_method']) ? $common_setting['options']['wpvivid_common_setting']['db_connect_method'] : 'wpdb';
         $need_php_extensions = array();
         $need_extensions_count = 0;
         $extensions=get_loaded_extensions();
@@ -533,7 +538,7 @@ class WPvivid_Admin {
             $need_php_extensions[$need_extensions_count] = 'zlib';
             $need_extensions_count++;
         }
-        if(!array_search('pdo_mysql',$extensions))
+        if(!array_search('pdo_mysql',$extensions) && $db_connect_method === 'pdo')
         {
             $need_php_extensions[$need_extensions_count] = 'pdo_mysql';
             $need_extensions_count++;

@@ -64,6 +64,8 @@ class Loader {
 		add_action( 'in_admin_header', array( __CLASS__, 'embed_page_header' ) );
 		add_filter( 'woocommerce_settings_groups', array( __CLASS__, 'add_settings_group' ) );
 		add_filter( 'woocommerce_settings-wc_admin', array( __CLASS__, 'add_settings' ) );
+		add_filter( 'option_woocommerce_actionable_order_statuses', array( __CLASS__, 'filter_invalid_statuses' ) );
+		add_filter( 'option_woocommerce_excluded_report_order_statuses', array( __CLASS__, 'filter_invalid_statuses' ) );
 		add_action( 'admin_head', array( __CLASS__, 'remove_notices' ) );
 		add_action( 'admin_notices', array( __CLASS__, 'inject_before_notices' ), -9999 );
 		add_action( 'admin_notices', array( __CLASS__, 'inject_after_notices' ), PHP_INT_MAX );
@@ -202,7 +204,7 @@ class Loader {
 	 * @todo The entry point for the embed needs moved to this class as well.
 	 */
 	public static function register_page_handler() {
-		$analytics_cap = apply_filters( 'woocommerce_admin_analytics_menu_capability', 'view_woocommerce_reports' );
+		$analytics_cap = apply_filters( 'woocommerce_analytics_menu_capability', 'view_woocommerce_reports' );
 		wc_admin_register_page(
 			array(
 				'id'         => 'woocommerce-dashboard', // Expected to be overridden if dashboard is enabled.
@@ -300,10 +302,10 @@ class Loader {
 			self::get_url( 'components/index.js' ),
 			array(
 				'wp-api-fetch',
-				'wp-components',
 				'wp-data',
 				'wp-element',
 				'wp-hooks',
+				'wp-html-entities',
 				'wp-i18n',
 				'wp-keycodes',
 				'wc-csv',
@@ -321,7 +323,7 @@ class Loader {
 		wp_register_style(
 			'wc-components',
 			self::get_url( 'components/style.css' ),
-			array( 'wp-components' ),
+			array(),
 			self::get_file_version( 'components/style.css' )
 		);
 		wp_style_add_data( 'wc-components', 'rtl', 'replace' );
@@ -329,7 +331,7 @@ class Loader {
 		wp_register_style(
 			'wc-components-ie',
 			self::get_url( 'components/ie.css' ),
-			array( 'wp-components' ),
+			array(),
 			self::get_file_version( 'components/ie.css' )
 		);
 		wp_style_add_data( 'wc-components-ie', 'rtl', 'replace' );
@@ -381,7 +383,7 @@ class Loader {
 		wp_enqueue_style( 'wc-material-icons' );
 
 		// Use server-side detection to prevent unneccessary stylesheet loading in other browsers.
-		$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : ''; // WPCS: sanitization ok.
+		$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : ''; // phpcs:ignore sanitization ok.
 		preg_match( '/MSIE (.*?);/', $user_agent, $matches );
 		if ( count( $matches ) < 2 ) {
 			preg_match( '/Trident\/\d{1,2}.\d{1,2}; rv:([0-9]*)/', $user_agent, $matches );
@@ -732,6 +734,21 @@ class Loader {
 	}
 
 	/**
+	 * Filter invalid statuses from saved settings to avoid removed statuses throwing errors.
+	 *
+	 * @param array|null $value Saved order statuses.
+	 * @return array|null
+	 */
+	public static function filter_invalid_statuses( $value ) {
+		if ( is_array( $value ) ) {
+			$valid_statuses = array_keys( self::get_order_statuses( wc_get_order_statuses() ) );
+			$value          = array_intersect( $value, $valid_statuses );
+		}
+
+		return $value;
+	}
+
+	/**
 	 * Gets custom settings used for WC Admin.
 	 *
 	 * @param array $settings Array of settings to merge into.
@@ -838,7 +855,7 @@ class Loader {
 	 * @return array Fields to expose over the WP user endpoint.
 	 */
 	public static function get_user_data_fields() {
-		return apply_filters( 'wc_admin_get_user_data_fields', array() );
+		return apply_filters( 'woocommerce_admin_get_user_data_fields', array() );
 	}
 
 	/**

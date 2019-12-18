@@ -45,6 +45,7 @@ class WPvivid_FTPClass extends WPvivid_Remote{
             <div style="padding: 0 10px 10px 0;"><strong>Enter Your FTP Account</strong></div>
             <table class="wp-list-table widefat plugins" style="width:100%;">
                 <tbody>
+                <form>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
@@ -145,6 +146,7 @@ class WPvivid_FTPClass extends WPvivid_Remote{
                         </div>
                     </td>
                 </tr>
+                </form>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
@@ -170,6 +172,7 @@ class WPvivid_FTPClass extends WPvivid_Remote{
             <div style="padding: 0 10px 10px 0;"><strong>Enter Your FTP Account</strong></div>
             <table class="wp-list-table widefat plugins" style="width:100%;">
                 <tbody>
+                <form>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
@@ -244,6 +247,7 @@ class WPvivid_FTPClass extends WPvivid_Remote{
                         </div>
                     </td>
                 </tr>
+                </form>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">

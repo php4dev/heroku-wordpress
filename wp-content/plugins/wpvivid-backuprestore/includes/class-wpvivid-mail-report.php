@@ -30,11 +30,12 @@ class WPvivid_mail_report
         }
 
         $headers = array('Content-Type: text/html; charset=UTF-8');
-        $subject=self::create_subject($task);
-        //$subject = apply_filters('wpvivid_set_mail_subject_addon', $subject, $option, $task);
 
-        $body=self::create_body($task);
-        //$body = apply_filters('wpvivid_set_mail_body_addon', $body, $option, $task);
+        $subject = '';
+        $subject = apply_filters('wpvivid_set_mail_subject', $subject, $task);
+
+        $body = '';
+        $body = apply_filters('wpvivid_set_mail_body', $body, $task);
 
         $task_log=$task['options']['log_file_name'];
 
@@ -55,6 +56,8 @@ class WPvivid_mail_report
 
         return true;
     }
+
+
 
     public static function create_subject($task)
     {

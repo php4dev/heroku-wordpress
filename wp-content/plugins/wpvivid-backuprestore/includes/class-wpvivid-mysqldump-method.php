@@ -188,6 +188,9 @@ abstract class TypeAdapterFactory
     {
         $c = ucfirst(strtolower($c));
         if (! TypeAdapter::isValid($c)) {
+            if($c === 'Mysql'){
+                $c = 'PDO_MySQL';
+            }
             throw new Exception("Database type support for ($c) not yet available");
         }
         $method =  __NAMESPACE__ . "\\" . "TypeAdapter" . $c;
@@ -1582,5 +1585,6 @@ class TypeAdapterWpdb extends TypeAdapterFactory
 
     public function closeCursor($resultSet)
     {
+        $this->dbHandler->flush();
     }
 }

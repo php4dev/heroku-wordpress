@@ -411,6 +411,7 @@ class Wpvivid_S3Compat extends WPvivid_Remote{
             </div>
             <table class="wp-list-table widefat plugins" style="width:100%;">
                 <tbody>
+                <form>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
@@ -497,6 +498,7 @@ class Wpvivid_S3Compat extends WPvivid_Remote{
                         </div>
                     </td>
                 </tr>
+                </form>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
@@ -512,16 +514,6 @@ class Wpvivid_S3Compat extends WPvivid_Remote{
                 </tbody>
             </table>
         </div>
-        <script>
-            /*jQuery("input:text[option=s3compat][name=s3directory]").keyup(function(){
-                var value = jQuery(this).val();
-                if(value == ''){
-                    value = '*';
-                }
-                value = value + '/wpvivid_backup';
-                jQuery('#wpvivid_dos_root_path').html(value);
-            });*/
-        </script>
         <?php
     }
 
@@ -534,6 +526,7 @@ class Wpvivid_S3Compat extends WPvivid_Remote{
             </div>
             <table class="wp-list-table widefat plugins" style="width:100%;">
                 <tbody>
+                <form>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
@@ -606,6 +599,7 @@ class Wpvivid_S3Compat extends WPvivid_Remote{
                         </div>
                     </td>
                 </tr>
+                </form>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">

@@ -86,10 +86,10 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 			$taxes_where_clause .= " AND ( {$order_status_filter} )";
 		}
 
-		$this->get_time_period_sql_params( $query_args, $order_tax_lookup_table );
+		$this->add_time_period_sql_params( $query_args, $order_tax_lookup_table );
 		$this->total_query->add_sql_clause( 'where', $taxes_where_clause );
 
-		$this->get_intervals_sql_params( $query_args, $order_tax_lookup_table );
+		$this->add_intervals_sql_params( $query_args, $order_tax_lookup_table );
 		$this->interval_query->add_sql_clause( 'where', $taxes_where_clause );
 		$this->interval_query->add_sql_clause( 'select', $this->get_sql_clause( 'select' ) . ' AS time_interval' );
 		$this->interval_query->add_sql_clause( 'where_time', $this->get_sql_clause( 'where_time' ) );
@@ -188,7 +188,7 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 			); // WPCS: cache ok, DB call ok, unprepared SQL ok.
 
 			if ( null === $totals ) {
-				return new \WP_Error( 'woocommerce_reports_taxes_stats_result_failed', __( 'Sorry, fetching revenue data failed.', 'woocommerce-admin' ) );
+				return new \WP_Error( 'woocommerce_analytics_taxes_stats_result_failed', __( 'Sorry, fetching revenue data failed.', 'woocommerce-admin' ) );
 			}
 
 			// @todo remove these assignements when refactoring segmenter classes to use query objects.
@@ -222,7 +222,7 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 			); // WPCS: cache ok, DB call ok, unprepared SQL ok.
 
 			if ( null === $intervals ) {
-				return new \WP_Error( 'woocommerce_reports_taxes_stats_result_failed', __( 'Sorry, fetching tax data failed.', 'woocommerce-admin' ) );
+				return new \WP_Error( 'woocommerce_analytics_taxes_stats_result_failed', __( 'Sorry, fetching tax data failed.', 'woocommerce-admin' ) );
 			}
 
 			$totals = (object) $this->cast_numbers( $totals[0] );

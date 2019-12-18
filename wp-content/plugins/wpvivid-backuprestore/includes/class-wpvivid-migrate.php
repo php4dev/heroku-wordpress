@@ -342,23 +342,21 @@ class WPvivid_Migrate
         $migrate_part_tip = '';
         ?>
         <div id="migrate-page" class="wrap-tab-content wpvivid_tab_migrate" name="tab-migrate" style="display: none;">
-            <?php
-            echo apply_filters('wpvivid_migrate_descript', $migrate_descript);
-            echo apply_filters('wpvivid_put_transfer_key', $migrate_key);
-            ?>
+            <div class="postbox wpvivid-element-space-bottom" style="padding: 10px;">
+                <?php
+                echo apply_filters('wpvivid_migrate_descript', $migrate_descript);
+                echo apply_filters('wpvivid_put_transfer_key', $migrate_key);
+                ?>
+            </div>
 
-            <div style="clear: both;"></div>
-
-            <div style="padding: 0 0 10px 0;">
-                <div class="postbox" id="wpvivid_upload_backup_percent" style="display: none;">
-                    <div class="action-progress-bar" id="wpvivid_upload_progress_bar">
-                        <div class="action-progress-bar-percent" id="wpvivid_upload_progress_bar_percent" style="height:24px;width:0"></div>
-                    </div>
-                    <div style="margin-left:10px; float: left; width:100%;"><p id="wpvivid_upload_current_doing"></p></div>
-                    <div style="clear: both;"></div>
-                    <div>
-                        <div id="wpvivid_transfer_cancel" class="backup-log-btn"><input class="button-primary" id="wpvivid_transfer_cancel_btn" type="submit" value="<?php esc_attr_e( 'Cancel', 'wpvivid' ); ?>"  /></div>
-                    </div>
+            <div class="postbox wpvivid-element-space-bottom" id="wpvivid_upload_backup_percent" style="display: none;">
+                <div class="action-progress-bar" id="wpvivid_upload_progress_bar">
+                    <div class="action-progress-bar-percent" id="wpvivid_upload_progress_bar_percent" style="height:24px;width:0"></div>
+                </div>
+                <div style="margin-left:10px; float: left; width:100%;"><p id="wpvivid_upload_current_doing"></p></div>
+                <div style="clear: both;"></div>
+                <div>
+                    <div id="wpvivid_transfer_cancel" class="backup-log-btn"><input class="button-primary" id="wpvivid_transfer_cancel_btn" type="submit" value="<?php esc_attr_e( 'Cancel', 'wpvivid' ); ?>"  /></div>
                 </div>
             </div>
 
@@ -516,7 +514,7 @@ class WPvivid_Migrate
                             $options[$url]['domain']=$domain;
 
                             delete_option('wpvivid_saved_api_token');
-                            update_option('wpvivid_saved_api_token',$options);
+                            WPvivid_Setting::update_option('wpvivid_saved_api_token',$options);
 
                             $html='';
                             $i=0;
@@ -819,7 +817,7 @@ class WPvivid_Migrate
         $options['expires']=$expires;
         $options['domain']=home_url();
 
-        update_option('wpvivid_api_token',$options);
+        WPvivid_Setting::update_option('wpvivid_api_token',$options);
 
         $url= $options['domain'];
         $url=$url.'?domain='.$options['domain'].'&token='.$options['public_key'].'&expires='.$expires;
@@ -833,7 +831,7 @@ class WPvivid_Migrate
         if(empty($options)){
             $html .= '<div style="padding: 0 0 10px 0;"><strong>'.__('Please paste the key below.', 'wpvivid').'</strong><a href="#" style="margin-left: 5px; text-decoration: none;" onclick="wpvivid_click_how_to_get_key();">How to get a site key?</a></div>
             <div id="wpvivid_how_to_get_key"></div>
-            <div><textarea type="text" id="wpvivid_transfer_key_text" onKeyUp="wpvivid_check_key(this.value)" style="width: 100%; height: 140px;"/></textarea></div>
+            <div class="wpvivid-element-space-bottom"><textarea type="text" id="wpvivid_transfer_key_text" onKeyUp="wpvivid_check_key(this.value)" style="width: 100%; height: 140px;"/></textarea></div>
             <div><input class="button-primary" id="wpvivid_save_url_button" type="submit" value="'.esc_attr( 'Save', 'wpvivid' ).'" onclick="wpvivid_click_save_site_url();" /></div>';
         }
         else{
@@ -852,13 +850,13 @@ class WPvivid_Migrate
                     $key_status = 'The key will expire in: '.date("H:i:s",$time_diff).'. Once the key expires, you need to generate a new key.';
                 }
             }
-            $html .= '<div style="padding: 10px 0 10px 0;">
+            $html .= '<div style="padding: 0 0 10px 0;">
                         <span>Key:</span>
                         <input type="text" id="wpvivid_send_remote_site_url_text" value="'.$token.'" readonly="readonly" />
                         <input class="button-primary" id="wpvivid_delete_key_button" type="submit" value="'.esc_attr( 'Delete', 'wpvivid' ).'" onclick="wpvivid_click_delete_transfer_key();" />
                        </div>
-                       <p>'.$key_status.'</p>
-                       <p>The connection is ok. Now you can transfer the site <strong>'.$source_dir.'</strong> to the site <strong>'.$target_dir.'</strong></p>';
+                       <div class="wpvivid-element-space-bottom">'.$key_status.'</div>
+                       <div>The connection is ok. Now you can transfer the site <strong>'.$source_dir.'</strong> to the site <strong>'.$target_dir.'</strong></div>';
         }
         $html.='</div>
         <script>
@@ -975,7 +973,9 @@ class WPvivid_Migrate
         $migrate_type = '';
         $type_name = 'transfer_type';
         $html = '<div class="postbox quicktransfer">
-                    <h2><span>'.__( 'Choose the content you want to transfer', 'wpvivid').'</span></h2>
+                    <div class="wpvivid-element-space-bottom">
+                        <h2 style="padding: 0;"><span>'.__( 'Choose the content you want to transfer', 'wpvivid').'</span></h2>
+                    </div>
                     <div class="quickstart-archive-block">
                         <fieldset>
                             <legend class="screen-reader-text"><span>input type="radio"</span></legend>

@@ -46,7 +46,7 @@ class DataStore extends ProductsDataStore implements DataStoreInterface {
 	 * Assign report columns once full table name has been assigned.
 	 */
 	protected function assign_report_columns() {
-		$table_name = self::get_db_table_name();
+		$table_name           = self::get_db_table_name();
 		$this->report_columns = array(
 			'items_sold'       => 'SUM(product_qty) as items_sold',
 			'net_revenue'      => 'SUM(product_net_revenue) AS net_revenue',
@@ -84,11 +84,11 @@ class DataStore extends ProductsDataStore implements DataStoreInterface {
 			$products_where_clause .= " AND ( {$order_status_filter} )";
 		}
 
-		$this->get_time_period_sql_params( $query_args, $order_product_lookup_table );
+		$this->add_time_period_sql_params( $query_args, $order_product_lookup_table );
 		$this->total_query->add_sql_clause( 'where', $products_where_clause );
 		$this->total_query->add_sql_clause( 'join', $products_from_clause );
 
-		$this->get_intervals_sql_params( $query_args, $order_product_lookup_table );
+		$this->add_intervals_sql_params( $query_args, $order_product_lookup_table );
 		$this->interval_query->add_sql_clause( 'where', $products_where_clause );
 		$this->interval_query->add_sql_clause( 'join', $products_from_clause );
 		$this->interval_query->add_sql_clause( 'select', $this->get_sql_clause( 'select' ) . ' AS time_interval' );
@@ -178,7 +178,7 @@ class DataStore extends ProductsDataStore implements DataStoreInterface {
 			$totals[0]['segments'] = $segmenter->get_totals_segments( $totals_query, $table_name );
 
 			if ( null === $totals ) {
-				return new \WP_Error( 'woocommerce_reports_products_stats_result_failed', __( 'Sorry, fetching revenue data failed.', 'woocommerce-admin' ) );
+				return new \WP_Error( 'woocommerce_analytics_products_stats_result_failed', __( 'Sorry, fetching revenue data failed.', 'woocommerce-admin' ) );
 			}
 
 			$this->interval_query->add_sql_clause( 'order_by', $this->get_sql_clause( 'order_by' ) );
@@ -194,7 +194,7 @@ class DataStore extends ProductsDataStore implements DataStoreInterface {
 			); // WPCS: cache ok, DB call ok, unprepared SQL ok.
 
 			if ( null === $intervals ) {
-				return new \WP_Error( 'woocommerce_reports_products_stats_result_failed', __( 'Sorry, fetching revenue data failed.', 'woocommerce-admin' ) );
+				return new \WP_Error( 'woocommerce_analytics_products_stats_result_failed', __( 'Sorry, fetching revenue data failed.', 'woocommerce-admin' ) );
 			}
 
 			$totals = (object) $this->cast_numbers( $totals[0] );

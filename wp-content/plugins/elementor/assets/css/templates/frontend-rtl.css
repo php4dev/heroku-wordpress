@@ -197,14 +197,10 @@
         display: flex;
         align-items: center; }
     .elementor-templates-modal__header__logo__icon-wrapper {
-      padding: 4px 7px 6px;
-      background-image: linear-gradient(-135deg, #f2295b, #434363);
-      border-radius: 2px;
       margin-left: 10px; }
     .elementor-templates-modal__header__logo__title {
       padding-top: 2px; }
     .elementor-templates-modal__header__logo i {
-      color: #fff;
       font-size: 10px; }
   .elementor-templates-modal__header__items-area {
     display: flex;
@@ -278,6 +274,15 @@
   clear: both;
   width: 0;
   height: 0; }
+
+.elementor-gradient-logo {
+  background-image: linear-gradient(-135deg, #f2295b, #434363);
+  display: inline-block;
+  padding: 0.6em;
+  border-radius: 0.2em; }
+  .elementor-gradient-logo i {
+    color: #fff;
+    display: block; }
 
 .elementor {
   hyphens: manual; }
@@ -1117,10 +1122,6 @@ ul.elementor-icon-list-items.elementor-inline-items {
   .elementor-form .elementor-button > span {
     display: flex;
     justify-content: center; }
-  .elementor-form .elementor-button .elementor-align-icon-right {
-    order: 0; }
-  .elementor-form .elementor-button .elementor-align-icon-left {
-    order: 2; }
   .elementor-form .elementor-button.elementor-size-xs {
     min-height: 33px; }
   .elementor-form .elementor-button.elementor-size-sm {
@@ -1236,8 +1237,18 @@ ul.elementor-icon-list-items.elementor-inline-items {
   transition: all 0.3s; }
   .elementor-button:hover, .elementor-button:focus, .elementor-button:visited {
     color: #fff; }
-  .elementor-button-icon svg {
-    width: 1em; }
+  .elementor-button-content-wrapper {
+    display: flex;
+    justify-content: center; }
+  .elementor-button-icon {
+    flex-grow: 0;
+    order: 5; }
+    .elementor-button-icon svg {
+      width: 1em; }
+  .elementor-button-text {
+    flex-grow: 1;
+    order: 10;
+    display: inline-block; }
   .elementor-button.elementor-size-xs {
     font-size: 13px;
     padding: 10px 20px;
@@ -1259,15 +1270,17 @@ ul.elementor-icon-list-items.elementor-inline-items {
     padding: 25px 50px;
     border-radius: 6px; }
   .elementor-button .elementor-align-icon-right {
-    float: right;
-    margin-left: 5px; }
+    margin-left: 5px;
+    order: 5; }
   .elementor-button .elementor-align-icon-left {
-    float: left;
-    margin-right: 5px; }
-  .elementor-button .elementor-button-text {
-    display: inline-block; }
+    margin-right: 5px;
+    order: 15; }
   .elementor-button span {
     text-decoration: inherit; }
+
+/* TODO: REMOVE THIS EXCEPTION AFTER PRO 2.8 RELEASES */
+.elementor-menu-cart__toggle .elementor-button-icon {
+  order: 15; }
 
 .elementor-element.elementor-button-info .elementor-button {
   background-color: #5bc0de; }
@@ -1744,8 +1757,8 @@ body.elementor-page .elementor-widget-menu-anchor {
 .elementor-progress-text {
   flex-grow: 1;
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
+  overflow: hidden;
   padding-right: 15px; }
 
 .elementor-progress-percentage {
@@ -2106,10 +2119,12 @@ body.elementor-page .elementor-widget-menu-anchor {
     margin-bottom: 20px; }
   .elementor-testimonial-wrapper .elementor-testimonial-name {
     line-height: 1.5;
-    color: inherit; }
+    color: inherit;
+    display: block; }
   .elementor-testimonial-wrapper .elementor-testimonial-job {
     font-size: 0.85em;
-    color: inherit; }
+    color: inherit;
+    display: block; }
   .elementor-testimonial-wrapper.elementor-testimonial-text-align-left {
     text-align: left; }
   .elementor-testimonial-wrapper.elementor-testimonial-text-align-right {
@@ -2685,7 +2700,6 @@ button.swiper-pagination-bullet {
 
 .swiper-container-cube .swiper-slide, .swiper-container-flip .swiper-slide {
   pointer-events: none;
-  backface-visibility: hidden;
   z-index: 1; }
 
 .swiper-container-cube .swiper-slide .swiper-slide, .swiper-container-flip .swiper-slide .swiper-slide {
@@ -2980,8 +2994,9 @@ button.swiper-pagination-bullet {
   width: 200px; }
 
 #wp-admin-bar-elementor_edit_page .elementor-edit-link-title {
-  overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
+  overflow: hidden;
   width: 100%; }
 
 #wp-admin-bar-elementor_edit_page .elementor-edit-link-type {

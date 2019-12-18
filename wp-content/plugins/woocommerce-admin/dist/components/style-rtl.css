@@ -817,7 +817,7 @@ The CSSTransition element creates a containing div without a class
     padding: 0; }
   .woocommerce-filters-advanced .components-select-control__input {
     height: 38px;
-    padding: 0;
+    padding: 0 8px 0 0;
     margin: 0; }
   .woocommerce-filters-advanced .components-base-control__field {
     margin-bottom: 0; }
@@ -1268,6 +1268,33 @@ button.woocommerce-filters-date__tab {
 .woocommerce-gravatar {
   border-radius: 50%; }
 
+.woocommerce-image-upload button {
+  color: #c9356e;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 0;
+  vertical-align: middle; }
+
+.woocommerce-image-upload .woocommerce-image-upload__image-preview {
+  font-size: 16px;
+  margin-left: 2em; }
+  .woocommerce-image-upload .woocommerce-image-upload__image-preview img {
+    max-width: 240px;
+    height: auto; }
+
+.woocommerce-image-upload.no-image .woocommerce-image-upload__add-image::before {
+  content: '';
+  /* stylelint-disable function-url-quotes */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23636d75' d='M18 20H4V6h9V4H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-9h-2v9zm-7.79-3.17l-1.96-2.36L5.5 18h11l-3.54-4.71zM20 4V1h-2v3h-3c.01.01 0 2 0 2h3v2.99c.01.01 2 0 2 0V6h3V4h-3z'/%3E%3C/svg%3E");
+  /* stylelint-enable */
+  width: 24px;
+  height: 24px;
+  margin-left: 12px; }
+
+.woocommerce-image-upload.has-image {
+  display: flex;
+  align-items: center; }
+
 .woocommerce-list__item {
   display: flex;
   align-items: center;
@@ -1456,6 +1483,7 @@ button.woocommerce-filters-date__tab {
   font-size: 13px;
   color: #72777c;
   position: static;
+  transform: none;
   margin: 0;
   width: 100%; }
 
@@ -1851,7 +1879,7 @@ button.woocommerce-filters-date__tab {
     left: 0;
     top: 57px;
     z-index: 10;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 350px; }
     .woocommerce-select-control .woocommerce-select-control__listbox.is-static {
       position: static; }
@@ -2722,7 +2750,8 @@ th.woocommerce-table__item {
 .muriel-input-text {
   background: #fff;
   border: 1px solid #a7aaad;
-  border-radius: 0;
+  border-radius: 3px;
+  height: 56px;
   box-shadow: none;
   padding: 12px 12px 4px;
   position: relative; }
@@ -2749,9 +2778,15 @@ th.woocommerce-table__item {
     .muriel-input-text.active input {
       color: #2c3338; }
   .muriel-input-text.with-value .components-base-control__label {
-    display: block; }
+    display: block;
+    position: relative;
+    top: -8px;
+    width: 100%;
+    font-size: 12px; }
   .muriel-input-text.with-value input {
-    color: #2c3338; }
+    color: #2c3338;
+    position: relative;
+    top: -12px; }
   .muriel-input-text.empty label {
     display: none; }
   .muriel-input-text.empty input {

@@ -22,7 +22,7 @@ define('WPVIVID_BACKUP_ROOT_WP_ROOT','root');
 
 class WPvivid_Backup_Task
 {
-    private $task;
+    protected $task;
 
     public $backup_type_collect;
 
@@ -228,6 +228,7 @@ class WPvivid_Backup_Task
         {
             $this->task['options']['backup_options'] = apply_filters('wpvivid_set_backup_type', $this->task['options']['backup_options'],$options);
         }
+
         $this->task['data']['doing']='backup';
         $this->task['data']['backup']['doing']='';
         $this->task['data']['backup']['finished']=0;
@@ -248,7 +249,7 @@ class WPvivid_Backup_Task
         return $ret;
     }
 
-    private function parse_url_all($url)
+    protected function parse_url_all($url)
     {
         $parse = parse_url($url);
         $path=str_replace('/','_',$parse['path']);
@@ -273,6 +274,7 @@ class WPvivid_Backup_Task
                 $backup_data['dump_db']=1;
                 $backup_data['sql_file_name']=WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$this->task['options']['backup_options']['dir'].DIRECTORY_SEPARATOR.$this->get_prefix().'_backup_db.sql';
                 $backup_data['json_info']['dump_db']=1;
+                $backup_data['json_info']['home_url']=home_url();
                 $backup_data['json_info']['file_type']='databases';
                 $backup_data['prefix']=$this->get_prefix().'_backup_db';
             }
@@ -2232,29 +2234,31 @@ class WPvivid_Backup
         {
             global $wpvivid_plugin;
             $wpvivid_plugin->wpvivid_log->WriteLog('Start compressing '.$data['key'],'notice');
-            if(isset($data['plugin_subpackage']))
-            {
-                $ret =$zip->get_plugin_packages($data);
-            }
-            else if(isset($data['uploads_subpackage']))
-            {
-                $ret =$zip->get_upload_packages($data);
-            }
-            else
-            {
-                if($data['key']==WPVIVID_BACKUP_TYPE_MERGE)
-                    $ret =$zip->get_packages($data,true);
-                else
-                    $ret =$zip->get_packages($data);
-            }
 
             $packages=$this->task->get_packages_info($data['key']);
             if($packages===false)
             {
+                if(isset($data['plugin_subpackage']))
+                {
+                    $ret =$zip->get_plugin_packages($data);
+                }
+                else if(isset($data['uploads_subpackage']))
+                {
+                    $ret =$zip->get_upload_packages($data);
+                }
+                else
+                {
+                    if($data['key']==WPVIVID_BACKUP_TYPE_MERGE)
+                        $ret =$zip->get_packages($data,true);
+                    else
+                        $ret =$zip->get_packages($data);
+                }
+
                 $packages=$this->task->set_packages_info($data['key'],$ret['packages']);
             }
 
-            define(PCLZIP_TEMPORARY_DIR,$ret['temp_dir']);
+            $temp_dir = $data['path'].'temp-'.$data['prefix'].DIRECTORY_SEPARATOR;
+            define(PCLZIP_TEMPORARY_DIR,$temp_dir);
 
             $result['result']=WPVIVID_SUCCESS;
             $result['files']=array();
@@ -2263,9 +2267,29 @@ class WPvivid_Backup
                 $wpvivid_plugin->set_time_limit($this->task->get_id());
                 if(!empty($package['files'])&&$package['backup']==false)
                 {
-                    $zip_ret=$zip->_zip($package['path'],$package['files'], $data,$package['json']);
+                    if(isset($data['uploads_subpackage']))
+                    {
+                        $files=$zip->get_upload_files_from_cache($package['files']);
+                    }
+                    else
+                    {
+                        $files=$package['files'];
+                    }
+
+                    if(empty($files))
+                        continue;
+
+                    $zip_ret=$zip->_zip($package['path'],$files, $data,$package['json']);
                     if($zip_ret['result']==WPVIVID_SUCCESS)
                     {
+                        if(isset($data['uploads_subpackage']))
+                        {
+                            if(file_exists($package['files']))
+                            {
+                                @unlink($package['files']);
+                            }
+                        }
+
                         $result['files'][] = $zip_ret['file_data'];
                         $package['backup']=true;
                         $this->task->update_packages_info($data['key'],$package,$zip_ret['file_data']);

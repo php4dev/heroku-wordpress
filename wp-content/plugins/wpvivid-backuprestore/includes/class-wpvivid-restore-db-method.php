@@ -11,29 +11,18 @@ class WPvivid_Restore_DB_Method
     public function __construct()
     {
         global $wpvivid_plugin;
-        $client_flags = defined( 'MYSQL_CLIENT_FLAGS' ) ? MYSQL_CLIENT_FLAGS : 0;
-        if($client_flags)
-        {
+        $common_setting = WPvivid_Setting::get_setting(false, 'wpvivid_common_setting');
+        $db_connect_method = isset($common_setting['options']['wpvivid_common_setting']['db_connect_method']) ? $common_setting['options']['wpvivid_common_setting']['db_connect_method'] : 'wpdb';
+        if($db_connect_method === 'wpdb'){
             $wpvivid_plugin->restore_data->write_log('wpdb', 'Warning');
             $this->db =new WPvivid_Restore_DB_WPDB_Method();
             $this->type='wpdb';
-            return;
         }
-
-        if(class_exists('PDO'))
-        {
-            $extensions=get_loaded_extensions();
-            if(array_search('pdo_mysql',$extensions))
-            {
-                $wpvivid_plugin->restore_data->write_log('pdo_mysql', 'Warning');
-                $this->db =new WPvivid_Restore_DB_PDO_Mysql_Method();
-                $this->type='pdo_mysql';
-                return;
-            }
+        else{
+            $wpvivid_plugin->restore_data->write_log('pdo_mysql', 'Warning');
+            $this->db =new WPvivid_Restore_DB_PDO_Mysql_Method();
+            $this->type='pdo_mysql';
         }
-        $wpvivid_plugin->restore_data->write_log('wpdb', 'Warning');
-        $this->db =new WPvivid_Restore_DB_WPDB_Method();
-        $this->type='wpdb';
     }
 
     public function get_type()

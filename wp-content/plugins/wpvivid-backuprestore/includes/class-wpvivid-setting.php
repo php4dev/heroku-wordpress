@@ -229,7 +229,7 @@ class WPvivid_Setting
 
     public static function update_option($option_name,$options)
     {
-        update_option($option_name,$options);
+        update_option($option_name,$options,'no');
     }
 
     public static function delete_option($option_name)
@@ -248,7 +248,7 @@ class WPvivid_Setting
         $default = array();
         $options = get_option('wpvivid_task_list', $default);
         $options[$id]=$task;
-        update_option('wpvivid_task_list',$options);
+        self::update_option('wpvivid_task_list',$options);
     }
 
     public static function delete_task($id)
@@ -256,7 +256,7 @@ class WPvivid_Setting
         $default = array();
         $options = get_option('wpvivid_task_list', $default);
         unset($options[$id]);
-        update_option('wpvivid_task_list',$options);
+        self::update_option('wpvivid_task_list',$options);
     }
 
     public static function check_compress_options()
@@ -504,10 +504,12 @@ class WPvivid_Setting
             $json['data']['wpvivid_task_list']=self::get_option('wpvivid_task_list');
             $json['data']['wpvivid_last_msg']=self::get_option('wpvivid_last_msg');
             $json['data']['wpvivid_user_history']=self::get_option('wpvivid_user_history');
+            $json = apply_filters('wpvivid_history_addon', $json);
         }
 
         if($backup_list){
             $json['data']['wpvivid_backup_list']=self::get_option('wpvivid_backup_list');
+            $json = apply_filters('wpvivid_backup_list_addon', $json);
         }
 
         if($review)
@@ -515,16 +517,19 @@ class WPvivid_Setting
             $json['data']['wpvivid_need_review']=self::get_option('wpvivid_need_review');
             $json['data']['cron_backup_count']=self::get_option('cron_backup_count');
             $json['data']['wpvivid_review_msg']=self::get_option('wpvivid_review_msg');
+            $json = apply_filters('wpvivid_review_addon', $json);
         }
-
         return $json;
     }
 
     public static function import_json_to_setting($json)
     {
+        wp_cache_delete('notoptions', 'options');
+        wp_cache_delete('alloptions', 'options');
         foreach ($json['data'] as $option_name=>$option)
         {
-            update_option($option_name,$option);
+            wp_cache_delete($option_name, 'options');
+            self::update_option($option_name,$option);
         }
     }
 

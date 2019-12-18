@@ -49,6 +49,7 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
             </div>
             <table class="wp-list-table widefat plugins" style="width:100%;">
                 <tbody>
+                <form>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
@@ -135,6 +136,7 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
                         </div>
                     </td>
                 </tr>
+                </form>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
@@ -162,6 +164,7 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
             </div>
             <table class="wp-list-table widefat plugins" style="width:100%;">
                 <tbody>
+                <form>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
@@ -234,6 +237,7 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
                         </div>
                     </td>
                 </tr>
+                </form>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">

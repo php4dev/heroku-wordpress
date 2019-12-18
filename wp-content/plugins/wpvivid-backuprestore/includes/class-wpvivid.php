@@ -76,13 +76,13 @@ class WPvivid {
         {
             //Initialization settings
             WPvivid_Setting::init_option();
-            update_option('wpvivid_init','init');
+            WPvivid_Setting::update_option('wpvivid_init','init');
         }
 
         $wpvivid_remote_init=get_option('wpvivid_remote_init', 'not init');
 		if($wpvivid_remote_init=='not init'){
             $this->init_remote_option();
-            update_option('wpvivid_remote_init','init');
+            WPvivid_Setting::update_option('wpvivid_remote_init','init');
         }
 
         //Define the locale for this plugin for internationalization.
@@ -95,7 +95,7 @@ class WPvivid {
             $this->load_ajax_hook_for_admin();
         }
 
-        add_filter('pre_update_option',array( $this,'wpjam_pre_update_option_cache'),10,2);
+        //add_filter('pre_update_option',array( $this,'wpjam_pre_update_option_cache'),10,2);
 
         add_filter('wpvivid_add_backup_list', array( $this, 'wpvivid_add_backup_list' ), 10, 3);
         add_filter('wpvivid_add_remote_storage_list', array( $this, 'wpvivid_add_remote_storage_list' ), 10);
@@ -124,6 +124,9 @@ class WPvivid {
 
         add_action('wpvivid_before_setup_page',array($this,'clean_cache'));
         add_filter('wpvivid_check_type_database', array($this, 'wpvivid_check_type_database'), 10, 2);
+        add_filter('wpvivid_set_mail_subject', array($this, 'set_mail_subject'), 10, 2);
+        add_filter('wpvivid_set_mail_body', array($this, 'set_mail_body'), 10, 2);
+
 		//Initialisation schedule hook
         $this->init_cron();
         //Initialisation log object
@@ -444,23 +447,6 @@ class WPvivid {
             }
         }
         catch (Exception $error)
-        {
-            $this->end_shutdown_function=true;
-            $ret['result']='failed';
-            $message = 'An exception has occurred. class:'.get_class($error).';msg:'.$error->getMessage().';code:'.$error->getCode().';line:'.$error->getLine().';in_file:'.$error->getFile().';';
-            $ret['error'] = $message;
-            $id=uniqid('wpvivid-');
-            $log_file_name=$id.'_backup';
-            $log=new WPvivid_Log();
-            $log->CreateLogFile($log_file_name,'no_folder','backup');
-            $log->WriteLog($message,'notice');
-            WPvivid_error_log::create_error_log($log->log_file);
-            $log->CloseFile();
-            error_log($message);
-            echo json_encode($ret);
-            die();
-        }
-        catch (Error $error)
         {
             $this->end_shutdown_function=true;
             $ret['result']='failed';
@@ -4536,7 +4522,9 @@ class WPvivid {
 
         $setting_data['wpvivid_email_setting']['send_to'][] = $setting['send_to'];
         $setting_data['wpvivid_email_setting']['always'] = $setting['always'];
-        $setting_data['wpvivid_email_setting']['email_enable'] = $setting['email_enable'];
+        if(isset($setting['email_enable'])) {
+            $setting_data['wpvivid_email_setting']['email_enable'] = $setting['email_enable'];
+        }
 
         $setting_data['wpvivid_compress_setting']['compress_type'] = $setting['compress_type'];
         $setting_data['wpvivid_compress_setting']['max_file_size'] = $setting['max_file_size'] . 'M';
@@ -4561,6 +4549,7 @@ class WPvivid {
         $setting_data['wpvivid_common_setting']['restore_memory_limit'] = $setting['restore_memory_limit'].'M';
         $setting_data['wpvivid_common_setting']['migrate_size'] = $setting['migrate_size'];
         $setting_data['wpvivid_common_setting']['ismerge'] = $setting['ismerge'];
+        $setting_data['wpvivid_common_setting']['db_connect_method'] = $setting['db_connect_method'];
 		return $setting_data;
     }
 
@@ -4709,6 +4698,19 @@ class WPvivid {
             }
         }
 
+        if(isset($data['db_connect_method']) && $data['db_connect_method'] === 'pdo') {
+            if (class_exists('PDO')) {
+                $extensions = get_loaded_extensions();
+                if (!array_search('pdo_mysql', $extensions)) {
+                    $ret['error'] = __('The pdo_mysql extension is not detected. Please install the extension first or choose wpdb option for Database connection method.', 'wpvivid');
+                    return $ret;
+                }
+            } else {
+                $ret['error'] = __('The pdo_mysql extension is not detected. Please install the extension first or choose wpdb option for Database connection method.', 'wpvivid');
+                return $ret;
+            }
+        }
+
         $ret['result']=WPVIVID_SUCCESS;
         return $ret;
     }
@@ -4742,7 +4744,7 @@ class WPvivid {
     {
         $this->ajax_check_security('manage_options');
         try {
-            if (isset($_REQUEST['setting']) && !empty($_REQUEST['setting']) && isset($_REQUEST['history']) && !empty($_REQUEST['history'])) {
+            if (isset($_REQUEST['setting']) && !empty($_REQUEST['setting']) && isset($_REQUEST['history']) && !empty($_REQUEST['history']) && isset($_REQUEST['review'])) {
                 $setting = sanitize_text_field($_REQUEST['setting']);
                 $history = sanitize_text_field($_REQUEST['history']);
                 $review = sanitize_text_field($_REQUEST['review']);
@@ -5746,16 +5748,26 @@ class WPvivid {
     }
 
     public function hide_mainwp_tab_page(){
-        update_option('wpvivid_hide_mwp_tab_page', true);
+        WPvivid_Setting::update_option('wpvivid_hide_mwp_tab_page', true);
         $ret['result']=WPVIVID_SUCCESS;
         echo json_encode($ret);
         die();
     }
 
     public function hide_wp_cron_notice(){
-        update_option('wpvivid_hide_wp_cron_notice', true);
+        WPvivid_Setting::update_option('wpvivid_hide_wp_cron_notice', true);
         $ret['result']=WPVIVID_SUCCESS;
         echo json_encode($ret);
         die();
+    }
+
+    public function set_mail_subject($subject, $task){
+        $subject=WPvivid_mail_report::create_subject($task);
+        return $subject;
+    }
+
+    public function set_mail_body($body, $task){
+        $body=WPvivid_mail_report::create_body($task);
+        return $body;
     }
 }

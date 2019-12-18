@@ -121,7 +121,7 @@ class WPvivid_Mysqldump
             'net_buffer_length' => self::MAXLINESIZE,
             'no-autocommit' => true,
             'no-create-info' => false,
-            'lock-tables' => true,
+            'lock-tables' => false,
             'routines' => false,
             'single-transaction' => true,
             'skip-triggers' => false,
@@ -172,22 +172,14 @@ class WPvivid_Mysqldump
 
     public function get_db_type()
     {
-        $client_flags = defined( 'MYSQL_CLIENT_FLAGS' ) ? MYSQL_CLIENT_FLAGS : 0;
-        if($client_flags)
-        {
+        $common_setting = WPvivid_Setting::get_setting(false, 'wpvivid_common_setting');
+        $db_connect_method = isset($common_setting['options']['wpvivid_common_setting']['db_connect_method']) ? $common_setting['options']['wpvivid_common_setting']['db_connect_method'] : 'wpdb';
+        if($db_connect_method === 'wpdb') {
             return 'wpdb';
         }
-
-        if(class_exists('PDO'))
-        {
-            $extensions=get_loaded_extensions();
-            if(array_search('pdo_mysql',$extensions))
-            {
-                return 'mysql';
-            }
+        else{
+            return 'mysql';
         }
-
-        return 'wpdb';
     }
 
     /**
@@ -994,108 +986,219 @@ class WPvivid_Mysqldump
         global $wpdb;
         $prefix=$wpdb->base_prefix;
 
-        if(substr($tableName, strlen($prefix))=='options')
+        if($this->dbType=='wpdb')
         {
-            $stmt = "SELECT " . implode(",", $colStmt) . " FROM `$tableName` WHERE option_name !='wpvivid_task_list'";
+            $start=0;
+            $limit_count=5000;
+            $sum =$wpdb->get_var("SELECT COUNT(1) FROM `{$tableName}`");
+            if(substr($tableName, strlen($prefix))=='options')
+            {
+                $stmt = "SELECT " . implode(",", $colStmt) . " FROM `$tableName` WHERE option_name !='wpvivid_task_list'";
+            }
+            else
+            {
+                $stmt = "SELECT " . implode(",", $colStmt) . " FROM `$tableName`";
+            }
+
+            if ($this->dumpSettings['where']) {
+                $stmt .= " WHERE {$this->dumpSettings['where']}";
+            }
+
+            $i=0;
+            $i_check_cancel=0;
+            $count=0;
+
+            while($sum > $start)
+            {
+                $limit = " LIMIT {$limit_count} OFFSET {$start}";
+
+                $query=$stmt.$limit;
+                $resultSet = $this->query($query);
+
+                if($resultSet===false)
+                {
+                    global $wpvivid_plugin;
+                    $error=$this->typeAdapter->errorInfo();
+                    if(isset($error[2])){
+                        $error = 'Error: '.$error[2];
+                    }
+                    else{
+                        $error = '';
+                    }
+
+                    $message='listValues failed. '.$error;
+                    $wpvivid_plugin->wpvivid_log->WriteLog($message, 'warning');
+
+                    $this->endListValues($tableName);
+                    return ;
+                }
+
+                foreach ($resultSet as $row)
+                {
+                    $i++;
+                    $vals = $this->escape($tableName, $row);
+
+                    foreach($vals as $key => $value){
+                        if($value === '\'0000-00-00 00:00:00\'')
+                            $vals[$key] = '\'1999-01-01 00:00:00\'';
+                    }
+
+                    if ($onlyOnce || !$this->dumpSettings['extended-insert'])
+                    {
+
+                        if ($this->dumpSettings['complete-insert'])
+                        {
+                            $lineSize += $this->compressManager->write(
+                                "INSERT INTO `$tableName` (" .
+                                implode(", ", $colStmt) .
+                                ") VALUES (" . implode(",", $vals) . ")"
+                            );
+                        } else {
+                            $lineSize += $this->compressManager->write(
+                                "INSERT INTO `$tableName` VALUES (" . implode(",", $vals) . ")"
+                            );
+                        }
+                        $onlyOnce = false;
+                    } else {
+                        $lineSize += $this->compressManager->write(",(" . implode(",", $vals) . ")");
+                    }
+                    if (($lineSize > $this->dumpSettings['net_buffer_length']) ||
+                        !$this->dumpSettings['extended-insert']) {
+                        $onlyOnce = true;
+                        $lineSize = $this->compressManager->write(";" . PHP_EOL);
+                    }
+
+                    if($i>=200000)
+                    {
+                        $count+=$i;
+                        $i=0;
+                        if($this->task_id!=='')
+                        {
+                            $i_check_cancel++;
+                            if($i_check_cancel>5)
+                            {
+                                $i_check_cancel=0;
+                                global $wpvivid_plugin;
+                                $wpvivid_plugin->check_cancel_backup($this->task_id);
+                            }
+                            $message='Dumping table '.$tableName.', rows dumped: '.$count.' rows.';
+                            WPvivid_taskmanager::update_backup_sub_task_progress($this->task_id,'backup',WPVIVID_BACKUP_TYPE_DB,0,$message);
+                        }
+                    }
+                }
+
+                $this->typeAdapter->closeCursor($resultSet);
+
+                $start += $limit_count;
+            }
+
+            if (!$onlyOnce) {
+                $this->compressManager->write(";" . PHP_EOL);
+            }
+
+            $this->endListValues($tableName);
         }
         else
         {
-            $stmt = "SELECT " . implode(",", $colStmt) . " FROM `$tableName`";
-        }
-
-
-
-        if ($this->dumpSettings['where']) {
-            $stmt .= " WHERE {$this->dumpSettings['where']}";
-        }
-
-        $resultSet = $this->query($stmt);
-
-        if($resultSet===false)
-        {
-            global $wpvivid_plugin;
-            $error=$this->typeAdapter->errorInfo();
-            if(isset($error[2])){
-                $error = 'Error: '.$error[2];
+            if(substr($tableName, strlen($prefix))=='options')
+            {
+                $stmt = "SELECT " . implode(",", $colStmt) . " FROM `$tableName` WHERE option_name !='wpvivid_task_list'";
             }
-            else{
-                $error = '';
+            else
+            {
+                $stmt = "SELECT " . implode(",", $colStmt) . " FROM `$tableName`";
             }
 
-            $message='listValues failed. '.$error;
-            $wpvivid_plugin->wpvivid_log->WriteLog($message, 'warning');
+            if ($this->dumpSettings['where']) {
+                $stmt .= " WHERE {$this->dumpSettings['where']}";
+            }
+
+            $resultSet = $this->query($stmt);
+
+            if($resultSet===false)
+            {
+                global $wpvivid_plugin;
+                $error=$this->typeAdapter->errorInfo();
+                if(isset($error[2])){
+                    $error = 'Error: '.$error[2];
+                }
+                else{
+                    $error = '';
+                }
+
+                $message='listValues failed. '.$error;
+                $wpvivid_plugin->wpvivid_log->WriteLog($message, 'warning');
+
+                $this->endListValues($tableName);
+                return ;
+            }
+
+            $i=0;
+            $i_check_cancel=0;
+            $count=0;
+            foreach ($resultSet as $row)
+            {
+                $i++;
+                $vals = $this->escape($tableName, $row);
+
+                foreach($vals as $key => $value){
+                    if($value === '\'0000-00-00 00:00:00\'')
+                        $vals[$key] = '\'1999-01-01 00:00:00\'';
+                }
+
+                if ($onlyOnce || !$this->dumpSettings['extended-insert'])
+                {
+
+                    if ($this->dumpSettings['complete-insert'])
+                    {
+                        $lineSize += $this->compressManager->write(
+                            "INSERT INTO `$tableName` (" .
+                            implode(", ", $colStmt) .
+                            ") VALUES (" . implode(",", $vals) . ")"
+                        );
+                    } else {
+                        $lineSize += $this->compressManager->write(
+                            "INSERT INTO `$tableName` VALUES (" . implode(",", $vals) . ")"
+                        );
+                    }
+                    $onlyOnce = false;
+                } else {
+                    $lineSize += $this->compressManager->write(",(" . implode(",", $vals) . ")");
+                }
+                if (($lineSize > $this->dumpSettings['net_buffer_length']) ||
+                    !$this->dumpSettings['extended-insert']) {
+                    $onlyOnce = true;
+                    $lineSize = $this->compressManager->write(";" . PHP_EOL);
+                }
+
+                if($i>=200000)
+                {
+                    $count+=$i;
+                    $i=0;
+                    if($this->task_id!=='')
+                    {
+                        $i_check_cancel++;
+                        if($i_check_cancel>5)
+                        {
+                            $i_check_cancel=0;
+                            global $wpvivid_plugin;
+                            $wpvivid_plugin->check_cancel_backup($this->task_id);
+                        }
+                        $message='Dumping table '.$tableName.', rows dumped: '.$count.' rows.';
+                        WPvivid_taskmanager::update_backup_sub_task_progress($this->task_id,'backup',WPVIVID_BACKUP_TYPE_DB,0,$message);
+                    }
+                }
+            }
+
+            $this->typeAdapter->closeCursor($resultSet);
+            //$resultSet->closeCursor();
+
+            if (!$onlyOnce) {
+                $this->compressManager->write(";" . PHP_EOL);
+            }
 
             $this->endListValues($tableName);
-            return ;
         }
-
-        $i=0;
-        $i_check_cancel=0;
-        $count=0;
-        foreach ($resultSet as $row)
-        {
-            $i++;
-            $vals = $this->escape($tableName, $row);
-
-            foreach($vals as $key => $value){
-                if($value === '\'0000-00-00 00:00:00\'')
-                    $vals[$key] = '\'1999-01-01 00:00:00\'';
-            }
-
-            if ($onlyOnce || !$this->dumpSettings['extended-insert'])
-            {
-
-                if ($this->dumpSettings['complete-insert'])
-                {
-                    $lineSize += $this->compressManager->write(
-                        "INSERT INTO `$tableName` (" .
-                        implode(", ", $colStmt) .
-                        ") VALUES (" . implode(",", $vals) . ")"
-                    );
-                } else {
-                    $lineSize += $this->compressManager->write(
-                        "INSERT INTO `$tableName` VALUES (" . implode(",", $vals) . ")"
-                    );
-                }
-                $onlyOnce = false;
-            } else {
-                $lineSize += $this->compressManager->write(",(" . implode(",", $vals) . ")");
-            }
-            if (($lineSize > $this->dumpSettings['net_buffer_length']) ||
-                    !$this->dumpSettings['extended-insert']) {
-                $onlyOnce = true;
-                $lineSize = $this->compressManager->write(";" . PHP_EOL);
-            }
-
-            if($i>=200000)
-            {
-                $count+=$i;
-                $i=0;
-                if($this->task_id!=='')
-                {
-                    $i_check_cancel++;
-                    if($i_check_cancel>5)
-                    {
-                        $i_check_cancel=0;
-                        global $wpvivid_plugin;
-                        $wpvivid_plugin->check_cancel_backup($this->task_id);
-                    }
-                    $message='Dumping table '.$tableName.', rows dumped: '.$count.' rows.';
-                    WPvivid_taskmanager::update_backup_sub_task_progress($this->task_id,'backup',WPVIVID_BACKUP_TYPE_DB,0,$message);
-                }
-            }
-        }
-
-        $this->typeAdapter->closeCursor($resultSet);
-        //$resultSet->closeCursor();
-
-        if (!$onlyOnce) {
-            $this->compressManager->write(";" . PHP_EOL);
-        }
-
-
-
-        $this->endListValues($tableName);
     }
 
     /**
@@ -1123,6 +1226,7 @@ class WPvivid_Mysqldump
         if ($this->dumpSettings['lock-tables'])
         {
             $this->typeAdapter->lock_table($tableName);
+
             //if($this -> privileges['LOCK TABLES'] == 0)
             //{
             //global $wpvivid_plugin;

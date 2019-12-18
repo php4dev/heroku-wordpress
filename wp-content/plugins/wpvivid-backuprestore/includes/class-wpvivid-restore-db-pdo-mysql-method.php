@@ -24,8 +24,23 @@ class WPvivid_Restore_DB_PDO_Mysql_Method
             $this->db->exec('SET NAMES utf8');
             if(empty($this->db) || !$this->db)
             {
-                $ret['result']=WPVIVID_FAILED;
-                $ret['error']='The error establishing a database connection. Please check wp-config.php file and make sure the information is correct.';
+                if(class_exists('PDO'))
+                {
+                    $extensions=get_loaded_extensions();
+                    if(array_search('pdo_mysql',$extensions))
+                    {
+                        $ret['result']=WPVIVID_FAILED;
+                        $ret['error']='The error establishing a database connection. Please check wp-config.php file and make sure the information is correct.';
+                    }
+                    else{
+                        $ret['result']=WPVIVID_FAILED;
+                        $ret['error']='The pdo_mysql extension is not detected. Please install the extension first or choose wpdb option for Database connection method.';
+                    }
+                }
+                else{
+                    $ret['result']=WPVIVID_FAILED;
+                    $ret['error']='The pdo_mysql extension is not detected. Please install the extension first or choose wpdb option for Database connection method.';
+                }
             }
             else
             {
@@ -36,8 +51,23 @@ class WPvivid_Restore_DB_PDO_Mysql_Method
         {
             if(empty($this->db) || !$this->db)
             {
-                $ret['result']=WPVIVID_FAILED;
-                $ret['error']='The error establishing a database connection. Please check wp-config.php file and make sure the information is correct.';
+                if(class_exists('PDO'))
+                {
+                    $extensions=get_loaded_extensions();
+                    if(array_search('pdo_mysql',$extensions))
+                    {
+                        $ret['result']=WPVIVID_FAILED;
+                        $ret['error']='The error establishing a database connection. Please check wp-config.php file and make sure the information is correct.';
+                    }
+                    else{
+                        $ret['result']=WPVIVID_FAILED;
+                        $ret['error']='The pdo_mysql extension is not detected. Please install the extension first or choose wpdb option for Database connection method.';
+                    }
+                }
+                else{
+                    $ret['result']=WPVIVID_FAILED;
+                    $ret['error']='The pdo_mysql extension is not detected. Please install the extension first or choose wpdb option for Database connection method.';
+                }
             }
             else
             {

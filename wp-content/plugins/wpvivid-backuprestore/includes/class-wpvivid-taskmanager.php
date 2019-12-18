@@ -440,7 +440,7 @@ class WPvivid_taskmanager
 
         $options = get_option('wpvivid_download_cache', $default);
         $options[$backup_id]['cache']=$cache;
-        update_option('wpvivid_download_cache',$options);
+        WPvivid_Setting::update_option('wpvivid_download_cache',$options);
     }
 
     public static function get_download_cache($backup_id)
@@ -564,7 +564,7 @@ class WPvivid_taskmanager
             unset($tasks[$id]);
             $has_marked = 1;
         }
-        update_option('wpvivid_task_list',$tasks);
+        WPvivid_Setting::update_option('wpvivid_task_list',$tasks);
         return $has_marked;
     }
 
@@ -588,7 +588,7 @@ class WPvivid_taskmanager
             unset($tasks[$id]);
         }
 
-        update_option('wpvivid_task_list',$tasks);
+        WPvivid_Setting::update_option('wpvivid_task_list',$tasks);
     }
 
     public static function delete_all_task()
@@ -628,7 +628,7 @@ class WPvivid_taskmanager
         $task['error']='';
         $options[$file_name]=$task;
 
-        update_option('wpvivid_download_task_v2',$options);
+        WPvivid_Setting::update_option('wpvivid_download_task_v2',$options);
         return $task;
     }
 
@@ -684,7 +684,7 @@ class WPvivid_taskmanager
 
         $options[$file_name]=$task;
 
-        update_option('wpvivid_download_task_v2',$options);
+        WPvivid_Setting::update_option('wpvivid_download_task_v2',$options);
     }
 
     public static function get_download_task_v2($file_name)
@@ -721,7 +721,7 @@ class WPvivid_taskmanager
         if(array_key_exists($file_name,$options))
         {
             unset($options[$file_name]);
-            update_option('wpvivid_download_task_v2',$options);
+            WPvivid_Setting::update_option('wpvivid_download_task_v2',$options);
             return true;
         }
         return false;

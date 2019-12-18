@@ -9,6 +9,7 @@ namespace Automattic\WooCommerce\Admin;
 
 defined( 'ABSPATH' ) || exit;
 
+use Automattic\WooCommerce\Admin\API\Reports\Cache;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Historical_Data;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Welcome_Message;
 
@@ -31,6 +32,10 @@ class Install {
 			'wc_admin_update_0201_order_status_index',
 			'wc_admin_update_0201_db_version',
 		),
+		'0.23.0' => array(
+			'wc_admin_update_0230_rename_gross_total',
+			'wc_admin_update_0230_db_version',
+		),
 	);
 
 	/**
@@ -50,12 +55,29 @@ class Install {
 	 * This check is done on all requests and runs if the versions do not match.
 	 */
 	public static function check_version() {
-		if (
-			! defined( 'IFRAME_REQUEST' ) &&
-			version_compare( get_option( self::VERSION_OPTION ), WC_ADMIN_VERSION_NUMBER, '<' )
-		) {
+		if ( defined( 'IFRAME_REQUEST' ) ) {
+			return;
+		}
+
+		$version_option  = get_option( self::VERSION_OPTION );
+		$requires_update = version_compare( get_option( self::VERSION_OPTION ), WC_ADMIN_VERSION_NUMBER, '<' );
+
+		/*
+		 * When included as part of Core, no `on_activation` hook as been called
+		 * so there is no version in options. Make sure install gets called in this
+		 * case as well as a regular version update
+		 */
+		if ( ! $version_option || $requires_update ) {
 			self::install();
-			do_action( 'wc_admin_updated' );
+			do_action( 'woocommerce_admin_updated' );
+		}
+
+		/*
+		 * Add the version option if none is found, as would be the case when
+		 * initialized via Core for the first time.
+		 */
+		if ( ! $version_option ) {
+			add_option( self::VERSION_OPTION, WC_ADMIN_VERSION_NUMBER );
 		}
 	}
 
@@ -86,7 +108,7 @@ class Install {
 		// Use add_option() here to avoid overwriting this value with each
 		// plugin version update. We base plugin age off of this value.
 		add_option( 'wc_admin_install_timestamp', time() );
-		do_action( 'wc_admin_installed' );
+		do_action( 'woocommerce_admin_installed' );
 	}
 
 	/**
@@ -111,7 +133,7 @@ class Install {
 			date_created datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 			date_created_gmt datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 			num_items_sold int(11) DEFAULT 0 NOT NULL,
-			gross_total double DEFAULT 0 NOT NULL,
+			total_sales double DEFAULT 0 NOT NULL,
 			tax_total double DEFAULT 0 NOT NULL,
 			shipping_total double DEFAULT 0 NOT NULL,
 			net_total double DEFAULT 0 NOT NULL,
@@ -331,6 +353,7 @@ class Install {
 							array( $update_callback ),
 							'woocommerce-db-updates'
 						);
+						Cache::invalidate();
 					}
 
 					$loop++;

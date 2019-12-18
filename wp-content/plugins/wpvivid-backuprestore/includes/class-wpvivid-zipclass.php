@@ -3,18 +3,15 @@
 if (!defined('WPVIVID_PLUGIN_DIR')){
     die;
 }
-if(!defined('WPVIVID_COMPRESS_ZIPCLASS')){
-    define('WPVIVID_COMPRESS_ZIPCLASS','zipclass');
-}
 
-define('WPVIVID_ZIPCLASS_JSONFILE_NAME','wpvivid_zipclass.json');
 require_once WPVIVID_PLUGIN_DIR . '/includes/class-wpvivid-compress-default.php';
 class WPvivid_ZipClass extends Wpvivid_Compress_Default
 {
 	public $last_error = '';
 	public $path_filter=array();
 
-	public function __construct() {
+	public function __construct()
+    {
 		if (!class_exists('PclZip')) include_once(ABSPATH.'/wp-admin/includes/class-pclzip.php');
 		if (!class_exists('PclZip')) {
 			$this->last_error = array('result'=>WPVIVID_FAILED,'error'=>"Class PclZip is not detected. Please update or reinstall your WordPress.");
@@ -168,7 +165,7 @@ class WPvivid_ZipClass extends Wpvivid_Compress_Default
         $max_size = str_replace('M', '', $max_size);
         $size = intval($max_size) * 1024 * 1024;
 
-        $files = $this -> filesplit_plugin($size,$data['files'],0);
+        $files = $this -> get_files_cache($size,$data);
 
         $temp_dir = $data['path'].'temp-'.$data['prefix'].DIRECTORY_SEPARATOR;
         if(!file_exists($temp_dir))
@@ -177,7 +174,8 @@ class WPvivid_ZipClass extends Wpvivid_Compress_Default
 
         if(sizeof($files) > 1)
         {
-            for($i =0;$i <sizeof($files);$i ++)
+            $i=0;
+            foreach ($files as $file)
             {
                 $package = array();
                 $path = $data['path'].$data['prefix'].'.part'.sprintf('%03d',($i +1)).'.zip';
@@ -192,8 +190,9 @@ class WPvivid_ZipClass extends Wpvivid_Compress_Default
                 $package['json']['root_flag'] = $data['root_flag'];
                 $package['json']['file']=basename($path);
                 $package['path'] = $path;
-                $package['files'] = $files[$i];
+                $package['files'] = $file;
                 $packages[] = $package;
+                $i++;
             }
         }else {
             $package = array();
@@ -214,7 +213,6 @@ class WPvivid_ZipClass extends Wpvivid_Compress_Default
         }
 
         $ret['packages']=$packages;
-        $ret['temp_dir']=$temp_dir;
         return $ret;
     }
 
@@ -470,10 +468,453 @@ class WPvivid_ZipClass extends Wpvivid_Compress_Default
 
     public function _zip($name,$files,$options,$json_info=false)
     {
+        $zip_object_class=apply_filters('wpvivid_get_zip_object_class','WPvivid_PclZip_Class');
+        $zip=new $zip_object_class();
+        return $zip->zip($name,$files,$options,$json_info);
+    }
+
+    public function listcontent($path){
+        $zip = new PclZip($path);
+        $list = $zip->listContent();
+        return $list;
+    }
+    public function listnum($path , $includeFolder = false){
+        $zip = new PclZip($path);
+        $list = $zip->listContent();
+        $index = 0;
+        foreach ($list as $item){
+            if(!$includeFolder && $item['folder'])
+                continue;
+            $index ++;
+        }
+        return $index;
+    }
+
+    private function transfer_path($path)
+    {
+        $path = str_replace('\\','/',$path);
+        $values = explode('/',$path);
+        return implode(DIRECTORY_SEPARATOR,$values);
+    }
+
+    public function get_json_data($path, $json_type = 'backup')
+    {
+        $json_file_name = $json_type === 'backup' ? 'wpvivid_package_info.json' : 'wpvivid_export_package_info.json';
+        $archive = new PclZip($path);
+        $list = $archive->listContent();
+        if($list == false){
+            return array('result'=>WPVIVID_FAILED,'error'=>$archive->errorInfo(true));
+        }
+        else {
+            $b_exist = false;
+            foreach ($list as $item) {
+                if (basename($item['filename']) === $json_file_name) {
+                    $b_exist = true;
+                    $result = $archive->extract(PCLZIP_OPT_BY_NAME, $json_file_name, PCLZIP_OPT_EXTRACT_AS_STRING);
+                    if ($result != 0) {
+                        return array('result'=>WPVIVID_SUCCESS,'json_data'=>$result[0]['content']);
+                    } else {
+                        return array('result'=>WPVIVID_FAILED,'error'=>$archive->errorInfo(true));
+                    }
+                }
+            }
+            if(!$b_exist){
+                return array('result'=>WPVIVID_FAILED,'error'=>'Failed to get json, this may be a old version backup.');
+            }
+        }
+        return array('result'=>WPVIVID_FAILED,'error'=>'Unknown error');
+    }
+
+    public function list_file($path)
+    {
+        $archive = new PclZip($path);
+        $list = $archive->listContent();
+
+        $files=array();
+        foreach ($list as $item)
+        {
+            if(basename($item['filename'])==='wpvivid_package_info.json')
+            {
+                continue;
+            }
+            $file['file_name']=$item['filename'];
+            $files[]=$file;
+        }
+
+        return $files;
+    }
+
+    public function filesplit_plugin($max_file_size,$files,$is_num=true)
+    {
+        $packages=array();
+        if($max_file_size == 0 || empty($max_file_size))
+        {
+            $packages[] = $files;
+        }else{
+            $folder_num_sum = 0;
+            $package = array();
+
+            if($is_num)
+            {
+                foreach ($files as $file)
+                {
+                    $folder_num=0;
+                    if(is_dir($file))
+                    {
+                        $folder_num=$this->get_folder_file_count($file);
+                    }
+                    else
+                    {
+                        $folder_num_sum+=filesize($file);
+                    }
+
+                    if($folder_num > $max_file_size)
+                    {
+                        $temp_package[] = $file;
+                        $packages[] = $temp_package;
+                        $temp_package = array();
+                        continue;
+                    }
+                    else
+                    {
+                        $folder_num_sum+=$folder_num;
+                    }
+
+                    if($folder_num_sum > $max_file_size)
+                    {
+                        $package[] = $file;
+                        $packages[] = $package;
+                        $package = array();
+                        $folder_num_sum=0;
+                    }
+                    else{
+                        $package[] = $file;
+                    }
+                }
+            }
+            else
+            {
+                foreach ($files as $file)
+                {
+                    $folder_num=0;
+                    if(is_dir($file))
+                    {
+                        $folder_num=$this->get_folder_file_size($file);
+                    }
+                    else
+                    {
+                        $folder_num_sum+=filesize($file);
+                    }
+
+                    if($folder_num > $max_file_size)
+                    {
+                        $temp_package[] = $file;
+                        $packages[] = $temp_package;
+                        $temp_package = array();
+                        continue;
+                    }
+                    else
+                    {
+                        $folder_num_sum+=$folder_num;
+                    }
+
+                    if($folder_num_sum > $max_file_size)
+                    {
+                        $package[] = $file;
+                        $packages[] = $package;
+                        $package = array();
+                        $folder_num_sum=0;
+                    }
+                    else{
+                        $package[] = $file;
+                    }
+                }
+            }
+
+            if(!empty($package))
+                $packages[] = $package;
+        }
+        return $packages;
+    }
+
+    public function get_folder_file_count($file)
+    {
+        $count=0;
+        $this->get_folder_file_count_loop($file,$count);
+
+        return $count;
+    }
+
+    function get_folder_file_count_loop($path,&$count)
+    {
+        $handler = opendir($path);
+
+        while (($filename = readdir($handler)) !== false)
+        {
+            if ($filename != "." && $filename != "..")
+            {
+                $count++;
+
+                if(is_dir($path . DIRECTORY_SEPARATOR . $filename))
+                {
+                    $this->get_folder_file_count_loop($path . DIRECTORY_SEPARATOR . $filename,$count);
+                }
+            }
+        }
+        if($handler)
+            @closedir($handler);
+    }
+
+    function get_folder_file_size($file)
+    {
+        $count=0;
+        $this->get_folder_file_size_loop($file,$count);
+
+        return $count;
+    }
+
+    function get_folder_file_size_loop($path,&$count)
+    {
+        $handler = opendir($path);
+
+        while (($filename = readdir($handler)) !== false)
+        {
+            if ($filename != "." && $filename != "..")
+            {
+                if(is_dir($path . DIRECTORY_SEPARATOR . $filename))
+                {
+                    $this->get_folder_file_size_loop($path . DIRECTORY_SEPARATOR . $filename,$count);
+                }
+                else
+                {
+                    $count+=filesize($path . DIRECTORY_SEPARATOR . $filename);
+                }
+            }
+        }
+        if($handler)
+            @closedir($handler);
+    }
+
+    public function get_root_flag_path($flag)
+    {
+        $path='';
+        if($flag==WPVIVID_BACKUP_ROOT_WP_CONTENT)
+        {
+            $path=WP_CONTENT_DIR;
+        }
+        else if($flag==WPVIVID_BACKUP_ROOT_CUSTOM)
+        {
+            $path=WP_CONTENT_DIR.DIRECTORY_SEPARATOR.WPvivid_Setting::get_backupdir();
+        }
+        else if($flag==WPVIVID_BACKUP_ROOT_WP_ROOT)
+        {
+            $path=ABSPATH;
+        }
+        return $path;
+    }
+
+    public function get_files_cache($size,$data)
+    {
+        $number=1;
+        $cache_perfix = $data['path'].$data['prefix'].'_file_cache_';
+        $cache_file_handle=false;
+        $sumsize=0;
+
+        if(isset($data['exclude_files_regex']))
+            $exclude_files_regex=$data['exclude_files_regex'];
+        else
+            $exclude_files_regex=array();
+
+        if(isset($data['compress'])&&$data['compress']['exclude_file_size'])
+            $exclude_file_size=$data['compress']['exclude_file_size'];
+        else
+            $exclude_file_size=0;
+
+        if(isset($data['skip_files_time']))
+        {
+            $skip_files_time=$data['skip_files_time'];
+        }
+        else
+        {
+            $skip_files_time=0;
+        }
+        global $wpvivid_plugin;
+        $wpvivid_plugin->wpvivid_log->WriteLog('exclude_files_regex:'.json_encode($exclude_files_regex),'notice');
+
+        foreach ($data['files'] as $file)
+        {
+            $this->get_file_cache($size,$file,$cache_perfix,$cache_file_handle,$number,$sumsize,$exclude_files_regex,$exclude_file_size,$skip_files_time);
+        }
+
+        $file_cache=array();
+
+        for($i=1;$i<$number+1;$i++)
+        {
+            $file_cache[]=$cache_perfix.$i.'.txt';
+        }
+        return $file_cache;
+    }
+
+    public function get_file_cache($size,$path,$cache_perfix,&$cache_file_handle,&$number,&$sumsize,$exclude_files_regex,$exclude_file_size,$skip_files_time)
+    {
+        if(!$cache_file_handle)
+        {
+            $cache_file=$cache_perfix.$number.'.txt';
+            $cache_file_handle=fopen($cache_file,'a');
+        }
+        $handler = opendir($path);
+
+        while (($filename = readdir($handler)) !== false)
+        {
+            if ($filename != "." && $filename != "..")
+            {
+                if(is_dir($path . DIRECTORY_SEPARATOR . $filename))
+                {
+                    $this->get_file_cache($size,$path . DIRECTORY_SEPARATOR . $filename,$cache_perfix,$cache_file_handle,$number,$sumsize,$exclude_files_regex,$exclude_file_size,$skip_files_time);
+                }
+                else
+                {
+                    if($this->regex_match($exclude_files_regex, $filename, 0))
+                    {
+                        if ($exclude_file_size == 0||(filesize($path . DIRECTORY_SEPARATOR . $filename) < $exclude_file_size * 1024 * 1024))
+                        {
+                            if(is_readable($path . DIRECTORY_SEPARATOR . $filename))
+                            {
+                                if($skip_files_time>0)
+                                {
+                                    $file_time=filemtime($path . DIRECTORY_SEPARATOR . $filename);
+                                    if($file_time>0&&$file_time>$skip_files_time)
+                                    {
+                                        $sumsize+=filesize($path . DIRECTORY_SEPARATOR . $filename);
+                                        if($sumsize>$size)
+                                        {
+                                            $number++;
+                                            fclose($cache_file_handle);
+                                            $cache_file=$cache_perfix.$number.'.txt';
+                                            $cache_file_handle=fopen($cache_file,'a');
+
+                                            $line = $path . DIRECTORY_SEPARATOR . $filename.PHP_EOL;
+                                            fwrite($cache_file_handle, $line);
+
+                                            $sumsize=filesize($path . DIRECTORY_SEPARATOR . $filename);
+                                        }
+                                        else
+                                        {
+                                            $line = $path . DIRECTORY_SEPARATOR . $filename.PHP_EOL;
+                                            fwrite($cache_file_handle, $line);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    $sumsize+=filesize($path . DIRECTORY_SEPARATOR . $filename);
+                                    if($sumsize>$size)
+                                    {
+                                        $number++;
+                                        fclose($cache_file_handle);
+                                        $cache_file=$cache_perfix.$number.'.txt';
+                                        $cache_file_handle=fopen($cache_file,'a');
+
+                                        $line = $path . DIRECTORY_SEPARATOR . $filename.PHP_EOL;
+                                        fwrite($cache_file_handle, $line);
+
+                                        $sumsize=filesize($path . DIRECTORY_SEPARATOR . $filename);
+                                    }
+                                    else
+                                    {
+                                        $line = $path . DIRECTORY_SEPARATOR . $filename.PHP_EOL;
+                                        fwrite($cache_file_handle, $line);
+                                    }
+                                    $files[] = $path . DIRECTORY_SEPARATOR . $filename;
+                                }
+                            }
+                            else
+                            {
+                                global $wpvivid_plugin;
+                                $wpvivid_plugin->wpvivid_log->WriteLog('file not readable:' . $path . DIRECTORY_SEPARATOR . $filename, 'notice');
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if($handler)
+            @closedir($handler);
+    }
+
+    private function regex_match($regex_array,$string,$mode)
+    {
+        if(empty($regex_array))
+        {
+            return true;
+        }
+
+        if($mode==0)
+        {
+            foreach ($regex_array as $regex)
+            {
+                if(preg_match($regex,$string))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        if($mode==1)
+        {
+            foreach ($regex_array as $regex)
+            {
+                if(preg_match($regex,$string))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        return true;
+    }
+
+    public function get_upload_files_from_cache($file)
+    {
+        $files=array();
+        $file = new SplFileObject($file);
+        $file->seek(0);
+
+        $file->setFlags( \SplFileObject::SKIP_EMPTY | \SplFileObject::READ_AHEAD );
+
+        while(!$file->eof())
+        {
+            $src = $file->fgets();
+
+            $src=trim($src,PHP_EOL);
+
+            if(empty($src))
+                continue;
+
+            if(!file_exists($src))
+            {
+                continue;
+            }
+
+            $files[]=$src;
+        }
+        return $files;
+    }
+}
+
+class WPvivid_PclZip_Class
+{
+    public function zip($name,$files,$options,$json_info=false)
+    {
         global $wpvivid_plugin;
 
         if(file_exists($name))
             @unlink($name);
+
         $archive = new PclZip($name);
 
         if(isset($options['compress']['no_compress']))
@@ -597,194 +1038,6 @@ class WPvivid_ZipClass extends Wpvivid_Compress_Default
         $file_data['size'] = filesize($name);
 
         return array('result'=>WPVIVID_SUCCESS,'file_data'=>$file_data);
-    }
-
-    public function listcontent($path){
-        $zip = new PclZip($path);
-        $list = $zip->listContent();
-        return $list;
-    }
-    public function listnum($path , $includeFolder = false){
-        $zip = new PclZip($path);
-        $list = $zip->listContent();
-        $index = 0;
-        foreach ($list as $item){
-            if(!$includeFolder && $item['folder'])
-                continue;
-            $index ++;
-        }
-        return $index;
-    }
-
-    private function transfer_path($path)
-    {
-        $path = str_replace('\\','/',$path);
-        $values = explode('/',$path);
-        return implode(DIRECTORY_SEPARATOR,$values);
-    }
-
-    public function get_json_data($path, $json_type = 'backup')
-    {
-        $json_file_name = $json_type === 'backup' ? 'wpvivid_package_info.json' : 'wpvivid_export_package_info.json';
-        $archive = new PclZip($path);
-        $list = $archive->listContent();
-        if($list == false){
-            return array('result'=>WPVIVID_FAILED,'error'=>$archive->errorInfo(true));
-        }
-        else {
-            $b_exist = false;
-            foreach ($list as $item) {
-                if (basename($item['filename']) === $json_file_name) {
-                    $b_exist = true;
-                    $result = $archive->extract(PCLZIP_OPT_BY_NAME, $json_file_name, PCLZIP_OPT_EXTRACT_AS_STRING);
-                    if ($result != 0) {
-                        return array('result'=>WPVIVID_SUCCESS,'json_data'=>$result[0]['content']);
-                    } else {
-                        return array('result'=>WPVIVID_FAILED,'error'=>$archive->errorInfo(true));
-                    }
-                }
-            }
-            if(!$b_exist){
-                return array('result'=>WPVIVID_FAILED,'error'=>'Failed to get json, this may be a old version backup.');
-            }
-        }
-        return array('result'=>WPVIVID_FAILED,'error'=>'Unknown error');
-    }
-
-    public function list_file($path)
-    {
-        $archive = new PclZip($path);
-        $list = $archive->listContent();
-
-        $files=array();
-        foreach ($list as $item)
-        {
-            if(basename($item['filename'])==='wpvivid_package_info.json')
-            {
-                continue;
-            }
-            $file['file_name']=$item['filename'];
-            $files[]=$file;
-        }
-
-        return $files;
-    }
-
-    public function filesplit_plugin($max_file_size,$files,$is_num=true)
-    {
-        $packages=array();
-        if($max_file_size == 0 || empty($max_file_size))
-        {
-            $packages[] = $files;
-        }else{
-            $folder_num_sum = 0;
-            $package = array();
-
-            foreach ($files as $file)
-            {
-                $folder_num=0;
-                if(is_dir($file))
-                {
-                    if($is_num)
-                    {
-                        $folder_num=$this->get_folder_file_count($file);
-                    }
-                    else
-                    {
-                        $folder_num=$this->get_folder_file_size($file);
-                    }
-                }
-                else
-                {
-                    $folder_num_sum+=filesize($file);
-                }
-
-                if($folder_num > $max_file_size)
-                {
-                    $temp_package[] = $file;
-                    $packages[] = $temp_package;
-                    $temp_package = array();
-                    continue;
-                }
-                else
-                {
-                    $folder_num_sum+=$folder_num;
-                }
-
-                if($folder_num_sum > $max_file_size)
-                {
-                    $package[] = $file;
-                    $packages[] = $package;
-                    $package = array();
-                    $folder_num_sum=0;
-                }
-                else{
-                    $package[] = $file;
-                 }
-
-            }
-            if(!empty($package))
-                $packages[] = $package;
-        }
-        return $packages;
-    }
-
-    public function get_folder_file_count($file)
-    {
-        $count=0;
-        $this->get_folder_file_count_loop($file,$count);
-
-        return $count;
-    }
-
-    function get_folder_file_count_loop($path,&$count)
-    {
-        $handler = opendir($path);
-
-        while (($filename = readdir($handler)) !== false)
-        {
-            if ($filename != "." && $filename != "..")
-            {
-                $count++;
-
-                if(is_dir($path . DIRECTORY_SEPARATOR . $filename))
-                {
-                    $this->get_folder_file_count_loop($path . DIRECTORY_SEPARATOR . $filename,$count);
-                }
-            }
-        }
-        if($handler)
-            @closedir($handler);
-    }
-
-    function get_folder_file_size($file)
-    {
-        $count=0;
-        $this->get_folder_file_size_loop($file,$count);
-
-        return $count;
-    }
-
-    function get_folder_file_size_loop($path,&$count)
-    {
-        $handler = opendir($path);
-
-        while (($filename = readdir($handler)) !== false)
-        {
-            if ($filename != "." && $filename != "..")
-            {
-                if(is_dir($path . DIRECTORY_SEPARATOR . $filename))
-                {
-                    $this->get_folder_file_size_loop($path . DIRECTORY_SEPARATOR . $filename,$count);
-                }
-                else
-                {
-                    $count+=filesize($path . DIRECTORY_SEPARATOR . $filename);
-                }
-            }
-        }
-        if($handler)
-            @closedir($handler);
     }
 
     public function get_root_flag_path($flag)

@@ -41,9 +41,10 @@ class WPvivid_Tab_Page_Container
 
     public function display()
     {
+        $class = '';
         ?>
         <div id="<?php echo $this->container_id?>">
-            <h2 class="nav-tab-wrapper" style="padding-bottom:0!important;">
+            <h2 class="nav-tab-wrapper <?php esc_attr_e($class); ?>" style="padding-bottom:0!important;">
                 <?php
                 $this->display_tabs();
                 ?>
@@ -51,7 +52,7 @@ class WPvivid_Tab_Page_Container
             <?php
             if($this->is_parent_tab){
                 ?>
-                <div class="wrap" style="max-width:1720px;">
+                <div style="margin: 10px 0 0 2px;">
                     <div id="poststuff" style="padding-top: 0;">
                         <div id="post-body" class="metabox-holder columns-2">
                             <div id="post-body-content">
@@ -132,7 +133,8 @@ class WPvivid_Tab_Page_Container
                 });
 
                 jQuery("#wpvivid_page_"+redirect).show();
-                jQuery(this).addClass( "nav-tab-active" );
+                jQuery("#wpvivid_tab_"+redirect).addClass( "nav-tab-active" );
+                //jQuery(this).addClass( "nav-tab-active" );
             });
 
             jQuery(document).ready(function($)
@@ -156,6 +158,8 @@ class WPvivid_Tab_Page_Container
                         jQuery(this).attr('redirect',redirect);
                     });
                     jQuery("#wpvivid_tab_"+id).addClass( "nav-tab-active" );
+                    var top = jQuery("#wpvivid_tab_"+id).offset().top-jQuery("#wpvivid_tab_"+id).height();
+                    jQuery('html, body').animate({scrollTop:top}, 'slow');
                 });
             });
         </script>
@@ -175,7 +179,7 @@ class WPvivid_Tab_Page_Container
                 $first=false;
             }
 
-            $style='';
+            $style='cursor:pointer;';
 
             if(isset($tab['hide']))
             {
@@ -186,8 +190,12 @@ class WPvivid_Tab_Page_Container
             {
                 $class.=' delete';
             }
+            if(isset($tab['transparency']))
+            {
+                $class.=' wpvivid-transparency-tab';
+            }
 
-            echo '<a href="#" id="wpvivid_tab_'.$tab['slug'].'" class="'.$class.'" style="'.$style.'">';
+            echo '<a id="wpvivid_tab_'.$tab['slug'].'" class="'.$class.'" style="'.$style.'">';
 
             if(isset($tab['can_delete']))
             {

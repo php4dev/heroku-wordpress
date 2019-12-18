@@ -98,7 +98,10 @@ function wpvivid_schedule_settings()
 
 function wpvivid_schedule_notice($html)
 {
-    $html='<p>1) Scheduled job will start at web server time: </p>';
+    $offset=get_option('gmt_offset');
+    $time = '00:00:00';
+    $utime = strtotime($time) + $offset * 60 * 60;
+    $html='<p>1) Scheduled job will start at utc time: '.date('H:i:s', $utime).'</p>';
     $html.='<p>2) Being subjected to mechanisms of PHP, a scheduled backup task for your site will be triggered only when the site receives at least a visit at any page.</p>';
     return $html;
 }

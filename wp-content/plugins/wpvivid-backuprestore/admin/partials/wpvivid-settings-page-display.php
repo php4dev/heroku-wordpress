@@ -206,7 +206,7 @@ function wpvivid_email_report()
             <input type="text" placeholder="example@yourdomain.com" option="setting" name="send_to" class="regular-text" id="wpvivid_mail" value="<?php
             if(!empty($general_setting['options']['wpvivid_email_setting']['send_to'])) {
                 foreach ($general_setting['options']['wpvivid_email_setting']['send_to'] as $mail) {
-                    if(!empty($mail)) {
+                    if(!empty($mail) && !is_array($mail)) {
                         _e($mail, 'wpvivid');
                         break;
                     }
@@ -512,6 +512,20 @@ function wpvivid_advanced_settings()
     if(!isset($general_setting['options']['wpvivid_common_setting']['migrate_size'])){
         $general_setting['options']['wpvivid_common_setting']['migrate_size']=WPVIVID_MIGRATE_SIZE;
     }
+    if(isset($general_setting['options']['wpvivid_common_setting']['db_connect_method'])){
+        if($general_setting['options']['wpvivid_common_setting']['db_connect_method'] === 'wpdb'){
+            $db_method_wpdb = 'checked';
+            $db_method_pdo  = '';
+        }
+        else{
+            $db_method_wpdb = '';
+            $db_method_pdo  = 'checked';
+        }
+    }
+    else{
+        $db_method_wpdb = 'checked';
+        $db_method_pdo  = '';
+    }
     ?>
     <div class="postbox schedule-tab-block setting-page-content">
         <div>
@@ -525,6 +539,23 @@ function wpvivid_advanced_settings()
                     <p><?php _e('Enabling this option can improve the backup success rate, but it will take more time for backup.', 'wpvivid'); ?></p>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="postbox schedule-tab-block wpvivid-setting-addon" style="margin-bottom: 10px; padding-bottom: 0;">
+        <div class="wpvivid-element-space-bottom">
+            <strong><?php _e('Database access method.', 'wpvivid'); ?></strong>
+        </div>
+        <div class="wpvivid-element-space-bottom">
+            <label>
+                <input type="radio" option="setting" name="db_connect_method" value="wpdb" <?php esc_attr_e($db_method_wpdb); ?> />
+                <span><strong>WPDB</strong></span><span><?php _e('WPDB option has a better compatibility, but the speed of backup and restore is slower.', 'wpvivid'); ?></span>
+            </label>
+        </div>
+        <div class="wpvivid-element-space-bottom">
+            <label>
+                <input type="radio" option="setting" name="db_connect_method" value="pdo" <?php esc_attr_e($db_method_pdo); ?> />
+                <span><strong>PDO</strong></span><span><?php _e('It is recommended to choose PDO option if pdo_mysql extension is installed on your server, which lets you backup and restore your site faster.', 'wpvivid'); ?></span>
+            </label>
         </div>
     </div>
     <div class="postbox schedule-tab-block setting-page-content">

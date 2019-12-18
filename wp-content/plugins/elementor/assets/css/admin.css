@@ -1,6 +1,5 @@
-/*! elementor - v2.7.5 - 28-10-2019 */
+/*! elementor - v2.8.2 - 16-12-2019 */
 .elementor-button {
-  font-family: Roboto, Arial, Helvetica, Verdana, sans-serif;
   font-weight: 500;
   text-transform: uppercase;
   outline: none;
@@ -47,6 +46,18 @@
     .elementor-button.elementor-button-warning:not([disabled]):active {
       -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.1);
               box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.1); }
+  .elementor-button.elementor-button-danger {
+    background-color: #d72b3f;
+    color: #fff; }
+    .elementor-button.elementor-button-danger[disabled] {
+      background-color: #c2cbd2; }
+    .elementor-button.elementor-button-danger:not([disabled]):hover {
+      opacity: 0.85;
+      -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2);
+              box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2); }
+    .elementor-button.elementor-button-danger:not([disabled]):active {
+      -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.1);
+              box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.1); }
   .elementor-button.elementor-edit-template {
     display: inline-block;
     margin-top: 15px;
@@ -55,7 +66,7 @@
     background-color: #a4afb7;
     color: #fff;
     font-size: 11px;
-    padding: 6.5px 15px; }
+    padding: 7px 21px; }
     .elementor-button.elementor-button-default:hover {
       background-color: #6d7882;
       -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2);
@@ -67,7 +78,7 @@
       color: #fff; }
   .elementor-button.elementor-button-go-pro {
     color: #fff;
-    background-color: #fcb92c; }
+    background-color: #D30C5C; }
   .elementor-button i {
     margin-right: 10px; }
 
@@ -78,7 +89,11 @@
   margin-top: 1px; }
 
 #adminmenu #toplevel_page_elementor a[href="admin.php?page=go_elementor_pro"] {
-  color: #d54e21; }
+  color: #f22074;
+  font-weight: 700;
+  text-shadow: 1px 1px 1px #000; }
+  #adminmenu #toplevel_page_elementor a[href="admin.php?page=go_elementor_pro"]:hover {
+    color: #f43883; }
 
 #adminmenu #toplevel_page_elementor .dashicons.dashicons-star-filled {
   height: auto; }
@@ -89,7 +104,8 @@
   font-size: 18px; }
 
 .elementor-plugins-gopro {
-  color: #39b54a;
+  color: #D30C5C;
+  text-shadow: 1px 1px 1px #eee;
   font-weight: bold; }
 
 .e-logo-wrapper {
@@ -244,22 +260,6 @@ body .block-editor #elementor-switch-mode {
       bottom: 0;
       -webkit-animation-delay: -1.35s;
               animation-delay: -1.35s; }
-
-@-webkit-keyframes load {
-  0% {
-    opacity: .3; }
-  50% {
-    opacity: 1; }
-  100% {
-    opacity: .3; } }
-
-@keyframes load {
-  0% {
-    opacity: .3; }
-  50% {
-    opacity: 1; }
-  100% {
-    opacity: .3; } }
   #elementor-editor .elementor-loading-title {
     color: #a4afb7;
     text-align: center;
@@ -328,7 +328,6 @@ body .block-editor #elementor-switch-mode {
     font-size: 50px;
     color: #a4afb7; }
   .elementor-blank_state h2 {
-    font-family: Roboto, Arial, Helvetica, Verdana, sans-serif;
     font-size: 32px;
     font-weight: 300;
     color: inherit;
@@ -564,7 +563,8 @@ body.post-type-attachment table.media .column-title .media-icon img[src$=".svg"]
     padding: 5px 0; }
     #elementor-system-info .elementor-system-info-report-row > * {
       float: left; }
-  #elementor-system-info .elementor-system-info-report-field, #elementor-system-info .elementor-system-info-field-recommendation {
+  #elementor-system-info .elementor-system-info-report-field,
+  #elementor-system-info .elementor-system-info-field-recommendation {
     padding-left: 10px;
     color: #7F7F7F; }
   #elementor-system-info .elementor-system-info-report-fields {
@@ -737,6 +737,21 @@ body.post-type-attachment table.media .column-title .media-icon img[src$=".svg"]
 #tab-fontawesome4_migration.elementor-active ~ p.submit {
   display: none; }
 
+#elementor_rollback > div,
+#elementor_rollback_pro > div,
+#elementor_replace_url > div {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  #elementor_rollback > div input,
+  #elementor_rollback > div select,
+  #elementor_rollback_pro > div input,
+  #elementor_rollback_pro > div select,
+  #elementor_replace_url > div input,
+  #elementor_replace_url > div select {
+    margin-right: 6px; }
+
 #e-dashboard-overview .dashicons {
   vertical-align: middle;
   font-size: 17px; }
@@ -821,7 +836,7 @@ body.post-type-attachment table.media .column-title .media-icon img[src$=".svg"]
         border: none; }
 
 #e-dashboard-overview .e-overview__go-pro a {
-  color: #fcb92c;
+  color: #D30C5C;
   font-weight: 500; }
 
 .post-type-elementor_library #elementor-template-library-tabs-wrapper {

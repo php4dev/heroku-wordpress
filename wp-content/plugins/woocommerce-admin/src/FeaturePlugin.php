@@ -54,10 +54,29 @@ class FeaturePlugin {
 	 * Init the feature plugin, only if we can detect both Gutenberg and WooCommerce.
 	 */
 	public function init() {
+		/**
+		 * Filter allowing WooCommerce Admin to be disabled.
+		 *
+		 * @param bool $disabled False.
+		 */
+		if ( apply_filters( 'woocommerce_analytics_disabled', false ) ) {
+			return;
+		}
+
 		$this->define_constants();
+
+		require_once WC_ADMIN_ABSPATH . '/includes/core-functions.php';
+		require_once WC_ADMIN_ABSPATH . '/includes/feature-config.php';
+		require_once WC_ADMIN_ABSPATH . '/includes/page-controller-functions.php';
+		require_once WC_ADMIN_ABSPATH . '/includes/wc-admin-update-functions.php';
+
 		register_activation_hook( WC_ADMIN_PLUGIN_FILE, array( $this, 'on_activation' ) );
 		register_deactivation_hook( WC_ADMIN_PLUGIN_FILE, array( $this, 'on_deactivation' ) );
-		add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ) );
+		if ( did_action( 'plugins_loaded' ) ) {
+			self::on_plugins_loaded();
+		} else {
+			add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ) );
+		}
 		add_filter( 'action_scheduler_store_class', array( $this, 'replace_actionscheduler_store_class' ) );
 	}
 
@@ -123,7 +142,7 @@ class FeaturePlugin {
 		$this->define( 'WC_ADMIN_PLUGIN_FILE', WC_ADMIN_ABSPATH . 'woocommerce-admin.php' );
 		// WARNING: Do not directly edit this version number constant.
 		// It is updated as part of the prebuild process from the package.json value.
-		$this->define( 'WC_ADMIN_VERSION_NUMBER', '0.22.0' );
+		$this->define( 'WC_ADMIN_VERSION_NUMBER', '0.23.1' );
 	}
 
 	/**
@@ -296,7 +315,7 @@ class FeaturePlugin {
 	 * @param array $features Array of feature slugs.
 	 */
 	public function replace_supported_features( $features ) {
-		$feature_config = apply_filters( 'wc_admin_get_feature_config', wc_admin_get_feature_config() );
+		$feature_config = apply_filters( 'woocommerce_admin_get_feature_config', wc_admin_get_feature_config() );
 		$features       = array_keys( array_filter( $feature_config ) );
 		return $features;
 	}

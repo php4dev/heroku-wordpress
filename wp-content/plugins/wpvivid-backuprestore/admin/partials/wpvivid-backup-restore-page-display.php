@@ -1271,7 +1271,7 @@ function wpvivid_backuppage_add_page_restore(){
                                     wpvivid_restore_unlock();
                                     wpvivid_restoring = false;
                                     jQuery('#wpvivid_restore_' + restore_method + 'btn').css({'pointer-events': 'auto', 'opacity': '1'});
-                                    alert(jsonarray.error);
+                                    alert("Restore failed.");
                                 }
                                 else {
                                     setTimeout(function () {

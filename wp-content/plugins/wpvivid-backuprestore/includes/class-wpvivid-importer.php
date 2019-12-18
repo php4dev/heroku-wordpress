@@ -322,8 +322,8 @@ class WPvivid_Export_List extends WP_List_Table
             $total_pages_before = '<span class="screen-reader-text">' . __( 'Current Page' ) . '</span><span id="table-paging" class="paging-input"><span class="tablenav-paging-text">';
         } else {
             $html_current_page = sprintf(
-                "%s<input class='current-page' id='current-page-selector' type='text' name='paged' value='%s' size='%d' aria-describedby='table-paging' /><span class='tablenav-paging-text'>",
-                '<label for="current-page-selector" class="screen-reader-text">' . __( 'Current Page' ) . '</label>',
+                "%s<input class='current-page' id='current-page-selector-import' type='text' name='paged' value='%s' size='%d' aria-describedby='table-paging' /><span class='tablenav-paging-text'>",
+                '<label for="current-page-selector-import" class="screen-reader-text">' . __( 'Current Page' ) . '</label>',
                 $current,
                 strlen( $total_pages )
             );
@@ -418,13 +418,13 @@ class WPvivid_Impoter_taskmanager
         $default = array();
         $options = get_option('wpvivid_importer_task_list', $default);
         $options[$task_id]=$task;
-        update_option('wpvivid_importer_task_list', $options);
+        WPvivid_Setting::update_option('wpvivid_importer_task_list', $options);
     }
 
     public static function delete_task($task_id){
         $options = get_option('wpvivid_importer_task_list', array());
         unset($options[$task_id]);
-        update_option('wpvivid_importer_task_list', $options);
+        WPvivid_Setting::update_option('wpvivid_importer_task_list', $options);
     }
 
     public static function get_import_task_status($task_id){
