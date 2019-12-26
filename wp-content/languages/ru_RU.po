@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.3.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-11-25 10:51:34+0000\n"
+"PO-Revision-Date: 2019-12-24 19:19:17+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -6957,7 +6957,7 @@ msgstr "Неверный ярлык."
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:648
 #: wp-includes/rest-api.php:1326 wp-includes/user.php:3389
 msgid "Invalid email address."
-msgstr "Неверный адрес e-mail."
+msgstr "Неверный адрес email."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:517
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:731
@@ -7204,7 +7204,7 @@ msgstr "Главная страница"
 #: wp-includes/theme.php:2150
 msgctxt "Theme starter content"
 msgid "Email"
-msgstr "E-mail"
+msgstr "Email"
 
 #: wp-includes/theme.php:2166
 msgctxt "Theme starter content"
@@ -7520,7 +7520,7 @@ msgstr "Дата регистрации пользователя."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1230
 msgid "The email address for the user."
-msgstr "Адрес e-mail пользователя."
+msgstr "Адрес email пользователя."
 
 #. translators: %s: Role key.
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1087
@@ -7969,7 +7969,7 @@ msgstr "Ограничить ответ записями опубликован�
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1416
 msgid "Limit result set to that from a specific author email. Requires authorization."
-msgstr "Ограничить выборку до имеющей определённый e-mail автора. Требует авторизации."
+msgstr "Ограничить выборку до имеющей определённый email автора. Требует авторизации."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1407
 msgid "Ensure result set excludes comments assigned to specific user IDs. Requires authorization."
@@ -8054,7 +8054,7 @@ msgstr "IP адрес автора объекта."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1244
 msgid "Email address for the object author."
-msgstr "Адрес e-mail автора объекта."
+msgstr "Адрес email автора объекта."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1239
 msgid "The ID of the user object, if author was a user."
@@ -8097,7 +8097,7 @@ msgstr "Не удалось создать комментарий."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:543
 msgid "Creating a comment requires valid author name and email values."
-msgstr "Для создания комментария необходимо указать корректное имя автора и адрес e-mail."
+msgstr "Для создания комментария необходимо указать корректное имя автора и адрес email."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:497
 msgid "Cannot create existing comment."
@@ -8333,7 +8333,7 @@ msgstr "Назад"
 
 #: wp-login.php:845 wp-login.php:1356 wp-includes/general-template.php:463
 msgid "Username or Email Address"
-msgstr "Имя пользователя или e-mail"
+msgstr "Имя пользователя или email"
 
 #. translators: %s: "Search WordPress.org themes" button text.
 #: wp-includes/customize/class-wp-customize-themes-section.php:102
@@ -9093,7 +9093,7 @@ msgstr "<strong>ОШИБКА</strong>: Введённый вами пароль 
 
 #: wp-includes/user.php:211
 msgid "<strong>ERROR</strong>: The email field is empty."
-msgstr "<strong>ОШИБКА</strong>: Вы не ввели e-mail."
+msgstr "<strong>ОШИБКА</strong>: Вы не ввели email."
 
 #: wp-includes/taxonomy.php:468
 msgid "Unregistering a built-in taxonomy is not allowed."
@@ -9156,7 +9156,7 @@ msgstr "Войти"
 
 #: wp-includes/pluggable.php:544
 msgid "<strong>ERROR</strong>: Invalid username, email address or incorrect password."
-msgstr "<strong>ОШИБКА</strong>: Неверное имя пользователя, e-mail или пароль."
+msgstr "<strong>ОШИБКА</strong>: Неверное имя пользователя, email или пароль."
 
 #. translators: 1: Blog name, 2: Separator (raquo), 3: Term name, 4: Taxonomy
 #. singular name.
@@ -9211,7 +9211,7 @@ msgstr "<strong>ОШИБКА</strong>: ваша ссылка слишком дл
 
 #: wp-includes/comment.php:1231
 msgid "<strong>ERROR</strong>: your email address is too long."
-msgstr "<strong>ОШИБКА</strong>: ваш адрес e-mail слишком длинный."
+msgstr "<strong>ОШИБКА</strong>: ваш адрес email слишком длинный."
 
 #: wp-includes/comment.php:1227
 msgid "<strong>ERROR</strong>: your name is too long."
@@ -10015,7 +10015,7 @@ msgstr "Нет записей"
 
 #: wp-login.php:1092
 msgid "Registration confirmation will be emailed to you."
-msgstr "Подтверждение регистрации будет отправлено на ваш e-mail."
+msgstr "Подтверждение регистрации будет отправлено на ваш email."
 
 #: wp-includes/script-loader.php:1482
 msgid "Hide"
@@ -10182,7 +10182,7 @@ msgid ""
 msgstr ""
 "Привет, ###USERNAME###!\n"
 "\n"
-"Это уведомление подтверждает успешную смену вашего адреса e-mail на сайте «###SITENAME###».\n"
+"Это уведомление подтверждает, что ваш адрес email на сайте «###SITENAME###» успешно изменён на ###NEW_EMAIL###.\n"
 "\n"
 "Если вы не меняли адрес, пожалуйста, напишите администратору сайта на\n"
 "###ADMIN_EMAIL###\n"
@@ -12538,7 +12538,7 @@ msgstr "Сайта, который вы ищете, <strong>%s</strong>, не с
 #. translators: %s: Email address.
 #: wp-signup.php:847
 msgid "Have you entered your email correctly? You have entered %s, if it&#8217;s incorrect, you will not receive your email."
-msgstr "Вы правильно указали свой e-mail? У нас он записан как %s, но если это неправильный адрес, письмо не придёт."
+msgstr "Вы правильно указали свой email? У нас он записан как %s, но если это неправильный адрес, письмо не придёт."
 
 #. translators: 1: Month, 2: Day, 3: Year, 4: Hour, 5: Minute.
 #: wp-includes/script-loader.php:1695 wp-includes/script-loader.php:1727
@@ -12891,7 +12891,7 @@ msgstr "<strong>ОШИБКА</strong>: Это имя пользователя у
 
 #: wp-includes/ms-functions.php:484
 msgid "Please enter a valid email address."
-msgstr "Пожалуйста, введите корректный адрес e-mail."
+msgstr "Пожалуйста, введите корректный адрес email."
 
 #: wp-includes/ms-functions.php:165
 msgid "The requested user does not exist."
@@ -13564,11 +13564,11 @@ msgstr "Обратная связь"
 
 #: wp-includes/comment.php:3343
 msgid "<strong>ERROR</strong>: please fill the required fields (name, email)."
-msgstr "<strong>ОШИБКА</strong>: пожалуйста, заполните необходимые поля (имя, e-mail)."
+msgstr "<strong>ОШИБКА</strong>: пожалуйста, заполните необходимые поля (имя, email)."
 
 #: wp-includes/comment.php:3345
 msgid "<strong>ERROR</strong>: please enter a valid email address."
-msgstr "<strong>ОШИБКА</strong>: пожалуйста, введите корректный адрес e-mail."
+msgstr "<strong>ОШИБКА</strong>: пожалуйста, введите корректный адрес email."
 
 #: wp-includes/comment.php:3370
 msgid "<strong>ERROR</strong>: please type a comment."
@@ -13916,7 +13916,7 @@ msgstr "Подключение этого файла больше не треб�
 
 #: wp-login.php:833
 msgid "Please enter your username or email address. You will receive a link to create a new password via email."
-msgstr "Пожалуйста, введите ваше имя пользователя или e-mail. Вы получите письмо со ссылкой для создания нового пароля."
+msgstr "Пожалуйста, введите ваше имя пользователя или email. Вы получите письмо со ссылкой для создания нового пароля."
 
 #: wp-includes/widgets/class-wp-widget-categories.php:173
 #: wp-includes/widgets/class-wp-widget-archives.php:202
@@ -14153,7 +14153,7 @@ msgstr "Извините, в настоящий момент регистрац�
 
 #: wp-signup.php:273
 msgid "We send your registration email to this address. (Double-check your email address before continuing.)"
-msgstr "На этот адрес будет отправлено письмо для подтверждения. (Внимательно проверьте адрес e-mail, перед тем как продолжить.)"
+msgstr "На этот адрес будет отправлено письмо для подтверждения. (Внимательно проверьте адрес email, перед тем как продолжить.)"
 
 #: wp-includes/post.php:1684
 msgctxt "post type singular name"
@@ -14360,7 +14360,7 @@ msgstr "Введённый адрес WordPress не является корре
 
 #: wp-includes/formatting.php:4580
 msgid "The email address entered did not appear to be a valid email address. Please enter a valid email address."
-msgstr "Введённый адрес e-mail не является корректным. Пожалуйста, введите корректный адрес e-mail."
+msgstr "Введённый адрес email не является корректным. Пожалуйста, введите корректный адрес email."
 
 #: wp-includes/taxonomy.php:2243
 msgid "A term with the name provided already exists with this parent."
@@ -14373,7 +14373,7 @@ msgstr "При добавлении вас к этому сайту произо
 
 #: wp-includes/comment-template.php:2396
 msgid "Your email address will not be published."
-msgstr "Ваш e-mail не будет опубликован."
+msgstr "Ваш адрес email не будет опубликован."
 
 #: wp-includes/class-wp-xmlrpc-server.php:6777 wp-includes/class-http.php:275
 #: wp-includes/class-http.php:502
@@ -14751,11 +14751,11 @@ msgstr "Извините, вам не разрешено получать дет
 
 #: wp-includes/class-wp-xmlrpc-server.php:3912
 msgid "A valid email address is required."
-msgstr "Требуется корректный адрес e-mail"
+msgstr "Требуется корректный адрес email."
 
 #: wp-includes/class-wp-xmlrpc-server.php:3910
 msgid "Comment author name and email are required."
-msgstr "Требуются имя и e-mail автора комментария"
+msgstr "Требуются имя и email автора комментария"
 
 #: wp-includes/class-wp-xmlrpc-server.php:1397
 #: wp-includes/class-wp-xmlrpc-server.php:1688
@@ -14879,7 +14879,7 @@ msgstr "Что-то не получилось. Пожалуйста, испра�
 
 #: wp-signup.php:266
 msgid "Email&nbsp;Address:"
-msgstr "Адрес&nbsp;e-mail:"
+msgstr "Адрес&nbsp;email:"
 
 #: wp-signup.php:263
 msgid "(Must be at least 4 characters, letters and numbers only.)"
@@ -14958,11 +14958,11 @@ msgstr "Забыли пароль?"
 
 #: wp-includes/user.php:2510 wp-includes/user.php:2793
 msgid "<strong>ERROR</strong>: The email address isn&#8217;t correct."
-msgstr "<strong>ОШИБКА</strong>: Некорректный адрес e-mail."
+msgstr "<strong>ОШИБКА</strong>: Некорректный адрес email."
 
 #: wp-includes/user.php:2508
 msgid "<strong>ERROR</strong>: Please type your email address."
-msgstr "<strong>ОШИБКА</strong>: Пожалуйста, введите ваш адрес e-mail."
+msgstr "<strong>ОШИБКА</strong>: Пожалуйста, введите ваш адрес email."
 
 #: wp-includes/user.php:2365 wp-includes/user.php:2369
 #: wp-includes/user.php:2375 wp-includes/user.php:2401
@@ -14983,7 +14983,7 @@ msgstr "Сброс пароля для этого пользователя не 
 
 #: wp-login.php:360
 msgid "<strong>ERROR</strong>: Enter a username or email address."
-msgstr "<strong>ОШИБКА</strong>: Введите имя пользователя или e-mail."
+msgstr "<strong>ОШИБКА</strong>: Введите имя пользователя или email."
 
 #: wp-login.php:150
 msgid "Powered by WordPress"
@@ -15444,7 +15444,7 @@ msgstr "Это имя пользователя в настоящее время 
 
 #: wp-includes/user.php:1644 wp-includes/ms-functions.php:518
 msgid "Sorry, that email address is already used!"
-msgstr "Извините, этот адрес e-mail уже используется!"
+msgstr "Извините, этот адрес email уже используется!"
 
 #: wp-includes/user.php:1570 wp-includes/ms-functions.php:513
 msgid "Sorry, that username already exists!"
@@ -15452,7 +15452,7 @@ msgstr "Извините, это имя пользователя уже суще
 
 #: wp-includes/ms-functions.php:507
 msgid "Sorry, that email address is not allowed!"
-msgstr "Извините, этот адрес e-mail недопустим!"
+msgstr "Извините, этот адрес email недопустим!"
 
 #: wp-includes/ms-functions.php:499
 msgid "Sorry, usernames must have letters too!"
@@ -15622,7 +15622,7 @@ msgstr "Введённый вами адрес похож на внешнюю с
 
 #: wp-includes/class-wp-editor.php:1170
 msgid "The URL you entered seems to be an email address. Do you want to add the required mailto: prefix?"
-msgstr "Введённый вами адрес похож на e-mail, добавить mailto: в начало?"
+msgstr "Введённый вами адрес похож на email, добавить mailto: в начало?"
 
 #: wp-includes/customize/class-wp-customize-background-position-control.php:75
 #: wp-includes/class-wp-editor.php:1243
@@ -16699,7 +16699,7 @@ msgstr "Формат даты"
 
 #: wp-login.php:1078 wp-includes/comment-template.php:2300
 msgid "Email"
-msgstr "E-mail"
+msgstr "Email"
 
 #: wp-includes/class-wp-xmlrpc-server.php:545
 #: wp-includes/class-wp-customize-manager.php:5048
@@ -16765,7 +16765,7 @@ msgstr "Этот виджет не имеет настроек."
 
 #: wp-includes/user.php:2513
 msgid "<strong>ERROR</strong>: This email is already registered, please choose another one."
-msgstr "<strong>ОШИБКА</strong>: Этот e-mail уже зарегистрирован. Пожалуйста, введите другой."
+msgstr "<strong>ОШИБКА</strong>: Этот email уже зарегистрирован. Пожалуйста, введите другой."
 
 #: wp-includes/user.php:2491
 msgid "<strong>ERROR</strong>: Please enter a username."
@@ -16881,7 +16881,7 @@ msgstr "Страницы"
 #: wp-includes/pluggable.php:1590 wp-includes/pluggable.php:1765
 #: wp-includes/pluggable.php:1948
 msgid "Email: %s"
-msgstr "E-mail: %s"
+msgstr "Email: %s"
 
 #: wp-includes/category-template.php:152
 msgid "Uncategorized"
