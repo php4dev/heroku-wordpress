@@ -26,9 +26,9 @@
 .storage-account-block{padding:10px;}
 .storage-account-button{margin:10px 10px 10px 0 !important;display:block !important; float:left;}
 .schedule-tab-block{padding:10px;}
-.schedule-tab-block input, span{display:line-block; margin-top:10px; margin-bottom:10px;margin-right:10px;}
+.schedule-tab-block input{display:line-block; margin-top:10px; margin-bottom:10px;margin-right:10px;}
 .setting-tab-block{padding: 10px 10px 10px 0;}
-.setting-tab-block input, span{display:line-block; margin-top:10px; margin-bottom:10px;margin-right:10px;}
+.setting-tab-block input{display:line-block; margin-top:10px; margin-bottom:10px;margin-right:10px;}
 .setting-page-content{padding-left:10px;}
 .backup-log-btn{height:30px;float:left; margin-left:10px; margin-bottom:10px;}
 @keyframes rotate { 0%   { transform: rotate(0); } 100%  { transform: rotate(359.9deg); } }
@@ -46,13 +46,13 @@
 .button-secondary.log-page:hover{color: #0b82a7;border: 1px solid #0b82a7;}
 .button-secondary.log-page:focus{color: #00a0d2;border: 1px solid #00a0d2;}
 .remote-storage-set-default-block{padding-top:10px;padding-left:10px;padding-right:10px;}
-.remote-storage-set-default-block input, span{display:line-block; margin-top:10px; margin-bottom:10px;margin-right:10px;}
+.remote-storage-set-default-block input{display:line-block; margin-top:10px; margin-bottom:10px;margin-right:10px;}
 .remote-storage-ftp-passive-block,
 .remote-storage-amazons3-storage-class,
 .remote-storage-amazons3-encryption{padding-left:10px;}
-.remote-storage-ftp-passive-block input, span,
-.remote-storage-amazons3-storage-class input, span,
-.remote-storage-amazons3-encryption input, span{display:line-block; margin-top:10px; margin-bottom:10px;margin-right:10px;}
+.remote-storage-ftp-passive-block input,
+.remote-storage-amazons3-storage-class input,
+.remote-storage-amazons3-encryption input{display:line-block; margin-top:10px; margin-bottom:10px;margin-right:10px;}
 .backup-list-head{}
 .storage-account-form {padding-top: 1px; padding-bottom: 1px;}
 .quicktransfer{width:100%; float:left; box-sizing:border-box;margin-right:10px; padding:10px;}

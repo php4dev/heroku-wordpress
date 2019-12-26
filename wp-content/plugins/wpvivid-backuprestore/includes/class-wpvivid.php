@@ -930,8 +930,10 @@ class WPvivid {
     public function clean_backing_up_data_event($task_id)
     {
         $tasks=WPvivid_Setting::get_option('clean_task');
-        $task=$tasks[$task_id];
-        unset($tasks[$task_id]);
+        if(isset($tasks[$task_id])){
+            $task=$tasks[$task_id];
+            unset($tasks[$task_id]);
+        }
         WPvivid_Setting::update_option('clean_task',$tasks);
 
         if(!empty($task))
@@ -1038,6 +1040,7 @@ class WPvivid {
         {
             $this->clean_oldest_backup();
         }
+        do_action('wpvivid_clean_oldest_backup',$backup_options);
 
         if(WPvivid_taskmanager::is_tasks_backup_running())
         {
@@ -3813,16 +3816,16 @@ class WPvivid {
                                                 <div class="action-progress-bar-percent" id="wpvivid_action_progress_bar_percent" style="height:24px;width:' . $list_tasks[$task['id']]['task_info']['backup_percent'] . '"></div>
                                              </div>
                                              <div id="wpvivid_estimate_backup_info" style="float:left; ' . $list_tasks[$task['id']]['task_info']['display_estimate_backup'] . '">
-                                                <div class="backup-basic-info"><span>' . __('Database Size:', 'wpvivid') . '</span><span id="wpvivid_backup_database_size">' . $list_tasks[$task['id']]['task_info']['db_size'] . '</span></div>
-                                                <div class="backup-basic-info"><span>' . __('File Size:', 'wpvivid') . '</span><span id="wpvivid_backup_file_size">' . $list_tasks[$task['id']]['task_info']['file_size'] . '</span></div>
+                                                <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Database Size:', 'wpvivid') . '</span><span id="wpvivid_backup_database_size">' . $list_tasks[$task['id']]['task_info']['db_size'] . '</span></div>
+                                                <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('File Size:', 'wpvivid') . '</span><span id="wpvivid_backup_file_size">' . $list_tasks[$task['id']]['task_info']['file_size'] . '</span></div>
                                              </div>
                                              <div id="wpvivid_estimate_upload_info" style="float: left;"> 
-                                                <div class="backup-basic-info"><span>' . __('Total Size:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['total'] . '</span></div>
-                                                <div class="backup-basic-info"><span>' . __('Uploaded:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['upload'] . '</span></div>
-                                                <div class="backup-basic-info"><span>' . __('Speed:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['speed'] . '</span></div>
+                                                <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Total Size:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['total'] . '</span></div>
+                                                <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Uploaded:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['upload'] . '</span></div>
+                                                <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Speed:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['speed'] . '</span></div>
                                              </div>
                                              <div style="float: left;">
-                                                <div class="backup-basic-info"><span>' . __('Network Connection:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['network_connection'] . '</span></div>
+                                                <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Network Connection:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['network_connection'] . '</span></div>
                                              </div>
                                              <div style="clear:both;"></div>
                                              <div style="margin-left:10px; float: left; width:100%;"><p id="wpvivid_current_doing">' . $list_tasks[$task['id']]['task_info']['descript'] . '</p></div>
@@ -4252,7 +4255,7 @@ class WPvivid {
                 {
                     if($except_regex!==false)
                     {
-                        if($this -> regex_match($except_regex['directory'],$path.DIRECTORY_SEPARATOR.$filename,$flag)){
+                        if($this -> regex_match($except_regex['file'],$path.DIRECTORY_SEPARATOR.$filename,$flag)){
                             continue;
                         }
                         $folder[]=$path.DIRECTORY_SEPARATOR.$filename;

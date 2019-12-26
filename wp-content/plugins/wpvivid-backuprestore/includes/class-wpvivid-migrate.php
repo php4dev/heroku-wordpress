@@ -1103,7 +1103,7 @@ class WPvivid_Migrate
                   <label>
                    <div style="float: left;">
                         <input type="radio" disabled />
-                        <span style="color: #ddd;">'.__('Choose what to migrate').'</span>
+                        <span class="wpvivid-element-space-right" style="color: #ddd;">'.__('Choose what to migrate').'</span>
                     </div>
                     <span class="wpvivid-feature-pro">
                         <a href="https://wpvivid.com/custom-migration-overview?utm_source=client_migration_custom_backup&utm_medium=inner_link&utm_campaign=access" style="text-decoration: none;">Pro feature: learn more</a>
@@ -1140,16 +1140,16 @@ class WPvivid_Migrate
                             <div class="action-progress-bar-percent" id="wpvivid_upload_progress_bar_percent" style="height:24px;width:' . $list_tasks[$task['id']]['task_info']['backup_percent'] . '"></div>
                          </div>
                          <div id="wpvivid_estimate_backup_info" style="float:left;">
-                            <div class="backup-basic-info"><span>' . __('Database Size:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['db_size'] . '</span></div>
-                            <div class="backup-basic-info"><span>' . __('File Size:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['file_size'] . '</span></div>
+                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Database Size:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['db_size'] . '</span></div>
+                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('File Size:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['file_size'] . '</span></div>
                          </div>
                          <div id="wpvivid_estimate_upload_info" style="float: left;"> 
-                            <div class="backup-basic-info"><span>' . __('Total Size:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['total'] . '</span></div>
-                            <div class="backup-basic-info"><span>' . __('Uploaded:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['upload'] . '</span></div>
-                            <div class="backup-basic-info"><span>' . __('Speed:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['speed'] . '</span></div>
+                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Total Size:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['total'] . '</span></div>
+                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Uploaded:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['upload'] . '</span></div>
+                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Speed:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['speed'] . '</span></div>
                          </div>
                          <div style="float: left;">
-                            <div class="backup-basic-info"><span>' . __('Network Connection:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['network_connection'] . '</span></div>
+                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Network Connection:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['network_connection'] . '</span></div>
                          </div>
                          <div style="clear:both;"></div>
                          <div style="margin-left:10px; float: left; width:100%;"><p id="wpvivid_upload_current_doing">' . $list_tasks[$task['id']]['task_info']['descript'] . '</p></div>

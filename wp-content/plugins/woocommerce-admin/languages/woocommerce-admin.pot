@@ -2,9 +2,10 @@
 # This file is distributed under the same license as the WooCommerce Admin package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Admin 0.23.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wc-admin\n"
-"POT-Creation-Date: 2019-12-08 18:40:07+00:00\n"
+"Project-Id-Version: WooCommerce Admin 0.23.2\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/woocommerce-admin\n"
+"POT-Creation-Date: 2019-12-19 18:28:46+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -157,7 +158,7 @@ msgstr ""
 #: src/API/Leaderboards.php:128 src/API/Leaderboards.php:258
 #: src/API/Reports/Categories/Controller.php:336
 #: src/API/Reports/Coupons/Controller.php:303
-#: src/API/Reports/Customers/Controller.php:577
+#: src/API/Reports/Customers/Controller.php:579
 #: src/API/Reports/Orders/Stats/Controller.php:164
 #: src/API/Reports/Products/Controller.php:390
 #: src/API/Reports/Revenue/Stats/Controller.php:451
@@ -539,7 +540,7 @@ msgid "Select country"
 msgstr ""
 
 #: languages/woocommerce-admin.php:264
-#: src/API/Reports/Customers/Controller.php:573
+#: src/API/Reports/Customers/Controller.php:575
 msgid "Username"
 msgstr ""
 
@@ -564,7 +565,7 @@ msgid "Select customer username"
 msgstr ""
 
 #: languages/woocommerce-admin.php:289
-#: src/API/Reports/Customers/Controller.php:576
+#: src/API/Reports/Customers/Controller.php:578
 msgid "Email"
 msgstr ""
 
@@ -605,7 +606,7 @@ msgid "{{title}}No. of Orders{{/title}} {{rule /}} {{filter /}}"
 msgstr ""
 
 #: languages/woocommerce-admin.php:321 src/API/Leaderboards.php:261
-#: src/API/Reports/Customers/Controller.php:578
+#: src/API/Reports/Customers/Controller.php:580
 msgid "Total Spend"
 msgstr ""
 
@@ -622,7 +623,7 @@ msgid "{{title}}Total Spend{{/title}} {{rule /}} {{filter /}}"
 msgstr ""
 
 #: languages/woocommerce-admin.php:334
-#: src/API/Reports/Customers/Controller.php:579
+#: src/API/Reports/Customers/Controller.php:581
 msgid "AOV"
 msgstr ""
 
@@ -691,7 +692,7 @@ msgid "Advanced Filters"
 msgstr ""
 
 #: languages/woocommerce-admin.php:390
-#: src/API/Reports/Customers/Controller.php:572
+#: src/API/Reports/Customers/Controller.php:574
 msgid "Name"
 msgstr ""
 
@@ -712,7 +713,7 @@ msgid "Select customer name"
 msgstr ""
 
 #: languages/woocommerce-admin.php:407
-#: src/API/Reports/Customers/Controller.php:580
+#: src/API/Reports/Customers/Controller.php:582
 msgid "Country"
 msgstr ""
 
@@ -745,12 +746,12 @@ msgid "Search by customer name"
 msgstr ""
 
 #: languages/woocommerce-admin.php:433
-#: src/API/Reports/Customers/Controller.php:574
+#: src/API/Reports/Customers/Controller.php:576
 msgid "Last Active"
 msgstr ""
 
 #: languages/woocommerce-admin.php:436
-#: src/API/Reports/Customers/Controller.php:575
+#: src/API/Reports/Customers/Controller.php:577
 msgid "Sign Up"
 msgstr ""
 
@@ -759,17 +760,17 @@ msgid "Average Order Value"
 msgstr ""
 
 #: languages/woocommerce-admin.php:445
-#: src/API/Reports/Customers/Controller.php:581
+#: src/API/Reports/Customers/Controller.php:583
 msgid "City"
 msgstr ""
 
 #: languages/woocommerce-admin.php:448
-#: src/API/Reports/Customers/Controller.php:582
+#: src/API/Reports/Customers/Controller.php:584
 msgid "Region"
 msgstr ""
 
 #: languages/woocommerce-admin.php:451
-#: src/API/Reports/Customers/Controller.php:583
+#: src/API/Reports/Customers/Controller.php:585
 msgid "Postal Code"
 msgstr ""
 
@@ -3424,7 +3425,7 @@ msgstr ""
 #: src/API/Reports/Categories/Controller.php:222
 #: src/API/Reports/Coupons/Controller.php:228
 #: src/API/Reports/Coupons/Stats/Controller.php:274
-#: src/API/Reports/Customers/Controller.php:352
+#: src/API/Reports/Customers/Controller.php:354
 #: src/API/Reports/Downloads/Controller.php:253
 #: src/API/Reports/Downloads/Stats/Controller.php:231
 #: src/API/Reports/Orders/Controller.php:260
@@ -3443,7 +3444,7 @@ msgstr ""
 #: src/API/Reports/Categories/Controller.php:230
 #: src/API/Reports/Coupons/Controller.php:236
 #: src/API/Reports/Coupons/Stats/Controller.php:282
-#: src/API/Reports/Customers/Controller.php:360
+#: src/API/Reports/Customers/Controller.php:362
 #: src/API/Reports/Downloads/Controller.php:261
 #: src/API/Reports/Downloads/Stats/Controller.php:239
 #: src/API/Reports/Orders/Controller.php:268
@@ -3550,7 +3551,7 @@ msgstr ""
 #: src/API/Notes.php:323 src/API/Reports/Categories/Controller.php:251
 #: src/API/Reports/Coupons/Controller.php:257
 #: src/API/Reports/Coupons/Stats/Controller.php:303
-#: src/API/Reports/Customers/Controller.php:369
+#: src/API/Reports/Customers/Controller.php:371
 #: src/API/Reports/Downloads/Controller.php:282
 #: src/API/Reports/Downloads/Stats/Controller.php:260
 #: src/API/Reports/Orders/Controller.php:289
@@ -3568,7 +3569,7 @@ msgstr ""
 #: src/API/Notes.php:330 src/API/Reports/Categories/Controller.php:258
 #: src/API/Reports/Coupons/Controller.php:264
 #: src/API/Reports/Coupons/Stats/Controller.php:310
-#: src/API/Reports/Customers/Controller.php:376
+#: src/API/Reports/Customers/Controller.php:378
 #: src/API/Reports/Downloads/Controller.php:289
 #: src/API/Reports/Downloads/Stats/Controller.php:267
 #: src/API/Reports/Orders/Controller.php:296
@@ -4204,70 +4205,70 @@ msgid ""
 "segmenting by variation."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:225
+#: src/API/Reports/Customers/Controller.php:227
 #: src/API/Reports/Orders/Controller.php:202
 msgid "Customer ID."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:231
+#: src/API/Reports/Customers/Controller.php:233
 msgid "User ID."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:237
+#: src/API/Reports/Customers/Controller.php:239
 msgid "Name."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:243
+#: src/API/Reports/Customers/Controller.php:245
 msgid "Username."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:249
+#: src/API/Reports/Customers/Controller.php:251
 #: src/API/Reports/Taxes/Controller.php:178
 msgid "Country."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:255
+#: src/API/Reports/Customers/Controller.php:257
 msgid "City."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:261
+#: src/API/Reports/Customers/Controller.php:263
 msgid "Region."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:267
+#: src/API/Reports/Customers/Controller.php:269
 msgid "Postal code."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:273
+#: src/API/Reports/Customers/Controller.php:275
 msgid "Date registered."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:279
+#: src/API/Reports/Customers/Controller.php:281
 msgid "Date registered GMT."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:285
+#: src/API/Reports/Customers/Controller.php:287
 msgid "Date last active."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:291
+#: src/API/Reports/Customers/Controller.php:293
 msgid "Date last active GMT."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:297
+#: src/API/Reports/Customers/Controller.php:299
 msgid "Order count."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:303
+#: src/API/Reports/Customers/Controller.php:305
 msgid "Total spend."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:309
+#: src/API/Reports/Customers/Controller.php:311
 msgid "Avg order value."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:328
-#: src/API/Reports/Customers/Controller.php:477
+#: src/API/Reports/Customers/Controller.php:330
+#: src/API/Reports/Customers/Controller.php:479
 #: src/API/Reports/Customers/Stats/Controller.php:187
 #: src/API/Reports/Customers/Stats/Controller.php:281
 msgid ""
@@ -4275,8 +4276,8 @@ msgid ""
 "compliant datetime."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:334
-#: src/API/Reports/Customers/Controller.php:483
+#: src/API/Reports/Customers/Controller.php:336
+#: src/API/Reports/Customers/Controller.php:485
 #: src/API/Reports/Customers/Stats/Controller.php:193
 #: src/API/Reports/Customers/Stats/Controller.php:287
 msgid ""
@@ -4284,19 +4285,19 @@ msgid ""
 "compliant datetime."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:340
+#: src/API/Reports/Customers/Controller.php:342
 msgid ""
 "Limit response to resources with orders published after a given ISO8601 "
 "compliant date."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:346
+#: src/API/Reports/Customers/Controller.php:348
 msgid ""
 "Limit response to resources with orders published before a given ISO8601 "
 "compliant date."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:395
+#: src/API/Reports/Customers/Controller.php:397
 #: src/API/Reports/Customers/Stats/Controller.php:199
 #: src/API/Reports/Downloads/Stats/Controller.php:291
 #: src/API/Reports/Orders/Stats/Controller.php:395
@@ -4308,69 +4309,69 @@ msgid ""
 "coupon_includes, coupon_excludes, customer, categories"
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:405
+#: src/API/Reports/Customers/Controller.php:407
 #: src/API/Reports/Customers/Stats/Controller.php:209
 msgid ""
 "Limit response to objects with a customer field containing the search term. "
 "Searches the field provided by `searchby`."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:420
+#: src/API/Reports/Customers/Controller.php:422
 #: src/API/Reports/Customers/Stats/Controller.php:224
 msgid "Limit response to objects with specfic names."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:425
+#: src/API/Reports/Customers/Controller.php:427
 #: src/API/Reports/Customers/Stats/Controller.php:229
 msgid "Limit response to objects excluding specfic names."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:430
+#: src/API/Reports/Customers/Controller.php:432
 #: src/API/Reports/Customers/Stats/Controller.php:234
 msgid "Limit response to objects with specfic usernames."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:435
+#: src/API/Reports/Customers/Controller.php:437
 #: src/API/Reports/Customers/Stats/Controller.php:239
 msgid "Limit response to objects excluding specfic usernames."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:440
+#: src/API/Reports/Customers/Controller.php:442
 #: src/API/Reports/Customers/Stats/Controller.php:244
 msgid "Limit response to objects including emails."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:445
+#: src/API/Reports/Customers/Controller.php:447
 #: src/API/Reports/Customers/Stats/Controller.php:249
 msgid "Limit response to objects excluding emails."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:450
+#: src/API/Reports/Customers/Controller.php:452
 #: src/API/Reports/Customers/Stats/Controller.php:254
 msgid "Limit response to objects with specfic countries."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:455
+#: src/API/Reports/Customers/Controller.php:457
 #: src/API/Reports/Customers/Stats/Controller.php:259
 msgid "Limit response to objects excluding specfic countries."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:460
+#: src/API/Reports/Customers/Controller.php:462
 #: src/API/Reports/Customers/Stats/Controller.php:264
 msgid ""
 "Limit response to objects last active before (or at) a given ISO8601 "
 "compliant datetime."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:466
+#: src/API/Reports/Customers/Controller.php:468
 #: src/API/Reports/Customers/Stats/Controller.php:270
 msgid ""
 "Limit response to objects last active after (or at) a given ISO8601 "
 "compliant datetime."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:472
-#: src/API/Reports/Customers/Controller.php:489
+#: src/API/Reports/Customers/Controller.php:474
+#: src/API/Reports/Customers/Controller.php:491
 #: src/API/Reports/Customers/Stats/Controller.php:276
 #: src/API/Reports/Customers/Stats/Controller.php:293
 msgid ""
@@ -4378,82 +4379,82 @@ msgid ""
 "datetime."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:494
+#: src/API/Reports/Customers/Controller.php:496
 #: src/API/Reports/Customers/Stats/Controller.php:298
 msgid ""
 "Limit response to objects with an order count greater than or equal to "
 "given integer."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:500
+#: src/API/Reports/Customers/Controller.php:502
 #: src/API/Reports/Customers/Stats/Controller.php:304
 msgid ""
 "Limit response to objects with an order count less than or equal to given "
 "integer."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:506
+#: src/API/Reports/Customers/Controller.php:508
 #: src/API/Reports/Customers/Stats/Controller.php:310
 msgid "Limit response to objects with an order count between two given integers."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:511
+#: src/API/Reports/Customers/Controller.php:513
 #: src/API/Reports/Customers/Stats/Controller.php:315
 msgid ""
 "Limit response to objects with a total order spend greater than or equal to "
 "given number."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:516
+#: src/API/Reports/Customers/Controller.php:518
 #: src/API/Reports/Customers/Stats/Controller.php:320
 msgid ""
 "Limit response to objects with a total order spend less than or equal to "
 "given number."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:521
+#: src/API/Reports/Customers/Controller.php:523
 #: src/API/Reports/Customers/Stats/Controller.php:325
 msgid ""
 "Limit response to objects with a total order spend between two given "
 "numbers."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:526
+#: src/API/Reports/Customers/Controller.php:528
 #: src/API/Reports/Customers/Stats/Controller.php:330
 msgid ""
 "Limit response to objects with an average order spend greater than or equal "
 "to given number."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:531
+#: src/API/Reports/Customers/Controller.php:533
 #: src/API/Reports/Customers/Stats/Controller.php:335
 msgid ""
 "Limit response to objects with an average order spend less than or equal to "
 "given number."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:536
+#: src/API/Reports/Customers/Controller.php:538
 #: src/API/Reports/Customers/Stats/Controller.php:340
 msgid ""
 "Limit response to objects with an average order spend between two given "
 "numbers."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:541
+#: src/API/Reports/Customers/Controller.php:543
 #: src/API/Reports/Customers/Stats/Controller.php:345
 msgid ""
 "Limit response to objects with last order before (or at) a given ISO8601 "
 "compliant datetime."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:547
+#: src/API/Reports/Customers/Controller.php:549
 #: src/API/Reports/Customers/Stats/Controller.php:351
 msgid ""
 "Limit response to objects with last order after (or at) a given ISO8601 "
 "compliant datetime."
 msgstr ""
 
-#: src/API/Reports/Customers/Controller.php:553
+#: src/API/Reports/Customers/Controller.php:555
 #: src/API/Reports/Customers/Stats/Controller.php:357
 msgid "Limit result to items with specified customer ids."
 msgstr ""
@@ -5250,7 +5251,7 @@ msgstr ""
 msgid "WooCommerce Helper was not able to connect to WooCommerce.com."
 msgstr ""
 
-#: src/Loader.php:562
+#: src/Loader.php:606
 #. translators: %1$s: updated title, %2$s: blog info name
 msgid "%1$s &lsaquo; %2$s"
 msgstr ""
@@ -5259,27 +5260,27 @@ msgstr ""
 msgid "WooCommerce Admin"
 msgstr ""
 
-#: src/Loader.php:694
+#: src/Loader.php:738
 msgid "Settings for WooCommerce admin reporting."
 msgstr ""
 
-#: src/Loader.php:710
+#: src/Loader.php:754
 msgid "Excluded report order statuses"
 msgstr ""
 
-#: src/Loader.php:711
+#: src/Loader.php:755
 msgid "Statuses that should not be included when calculating report totals."
 msgstr ""
 
-#: src/Loader.php:719
+#: src/Loader.php:763
 msgid "Actionable order statuses"
 msgstr ""
 
-#: src/Loader.php:720
+#: src/Loader.php:764
 msgid "Statuses that require extra action on behalf of the store admin."
 msgstr ""
 
-#: src/Loader.php:728 src/Loader.php:729
+#: src/Loader.php:772 src/Loader.php:773
 msgid "Default Date Range"
 msgstr ""
 

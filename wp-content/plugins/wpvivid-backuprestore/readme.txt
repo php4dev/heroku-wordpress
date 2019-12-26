@@ -2,9 +2,9 @@
 Contributors: wpvivid
 Tags: move, clone, migrate, copy, backup, restore, auto backup, cloud backup
 Requires at least: 4.5
-Tested up to: 5.3
+Tested up to: 5.3.2
 Requires PHP: 5.3
-Stable tag: 0.9.30
+Stable tag: 0.9.31
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -19,16 +19,18 @@ Migrate a copy of WP site to a new host (a new domain),schedule backups,send bac
 [WPvivid Backup for MainWP](https://wordpress.org/plugins/wpvivid-backup-mainwp/) is now available to download.
 This extension allows you to set up and control WPvivid Backup Plugin for all child sites directly from your MainWP dashboard.
 
-== A Beta of Pro Version is Now Available ==
+== WPvivid Backup Pro is Now Available ==
 * Customize everything to backup
-* Create a staging or dev environment
+* Create staging sites and push staging to live site
+* Incremental backups(coming soon)
 * Rollback WordPress core, themes, and plugins
 * WordPress Multisite backup
 * Advanced remote storage
 * Advanced backup schedules
 * Restore from remote storage
 * Migrate everything via remote storage
-[Welcome to test for free!](https://wpvivid.com/pro-version-beta-testing)
+* Edit user roles capabilities
+[Click to purchase WPvivid Backup Pro](https://pro.wpvivid.com/pricing)
 
 == Supported Page Builders ==
 WPvivid Backup Plugin has been tested by our users to migrate well on websites built with:
@@ -164,8 +166,16 @@ Feel free to let us know how we can help using the [support forum](https://wordp
 Thank you for translating WPvivid Backup Plugin to your languages!
 
 * [Andrew Galas](https://profiles.wordpress.org/andrewgalas) (Polish)
+* [Shohei OKADA](https://ja.gravatar.com/silversword0630)(Japanese)
 
 == Changelog ==
+= 0.9.31 =
+- Successfully tested with WordPress 5.3.2.
+- Fixed: Backup could fail when the split file size was set to 0 MB in the shared hosting optimization mode.
+- Fixed some small bugs in the plugin code.
+- Optimized the process of restoring large amounts of data.
+- Optimized the split backup file size to bring it closer to the value you set.
+- Added Japanese language translation.
 = 0.9.30 =
 - Added an option to select database accessing method for a backup or restore process.
 - Optimized plugin code and set the autoload attribute to no.

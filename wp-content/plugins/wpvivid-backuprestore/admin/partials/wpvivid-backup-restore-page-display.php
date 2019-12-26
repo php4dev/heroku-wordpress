@@ -17,7 +17,16 @@ function wpvivid_add_backup_type($html, $type_name)
                 <label>
                     <div style="float: left;">
                         <input type="radio" disabled />
-                        <span style="color: #ddd;">'.__('Custom').'</span>
+                        <span class="wpvivid-element-space-right" style="color: #ddd;">'.__('Create a staging site').'</span>
+                    </div>
+                    <span class="wpvivid-feature-pro">
+                        <a href="https://wpvivid.com/wpvivid-backup-pro-create-staging-site" style="text-decoration: none;">Pro feature: learn more</a>
+                    </span>
+                </label><br>
+                <label>
+                    <div style="float: left;">
+                        <input type="radio" disabled />
+                        <span class="wpvivid-element-space-right" style="color: #ddd;">'.__('Custom').'</span>
                     </div>
                     <span class="wpvivid-feature-pro">
                         <a href="https://wpvivid.com/backup-migration-overview?utm_source=client_custom_backup&utm_medium=inner_link&utm_campaign=access" style="text-decoration: none;">Pro feature: learn more</a>
@@ -841,10 +850,10 @@ function wpvivid_backuppage_add_page_restore(){
             <p><?php _e('Restore function will replace the current site\'s themes, plugins, uploads, database and/or other content directories with the existing equivalents in the selected backup.', 'wpvivid'); ?></p>
             <div id="wpvivid_restore_is_migrate" style="padding-bottom: 10px; display: none;">
                 <label >
-                    <input type="radio" id="wpvivid_replace_domain" option="restore" name="restore_domain" value="1" /><?php echo 'Restore and replace original domain(URL) with '.home_url().'(migration)'; ?>
+                    <input type="radio" id="wpvivid_replace_domain" option="restore" name="restore_domain" value="1" /><?php echo 'Restore and replace the original domain (URL) with '.home_url().' (migration)'; ?>
                 </label><br>
                 <label >
-                    <input type="radio" id="wpvivid_keep_domain" option="restore" name="restore_domain" value="0" /><?php _e('Restore and keep the original domain(URL) unchanged', 'wpvivid'); ?>
+                    <input type="radio" id="wpvivid_keep_domain" option="restore" name="restore_domain" value="0" /><?php _e('Restore and keep the original domain (URL) unchanged', 'wpvivid'); ?>
                 </label><br>
             </div>
             <div>
@@ -1446,16 +1455,16 @@ function wpvivid_backuppage_add_progress_module(){
             <div class="action-progress-bar-percent" id="wpvivid_action_progress_bar_percent" style="height:24px;width:0;"></div>
         </div>
         <div id="wpvivid_estimate_backup_info" style="float: left;">
-            <div class="backup-basic-info"><span><?php _e('Database Size:', 'wpvivid'); ?></span><span id="wpvivid_backup_database_size">N/A</span></div>
-            <div class="backup-basic-info"><span><?php _e('File Size:', 'wpvivid'); ?></span><span id="wpvivid_backup_file_size">N/A</span></div>
+            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('Database Size:', 'wpvivid'); ?></span><span id="wpvivid_backup_database_size">N/A</span></div>
+            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('File Size:', 'wpvivid'); ?></span><span id="wpvivid_backup_file_size">N/A</span></div>
         </div>
         <div id="wpvivid_estimate_upload_info" style="float: left;">
-            <div class="backup-basic-info"><span><?php _e('Total Size:', 'wpvivid'); ?></span><span>N/A</span></div>
-            <div class="backup-basic-info"><span><?php _e('Uploaded:', 'wpvivid'); ?></span><span>N/A</span></div>
-            <div class="backup-basic-info"><span><?php _e('Speed:', 'wpvivid'); ?></span><span>N/A</span></div>
+            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('Total Size:', 'wpvivid'); ?></span><span>N/A</span></div>
+            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('Uploaded:', 'wpvivid'); ?></span><span>N/A</span></div>
+            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('Speed:', 'wpvivid'); ?></span><span>N/A</span></div>
         </div>
         <div style="float: left;">
-            <div class="backup-basic-info"><span><?php _e('Network Connection:', 'wpvivid'); ?></span><span>N/A</span></div>
+            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('Network Connection:', 'wpvivid'); ?></span><span>N/A</span></div>
         </div>
         <div style="clear:both;"></div>
         <div style="margin-left:10px; float: left; width:100%;"><p id="wpvivid_current_doing"></p></div>
@@ -1520,9 +1529,9 @@ function wpvivid_backup_module_add_descript(){
         <span style="font-size: 10px; color: #FFA500; line-height: 10px;">(new feature)</span>
     </div>
     <div class="quickstart-storage-setting">
-        <span class="list-top-chip backup" name="ismerge" value="1"><?php _e('Local Storage Directory: '); ?></span>
-        <span class="list-top-chip" id="wpvivid_local_storage_path"><?php _e(WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$backupdir); ?></span>
-        <span class="list-top-chip"><a href="#" onclick="wpvivid_click_switch_page('wrap', 'wpvivid_tab_setting', true);" style="text-decoration: none;"><?php _e(' rename directory', 'wpvivid'); ?></a></span>
+        <span class="list-top-chip backup" name="ismerge" value="1" style="margin: 10px 10px 10px 0;"><?php _e('Local Storage Directory: '); ?></span>
+        <span class="list-top-chip" id="wpvivid_local_storage_path" style="margin: 10px 10px 10px 0;"><?php _e(WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$backupdir); ?></span>
+        <span class="list-top-chip" style="margin: 10px 10px 10px 0;"><a href="#" onclick="wpvivid_click_switch_page('wrap', 'wpvivid_tab_setting', true);" style="text-decoration: none;"><?php _e(' rename directory', 'wpvivid'); ?></a></span>
     </div>
     <?php
 }

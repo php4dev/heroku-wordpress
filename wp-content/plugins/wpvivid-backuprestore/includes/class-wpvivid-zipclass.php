@@ -162,7 +162,10 @@ class WPvivid_ZipClass extends Wpvivid_Compress_Default
             require_once(ABSPATH . 'wp-admin/includes/file.php');
 
         $max_size= $data['compress']['max_file_size'];
+
         $max_size = str_replace('M', '', $max_size);
+        if($max_size==0)
+            $max_size=200;
         $size = intval($max_size) * 1024 * 1024;
 
         $files = $this -> get_files_cache($size,$data);

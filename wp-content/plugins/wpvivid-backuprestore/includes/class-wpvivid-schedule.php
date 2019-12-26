@@ -96,7 +96,7 @@ class WPvivid_Schedule
         $html.='<label>';
         $html.='<div style="float: left;">';
         $html.='<input type="radio" disabled />';
-        $html.='<span style="color: #ddd;">'.__('Custom').'</span>';
+        $html.='<span class="wpvivid-element-space-right" style="color: #ddd;">'.__('Custom').'</span>';
         $html.='</div>';
         $html.='<div style="float: left; height: 32px; line-height: 32px;">';
         $html.='<span class="wpvivid-feature-pro">';

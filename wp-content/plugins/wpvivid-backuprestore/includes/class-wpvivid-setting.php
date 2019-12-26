@@ -529,6 +529,7 @@ class WPvivid_Setting
         foreach ($json['data'] as $option_name=>$option)
         {
             wp_cache_delete($option_name, 'options');
+            delete_option($option_name);
             self::update_option($option_name,$option);
         }
     }
@@ -609,6 +610,7 @@ class WPvivid_Setting
         $data['remote']['upload']=self::get_option('wpvivid_upload_setting');
         $data['remote']['history']=self::get_option('wpvivid_user_history');
 
+        $data['backup_custom_setting']=apply_filters('wpvivid_get_backup_custom_setting', array());
         return $data;
     }
 }

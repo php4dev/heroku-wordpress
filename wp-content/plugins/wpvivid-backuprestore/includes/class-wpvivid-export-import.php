@@ -112,10 +112,10 @@ class WPvivid_Export_Import
         ?>
         <div class="postbox export-import-block">
             <div>
-                <div class="wpvivid-element-space-bottom wpvivid-element-space-right" style="float: left; width: 50px;">
+                <div class="wpvivid-element-space-bottom wpvivid-element-space-right" style="float: left;">
                     <img src="<?php echo esc_url(WPVIVID_PLUGIN_IMAGES_URL.'export-import.png'); ?>" style="width:50px;height:50px;">
                 </div>
-                <div style="box-sizing: border-box; margin-left: 60px;">
+                <div style="box-sizing: border-box;">
                     <div class="wpvivid-text-space-bottom">Export posts or pages with images in bulk.
                         <span class="wpvivid-feature-pro">
                             <a href="https://wpvivid.com/export-content" target="_blank" style="text-decoration: none;">Learn more</a>
@@ -1466,10 +1466,10 @@ class WPvivid_Export_Import
         ?>
         <div class="postbox export-import-block">
             <div>
-                <div class="wpvivid-element-space-bottom wpvivid-element-space-right" style="float: left; width: 50px;">
+                <div class="wpvivid-element-space-bottom wpvivid-element-space-right" style="float: left;">
                     <img src="<?php echo esc_url(WPVIVID_PLUGIN_IMAGES_URL.'export-import.png'); ?>" style="width:50px;height:50px;">
                 </div>
-                <div style="box-sizing: border-box; margin-left: 60px;">
+                <div style="box-sizing: border-box;">
                     <div class="wpvivid-element-space-bottom wpvivid-element-space-right">Import posts or pages with images in bulk.
                         <span class="wpvivid-feature-pro">
                             <a href="https://wpvivid.com/import-content" target="_blank" style="text-decoration: none;">Learn more</a>

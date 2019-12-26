@@ -598,6 +598,18 @@ class WPvivid_Backup_Task
         return $backup;
     }
 
+    public function get_need_backup_files_size($backup_data)
+    {
+        if(isset($backup_data['files'])&&!empty($backup_data['files']))
+        {
+            return $backup_data['files'];
+        }
+        else
+        {
+            return $this->get_file_list($backup_data['files_root'],$backup_data['exclude_regex'],$backup_data['include_regex'],$this->task['options']['backup_options']['compress']['exclude_file_size']);
+        }
+    }
+
     public function wpvivid_get_need_backup_files($backup_data)
     {
         if(!isset($backup_data['dump_db']))
@@ -938,12 +950,12 @@ class WPvivid_Backup_Task
             {
                 if(array_key_exists($backup_data['key'],$this->backup_type_collect))
                 {
-                    $backup_files = $this->get_need_backup_files($backup_data);
+                    $backup_files = $this->get_need_backup_files_size($backup_data);
                 }
                 else
                 {
                     $backup_data['files']=array();
-                    $backup_files =apply_filters('wpvivid_get_custom_need_backup_files', $backup_data['files'],$backup_data,$this->task['options']['backup_options']['compress']);
+                    $backup_files =apply_filters('wpvivid_get_custom_need_backup_files_size', $backup_data['files'],$backup_data,$this->task['options']['backup_options']['compress']);
                 }
                 $files=array_merge($backup_files,$files);
             }

@@ -132,15 +132,6 @@ class WPvivid_Admin {
     public function wpvivid_add_side_bar($html, $show_schedule = false){
         $wpvivid_version = WPVIVID_PLUGIN_VERSION;
         $wpvivid_version = apply_filters('wpvivid_display_pro_version', $wpvivid_version);
-        $join_pro_testing = '<div class="postbox">
-                            <h2><a href="https://wpvivid.com/pro-version-beta-testing?utm_source=client_beta_testing&utm_medium=inner_link&utm_campaign=access" style="text-decoration: none;">WPvivid Backup Pro Beta Testing</a></h2>
-                         </div>';
-        $join_pro_testing = apply_filters('wpvivid_join_pro_testing', $join_pro_testing);
-
-        $schedule_html = '';
-        if($show_schedule){
-            $schedule_html = apply_filters('wpvivid_schedule_module', $schedule_html);
-        }
 
         $html = '<div class="postbox">
                 <h2>
@@ -153,7 +144,6 @@ class WPvivid_Admin {
                 </h2>
              </div>
              <div id="wpvivid_backup_schedule_part"></div>
-             '.$join_pro_testing.$schedule_html.'
              <div class="postbox">
                 <h2><span>Troubleshooting</span></h2>
                 <div class="inside">
@@ -866,8 +856,8 @@ class WPvivid_Admin {
                     <strong><?php _e('Method 1.'); ?></strong> <?php _e('If you have configured SMTP on your site, enter your email address and click the button below to send us the relevant information (website info and errors logs) when you are encountering errors. This will help us figure out what happened. Once the issue is resolved, we will inform you by your email address.', 'wpvivid'); ?>
                 </div>
                 <div style="padding:10px 10px 0">
-                    <span>WPvivid support email:</span><input type="text" id="wpvivid_support_mail" value="support@wpvivid.com" readonly />
-                    <span>Your email:</span><input type="text" id="wpvivid_user_mail" />
+                    <span class="wpvivid-element-space-right">WPvivid support email:</span><input type="text" id="wpvivid_support_mail" value="support@wpvivid.com" readonly />
+                    <span class="wpvivid-element-space-right">Your email:</span><input type="text" id="wpvivid_user_mail" />
                 </div>
                 <div class="schedule-tab-block">
                     <input class="button-primary" type="submit" value="<?php esc_attr_e( 'Send Debug Information to Us', 'wpvivid' ); ?>" onclick="wpvivid_click_send_debug_info();" />

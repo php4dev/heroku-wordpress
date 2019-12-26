@@ -106,7 +106,7 @@ function wpvivid_general_settings()
         <div class="setting-tab-block">
             <div><p><?php _e('Name your folder, this folder must be writable for creating backup files.', 'wpvivid' ); ?><p> </div>
             <input type="text" placeholder="wpvividbackups" option="setting" name="path" id="wpvivid_option_backup_dir" class="all-options" value="<?php esc_attr_e($general_setting['options']['wpvivid_local_setting']['path'], 'wpvivid'); ?>" onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9]/g,'')" onpaste="value=value.replace(/[^\a-\z\A-\Z0-9]/g,'')" />
-            <p><span><?php _e('Local storage directory:', 'wpvivid'); ?></span><span><?php echo WP_CONTENT_DIR.'/'; ?><span id="wpvivid_setting_local_storage_path"><?php _e($general_setting['options']['wpvivid_local_setting']['path'], 'wpvivid'); ?></span></span></p>
+            <p><span class="wpvivid-element-space-right"><?php _e('Local storage directory:', 'wpvivid'); ?></span><span><?php echo WP_CONTENT_DIR.'/'; ?><span id="wpvivid_setting_local_storage_path"><?php _e($general_setting['options']['wpvivid_local_setting']['path'], 'wpvivid'); ?></span></span></p>
         </div>
         <div>
             <label>
@@ -120,7 +120,7 @@ function wpvivid_general_settings()
         <div class="setting-tab-block" style="padding-bottom: 0;">
             <fieldset>
                 <label for="users_can_register">
-                    <p><span><?php _e('Web Server Directory:', 'wpvivid'); ?></span><span id="wpvivid_out_of_date_local_path"><?php _e($out_of_date['web_server'], 'wpvivid'); ?></span></p>
+                    <p><span class="wpvivid-element-space-right"><?php _e('Web Server Directory:', 'wpvivid'); ?></span><span id="wpvivid_out_of_date_local_path"><?php _e($out_of_date['web_server'], 'wpvivid'); ?></span></p>
                     <p><span style="margin-right: 2px;"><?php _e('Remote Storage Directory:', 'wpvivid'); ?></span><span id="wpvivid_out_of_date_remote_path">
                                     <?php
                                     $wpvivid_get_remote_directory = '';
@@ -277,33 +277,33 @@ function wpvivid_clean_junk()
         </div>
         <div class="setting-tab-block">
             <div class="setting-tab-block">
-                <span><?php _e('Total Size:', 'wpvivid'); ?></span>
+                <span class="wpvivid-element-space-right"><?php _e('Total Size:', 'wpvivid'); ?></span>
                 <span id="wpvivid_junk_sum_size"><?php _e($junk_file['sum_size'], 'wpvivid'); ?></span>
                 <input class="button-secondary" id="wpvivid_calculate_size" style="margin-left:10px;" type="submit" name="Calculate-Sizes" value="<?php esc_attr_e( 'Calculate Sizes', 'wpvivid' ); ?>" />
             </div>
             <fieldset>
                 <label for="wpvivid_junk_log">
                     <input type="checkbox" id="wpvivid_junk_log" option="junk-files" name="log" value="junk-log" />
-                    <span><?php _e( 'logs', 'wpvivid' ); ?></span>
-                    <span><?php _e('Path:', 'wpvivid' ); ?></span><span id="wpvivid_junk_log_path"><?php _e($junk_file['log_path'], 'wpvivid'); ?></span>
+                    <span class="wpvivid-element-space-right"><?php _e( 'logs', 'wpvivid' ); ?></span>
+                    <span style="margin-right: 2px;"><?php _e('Path:', 'wpvivid' ); ?></span><span id="wpvivid_junk_log_path"><?php _e($junk_file['log_path'], 'wpvivid'); ?></span>
                 </label>
             </fieldset>
             <fieldset>
                 <label for="wpvivid_junk_backup_cache">
                     <input type="checkbox" id="wpvivid_junk_backup_cache" option="junk-files" name="backup_cache" value="junk-backup-cache" />
-                    <span><?php _e( 'Backup Cache', 'wpvivid' ); ?></span>
+                    <span class="wpvivid-element-space-right"><?php _e( 'Backup Cache', 'wpvivid' ); ?></span>
                 </label>
                 <label for="wpvivid_junk_file">
                     <input type="checkbox" id="wpvivid_junk_file" option="junk-files" name="junk_files" value="junk-files" />
-                    <span><?php _e( 'Junk', 'wpvivid' ); ?></span>
-                    <span><?php _e('Path:', 'wpvivid' ); ?></span><span id="wpvivid_junk_file_path"><?php _e($junk_file['junk_path'], 'wpvivid'); ?></span>
+                    <span class="wpvivid-element-space-right"><?php _e( 'Junk', 'wpvivid' ); ?></span>
+                    <span style="margin-right: 2px;"><?php _e('Path:', 'wpvivid' ); ?></span><span id="wpvivid_junk_file_path"><?php _e($junk_file['junk_path'], 'wpvivid'); ?></span>
                 </label>
             </fieldset>
             <fieldset>
                 <label for="wpvivid_junk_temporary_file">
                     <input type="checkbox" id="wpvivid_junk_temporary_file" option="junk-files" name="old_files" value="junk-temporary-files" />
-                    <span><?php _e( 'Temporary Files', 'wpvivid' ); ?></span>
-                    <span><?php _e('Path:', 'wpvivid'); ?></span><span id="wpvivid_restore_temp_file_path"><?php _e($junk_file['old_files_path'], 'wpvivid'); ?></span>
+                    <span class="wpvivid-element-space-right"><?php _e( 'Temporary Files', 'wpvivid' ); ?></span>
+                    <span style="margin-right: 2px;"><?php _e('Path:', 'wpvivid'); ?></span><span id="wpvivid_restore_temp_file_path"><?php _e($junk_file['old_files_path'], 'wpvivid'); ?></span>
                     <p><?php _e('Temporary Files are created by wpvivid when restoring a website.', 'wpvivid'); ?></p>
                 </label>
             </fieldset>
@@ -548,13 +548,13 @@ function wpvivid_advanced_settings()
         <div class="wpvivid-element-space-bottom">
             <label>
                 <input type="radio" option="setting" name="db_connect_method" value="wpdb" <?php esc_attr_e($db_method_wpdb); ?> />
-                <span><strong>WPDB</strong></span><span><?php _e('WPDB option has a better compatibility, but the speed of backup and restore is slower.', 'wpvivid'); ?></span>
+                <span class="wpvivid-element-space-right"><strong>WPDB</strong></span><span><?php _e('WPDB option has a better compatibility, but the speed of backup and restore is slower.', 'wpvivid'); ?></span>
             </label>
         </div>
         <div class="wpvivid-element-space-bottom">
             <label>
                 <input type="radio" option="setting" name="db_connect_method" value="pdo" <?php esc_attr_e($db_method_pdo); ?> />
-                <span><strong>PDO</strong></span><span><?php _e('It is recommended to choose PDO option if pdo_mysql extension is installed on your server, which lets you backup and restore your site faster.', 'wpvivid'); ?></span>
+                <span class="wpvivid-element-space-right"><strong>PDO</strong></span><span><?php _e('It is recommended to choose PDO option if pdo_mysql extension is installed on your server, which lets you backup and restore your site faster.', 'wpvivid'); ?></span>
             </label>
         </div>
     </div>
@@ -562,11 +562,11 @@ function wpvivid_advanced_settings()
         <fieldset>
             <label>
                 <input type="radio" option="setting" name="no_compress" value="1" <?php esc_attr_e($wpvivid_setting_no_compress, 'wpvivid'); ?> />
-                <span title="<?php _e( 'It will cause a lower CPU Usage and is recommended in a web hosting/ shared hosting environment.', 'wpvivid' ); ?>"><?php _e( 'Only Archive without compressing', 'wpvivid' ); ?></span>
+                <span class="wpvivid-element-space-right" title="<?php _e( 'It will cause a lower CPU Usage and is recommended in a web hosting/ shared hosting environment.', 'wpvivid' ); ?>"><?php _e( 'Only Archive without compressing', 'wpvivid' ); ?></span>
             </label>
             <label>
                 <input type="radio" option="setting" name="no_compress" value="0" <?php esc_attr_e($wpvivid_setting_compress, 'wpvivid'); ?> />
-                <span title="<?php _e( 'It will cause a higher CPU Usage and is recommended in a VPS/ dedicated hosting environment.', 'wpvivid' ); ?>"><?php _e( 'Compress and Archive', 'wpvivid' ); ?></span>
+                <span class="wpvivid-element-space-right" title="<?php _e( 'It will cause a higher CPU Usage and is recommended in a VPS/ dedicated hosting environment.', 'wpvivid' ); ?>"><?php _e( 'Compress and Archive', 'wpvivid' ); ?></span>
             </label>
             <label style="display: none;">
                 <input type="radio" option="setting" name="compress_type" value="zip" checked />

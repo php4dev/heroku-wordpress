@@ -35,14 +35,42 @@ abstract class Wpvivid_Compress_Default{
             $size = $max_size * 1024 * 1024;
             $package = array();
             $flag = false;
-            foreach ($files as $file){
+
+            usort($files, function ($a, $b)
+            {
+                $a_size=filesize($a);
+                $b_size=filesize($b);
+                if ($a_size == $b_size)
+                    return 0;
+
+                if ($a_size < $b_size)
+                    return 1;
+                else
+                    return -1;
+            });
+
+            foreach ($files as $file)
+            {
                 $sizenum += filesize($file);
-                if($sizenum > $size){
-                    $package[] = $file;
-                    $sizenum = 0;
-                    $packages[] = $package;
-                    $package = array();
-                    $flag = true;
+                if($sizenum > $size)
+                {
+                    if(empty($package))
+                    {
+                        $package[] = $file;
+                        $packages[] = $package;
+                        $package = array();
+                        $sizenum = 0;
+                        $flag = true;
+                    }
+                    else
+                    {
+                        $packages[] = $package;
+                        $package = array();
+                        $package[] = $file;
+                        $sizenum = filesize($file);
+                        $flag = true;
+                    }
+
                 }else{
                     $package[] = $file;
                     $flag = false;

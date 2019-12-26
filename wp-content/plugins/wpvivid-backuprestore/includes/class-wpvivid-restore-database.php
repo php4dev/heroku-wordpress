@@ -319,7 +319,6 @@ class WPvivid_RestoreDB
         }
 
         WPvivid_Setting::import_json_to_setting($this->current_setting);
-
         do_action('wpvivid_reset_schedule');
         do_action('wpvivid_do_after_restore_db');
 
@@ -1075,7 +1074,7 @@ class WPvivid_RestoreDB
         return $mix_link;
     }
 
-    private function get_http_link_at_quota($url)
+    private function get_http_link_at_quote($url)
     {
         return str_replace('/','\/',$url);
     }
@@ -1086,6 +1085,19 @@ class WPvivid_RestoreDB
         {
             return $old_string;
         }
+
+        $from=array();
+        $to=array();
+
+        if($this->old_site_url!=$this->new_site_url)
+        {
+            $quote_old_site_url=$this->get_http_link_at_quote($this->old_site_url);
+            $quote_new_site_url=$this->get_http_link_at_quote($this->new_site_url);
+            $from[]=$quote_old_site_url;
+            $to[]=$quote_new_site_url;
+            //$old_string=str_replace($quote_old_site_url,$quote_new_site_url,$old_string);
+        }
+
 
         if($this->old_site_url!=$this->new_site_url)
         {
@@ -1103,7 +1115,9 @@ class WPvivid_RestoreDB
             $old_mix_link=$this->get_mix_link($this->old_site_url);
             if($old_mix_link!==false)
             {
-                $old_string=str_replace($old_mix_link,$this->new_site_url,$old_string);
+                $from[]=$old_mix_link;
+                $to[]=$this->new_site_url;
+                //$old_string=str_replace($old_mix_link,$this->new_site_url,$old_string);
             }
             if(substr($this->replacing_table, strlen($this->new_prefix))=='posts'||substr($this->replacing_table, strlen($this->new_prefix))=='postmeta'||substr($this->replacing_table, strlen($this->new_prefix))=='options')
             {
@@ -1111,39 +1125,38 @@ class WPvivid_RestoreDB
                 if($remove_http_link!==false)
                 {
                     $new_remove_http_link=$this->get_remove_http_link($this->new_site_url);
-                    $old_string=str_replace($remove_http_link,$new_remove_http_link,$old_string);
+                    $from[]=$remove_http_link;
+                    $to[]=$new_remove_http_link;
+                    //$old_string=str_replace($remove_http_link,$new_remove_http_link,$old_string);
                 }
 
                 $remove_http_link=$this->get_remove_http_link_ex($this->old_site_url);
                 if($remove_http_link!==false)
                 {
                     $new_remove_http_link=$this->get_remove_http_link_ex($this->new_site_url);
-                    $old_string=str_replace($remove_http_link,$new_remove_http_link,$old_string);
+                    $from[]=$remove_http_link;
+                    $to[]=$new_remove_http_link;
+                    //$old_string=str_replace($remove_http_link,$new_remove_http_link,$old_string);
                 }
             }
-            $quota_old_site_url=$this->get_http_link_at_quota($this->old_site_url);
-            $quota_new_site_url=$this->get_http_link_at_quota($this->new_site_url);
-            $old_string=str_replace($quota_old_site_url,$quota_new_site_url,$old_string);
         }
 
         if($this->old_home_url!=$this->new_home_url)
         {
-            $old_string=str_replace($this->old_home_url,$this->new_home_url,$old_string);
-
+            //$old_string=str_replace($this->old_home_url,$this->new_home_url,$old_string);
+            $from[]=$this->old_home_url;
+            $to[]=$this->new_home_url;
             $old_mix_link=$this->get_mix_link($this->old_home_url);
             if($old_mix_link!==false)
             {
-                $old_string=str_replace($old_mix_link,$this->new_home_url,$old_string);
+                $from[]=$old_mix_link;
+                $to[]=$this->new_home_url;
+                //$old_string=str_replace($old_mix_link,$this->new_home_url,$old_string);
             }
         }
-        if($this->old_content_url!=$this->new_content_url)
-        {
-            $old_string=str_replace($this->old_content_url,$this->new_content_url,$old_string);
-        }
-        if($this->old_upload_url!=$this->new_upload_url)
-        {
-            $old_string = str_replace($this->old_upload_url, $this->new_upload_url, $old_string);
-        }
+
+        if(!empty($from)&&!empty($to))
+            $old_string=str_replace($from,$to,$old_string);
 
         return $old_string;
     }
@@ -1155,19 +1168,26 @@ class WPvivid_RestoreDB
             return $old_string;
         }
 
+        $from=array();
+        $to=array();
+
         if($this->old_site_url!=$this->new_site_url)
         {
             $remove_http_link=$this->get_remove_http_link($this->old_site_url);
             if($remove_http_link!==false)
             {
                 $new_remove_http_link=$this->get_remove_http_link($this->new_site_url);
-                $old_string=str_replace($remove_http_link,$new_remove_http_link,$old_string);
+                $from[]=$remove_http_link;
+                $to[]=$new_remove_http_link;
+                //$old_string=str_replace($remove_http_link,$new_remove_http_link,$old_string);
             }
 
             $new_mix_link=$this->get_mix_link($this->new_site_url);
             if($new_mix_link!==false)
             {
-                $old_string=str_replace($new_mix_link,$this->new_site_url,$old_string);
+                $from[]=$new_mix_link;
+                $to[]=$this->new_site_url;
+                //$old_string=str_replace($new_mix_link,$this->new_site_url,$old_string);
             }
             if(substr($this->replacing_table, strlen($this->new_prefix))=='posts'||substr($this->replacing_table, strlen($this->new_prefix))=='postmeta'||substr($this->replacing_table, strlen($this->new_prefix))=='options')
             {
@@ -1175,24 +1195,34 @@ class WPvivid_RestoreDB
                 if($remove_http_link!==false)
                 {
                     $new_remove_http_link=$this->get_remove_http_link_ex($this->new_site_url);
-                    $old_string=str_replace($remove_http_link,$new_remove_http_link,$old_string);
+                    $from[]=$remove_http_link;
+                    $to[]=$new_remove_http_link;
+                    //$old_string=str_replace($remove_http_link,$new_remove_http_link,$old_string);
                 }
             }
-            $quota_old_site_url=$this->get_http_link_at_quota($this->old_site_url);
-            $quota_new_site_url=$this->get_http_link_at_quota($this->new_site_url);
-            $old_string=str_replace($quota_old_site_url,$quota_new_site_url,$old_string);
+
+            $quote_old_site_url=$this->get_http_link_at_quote($this->old_site_url);
+            $quote_new_site_url=$this->get_http_link_at_quote($this->new_site_url);
+            $from[]=$quote_old_site_url;
+            $to[]=$quote_new_site_url;
         }
 
         if($this->old_home_url!=$this->new_home_url&&$this->old_home_url!=$this->old_site_url)
         {
-            $old_string=str_replace($this->old_home_url,$this->new_home_url,$old_string);
-
+            //$old_string=str_replace($this->old_home_url,$this->new_home_url,$old_string);
+            $from[]=$this->old_home_url;
+            $to[]=$this->new_home_url;
             $new_mix_link=$this->get_mix_link($this->new_home_url);
             if($new_mix_link!==false)
             {
-                $old_string=str_replace($new_mix_link,$this->new_home_url,$old_string);
+                $from[]=$new_mix_link;
+                $to[]=$this->new_home_url;
+                //$old_string=str_replace($new_mix_link,$this->new_home_url,$old_string);
             }
         }
+
+        if(!empty($from)&&!empty($to))
+            $old_string=str_replace($from,$to,$old_string);
 
         return $old_string;
     }

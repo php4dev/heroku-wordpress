@@ -17,14 +17,27 @@ function wpvivid_schedule_settings()
                             <label>
                                 <div style="float: left;">
                                     <input type="checkbox" disabled />
-                                    <span style="color: #ddd;">Advanced Schedule</span>
+                                    <span class="wpvivid-element-space-right" style="color: #ddd;">Enable Incremental Backup</span>
+                                </div>
+                                <div style="float: left; height: 32px; line-height: 32px;">
+                                    <span class="wpvivid-feature-pro">
+                                        <a href="https://wpvivid.com/wpvivid-backup-pro-incremental-backup">Pro feature: learn more</a>
+                                    </span>
+                                </div>
+                                <div style="clear: both;"></div>
+                            </label>
+                            <label>
+                                <div style="float: left;">
+                                    <input type="checkbox" disabled />
+                                    <span class="wpvivid-element-space-right" style="color: #ddd;">Advanced Schedule</span>
                                 </div>
                                 <div style="float: left; height: 32px; line-height: 32px;">
                                     <span class="wpvivid-feature-pro">
                                         <a href="https://wpvivid.com/wpvivid-backup-pro-schedule-overview?utm_source=client_advanced_schedule&utm_medium=inner_link&utm_campaign=access">Pro feature: learn more</a>
                                     </span>
                                 </div>
-                            </label><br>
+                                <div style="clear: both;"></div>
+                            </label>
                             <div style="clear: both;"></div>
                             <div>
                                 <?php
@@ -126,7 +139,7 @@ function wpvivid_schedule_backup_type($html)
     $html.='<label>';
     $html.='<div style="float: left;">';
     $html.='<input type="radio" disabled />';
-    $html.='<span style="color: #ddd;">'.__('Custom').'</span>';
+    $html.='<span class="wpvivid-element-space-right" style="color: #ddd;">'.__('Custom').'</span>';
     $html.='</div>';
     $html.='<div style="float: left; height: 32px; line-height: 32px;">';
     $html.='<span class="wpvivid-feature-pro">';

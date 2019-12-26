@@ -35,6 +35,69 @@ class WPvivid_Public_Interface
             case 'get_themes_plugins':
                 $ret = apply_filters('wpvivid_get_themes_plugins_mainwp', array());
                 break;
+            case 'get_uploads_tree_data':
+                $ret = apply_filters('wpvivid_get_uploads_tree_data_mainwp', $data['tree_node']);
+                break;
+            case 'get_content_tree_data':
+                $ret = apply_filters('wpvivid_get_content_tree_data_mainwp', $data['tree_node']);
+                break;
+            case 'get_additional_folder_tree_data':
+                $ret = apply_filters('wpvivid_get_additional_folder_tree_data_mainwp', $data['tree_node']);
+                break;
+            case 'achieve_local_backup_addon':
+                $ret = apply_filters('wpvivid_achieve_local_backup_addon_mainwp', $data);
+                break;
+            case 'achieve_remote_backup_addon':
+                $ret = apply_filters('wpvivid_achieve_remote_backup_addon_mainwp', $data);
+                break;
+            case 'connect_additional_database_addon':
+                $ret = apply_filters('wpvivid_connect_additional_database_addon_mainwp', $data);
+                break;
+            case 'add_additional_database_addon':
+                $ret = apply_filters('wpvivid_add_additional_database_addon_mainwp', $data);
+                break;
+            case 'remove_additional_database_addon':
+                $ret = apply_filters('wpvivid_remove_additional_database_addon_mainwp', $data);
+                break;
+            case 'prepare_backup_addon':
+                $ret = apply_filters('wpvivid_prepare_backup_addon_mainwp', $data);
+                break;
+            case 'backup_now_addon':
+                $ret = apply_filters('wpvivid_backup_now_addon_mainwp', $data['task_id']);
+                break;
+            case 'list_tasks_addon':
+                $ret = apply_filters('wpvivid_list_tasks_addon_mainwp', array());
+                break;
+            case 'init_download_page_addon':
+                $ret = apply_filters('wpvivid_init_download_page_addon_mainwp', $data['backup_id']);
+                break;
+            case 'get_download_progress_addon':
+                $ret = apply_filters('wpvivid_get_download_progress_addon_mainwp', $data['backup_id']);
+                break;
+            case 'rescan_local_folder_addon':
+                $ret = apply_filters('wpvivid_rescan_local_folder_addon_mainwp', array());
+                break;
+            case 'set_security_lock_addon':
+                $ret = apply_filters('wpvivid_set_security_lock_addon_mainwp', $data);
+                break;
+            case 'set_remote_security_lock_addon':
+                $ret = apply_filters('wpvivid_set_remote_security_lock_addon_mainwp', $data);
+                break;
+            case 'delete_local_backup_addon':
+                $ret = apply_filters('wpvivid_delete_local_backup_addon_mainwp', $data);
+                break;
+            case 'delete_local_backup_array_addon':
+                $ret = apply_filters('wpvivid_delete_local_backup_array_addon_mainwp', $data);
+                break;
+            case 'delete_remote_backup_addon':
+                $ret = apply_filters('wpvivid_delete_remote_backup_addon_mainwp', $data);
+                break;
+            case 'delete_remote_backup_array_addon':
+                $ret = apply_filters('wpvivid_delete_remote_backup_array_addon_mainwp', $data);
+                break;
+            case 'view_log_addon':
+                $ret = apply_filters('wpvivid_view_log_addon_mainwp', $data);
+                break;
             default:
                 $ret['result'] = 'failed';
                 $ret['error'] = 'Unknown action';

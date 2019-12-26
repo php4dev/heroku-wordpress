@@ -1846,7 +1846,7 @@ $generated_i18n_strings = array(
 	__( 'Reviews', 'woocommerce-admin' ),
 
 	// Reference: client/header/activity-panel/index.js:235
-	// Reference: client/header/activity-panel/wordpress-notices.js:212
+	// Reference: client/header/activity-panel/wordpress-notices.js:214
 	__( 'unread activity', 'woocommerce-admin' ),
 
 	// Reference: client/header/activity-panel/index.js:252
@@ -1964,7 +1964,7 @@ $generated_i18n_strings = array(
 	// Reference: client/header/activity-panel/panels/stock/index.js:77
 	__( 'No products with low stock', 'woocommerce-admin' ),
 
-	// Reference: client/header/activity-panel/wordpress-notices.js:211
+	// Reference: client/header/activity-panel/wordpress-notices.js:213
 	__( 'Notices', 'woocommerce-admin' ),
 
 	// Reference: client/header/index.js:81
