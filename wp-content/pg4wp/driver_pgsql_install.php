@@ -44,6 +44,7 @@
 
 		// For flash-album-gallery plugin
 		'tinyint'		=> 'smallint',
+		'boolean'		=> 'bool',
 	);
 	
 	function pg4wp_installing( $sql, &$logto)
