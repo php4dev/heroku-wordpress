@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Autoptimize - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-08-15 11:16:47+0000\n"
+"PO-Revision-Date: 2019-09-17 20:41:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -258,10 +258,6 @@ msgstr "Объединять и загружать шрифты асинхрон
 msgid "Leave as is"
 msgstr "Оставить как есть"
 
-#: classes/autoptimizeExtra.php:377
-msgid "Google Fonts"
-msgstr "Google шрифты"
-
 #: classes/autoptimizeExtra.php:395
 msgid "Removing query strings (or more specifically the <code>ver</code> parameter) will not improve load time, but might improve performance scores."
 msgstr "Удаление строк запроса (или, более конкретно, параметра <code> ver </code>) не улучшит время загрузки, но может улучшить показатели производительности."
@@ -305,6 +301,10 @@ msgstr "Дополнительные возможности оптимизаци
 #: classes/autoptimizeExtra.php:401
 msgid "Add 3rd party domains you want the browser to <a href=\"https://www.keycdn.com/support/preconnect/#primary\" target=\"_blank\">preconnect</a> to, separated by comma's. Make sure to include the correct protocol (HTTP or HTTPS)."
 msgstr "Добавьте сторонние домены, которые вы хотите, чтобы браузер <a href=\"https://www.keycdn.com/support/preconnect/#primary\" target=\"_blank\">предварительно подключал</a>, разделяя их запятыми. Убедитесь, что вы включили правильный протокол (HTTP или HTTPS)."
+
+#: classes/autoptimizeExtra.php:377
+msgid "Google Fonts"
+msgstr "Шрифты Google"
 
 #: classes/autoptimizeConfig.php:389
 msgid "By default Autoptimize is also active for logged on users, uncheck not to optimize when logged in e.g. to use a pagebuilder."

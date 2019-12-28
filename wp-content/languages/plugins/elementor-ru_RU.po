@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Elementor Page Builder - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-12-11 16:00:02+0000\n"
+"PO-Revision-Date: 2019-12-19 15:54:41+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -107,14 +107,6 @@ msgstr "Ошибка соединения"
 msgid "Enable Lightbox In Editor"
 msgstr "Включить лайтбокс в редакторе"
 
-#: core/settings/editor-preferences/model.php:62
-msgid "Dark"
-msgstr "Тёмный"
-
-#: core/settings/editor-preferences/model.php:61
-msgid "Light"
-msgstr "Светлый"
-
 #: core/settings/editor-preferences/model.php:60
 msgid "Auto Detect"
 msgstr "Автоопределение"
@@ -142,6 +134,14 @@ msgstr "Отправка данных об использовании"
 #: includes/settings/settings.php:477
 msgid "Become a super contributor by opting in to share non-sensitive plugin data and to get our updates."
 msgstr "Станьте супервизором, чтобы принять участие в обмене данными об использовании нашего плагина и получения обновлений."
+
+#: core/settings/editor-preferences/model.php:62
+msgid "Dark"
+msgstr "Тёмная"
+
+#: core/settings/editor-preferences/model.php:61
+msgid "Light"
+msgstr "Светлая"
 
 #: includes/settings/settings.php:309
 msgid "Add Your Custom Icons"

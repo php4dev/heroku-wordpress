@@ -1,0 +1,2128 @@
+# Translation of Plugins - Asgaros Forum - Stable (latest release) in Russian
+# This file is distributed under the same license as the Plugins - Asgaros Forum - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-10-29 06:33:55+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: ru\n"
+"Project-Id-Version: Plugins - Asgaros Forum - Stable (latest release)\n"
+
+#: admin/views/options.php:457
+msgid "Users can close their own topics"
+msgstr "Пользователи могут закрывать свои собственные темы"
+
+#: admin/views/options.php:452
+msgid "Users can open their own topics"
+msgstr "Пользователи могут открывать свои собственные темы"
+
+#: admin/views/options.php:243
+msgid "Show newest member"
+msgstr "Показать нового участника"
+
+#: widgets/widget-recent-posts.php:140
+msgid "Recent Forum Posts"
+msgstr "Последние сообщения на форуме"
+
+#: widgets/widget-recent-topics.php:177 widgets/widget-recent-posts.php:189
+msgid "Forum filter:"
+msgstr "Фильтр форума:"
+
+#: widgets/widget-recent-topics.php:134
+msgid "Recent Forum Topics"
+msgstr "Последние темы форума"
+
+#: includes/forum.php:2236
+msgid "A topic is created in the selected forum when you save this document."
+msgstr "Тема создается в выбранном форуме при сохранении этого документа."
+
+#: includes/forum.php:2199
+msgid "Create Forum Topic"
+msgstr "Создать тему форума"
+
+#: admin/admin.php:95
+msgid "Reputation"
+msgstr "Репутация"
+
+#: admin/views/options.php:853
+msgid "Level 5"
+msgstr "Уровень 5"
+
+#: admin/views/options.php:849
+msgid "Level 4"
+msgstr "Уровень 4"
+
+#: admin/views/options.php:845
+msgid "Level 3"
+msgstr "Уровень 3"
+
+#: admin/views/options.php:841
+msgid "Level 2"
+msgstr "Уровень 2"
+
+#: admin/views/options.php:837
+msgid "Level 1"
+msgstr "Уровень 1"
+
+#: admin/views/options.php:832
+msgid "Minimum amount of posts:"
+msgstr "Минимальное количество постов:"
+
+#: admin/views/options.php:827
+msgid "Enable Reputation"
+msgstr "Включить Репутацию"
+
+#: admin/views/options.php:316
+msgid "You can use this option if you are using a custom register page."
+msgstr "Вы можете использовать эту опцию, если вы используете пользовательскую страницу регистрации."
+
+#: admin/views/options.php:315
+msgid "Custom Register URL"
+msgstr "Пользовательский URL-адрес регистрации"
+
+#: admin/views/options.php:309
+msgid "You can use this option if you are using a custom login page."
+msgstr "Вы можете использовать эту опцию, если вы используете пользовательскую страницу входа."
+
+#: admin/views/options.php:308
+msgid "Custom Login URL"
+msgstr "Пользовательский URL для входа"
+
+#: integrations/integration-mycred.php:467
+msgid "Show ranks in posts and profiles"
+msgstr "Показывать ранги в постах и профилях"
+
+#: integrations/integration-mycred.php:464
+msgid "Show badges in posts and profiles"
+msgstr "Показывать значки в постах и профилях"
+
+#: integrations/integration-mycred.php:461
+msgid "Show %_plural% in posts and profiles"
+msgstr "Показать %_plural% в постах и профилях"
+
+#: integrations/integration-mycred.php:439
+msgid "Received Dislike"
+msgstr "Получен Дислайк"
+
+#: integrations/integration-mycred.php:421
+msgid "Received Like"
+msgstr "Получен Лайк"
+
+#: integrations/integration-mycred.php:403
+msgid "Deleted Post"
+msgstr "Удалить Пост"
+
+#: integrations/integration-mycred.php:396
+msgid "Topic authors can receive %_plural% for answering to their own topic."
+msgstr "Авторы тем могут получить %_plural% для ответа на их собственную тему."
+
+#: integrations/integration-mycred.php:370
+msgid "New Post"
+msgstr "Новый Пост"
+
+#: integrations/integration-mycred.php:352
+msgid "Deleted Topic"
+msgstr "Удалить Топик"
+
+#: integrations/integration-mycred.php:345
+#: integrations/integration-mycred.php:363
+#: integrations/integration-mycred.php:387
+#: integrations/integration-mycred.php:414
+#: integrations/integration-mycred.php:432
+#: integrations/integration-mycred.php:450
+msgid "required"
+msgstr "требуется"
+
+#: integrations/integration-mycred.php:344
+#: integrations/integration-mycred.php:362
+#: integrations/integration-mycred.php:386
+#: integrations/integration-mycred.php:413
+#: integrations/integration-mycred.php:431
+#: integrations/integration-mycred.php:449
+msgid "Log template"
+msgstr "Шаблон журнала"
+
+#: integrations/integration-mycred.php:338
+#: integrations/integration-mycred.php:380
+msgid "Limit"
+msgstr "Лимит"
+
+#: integrations/integration-mycred.php:161
+msgid "Rank:"
+msgstr "Ранг:"
+
+#: integrations/integration-mycred.php:143
+msgid "Badges:"
+msgstr "Бейджи:"
+
+#: integrations/integration-mycred.php:64
+msgid "%singular% deduction for received forum post dislike"
+msgstr "%singular% вычет за полученный дислайк за сообщение на форуме"
+
+#: integrations/integration-mycred.php:60
+msgid "%plural% for received forum post like"
+msgstr "%plural% за полученный лайк поста на форуме"
+
+#: integrations/integration-mycred.php:56
+msgid "%singular% deduction for deleted forum post"
+msgstr "%singular% удержание за удаленное сообщение на форуме"
+
+#: integrations/integration-mycred.php:50
+msgid "%plural% for new forum post"
+msgstr "%plural% за новое сообщения на форуме"
+
+#: integrations/integration-mycred.php:46
+msgid "%singular% deduction for deleted forum topic"
+msgstr "%singular% вычет за удаленную тему форума"
+
+#: integrations/integration-mycred.php:41
+msgid "%plural% for new forum topic"
+msgstr "%plural% за новую тему на форуме"
+
+#: integrations/integration-mycred.php:21
+msgid "Awards %_plural% for Asgaros Forum actions."
+msgstr "Награды %_plural% за действия в Asgaros Forum"
+
+#: integrations/integration-mycred.php:10
+msgid "Forum Topics (Asgaros Forum)"
+msgstr "Темы форума (Asgaros Forum)"
+
+#: integrations/integration-mycred.php:11
+msgid "Forum Posts (Asgaros Forum)"
+msgstr "Сообщения на форуме (Asgaros Forum)"
+
+#: integrations/integration-mycred.php:12
+msgid "Received Likes (Asgaros Forum)"
+msgstr "Полученные лайки (Asgaros Forum)"
+
+#: integrations/integration-mycred.php:13
+msgid "Received Dislikes (Asgaros Forum)"
+msgstr "Полученные Дислайки (Asgaros Forum)"
+
+#: admin/views/options.php:60
+msgid "The description is used for meta tags."
+msgstr "Описание используемое в мета тегах."
+
+#: admin/views/options.php:59
+msgid "Forum description:"
+msgstr "Описание форума:"
+
+#: includes/forum-uploads.php:273
+msgid "Allowed file types:"
+msgstr "Разрешенные типы файлов:"
+
+#: includes/forum-uploads.php:267
+msgid "Maximum file size:"
+msgstr "Максимальный размер файла:"
+
+#: includes/forum-uploads.php:260
+msgid "Maximum files:"
+msgstr "Максимальное количество файлов:"
+
+#: admin/views/options.php:578
+msgid "Available filters"
+msgstr "Доступные фильтры"
+
+#: admin/views/options.php:785
+msgid "Results visible without vote"
+msgstr "Результаты видны без голосования"
+
+#: admin/views/options.php:544
+msgid "Enable Suggestions"
+msgstr "Включить предложения"
+
+#: admin/views/options.php:736
+msgid "Activities per page:"
+msgstr "Активность на странице:"
+
+#: includes/forum-memberslist.php:98
+msgid "All Users"
+msgstr "Все пользователи"
+
+#: admin/views/options.php:444
+msgid "Time limitation for deleting topics (in minutes):"
+msgstr "Ограничение времени на удаление тем (в минутах):"
+
+#: admin/views/options.php:435
+msgid "Users can delete their own topics"
+msgstr "Пользователи могут удалять свои темы"
+
+#: admin/views/options.php:427
+msgid "Time limitation for deleting posts (in minutes):"
+msgstr "Ограничение времени на удаление сообщений (в минутах):"
+
+#: admin/views/options.php:418
+msgid "Users can delete their own posts"
+msgstr "Пользователи могут удалять свои собственные сообщения"
+
+#: admin/views/options.php:401
+msgid "Users can edit their own posts"
+msgstr "Пользователи могут редактировать свои собственные сообщения"
+
+#: admin/views/options.php:207
+msgid "Above & Below Topics"
+msgstr "Выше и ниже темы"
+
+#: admin/views/options.php:206
+msgid "Below Topics"
+msgstr "Ниже темы"
+
+#: admin/views/options.php:205
+msgid "Above Topics"
+msgstr "Выше темы"
+
+#: admin/views/options.php:201
+msgid "Location of subforums:"
+msgstr "Расположение подфорумов:"
+
+#: admin/admin.php:55
+msgid "Mentioning"
+msgstr "Упоминание"
+
+#: admin/admin.php:43
+msgid "Permissions"
+msgstr "Права"
+
+#: admin/views/appearance.php:84
+msgid "Unread indicator color:"
+msgstr "Цвет индикатора непрочитанных:"
+
+#: admin/views/appearance.php:80
+msgid "Read indicator color:"
+msgstr "Прочитанные цвет индикатора:"
+
+#: admin/views/usergroups.php:30
+msgid "Set an optional icon for the usergroup."
+msgstr "Установите необязательный значок для группы пользователей."
+
+#: admin/views/options.php:322
+msgid "URL-slugs for views:"
+msgstr "URL-slugs для просмотра:"
+
+#: admin/views/options.php:704
+msgid "Logged in users & Moderators"
+msgstr "Зарегистрированные пользователи и Модераторы"
+
+#: admin/views/options.php:701
+msgid "Who can use signatures:"
+msgstr "Кто может использовать подписи:"
+
+#: includes/forum.php:899
+msgid "This topic contains a poll"
+msgstr "Эта тема содержит опрос"
+
+#: includes/forum.php:895
+msgid "This topic is closed"
+msgstr "Эта тема закрыта"
+
+#: includes/forum.php:891
+msgid "This topic is sticked"
+msgstr "Эта тема прикреплена"
+
+#: admin/views/options.php:264
+msgid "The Font Awesome v4 compatibility library is required, if your theme or another plugin uses the Font Awesome v4 icon library. If the Font Awesome v4 icon library is not used on your website, you can disable this option."
+msgstr "Библиотека совместимости Font Awesome v4 необходима, если ваша тема или другой плагин использует библиотеку иконок Font Awesome v4. Если библиотека значков Font Awesome v4 не используется на вашем веб-сайте, вы можете отключить эту опцию."
+
+#: admin/views/options.php:263
+msgid "Load Font Awesome v4 compatibility library"
+msgstr "Загрузить библиотеку совместимости Font Awesome v4"
+
+#: includes/forum-polls.php:446
+msgid "%s Participant"
+msgid_plural "%s Participants"
+msgstr[0] "%s Участник"
+msgstr[1] "%s Участника"
+msgstr[2] "%s Участников"
+
+#: includes/forum-polls.php:429
+msgid "%s Vote"
+msgid_plural "%s Votes"
+msgstr[0] "%s Голос"
+msgstr[1] "%s Голоса"
+msgstr[2] "%s Голосов"
+
+#: includes/forum-polls.php:454
+msgid "Vote"
+msgstr "Голосовать"
+
+#: includes/forum-polls.php:132
+msgid "To ensure the integrity of existing votes it is not possible to add or remove answers. However, it is still possible to make text-changes to existing answers and to poll-settings. If major changes for a poll are required, you must delete the existing poll and create a new one for this topic."
+msgstr "Для обеспечения целостности существующих голосов не возможно добавлять или удалять ответы. Тем не менее, все еще можно вносить текстовые изменения в существующие ответы и в настройки опроса. Если для опроса требуются серьезные изменения, необходимо удалить существующий опрос и создать новый для этой темы."
+
+#: includes/forum-polls.php:101 includes/forum-polls.php:126
+msgid "An answer ..."
+msgstr "Ответ ..."
+
+#: includes/forum-polls.php:92 includes/forum-polls.php:140
+msgid "Remove Poll"
+msgstr "Удалить Опрос"
+
+#: includes/forum-polls.php:90 includes/forum-polls.php:138
+msgid "Allow multiple answers"
+msgstr "Разрешить множественные ответы"
+
+#: includes/forum-polls.php:84
+msgid "After creating a poll it will be no longer possible to add or remove answers. This ensures the integrity of existing votes. However, it will be still possible to make text-changes to existing answers and to poll-settings. If major changes for a poll are required, you must delete the existing poll and create a new one for this topic."
+msgstr "После создания опроса больше не будет возможности добавлять или удалять ответы. Это обеспечивает целостность существующих голосов. Тем не менее, все еще можно будет вносить текстовые изменения в существующие ответы и в настройки опроса. Если для опроса требуются серьезные изменения, необходимо удалить существующий опрос и создать новый для этой темы."
+
+#: includes/forum-polls.php:76
+msgid "Add another answer"
+msgstr "Добавить другой ответ"
+
+#: includes/forum-polls.php:68 includes/forum-polls.php:119
+msgid "Enter your question here"
+msgstr "Введите свой вопрос здесь"
+
+#: includes/forum-polls.php:63 includes/forum-polls.php:114
+msgid "Add Poll"
+msgstr "Добавить опрос"
+
+#: admin/views/options.php:809
+msgid "Enable spoilers"
+msgstr "Включить спойлеры"
+
+#: admin/admin.php:91
+msgid "Spoilers"
+msgstr "Спойлеры"
+
+#: admin/views/options.php:790
+msgid "Who can create polls:"
+msgstr "Кто может создавать опросы:"
+
+#: admin/views/options.php:780
+msgid "Enable Polls"
+msgstr "Включить Опросы"
+
+#: admin/admin.php:87
+msgid "Polls"
+msgstr "Опросы"
+
+#: admin/views/options.php:297
+msgid "Define if the slug or the ID should be used in URLs for profiles. This setting is useful if you want to hide the unique nicename of users from the public."
+msgstr "Определите, должен ли слаг или идентификатор использоваться в URL для профилей. Этот параметр полезен, если вы хотите скрыть уникальное имя пользователя от общественности."
+
+#: admin/views/options.php:296
+msgid "URL mode for profiles:"
+msgstr "Режим URL для профилей:"
+
+#: admin/views/options.php:289 admin/views/options.php:301
+msgid "Slug"
+msgstr "Slug"
+
+#: admin/views/options.php:285
+msgid "Define if the slug or the ID should be used in URLs for forums and topics. This setting is useful if you encounter problems when your slugs include special characters."
+msgstr "Определите, следует ли использовать слаг или идентификатор в URL для форумов и тем. Этот параметр полезен, если вы сталкиваетесь с проблемами, когда ваши слагы содержат специальные символы."
+
+#: admin/views/options.php:284
+msgid "URL mode for forums & topics:"
+msgstr "URL mode for forums & topics:"
+
+#: admin/admin.php:39
+msgid "URLs"
+msgstr "URLs"
+
+#: admin/views/options.php:257
+msgid "You can disable loading the built-in Font Awesome v5 icon library to reduce traffic if your theme or another plugin already loads this library."
+msgstr "Вы можете отключить загрузку встроенной библиотеки значков Font Awesome v5, чтобы уменьшить трафик, если ваша тема или другой плагин уже загружают эту библиотеку."
+
+#: admin/views/options.php:256
+msgid "Load Font Awesome v5 icon library"
+msgstr "Загрузить библиотеку иконок Font Awesome v5"
+
+#: includes/forum.php:2030
+msgid "Reassign all forum posts to:"
+msgstr "Переназначить все сообщения на форуме:"
+
+#: includes/forum.php:2027
+msgid "Do not reassign forum posts."
+msgstr "Не переназначать сообщения на форуме."
+
+#: includes/forum.php:2021
+msgid "What should be done with forum posts owned by these users?"
+msgstr "Что делать с сообщениями на форуме, принадлежащим этим пользователям?"
+
+#: includes/forum.php:2019
+msgid "What should be done with forum posts owned by this user?"
+msgstr "Что делать с сообщениями на форуме, принадлежащим этому пользователю?"
+
+#: includes/forum.php:1346 includes/forum.php:1388
+msgid "Last post:"
+msgstr "Последнее сообщение:"
+
+#: includes/forum-profile.php:305
+msgid "Likes Received"
+msgstr "Получено лайков"
+
+#: includes/forum-profile.php:289
+msgid "Member Activity"
+msgstr "Статистика пользователя"
+
+#: admin/views/options.php:219
+msgid "Enable Avatars"
+msgstr "Включить Аватары"
+
+#: admin/views/options.php:127
+msgid "Automatically embed content in posts"
+msgstr "Автоматически вставлять контент embed в сообщения"
+
+#: widgets/widget-recent-topics.php:173 widgets/widget-recent-posts.php:180
+msgid "Show excerpt"
+msgstr "Показать отрывок"
+
+#: includes/forum-reports.php:252
+msgid "Show Post"
+msgstr "Показать сообщение"
+
+#: includes/forum-reports.php:217
+msgid "Reported by:"
+msgstr "Рапорт от:"
+
+#: includes/forum-reports.php:205
+msgid "There are no reports."
+msgstr "Нет отчетов."
+
+#: includes/forum-reports.php:192
+msgid "There are reports."
+msgstr "Есть отчеты."
+
+#: widgets/widget-recent-topics.php:114 widgets/widget-recent-posts.php:120
+msgid "Read More"
+msgstr "Читать далее"
+
+#: includes/forum.php:1476
+msgid "The topic will be sticked to all forums."
+msgstr "Тема будет прикреплена ко всем форумам."
+
+#: includes/forum.php:1473
+msgid "Global Sticky"
+msgstr "Прикрепить глобально"
+
+#: includes/forum.php:1466
+msgid "The topic will be sticked to the current forum."
+msgstr "Тема будет прикреплена к текущему форуму."
+
+#: includes/forum.php:1454
+msgid "Select Sticky Mode:"
+msgstr "Выберите режим закрепления:"
+
+#: includes/forum.php:1569
+msgid "Approve"
+msgstr "Утвердить"
+
+#: includes/forum.php:525 includes/forum.php:532 includes/forum.php:553
+msgid "Sorry, you cannot access this area."
+msgstr "К сожалению, вы не можете получить доступ к этой области."
+
+#: includes/forum-approval.php:228
+msgid "There are no unapproved topics."
+msgstr "Нет не утвержденных тем."
+
+#: includes/forum-approval.php:170
+msgid "There are unapproved topics."
+msgstr "Есть не утвержденные темы."
+
+#: includes/forum-approval.php:153
+msgid "Thank you for your topic. Your topic will be visible as soon as it gets approved."
+msgstr "Спасибо за вашу тему. Ваша тема будет видна, как только она будет одобрена."
+
+#: includes/forum-approval.php:107
+msgid "Hello ###USERNAME###,<br><br>You received this message because there is a new unapproved forum-topic.<br><br>Topic:<br>###TITLE###<br><br>Author:<br>###AUTHOR###<br><br>Text:<br>###CONTENT###<br><br>Link:<br>###LINK###"
+msgstr "Hello ###USERNAME###,<br><br>You received this message because there is a new unapproved forum-topic.<br><br>Topic:<br>###TITLE###<br><br>Author:<br>###AUTHOR###<br><br>Text:<br>###CONTENT###<br><br>Link:<br>###LINK###"
+
+#: includes/forum-approval.php:93
+msgid "New unapproved topic"
+msgstr "Новая неутвержденная тема"
+
+#: includes/forum-approval.php:18 includes/forum.php:634
+msgid "Unapproved Topics"
+msgstr "Не утвержденные темы"
+
+#: includes/forum-notifications.php:518
+msgid "You will automatically get notified about new topics because you are a receiver of administrative notifications."
+msgstr "Вы будете автоматически получать уведомления о новых темах, потому что вы получаете административные уведомления."
+
+#: includes/forum-activity.php:27
+msgid "Activity in the last day."
+msgid_plural "Activity in the last %s days."
+msgstr[0] "Активность за последний % день."
+msgstr[1] "Активность за последние %s дня."
+msgstr[2] "Активность за последние %s дней."
+
+#: includes/forum-spoilers.php:29
+msgid "Sorry, only logged-in users can see spoilers."
+msgstr "Извините, только авторизованные пользователи могут видеть спойлеры."
+
+#: includes/forum-spoilers.php:24
+msgid "Spoiler"
+msgstr "Спойлер"
+
+#: admin/views/options.php:732
+msgid "Days of activity to show:"
+msgstr "Показать дни активности:"
+
+#: admin/views/options.php:683
+msgid "Notify receivers of administrative notifications about new reports"
+msgstr "Уведомлять получателей административных уведомлений о новых отчетах"
+
+#: admin/views/options.php:508
+msgid "Notify receivers of administrative notifications about new topics"
+msgstr "Уведомлять получателей административных уведомлений о новых темах"
+
+#: admin/views/options.php:503
+msgid "The subscription-functionality is only available for logged-in users."
+msgstr "Функционал подписки доступна только зарегистрированным пользователям."
+
+#: admin/views/options.php:502
+msgid "Enable subscriptions"
+msgstr "Включить подписки"
+
+#: admin/views/options.php:496
+msgid "A comma-separated list of mail-addresses which can receive administrative notifications (new reports, unapproved topics, and more)."
+msgstr "Разделенный запятыми список почтовых адресов, которые могут получать административные уведомления (новые отчеты, не утвержденные темы и многое другое)."
+
+#: admin/views/options.php:495
+msgid "Receivers of administrative notifications:"
+msgstr "Получатели административных уведомлений:"
+
+#: admin/views/options.php:194
+msgid "Guests & Normal Users"
+msgstr "Гости и Обычные пользователи"
+
+#: admin/views/options.php:193
+msgid "Guests"
+msgstr "Гости"
+
+#: admin/views/options.php:189
+msgid "This setting only affects forums that require approval for new topics."
+msgstr "Этот параметр влияет только на форумы, требующие одобрения новых тем."
+
+#: admin/views/options.php:188
+msgid "Approval needed for new topics from:"
+msgstr "Требуется одобрение для новых тем из:"
+
+#: admin/views/options.php:813
+msgid "Hide spoilers from logged-out users"
+msgstr "Скрыть спойлеры от вышедших с сайта пользователей"
+
+#: admin/tables/admin-structure-table.php:78 admin/views/structure.php:115
+msgid "Approval"
+msgstr "Одобрено"
+
+#: includes/forum.php:510
+msgid "Sorry, only logged-in users can access the forum."
+msgstr "Извините, только зарегистрированные пользователи могут получить доступ к форуму."
+
+#: admin/tables/admin-ads-table.php:81
+msgid "Locations:"
+msgstr "Местоположение:"
+
+#: admin/tables/admin-ads-table.php:72
+msgid "Edit Ad"
+msgstr "Изменить объявление"
+
+#: admin/tables/admin-ads-table.php:70
+msgid "Delete Ad"
+msgstr "Удалить объявление"
+
+#: admin/tables/admin-ads-table.php:40
+msgid "Inactive"
+msgstr "Неактивное"
+
+#: admin/tables/admin-ads-table.php:38
+msgid "Active"
+msgstr "Активное"
+
+#: admin/views/ads.php:77 admin/views/ads.php:79
+msgid "New Ad"
+msgstr "Новое объявление"
+
+#: admin/views/ads.php:53
+msgid "Are you sure you want to delete this ad?"
+msgstr "Вы уверены, что хотите удалить это объявление?"
+
+#: admin/views/ads.php:31
+msgid "Location:"
+msgstr "Местоположение:"
+
+#: admin/views/ads.php:27
+msgid "Active:"
+msgstr "Активное:"
+
+#: admin/views/ads.php:23
+msgid "Code:"
+msgstr "Код:"
+
+#: admin/views/ads.php:6
+msgid "Ads updated."
+msgstr "Объявление обновлено"
+
+#: admin/views/appearance.php:88
+msgid "Custom CSS:"
+msgstr "Свой CSS:"
+
+#: admin/views/options.php:766
+msgid "Ad frequency for posts:"
+msgstr "Частота объявлений для сообщений:"
+
+#: admin/views/options.php:762
+msgid "Ad frequency for topics:"
+msgstr "Частота объявлений для тем:"
+
+#: admin/views/options.php:758
+msgid "Ad frequency for forums:"
+msgstr "Частота объявлений для форумов:"
+
+#: admin/views/options.php:754
+msgid "Ad frequency for categories:"
+msgstr "Частота объявлений для категорий:"
+
+#: admin/views/options.php:750
+msgid "Enable ads"
+msgstr "Включить объявления"
+
+#: admin/views/options.php:159
+msgid "Guests can see topics but need to log in to access the posts they contain."
+msgstr "Гости могут видеть темы, но нужно войти в систему, чтобы получить доступ к сообщениям, которые они содержат."
+
+#: admin/views/options.php:158
+msgid "Hide posts from logged-out users"
+msgstr "Скрыть сообщения от не авторизованных пользователей"
+
+#: admin/views/options.php:152
+msgid "Hide forum from logged-out users"
+msgstr "Скрыть форум от не авторизованных пользователей"
+
+#: admin/admin.php:83 admin/admin.php:219 admin/views/ads.php:5
+#: admin/views/ads.php:66
+msgid "Ads"
+msgstr "Объявления"
+
+#: includes/forum-ads.php:26
+msgid "Bottom"
+msgstr "Низ"
+
+#: includes/forum-ads.php:25
+msgid "Post"
+msgstr "Сообщение"
+
+#: includes/forum-ads.php:24
+msgid "Topic"
+msgstr "Тема"
+
+#: includes/forum-ads.php:21
+msgid "Header"
+msgstr "Заголовок"
+
+#: includes/forum-ads.php:20
+msgid "Top"
+msgstr "Верх"
+
+#: widgets/widget-recent-posts.php:185
+msgid "Group posts by topic"
+msgstr "Группа сообщений по теме"
+
+#: includes/forum-usergroups.php:416
+msgid "Forum Usergroups"
+msgstr "Пользовательские группы форума"
+
+#: includes/forum.php:1639
+msgid "Forum Navigation"
+msgstr "Навигация Форума"
+
+#: includes/forum.php:294
+msgid "Hello ###USERNAME###,<br><br>You have been mentioned in a forum-post.<br><br>Topic:<br>###TITLE###<br><br>Author:<br>###AUTHOR###<br><br>Text:<br>###CONTENT###<br><br>Link:<br>###LINK###"
+msgstr "Привет ###USERNAME###,<br><br>Вы были упомянуты в сообщение на форуме.<br><br>Тема:<br>###TITLE###<br><br>Автор:<br>###AUTHOR###<br><br>Текст:<br>###CONTENT###<br><br>Ссылка:<br>###LINK###"
+
+#: includes/forum.php:286
+msgid "Hello ###USERNAME###,<br><br>You received this message because there is a new forum-topic.<br><br>Topic:<br>###TITLE###<br><br>Author:<br>###AUTHOR###<br><br>Text:<br>###CONTENT###<br><br>Link:<br>###LINK###<br><br>If you dont want to receive these mails anymore you can unsubscribe via the subscription-area. Please dont answer to this mail!"
+msgstr "Привет ###USERNAME###,<br><br>Вы получили это сообщение, потому что появилась новая тема на форуме.<br><br>Тема:<br>###TITLE###<br><br>Автор:<br>###AUTHOR###<br><br>Текст:<br>###CONTENT###<br><br>Ссылка:<br>###LINK###<br><br>Если вы больше не хотите получать эти письма, вы можете отказаться от подписки, в зоне подписки. Пожалуйста, не отвечайте на это письмо!"
+
+#: includes/forum.php:282
+msgid "New topic: ###TITLE###"
+msgstr "Новая тема: ###TITLE###"
+
+#: includes/forum.php:278
+msgid "Hello ###USERNAME###,<br><br>You received this message because there is a new answer in a forum-topic you have subscribed to.<br><br>Topic:<br>###TITLE###<br><br>Author:<br>###AUTHOR###<br><br>Answer:<br>###CONTENT###<br><br>Link:<br>###LINK###<br><br>If you dont want to receive these mails anymore you can unsubscribe via the subscription-area. Please dont answer to this mail!"
+msgstr "Привет ###USERNAME###,<br><br>Вы получили это сообщение, потому что есть новый ответ в теме форума, на которую вы подписаны.<br><br>Тема:<br>###TITLE###<br><br>Автор:<br>###AUTHOR###<br><br>Ответ:<br>###CONTENT###<br><br>Ссылка:<br>###LINK###<br><br>Если вы больше не хотите получать эти письма, вы можете отказаться от подписки через зону подписки. Пожалуйста, не отвечайте на это письмо!"
+
+#: includes/forum.php:274
+msgid "New answer: ###TITLE###"
+msgstr "Новый ответ: ###TITLE###"
+
+#: includes/forum-unread.php:271
+msgid "There are no unread topics."
+msgstr "Нет непрочитанных тем."
+
+#: includes/forum-unread.php:196
+msgid "Show Unread Topics"
+msgstr "Показать непрочитанные темы"
+
+#: includes/forum-unread.php:83 includes/forum.php:632
+msgid "Unread Topics"
+msgstr "Непрочитанные темы"
+
+#: includes/forum-reports.php:81
+msgid "Hello ###USERNAME###,<br><br>There is a new report.<br><br>Topic:<br>###TITLE###<br><br>Post:<br>###CONTENT###<br><br>Post Author:<br>###AUTHOR###<br><br>Reporter:<br>###REPORTER###<br><br>Link:<br>###LINK###"
+msgstr "Привет ###USERNAME###,<br><br>Появился новый отчет.<br><br>Тема:<br>###TITLE###<br><br>Сообщение:<br>###CONTENT###<br><br>Автор сообщения:<br>###AUTHOR###<br><br>Автор отчета:<br>###REPORTER###<br><br>Ссылка:<br>###LINK###"
+
+#: includes/forum-reports.php:34
+msgid "Click to report post."
+msgstr "Кликните, чтобы сообщить о публикации."
+
+#: includes/forum-reactions.php:21
+msgid "Click for thumbs up."
+msgstr "Голосуйте - палец вверх."
+
+#: includes/forum-reactions.php:16
+msgid "Click for thumbs down."
+msgstr "Голосуйте - палец вниз."
+
+#: includes/forum-permissions.php:675
+msgid "Forum role assigned."
+msgstr "Назначена роль форума."
+
+#: includes/forum-permissions.php:628 includes/forum-permissions.php:629
+#: includes/forum-permissions.php:630 includes/forum-permissions.php:631
+msgid "Assign forum role:"
+msgstr "Назначить роль форума:"
+
+#: includes/forum-permissions.php:573
+msgid "Forum Roles:"
+msgstr "Роли форума:"
+
+#: includes/forum-online.php:207
+msgid "Seen %s ago"
+msgstr "Визит %s тому назад"
+
+#: includes/forum-memberslist.php:188
+msgid "No users found!"
+msgstr "Пользователи не найдены!"
+
+#: admin/views/options.php:590 includes/forum-memberslist.php:123
+#: includes/forum-permissions.php:590
+msgid "Administrators"
+msgstr "Администраторы"
+
+#: admin/views/options.php:586 includes/forum-memberslist.php:114
+#: includes/forum-permissions.php:584
+msgid "Moderators"
+msgstr "Модераторы"
+
+#: includes/forum-memberslist.php:96
+msgid "Roles:"
+msgstr "Роли:"
+
+#: includes/forum-memberslist.php:84 includes/forum-memberslist.php:94
+msgid "Hide Filters"
+msgstr "Скрыть фильтры"
+
+#: includes/forum-memberslist.php:79 includes/forum-memberslist.php:94
+msgid "Show Filters"
+msgstr "Показать фильтры"
+
+#: includes/forum-breadcrumbs.php:95
+msgid "Forum breadcrumbs - You are here:"
+msgstr "Форум breadcrumbs - Вы здесь:"
+
+#: admin/views/options.php:552
+msgid "Mentioning notification message:"
+msgstr "Упоминание, текст уведомления:"
+
+#: admin/views/options.php:548
+msgid "Mentioning notification subject:"
+msgstr "Упоминание, описание, заголовок:"
+
+#: admin/views/options.php:526
+msgid "New topic notification message:"
+msgstr "Сообщение о новой теме:"
+
+#: admin/views/options.php:522
+msgid "New topic notification subject:"
+msgstr "Новая тема, описание, заголовок:"
+
+#: admin/views/options.php:517
+msgid "New post notification message:"
+msgstr "Новое сообщение, текст уведомления"
+
+#: admin/views/options.php:513
+msgid "New post notification subject:"
+msgstr "Новое сообщение текст уведомления:"
+
+#: admin/views/options.php:92
+msgid "Dont create topics"
+msgstr "Не создавайте темы"
+
+#: admin/views/appearance.php:72
+msgid "Background color (Second):"
+msgstr "Цвет фона (второй):"
+
+#: admin/views/appearance.php:68
+msgid "Background color (First):"
+msgstr "Цвет фона (первый):"
+
+#: admin/views/appearance.php:64
+msgid "Link color:"
+msgstr "Цвет ссылки:"
+
+#: admin/views/appearance.php:60
+msgid "Text color light:"
+msgstr "Цвет текста:"
+
+#: includes/forum.php:1534
+msgid "Unsticky"
+msgstr "Открепить"
+
+#: includes/forum-usergroups.php:645
+msgid "Forum Usergroups:"
+msgstr "Группы пользователей форума"
+
+#: includes/forum-profile.php:329
+msgid "Ban User"
+msgstr "Ban User"
+
+#: includes/forum-profile.php:325
+msgid "Unban User"
+msgstr "Unban User"
+
+#: includes/forum-unread.php:260 includes/forum-approval.php:220
+#: includes/forum.php:912
+msgid "In"
+msgstr "в"
+
+#: includes/forum-feed.php:40 includes/forum-feed.php:45
+msgid "RSS Feed"
+msgstr "RSS Feed"
+
+#: admin/views/options.php:231
+msgid "Enable RSS Feeds"
+msgstr "Включить RSS Feeds"
+
+#: admin/views/options.php:53
+msgid "Forum title:"
+msgstr "Название форума:"
+
+#: admin/admin.php:551
+msgid "Documentation"
+msgstr "Документация"
+
+#: admin/views/options.php:714
+msgid "Allowed HTML tags:"
+msgstr "Разрешенные HTML теги:"
+
+#: admin/views/options.php:710
+msgid "Allow HTML tags in signatures"
+msgstr "Разрешить HTML теги в подписи"
+
+#: admin/views/options.php:697
+msgid "Enable signatures"
+msgstr "Включить подписи"
+
+#: admin/admin.php:75
+msgid "Signatures"
+msgstr "Подписи"
+
+#: admin/views/options.php:235
+msgid "Count topic views"
+msgstr "Просмотр тем"
+
+#: admin/admin.php:157
+msgid "HTML tags are not allowed in signatures."
+msgstr "В подписях не допускаются теги HTML."
+
+#: admin/admin.php:153
+msgid "You can use the following HTML tags in signatures:"
+msgstr "Вы можете использовать следующие теги HTML в подписях:"
+
+#: includes/forum-profile.php:196
+msgid "In:"
+msgstr "В:"
+
+#: includes/forum-profile.php:175
+msgid "No posts made by this user."
+msgstr "Нет сообщений, сделанных этим пользователем."
+
+#: includes/forum-profile.php:41 includes/forum-profile.php:66
+#: includes/forum-profile.php:121 includes/forum-profile.php:123
+msgid "Post History"
+msgstr "Сообщения пользователя"
+
+#: admin/views/appearance.php:52
+msgid "Accent color:"
+msgstr "Цвет акцента:"
+
+#: includes/forum-activity.php:48
+msgid "Yesterday"
+msgstr "Вчера"
+
+#: includes/forum-activity.php:46
+msgid "Today"
+msgstr "Сегодня"
+
+#: admin/views/usergroups.php:44
+msgid "Add new users automatically:"
+msgstr "Добавить новых пользователей автоматически:"
+
+#: admin/views/options.php:279
+msgid "Enable SEO-friendly URLs"
+msgstr "Включить SEO-дружественные URL-адреса (ЧПУ)"
+
+#: admin/tables/admin-usergroups-table.php:89
+msgid "Automatically Add:"
+msgstr "Автоматическое добавление:"
+
+#: admin/tables/admin-usergroups-table.php:72
+msgid "No"
+msgstr "Нет"
+
+#: admin/tables/admin-usergroups-table.php:70
+msgid "Yes"
+msgstr "Да"
+
+#: admin/tables/admin-usergroups-table.php:54
+msgid "%s User"
+msgid_plural "%s Users"
+msgstr[0] "%s Пользователь"
+msgstr[1] "%s Пользователя"
+msgstr[2] "%s Пользователей"
+
+#: admin/tables/admin-structure-table.php:57
+msgid "No description yet ..."
+msgstr "Пока нет описания ..."
+
+#: admin/admin.php:137
+msgid "Notify me when I get mentioned"
+msgstr "Сообщите мне, когда я буду упомянут"
+
+#: includes/forum-notifications.php:627
+msgid "You get notified about <b>all</b> new posts."
+msgstr "Вы получаете уведомления о <b>всех</b> новых сообщениях."
+
+#: includes/forum-notifications.php:625
+msgid "You get notified about <b>all</b> new topics."
+msgstr "Вы получаете уведомления о <b>всех</b> темах."
+
+#: includes/forum-notifications.php:559
+msgid "Notify about new posts in:"
+msgstr "Уведомлять о новых сообщениях в:"
+
+#: includes/forum-notifications.php:551
+msgid "You get notified about all new topics and posts."
+msgstr "Вы получаете уведомление обо всех новых темах и сообщениях."
+
+#: includes/forum-notifications.php:545
+msgid "You get notified about all new topics."
+msgstr "Вы получаете уведомление обо всех новых темах."
+
+#: includes/forum-notifications.php:539
+msgid "You get notified about activity in forums and topics you are subscribed to."
+msgstr "Вы получаете уведомление о активности на форуме и в темах, на которые вы подписаны."
+
+#: admin/admin.php:79 includes/forum-activity.php:20
+#: includes/forum-activity.php:124 includes/forum.php:630
+msgid "Activity"
+msgstr "Новое на форуме"
+
+#: includes/forum-activity.php:91
+msgid "No activity yet!"
+msgstr "Пока нет активности!"
+
+#: includes/forum-activity.php:82
+msgid "%s answered in %s."
+msgstr "%s ответил %s."
+
+#: includes/forum-activity.php:75
+msgid "New topic %s created by %s."
+msgstr "Новая тема %s создана %s."
+
+#: admin/views/usergroups.php:40
+msgid "Hide usergroup:"
+msgstr "Скрыть группу пользователей:"
+
+#: admin/views/options.php:728
+msgid "Enable Activity Feed"
+msgstr "Включить фид активности"
+
+#: admin/views/options.php:410
+msgid "Time limitation for editing posts (in minutes):"
+msgstr "Ограничение времени для редактирования сообщений (в минутах):"
+
+#: admin/tables/admin-usergroups-table.php:88
+msgid "Visibility:"
+msgstr "Видимость:"
+
+#: admin/tables/admin-usergroups-table.php:64
+msgid "Visible"
+msgstr "Видимый"
+
+#: admin/tables/admin-usergroups-table.php:62
+msgid "Hidden"
+msgstr "Скрытый"
+
+#: includes/forum-notifications.php:76
+msgid "You are subscribed to <b>all</b> forums."
+msgstr "Вы подписаны на <b>все</b> форумы."
+
+#: includes/forum-notifications.php:52 includes/forum-notifications.php:105
+msgid "You are subscribed to <b>all</b> topics."
+msgstr "Вы подписаны на <b>все</b> темы."
+
+#: admin/views/options.php:475
+msgid "Show category name in breadcrumbs"
+msgstr "Показывать название категории в хлебных крошках"
+
+#: includes/forum.php:1635
+msgid "Menu"
+msgstr "Меню"
+
+#: includes/forum-notifications.php:635
+msgid "Unsubscribe"
+msgstr "Отказаться от подписки"
+
+#: includes/forum-notifications.php:549
+msgid "New Topics & Posts"
+msgstr "Новые темы и сообщения"
+
+#: includes/forum-notifications.php:543
+msgid "New Topics"
+msgstr "Новые темы"
+
+#: includes/forum-notifications.php:537
+msgid "Individual Subscriptions"
+msgstr "Индивидуальные подписки"
+
+#: includes/forum-notifications.php:530
+msgid "Subscription Settings"
+msgstr "Настройки подписки"
+
+#: admin/admin.php:47
+msgid "Breadcrumbs"
+msgstr "Хлебные крошки"
+
+#: includes/forum-online.php:197
+msgid "Currently online"
+msgstr "Сейчас на сайте"
+
+#: includes/forum-profile.php:255
+msgid "Last seen:"
+msgstr "Последнее посещение:"
+
+#: admin/views/options.php:540
+msgid "Enable Mentioning"
+msgstr "Включить упоминание"
+
+#: includes/forum-database.php:330
+msgid "Example Category"
+msgstr "Пример категории"
+
+#: admin/views/structure.php:95
+msgid "Parent:"
+msgstr "Родитель:"
+
+#: includes/forum-database.php:338
+msgid "First Forum"
+msgstr "Первый форум"
+
+#: includes/forum-database.php:339
+msgid "My first forum."
+msgstr "Мой первый форум."
+
+#: includes/forum.php:290
+msgid "You have been mentioned!"
+msgstr "Вы были упомянуты!"
+
+#: includes/forum-online.php:175
+msgid "%s Guest"
+msgid_plural "%s Guests"
+msgstr[0] "%s Гость"
+msgstr[1] "%s Гостя"
+msgstr[2] "%s Гостей"
+
+#: widgets/widget-search.php:18 widgets/widget-search.php:48
+msgid "Forum Search"
+msgstr "Поиск по форуму"
+
+#: widgets/widget-search.php:8
+msgid "Asgaros Forum: Search"
+msgstr "Asgaros Forum: Поиск"
+
+#: widgets/widget-search.php:7
+msgid "A search form for Asgaros Forum."
+msgstr "Форма поиска для Asgaros Forum."
+
+#: includes/forum-reports.php:80
+msgid "New report"
+msgstr "Новый рапорт"
+
+#: includes/forum-reports.php:38
+msgid "You reported this post."
+msgstr "Вы отправили рапорт об этом сообщении."
+
+#: includes/forum-reports.php:32
+msgid "Report Post"
+msgstr "Сообщить модератору"
+
+#: includes/forum-reports.php:29
+msgid "Are you sure that you want to report this post?"
+msgstr "Вы уверены, что хотите отправить рапорт об этом сообщении?"
+
+#: includes/forum-profile.php:316
+msgid "Edit Profile"
+msgstr "Редактировать профиль"
+
+#: includes/forum-appearance.php:70
+msgid "Default Theme"
+msgstr "Тема по умолчанию"
+
+#: admin/views/options.php:862
+msgid "Save Settings"
+msgstr "Сохранить настройки"
+
+#: admin/views/options.php:679
+msgid "Enable reports"
+msgstr "Включить отчеты"
+
+#: admin/views/options.php:641
+msgid "Who can upload files:"
+msgstr "Кто может загружать файлы:"
+
+#: admin/views/options.php:629
+msgid "Allow uploads"
+msgstr "Разрешить загрузку"
+
+#: admin/views/options.php:223
+msgid "Enable reactions"
+msgstr "Включить реакции"
+
+#: admin/views/options.php:9
+msgid "Settings updated."
+msgstr "Настройки обновлены."
+
+#: admin/views/appearance.php:94
+msgid "Save Appearance"
+msgstr "Сохранить внешний вид"
+
+#: admin/views/appearance.php:44
+msgid "Font size:"
+msgstr "Размер шрифта:"
+
+#: admin/views/appearance.php:40
+msgid "Font:"
+msgstr "Шрифт:"
+
+#: admin/views/appearance.php:9
+msgid "Appearance updated."
+msgstr "Внешний вид обновлен."
+
+#: includes/forum-reports.php:247
+msgid "Delete Report"
+msgstr "Удалить рапорт"
+
+#: admin/admin.php:224 admin/views/options.php:8
+msgid "Settings"
+msgstr "Настройки"
+
+#: admin/admin.php:71 includes/forum-reports.php:18 includes/forum.php:636
+msgid "Reports"
+msgstr "Отчеты"
+
+#: includes/forum-memberslist.php:29 includes/forum-memberslist.php:65
+#: includes/forum.php:628
+msgid "Members"
+msgstr "Пользователи"
+
+#: admin/views/appearance.php:76
+msgid "Border color:"
+msgstr "Цвет рамки:"
+
+#: admin/views/options.php:574
+msgid "Members per page:"
+msgstr "Пользователей на странице:"
+
+#: admin/views/options.php:570
+msgid "Show members list to logged-in users only"
+msgstr "Показать список участников только для пользователей"
+
+#: admin/views/options.php:566
+msgid "Enable members list"
+msgstr "Включить список пользователей"
+
+#: admin/admin.php:59
+msgid "Members List"
+msgstr "Список пользователей"
+
+#: includes/forum-database.php:282
+msgid "Example Usergroup"
+msgstr "Пример группы пользователей"
+
+#: admin/views/usergroups.php:92
+msgid "Deleting this category will also permanently delete all usergroups inside it. Are you sure you want to delete this category?"
+msgstr "Удаление этой категории также навсегда удалит все группы пользователей внутри нее. Вы действительно хотите удалить эту категорию?"
+
+#: includes/forum-database.php:262
+msgid "Custom Usergroups"
+msgstr "Пользовательские группы пользователей"
+
+#: admin/views/options.php:87
+msgid "Create topics for new blog posts in the following forum:"
+msgstr "Создать тему для новых сообщений блога в следующем форуме:"
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.asgaros.de"
+msgstr "https://www.asgaros.de"
+
+#: includes/forum-profile.php:279
+msgid "Signature:"
+msgstr "Подпись:"
+
+#: includes/forum-profile.php:269
+msgid "Biographical Info:"
+msgstr "О пользователе:"
+
+#: admin/admin.php:556
+msgid "Donate"
+msgstr "Поддержать"
+
+#: admin/admin.php:546
+msgid "Official Support Forum"
+msgstr "Официальный форум поддержки"
+
+#: admin/views/options.php:177
+msgid "Show register button"
+msgstr "Показать кнопку регистрации"
+
+#: admin/views/options.php:172
+msgid "Show logout button"
+msgstr "Показать кнопку выхода"
+
+#: admin/views/options.php:167
+msgid "Show login button"
+msgstr "Показать кнопку входа"
+
+#: includes/forum.php:1665
+msgid "Logout"
+msgstr "Выйти"
+
+#: includes/forum-unread.php:187
+msgid "Nothing new"
+msgstr "Ничего нового"
+
+#: includes/forum-profile.php:210 includes/forum-profile.php:335
+msgid "This user does not exist."
+msgstr "Пользователь не существует."
+
+#: includes/forum-profile.php:300
+msgid "Replies Created"
+msgstr "Ответы созданы:"
+
+#: includes/forum-profile.php:295
+msgid "Topics Started"
+msgstr "Созданные темы"
+
+#: includes/forum-profile.php:262
+msgid "Member Since:"
+msgstr "Дата регистрации:"
+
+#: includes/forum-profile.php:247
+msgid "Website:"
+msgstr "Веб-сайт:"
+
+#: includes/forum-profile.php:229
+msgid "First Name:"
+msgstr "Имя:"
+
+#: admin/admin.php:123 includes/forum-permissions.php:106
+#: includes/forum-permissions.php:629
+msgid "Moderator"
+msgstr "Модератор"
+
+#: admin/admin.php:124 includes/forum-permissions.php:104
+#: includes/forum-permissions.php:630
+msgid "Administrator"
+msgstr "Администратор"
+
+#: includes/forum-notifications.php:444
+msgid "User"
+msgstr "Пользователь"
+
+#: admin/admin.php:118 includes/forum-permissions.php:560
+msgid "Forum Role"
+msgstr "Роль на форуме:"
+
+#: includes/forum-profile.php:166 includes/forum-profile.php:221
+msgid "You need to login to have access to profiles."
+msgstr "Вам нужно войти, чтобы иметь доступ к профилям."
+
+#: includes/forum-profile.php:35 includes/forum-profile.php:60
+#: includes/forum-profile.php:114 includes/forum-profile.php:116
+#: includes/forum-profile.php:394
+msgid "Profile"
+msgstr "Профиль"
+
+#: admin/views/options.php:615
+msgid "Show profiles to logged-in users only"
+msgstr "Показывать профили только зарегистрированным пользователям"
+
+#: admin/admin.php:63
+msgid "Profiles"
+msgstr "Профили"
+
+#: admin/views/options.php:611
+msgid "Enable profiles"
+msgstr "Включить профили"
+
+#: admin/views/options.php:142
+msgid "Show author posts counter"
+msgstr "Показывать счетчик сообщений автора"
+
+#: includes/forum-notifications.php:630
+msgid "No subscriptions yet!"
+msgstr "Пока нет подписки!"
+
+#: includes/forum-notifications.php:20 includes/forum-notifications.php:501
+#: includes/forum.php:622
+msgid "Subscriptions"
+msgstr "Подписки"
+
+#: admin/views/options.php:147
+msgid "Show description in forum"
+msgstr "Показать описание в форуме"
+
+#: includes/forum.php:1689
+msgid "Register"
+msgstr "Регистрация"
+
+#: admin/views/structure.php:105 admin/views/usergroups.php:35
+msgid "List of available icons."
+msgstr "Список доступных иконок."
+
+#: admin/views/structure.php:101 admin/views/usergroups.php:29
+msgid "Icon:"
+msgstr "Иконка:"
+
+#: includes/forum-content.php:143
+msgid "You are not allowed to upload files with that file size."
+msgstr "Загружаемый файл превышает разрешенный размер."
+
+#: includes/forum-content.php:137
+msgid "You are not allowed to upload files with that file extension."
+msgstr "Вы не можете загружать файлы с этим расширением."
+
+#: admin/views/options.php:490
+msgid "Sender mail:"
+msgstr "Почта отправителя:"
+
+#: admin/views/options.php:486
+msgid "Sender name:"
+msgstr "Имя отправителя:"
+
+#: includes/views/post-element.php:136
+msgid "Last edited on %s by %s"
+msgstr "Последний раз редактировалось %s : %s"
+
+#: includes/forum-usergroups.php:761
+msgid "Usergroups assignments updated."
+msgstr "Присвоенные группы пользователей обновлены."
+
+#: includes/forum-usergroups.php:703
+msgid "Remove from"
+msgstr "Удалить из"
+
+#: includes/forum-usergroups.php:499
+msgid "When usergroups are selected, only users of the selected usergroups will have access to the category."
+msgstr "При выборе группы пользователей, только пользователи выбранных групп будут иметь доступ к этой категории."
+
+#: includes/forum-profile.php:239 includes/forum-memberslist.php:157
+#: includes/forum-usergroups.php:469 includes/forum-usergroups.php:486
+msgid "Usergroups:"
+msgstr "Группы пользователей:"
+
+#: includes/forum-online.php:180
+msgid "Currently nobody is online."
+msgstr "В настоящее время никого нет онлайн."
+
+#: includes/forum-online.php:150
+msgid "Currently Online:"
+msgstr "Сейчас на сайте:"
+
+#: includes/forum-online.php:143
+msgid "Newest Member:"
+msgstr "Новый пользователь:"
+
+#: admin/views/usergroups.php:136 admin/views/usergroups.php:138
+msgid "Add Usergroup"
+msgstr "Добавить группу пользователей"
+
+#: admin/views/usergroups.php:60
+msgid "Are you sure you want to delete this usergroup?"
+msgstr "Вы уверены, что хотите удалить эту группу пользователей?"
+
+#: admin/views/usergroups.php:6
+msgid "Usergroups updated."
+msgstr "Группы пользователей обновлены."
+
+#: admin/views/usergroups.php:24
+msgid "Color:"
+msgstr "Цвет:"
+
+#: admin/tables/admin-usergroups-table.php:80
+msgid "Edit Usergroup"
+msgstr "Редактирование группы пользователей"
+
+#: admin/tables/admin-usergroups-table.php:78
+msgid "Delete Usergroup"
+msgstr "Удалить группу пользователей"
+
+#: admin/admin.php:216 admin/views/usergroups.php:5
+#: includes/forum-usergroups.php:574
+msgid "Usergroups"
+msgstr "Группы пользователей"
+
+#: includes/forum-usergroups.php:699
+msgid "Add to"
+msgstr "Добавить в"
+
+#: widgets/widget-recent-topics.php:168 widgets/widget-recent-posts.php:175
+msgid "Show avatars"
+msgstr "Показать аватары"
+
+#: includes/forum.php:647
+msgid "Page"
+msgstr "Страница"
+
+#: admin/views/structure.php:217 admin/views/structure.php:220
+msgid "Add Forum"
+msgstr "Добавить форум"
+
+#: admin/views/structure.php:205 admin/views/usergroups.php:123
+msgid "Delete Category"
+msgstr "Удалить категорию"
+
+#: admin/views/structure.php:160 admin/views/structure.php:163
+#: admin/views/structure.php:227 admin/views/structure.php:229
+#: admin/views/usergroups.php:102 admin/views/usergroups.php:105
+#: admin/views/usergroups.php:144 admin/views/usergroups.php:146
+msgid "Add Category"
+msgstr "Добавить категорию"
+
+#: admin/views/structure.php:136
+msgid "Deleting this category will also permanently delete all forums, sub-forums, topics and posts inside it. Are you sure you want to delete this category?"
+msgstr "Удаление этой категории также приведет к удалению всех форумов, подфорумов, тем и сообщений внутри нее. Вы уверены, что хотите удалить эту категорию?"
+
+#: admin/views/structure.php:6
+msgid "Structure updated."
+msgstr "Обновить структуру"
+
+#: admin/admin.php:214 admin/views/structure.php:5
+msgid "Structure"
+msgstr "Структура"
+
+#: admin/tables/admin-usergroups-table.php:90
+#: admin/tables/admin-ads-table.php:82
+#: admin/tables/admin-structure-table.php:108
+msgid "Actions:"
+msgstr "Действия:"
+
+#: admin/tables/admin-ads-table.php:80
+#: admin/tables/admin-structure-table.php:106 admin/views/structure.php:110
+msgid "Status:"
+msgstr "Статус:"
+
+#: admin/tables/admin-structure-table.php:95
+#: admin/tables/admin-structure-table.php:96
+msgid "Add Sub-Forum"
+msgstr "Добавить подфорум"
+
+#: admin/tables/admin-structure-table.php:85
+#: admin/tables/admin-structure-table.php:86
+msgid "Delete Forum"
+msgstr "Удалить форум"
+
+#: admin/tables/admin-structure-table.php:72 admin/admin.php:122
+#: admin/views/options.php:582 admin/views/structure.php:113
+#: includes/forum-memberslist.php:105 includes/forum-permissions.php:110
+#: includes/forum-permissions.php:578 includes/forum-permissions.php:628
+msgid "Normal"
+msgstr "Нормальный"
+
+#: admin/tables/admin-structure-table.php:75 admin/views/structure.php:114
+msgid "Closed"
+msgstr "Закрыто"
+
+#: admin/views/options.php:633
+msgid "Show thumbnails"
+msgstr "Показывать эскизы"
+
+#: includes/forum-online.php:128
+msgid "Online"
+msgstr "В сети"
+
+#: admin/views/options.php:239
+msgid "Show who is online"
+msgstr "Показывать кто в сети"
+
+#: admin/views/options.php:471
+msgid "Enable breadcrumbs"
+msgstr "Включить навигацию (хлебные крошки)"
+
+#: admin/admin.php:35
+msgid "Features"
+msgstr "Особенности"
+
+#: admin/tables/admin-usergroups-table.php:49
+#: admin/tables/admin-structure-table.php:52 admin/views/options.php:290
+#: admin/views/options.php:302 admin/views/structure.php:187
+msgid "ID"
+msgstr "ID"
+
+#: admin/views/options.php:71
+msgid "Page which contains the [forum]-shortcode."
+msgstr "Страница содержащая шорткод [forum]"
+
+#: admin/views/options.php:662
+msgid "Maximum file size (in megabyte):"
+msgstr "Максимальный размер файла (в мегабайтах):"
+
+#: admin/views/options.php:413 admin/views/options.php:430
+#: admin/views/options.php:447 admin/views/options.php:658
+#: admin/views/options.php:665
+msgid "(0 = No limitation)"
+msgstr "(0 = Без ограничения)"
+
+#: admin/views/options.php:655
+msgid "Maximum files per post:"
+msgstr "Максимальное количество файлов в сообщении:"
+
+#: admin/admin.php:146
+msgid "Signature"
+msgstr "Подпись"
+
+#: includes/forum-statistics.php:30
+msgid "Users"
+msgstr "Пользователей"
+
+#: includes/forum-statistics.php:19
+msgid "Statistics"
+msgstr "Статистика"
+
+#: admin/views/options.php:247
+msgid "Show statistics"
+msgstr "Показать статистику"
+
+#: includes/forum-notifications.php:83
+msgid "<b>Subscribe</b> to this forum."
+msgstr "<b>Подписаться</b> на этот форум."
+
+#: includes/forum-notifications.php:80
+msgid "<b>Unsubscribe</b> from this forum."
+msgstr "<b>Отменить подписку</b> на этот форум."
+
+#. Description of the plugin
+msgid "Asgaros Forum is the best forum solution for WordPress! It comes with dozens of features in a beautiful design and stays slight, simple and fast."
+msgstr "Asgaros Forum является наилучшим решением для создания форума на WordPress! Он поставляется с десятками функций с красивым дизайном и остается легким, простым в использовании и очень быстрым."
+
+#: includes/views/post-element.php:54
+msgid "Topic Author"
+msgstr "Автор темы"
+
+#: includes/forum-search.php:78
+msgid "No results found for:"
+msgstr "Не найдено результатов для:"
+
+#: includes/forum-statistics.php:23 includes/views/forum.php:32
+msgid "Topics"
+msgstr "Темы"
+
+#: includes/forum-search.php:69 includes/forum.php:953
+#: includes/views/overview.php:14 includes/views/forum.php:33
+msgid "Last post"
+msgstr "Последнее сообщение:"
+
+#: includes/forum.php:849
+msgid "%s Topic"
+msgid_plural "%s Topics"
+msgstr[0] "%s Тема"
+msgstr[1] "%s Темы"
+msgstr[2] "%s Тем"
+
+#: includes/forum-search.php:55 widgets/widget-search.php:36
+msgid "Search ..."
+msgstr "Поиск ..."
+
+#: includes/forum.php:1550
+msgid "Open"
+msgstr "Открыть"
+
+#: includes/forum-approval.php:212 includes/forum.php:907
+msgid "By"
+msgstr "От"
+
+#: includes/forum-search.php:27 includes/forum.php:620
+msgid "Search"
+msgstr "Поиск"
+
+#: includes/forum-breadcrumbs.php:87 includes/forum.php:618
+msgid "Move Topic"
+msgstr "Переместить тему"
+
+#: integrations/integration-mycred.php:328 includes/forum-editor.php:220
+#: includes/forum-breadcrumbs.php:83 includes/forum.php:616
+#: includes/forum.php:1495
+msgid "New Topic"
+msgstr "Новая тема"
+
+#: admin/views/options.php:227
+msgid "Enable search functionality"
+msgstr "Включить функцию поиска"
+
+#: includes/forum-search.php:68
+msgid "Search results:"
+msgstr "Результаты поиска:"
+
+#: widgets/widget-recent-topics.php:20 widgets/widget-search.php:41
+#: widgets/widget-recent-posts.php:20
+msgid "The forum has not been configured correctly."
+msgstr "Форум не был настроен правильно."
+
+#: admin/views/options.php:66
+msgid "Forum location:"
+msgstr "Расположение форума:"
+
+#: widgets/widget-recent-topics.php:150
+msgid "Recent forum topics"
+msgstr "Последние темы на форуме"
+
+#: widgets/widget-recent-topics.php:12
+msgid "Asgaros Forum: Recent Topics"
+msgstr "Asgaros Форум: Последние темы"
+
+#: widgets/widget-recent-topics.php:11
+msgid "Shows recent topics in Asgaros Forum."
+msgstr "Показывает последние темы в Asgaros форуме."
+
+#: includes/forum.php:1340 widgets/widget-recent-topics.php:29
+#: widgets/widget-recent-topics.php:41 widgets/widget-recent-topics.php:54
+#: widgets/widget-recent-topics.php:68 widgets/widget-recent-posts.php:29
+#: widgets/widget-recent-posts.php:41 widgets/widget-recent-posts.php:54
+#: widgets/widget-recent-posts.php:76
+msgid "No topics yet!"
+msgstr "Тем еще нет!"
+
+#: admin/views/options.php:137
+msgid "Highlight topic authors"
+msgstr "Выделить автора темы"
+
+#: includes/forum-notifications.php:570
+msgid "Notify about new topics in:"
+msgstr "Уведомлять о новых темах в:"
+
+#: includes/views/overview.php:19
+msgid "In this category are no forums yet!"
+msgstr "В этой категории еще нет форумов!"
+
+#: includes/forum.php:1214 includes/forum.php:1233
+msgid "Deleted user"
+msgstr "Удаленный пользователь"
+
+#: includes/forum.php:1217 includes/forum.php:1239
+msgid "Guest"
+msgstr "Гость"
+
+#: includes/forum-uploads.php:161
+msgid "You need to login to have access to uploads."
+msgstr "Вам нужно войти, чтобы просматривать прикрепленные файлы.."
+
+#: admin/views/options.php:637
+msgid "Show uploaded files to logged-in users only"
+msgstr "Показывать загруженные файлы только зарегистрированным пользователям"
+
+#: admin/views/options.php:251
+msgid "Allow guest postings"
+msgstr "Разрешить сообщения гостям"
+
+#: admin/views/options.php:122
+msgid "Allow shortcodes in posts"
+msgstr "Разрешить шорткоды в сообщениях"
+
+#: includes/forum.php:520
+msgid "Sorry, only logged-in users can access this category."
+msgstr "Извините, только зарегистрированные пользователи могут получить доступ к этой категории."
+
+#: includes/forum-notifications.php:59 includes/forum-notifications.php:108
+msgid "<b>Subscribe</b> to this topic."
+msgstr "<b>Подписаться</b> на эту тему."
+
+#: includes/forum-notifications.php:56
+msgid "<b>Unsubscribe</b> from this topic."
+msgstr "<b>Отменить подписку</b> на эту тему."
+
+#: admin/admin.php:51
+msgid "Notifications"
+msgstr "Уведомления"
+
+#: admin/admin.php:125 admin/views/options.php:594
+#: includes/forum-memberslist.php:132 includes/views/post-element.php:59
+#: includes/forum-permissions.php:108 includes/forum-permissions.php:596
+#: includes/forum-permissions.php:631
+msgid "Banned"
+msgstr "Banned"
+
+#: includes/forum.php:861 includes/forum.php:952
+msgid "Subforums"
+msgstr "Подразделы"
+
+#: includes/forum-content.php:73
+msgid "You are banned!"
+msgstr "Вы забанены!"
+
+#: admin/views/appearance.php:56
+msgid "Text color:"
+msgstr "Цвет текста:"
+
+#: admin/views/appearance.php:48
+msgid "Forum color:"
+msgstr "Цвет форума:"
+
+#: admin/views/appearance.php:26
+msgid "Theme"
+msgstr "Тема"
+
+#: admin/admin.php:215 admin/views/appearance.php:8
+#: admin/views/appearance.php:19
+msgid "Appearance"
+msgstr "Внешний вид"
+
+#: admin/admin.php:67
+msgid "Uploads"
+msgstr "Загрузки"
+
+#: admin/admin.php:31
+msgid "General"
+msgstr "Основные"
+
+#: admin/views/structure.php:150
+msgid "Deleting this forum will also permanently delete all sub-forums, topics and posts inside it. Are you sure you want to delete this forum?"
+msgstr "Удаление этого форума, также удалит безвозвратно все подразделы, темы и ответы, связанные с ним. Вы уверены, что хотите удалить этот форум?"
+
+#: admin/views/structure.php:73 admin/views/structure.php:127
+#: admin/views/structure.php:140 admin/views/structure.php:154
+#: admin/views/usergroups.php:51 admin/views/usergroups.php:64
+#: admin/views/usergroups.php:83 admin/views/usergroups.php:96
+#: admin/views/ads.php:44 admin/views/ads.php:57 includes/forum-editor.php:270
+#: includes/forum-editor.php:275
+msgid "Cancel"
+msgstr "Отмена"
+
+#: admin/views/structure.php:72 admin/views/structure.php:126
+#: admin/views/usergroups.php:50 admin/views/usergroups.php:82
+#: admin/views/ads.php:43
+msgid "Save"
+msgstr "Сохранить"
+
+#: admin/tables/admin-structure-table.php:89
+#: admin/tables/admin-structure-table.php:90
+msgid "Edit Forum"
+msgstr "Редактировать Форум"
+
+#: admin/tables/admin-structure-table.php:107 admin/views/structure.php:65
+#: admin/views/structure.php:120 admin/views/structure.php:198
+msgid "Order:"
+msgstr "Порядок:"
+
+#: admin/views/options.php:651
+msgid "Allowed filetypes:"
+msgstr "Допустимые типы файлов:"
+
+#: includes/forum-memberslist.php:224 includes/forum.php:851
+#: includes/views/post-element.php:49
+msgid "%s Post"
+msgid_plural "%s Posts"
+msgstr[0] "%s Сообщение"
+msgstr[1] "%s Сообщения"
+msgstr[2] "%s Сообщений"
+
+#: includes/forum.php:930
+msgid "%s View"
+msgid_plural "%s Views"
+msgstr[0] "%s Просмотр"
+msgstr[1] "%s Просмотра"
+msgstr[2] "%s Просмотров"
+
+#: includes/forum.php:925 widgets/widget-recent-topics.php:99
+msgid "%s Answer"
+msgid_plural "%s Answers"
+msgstr[0] "%s ответ"
+msgstr[1] "%s ответа"
+msgstr[2] "%s ответов"
+
+#: admin/views/options.php:646 admin/views/options.php:705
+#: admin/views/options.php:794 admin/views/structure.php:60
+#: admin/views/structure.php:195
+msgid "Moderators only"
+msgstr "Для модераторов"
+
+#: admin/views/options.php:645 admin/views/options.php:793
+#: admin/views/structure.php:59 admin/views/structure.php:193
+msgid "Logged in users only"
+msgstr "Только для зарегистрированных"
+
+#: admin/views/options.php:644 admin/views/structure.php:58
+#: admin/views/structure.php:191
+msgid "Everyone"
+msgstr "Общедоступно"
+
+#: admin/views/structure.php:55 admin/views/structure.php:189
+msgid "Access:"
+msgstr "Доступ:"
+
+#: admin/views/options.php:132
+msgid "Highlight administrator/moderator names"
+msgstr "Выделить имена администратора/модераторов"
+
+#: admin/views/options.php:182
+msgid "Show edit date"
+msgstr "Показать дату редактировния"
+
+#: includes/views/post-element.php:138
+msgid "Last edited on %s"
+msgstr "Последний раз редактировалось в %s"
+
+#: includes/forum.php:539
+msgid "Sorry, only logged-in users can access this topic."
+msgstr "К сожалению, только зарегистрированные пользователи могут получить доступ к этой теме."
+
+#: includes/forum.php:1677
+msgid "Login"
+msgstr "Авторизоваться"
+
+#: includes/forum.php:559
+msgid "You need to log in to create posts and topics."
+msgstr "Вы должны войти, чтобы создавать сообщения и темы."
+
+#: widgets/widget-recent-topics.php:162 widgets/widget-recent-posts.php:169
+msgid "Number of topics to show:"
+msgstr "Количество тем для просмотра:"
+
+#: widgets/widget-recent-topics.php:157 widgets/widget-search.php:51
+#: widgets/widget-recent-posts.php:164
+msgid "Title:"
+msgstr "Название:"
+
+#: includes/forum-activity.php:43 includes/forum-profile.php:194
+#: includes/forum-unread.php:243 includes/forum-approval.php:216
+#: includes/forum.php:1350 includes/forum.php:1363 includes/forum.php:1390
+#: includes/forum.php:1402 widgets/widget-recent-topics.php:118
+#: widgets/widget-recent-posts.php:124
+msgid "%s ago"
+msgstr "%s назад "
+
+#: widgets/widget-recent-topics.php:107 widgets/widget-recent-posts.php:113
+msgid "by"
+msgstr "от "
+
+#: widgets/widget-recent-posts.php:156
+msgid "Recent forum posts"
+msgstr "Последние сообщения на форуме"
+
+#: widgets/widget-recent-posts.php:12
+msgid "Asgaros Forum: Recent Posts"
+msgstr "Asgaros Forum: Последние сообщения"
+
+#: widgets/widget-recent-posts.php:11
+msgid "Shows recent posts in Asgaros Forum."
+msgstr "Показывает последние сообщения из Asgaros Forum."
+
+#: includes/forum.php:1577 includes/forum.php:1600
+msgid "Are you sure you want to remove this?"
+msgstr "Вы уверены, что хотите удалить это?"
+
+#. Author of the plugin
+msgid "Thomas Belser"
+msgstr "Томас Белзер"
+
+#. Plugin Name of the plugin
+#: integrations/integration-mycred.php:20
+msgid "Asgaros Forum"
+msgstr "Asgaros Форум"
+
+#: includes/forum-unread.php:191 includes/forum-unread.php:207
+msgid "Mark All Read"
+msgstr "Отметить все как прочитанные"
+
+#: includes/forum-unread.php:185
+msgid "New posts"
+msgstr "Новые сообщения"
+
+#: includes/views/forum.php:58
+msgid "There are no topics yet!"
+msgstr "Тут еще нет темы! "
+
+#: includes/forum-statistics.php:24
+msgid "Posts"
+msgstr "Сообщений"
+
+#: includes/forum-statistics.php:27
+msgid "Views"
+msgstr "Просмотров"
+
+#: includes/forum-editor.php:278
+msgid "Submit"
+msgstr "Отправить"
+
+#: includes/forum-uploads.php:249
+msgid "Add another file ..."
+msgstr "Добавить ещё один файл"
+
+#: includes/forum-uploads.php:231
+msgid "Upload Files:"
+msgstr "Загрузить файлы:"
+
+#: includes/forum-editor.php:243
+msgid "Subject:"
+msgstr "Тема:"
+
+#: includes/forum-editor.php:222
+msgid "Post Reply:"
+msgstr "Ответить"
+
+#: includes/forum-editor.php:202 includes/views/post-element.php:96
+msgid "Quote from"
+msgstr "Цитата:"
+
+#: includes/forum-content.php:131
+msgid "You must enter a message."
+msgstr "Вы должны ввести сообщение"
+
+#: includes/forum-content.php:120
+msgid "You must enter a subject."
+msgstr "Вы должны написать тему"
+
+#: includes/forum-editor.php:190 includes/forum-content.php:67
+#: includes/forum-content.php:79 includes/forum-content.php:85
+#: includes/forum-content.php:97 includes/forum-content.php:105
+#: includes/forum-content.php:113
+msgid "You are not allowed to do this."
+msgstr "У вас нет прав на это действие"
+
+#: includes/forum.php:1854
+msgid "Sorry, this post does not exist."
+msgstr "К сожалению, этого сообщения не существует."
+
+#: includes/forum-uploads.php:182 includes/forum-uploads.php:213
+msgid "Uploaded files:"
+msgstr "Загруженные файлы:"
+
+#: admin/tables/admin-usergroups-table.php:78
+#: admin/tables/admin-ads-table.php:70 admin/views/structure.php:139
+#: admin/views/structure.php:153 admin/views/usergroups.php:63
+#: admin/views/usergroups.php:95 admin/views/ads.php:56
+#: includes/forum-uploads.php:205 includes/forum.php:1579
+#: includes/forum.php:1602
+msgid "Delete"
+msgstr "Удалить"
+
+#: includes/forum-pagination.php:29 includes/forum-pagination.php:130
+msgid "Last"
+msgstr "Последняя"
+
+#: includes/forum-pagination.php:109
+msgid "First"
+msgstr "Первые"
+
+#: includes/forum.php:1558
+msgid "Close"
+msgstr "Закрыть"
+
+#: includes/forum.php:1463 includes/forum.php:1540
+msgid "Sticky"
+msgstr "Прикрепить"
+
+#: includes/forum.php:1518
+msgid "Reply"
+msgstr "Ответить"
+
+#: admin/tables/admin-usergroups-table.php:80
+#: admin/tables/admin-ads-table.php:72 includes/forum.php:1610
+msgid "Edit"
+msgstr "Редактировать"
+
+#: includes/forum.php:1619
+msgid "Quote"
+msgstr "Цитировать"
+
+#: includes/forum-editor.php:202 includes/views/post-element.php:96
+msgid "on %s"
+msgstr "от %s"
+
+#: includes/forum.php:1024
+msgid "You are not allowed to move topics."
+msgstr "Вам не разрешено перемещать темы."
+
+#: includes/forum.php:1020 includes/forum.php:1527
+msgid "Move"
+msgstr "Переместить"
+
+#: includes/forum.php:994
+msgid "Move \"<strong>%s</strong>\" to new forum:"
+msgstr "Перейти \"<strong>%s</strong>\" к новой теме"
+
+#: includes/forum.php:1855
+msgid "Sorry, this topic does not exist."
+msgstr "К сожалению, этой темы не существует."
+
+#: includes/forum.php:981
+msgid "Sorry, but there are no posts."
+msgstr "Извините, но сообщений нет"
+
+#: includes/forum.php:1856
+msgid "Sorry, this forum does not exist."
+msgstr "К сожалению, этого форума не существует."
+
+#: includes/views/overview.php:38
+msgid "There are no categories yet!"
+msgstr "Категорий нет"
+
+#: includes/forum-breadcrumbs.php:75 includes/forum.php:614
+msgid "Post Reply"
+msgstr " Отправить ответ "
+
+#: includes/forum-editor.php:224 includes/forum-breadcrumbs.php:79
+#: includes/forum.php:612
+msgid "Edit Post"
+msgstr "Редактировать сообщение"
+
+#: admin/views/structure.php:207 admin/views/usergroups.php:125
+msgid "Edit Category"
+msgstr "Изменить категорию "
+
+#: includes/forum-ads.php:22
+msgid "Category"
+msgstr "Категории"
+
+#: admin/views/options.php:82
+msgid "Topics to show per page:"
+msgstr "Темы на странице:"
+
+#: admin/views/options.php:77
+msgid "Replies to show per page:"
+msgstr "Ответов показать на странице:"
+
+#: admin/views/structure.php:91
+msgid "Description:"
+msgstr "Пояснения:"
+
+#: admin/tables/admin-usergroups-table.php:87
+#: admin/tables/admin-ads-table.php:79
+#: admin/tables/admin-structure-table.php:105 admin/views/structure.php:51
+#: admin/views/structure.php:87 admin/views/usergroups.php:20
+#: admin/views/usergroups.php:76 admin/views/ads.php:19
+msgid "Name:"
+msgstr "Название:"
+
+#: admin/admin.php:166 admin/admin.php:213 includes/forum-ads.php:23
+#: includes/forum.php:258 includes/forum.php:1642 includes/forum.php:2010
+msgid "Forum"
+msgstr "Форум"
