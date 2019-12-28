@@ -593,7 +593,7 @@ class autoptimizeImages
         // background-image in inline style.
         if ( strpos( $out, 'background-image:' ) !== false && apply_filters( 'autoptimize_filter_imgopt_backgroundimages', true ) ) {
             $out = preg_replace_callback(
-                '/style=(?:"|\').*?background-image:\s?url\((?:"|\')?([^"\')]*)(?:"|\')?\)/',
+                '/style=(?:"|\')[^<>]*?background-image:\s?url\((?:"|\')?([^"\')]*)(?:"|\')?\)/',
                 array( $this, 'replace_img_callback' ),
                 $out
             );
@@ -775,7 +775,7 @@ class autoptimizeImages
             $noptimize_flag = ' data-noptimize="1"';
         }
 
-        $lazysizes_js = plugins_url( 'external/js/lazysizes.min.js', __FILE__ );
+        $lazysizes_js = plugins_url( 'external/js/lazysizes.min.js?ao_version=' . AUTOPTIMIZE_PLUGIN_VERSION, __FILE__ );
         $cdn_url      = $this->get_cdn_url();
         if ( ! empty( $cdn_url ) ) {
             $lazysizes_js = str_replace( AUTOPTIMIZE_WP_SITE_URL, $cdn_url, $lazysizes_js );
@@ -900,7 +900,7 @@ class autoptimizeImages
     public function process_bgimage( $in ) {
         if ( strpos( $in, 'background-image:' ) !== false && apply_filters( 'autoptimize_filter_imgopt_lazyload_backgroundimages', true ) ) {
             $out = preg_replace_callback(
-                '/(<(?:article|aside|body|div|footer|header|p|section|table)[^>]*)\sstyle=(?:"|\').*?background-image:\s?url\((?:"|\')?([^"\')]*)(?:"|\')?\)[^>]*/',
+                '/(<(?:article|aside|body|div|footer|header|p|section|table)[^>]*)\sstyle=(?:"|\')[^<>]*?background-image:\s?url\((?:"|\')?([^"\')]*)(?:"|\')?\)[^>]*/',
                 array( $this, 'lazyload_bgimg_callback' ),
                 $in
             );
@@ -917,7 +917,7 @@ class autoptimizeImages
             // replace background-image URL with SVG placeholder.
             $out = str_replace( $matches[2], $placeholder, $matches[0] );
             // add data-bg attribute with real background-image URL for lazyload to pick up.
-            $out = str_replace( $matches[1], $matches[1] . ' data-bg="' . $matches[2] . '"', $out );
+            $out = str_replace( $matches[1], $matches[1] . ' data-bg="' . trim( str_replace( "\r\n", '', $matches[2] ) ) . '"', $out );
             // add lazyload class to tag.
             $out = $this->inject_classes_in_tag( $out, "$lazyload_class " );
             return $out;
@@ -949,8 +949,8 @@ class autoptimizeImages
                 'autoptimize_imgopt',
                 array( $this, 'imgopt_options_page' )
             );
-            register_setting( 'autoptimize_imgopt_settings', 'autoptimize_imgopt_settings' );
         }
+        register_setting( 'autoptimize_imgopt_settings', 'autoptimize_imgopt_settings' );
     }
 
     public function add_imgopt_tab( $in )
