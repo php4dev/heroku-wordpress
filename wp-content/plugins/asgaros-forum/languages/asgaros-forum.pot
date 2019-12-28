@@ -1,0 +1,2213 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Asgaros Forum\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-27 18:24+0000\n"
+"POT-Revision-Date: Thu Jul 27 2017 00:27:28 GMT+0200 (Mitteleuropäische "
+"Sommerzeit)\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: admin/admin.php:31
+msgid "General"
+msgstr ""
+
+#: admin/admin.php:35
+msgid "Features"
+msgstr ""
+
+#: admin/admin.php:39
+msgid "URLs"
+msgstr ""
+
+#: admin/admin.php:43
+msgid "Permissions"
+msgstr ""
+
+#: admin/admin.php:47
+msgid "Breadcrumbs"
+msgstr ""
+
+#: admin/admin.php:51
+msgid "Notifications"
+msgstr ""
+
+#: admin/admin.php:55
+msgid "Mentioning"
+msgstr ""
+
+#: admin/admin.php:59
+msgid "Members List"
+msgstr ""
+
+#: admin/admin.php:63
+msgid "Profiles"
+msgstr ""
+
+#: admin/admin.php:67
+msgid "Uploads"
+msgstr ""
+
+#: admin/admin.php:71 includes/forum-reports.php:18 includes/forum.php:636
+msgid "Reports"
+msgstr ""
+
+#: admin/admin.php:75
+msgid "Signatures"
+msgstr ""
+
+#: admin/admin.php:79 includes/forum-activity.php:20
+#: includes/forum-activity.php:124 includes/forum.php:630
+msgid "Activity"
+msgstr ""
+
+#: admin/admin.php:83 admin/admin.php:219 admin/admin.php:219
+#: admin/views/ads.php:5 admin/views/ads.php:66
+msgid "Ads"
+msgstr ""
+
+#: admin/admin.php:87
+msgid "Polls"
+msgstr ""
+
+#: admin/admin.php:91
+msgid "Spoilers"
+msgstr ""
+
+#: admin/admin.php:95
+msgid "Reputation"
+msgstr ""
+
+#: admin/admin.php:118 includes/forum-permissions.php:560
+msgid "Forum Role"
+msgstr ""
+
+#: admin/admin.php:122 includes/forum-memberslist.php:105
+#: includes/forum-permissions.php:110 includes/forum-permissions.php:578
+#: includes/forum-permissions.php:628 admin/tables/admin-structure-table.php:72
+#: admin/views/options.php:582 admin/views/structure.php:113
+msgid "Normal"
+msgstr ""
+
+#: admin/admin.php:123 includes/forum-permissions.php:106
+#: includes/forum-permissions.php:629
+msgid "Moderator"
+msgstr ""
+
+#: admin/admin.php:124 includes/forum-permissions.php:104
+#: includes/forum-permissions.php:630
+msgid "Administrator"
+msgstr ""
+
+#: admin/admin.php:125 includes/forum-memberslist.php:132
+#: includes/forum-permissions.php:108 includes/forum-permissions.php:596
+#: includes/forum-permissions.php:631 admin/views/options.php:594
+#: includes/views/post-element.php:59
+msgid "Banned"
+msgstr ""
+
+#: admin/admin.php:137
+msgid "Notify me when I get mentioned"
+msgstr ""
+
+#: admin/admin.php:146
+msgid "Signature"
+msgstr ""
+
+#: admin/admin.php:153
+msgid "You can use the following HTML tags in signatures:"
+msgstr ""
+
+#: admin/admin.php:157
+msgid "HTML tags are not allowed in signatures."
+msgstr ""
+
+#: admin/admin.php:166 admin/admin.php:213 admin/admin.php:213
+#: includes/forum-ads.php:23 includes/forum.php:258 includes/forum.php:1642
+#: includes/forum.php:2010
+msgid "Forum"
+msgstr ""
+
+#: admin/admin.php:214 admin/views/structure.php:5
+msgid "Structure"
+msgstr ""
+
+#: admin/admin.php:215 admin/views/appearance.php:8
+#: admin/views/appearance.php:19
+msgid "Appearance"
+msgstr ""
+
+#: admin/admin.php:216 includes/forum-usergroups.php:574
+#: admin/views/usergroups.php:5
+msgid "Usergroups"
+msgstr ""
+
+#: admin/admin.php:224 admin/views/options.php:8
+msgid "Settings"
+msgstr ""
+
+#: admin/admin.php:546
+msgid "Official Support Forum"
+msgstr ""
+
+#: admin/admin.php:551
+msgid "Documentation"
+msgstr ""
+
+#: admin/admin.php:556
+msgid "Donate"
+msgstr ""
+
+#: includes/forum-activity.php:27
+#, php-format
+msgid "Activity in the last day."
+msgid_plural "Activity in the last %s days."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/forum-activity.php:43 includes/forum-approval.php:216
+#: includes/forum-profile.php:194 includes/forum-unread.php:243
+#: includes/forum.php:1350 includes/forum.php:1363 includes/forum.php:1390
+#: includes/forum.php:1402 widgets/widget-recent-posts.php:124
+#: widgets/widget-recent-topics.php:118
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#: includes/forum-activity.php:46
+msgid "Today"
+msgstr ""
+
+#: includes/forum-activity.php:48
+msgid "Yesterday"
+msgstr ""
+
+#: includes/forum-activity.php:75
+#, php-format
+msgid "New topic %s created by %s."
+msgstr ""
+
+#: includes/forum-activity.php:82
+#, php-format
+msgid "%s answered in %s."
+msgstr ""
+
+#: includes/forum-activity.php:91
+msgid "No activity yet!"
+msgstr ""
+
+#: includes/forum-ads.php:20
+msgid "Top"
+msgstr ""
+
+#: includes/forum-ads.php:21
+msgid "Header"
+msgstr ""
+
+#: includes/forum-ads.php:22
+msgid "Category"
+msgstr ""
+
+#: includes/forum-ads.php:24
+msgid "Topic"
+msgstr ""
+
+#: includes/forum-ads.php:25
+msgid "Post"
+msgstr ""
+
+#: includes/forum-ads.php:26
+msgid "Bottom"
+msgstr ""
+
+#: includes/forum-appearance.php:70
+msgid "Default Theme"
+msgstr ""
+
+#: includes/forum-approval.php:18 includes/forum.php:634
+msgid "Unapproved Topics"
+msgstr ""
+
+#: includes/forum-approval.php:93
+msgid "New unapproved topic"
+msgstr ""
+
+#: includes/forum-approval.php:107
+msgid ""
+"Hello ###USERNAME###,<br><br>You received this message because there is a "
+"new unapproved forum-topic.<br><br>Topic:<br>###TITLE###<br><br>Author:<br>"
+"###AUTHOR###<br><br>Text:<br>###CONTENT###<br><br>Link:<br>###LINK###"
+msgstr ""
+
+#: includes/forum-approval.php:153
+msgid ""
+"Thank you for your topic. Your topic will be visible as soon as it gets "
+"approved."
+msgstr ""
+
+#: includes/forum-approval.php:170
+msgid "There are unapproved topics."
+msgstr ""
+
+#: includes/forum-approval.php:212 includes/forum.php:907
+msgid "By"
+msgstr ""
+
+#: includes/forum-approval.php:220 includes/forum-unread.php:260
+#: includes/forum.php:912
+msgid "In"
+msgstr ""
+
+#: includes/forum-approval.php:228
+msgid "There are no unapproved topics."
+msgstr ""
+
+#: includes/forum-breadcrumbs.php:75 includes/forum.php:614
+msgid "Post Reply"
+msgstr ""
+
+#: includes/forum-breadcrumbs.php:79 includes/forum-editor.php:224
+#: includes/forum.php:612
+msgid "Edit Post"
+msgstr ""
+
+#: includes/forum-breadcrumbs.php:83 includes/forum-editor.php:220
+#: includes/forum.php:616 includes/forum.php:1495
+#: integrations/integration-mycred.php:328
+msgid "New Topic"
+msgstr ""
+
+#: includes/forum-breadcrumbs.php:87 includes/forum.php:618
+msgid "Move Topic"
+msgstr ""
+
+#: includes/forum-breadcrumbs.php:95
+msgid "Forum breadcrumbs - You are here:"
+msgstr ""
+
+#: includes/forum-content.php:67 includes/forum-content.php:79
+#: includes/forum-content.php:85 includes/forum-content.php:97
+#: includes/forum-content.php:105 includes/forum-content.php:113
+#: includes/forum-editor.php:190
+msgid "You are not allowed to do this."
+msgstr ""
+
+#: includes/forum-content.php:73
+msgid "You are banned!"
+msgstr ""
+
+#: includes/forum-content.php:120
+msgid "You must enter a subject."
+msgstr ""
+
+#: includes/forum-content.php:131
+msgid "You must enter a message."
+msgstr ""
+
+#: includes/forum-content.php:137
+msgid "You are not allowed to upload files with that file extension."
+msgstr ""
+
+#: includes/forum-content.php:143
+msgid "You are not allowed to upload files with that file size."
+msgstr ""
+
+#: includes/forum-database.php:262
+msgid "Custom Usergroups"
+msgstr ""
+
+#: includes/forum-database.php:282
+msgid "Example Usergroup"
+msgstr ""
+
+#: includes/forum-database.php:330
+msgid "Example Category"
+msgstr ""
+
+#: includes/forum-database.php:338
+msgid "First Forum"
+msgstr ""
+
+#: includes/forum-database.php:339
+msgid "My first forum."
+msgstr ""
+
+#: includes/forum-editor.php:202 includes/views/post-element.php:96
+msgid "Quote from"
+msgstr ""
+
+#: includes/forum-editor.php:202 includes/views/post-element.php:96
+#, php-format
+msgid "on %s"
+msgstr ""
+
+#: includes/forum-editor.php:222
+msgid "Post Reply:"
+msgstr ""
+
+#: includes/forum-editor.php:243
+msgid "Subject:"
+msgstr ""
+
+#: includes/forum-editor.php:270 includes/forum-editor.php:275
+#: admin/views/ads.php:44 admin/views/ads.php:57 admin/views/structure.php:73
+#: admin/views/structure.php:127 admin/views/structure.php:140
+#: admin/views/structure.php:154 admin/views/usergroups.php:51
+#: admin/views/usergroups.php:64 admin/views/usergroups.php:83
+#: admin/views/usergroups.php:96
+msgid "Cancel"
+msgstr ""
+
+#: includes/forum-editor.php:278
+msgid "Submit"
+msgstr ""
+
+#: includes/forum-feed.php:40 includes/forum-feed.php:45
+msgid "RSS Feed"
+msgstr ""
+
+#: includes/forum-memberslist.php:29 includes/forum-memberslist.php:65
+#: includes/forum.php:628
+msgid "Members"
+msgstr ""
+
+#: includes/forum-memberslist.php:79 includes/forum-memberslist.php:94
+msgid "Show Filters"
+msgstr ""
+
+#: includes/forum-memberslist.php:84 includes/forum-memberslist.php:94
+msgid "Hide Filters"
+msgstr ""
+
+#: includes/forum-memberslist.php:96
+msgid "Roles:"
+msgstr ""
+
+#: includes/forum-memberslist.php:98
+msgid "All Users"
+msgstr ""
+
+#: includes/forum-memberslist.php:114 includes/forum-permissions.php:584
+#: admin/views/options.php:586
+msgid "Moderators"
+msgstr ""
+
+#: includes/forum-memberslist.php:123 includes/forum-permissions.php:590
+#: admin/views/options.php:590
+msgid "Administrators"
+msgstr ""
+
+#: includes/forum-memberslist.php:157 includes/forum-profile.php:239
+#: includes/forum-usergroups.php:469 includes/forum-usergroups.php:486
+msgid "Usergroups:"
+msgstr ""
+
+#: includes/forum-memberslist.php:188
+msgid "No users found!"
+msgstr ""
+
+#: includes/forum-memberslist.php:224 includes/forum.php:851
+#: includes/views/post-element.php:49
+#, php-format
+msgid "%s Post"
+msgid_plural "%s Posts"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/forum-notifications.php:20 includes/forum-notifications.php:501
+#: includes/forum.php:622
+msgid "Subscriptions"
+msgstr ""
+
+#: includes/forum-notifications.php:52 includes/forum-notifications.php:105
+msgid "You are subscribed to <b>all</b> topics."
+msgstr ""
+
+#: includes/forum-notifications.php:56
+msgid "<b>Unsubscribe</b> from this topic."
+msgstr ""
+
+#: includes/forum-notifications.php:59 includes/forum-notifications.php:108
+msgid "<b>Subscribe</b> to this topic."
+msgstr ""
+
+#: includes/forum-notifications.php:76
+msgid "You are subscribed to <b>all</b> forums."
+msgstr ""
+
+#: includes/forum-notifications.php:80
+msgid "<b>Unsubscribe</b> from this forum."
+msgstr ""
+
+#: includes/forum-notifications.php:83
+msgid "<b>Subscribe</b> to this forum."
+msgstr ""
+
+#: includes/forum-notifications.php:444
+msgid "User"
+msgstr ""
+
+#: includes/forum-notifications.php:518
+msgid ""
+"You will automatically get notified about new topics because you are a "
+"receiver of administrative notifications."
+msgstr ""
+
+#: includes/forum-notifications.php:530
+msgid "Subscription Settings"
+msgstr ""
+
+#: includes/forum-notifications.php:537
+msgid "Individual Subscriptions"
+msgstr ""
+
+#: includes/forum-notifications.php:539
+msgid ""
+"You get notified about activity in forums and topics you are subscribed to."
+msgstr ""
+
+#: includes/forum-notifications.php:543
+msgid "New Topics"
+msgstr ""
+
+#: includes/forum-notifications.php:545
+msgid "You get notified about all new topics."
+msgstr ""
+
+#: includes/forum-notifications.php:549
+msgid "New Topics & Posts"
+msgstr ""
+
+#: includes/forum-notifications.php:551
+msgid "You get notified about all new topics and posts."
+msgstr ""
+
+#: includes/forum-notifications.php:559
+msgid "Notify about new posts in:"
+msgstr ""
+
+#: includes/forum-notifications.php:570
+msgid "Notify about new topics in:"
+msgstr ""
+
+#: includes/forum-notifications.php:625
+msgid "You get notified about <b>all</b> new topics."
+msgstr ""
+
+#: includes/forum-notifications.php:627
+msgid "You get notified about <b>all</b> new posts."
+msgstr ""
+
+#: includes/forum-notifications.php:630
+msgid "No subscriptions yet!"
+msgstr ""
+
+#: includes/forum-notifications.php:635
+msgid "Unsubscribe"
+msgstr ""
+
+#: includes/forum-online.php:128
+msgid "Online"
+msgstr ""
+
+#: includes/forum-online.php:143
+msgid "Newest Member:"
+msgstr ""
+
+#: includes/forum-online.php:150
+msgid "Currently Online:"
+msgstr ""
+
+#: includes/forum-online.php:175
+#, php-format
+msgid "%s Guest"
+msgid_plural "%s Guests"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/forum-online.php:180
+msgid "Currently nobody is online."
+msgstr ""
+
+#: includes/forum-online.php:197
+msgid "Currently online"
+msgstr ""
+
+#: includes/forum-online.php:207
+#, php-format
+msgid "Seen %s ago"
+msgstr ""
+
+#: includes/forum-pagination.php:29 includes/forum-pagination.php:130
+msgid "Last"
+msgstr ""
+
+#: includes/forum-pagination.php:109
+msgid "First"
+msgstr ""
+
+#: includes/forum-permissions.php:573
+msgid "Forum Roles:"
+msgstr ""
+
+#: includes/forum-permissions.php:628 includes/forum-permissions.php:629
+#: includes/forum-permissions.php:630 includes/forum-permissions.php:631
+msgid "Assign forum role:"
+msgstr ""
+
+#: includes/forum-permissions.php:675
+msgid "Forum role assigned."
+msgstr ""
+
+#: includes/forum-polls.php:63 includes/forum-polls.php:114
+msgid "Add Poll"
+msgstr ""
+
+#: includes/forum-polls.php:68 includes/forum-polls.php:119
+msgid "Enter your question here"
+msgstr ""
+
+#: includes/forum-polls.php:76
+msgid "Add another answer"
+msgstr ""
+
+#: includes/forum-polls.php:84
+msgid ""
+"After creating a poll it will be no longer possible to add or remove answers."
+" This ensures the integrity of existing votes. However, it will be still "
+"possible to make text-changes to existing answers and to poll-settings. If "
+"major changes for a poll are required, you must delete the existing poll and "
+"create a new one for this topic."
+msgstr ""
+
+#: includes/forum-polls.php:90 includes/forum-polls.php:138
+msgid "Allow multiple answers"
+msgstr ""
+
+#: includes/forum-polls.php:92 includes/forum-polls.php:140
+msgid "Remove Poll"
+msgstr ""
+
+#: includes/forum-polls.php:101 includes/forum-polls.php:126
+msgid "An answer ..."
+msgstr ""
+
+#: includes/forum-polls.php:132
+msgid ""
+"To ensure the integrity of existing votes it is not possible to add or "
+"remove answers. However, it is still possible to make text-changes to "
+"existing answers and to poll-settings. If major changes for a poll are "
+"required, you must delete the existing poll and create a new one for this "
+"topic."
+msgstr ""
+
+#: includes/forum-polls.php:429
+#, php-format
+msgid "%s Vote"
+msgid_plural "%s Votes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/forum-polls.php:446
+#, php-format
+msgid "%s Participant"
+msgid_plural "%s Participants"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/forum-polls.php:454
+msgid "Vote"
+msgstr ""
+
+#: includes/forum-profile.php:35 includes/forum-profile.php:60
+#: includes/forum-profile.php:114 includes/forum-profile.php:116
+#: includes/forum-profile.php:394
+msgid "Profile"
+msgstr ""
+
+#: includes/forum-profile.php:41 includes/forum-profile.php:66
+#: includes/forum-profile.php:121 includes/forum-profile.php:123
+msgid "Post History"
+msgstr ""
+
+#: includes/forum-profile.php:166 includes/forum-profile.php:221
+msgid "You need to login to have access to profiles."
+msgstr ""
+
+#: includes/forum-profile.php:175
+msgid "No posts made by this user."
+msgstr ""
+
+#: includes/forum-profile.php:196
+msgid "In:"
+msgstr ""
+
+#: includes/forum-profile.php:210 includes/forum-profile.php:335
+msgid "This user does not exist."
+msgstr ""
+
+#: includes/forum-profile.php:229
+msgid "First Name:"
+msgstr ""
+
+#: includes/forum-profile.php:247
+msgid "Website:"
+msgstr ""
+
+#: includes/forum-profile.php:255
+msgid "Last seen:"
+msgstr ""
+
+#: includes/forum-profile.php:262
+msgid "Member Since:"
+msgstr ""
+
+#: includes/forum-profile.php:269
+msgid "Biographical Info:"
+msgstr ""
+
+#: includes/forum-profile.php:279
+msgid "Signature:"
+msgstr ""
+
+#: includes/forum-profile.php:289
+msgid "Member Activity"
+msgstr ""
+
+#: includes/forum-profile.php:295
+msgid "Topics Started"
+msgstr ""
+
+#: includes/forum-profile.php:300
+msgid "Replies Created"
+msgstr ""
+
+#: includes/forum-profile.php:305
+msgid "Likes Received"
+msgstr ""
+
+#: includes/forum-profile.php:316
+msgid "Edit Profile"
+msgstr ""
+
+#: includes/forum-profile.php:325
+msgid "Unban User"
+msgstr ""
+
+#: includes/forum-profile.php:329
+msgid "Ban User"
+msgstr ""
+
+#: includes/forum-reactions.php:16
+msgid "Click for thumbs down."
+msgstr ""
+
+#: includes/forum-reactions.php:21
+msgid "Click for thumbs up."
+msgstr ""
+
+#: includes/forum-reports.php:29
+msgid "Are you sure that you want to report this post?"
+msgstr ""
+
+#: includes/forum-reports.php:32
+msgid "Report Post"
+msgstr ""
+
+#: includes/forum-reports.php:34
+msgid "Click to report post."
+msgstr ""
+
+#: includes/forum-reports.php:38
+msgid "You reported this post."
+msgstr ""
+
+#: includes/forum-reports.php:80
+msgid "New report"
+msgstr ""
+
+#: includes/forum-reports.php:81
+msgid ""
+"Hello ###USERNAME###,<br><br>There is a new report.<br><br>Topic:<br>"
+"###TITLE###<br><br>Post:<br>###CONTENT###<br><br>Post Author:<br>"
+"###AUTHOR###<br><br>Reporter:<br>###REPORTER###<br><br>Link:<br>###LINK###"
+msgstr ""
+
+#: includes/forum-reports.php:192
+msgid "There are reports."
+msgstr ""
+
+#: includes/forum-reports.php:205
+msgid "There are no reports."
+msgstr ""
+
+#: includes/forum-reports.php:217
+msgid "Reported by:"
+msgstr ""
+
+#: includes/forum-reports.php:247
+msgid "Delete Report"
+msgstr ""
+
+#: includes/forum-reports.php:252
+msgid "Show Post"
+msgstr ""
+
+#: includes/forum-search.php:27 includes/forum.php:620
+msgid "Search"
+msgstr ""
+
+#: includes/forum-search.php:55 widgets/widget-search.php:36
+msgid "Search ..."
+msgstr ""
+
+#: includes/forum-search.php:68
+msgid "Search results:"
+msgstr ""
+
+#: includes/forum-search.php:69 includes/forum.php:953
+#: includes/views/forum.php:33 includes/views/overview.php:14
+msgid "Last post"
+msgstr ""
+
+#: includes/forum-search.php:78
+msgid "No results found for:"
+msgstr ""
+
+#: includes/forum-spoilers.php:24
+msgid "Spoiler"
+msgstr ""
+
+#: includes/forum-spoilers.php:29
+msgid "Sorry, only logged-in users can see spoilers."
+msgstr ""
+
+#: includes/forum-statistics.php:19
+msgid "Statistics"
+msgstr ""
+
+#: includes/forum-statistics.php:23 includes/views/forum.php:32
+msgid "Topics"
+msgstr ""
+
+#: includes/forum-statistics.php:24
+msgid "Posts"
+msgstr ""
+
+#: includes/forum-statistics.php:27
+msgid "Views"
+msgstr ""
+
+#: includes/forum-statistics.php:30
+msgid "Users"
+msgstr ""
+
+#: includes/forum-unread.php:83 includes/forum.php:632
+msgid "Unread Topics"
+msgstr ""
+
+#: includes/forum-unread.php:185
+msgid "New posts"
+msgstr ""
+
+#: includes/forum-unread.php:187
+msgid "Nothing new"
+msgstr ""
+
+#: includes/forum-unread.php:191 includes/forum-unread.php:207
+msgid "Mark All Read"
+msgstr ""
+
+#: includes/forum-unread.php:196
+msgid "Show Unread Topics"
+msgstr ""
+
+#: includes/forum-unread.php:271
+msgid "There are no unread topics."
+msgstr ""
+
+#: includes/forum-uploads.php:161
+msgid "You need to login to have access to uploads."
+msgstr ""
+
+#: includes/forum-uploads.php:182 includes/forum-uploads.php:213
+msgid "Uploaded files:"
+msgstr ""
+
+#: includes/forum-uploads.php:205 includes/forum.php:1579
+#: includes/forum.php:1602 admin/tables/admin-ads-table.php:70
+#: admin/tables/admin-usergroups-table.php:78 admin/views/ads.php:56
+#: admin/views/structure.php:139 admin/views/structure.php:153
+#: admin/views/usergroups.php:63 admin/views/usergroups.php:95
+msgid "Delete"
+msgstr ""
+
+#: includes/forum-uploads.php:231
+msgid "Upload Files:"
+msgstr ""
+
+#: includes/forum-uploads.php:249
+msgid "Add another file ..."
+msgstr ""
+
+#: includes/forum-uploads.php:260
+msgid "Maximum files:"
+msgstr ""
+
+#: includes/forum-uploads.php:267
+msgid "Maximum file size:"
+msgstr ""
+
+#: includes/forum-uploads.php:273
+msgid "Allowed file types:"
+msgstr ""
+
+#: includes/forum-usergroups.php:416
+msgid "Forum Usergroups"
+msgstr ""
+
+#: includes/forum-usergroups.php:499
+msgid ""
+"When usergroups are selected, only users of the selected usergroups will "
+"have access to the category."
+msgstr ""
+
+#: includes/forum-usergroups.php:645
+msgid "Forum Usergroups:"
+msgstr ""
+
+#: includes/forum-usergroups.php:699
+msgid "Add to"
+msgstr ""
+
+#: includes/forum-usergroups.php:703
+msgid "Remove from"
+msgstr ""
+
+#: includes/forum-usergroups.php:761
+msgid "Usergroups assignments updated."
+msgstr ""
+
+#: includes/forum.php:274
+msgid "New answer: ###TITLE###"
+msgstr ""
+
+#: includes/forum.php:278
+msgid ""
+"Hello ###USERNAME###,<br><br>You received this message because there is a "
+"new answer in a forum-topic you have subscribed to.<br><br>Topic:<br>"
+"###TITLE###<br><br>Author:<br>###AUTHOR###<br><br>Answer:<br>"
+"###CONTENT###<br><br>Link:<br>###LINK###<br><br>If you dont want to receive "
+"these mails anymore you can unsubscribe via the subscription-area. Please "
+"dont answer to this mail!"
+msgstr ""
+
+#: includes/forum.php:282
+msgid "New topic: ###TITLE###"
+msgstr ""
+
+#: includes/forum.php:286
+msgid ""
+"Hello ###USERNAME###,<br><br>You received this message because there is a "
+"new forum-topic.<br><br>Topic:<br>###TITLE###<br><br>Author:<br>"
+"###AUTHOR###<br><br>Text:<br>###CONTENT###<br><br>Link:<br>###LINK###<br><br>"
+"If you dont want to receive these mails anymore you can unsubscribe via the "
+"subscription-area. Please dont answer to this mail!"
+msgstr ""
+
+#: includes/forum.php:290
+msgid "You have been mentioned!"
+msgstr ""
+
+#: includes/forum.php:294
+msgid ""
+"Hello ###USERNAME###,<br><br>You have been mentioned in a forum-post.<br><br>"
+"Topic:<br>###TITLE###<br><br>Author:<br>###AUTHOR###<br><br>Text:<br>"
+"###CONTENT###<br><br>Link:<br>###LINK###"
+msgstr ""
+
+#: includes/forum.php:510
+msgid "Sorry, only logged-in users can access the forum."
+msgstr ""
+
+#: includes/forum.php:520
+msgid "Sorry, only logged-in users can access this category."
+msgstr ""
+
+#: includes/forum.php:525 includes/forum.php:532 includes/forum.php:553
+msgid "Sorry, you cannot access this area."
+msgstr ""
+
+#: includes/forum.php:539
+msgid "Sorry, only logged-in users can access this topic."
+msgstr ""
+
+#: includes/forum.php:559
+msgid "You need to log in to create posts and topics."
+msgstr ""
+
+#: includes/forum.php:647
+msgid "Page"
+msgstr ""
+
+#: includes/forum.php:849
+#, php-format
+msgid "%s Topic"
+msgid_plural "%s Topics"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/forum.php:861 includes/forum.php:952
+msgid "Subforums"
+msgstr ""
+
+#: includes/forum.php:891
+msgid "This topic is sticked"
+msgstr ""
+
+#: includes/forum.php:895
+msgid "This topic is closed"
+msgstr ""
+
+#: includes/forum.php:899
+msgid "This topic contains a poll"
+msgstr ""
+
+#: includes/forum.php:925 widgets/widget-recent-topics.php:99
+#, php-format
+msgid "%s Answer"
+msgid_plural "%s Answers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/forum.php:930
+#, php-format
+msgid "%s View"
+msgid_plural "%s Views"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/forum.php:981
+msgid "Sorry, but there are no posts."
+msgstr ""
+
+#: includes/forum.php:994
+#, php-format
+msgid "Move \"<strong>%s</strong>\" to new forum:"
+msgstr ""
+
+#: includes/forum.php:1020 includes/forum.php:1527
+msgid "Move"
+msgstr ""
+
+#: includes/forum.php:1024
+msgid "You are not allowed to move topics."
+msgstr ""
+
+#: includes/forum.php:1214 includes/forum.php:1233
+msgid "Deleted user"
+msgstr ""
+
+#: includes/forum.php:1217 includes/forum.php:1239
+msgid "Guest"
+msgstr ""
+
+#: includes/forum.php:1340 widgets/widget-recent-posts.php:29
+#: widgets/widget-recent-posts.php:41 widgets/widget-recent-posts.php:54
+#: widgets/widget-recent-posts.php:76 widgets/widget-recent-topics.php:29
+#: widgets/widget-recent-topics.php:41 widgets/widget-recent-topics.php:54
+#: widgets/widget-recent-topics.php:68
+msgid "No topics yet!"
+msgstr ""
+
+#: includes/forum.php:1346 includes/forum.php:1388
+msgid "Last post:"
+msgstr ""
+
+#: includes/forum.php:1454
+msgid "Select Sticky Mode:"
+msgstr ""
+
+#: includes/forum.php:1463 includes/forum.php:1540
+msgid "Sticky"
+msgstr ""
+
+#: includes/forum.php:1466
+msgid "The topic will be sticked to the current forum."
+msgstr ""
+
+#: includes/forum.php:1473
+msgid "Global Sticky"
+msgstr ""
+
+#: includes/forum.php:1476
+msgid "The topic will be sticked to all forums."
+msgstr ""
+
+#: includes/forum.php:1518
+msgid "Reply"
+msgstr ""
+
+#: includes/forum.php:1534
+msgid "Unsticky"
+msgstr ""
+
+#: includes/forum.php:1550
+msgid "Open"
+msgstr ""
+
+#: includes/forum.php:1558
+msgid "Close"
+msgstr ""
+
+#: includes/forum.php:1569
+msgid "Approve"
+msgstr ""
+
+#: includes/forum.php:1577 includes/forum.php:1600
+msgid "Are you sure you want to remove this?"
+msgstr ""
+
+#: includes/forum.php:1610 admin/tables/admin-ads-table.php:72
+#: admin/tables/admin-usergroups-table.php:80
+msgid "Edit"
+msgstr ""
+
+#: includes/forum.php:1619
+msgid "Quote"
+msgstr ""
+
+#: includes/forum.php:1635
+msgid "Menu"
+msgstr ""
+
+#: includes/forum.php:1639
+msgid "Forum Navigation"
+msgstr ""
+
+#: includes/forum.php:1665
+msgid "Logout"
+msgstr ""
+
+#: includes/forum.php:1677
+msgid "Login"
+msgstr ""
+
+#: includes/forum.php:1689
+msgid "Register"
+msgstr ""
+
+#: includes/forum.php:1854
+msgid "Sorry, this post does not exist."
+msgstr ""
+
+#: includes/forum.php:1855
+msgid "Sorry, this topic does not exist."
+msgstr ""
+
+#: includes/forum.php:1856
+msgid "Sorry, this forum does not exist."
+msgstr ""
+
+#: includes/forum.php:2019
+msgid "What should be done with forum posts owned by this user?"
+msgstr ""
+
+#: includes/forum.php:2021
+msgid "What should be done with forum posts owned by these users?"
+msgstr ""
+
+#: includes/forum.php:2027
+msgid "Do not reassign forum posts."
+msgstr ""
+
+#: includes/forum.php:2030
+msgid "Reassign all forum posts to:"
+msgstr ""
+
+#: includes/forum.php:2199
+msgid "Create Forum Topic"
+msgstr ""
+
+#: includes/forum.php:2236
+msgid "A topic is created in the selected forum when you save this document."
+msgstr ""
+
+#: integrations/integration-mycred.php:10
+msgid "Forum Topics (Asgaros Forum)"
+msgstr ""
+
+#: integrations/integration-mycred.php:11
+msgid "Forum Posts (Asgaros Forum)"
+msgstr ""
+
+#: integrations/integration-mycred.php:12
+msgid "Received Likes (Asgaros Forum)"
+msgstr ""
+
+#: integrations/integration-mycred.php:13
+msgid "Received Dislikes (Asgaros Forum)"
+msgstr ""
+
+#. Name of the plugin
+#: integrations/integration-mycred.php:20
+msgid "Asgaros Forum"
+msgstr ""
+
+#: integrations/integration-mycred.php:21
+msgid "Awards %_plural% for Asgaros Forum actions."
+msgstr ""
+
+#: integrations/integration-mycred.php:41
+msgid "%plural% for new forum topic"
+msgstr ""
+
+#: integrations/integration-mycred.php:46
+#, php-format
+msgid "%singular% deduction for deleted forum topic"
+msgstr ""
+
+#: integrations/integration-mycred.php:50
+msgid "%plural% for new forum post"
+msgstr ""
+
+#: integrations/integration-mycred.php:56
+#, php-format
+msgid "%singular% deduction for deleted forum post"
+msgstr ""
+
+#: integrations/integration-mycred.php:60
+msgid "%plural% for received forum post like"
+msgstr ""
+
+#: integrations/integration-mycred.php:64
+#, php-format
+msgid "%singular% deduction for received forum post dislike"
+msgstr ""
+
+#: integrations/integration-mycred.php:143
+msgid "Badges:"
+msgstr ""
+
+#: integrations/integration-mycred.php:161
+msgid "Rank:"
+msgstr ""
+
+#: integrations/integration-mycred.php:338
+#: integrations/integration-mycred.php:380
+msgid "Limit"
+msgstr ""
+
+#: integrations/integration-mycred.php:344
+#: integrations/integration-mycred.php:362
+#: integrations/integration-mycred.php:386
+#: integrations/integration-mycred.php:413
+#: integrations/integration-mycred.php:431
+#: integrations/integration-mycred.php:449
+msgid "Log template"
+msgstr ""
+
+#: integrations/integration-mycred.php:345
+#: integrations/integration-mycred.php:363
+#: integrations/integration-mycred.php:387
+#: integrations/integration-mycred.php:414
+#: integrations/integration-mycred.php:432
+#: integrations/integration-mycred.php:450
+msgid "required"
+msgstr ""
+
+#: integrations/integration-mycred.php:352
+msgid "Deleted Topic"
+msgstr ""
+
+#: integrations/integration-mycred.php:370
+msgid "New Post"
+msgstr ""
+
+#: integrations/integration-mycred.php:396
+msgid "Topic authors can receive %_plural% for answering to their own topic."
+msgstr ""
+
+#: integrations/integration-mycred.php:403
+msgid "Deleted Post"
+msgstr ""
+
+#: integrations/integration-mycred.php:421
+msgid "Received Like"
+msgstr ""
+
+#: integrations/integration-mycred.php:439
+msgid "Received Dislike"
+msgstr ""
+
+#: integrations/integration-mycred.php:461
+msgid "Show %_plural% in posts and profiles"
+msgstr ""
+
+#: integrations/integration-mycred.php:464
+msgid "Show badges in posts and profiles"
+msgstr ""
+
+#: integrations/integration-mycred.php:467
+msgid "Show ranks in posts and profiles"
+msgstr ""
+
+#: widgets/widget-recent-posts.php:11
+msgid "Shows recent posts in Asgaros Forum."
+msgstr ""
+
+#: widgets/widget-recent-posts.php:12
+msgid "Asgaros Forum: Recent Posts"
+msgstr ""
+
+#: widgets/widget-recent-posts.php:20 widgets/widget-recent-topics.php:20
+#: widgets/widget-search.php:41
+msgid "The forum has not been configured correctly."
+msgstr ""
+
+#: widgets/widget-recent-posts.php:113 widgets/widget-recent-topics.php:107
+msgid "by"
+msgstr ""
+
+#: widgets/widget-recent-posts.php:120 widgets/widget-recent-topics.php:114
+msgid "Read More"
+msgstr ""
+
+#: widgets/widget-recent-posts.php:140
+msgid "Recent Forum Posts"
+msgstr ""
+
+#: widgets/widget-recent-posts.php:156
+msgid "Recent forum posts"
+msgstr ""
+
+#: widgets/widget-recent-posts.php:164 widgets/widget-recent-topics.php:157
+#: widgets/widget-search.php:51
+msgid "Title:"
+msgstr ""
+
+#: widgets/widget-recent-posts.php:169 widgets/widget-recent-topics.php:162
+msgid "Number of topics to show:"
+msgstr ""
+
+#: widgets/widget-recent-posts.php:175 widgets/widget-recent-topics.php:168
+msgid "Show avatars"
+msgstr ""
+
+#: widgets/widget-recent-posts.php:180 widgets/widget-recent-topics.php:173
+msgid "Show excerpt"
+msgstr ""
+
+#: widgets/widget-recent-posts.php:185
+msgid "Group posts by topic"
+msgstr ""
+
+#: widgets/widget-recent-posts.php:189 widgets/widget-recent-topics.php:177
+msgid "Forum filter:"
+msgstr ""
+
+#: widgets/widget-recent-topics.php:11
+msgid "Shows recent topics in Asgaros Forum."
+msgstr ""
+
+#: widgets/widget-recent-topics.php:12
+msgid "Asgaros Forum: Recent Topics"
+msgstr ""
+
+#: widgets/widget-recent-topics.php:134
+msgid "Recent Forum Topics"
+msgstr ""
+
+#: widgets/widget-recent-topics.php:150
+msgid "Recent forum topics"
+msgstr ""
+
+#: widgets/widget-search.php:7
+msgid "A search form for Asgaros Forum."
+msgstr ""
+
+#: widgets/widget-search.php:8
+msgid "Asgaros Forum: Search"
+msgstr ""
+
+#: widgets/widget-search.php:18 widgets/widget-search.php:48
+msgid "Forum Search"
+msgstr ""
+
+#: admin/tables/admin-ads-table.php:38
+msgid "Active"
+msgstr ""
+
+#: admin/tables/admin-ads-table.php:40
+msgid "Inactive"
+msgstr ""
+
+#: admin/tables/admin-ads-table.php:70
+msgid "Delete Ad"
+msgstr ""
+
+#: admin/tables/admin-ads-table.php:72
+msgid "Edit Ad"
+msgstr ""
+
+#: admin/tables/admin-ads-table.php:79
+#: admin/tables/admin-structure-table.php:105
+#: admin/tables/admin-usergroups-table.php:87 admin/views/ads.php:19
+#: admin/views/structure.php:51 admin/views/structure.php:87
+#: admin/views/usergroups.php:20 admin/views/usergroups.php:76
+msgid "Name:"
+msgstr ""
+
+#: admin/tables/admin-ads-table.php:80
+#: admin/tables/admin-structure-table.php:106 admin/views/structure.php:110
+msgid "Status:"
+msgstr ""
+
+#: admin/tables/admin-ads-table.php:81
+msgid "Locations:"
+msgstr ""
+
+#: admin/tables/admin-ads-table.php:82
+#: admin/tables/admin-structure-table.php:108
+#: admin/tables/admin-usergroups-table.php:90
+msgid "Actions:"
+msgstr ""
+
+#: admin/tables/admin-structure-table.php:52
+#: admin/tables/admin-usergroups-table.php:49 admin/views/options.php:290
+#: admin/views/options.php:302 admin/views/structure.php:187
+msgid "ID"
+msgstr ""
+
+#: admin/tables/admin-structure-table.php:57
+msgid "No description yet ..."
+msgstr ""
+
+#: admin/tables/admin-structure-table.php:75 admin/views/structure.php:114
+msgid "Closed"
+msgstr ""
+
+#: admin/tables/admin-structure-table.php:78 admin/views/structure.php:115
+msgid "Approval"
+msgstr ""
+
+#: admin/tables/admin-structure-table.php:85
+#: admin/tables/admin-structure-table.php:86
+msgid "Delete Forum"
+msgstr ""
+
+#: admin/tables/admin-structure-table.php:89
+#: admin/tables/admin-structure-table.php:90
+msgid "Edit Forum"
+msgstr ""
+
+#: admin/tables/admin-structure-table.php:95
+#: admin/tables/admin-structure-table.php:96
+msgid "Add Sub-Forum"
+msgstr ""
+
+#: admin/tables/admin-structure-table.php:107 admin/views/structure.php:65
+#: admin/views/structure.php:120 admin/views/structure.php:198
+msgid "Order:"
+msgstr ""
+
+#: admin/tables/admin-usergroups-table.php:54
+#, php-format
+msgid "%s User"
+msgid_plural "%s Users"
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/tables/admin-usergroups-table.php:62
+msgid "Hidden"
+msgstr ""
+
+#: admin/tables/admin-usergroups-table.php:64
+msgid "Visible"
+msgstr ""
+
+#: admin/tables/admin-usergroups-table.php:70
+msgid "Yes"
+msgstr ""
+
+#: admin/tables/admin-usergroups-table.php:72
+msgid "No"
+msgstr ""
+
+#: admin/tables/admin-usergroups-table.php:78
+msgid "Delete Usergroup"
+msgstr ""
+
+#: admin/tables/admin-usergroups-table.php:80
+msgid "Edit Usergroup"
+msgstr ""
+
+#: admin/tables/admin-usergroups-table.php:88
+msgid "Visibility:"
+msgstr ""
+
+#: admin/tables/admin-usergroups-table.php:89
+msgid "Automatically Add:"
+msgstr ""
+
+#: admin/views/ads.php:6
+msgid "Ads updated."
+msgstr ""
+
+#: admin/views/ads.php:23
+msgid "Code:"
+msgstr ""
+
+#: admin/views/ads.php:27
+msgid "Active:"
+msgstr ""
+
+#: admin/views/ads.php:31
+msgid "Location:"
+msgstr ""
+
+#: admin/views/ads.php:43 admin/views/structure.php:72
+#: admin/views/structure.php:126 admin/views/usergroups.php:50
+#: admin/views/usergroups.php:82
+msgid "Save"
+msgstr ""
+
+#: admin/views/ads.php:53
+msgid "Are you sure you want to delete this ad?"
+msgstr ""
+
+#: admin/views/ads.php:77 admin/views/ads.php:79
+msgid "New Ad"
+msgstr ""
+
+#: admin/views/appearance.php:9
+msgid "Appearance updated."
+msgstr ""
+
+#: admin/views/appearance.php:26
+msgid "Theme"
+msgstr ""
+
+#: admin/views/appearance.php:40
+msgid "Font:"
+msgstr ""
+
+#: admin/views/appearance.php:44
+msgid "Font size:"
+msgstr ""
+
+#: admin/views/appearance.php:48
+msgid "Forum color:"
+msgstr ""
+
+#: admin/views/appearance.php:52
+msgid "Accent color:"
+msgstr ""
+
+#: admin/views/appearance.php:56
+msgid "Text color:"
+msgstr ""
+
+#: admin/views/appearance.php:60
+msgid "Text color light:"
+msgstr ""
+
+#: admin/views/appearance.php:64
+msgid "Link color:"
+msgstr ""
+
+#: admin/views/appearance.php:68
+msgid "Background color (First):"
+msgstr ""
+
+#: admin/views/appearance.php:72
+msgid "Background color (Second):"
+msgstr ""
+
+#: admin/views/appearance.php:76
+msgid "Border color:"
+msgstr ""
+
+#: admin/views/appearance.php:80
+msgid "Read indicator color:"
+msgstr ""
+
+#: admin/views/appearance.php:84
+msgid "Unread indicator color:"
+msgstr ""
+
+#: admin/views/appearance.php:88
+msgid "Custom CSS:"
+msgstr ""
+
+#: admin/views/appearance.php:94
+msgid "Save Appearance"
+msgstr ""
+
+#: admin/views/options.php:9
+msgid "Settings updated."
+msgstr ""
+
+#: admin/views/options.php:53
+msgid "Forum title:"
+msgstr ""
+
+#: admin/views/options.php:59
+msgid "Forum description:"
+msgstr ""
+
+#: admin/views/options.php:60
+msgid "The description is used for meta tags."
+msgstr ""
+
+#: admin/views/options.php:66
+msgid "Forum location:"
+msgstr ""
+
+#: admin/views/options.php:71
+msgid "Page which contains the [forum]-shortcode."
+msgstr ""
+
+#: admin/views/options.php:77
+msgid "Replies to show per page:"
+msgstr ""
+
+#: admin/views/options.php:82
+msgid "Topics to show per page:"
+msgstr ""
+
+#: admin/views/options.php:87
+msgid "Create topics for new blog posts in the following forum:"
+msgstr ""
+
+#: admin/views/options.php:92
+msgid "Dont create topics"
+msgstr ""
+
+#: admin/views/options.php:122
+msgid "Allow shortcodes in posts"
+msgstr ""
+
+#: admin/views/options.php:127
+msgid "Automatically embed content in posts"
+msgstr ""
+
+#: admin/views/options.php:132
+msgid "Highlight administrator/moderator names"
+msgstr ""
+
+#: admin/views/options.php:137
+msgid "Highlight topic authors"
+msgstr ""
+
+#: admin/views/options.php:142
+msgid "Show author posts counter"
+msgstr ""
+
+#: admin/views/options.php:147
+msgid "Show description in forum"
+msgstr ""
+
+#: admin/views/options.php:152
+msgid "Hide forum from logged-out users"
+msgstr ""
+
+#: admin/views/options.php:158
+msgid "Hide posts from logged-out users"
+msgstr ""
+
+#: admin/views/options.php:159
+msgid ""
+"Guests can see topics but need to log in to access the posts they contain."
+msgstr ""
+
+#: admin/views/options.php:167
+msgid "Show login button"
+msgstr ""
+
+#: admin/views/options.php:172
+msgid "Show logout button"
+msgstr ""
+
+#: admin/views/options.php:177
+msgid "Show register button"
+msgstr ""
+
+#: admin/views/options.php:182
+msgid "Show edit date"
+msgstr ""
+
+#: admin/views/options.php:188
+msgid "Approval needed for new topics from:"
+msgstr ""
+
+#: admin/views/options.php:189
+msgid "This setting only affects forums that require approval for new topics."
+msgstr ""
+
+#: admin/views/options.php:193
+msgid "Guests"
+msgstr ""
+
+#: admin/views/options.php:194
+msgid "Guests & Normal Users"
+msgstr ""
+
+#: admin/views/options.php:201
+msgid "Location of subforums:"
+msgstr ""
+
+#: admin/views/options.php:205
+msgid "Above Topics"
+msgstr ""
+
+#: admin/views/options.php:206
+msgid "Below Topics"
+msgstr ""
+
+#: admin/views/options.php:207
+msgid "Above & Below Topics"
+msgstr ""
+
+#: admin/views/options.php:219
+msgid "Enable Avatars"
+msgstr ""
+
+#: admin/views/options.php:223
+msgid "Enable reactions"
+msgstr ""
+
+#: admin/views/options.php:227
+msgid "Enable search functionality"
+msgstr ""
+
+#: admin/views/options.php:231
+msgid "Enable RSS Feeds"
+msgstr ""
+
+#: admin/views/options.php:235
+msgid "Count topic views"
+msgstr ""
+
+#: admin/views/options.php:239
+msgid "Show who is online"
+msgstr ""
+
+#: admin/views/options.php:243
+msgid "Show newest member"
+msgstr ""
+
+#: admin/views/options.php:247
+msgid "Show statistics"
+msgstr ""
+
+#: admin/views/options.php:251
+msgid "Allow guest postings"
+msgstr ""
+
+#: admin/views/options.php:256
+msgid "Load Font Awesome v5 icon library"
+msgstr ""
+
+#: admin/views/options.php:257
+msgid ""
+"You can disable loading the built-in Font Awesome v5 icon library to reduce "
+"traffic if your theme or another plugin already loads this library."
+msgstr ""
+
+#: admin/views/options.php:263
+msgid "Load Font Awesome v4 compatibility library"
+msgstr ""
+
+#: admin/views/options.php:264
+msgid ""
+"The Font Awesome v4 compatibility library is required, if your theme or "
+"another plugin uses the Font Awesome v4 icon library. If the Font Awesome v4 "
+"icon library is not used on your website, you can disable this option."
+msgstr ""
+
+#: admin/views/options.php:279
+msgid "Enable SEO-friendly URLs"
+msgstr ""
+
+#: admin/views/options.php:284
+msgid "URL mode for forums & topics:"
+msgstr ""
+
+#: admin/views/options.php:285
+msgid ""
+"Define if the slug or the ID should be used in URLs for forums and topics. "
+"This setting is useful if you encounter problems when your slugs include "
+"special characters."
+msgstr ""
+
+#: admin/views/options.php:289 admin/views/options.php:301
+msgid "Slug"
+msgstr ""
+
+#: admin/views/options.php:296
+msgid "URL mode for profiles:"
+msgstr ""
+
+#: admin/views/options.php:297
+msgid ""
+"Define if the slug or the ID should be used in URLs for profiles. This "
+"setting is useful if you want to hide the unique nicename of users from the "
+"public."
+msgstr ""
+
+#: admin/views/options.php:308
+msgid "Custom Login URL"
+msgstr ""
+
+#: admin/views/options.php:309
+msgid "You can use this option if you are using a custom login page."
+msgstr ""
+
+#: admin/views/options.php:315
+msgid "Custom Register URL"
+msgstr ""
+
+#: admin/views/options.php:316
+msgid "You can use this option if you are using a custom register page."
+msgstr ""
+
+#: admin/views/options.php:322
+msgid "URL-slugs for views:"
+msgstr ""
+
+#: admin/views/options.php:401
+msgid "Users can edit their own posts"
+msgstr ""
+
+#: admin/views/options.php:410
+msgid "Time limitation for editing posts (in minutes):"
+msgstr ""
+
+#: admin/views/options.php:413 admin/views/options.php:430
+#: admin/views/options.php:447 admin/views/options.php:658
+#: admin/views/options.php:665
+msgid "(0 = No limitation)"
+msgstr ""
+
+#: admin/views/options.php:418
+msgid "Users can delete their own posts"
+msgstr ""
+
+#: admin/views/options.php:427
+msgid "Time limitation for deleting posts (in minutes):"
+msgstr ""
+
+#: admin/views/options.php:435
+msgid "Users can delete their own topics"
+msgstr ""
+
+#: admin/views/options.php:444
+msgid "Time limitation for deleting topics (in minutes):"
+msgstr ""
+
+#: admin/views/options.php:452
+msgid "Users can open their own topics"
+msgstr ""
+
+#: admin/views/options.php:457
+msgid "Users can close their own topics"
+msgstr ""
+
+#: admin/views/options.php:471
+msgid "Enable breadcrumbs"
+msgstr ""
+
+#: admin/views/options.php:475
+msgid "Show category name in breadcrumbs"
+msgstr ""
+
+#: admin/views/options.php:486
+msgid "Sender name:"
+msgstr ""
+
+#: admin/views/options.php:490
+msgid "Sender mail:"
+msgstr ""
+
+#: admin/views/options.php:495
+msgid "Receivers of administrative notifications:"
+msgstr ""
+
+#: admin/views/options.php:496
+msgid ""
+"A comma-separated list of mail-addresses which can receive administrative "
+"notifications (new reports, unapproved topics, and more)."
+msgstr ""
+
+#: admin/views/options.php:502
+msgid "Enable subscriptions"
+msgstr ""
+
+#: admin/views/options.php:503
+msgid "The subscription-functionality is only available for logged-in users."
+msgstr ""
+
+#: admin/views/options.php:508
+msgid "Notify receivers of administrative notifications about new topics"
+msgstr ""
+
+#: admin/views/options.php:513
+msgid "New post notification subject:"
+msgstr ""
+
+#: admin/views/options.php:517
+msgid "New post notification message:"
+msgstr ""
+
+#: admin/views/options.php:522
+msgid "New topic notification subject:"
+msgstr ""
+
+#: admin/views/options.php:526
+msgid "New topic notification message:"
+msgstr ""
+
+#: admin/views/options.php:540
+msgid "Enable Mentioning"
+msgstr ""
+
+#: admin/views/options.php:544
+msgid "Enable Suggestions"
+msgstr ""
+
+#: admin/views/options.php:548
+msgid "Mentioning notification subject:"
+msgstr ""
+
+#: admin/views/options.php:552
+msgid "Mentioning notification message:"
+msgstr ""
+
+#: admin/views/options.php:566
+msgid "Enable members list"
+msgstr ""
+
+#: admin/views/options.php:570
+msgid "Show members list to logged-in users only"
+msgstr ""
+
+#: admin/views/options.php:574
+msgid "Members per page:"
+msgstr ""
+
+#: admin/views/options.php:578
+msgid "Available filters"
+msgstr ""
+
+#: admin/views/options.php:611
+msgid "Enable profiles"
+msgstr ""
+
+#: admin/views/options.php:615
+msgid "Show profiles to logged-in users only"
+msgstr ""
+
+#: admin/views/options.php:629
+msgid "Allow uploads"
+msgstr ""
+
+#: admin/views/options.php:633
+msgid "Show thumbnails"
+msgstr ""
+
+#: admin/views/options.php:637
+msgid "Show uploaded files to logged-in users only"
+msgstr ""
+
+#: admin/views/options.php:641
+msgid "Who can upload files:"
+msgstr ""
+
+#: admin/views/options.php:644 admin/views/structure.php:58
+#: admin/views/structure.php:191
+msgid "Everyone"
+msgstr ""
+
+#: admin/views/options.php:645 admin/views/options.php:793
+#: admin/views/structure.php:59 admin/views/structure.php:193
+msgid "Logged in users only"
+msgstr ""
+
+#: admin/views/options.php:646 admin/views/options.php:705
+#: admin/views/options.php:794 admin/views/structure.php:60
+#: admin/views/structure.php:195
+msgid "Moderators only"
+msgstr ""
+
+#: admin/views/options.php:651
+msgid "Allowed filetypes:"
+msgstr ""
+
+#: admin/views/options.php:655
+msgid "Maximum files per post:"
+msgstr ""
+
+#: admin/views/options.php:662
+msgid "Maximum file size (in megabyte):"
+msgstr ""
+
+#: admin/views/options.php:679
+msgid "Enable reports"
+msgstr ""
+
+#: admin/views/options.php:683
+msgid "Notify receivers of administrative notifications about new reports"
+msgstr ""
+
+#: admin/views/options.php:697
+msgid "Enable signatures"
+msgstr ""
+
+#: admin/views/options.php:701
+msgid "Who can use signatures:"
+msgstr ""
+
+#: admin/views/options.php:704
+msgid "Logged in users & Moderators"
+msgstr ""
+
+#: admin/views/options.php:710
+msgid "Allow HTML tags in signatures"
+msgstr ""
+
+#: admin/views/options.php:714
+msgid "Allowed HTML tags:"
+msgstr ""
+
+#: admin/views/options.php:728
+msgid "Enable Activity Feed"
+msgstr ""
+
+#: admin/views/options.php:732
+msgid "Days of activity to show:"
+msgstr ""
+
+#: admin/views/options.php:736
+msgid "Activities per page:"
+msgstr ""
+
+#: admin/views/options.php:750
+msgid "Enable ads"
+msgstr ""
+
+#: admin/views/options.php:754
+msgid "Ad frequency for categories:"
+msgstr ""
+
+#: admin/views/options.php:758
+msgid "Ad frequency for forums:"
+msgstr ""
+
+#: admin/views/options.php:762
+msgid "Ad frequency for topics:"
+msgstr ""
+
+#: admin/views/options.php:766
+msgid "Ad frequency for posts:"
+msgstr ""
+
+#: admin/views/options.php:780
+msgid "Enable Polls"
+msgstr ""
+
+#: admin/views/options.php:785
+msgid "Results visible without vote"
+msgstr ""
+
+#: admin/views/options.php:790
+msgid "Who can create polls:"
+msgstr ""
+
+#: admin/views/options.php:809
+msgid "Enable spoilers"
+msgstr ""
+
+#: admin/views/options.php:813
+msgid "Hide spoilers from logged-out users"
+msgstr ""
+
+#: admin/views/options.php:827
+msgid "Enable Reputation"
+msgstr ""
+
+#: admin/views/options.php:832
+msgid "Minimum amount of posts:"
+msgstr ""
+
+#: admin/views/options.php:837
+msgid "Level 1"
+msgstr ""
+
+#: admin/views/options.php:841
+msgid "Level 2"
+msgstr ""
+
+#: admin/views/options.php:845
+msgid "Level 3"
+msgstr ""
+
+#: admin/views/options.php:849
+msgid "Level 4"
+msgstr ""
+
+#: admin/views/options.php:853
+msgid "Level 5"
+msgstr ""
+
+#: admin/views/options.php:862
+msgid "Save Settings"
+msgstr ""
+
+#: admin/views/structure.php:6
+msgid "Structure updated."
+msgstr ""
+
+#: admin/views/structure.php:55 admin/views/structure.php:189
+msgid "Access:"
+msgstr ""
+
+#: admin/views/structure.php:91
+msgid "Description:"
+msgstr ""
+
+#: admin/views/structure.php:95
+msgid "Parent:"
+msgstr ""
+
+#: admin/views/structure.php:101 admin/views/usergroups.php:29
+msgid "Icon:"
+msgstr ""
+
+#: admin/views/structure.php:105 admin/views/usergroups.php:35
+msgid "List of available icons."
+msgstr ""
+
+#: admin/views/structure.php:136
+msgid ""
+"Deleting this category will also permanently delete all forums, sub-forums, "
+"topics and posts inside it. Are you sure you want to delete this category?"
+msgstr ""
+
+#: admin/views/structure.php:150
+msgid ""
+"Deleting this forum will also permanently delete all sub-forums, topics and "
+"posts inside it. Are you sure you want to delete this forum?"
+msgstr ""
+
+#: admin/views/structure.php:160 admin/views/structure.php:163
+#: admin/views/structure.php:227 admin/views/structure.php:229
+#: admin/views/usergroups.php:102 admin/views/usergroups.php:105
+#: admin/views/usergroups.php:144 admin/views/usergroups.php:146
+msgid "Add Category"
+msgstr ""
+
+#: admin/views/structure.php:205 admin/views/usergroups.php:123
+#: admin/views/usergroups.php:123
+msgid "Delete Category"
+msgstr ""
+
+#: admin/views/structure.php:207 admin/views/usergroups.php:125
+#: admin/views/usergroups.php:125
+msgid "Edit Category"
+msgstr ""
+
+#: admin/views/structure.php:217 admin/views/structure.php:220
+msgid "Add Forum"
+msgstr ""
+
+#: admin/views/usergroups.php:6
+msgid "Usergroups updated."
+msgstr ""
+
+#: admin/views/usergroups.php:24
+msgid "Color:"
+msgstr ""
+
+#: admin/views/usergroups.php:30
+msgid "Set an optional icon for the usergroup."
+msgstr ""
+
+#: admin/views/usergroups.php:40
+msgid "Hide usergroup:"
+msgstr ""
+
+#: admin/views/usergroups.php:44
+msgid "Add new users automatically:"
+msgstr ""
+
+#: admin/views/usergroups.php:60
+msgid "Are you sure you want to delete this usergroup?"
+msgstr ""
+
+#: admin/views/usergroups.php:92
+msgid ""
+"Deleting this category will also permanently delete all usergroups inside it."
+" Are you sure you want to delete this category?"
+msgstr ""
+
+#: admin/views/usergroups.php:136 admin/views/usergroups.php:138
+msgid "Add Usergroup"
+msgstr ""
+
+#: includes/views/forum.php:58
+msgid "There are no topics yet!"
+msgstr ""
+
+#: includes/views/overview.php:19
+msgid "In this category are no forums yet!"
+msgstr ""
+
+#: includes/views/overview.php:38
+msgid "There are no categories yet!"
+msgstr ""
+
+#: includes/views/post-element.php:54
+msgid "Topic Author"
+msgstr ""
+
+#: includes/views/post-element.php:136
+#, php-format
+msgid "Last edited on %s by %s"
+msgstr ""
+
+#: includes/views/post-element.php:138
+#, php-format
+msgid "Last edited on %s"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Asgaros Forum is the best forum solution for WordPress! It comes with dozens "
+"of features in a beautiful design and stays slight, simple and fast."
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.asgaros.de"
+msgstr ""
+
+#. Author of the plugin
+msgid "Thomas Belser"
+msgstr ""
