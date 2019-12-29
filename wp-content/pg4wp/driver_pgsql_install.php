@@ -255,6 +255,7 @@ WHERE pg_class.relname='$table_name' AND pg_attribute.attnum>=1 AND NOT pg_attri
 		{
 			$logto = 'CREATE';
 			$sql = str_replace( 'CREATE TABLE IF NOT EXISTS ', 'CREATE TABLE ', $sql);
+                        $sql = str_replace( 'boolean DEFAULT 0 NOT NULL', "boolean DEFAULT 'f' NOT NULL", $sql);
 			$pattern = '/CREATE TABLE [`]?(\w+)[`]?/';
 			preg_match($pattern, $sql, $matches);
 			$table = $matches[1];
@@ -301,7 +302,6 @@ WHERE pg_class.relname='$table_name' AND pg_attribute.attnum>=1 AND NOT pg_attri
 					// Workaround for index name duplicate
                     $index = str_replace( 'download_order_key_product', "d_o_key_p", $index);
                     $index = str_replace( 'download_order_product', "d_o_p", $index);
-                    $index = str_replace( 'boolean DEFAULT 0 NOT NULL', "boolean DEFAULT 'f' NOT NULL", $index);
 					$index = $table.'_'.$index;
 					$sql .= "\nCREATE {$unique}INDEX $index ON $table ($columns);";
 				}
