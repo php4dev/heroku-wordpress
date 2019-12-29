@@ -256,6 +256,7 @@ WHERE pg_class.relname='$table_name' AND pg_attribute.attnum>=1 AND NOT pg_attri
 			$logto = 'CREATE';
 			$sql = str_replace( 'CREATE TABLE IF NOT EXISTS ', 'CREATE TABLE ', $sql);
                         $sql = str_replace( 'boolean DEFAULT 0 NOT NULL', "boolean DEFAULT 'f' NOT NULL", $sql);
+                        $sql = str_replace( 'BOOLEAN NOT NULL DEFAULT 0', "BOOLEAN NOT NULL DEFAULT 'f'", $sql);
 			$pattern = '/CREATE TABLE [`]?(\w+)[`]?/';
 			preg_match($pattern, $sql, $matches);
 			$table = $matches[1];
