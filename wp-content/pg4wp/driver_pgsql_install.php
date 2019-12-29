@@ -44,7 +44,6 @@
 
 		// For flash-album-gallery plugin
 		'tinyint'		=> 'smallint',
-		'boolean'		=> 'bool',
 	);
 	
 	function pg4wp_installing( $sql, &$logto)
@@ -302,6 +301,7 @@ WHERE pg_class.relname='$table_name' AND pg_attribute.attnum>=1 AND NOT pg_attri
 					// Workaround for index name duplicate
                     $index = str_replace( 'download_order_key_product', "d_o_key_p", $index);
                     $index = str_replace( 'download_order_product', "d_o_p", $index);
+                    $index = str_replace( 'boolean DEFAULT 0 NOT NULL', "boolean DEFAULT false NOT NULL", $index);
 					$index = $table.'_'.$index;
 					$sql .= "\nCREATE {$unique}INDEX $index ON $table ($columns);";
 				}
