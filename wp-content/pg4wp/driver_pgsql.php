@@ -340,6 +340,7 @@
 			    "SELECT DISTINCT t.*, tt.*, NULLIF(wp_termmeta.meta_value, '')::int FROM wp_terms AS t  LEFT JOIN wp_termmeta", $sql);
 			$sql = str_replace("SELECT DISTINCT t.term_id, tt.parent, tt.count, tt.taxonomy FROM wp_terms AS t  LEFT JOIN",
 			    "SELECT DISTINCT t.term_id, tt.parent, tt.count, tt.taxonomy, NULLIF(wp_termmeta.meta_value, '')::int, t.name FROM wp_terms AS t  LEFT JOIN", $sql);
+			$sql = str_replace("DATE_FORMAT(", "TO_CHAR(", $sql);
 			
 			// MySQL 'LIKE' is case insensitive by default, whereas PostgreSQL 'LIKE' is
 			$sql = str_replace( ' LIKE ', ' ILIKE ', $sql);
