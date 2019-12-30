@@ -21,9 +21,7 @@ use DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Formatter\FormatterInterface;
 use DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Handler\StreamHandler;
 use DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Logger;
 /**
- * Monolog 1.x handler for logging on App Engine flexible environment.
- *
- * If you are using Monolog 2.x, use {@see \Google\Cloud\Core\Logger\AppEngineFlexHandlerV2} instead.
+ * Class for logging on App Engine flexible environment.
  */
 class AppEngineFlexHandler extends \DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Handler\StreamHandler
 {
@@ -41,7 +39,7 @@ class AppEngineFlexHandler extends \DeliciousBrains\WP_Offload_Media\Gcp\Monolog
     public function __construct($level = \DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Logger::INFO, $bubble = true, $filePermission = 0640, $useLocking = false, $stream = null)
     {
         if ($stream === null) {
-            $pid = getmypid();
+            $pid = posix_getpid();
             $stream = "file:///var/log/app_engine/app.{$pid}.json";
         }
         parent::__construct($stream, $level, $bubble, $filePermission, $useLocking);

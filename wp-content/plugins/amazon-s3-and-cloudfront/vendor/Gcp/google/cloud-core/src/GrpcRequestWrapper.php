@@ -24,10 +24,16 @@ use DeliciousBrains\WP_Offload_Media\Gcp\Google\ApiCore\OperationResponse;
 use DeliciousBrains\WP_Offload_Media\Gcp\Google\ApiCore\PagedListResponse;
 use DeliciousBrains\WP_Offload_Media\Gcp\Google\ApiCore\Serializer;
 use DeliciousBrains\WP_Offload_Media\Gcp\Google\ApiCore\ServerStream;
+use DeliciousBrains\WP_Offload_Media\Gcp\Google\GAX\ApiException as GaxApiException;
+use DeliciousBrains\WP_Offload_Media\Gcp\Google\GAX\OperationResponse as GaxOperationResponse;
+use DeliciousBrains\WP_Offload_Media\Gcp\Google\GAX\PagedListResponse as GaxPagedListResponse;
+use DeliciousBrains\WP_Offload_Media\Gcp\Google\GAX\Serializer as GaxSerializer;
+use DeliciousBrains\WP_Offload_Media\Gcp\Google\GAX\ServerStream as GaxServerStream;
 use DeliciousBrains\WP_Offload_Media\Gcp\Google\Protobuf\Internal\Message;
 use DeliciousBrains\WP_Offload_Media\Gcp\Google\Rpc\BadRequest;
 use DeliciousBrains\WP_Offload_Media\Gcp\Google\Rpc\Code;
 use DeliciousBrains\WP_Offload_Media\Gcp\Google\Rpc\RetryInfo;
+use Grpc;
 /**
  * The GrpcRequestWrapper is responsible for delivering gRPC requests.
  */
@@ -72,7 +78,7 @@ class GrpcRequestWrapper
     public function __construct(array $config = [])
     {
         $this->setCommonDefaults($config);
-        $config += ['authHttpHandler' => null, 'serializer' => new \DeliciousBrains\WP_Offload_Media\Gcp\Google\ApiCore\Serializer(), 'grpcOptions' => []];
+        $config += ['authHttpHandler' => null, 'serializer' => $this->buildSerializer(), 'grpcOptions' => []];
         $this->authHttpHandler = $config['authHttpHandler'] ?: \DeliciousBrains\WP_Offload_Media\Gcp\Google\Auth\HttpHandler\HttpHandlerFactory::build();
         $this->serializer = $config['serializer'];
         $this->grpcOptions = $config['grpcOptions'];
@@ -114,7 +120,7 @@ class GrpcRequestWrapper
         try {
             return $this->handleResponse($backoff->execute($request, $args));
         } catch (\Exception $ex) {
-            if ($ex instanceof ApiException) {
+            if ($ex instanceof ApiException || $ex instanceof GaxApiException) {
                 throw $this->convertToGoogleException($ex);
             }
             throw $ex;
@@ -124,20 +130,20 @@ class GrpcRequestWrapper
      * Serializes a gRPC response.
      *
      * @param mixed $response
-     * @return \Generator|OperationResponse|array|null
+     * @return \Generator|array|null
      */
     private function handleResponse($response)
     {
-        if ($response instanceof PagedListResponse) {
+        if ($response instanceof PagedListResponse || $response instanceof GaxPagedListResponse) {
             $response = $response->getPage()->getResponseObject();
         }
         if ($response instanceof Message) {
             return $this->serializer->encodeMessage($response);
         }
-        if ($response instanceof OperationResponse) {
+        if ($response instanceof OperationResponse || $response instanceof GaxOperationResponse) {
             return $response;
         }
-        if ($response instanceof ServerStream) {
+        if ($response instanceof ServerStream || $response instanceof GaxServerStream) {
             return $this->handleStream($response);
         }
         return null;
@@ -145,7 +151,7 @@ class GrpcRequestWrapper
     /**
      * Handles a streaming response.
      *
-     * @param ServerStream $response
+     * @param ServerStream|GaxServerStream $response
      * @return \Generator|array|null
      */
     private function handleStream($response)
@@ -162,7 +168,7 @@ class GrpcRequestWrapper
     /**
      * Convert a ApiCore exception to a Google Exception.
      *
-     * @param \Exception $ex
+     * @param ApiException|GaxApiException $ex
      * @return Exception\ServiceException
      */
     private function convertToGoogleException($ex)
@@ -209,5 +215,12 @@ class GrpcRequestWrapper
             }
         }
         return new $exception($ex->getMessage(), $ex->getCode(), $ex, $metadata);
+    }
+    /**
+     * @return Serializer|GaxSerializer
+     */
+    private function buildSerializer()
+    {
+        return class_exists(\DeliciousBrains\WP_Offload_Media\Gcp\Google\ApiCore\Serializer::class) ? new \DeliciousBrains\WP_Offload_Media\Gcp\Google\ApiCore\Serializer() : new \DeliciousBrains\WP_Offload_Media\Gcp\Google\GAX\Serializer();
     }
 }

@@ -1,7 +1,5 @@
 <?php
 
-use DeliciousBrains\WP_Offload_Media\Items\Media_Library_Item;
-
 class AS3CF_S3_To_Local extends AS3CF_Filter {
 
 	/**
@@ -112,19 +110,73 @@ class AS3CF_S3_To_Local extends AS3CF_Filter {
 	 *
 	 * @return bool|int
 	 */
-	public function get_attachment_id_from_url( $url ) {
+	protected function get_attachment_id_from_url( $url ) {
+		global $wpdb;
+
 		$full_url = AS3CF_Utils::remove_size_from_filename( $url );
 
-		// Result for URL already cached in request whether found or not, return it.
 		if ( isset( $this->query_cache[ $full_url ] ) ) {
+			// ID already cached, return
 			return $this->query_cache[ $full_url ];
 		}
 
-		$post_id = Media_Library_Item::get_source_id_by_remote_url( $full_url );
+		$parts = AS3CF_Utils::parse_url( $full_url );
+		$path  = $this->as3cf->decode_filename_in_path( ltrim( $parts['path'], '/' ) );
 
-		$this->query_cache[ $full_url ] = $post_id;
+		if ( false !== strpos( $path, '/' ) ) {
+			// Remove the first directory to cater for bucket in path domain settings
+			$path = explode( '/', $path );
+			array_shift( $path );
+			$path = implode( '/', $path );
+		}
 
-		return $post_id;
+		$sql = $wpdb->prepare( "
+ 				SELECT * FROM {$wpdb->postmeta}
+ 				WHERE meta_key = %s
+ 				AND meta_value LIKE %s;
+ 			", 'amazonS3_info', '%' . $path . '%' );
+
+		$results = $wpdb->get_results( $sql );
+
+		if ( empty( $results ) ) {
+			// No attachment found, return false
+			return false;
+		}
+
+		if ( 1 === count( $results ) ) {
+			// Attachment matched, return ID
+			$this->query_cache[ $full_url ] = $results[0]->post_id;
+
+			return $results[0]->post_id;
+		}
+
+		$path = ltrim( $parts['path'], '/' );
+
+		foreach ( $results as $result ) {
+			$meta = maybe_unserialize( $result->meta_value );
+
+			if ( ! isset( $meta['bucket'] ) || ! isset( $meta['key'] ) ) {
+				// Can't determine S3 bucket or key, continue
+				continue;
+			}
+
+			if ( false !== strpos( $path, $meta['bucket'] ) ) {
+				// Bucket in path, remove
+				$path = ltrim( str_replace( $meta['bucket'], '', $path ), '/' );
+			}
+
+			if ( $path === $meta['key'] ) {
+				// Exact match, return ID
+				$this->query_cache[ $full_url ] = $results[0]->post_id;
+
+				return $result->post_id;
+			}
+		}
+
+		// Can't determine ID, return false
+		$this->query_cache[ $full_url ] = false;
+
+		return false;
 	}
 
 	/**
@@ -171,7 +223,7 @@ class AS3CF_S3_To_Local extends AS3CF_Filter {
 	 * @return string
 	 */
 	protected function normalize_replace_value( $url ) {
-		return AS3CF_Utils::decode_filename_in_path( $url );
+		return $this->as3cf->decode_filename_in_path( $url );
 	}
 
 	/**

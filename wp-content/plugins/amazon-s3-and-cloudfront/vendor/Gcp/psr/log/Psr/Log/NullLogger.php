@@ -20,8 +20,6 @@ class NullLogger extends \DeliciousBrains\WP_Offload_Media\Gcp\Psr\Log\AbstractL
      * @param array  $context
      *
      * @return void
-     *
-     * @throws \Psr\Log\InvalidArgumentException
      */
     public function log($level, $message, array $context = array())
     {

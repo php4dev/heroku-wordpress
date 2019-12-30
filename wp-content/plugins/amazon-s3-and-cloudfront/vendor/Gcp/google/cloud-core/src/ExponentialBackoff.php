@@ -28,17 +28,13 @@ class ExponentialBackoff
      */
     private $retries;
     /**
-     * @var callable|null
+     * @var callable
      */
     private $retryFunction;
     /**
      * @var callable
      */
     private $delayFunction;
-    /**
-     * @var callable|null
-     */
-    private $calcDelayFunction;
     /**
      * @param int $retries [optional] Number of retries for a failed request.
      * @param callable $retryFunction [optional] returns bool for whether or not to retry
@@ -49,7 +45,7 @@ class ExponentialBackoff
         $this->retryFunction = $retryFunction;
         // @todo revisit this approach
         // @codeCoverageIgnoreStart
-        $this->delayFunction = static function ($delay) {
+        $this->delayFunction = function ($delay) {
             usleep($delay);
         };
         // @codeCoverageIgnoreEnd
@@ -65,7 +61,6 @@ class ExponentialBackoff
     public function execute(callable $function, array $arguments = [])
     {
         $delayFunction = $this->delayFunction;
-        $calcDelayFunction = $this->calcDelayFunction ?: [$this, 'calculateDelay'];
         $retryAttempt = 0;
         $exception = null;
         while (true) {
@@ -80,32 +75,19 @@ class ExponentialBackoff
                 if ($retryAttempt >= $this->retries) {
                     break;
                 }
-                $delayFunction($calcDelayFunction($retryAttempt));
+                $delayFunction($this->calculateDelay($retryAttempt));
                 $retryAttempt++;
             }
         }
         throw $exception;
     }
     /**
-     * If not set, defaults to using `usleep`.
-     *
      * @param callable $delayFunction
      * @return void
      */
     public function setDelayFunction(callable $delayFunction)
     {
         $this->delayFunction = $delayFunction;
-    }
-    /**
-     * If not set, defaults to using
-     * {@see Google\Cloud\Core\ExponentialBackoff::calculateDelay()}.
-     *
-     * @param callable $calcDelayFunction
-     * @return void
-     */
-    public function setCalcDelayFunction(callable $calcDelayFunction)
-    {
-        $this->calcDelayFunction = $calcDelayFunction;
     }
     /**
      * Calculates exponential delay.

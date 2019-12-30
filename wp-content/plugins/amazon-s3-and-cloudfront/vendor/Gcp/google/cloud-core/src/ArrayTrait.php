@@ -28,7 +28,7 @@ trait ArrayTrait
      * @param string $key
      * @param array $arr
      * @param bool $isRequired
-     * @return mixed
+     * @return string|null
      * @throws \InvalidArgumentException
      */
     private function pluck($key, array &$arr, $isRequired = true)
@@ -46,7 +46,7 @@ trait ArrayTrait
     /**
      * Pluck a subset of an array.
      *
-     * @param string[] $keys
+     * @param string $keys
      * @param array $arr
      * @return array
      */

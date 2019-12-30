@@ -76,13 +76,7 @@ class UserRefreshCredentials extends \DeliciousBrains\WP_Offload_Media\Gcp\Googl
     /**
      * @param callable $httpHandler
      *
-     * @return array A set of auth related metadata, containing the following
-     * keys:
-     *   - access_token (string)
-     *   - expires_in (int)
-     *   - scope (string)
-     *   - token_type (string)
-     *   - id_token (string)
+     * @return array
      */
     public function fetchAuthToken(callable $httpHandler = null)
     {

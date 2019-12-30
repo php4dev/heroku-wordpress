@@ -21,18 +21,19 @@ trivial to integrate with web services.
 
 ```php
 $client = new \GuzzleHttp\Client();
-$response = $client->request('GET', 'https://api.github.com/repos/guzzle/guzzle');
+$res = $client->request('GET', 'https://api.github.com/repos/guzzle/guzzle');
+echo $res->getStatusCode();
+// 200
+echo $res->getHeaderLine('content-type');
+// 'application/json; charset=utf8'
+echo $res->getBody();
+// '{"id": 1420053, "name": "guzzle", ...}'
 
-echo $response->getStatusCode(); # 200
-echo $response->getHeaderLine('content-type'); # 'application/json; charset=utf8'
-echo $response->getBody(); # '{"id": 1420053, "name": "guzzle", ...}'
-
-# Send an asynchronous request.
+// Send an asynchronous request.
 $request = new \GuzzleHttp\Psr7\Request('GET', 'http://httpbin.org');
 $promise = $client->sendAsync($request)->then(function ($response) {
     echo 'I completed! ' . $response->getBody();
 });
-
 $promise->wait();
 ```
 
@@ -56,7 +57,7 @@ curl -sS https://getcomposer.org/installer | php
 Next, run the Composer command to install the latest stable version of Guzzle:
 
 ```bash
-composer require guzzlehttp/guzzle
+php composer.phar require guzzlehttp/guzzle
 ```
 
 After installing, you need to require Composer's autoloader:
@@ -68,7 +69,7 @@ require 'vendor/autoload.php';
 You can then later update Guzzle using composer:
 
  ```bash
-composer update
+composer.phar update
  ```
 
 
@@ -85,6 +86,6 @@ composer update
 [guzzle-4-repo]: https://github.com/guzzle/guzzle/tree/4.x
 [guzzle-5-repo]: https://github.com/guzzle/guzzle/tree/5.3
 [guzzle-6-repo]: https://github.com/guzzle/guzzle
-[guzzle-3-docs]: http://guzzle3.readthedocs.org
+[guzzle-3-docs]: http://guzzle3.readthedocs.org/en/latest/
 [guzzle-5-docs]: http://guzzle.readthedocs.org/en/5.3/
 [guzzle-6-docs]: http://guzzle.readthedocs.org/en/latest/

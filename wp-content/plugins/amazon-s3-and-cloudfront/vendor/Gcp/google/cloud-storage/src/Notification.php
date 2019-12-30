@@ -173,7 +173,7 @@ class Notification
      * echo $notification->identity()['bucket'];
      * ```
      *
-     * @return array
+     * @return string
      */
     public function identity()
     {

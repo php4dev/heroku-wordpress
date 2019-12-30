@@ -22,37 +22,33 @@
     ],
     "require": {
         "php": ">=5.5",
-        "ext-json": "*",
-        "guzzlehttp\/promises": "^1.0",
-        "guzzlehttp\/psr7": "^1.6.1"
+        "guzzlehttp\/psr7": "^1.4",
+        "guzzlehttp\/promises": "^1.0"
     },
     "require-dev": {
         "ext-curl": "*",
         "phpunit\/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0",
-        "psr\/log": "^1.1"
-    },
-    "suggest": {
-        "psr\/log": "Required for using the Log middleware"
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "6.3-dev"
-        }
+        "psr\/log": "^1.0"
     },
     "autoload": {
-        "psr-4": {
-            "DeliciousBrains\\WP_Offload_Media\\Gcp\\GuzzleHttp\\": "src\/"
-        },
         "files": [
             "src\/functions_include.php"
-        ]
+        ],
+        "psr-4": {
+            "DeliciousBrains\\WP_Offload_Media\\Gcp\\GuzzleHttp\\": "src\/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
             "DeliciousBrains\\WP_Offload_Media\\Gcp\\GuzzleHttp\\Tests\\": "tests\/"
+        }
+    },
+    "suggest": {
+        "psr\/log": "Required for using the Log middleware"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "6.3-dev"
         }
     }
 }

@@ -66,7 +66,6 @@ class TestHandler extends \DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Handler\
 {
     protected $records = array();
     protected $recordsByLevel = array();
-    private $skipReset = false;
     public function getRecords()
     {
         return $this->records;
@@ -75,16 +74,6 @@ class TestHandler extends \DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Handler\
     {
         $this->records = array();
         $this->recordsByLevel = array();
-    }
-    public function reset()
-    {
-        if (!$this->skipReset) {
-            $this->clear();
-        }
-    }
-    public function setSkipReset($skipReset)
-    {
-        $this->skipReset = $skipReset;
     }
     public function hasRecords($level)
     {

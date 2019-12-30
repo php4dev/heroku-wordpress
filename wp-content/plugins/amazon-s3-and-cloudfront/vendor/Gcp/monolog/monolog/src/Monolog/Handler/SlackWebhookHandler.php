@@ -12,7 +12,6 @@ namespace DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Handler;
 
 use DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Formatter\FormatterInterface;
 use DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Logger;
-use DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Utils;
 use DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Handler\Slack\SlackRecord;
 /**
  * Sends notifications through Slack Webhooks
@@ -66,7 +65,7 @@ class SlackWebhookHandler extends \DeliciousBrains\WP_Offload_Media\Gcp\Monolog\
     protected function write(array $record)
     {
         $postData = $this->slackRecord->getSlackData($record);
-        $postString = \DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Utils::jsonEncode($postData);
+        $postString = json_encode($postData);
         $ch = curl_init();
         $options = array(CURLOPT_URL => $this->webhookUrl, CURLOPT_POST => true, CURLOPT_RETURNTRANSFER => true, CURLOPT_HTTPHEADER => array('Content-type: application/json'), CURLOPT_POSTFIELDS => $postString);
         if (defined('CURLOPT_SAFE_UPLOAD')) {

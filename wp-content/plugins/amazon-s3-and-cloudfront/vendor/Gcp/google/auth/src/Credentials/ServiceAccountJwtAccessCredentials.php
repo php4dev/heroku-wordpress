@@ -19,8 +19,6 @@ namespace DeliciousBrains\WP_Offload_Media\Gcp\Google\Auth\Credentials;
 
 use DeliciousBrains\WP_Offload_Media\Gcp\Google\Auth\CredentialsLoader;
 use DeliciousBrains\WP_Offload_Media\Gcp\Google\Auth\OAuth2;
-use DeliciousBrains\WP_Offload_Media\Gcp\Google\Auth\ServiceAccountSignerTrait;
-use DeliciousBrains\WP_Offload_Media\Gcp\Google\Auth\SignBlobInterface;
 /**
  * Authenticates requests using Google's Service Account credentials via
  * JWT Access.
@@ -30,9 +28,8 @@ use DeliciousBrains\WP_Offload_Media\Gcp\Google\Auth\SignBlobInterface;
  * console (via 'Generate new Json Key').  It is not part of any OAuth2
  * flow, rather it creates a JWT and sends that as a credential.
  */
-class ServiceAccountJwtAccessCredentials extends \DeliciousBrains\WP_Offload_Media\Gcp\Google\Auth\CredentialsLoader implements \DeliciousBrains\WP_Offload_Media\Gcp\Google\Auth\SignBlobInterface
+class ServiceAccountJwtAccessCredentials extends \DeliciousBrains\WP_Offload_Media\Gcp\Google\Auth\CredentialsLoader
 {
-    use ServiceAccountSignerTrait;
     /**
      * The OAuth2 instance used to conduct authorization.
      *
@@ -86,9 +83,7 @@ class ServiceAccountJwtAccessCredentials extends \DeliciousBrains\WP_Offload_Med
      *
      * @param callable $httpHandler
      *
-     * @return array|void A set of auth related metadata, containing the
-     * following keys:
-     *   - access_token (string)
+     * @return array|void
      */
     public function fetchAuthToken(callable $httpHandler = null)
     {
@@ -112,17 +107,5 @@ class ServiceAccountJwtAccessCredentials extends \DeliciousBrains\WP_Offload_Med
     public function getLastReceivedToken()
     {
         return $this->auth->getLastReceivedToken();
-    }
-    /**
-     * Get the client name from the keyfile.
-     *
-     * In this case, it returns the keyfile's client_email key.
-     *
-     * @param callable $httpHandler Not used by this credentials type.
-     * @return string
-     */
-    public function getClientName(callable $httpHandler = null)
-    {
-        return $this->auth->getIssuer();
     }
 }

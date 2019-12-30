@@ -180,7 +180,7 @@ class HandlerStack
         return $this->cached;
     }
     /**
-     * @param string $name
+     * @param $name
      * @return int
      */
     private function findByName($name)
@@ -195,10 +195,10 @@ class HandlerStack
     /**
      * Splices a function into the middleware list at a specific position.
      *
-     * @param string   $findName
-     * @param string   $withName
+     * @param          $findName
+     * @param          $withName
      * @param callable $middleware
-     * @param bool     $before
+     * @param          $before
      */
     private function splice($findName, $withName, callable $middleware, $before)
     {

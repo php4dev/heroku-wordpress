@@ -141,18 +141,17 @@ class BrowserConsoleHandler extends \DeliciousBrains\WP_Offload_Media\Gcp\Monolo
     }
     private static function handleStyles($formatted)
     {
-        $args = array();
+        $args = array(static::quote('font-weight: normal'));
         $format = '%c' . $formatted;
         preg_match_all('/\\[\\[(.*?)\\]\\]\\{([^}]*)\\}/s', $format, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER);
         foreach (array_reverse($matches) as $match) {
-            $args[] = '"font-weight: normal"';
             $args[] = static::quote(static::handleCustomStyles($match[2][0], $match[1][0]));
+            $args[] = '"font-weight: normal"';
             $pos = $match[0][1];
             $format = substr($format, 0, $pos) . '%c' . $match[1][0] . '%c' . substr($format, $pos + strlen($match[0][0]));
         }
-        $args[] = static::quote('font-weight: normal');
-        $args[] = static::quote($format);
-        return array_reverse($args);
+        array_unshift($args, static::quote($format));
+        return $args;
     }
     private static function handleCustomStyles($style, $string)
     {

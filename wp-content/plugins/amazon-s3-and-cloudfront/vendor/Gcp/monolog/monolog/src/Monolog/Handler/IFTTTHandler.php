@@ -11,7 +11,6 @@
 namespace DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Handler;
 
 use DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Logger;
-use DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Utils;
 /**
  * IFTTTHandler uses cURL to trigger IFTTT Maker actions
  *
@@ -45,7 +44,7 @@ class IFTTTHandler extends \DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Handler
     public function write(array $record)
     {
         $postData = array("value1" => $record["channel"], "value2" => $record["level_name"], "value3" => $record["message"]);
-        $postString = \DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Utils::jsonEncode($postData);
+        $postString = json_encode($postData);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "https://maker.ifttt.com/trigger/" . $this->eventName . "/with/key/" . $this->secretKey);
         curl_setopt($ch, CURLOPT_POST, true);

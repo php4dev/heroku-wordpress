@@ -70,7 +70,7 @@ class SignedUrlUploader extends \DeliciousBrains\WP_Offload_Media\Gcp\Google\Clo
     /**
      * Decode the response body
      *
-     * @param ResponseInterface $response
+     * @param ReponseInterface $response
      * @return string
      */
     protected function decodeResponse(\DeliciousBrains\WP_Offload_Media\Gcp\Psr\Http\Message\ResponseInterface $response)

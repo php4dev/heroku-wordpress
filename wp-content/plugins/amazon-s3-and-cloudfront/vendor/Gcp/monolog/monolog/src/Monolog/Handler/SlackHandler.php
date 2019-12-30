@@ -12,7 +12,6 @@ namespace DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Handler;
 
 use DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Formatter\FormatterInterface;
 use DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Logger;
-use DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Utils;
 use DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Handler\Slack\SlackRecord;
 /**
  * Sends notifications through Slack API
@@ -95,7 +94,7 @@ class SlackHandler extends \DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Handler
         $dataArray = $this->slackRecord->getSlackData($record);
         $dataArray['token'] = $this->token;
         if (!empty($dataArray['attachments'])) {
-            $dataArray['attachments'] = \DeliciousBrains\WP_Offload_Media\Gcp\Monolog\Utils::jsonEncode($dataArray['attachments']);
+            $dataArray['attachments'] = json_encode($dataArray['attachments']);
         }
         return $dataArray;
     }
