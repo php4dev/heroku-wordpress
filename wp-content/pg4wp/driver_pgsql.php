@@ -424,8 +424,9 @@
 			list($sql,$end) = explode( ' SET ', $sql, 2);
 			$end = ' SET '.$end;
 		} // UPDATE
-		elseif( 0 === strpos($sql, 'INSERT'))
+		elseif( 0 === strpos($sql, 'INSERT') || 0 === strpos($sql, 'REPLACE'))
 		{
+			$sql = str_replace( "REPLACE INTO", 'INSERT INTO', $sql);
 			$logto = 'INSERT';
 			$sql = str_replace('(0,',"('0',", $sql);
 			$sql = str_replace('(1,',"('1',", $sql);
