@@ -427,6 +427,7 @@
 		elseif( 0 === strpos($sql, 'INSERT') || 0 === strpos($sql, 'REPLACE'))
 		{
 			$sql = str_replace( "REPLACE INTO", 'INSERT INTO', $sql);
+			$sql = str_replace( "`virtual`", '`virtual1`', $sql);
 			$logto = 'INSERT';
 			$sql = str_replace('(0,',"('0',", $sql);
 			$sql = str_replace('(1,',"('1',", $sql);
