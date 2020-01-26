@@ -7,7 +7,6 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) .'includes/class-wpvivid-zip
 require_once plugin_dir_path( dirname( __FILE__ ) ) .'includes/class-wpvivid-backup-database.php';
 require_once plugin_dir_path( dirname( __FILE__ ) ) .'includes/class-wpvivid-backup-site.php';
 require_once plugin_dir_path( dirname( __FILE__ ) ) .'includes/class-wpvivid-setting.php';
-require_once plugin_dir_path( dirname( __FILE__ ) ) .'includes/class-wpvivid-rollback.php';
 class WPvivid_RestoreDB
 {
     private $support_engines;
@@ -803,8 +802,7 @@ class WPvivid_RestoreDB
             for ($current_row = $start_row; $current_row <= $count; $current_row += $page)
             {
                 $wpvivid_plugin->restore_data->write_log('Replace the row in '.$current_row. ' line.', 'notice');
-                $end_row=$current_row+$page;
-                $query = 'SELECT * FROM `'.$table_name.'` LIMIT '.$current_row.', '.$end_row;
+                $query = 'SELECT * FROM `'.$table_name.'` LIMIT '.$current_row.', '.$page;
 
                 $result=$this->db_method->query($query,ARRAY_A);
                 if($result && sizeof($result)>0)
@@ -1182,7 +1180,7 @@ class WPvivid_RestoreDB
                 //$old_string=str_replace($remove_http_link,$new_remove_http_link,$old_string);
             }
 
-            $new_mix_link=$this->get_mix_link($this->new_site_url);
+            $new_mix_link=$this->get_mix_link($this->old_site_url);
             if($new_mix_link!==false)
             {
                 $from[]=$new_mix_link;

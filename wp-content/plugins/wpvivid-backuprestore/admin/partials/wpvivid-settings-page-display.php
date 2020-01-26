@@ -454,6 +454,7 @@ function wpvivid_export_import_settings()
                         try {
                             var jsonarray = jQuery.parseJSON(data);
                             if (jsonarray.result === 'success') {
+                                alert('The plugin settings is imported successfully.');
                                 location.reload();
                             }
                             else {

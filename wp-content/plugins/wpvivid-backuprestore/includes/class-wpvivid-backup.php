@@ -166,6 +166,7 @@ class WPvivid_Backup_Task
         else {
             $this->task['options']['backup_options']['ismerge']=1;
         }
+        $this->task['options']['backup_options']['ismerge']=apply_filters('wpvivid_set_backup_ismerge',$this->task['options']['backup_options']['ismerge'],$options);
 
         $this->task['options']['log_file_name']=$id.'_backup';
         $log=new WPvivid_Log();
@@ -295,10 +296,10 @@ class WPvivid_Backup_Task
                 //$backup_data['root_path']=WP_CONTENT_DIR;
                 $backup_data['root_flag']=WPVIVID_BACKUP_ROOT_WP_CONTENT;
                 $backup_data['prefix']=$this->get_prefix().'_backup_plugin';
-                if(isset($backup_data['compress']['subpackage_plugin_upload'])&&$backup_data['compress']['subpackage_plugin_upload'])
-                {
-                    $backup_data['plugin_subpackage']=1;
-                }
+                //if(isset($backup_data['compress']['subpackage_plugin_upload'])&&$backup_data['compress']['subpackage_plugin_upload'])
+                //{
+                //    $backup_data['plugin_subpackage']=1;
+                //}
                 $backup_data['files_root']=$this->transfer_path(WP_PLUGIN_DIR);
 
                 $exclude_plugins[]='wpvivid-backuprestore';
@@ -374,6 +375,7 @@ class WPvivid_Backup_Task
                 $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'plugins', '/').'#';
                 $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'cache', '/').'#';
                 $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'Dropbox_Backup', '/').'#';
+                $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'mysql.sql', '/').'#';//mysql
                 $upload_dir = wp_upload_dir();
                 $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']), '/').'#';
                 $exclude_regex[]='#^'.preg_quote($this->transfer_path(get_theme_root()), '/').'#';
@@ -783,23 +785,12 @@ class WPvivid_Backup_Task
                                 {
                                     $files[] = $path . DIRECTORY_SEPARATOR . $filename;
                                 }
-                                else
-                                {
-                                    global $wpvivid_plugin;
-                                    $wpvivid_plugin->wpvivid_log->WriteLog('file not readable:' . $path . DIRECTORY_SEPARATOR . $filename, 'notice');
-                                }
-
                             } else {
                                 if(is_readable($path . DIRECTORY_SEPARATOR . $filename))
                                 {
                                     if (filesize($path . DIRECTORY_SEPARATOR . $filename) < $exclude_file_size * 1024 * 1024) {
                                         $files[] = $path . DIRECTORY_SEPARATOR . $filename;
                                     }
-                                }
-                                else
-                                {
-                                    global $wpvivid_plugin;
-                                    $wpvivid_plugin->wpvivid_log->WriteLog('file not readable:' . $path . DIRECTORY_SEPARATOR . $filename, 'notice');
                                 }
                             }
                         }
@@ -1294,11 +1285,6 @@ class WPvivid_Backup_Task
                                 {
                                     $files[] = $path . DIRECTORY_SEPARATOR . $filename;
                                 }
-                                else
-                                {
-                                    global $wpvivid_plugin;
-                                    $wpvivid_plugin->wpvivid_log->WriteLog('file not readable:' . $path . DIRECTORY_SEPARATOR . $filename, 'notice');
-                                }
                             } else {
                                 if(is_readable($path . DIRECTORY_SEPARATOR . $filename))
                                 {
@@ -1306,11 +1292,6 @@ class WPvivid_Backup_Task
                                     {
                                         $files[] = $path . DIRECTORY_SEPARATOR . $filename;
                                     }
-                                }
-                                else
-                                {
-                                    global $wpvivid_plugin;
-                                    $wpvivid_plugin->wpvivid_log->WriteLog('file not readable:' . $path . DIRECTORY_SEPARATOR . $filename, 'notice');
                                 }
                             }
                         }
@@ -2152,6 +2133,40 @@ class WPvivid_Backup_Item
         }
         return $ret;
     }
+
+    public function cleanup_local_backup()
+    {
+        $files=array();
+        $download_dir=$this->config['local']['path'];
+        $file=$this->get_files(false);
+
+        foreach ($file as $filename)
+        {
+            $files[] = $filename;
+        }
+
+        foreach ($files as $file)
+        {
+            $download_path = WP_CONTENT_DIR .DIRECTORY_SEPARATOR . $download_dir . DIRECTORY_SEPARATOR . $file;
+            if (file_exists($download_path))
+            {
+                @unlink($download_path);
+            }
+        }
+    }
+
+    public function cleanup_remote_backup()
+    {
+        if(!empty($this->config['remote']))
+        {
+            $files=$this->get_files(false);
+
+            foreach($this->config['remote'] as $remote)
+            {
+                WPvivid_downloader::delete($remote,$files);
+            }
+        }
+    }
 }
 
 class WPvivid_Backup
@@ -2387,7 +2402,94 @@ class WPvivid_Backup
 
     public function clearcache()
     {
-        WPvivid_tools::clearcache($this->task->get_prefix());
+        $task_id=$this->task->get_prefix();
+        $path = WP_CONTENT_DIR.DIRECTORY_SEPARATOR.WPvivid_Setting::get_backupdir();
+        $handler=opendir($path);
+        while(($filename=readdir($handler))!==false)
+        {
+            if(is_dir($path.DIRECTORY_SEPARATOR.$filename) && preg_match('#temp-'.$task_id.'#',$filename))
+            {
+                $this->deldir($path.DIRECTORY_SEPARATOR.$filename,'',true);
+            }
+            if(is_dir($path.DIRECTORY_SEPARATOR.$filename) && preg_match('#temp-'.$task_id.'#',$filename))
+            {
+                $this->deldir($path.DIRECTORY_SEPARATOR.$filename,'',true);
+            }
+            if(preg_match('#pclzip-.*\.tmp#', $filename)){
+                @unlink($path.DIRECTORY_SEPARATOR.$filename);
+            }
+            if(preg_match('#pclzip-.*\.gz#', $filename)){
+                @unlink($path.DIRECTORY_SEPARATOR.$filename);
+            }
+        }
+        @closedir($handler);
+    }
+
+    public function deldir($path,$exclude=array(),$flag = false)
+    {
+        if(!is_dir($path))
+        {
+            return ;
+        }
+        $handler=opendir($path);
+        if(empty($handler))
+            return ;
+        while(($filename=readdir($handler))!==false)
+        {
+            if($filename != "." && $filename != "..")
+            {
+                if(is_dir($path.DIRECTORY_SEPARATOR.$filename)){
+                    if(empty($exclude)||$this->regex_match($exclude['directory'],$path.DIRECTORY_SEPARATOR.$filename ,0)){
+                        $this->deldir( $path.DIRECTORY_SEPARATOR.$filename ,$exclude, $flag);
+                        @rmdir( $path.DIRECTORY_SEPARATOR.$filename );
+                    }
+                }else{
+                    if(empty($exclude)||$this->regex_match($exclude['file'],$path.DIRECTORY_SEPARATOR.$filename ,0)){
+                        @unlink($path.DIRECTORY_SEPARATOR.$filename);
+                    }
+                }
+            }
+        }
+        if($handler)
+            @closedir($handler);
+        if($flag)
+            @rmdir($path);
+    }
+
+    public function regex_match($regex_array,$string,$mode)
+    {
+        if(empty($regex_array))
+        {
+            return true;
+        }
+
+        if($mode==0)
+        {
+            foreach ($regex_array as $regex)
+            {
+                if(preg_match($regex,$string))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        if($mode==1)
+        {
+            foreach ($regex_array as $regex)
+            {
+                if(preg_match($regex,$string))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        return true;
     }
 
     public function clean_remote_backup($remotes,$files)

@@ -348,6 +348,7 @@ class WPvivid_Admin {
             if ($restore_status === WPVIVID_RESTORE_COMPLETED)
             {
                 $restore->clean_restore_data();
+                do_action('wpvivid_rebuild_backup_list');
                 $need_review=WPvivid_Setting::get_option('wpvivid_need_review');
                 if($need_review=='not')
                 {
@@ -374,6 +375,9 @@ class WPvivid_Admin {
     {
         $request_page='wpvivid_tab_general';
 
+        if(isset($_REQUEST['wpvivid-remote-page-mainwp'])){
+            $request_page='wpvivid_tab_remote_storage';
+        }
         if(isset($_REQUEST['tab-backup']))
         {
             $request_page='wpvivid_tab_general';

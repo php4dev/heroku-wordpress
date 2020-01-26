@@ -15,6 +15,7 @@ class Wpvivid_BackupUploader
 
         add_action('wp_ajax_wpvivid_rescan_local_folder',array($this,'rescan_local_folder_set_backup'));
         add_action('wp_ajax_wpvivid_get_backup_count',array($this,'get_backup_count'));
+        add_action('wpvivid_rebuild_backup_list', array($this, 'wpvivid_rebuild_backup_list'), 10);
     }
 
     function get_file_id()
@@ -274,9 +275,98 @@ class Wpvivid_BackupUploader
         @closedir($handler);
     }
 
-    function rescan_local_folder_set_backup()
-    {
+    function wpvivid_check_remove_update_backup($path){
+        $backup_list = WPvivid_Setting::get_option('wpvivid_backup_list');
+        $remove_backup_array = array();
+        $update_backup_array = array();
+        $tmp_file_array = array();
+        $remote_backup_list=WPvivid_Backuplist::get_has_remote_backuplist();
+        foreach ($backup_list as $key => $value){
+            if(!in_array($key, $remote_backup_list)) {
+                $need_remove = true;
+                $need_update = false;
+                if (is_dir($path)) {
+                    $handler = opendir($path);
+                    while (($filename = readdir($handler)) !== false) {
+                        if ($filename != "." && $filename != "..") {
+                            if (!is_dir($path . $filename)) {
+                                if ($this->check_wpvivid_file_info($filename, $backup_id, $need_update)) {
+                                    if ($key === $backup_id) {
+                                        $need_remove = false;
+                                    }
+                                    if ($need_update) {
+                                        if ($this->check_is_a_wpvivid_backup($path . $filename) === true) {
+                                            if (!in_array($filename, $tmp_file_array)) {
+                                                $add_file['file_name'] = $filename;
+                                                $add_file['size'] = filesize($path . $filename);
+                                                $tmp_file_array[] = $filename;
+                                                $update_backup_array[$backup_id]['files'][] = $add_file;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if ($handler) {
+                        @closedir($handler);
+                    }
+                }
+                if ($need_remove) {
+                    $remove_backup_array[] = $key;
+                }
+            }
+        }
+        $this->wpvivid_remove_update_local_backup_list($remove_backup_array, $update_backup_array);
+        return true;
+    }
+
+    function check_wpvivid_file_info($file_name, &$backup_id, &$need_update=false){
+        if(preg_match('/wpvivid-.*_.*_.*\.zip$/',$file_name))
+        {
+            if(preg_match('/wpvivid-(.*?)_/',$file_name,$matches))
+            {
+                $id= $matches[0];
+                $id=substr($id,0,strlen($id)-1);
+                $backup_id=$id;
+
+                if(WPvivid_Backuplist::get_backup_by_id($id)===false)
+                {
+                    $need_update = false;
+                    return true;
+                }
+                else
+                {
+                    $need_update = true;
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    function wpvivid_remove_update_local_backup_list($remove_backup_array, $update_backup_array){
+        $backup_list = WPvivid_Setting::get_option('wpvivid_backup_list');
+        foreach ($remove_backup_array as $remove_backup_id){
+            unset($backup_list[$remove_backup_id]);
+        }
+        foreach ($update_backup_array as $update_backup_id => $data){
+            $backup_list[$update_backup_id]['backup']['files'] = $data['files'];
+        }
+        WPvivid_Setting::update_option('wpvivid_backup_list', $backup_list);
+    }
+
+    function _rescan_local_folder_set_backup(){
         $path=WP_CONTENT_DIR.DIRECTORY_SEPARATOR.WPvivid_Setting::get_backupdir().DIRECTORY_SEPARATOR;
+
+        $this->wpvivid_check_remove_update_backup($path);
 
         $backups=array();
         $count = 0;
@@ -317,7 +407,6 @@ class Wpvivid_BackupUploader
             $ret['result']=WPVIVID_FAILED;
             $ret['error']='Failed to get local storage directory.';
         }
-
         if(!empty($backups))
         {
             foreach ($backups as $backup_id =>$backup)
@@ -365,8 +454,18 @@ class Wpvivid_BackupUploader
         $tour = true;
         $html = apply_filters('wpvivid_add_backup_list', $html, 'wpvivid_backup_list', $tour);
         $ret['html'] = $html;
+        return $ret;
+    }
+
+    function rescan_local_folder_set_backup()
+    {
+        $ret = $this->_rescan_local_folder_set_backup();
         echo json_encode($ret);
         die();
+    }
+
+    public function wpvivid_rebuild_backup_list(){
+        $this->_rescan_local_folder_set_backup();
     }
 
     static function rescan_local_folder()

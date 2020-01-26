@@ -6,57 +6,6 @@ if (!defined('WPVIVID_PLUGIN_DIR')){
 
 class WPvivid_tools
 {
-	public static function maintenance_on(){
-		$myfile = fopen(ABSPATH.".maintenance", "w");
-		$txt = '<?php $upgrading = time(); ?>';
-		fwrite($myfile, $txt);
-		fclose($myfile);
-	}
-	public static function maintenance_off(){
-		@unlink(ABSPATH.".maintenance");
-	}
-
-	public static function recurse_copy($src,$dst) {
-		$dir = opendir($src);
-		@mkdir($dst);
-		while(false !== ( $file = readdir($dir)) ) {
-			if (( $file != '.' ) && ( $file != '..' )) {
-				if ( is_dir($src . '/' . $file) ) {
-                    self::recurse_copy($src . '/' . $file,$dst . '/' . $file);
-				}
-				else {
-					copy($src . '/' . $file,$dst . '/' . $file);
-				}
-			}
-		}
-		closedir($dir);
-		return array('result'=>WPVIVID_SUCCESS);
-	}
-
-    public static function clearcache($task_id)
-    {
-        $path = WP_CONTENT_DIR.DIRECTORY_SEPARATOR.WPvivid_Setting::get_backupdir();
-        $handler=opendir($path);
-        while(($filename=readdir($handler))!==false)
-        {
-            if(is_dir($path.DIRECTORY_SEPARATOR.$filename) && preg_match('#temp-'.$task_id.'#',$filename))
-            {
-                WPvivid_tools::deldir($path.DIRECTORY_SEPARATOR.$filename,'',true);
-            }
-            if(is_dir($path.DIRECTORY_SEPARATOR.$filename) && preg_match('#temp-'.$task_id.'#',$filename))
-            {
-                WPvivid_tools::deldir($path.DIRECTORY_SEPARATOR.$filename,'',true);
-            }
-            if(preg_match('#pclzip-.*\.tmp#', $filename)){
-                @unlink($path.DIRECTORY_SEPARATOR.$filename);
-            }
-            if(preg_match('#pclzip-.*\.gz#', $filename)){
-                @unlink($path.DIRECTORY_SEPARATOR.$filename);
-            }
-        }
-        @closedir($handler);
-    }
-
     public static function clean_junk_cache(){
         $home_url_prefix=get_home_url();
         $parse = parse_url($home_url_prefix);
@@ -151,21 +100,6 @@ class WPvivid_tools
         return true;
     }
 
-    public static function delValueByKey($key , &$arr){
-        $flag = true;
-        if(!array_key_exists($key, $arr)){
-            return false;
-        }
-        $keys = array_keys($arr);
-        $index = array_search($key, $keys);
-        if($index !== FALSE){
-            array_splice($arr, $index, 1);
-        }else{
-            $flag = false;
-        }
-        return $flag;
-    }
-
     public static function file_put_array($json,$file){
         file_put_contents($file,json_encode($json));
     }
@@ -181,14 +115,5 @@ class WPvivid_tools
             $wpvivid_plugin->restore_data->write_log('Failed to open restore data file, the file may not exist.', 'notice');
             return array();
         }
-    }
-
-    public static function get_rollbackdata_file()
-    {
-        return WP_CONTENT_DIR.DIRECTORY_SEPARATOR.'wpvivid_rollbackdata.txt';
-    }
-    public static function get_restoredata_file()
-    {
-        return WP_CONTENT_DIR.DIRECTORY_SEPARATOR.'wpvivid_restoredata.txt';
     }
 }

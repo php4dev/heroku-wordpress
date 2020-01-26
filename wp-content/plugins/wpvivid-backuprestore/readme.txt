@@ -4,7 +4,7 @@ Tags: move, clone, migrate, copy, backup, restore, auto backup, cloud backup
 Requires at least: 4.5
 Tested up to: 5.3.2
 Requires PHP: 5.3
-Stable tag: 0.9.31
+Stable tag: 0.9.32
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -169,6 +169,10 @@ Thank you for translating WPvivid Backup Plugin to your languages!
 * [Shohei OKADA](https://ja.gravatar.com/silversword0630)(Japanese)
 
 == Changelog ==
+= 0.9.32 =
+- Updated the plugin code for WPvivid Backup for MainWP extension.
+- Fixed some bugs in the plugin code.
+- Optimized the plugin code.
 = 0.9.31 =
 - Successfully tested with WordPress 5.3.2.
 - Fixed: Backup could fail when the split file size was set to 0 MB in the shared hosting optimization mode.

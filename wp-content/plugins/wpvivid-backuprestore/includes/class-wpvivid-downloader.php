@@ -3,8 +3,6 @@
 if (!defined('WPVIVID_PLUGIN_DIR')){
     die;
 }
-//include_once plugin_dir_path( __FILE__ ) .'class-wpvivid-tools.php';
-//include_once plugin_dir_path( __FILE__ ) .'phpseclib/Net/SCP.php';
 
 class WPvivid_downloader
 {
@@ -72,7 +70,7 @@ class WPvivid_downloader
             {
                 if(filesize($local_file)>$file_info['size'])
                 {
-                    unlink($local_file);
+                    @unlink($local_file);
                 }
                 $need_download_files[$file_info['file_name']]=$file_info;
             }

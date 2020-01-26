@@ -180,17 +180,21 @@ class WPvivid_Backuplist
         return $list;
     }
 
-    public static function get_oldest_backup_id($list){
-        $oldest_id='not set';
+    public static function get_oldest_backup_id($list)
+    {
+        $oldest_id='';
         $oldest=0;
         foreach ($list as $k=>$backup)
         {
-            if(!array_key_exists('lock',$backup)) {
-                if ($oldest == 0) {
+            if(!array_key_exists('lock',$backup))
+            {
+                if ($oldest == 0)
+                {
                     $oldest = $backup['create_time'];
                     $oldest_id = $k;
                 } else {
-                    if ($oldest > $backup['create_time']) {
+                    if ($oldest > $backup['create_time'])
+                    {
                         $oldest_id = $k;
                     }
                 }
@@ -205,15 +209,20 @@ class WPvivid_Backuplist
         $size=sizeof($list);
         if($size>=$max_count)
         {
-            $ret['result']='need_delete';
             $oldest_id=self::get_oldest_backup_id($list);
-            $ret['oldest_id']=$oldest_id;
+            if(empty($oldest_id))
+            {
+                return false;
+            }
+            else
+            {
+                return $oldest_id;
+            }
         }
         else
         {
-            $ret['result']='ok';
+           return false;
         }
-        return $ret;
     }
 
     public static function get_out_of_date_backuplist($max_count)
@@ -229,7 +238,7 @@ class WPvivid_Backuplist
         {
             $oldest_id=self::get_oldest_backup_id($list);
 
-            if($oldest_id!='not set')
+            if(!empty($oldest_id))
             {
                 $out_of_date_list[]=$oldest_id;
                 unset($list[$oldest_id]);
@@ -262,7 +271,7 @@ class WPvivid_Backuplist
         {
             $oldest_id=self::get_oldest_backup_id($list);
 
-            if($oldest_id!='not set')
+            if(!empty($oldest_id))
             {
                 $out_of_date_list['size']+=self::get_size($oldest_id);
                 $out_of_date_list['count']++;

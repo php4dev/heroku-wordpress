@@ -3,7 +3,7 @@
 if (!defined('WPVIVID_PLUGIN_DIR')){
     die;
 }
-require_once WPVIVID_PLUGIN_DIR . '/includes/class-wpvivid-tools.php';
+
 require_once WPVIVID_PLUGIN_DIR . '/includes/customclass/class-wpvivid-ftpclass.php';
 require_once WPVIVID_PLUGIN_DIR . '/includes/customclass/class-wpvivid-sftpclass.php';
 require_once WPVIVID_PLUGIN_DIR . '/includes/customclass/class-wpvivid-amazons3-plus.php';

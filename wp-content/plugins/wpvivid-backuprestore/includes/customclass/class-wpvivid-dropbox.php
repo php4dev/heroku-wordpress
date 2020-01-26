@@ -106,6 +106,7 @@ class WPvivid_Dropbox extends WPvivid_Remote {
             $this -> last_time = time();
             $this -> last_size = 0;
             $wpvivid_plugin->wpvivid_log->WriteLog('Start uploading '.basename($file),'notice');
+            $wpvivid_plugin->set_time_limit($task_id);
             if(!file_exists($file))
                 return array('result' =>WPVIVID_FAILED,'error' =>$file.' not found. The file might has been moved, renamed or deleted. Please reload the list and verify the file exists.');
             $result = $this -> _put($task_id,$dropbox,$file,$callback);
@@ -114,6 +115,8 @@ class WPvivid_Dropbox extends WPvivid_Remote {
                 return $result;
             }
             $wpvivid_plugin->wpvivid_log->WriteLog('Finished uploading '.basename($file),'notice');
+            $upload_job['job_data'][basename($file)]['uploaded'] = 1;
+            WPvivid_taskmanager::update_backup_sub_task_progress($task_id, 'upload', WPVIVID_REMOTE_DROPBOX, WPVIVID_UPLOAD_SUCCESS, 'Uploading ' . basename($file) . ' completed.', $upload_job['job_data']);
         }
         return array('result' =>WPVIVID_SUCCESS);
     }

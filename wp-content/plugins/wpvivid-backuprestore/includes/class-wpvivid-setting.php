@@ -598,11 +598,33 @@ class WPvivid_Setting
 
     public static function get_sync_data()
     {
+        $wpvivid_info=apply_filters('wpvivid_get_wpvivid_info_addon_mainwp', false);
+        if(!$wpvivid_info){
+            $data['need_update']=false;
+            $data['current_version']='';
+        }
+        else{
+            $data['need_update']=$wpvivid_info['need_update'];
+            $data['current_version']=$wpvivid_info['current_version'];
+        }
+        $check_ret=apply_filters('wpvivid_check_is_pro_mainwp', false);
+        if(!$check_ret){
+            $data['is_pro']=false;
+            $data['latest_version']='';
+        }
+        else{
+            $data['is_pro']=$check_ret['check_pro'];
+            $data['latest_version']=$check_ret['latest_version'];
+        }
+        $data['time_zone']=apply_filters('wpvivid_get_time_zone_addon_mainwp', false);
         $data['setting']['wpvivid_compress_setting']=self::get_option('wpvivid_compress_setting');
         $data['setting']['wpvivid_local_setting']=self::get_option('wpvivid_local_setting');
         $data['setting']['wpvivid_common_setting']=self::get_option('wpvivid_common_setting');
         $data['setting']['wpvivid_email_setting']=self::get_option('wpvivid_email_setting');
         $data['setting']['cron_backup_count']=self::get_option('cron_backup_count');
+
+        $data['setting_addon'] = $data['setting'];
+        $data['setting_addon']['wpvivid_staging_options']=apply_filters('wpvivid_get_staging_setting_mainwp', array());
 
         $data['schedule']=self::get_option('wpvivid_schedule_setting');
         $data['schedule_addon']=apply_filters('wpvivid_archieve_schedule_add_settings', array());
@@ -610,7 +632,9 @@ class WPvivid_Setting
         $data['remote']['upload']=self::get_option('wpvivid_upload_setting');
         $data['remote']['history']=self::get_option('wpvivid_user_history');
 
-        $data['backup_custom_setting']=apply_filters('wpvivid_get_backup_custom_setting', array());
+        $data['backup_custom_setting']=apply_filters('wpvivid_get_backup_custom_setting_mainwp', array());
+
+        $data['report_addon'] = apply_filters('wpvivid_archieve_report_addon_mainwp', array());
         return $data;
     }
 }

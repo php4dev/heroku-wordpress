@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alienware`x
- * Date: 2019/2/14
- * Time: 16:06
- */
 
 if (!defined('WPVIVID_PLUGIN_DIR')){
     die;
@@ -551,10 +545,21 @@ class WPvivid_one_drive extends WPvivid_Remote
             if(!file_exists($file))
                 return array('result' =>WPVIVID_FAILED,'error' =>$file.' not found. The file might has been moved, renamed or deleted. Please reload the list and verify the file exists.');
             $wpvivid_plugin->wpvivid_log->WriteLog('Start uploading '.basename($file),'notice');
+            $wpvivid_plugin->set_time_limit($task_id);
             $result=$this->_upload($task_id, $file,$callback);
             if($result['result'] !==WPVIVID_SUCCESS)
             {
                 return $result;
+            }
+
+            if($this->need_refresh())
+            {
+                $wpvivid_plugin->wpvivid_log->WriteLog('The token expired and will go to the server to refresh the token.','notice');
+                $ret=$this->refresh_token();
+                if($ret['result']===WPVIVID_FAILED)
+                {
+                    return $ret;
+                }
             }
         }
         return array('result' =>WPVIVID_SUCCESS);

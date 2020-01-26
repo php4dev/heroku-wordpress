@@ -1,24 +1,101 @@
 <?php
 
-class WPvivid_Public_Interface
+class WPvivid_Interface_MainWP
 {
-    public function __construct()
-    {
-
+    public function __construct(){
+        $this->load_wpvivid_mainwp_backup_filter();
+        $this->load_wpvivid_mainwp_side_bar_filter();
+        $this->load_wpvivid_mainwp_backup_list_filter();
+        $this->load_wpvivid_mainwp_schedule_filter();
+        $this->load_wpvivid_mainwp_setting_filter();
+        $this->load_wpvivid_mainwp_remote_filter();
     }
 
-    public function mainwp_data($data){
-        $action = sanitize_text_field($data['mwp_action']);
-        if (has_filter($action)) {
-            $ret = apply_filters($action, $data);
-        } else {
-            $ret['result'] = WPVIVID_FAILED;
-            $ret['error'] = 'Unknown function';
+    public function load_wpvivid_mainwp_backup_filter(){
+        add_filter('wpvivid_get_status_mainwp', array($this, 'wpvivid_get_status_mainwp'));
+        add_filter('wpvivid_get_backup_list_mainwp', array($this, 'wpvivid_get_backup_list_mainwp'));
+        add_filter('wpvivid_get_backup_schedule_mainwp', array($this, 'wpvivid_get_backup_schedule_mainwp'));
+        add_filter('wpvivid_get_default_remote_mainwp', array($this, 'wpvivid_get_default_remote_mainwp'));
+        add_filter('wpvivid_prepare_backup_mainwp', array($this, 'wpvivid_prepare_backup_mainwp'));
+        add_filter('wpvivid_backup_now_mainwp', array($this, 'wpvivid_backup_now_mainwp'));
+        add_filter('wpvivid_view_backup_task_log_mainwp', array($this, 'wpvivid_view_backup_task_log_mainwp'));
+        add_filter('wpvivid_backup_cancel_mainwp', array($this, 'wpvivid_backup_cancel_mainwp'));
+    }
+
+    public function load_wpvivid_mainwp_side_bar_filter(){
+        add_filter('wpvivid_read_last_backup_log_mainwp', array($this, 'wpvivid_read_last_backup_log_mainwp'));
+    }
+
+    public function load_wpvivid_mainwp_backup_list_filter(){
+        add_filter('wpvivid_set_security_lock_mainwp', array($this, 'wpvivid_set_security_lock_mainwp'));
+        add_filter('wpvivid_view_log_mainwp', array($this, 'wpvivid_view_log_mainwp'));
+        add_filter('wpvivid_init_download_page_mainwp', array($this, 'wpvivid_init_download_page_mainwp'));
+        add_filter('wpvivid_prepare_download_backup_mainwp', array($this, 'wpvivid_prepare_download_backup_mainwp'));
+        add_filter('wpvivid_get_download_task_mainwp', array($this, 'wpvivid_get_download_task_mainwp'));
+        add_filter('wpvivid_download_backup_mainwp', array($this, 'wpvivid_download_backup_mainwp'));
+        add_filter('wpvivid_delete_backup_mainwp', array($this, 'wpvivid_delete_backup_mainwp'));
+        add_filter('wpvivid_delete_backup_array_mainwp', array($this, 'wpvivid_delete_backup_array_mainwp'));
+    }
+
+    public function load_wpvivid_mainwp_schedule_filter(){
+        add_filter('wpvivid_set_schedule_mainwp', array($this, 'wpvivid_set_schedule_mainwp'));
+    }
+
+    public function load_wpvivid_mainwp_setting_filter(){
+        add_filter('wpvivid_set_general_setting_mainwp', array($this, 'wpvivid_set_general_setting_mainwp'));
+    }
+
+    public function load_wpvivid_mainwp_remote_filter(){
+        add_filter('wpvivid_set_remote_mainwp', array($this, 'wpvivid_set_remote_mainwp'));
+    }
+
+    public function wpvivid_get_status_mainwp($data){
+        $ret['result']='success';
+        $list_tasks=array();
+        $tasks=WPvivid_Setting::get_tasks();
+        foreach ($tasks as $task)
+        {
+            $backup = new WPvivid_Backup_Task($task['id']);
+            $list_tasks[$task['id']]=$backup->get_backup_task_info($task['id']);
+            if($list_tasks[$task['id']]['task_info']['need_update_last_task']===true){
+                $task_msg = WPvivid_taskmanager::get_task($task['id']);
+                WPvivid_Setting::update_option('wpvivid_last_msg',$task_msg);
+            }
         }
+        $ret['wpvivid']['task']=$list_tasks;
+        $backuplist=WPvivid_Backuplist::get_backuplist();
+        $schedule=WPvivid_Schedule::get_schedule();
+        $ret['wpvivid']['backup_list']=$backuplist;
+        $ret['wpvivid']['schedule']=$schedule;
+        $ret['wpvivid']['schedule']['last_message']=WPvivid_Setting::get_last_backup_message('wpvivid_last_msg');
+        WPvivid_taskmanager::delete_marked_task();
         return $ret;
     }
 
-    public function prepare_backup($backup_options){
+    public function wpvivid_get_backup_list_mainwp($data){
+        $backuplist=WPvivid_Backuplist::get_backuplist();
+        $ret['result']='success';
+        $ret['wpvivid']['backup_list']=$backuplist;
+        return $ret;
+    }
+
+    public function wpvivid_get_backup_schedule_mainwp($data){
+        $schedule=WPvivid_Schedule::get_schedule();
+        $ret['result']='success';
+        $ret['wpvivid']['schedule']=$schedule;
+        $ret['wpvivid']['schedule']['last_message']=WPvivid_Setting::get_last_backup_message('wpvivid_last_msg');
+        return $ret;
+    }
+
+    public function wpvivid_get_default_remote_mainwp($data){
+        global $wpvivid_plugin;
+        $ret['result']='success';
+        $ret['remote_storage_type']=$wpvivid_plugin->function_realize->_get_default_remote_storage();
+        return $ret;
+    }
+
+    public function wpvivid_prepare_backup_mainwp($data){
+        $backup_options = $data['backup'];
         global $wpvivid_plugin;
         if(isset($backup_options)&&!empty($backup_options)){
             if (is_null($backup_options)) {
@@ -53,7 +130,8 @@ class WPvivid_Public_Interface
         return $ret;
     }
 
-    public function backup_now($task_id){
+    public function wpvivid_backup_now_mainwp($data){
+        $task_id = $data['task_id'];
         global $wpvivid_plugin;
         if (!isset($task_id)||empty($task_id)||!is_string($task_id))
         {
@@ -82,119 +160,15 @@ class WPvivid_Public_Interface
         $ret['result']='success';
     }
 
-    public function get_status(){
-        $ret['result']='success';
-        $list_tasks=array();
-        $tasks=WPvivid_Setting::get_tasks();
-        foreach ($tasks as $task)
-        {
-            $backup = new WPvivid_Backup_Task($task['id']);
-            $list_tasks[$task['id']]=$backup->get_backup_task_info($task['id']);
-            if($list_tasks[$task['id']]['task_info']['need_update_last_task']===true){
-                $task_msg = WPvivid_taskmanager::get_task($task['id']);
-                WPvivid_Setting::update_option('wpvivid_last_msg',$task_msg);
-            }
-        }
-        $ret['wpvivid']['task']=$list_tasks;
-        $backuplist=WPvivid_Backuplist::get_backuplist();
-        $schedule=WPvivid_Schedule::get_schedule();
-        $ret['wpvivid']['backup_list']=$backuplist;
-        $ret['wpvivid']['schedule']=$schedule;
-        $ret['wpvivid']['schedule']['last_message']=WPvivid_Setting::get_last_backup_message('wpvivid_last_msg');
-        WPvivid_taskmanager::delete_marked_task();
-        return $ret;
-    }
-
-    public function get_backup_schedule(){
-        $schedule=WPvivid_Schedule::get_schedule();
-        $ret['result']='success';
-        $ret['wpvivid']['schedule']=$schedule;
-        $ret['wpvivid']['schedule']['last_message']=WPvivid_Setting::get_last_backup_message('wpvivid_last_msg');
-        return $ret;
-    }
-
-    public function get_backup_list(){
-        $backuplist=WPvivid_Backuplist::get_backuplist();
-        $ret['result']='success';
-        $ret['wpvivid']['backup_list']=$backuplist;
-        return $ret;
-    }
-
-    public function get_default_remote(){
+    public function wpvivid_view_backup_task_log_mainwp($data){
+        $backup_task_id = $data['id'];
         global $wpvivid_plugin;
-        $ret['result']='success';
-        $ret['remote_storage_type']=$wpvivid_plugin->function_realize->_get_default_remote_storage();
-        return $ret;
-    }
-
-    public function delete_backup($backup_id, $force_del){
-        global $wpvivid_plugin;
-        if(!isset($backup_id)||empty($backup_id)||!is_string($backup_id)) {
-            $ret['error']='Invalid parameter param: backup_id.';
+        if (!isset($backup_task_id)||empty($backup_task_id)||!is_string($backup_task_id)){
+            $ret['error']='Reading the log failed. Please try again.';
             return $ret;
         }
-        if(!isset($force_del)){
-            $ret['error']='Invalid parameter param: force.';
-            return $ret;
-        }
-        if($force_del==0||$force_del==1) {
-        }
-        else {
-            $force_del=0;
-        }
-        $backup_id=sanitize_key($backup_id);
-        $ret=$wpvivid_plugin->delete_backup_by_id($backup_id, $force_del);
-        $backuplist=WPvivid_Backuplist::get_backuplist();
-        $ret['wpvivid']['backup_list']=$backuplist;
-        return $ret;
-    }
-
-    public function delete_backup_array($backup_id_array){
-        global $wpvivid_plugin;
-        if(!isset($backup_id_array)||empty($backup_id_array)||!is_array($backup_id_array)) {
-            $ret['error']='Invalid parameter param: backup_id';
-            return $ret;
-        }
-        $ret=array();
-        foreach($backup_id_array as $backup_id)
-        {
-            $backup_id=sanitize_key($backup_id);
-            $ret=$wpvivid_plugin->delete_backup_by_id($backup_id);
-        }
-        $backuplist=WPvivid_Backuplist::get_backuplist();
-        $ret['wpvivid']['backup_list']=$backuplist;
-        return $ret;
-    }
-
-    public function set_security_lock($backup_id, $lock){
-        if(!isset($backup_id)||empty($backup_id)||!is_string($backup_id)){
-            $ret['error']='Backup id not found';
-            return $ret;
-        }
-        if(!isset($lock)){
-            $ret['error']='Invalid parameter param: lock';
-            return $ret;
-        }
-        $backup_id=sanitize_key($backup_id);
-        if($lock==0||$lock==1) {
-        }
-        else {
-            $lock=0;
-        }
-        WPvivid_Backuplist::set_security_lock($backup_id,$lock);
-        $backuplist=WPvivid_Backuplist::get_backuplist();
-        $ret['wpvivid']['backup_list']=$backuplist;
-        return $ret;
-    }
-
-    public function view_log($backup_id){
-        global $wpvivid_plugin;
-        if (!isset($backup_id)||empty($backup_id)||!is_string($backup_id)){
-            $ret['error']='Backup id not found';
-            return $ret;
-        }
-        $backup_id=sanitize_key($backup_id);
-        $ret=$wpvivid_plugin->function_realize->_get_log_file('backuplist', $backup_id);
+        $backup_task_id = sanitize_key($backup_task_id);
+        $ret=$wpvivid_plugin->function_realize->_get_log_file('tasklog', $backup_task_id);
         if($ret['result'] == 'success') {
             $file = fopen($ret['log_file'], 'r');
             if (!$file) {
@@ -207,6 +181,7 @@ class WPvivid_Public_Interface
                 $buffer .= fread($file, 1024);
             }
             fclose($file);
+            $ret['result'] = 'success';
             $ret['data'] = $buffer;
         }
         else{
@@ -215,7 +190,14 @@ class WPvivid_Public_Interface
         return $ret;
     }
 
-    public function read_last_backup_log($log_file_name){
+    public function wpvivid_backup_cancel_mainwp($data){
+        global $wpvivid_plugin;
+        $ret=$wpvivid_plugin->function_realize->_backup_cancel();
+        return $ret;
+    }
+
+    public function wpvivid_read_last_backup_log_mainwp($data){
+        $log_file_name = $data['log_file_name'];
         global $wpvivid_plugin;
         if(!isset($log_file_name)||empty($log_file_name)||!is_string($log_file_name))
         {
@@ -246,14 +228,38 @@ class WPvivid_Public_Interface
         return $ret;
     }
 
-    public function view_backup_task_log($backup_task_id){
-        global $wpvivid_plugin;
-        if (!isset($backup_task_id)||empty($backup_task_id)||!is_string($backup_task_id)){
-            $ret['error']='Reading the log failed. Please try again.';
+    public function wpvivid_set_security_lock_mainwp($data){
+        $backup_id = $data['backup_id'];
+        $lock = $data['lock'];
+        if(!isset($backup_id)||empty($backup_id)||!is_string($backup_id)){
+            $ret['error']='Backup id not found';
             return $ret;
         }
-        $backup_task_id = sanitize_key($backup_task_id);
-        $ret=$wpvivid_plugin->function_realize->_get_log_file('tasklog', $backup_task_id);
+        if(!isset($lock)){
+            $ret['error']='Invalid parameter param: lock';
+            return $ret;
+        }
+        $backup_id=sanitize_key($backup_id);
+        if($lock==0||$lock==1) {
+        }
+        else {
+            $lock=0;
+        }
+        WPvivid_Backuplist::set_security_lock($backup_id,$lock);
+        $backuplist=WPvivid_Backuplist::get_backuplist();
+        $ret['wpvivid']['backup_list']=$backuplist;
+        return $ret;
+    }
+
+    public function wpvivid_view_log_mainwp($data){
+        $backup_id = $data['id'];
+        global $wpvivid_plugin;
+        if (!isset($backup_id)||empty($backup_id)||!is_string($backup_id)){
+            $ret['error']='Backup id not found';
+            return $ret;
+        }
+        $backup_id=sanitize_key($backup_id);
+        $ret=$wpvivid_plugin->function_realize->_get_log_file('backuplist', $backup_id);
         if($ret['result'] == 'success') {
             $file = fopen($ret['log_file'], 'r');
             if (!$file) {
@@ -266,7 +272,6 @@ class WPvivid_Public_Interface
                 $buffer .= fread($file, 1024);
             }
             fclose($file);
-            $ret['result'] = 'success';
             $ret['data'] = $buffer;
         }
         else{
@@ -275,13 +280,8 @@ class WPvivid_Public_Interface
         return $ret;
     }
 
-    public function backup_cancel($task_id = ''){
-        global $wpvivid_plugin;
-        $ret=$wpvivid_plugin->function_realize->_backup_cancel();
-        return $ret;
-    }
-
-    public function init_download_page($backup_id){
+    public function wpvivid_init_download_page_mainwp($data){
+        $backup_id = $data['backup_id'];
         global $wpvivid_plugin;
         if(!isset($backup_id)||empty($backup_id)||!is_string($backup_id)) {
             $ret['error']='Invalid parameter param:'.$backup_id;
@@ -293,7 +293,9 @@ class WPvivid_Public_Interface
         }
     }
 
-    public function prepare_download_backup($backup_id, $file_name){
+    public function wpvivid_prepare_download_backup_mainwp($data){
+        $backup_id = $data['backup_id'];
+        $file_name = $data['file_name'];
         if(!isset($backup_id)||empty($backup_id)||!is_string($backup_id))
         {
             $ret['error']='Invalid parameter param:'.$backup_id;
@@ -333,7 +335,8 @@ class WPvivid_Public_Interface
         return $ret;
     }
 
-    public function get_download_task($backup_id){
+    public function wpvivid_get_download_task_mainwp($data){
+        $backup_id = $data['backup_id'];
         if(!isset($backup_id)||empty($backup_id)||!is_string($backup_id)) {
             $ret['error']='Invalid parameter param:'.$backup_id;
             return $ret;
@@ -351,7 +354,9 @@ class WPvivid_Public_Interface
         }
     }
 
-    public function download_backup($backup_id, $file_name){
+    public function wpvivid_download_backup_mainwp($data){
+        $backup_id = $data['backup_id'];
+        $file_name = $data['file_name'];
         global $wpvivid_plugin;
         if(!isset($backup_id)||empty($backup_id)||!is_string($backup_id)) {
             $ret['error']='Invalid parameter param: backup_id';
@@ -383,31 +388,50 @@ class WPvivid_Public_Interface
         return $ret;
     }
 
-    public function set_general_setting($setting){
-        $ret=array();
-        try {
-            if(isset($setting)&&!empty($setting)) {
-                $json_setting = $setting;
-                $json_setting = stripslashes($json_setting);
-                $setting = json_decode($json_setting, true);
-                if (is_null($setting)) {
-                    $ret['error']='bad parameter';
-                    return $ret;
-                }
-                WPvivid_Setting::update_setting($setting);
-            }
-
-            $ret['result']='success';
+    public function wpvivid_delete_backup_mainwp($data){
+        $backup_id = $data['backup_id'];
+        $force_del = $data['force'];
+        global $wpvivid_plugin;
+        if(!isset($backup_id)||empty($backup_id)||!is_string($backup_id)) {
+            $ret['error']='Invalid parameter param: backup_id.';
+            return $ret;
         }
-        catch (Exception $error) {
-            $message = 'An exception has occurred. class: '.get_class($error).';msg: '.$error->getMessage().';code: '.$error->getCode().';line: '.$error->getLine().';in_file: '.$error->getFile().';';
-            error_log($message);
-            return array('error'=>$message);
+        if(!isset($force_del)){
+            $ret['error']='Invalid parameter param: force.';
+            return $ret;
         }
+        if($force_del==0||$force_del==1) {
+        }
+        else {
+            $force_del=0;
+        }
+        $backup_id=sanitize_key($backup_id);
+        $ret=$wpvivid_plugin->delete_backup_by_id($backup_id, $force_del);
+        $backuplist=WPvivid_Backuplist::get_backuplist();
+        $ret['wpvivid']['backup_list']=$backuplist;
         return $ret;
     }
 
-    public function set_schedule($schedule){
+    public function wpvivid_delete_backup_array_mainwp($data){
+        $backup_id_array = $data['backup_id'];
+        global $wpvivid_plugin;
+        if(!isset($backup_id_array)||empty($backup_id_array)||!is_array($backup_id_array)) {
+            $ret['error']='Invalid parameter param: backup_id';
+            return $ret;
+        }
+        $ret=array();
+        foreach($backup_id_array as $backup_id)
+        {
+            $backup_id=sanitize_key($backup_id);
+            $ret=$wpvivid_plugin->delete_backup_by_id($backup_id);
+        }
+        $backuplist=WPvivid_Backuplist::get_backuplist();
+        $ret['wpvivid']['backup_list']=$backuplist;
+        return $ret;
+    }
+
+    public function wpvivid_set_schedule_mainwp($data){
+        $schedule = $data['schedule'];
         $ret=array();
         try {
             if(isset($schedule)&&!empty($schedule)) {
@@ -433,7 +457,33 @@ class WPvivid_Public_Interface
         return $ret;
     }
 
-    public function set_remote($remote){
+    public function wpvivid_set_general_setting_mainwp($data){
+        $setting = $data['setting'];
+        $ret=array();
+        try {
+            if(isset($setting)&&!empty($setting)) {
+                $json_setting = $setting;
+                $json_setting = stripslashes($json_setting);
+                $setting = json_decode($json_setting, true);
+                if (is_null($setting)) {
+                    $ret['error']='bad parameter';
+                    return $ret;
+                }
+                WPvivid_Setting::update_setting($setting);
+            }
+
+            $ret['result']='success';
+        }
+        catch (Exception $error) {
+            $message = 'An exception has occurred. class: '.get_class($error).';msg: '.$error->getMessage().';code: '.$error->getCode().';line: '.$error->getLine().';in_file: '.$error->getFile().';';
+            error_log($message);
+            return array('error'=>$message);
+        }
+        return $ret;
+    }
+
+    public function wpvivid_set_remote_mainwp($data){
+        $remote = $data['remote'];
         global $wpvivid_plugin;
         $ret=array();
         try {

@@ -127,6 +127,8 @@ class WPvivid {
         add_filter('wpvivid_set_mail_subject', array($this, 'set_mail_subject'), 10, 2);
         add_filter('wpvivid_set_mail_body', array($this, 'set_mail_body'), 10, 2);
 
+        add_filter('wpvivid_get_oldest_backup_ids', array($this, 'get_oldest_backup_ids'), 10, 2);
+        //
 		//Initialisation schedule hook
         $this->init_cron();
         //Initialisation log object
@@ -185,11 +187,15 @@ class WPvivid {
         include_once WPVIVID_PLUGIN_DIR . '/includes/class-wpvivid-exporter.php';
         include_once WPVIVID_PLUGIN_DIR . '/includes/class-wpvivid-importer.php';
 
-        include_once WPVIVID_PLUGIN_DIR.'/includes/class-wpvivid-tab-page-container.php' ;
+        include_once WPVIVID_PLUGIN_DIR . '/includes/class-wpvivid-tab-page-container.php' ;
+        include_once WPVIVID_PLUGIN_DIR . '/includes/class-wpvivid-tools.php';
+
+        include_once WPVIVID_PLUGIN_DIR . '/includes/class-wpvivid-interface-mainwp.php';
 
         $this->function_realize=new WPvivid_Function_Realize();
         $this->migrate=new WPvivid_Migrate();
         $this->backup_uploader=new Wpvivid_BackupUploader();
+        $this->interface_mainwp = new WPvivid_Interface_MainWP();
         $send_to_site=new WPvivid_Send_to_site();
         $export_import = new WPvivid_Export_Import();
 	}
@@ -291,8 +297,6 @@ class WPvivid {
         add_action('wp_ajax_wpvivid_prepare_download_backup',array( $this,'prepare_download_backup'));
         //Download backup from site
         add_action('wp_ajax_wpvivid_download_backup',array( $this,'download_backup'));
-        //Delete downloaded file
-        add_action('wp_ajax_wpvivid_delete_download',array( $this,'delete_download'));
         //Delete backup record
         add_action('wp_ajax_wpvivid_delete_backup',array( $this,'delete_backup'));
         //Delete backup records
@@ -338,21 +342,15 @@ class WPvivid {
         //
         add_action('wp_ajax_wpvivid_delete_last_restore_data',array( $this,'delete_last_restore_data'));
         //
-        add_action('wp_ajax_wpvivid_delete_old_files',array( $this,'delete_old_files'));
         //start restore
         add_action('wp_ajax_wpvivid_restore',array( $this,'restore'));
-        //start rollback
-        add_action('wp_ajax_wpvivid_rollback',array( $this,'rollback'));
         add_action('wp_ajax_wpvivid_get_restore_progress',array( $this,'get_restore_progress'));
-        add_action('wp_ajax_wpvivid_get_rollback_progress',array( $this,'get_rollback_progress'));
         add_action('wp_ajax_wpvivid_get_download_restore_progress',array( $this,'download_restore_progress'));
         //When restoring the database use wp_ajax_nopriv_
         add_action('wp_ajax_nopriv_wpvivid_init_restore_page',array( $this,'init_restore_page'));
         add_action('wp_ajax_nopriv_wpvivid_delete_last_restore_data',array( $this,'delete_last_restore_data'));
         add_action('wp_ajax_nopriv_wpvivid_restore',array( $this,'restore'));
-        add_action('wp_ajax_nopriv_wpvivid_rollback',array( $this,'rollback'));
         add_action('wp_ajax_nopriv_wpvivid_get_restore_progress',array( $this,'get_restore_progress'));
-        add_action('wp_ajax_nopriv_wpvivid_get_rollback_progress',array( $this,'get_rollback_progress'));
         add_action('wp_ajax_wpvivid_list_tasks',array( $this,'list_tasks'));
         //View last backup record log
         add_action('wp_ajax_wpvivid_read_last_backup_log',array( $this,'read_last_backup_log'));
@@ -975,26 +973,9 @@ class WPvivid {
 
         if(!empty($backup))
         {
-
             $backup_item=new WPvivid_Backup_Item($backup);
-            $files=$backup_item->get_files();
-            foreach ($files as $file)
-            {
-                if (file_exists($file))
-                {
-                    @unlink($file);
-                }
-            }
-
-            if(!empty($backup['remote']))
-            {
-                $files=$backup_item->get_files(false);
-
-                foreach($backup['remote'] as $remote)
-                {
-                    WPvivid_downloader::delete($remote,$files);
-                }
-            }
+            $backup_item->cleanup_local_backup();
+            $backup_item->cleanup_remote_backup();
         }
     }
     /**
@@ -1006,23 +987,38 @@ class WPvivid {
      */
     public function clean_oldest_backup()
     {
-        $backup_ids=WPvivid_Backuplist::get_out_of_date_backuplist(WPvivid_Setting::get_max_backup_count());
-        foreach($backup_ids as $backup_id)
+        $oldest_ids=array();
+        $oldest_ids=apply_filters('wpvivid_get_oldest_backup_ids',$oldest_ids,false);
+        if($oldest_ids!==false)
         {
-            $this->delete_backup_by_id($backup_id);
-        }
-        $count=WPvivid_Setting::get_max_backup_count();
-        $ret=WPvivid_Backuplist::check_backuplist_limit($count);
-        if($ret['result']=='need_delete')
-        {
-            $oldest_id=$ret['oldest_id'];
-            if($oldest_id!='not set')
+            foreach ($oldest_ids as $oldest_id)
             {
                 $this->add_clean_backup_record_event($oldest_id);
                 WPvivid_Backuplist::delete_backup($oldest_id);
             }
         }
     }
+
+    public function get_oldest_backup_ids($oldest_ids,$multiple)
+    {
+        if($multiple)
+        {
+            $count=WPvivid_Setting::get_max_backup_count();
+
+            $oldest_ids = WPvivid_Backuplist::get_out_of_date_backuplist($count);
+
+            return $oldest_ids;
+        }
+        else
+        {
+            $count=WPvivid_Setting::get_max_backup_count();
+            $oldest_id=WPvivid_Backuplist::check_backuplist_limit($count);
+            $oldest_ids=array();
+            $oldest_ids[]=$oldest_id;
+            return $oldest_ids;
+        }
+    }
+
     /**
      * Initialization backup task.
      *
@@ -1090,6 +1086,7 @@ class WPvivid {
         {
             $backup=new WPvivid_Backup();
 
+            $backup->clearcache();
             $backup_ret=$backup->backup($task_id);
             $backup->clearcache();
 
@@ -1551,8 +1548,8 @@ class WPvivid {
                     $limit=WPVIVID_MAX_EXECUTION_TIME;
                 }
                 $time_spend=time()-$status['timeout'];
-
-                if($time_spend>=$limit)
+                $last_active_time=time()-$status['run_time'];
+                if($time_spend>=$limit&&$last_active_time>min(180,$limit))
                 {
                     //time out
                     if(isset($options['max_resume_count']))
@@ -1597,7 +1594,7 @@ class WPvivid {
                         WPvivid_taskmanager::update_backup_task_status($task_id,false,'no_responds',false,$status['resume_count']);
                         $this->add_monitor_event($task_id);
                     }
-                    else{
+                    else {
                         $this->add_monitor_event($task_id);
                     }
                 }
@@ -1669,8 +1666,8 @@ class WPvivid {
                     $limit=WPVIVID_MAX_EXECUTION_TIME;
                 }
                 $time_spend=time()-$status['timeout'];
-
-                if($time_spend>=$limit)
+                $last_active_time=time()-$status['run_time'];
+                if($time_spend>=$limit&&$last_active_time>min(180,$limit))
                 {
                     //time out
                     if(isset($options['max_resume_count']))
@@ -2090,7 +2087,8 @@ class WPvivid {
         }
         else
         {
-            ob_flush();
+            if(ob_get_level()>0)
+                ob_flush();
             flush();
         }
     }
@@ -2228,7 +2226,6 @@ class WPvivid {
             return $ret;
         }
         $ret['result']=WPVIVID_SUCCESS;
-        $type_list=array();
         $backup=WPvivid_Backuplist::get_backup_by_id($backup_id);
 
         if($backup===false)
@@ -2248,70 +2245,6 @@ class WPvivid {
         return $ret;
     }
 
-    /**
-     * delete download file
-     *
-     * @since 0.9.1
-     */
-    public function delete_download()
-    {
-        $this->ajax_check_security();
-        try {
-            if (!isset($_POST['backup_id']) || empty($_POST['backup_id']) || !is_string($_POST['backup_id']) || !isset($_POST['file_name']) || empty($_POST['file_name']) || !is_string($_POST['file_name'])) {
-                die();
-            }
-            $download_info = array();
-            $download_info['backup_id'] = sanitize_key($_POST['backup_id']);
-            //$download_info['file_name']=sanitize_file_name($_POST['file_name']);
-            $download_info['file_name'] = $_POST['file_name'];
-
-            $files = array();
-            $backup = WPvivid_Backuplist::get_backup_by_id($download_info['backup_id']);
-            if (!$backup) {
-                $json['result'] = 'failed';
-                $json['error'] = __('Retrieving the backup(s) information failed while deleting the selected backup(s). Please try again later.', 'wpvivid');
-                json_encode($json);
-                die();
-            }
-            if ($backup['backup']['ismerge'] == 1) {
-                $backup_files = $backup['backup']['data']['meta']['files'];
-                foreach ($backup_files as $file) {
-                    if ($file['file_name'] == $download_info['file_name']) {
-                        $files[] = $file;
-                        break;
-                    }
-                }
-            } else {
-                foreach ($backup['backup']['data']['type'] as $type) {
-                    $backup_files = $type['files'];
-                    foreach ($backup_files as $file) {
-                        if ($file['file_name'] == $download_info['file_name']) {
-                            $files[] = $file;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            $download_dir = $backup['local']['path'];
-
-            foreach ($files as $file) {
-                $download_path = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $download_dir . DIRECTORY_SEPARATOR . $file['file_name'];
-                if (file_exists($download_path)) {
-                    unlink($download_path);
-                }
-            }
-            $ret = $this->init_download($_POST['backup_id']);
-            echo json_encode($ret);
-        }
-        catch (Exception $error) {
-            $message = 'An exception has occurred. class: '.get_class($error).';msg: '.$error->getMessage().';code: '.$error->getCode().';line: '.$error->getLine().';in_file: '.$error->getFile().';';
-            error_log($message);
-            echo json_encode(array('result'=>'failed','error'=>$message));
-            die();
-        }
-        die();
-    }
     /**
      * download backup file
      *
@@ -2497,7 +2430,6 @@ class WPvivid {
         }
 
         $backup_item=new WPvivid_Backup_Item($backup);
-
         if($backup_item->is_lock())
         {
             if($force==0)
@@ -2507,37 +2439,13 @@ class WPvivid {
                 return $ret;
             }
         }
-
-        $files=$backup_item->get_files();
-
-        foreach ($files as $file)
-        {
-            if (file_exists($file))
-            {
-                @unlink($file);
-            }
-        }
-
-        $ret = WPvivid_Backuplist::get_backuplist_by_id($backup_id);
-
-        if(!empty($backup['remote']))
-        {
-            WPvivid_Backuplist::delete_backup($backup_id);
-            $files=$backup_item->get_files(false);
-            foreach($backup['remote'] as $remote)
-            {
-                WPvivid_downloader::delete($remote,$files);
-            }
-        }
-        else
-        {
-            WPvivid_Backuplist::delete_backup($backup_id);
-        }
+        WPvivid_Backuplist::delete_backup($backup_id);
+        $backup_item->cleanup_local_backup();
+        $backup_item->cleanup_remote_backup();
 
         $html = '';
         $html = apply_filters('wpvivid_add_backup_list', $html);
         $ret['html'] = $html;
-
         $ret['result']='success';
         return $ret;
     }
@@ -2557,24 +2465,8 @@ class WPvivid {
                continue;
             }
 
-            $files=array();
-            $download_dir=$backup['local']['path'];
-
             $backup_item = new WPvivid_Backup_Item($backup);
-            $file=$backup_item->get_files(false);
-            foreach ($file as $filename) {
-                $files[] = $filename;
-            }
-
-            foreach ($files as $file)
-            {
-                $download_path = WP_CONTENT_DIR .DIRECTORY_SEPARATOR . $download_dir . DIRECTORY_SEPARATOR . $file;
-                if (file_exists($download_path))
-                {
-                    unlink($download_path);
-                }
-
-            }
+            $backup_item->cleanup_local_backup();
         }
     }
 
@@ -2924,14 +2816,7 @@ class WPvivid {
                 $ret['has_exist_restore']=0;
             }
 
-            if($this->restore_data->has_old_files())
-            {
-                $ret['has_old_files']=1;
-            }
-            else
-            {
-                $ret['has_old_files']=0;
-            }
+            $ret['has_old_files']=0;
         }
         catch (Exception $error)
         {
@@ -3110,22 +2995,6 @@ class WPvivid {
         die();
     }
 
-    public function delete_old_files()
-    {
-        try {
-            $this->restore_data = new WPvivid_restore_data();
-            $this->restore_data->delete_old_files();
-            $ret['result'] = 'success';
-            echo json_encode($ret);
-        }
-        catch (Exception $error) {
-            $message = 'An exception has occurred. class: '.get_class($error).';msg: '.$error->getMessage().';code: '.$error->getCode().';line: '.$error->getLine().';in_file: '.$error->getFile().';';
-            error_log($message);
-            echo json_encode(array('result'=>'failed','error'=>$message));
-            die();
-        }
-        die();
-    }
     /**
      * Prepare backup files for restore
      *
@@ -3472,100 +3341,6 @@ class WPvivid {
         }
     }
     /**
-     * Start rollback
-     *
-     * @since 0.9.1
-     */
-    public function rollback()
-    {
-        $this->_enable_maintenance_mode();
-        try
-        {
-            $rollback=new WPvivid_RollBack();
-            $rollback->rollback();
-        }
-        catch (Exception $error)
-        {
-            $message = 'An exception has occurred. class: '.get_class($error).';msg: '.$error->getMessage().';code: '.$error->getCode().';line: '.$error->getLine().';in_file: '.$error->getFile().';';
-            error_log($message);
-            $this->_disable_maintenance_mode();
-            echo json_encode(array('result'=>'failed','error'=>$message));
-            die();
-        }
-        catch (Error $error)
-        {
-            $message = 'An error has occurred. class: '.get_class($error).';msg: '.$error->getMessage().';code: '.$error->getCode().';line: '.$error->getLine().';in_file: '.$error->getFile().';';
-            error_log($message);
-            $this->_disable_maintenance_mode();
-            echo json_encode(array('result'=>'failed','error'=>$message));
-            die();
-        }
-        $this->_disable_maintenance_mode();
-        echo json_encode(array('result'=>'finished'));
-        die();
-
-
-        $this->restore_data=new WPvivid_restore_data();
-        if($this->restore_data->has_rollback())
-        {
-            $status=$this->restore_data->get_rollback_status();
-
-            if($status === WPVIVID_RESTORE_ERROR)
-            {
-                $ret['result']='failed';
-                $ret['error']=$this->restore_data->get_rollback_error();
-                echo json_encode($ret);
-                die();
-            }
-            else if($status === WPVIVID_RESTORE_COMPLETED)
-            {
-                $this->restore_data->write_rollback_log('disable maintenance mode','notice');
-                $this->_disable_maintenance_mode();
-                echo json_encode(array('result'=>'finished'));
-                die();
-            }
-        }
-        else
-        {
-            $this->restore_data->init_rollback_data();
-            $this->restore_data->write_rollback_log('init restore data','notice');
-            $this->_enable_maintenance_mode();
-            $this->restore_data->write_rollback_log('enable maintenance mode','notice');
-        }
-
-        try
-        {
-            $rollback=new WPvivid_RollBack();
-            $this->_disable_maintenance_mode();
-            $ret=$rollback->rollback();
-        }
-        catch (Exception $error)
-        {
-            $message = 'An exception has occurred. class: '.get_class($error).';msg: '.$error->getMessage().';code: '.$error->getCode().';line: '.$error->getLine().';in_file: '.$error->getFile().';';
-            error_log($message);
-
-            $this->restore_data->update_rollback_error($message);
-            $this->restore_data->write_rollback_log($message,'error');
-            $this->_disable_maintenance_mode();
-            echo json_encode(array('result'=>'failed','error'=>$message));
-            die();
-        }
-        catch (Error $error)
-        {
-            $message = 'An error has occurred. class: '.get_class($error).';msg: '.$error->getMessage().';code: '.$error->getCode().';line: '.$error->getLine().';in_file: '.$error->getFile().';';
-            error_log($message);
-
-            $this->restore_data->update_rollback_error($message);
-            $this->restore_data->write_rollback_log($message,'error');
-            $this->_disable_maintenance_mode();
-            echo json_encode(array('result'=>'failed','error'=>$message));
-            die();
-        }
-
-        echo json_encode($ret);
-        die();
-    }
-    /**
      * Get restore progress
      *
      * @since 0.9.1
@@ -3587,36 +3362,6 @@ class WPvivid {
             } else {
                 $ret['result'] = 'failed';
                 $ret['error'] = __('The restore file not found. Please verify the file exists.', 'wpvivid');
-                echo json_encode($ret);
-                die();
-            }
-        }
-        catch (Exception $error) {
-            $message = 'An exception has occurred. class: '.get_class($error).';msg: '.$error->getMessage().';code: '.$error->getCode().';line: '.$error->getLine().';in_file: '.$error->getFile().';';
-            error_log($message);
-            echo json_encode(array('result'=>'failed','error'=>$message));
-            die();
-        }
-    }
-    /**
-     * Get rollback progress
-     *
-     * @since 0.9.1
-     */
-    public function get_rollback_progress()
-    {
-        try {
-            $this->restore_data = new WPvivid_restore_data();
-
-            if ($this->restore_data->has_rollback()) {
-                $ret['result'] = 'success';
-                $ret['status'] = $this->restore_data->get_rollback_status();
-                $ret['log'] = $this->restore_data->get_rollback_log_content();
-                echo json_encode($ret);
-                die();
-            } else {
-                $ret['result'] = 'failed';
-                $ret['error'] = 'The restore file not found. Please verify the file exists.';
                 echo json_encode($ret);
                 die();
             }
@@ -4030,15 +3775,6 @@ class WPvivid {
             $ret['junk_path'] = $dir;
             $ret['sum_size'] = '0';
         }
-        catch (Error $e)
-        {
-            $ret['log_path'] = $log_dir = $this->wpvivid_log->GetSaveLogFolder();
-            $dir = WPvivid_Setting::get_backupdir();
-            $ret['old_files_path'] = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . WPVIVID_DEFAULT_ROLLBACK_DIR;
-            $dir = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $dir;
-            $ret['junk_path'] = $dir;
-            $ret['sum_size'] = '0';
-        }
         return $ret;
     }
 
@@ -4083,8 +3819,10 @@ class WPvivid {
     public function clean_out_of_date_backup()
     {
         $this->ajax_check_security();
-        try {
-            $backup_ids = WPvivid_Backuplist::get_out_of_date_backuplist(WPvivid_Setting::get_max_backup_count());
+        try
+        {
+            $backup_ids=array();
+            $backup_ids=apply_filters('wpvivid_get_oldest_backup_ids',$backup_ids,true);
             foreach ($backup_ids as $backup_id)
             {
                 $this->delete_backup_by_id($backup_id);
@@ -4101,7 +3839,6 @@ class WPvivid {
             $message = 'An exception has occurred. class: '.get_class($error).';msg: '.$error->getMessage().';code: '.$error->getCode().';line: '.$error->getLine().';in_file: '.$error->getFile().';';
             error_log($message);
             echo json_encode(array('result'=>'failed','error'=>$message));
-            die();
         }
         die();
     }
@@ -4197,12 +3934,6 @@ class WPvivid {
                 $except_regex['file'][]='&wpvivid-&';
                 $except_regex['file'][]='&wpvivid_temp-&';
                 $this -> get_dir_files($delete_files,$delete_folder,$dir,$except_regex,$files,$folder,0,false);
-            }
-
-            if($options['old_files']=='1')
-            {
-                $this->restore_data=new WPvivid_restore_data();
-                $this->restore_data->delete_old_files();
             }
 
             foreach ($delete_files as $file)
@@ -5772,5 +5503,11 @@ class WPvivid {
     public function set_mail_body($body, $task){
         $body=WPvivid_mail_report::create_body($task);
         return $body;
+    }
+
+    public function wpvivid_handle_mainwp_action($data){
+        $public_interface = new WPvivid_Public_Interface();
+        $ret = $public_interface->mainwp_data($data);
+        return $ret;
     }
 }

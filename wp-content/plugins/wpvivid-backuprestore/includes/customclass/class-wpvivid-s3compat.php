@@ -132,7 +132,7 @@ class Wpvivid_S3Compat extends WPvivid_Remote{
             return $s3compat;
         }
 
-        $upload_job=WPvivid_taskmanager::get_backup_sub_task_progress($task_id,'upload',WPVIVID_REMOTE_AMAZONS3);
+        $upload_job=WPvivid_taskmanager::get_backup_sub_task_progress($task_id,'upload',WPVIVID_REMOTE_S3COMPAT);
         if(empty($upload_job))
         {
             $job_data=array();
@@ -142,8 +142,8 @@ class Wpvivid_S3Compat extends WPvivid_Remote{
                 $file_data['uploaded']=0;
                 $job_data[basename($file)]=$file_data;
             }
-            WPvivid_taskmanager::update_backup_sub_task_progress($task_id,'upload',WPVIVID_REMOTE_AMAZONS3,WPVIVID_UPLOAD_UNDO,'Start uploading',$job_data);
-            $upload_job=WPvivid_taskmanager::get_backup_sub_task_progress($task_id,'upload',WPVIVID_REMOTE_AMAZONS3);
+            WPvivid_taskmanager::update_backup_sub_task_progress($task_id,'upload',WPVIVID_REMOTE_S3COMPAT,WPVIVID_UPLOAD_UNDO,'Start uploading',$job_data);
+            $upload_job=WPvivid_taskmanager::get_backup_sub_task_progress($task_id,'upload',WPVIVID_REMOTE_S3COMPAT);
         }
 
         foreach ($files as $file)
@@ -156,6 +156,7 @@ class Wpvivid_S3Compat extends WPvivid_Remote{
             $this->last_time = time();
             $this->last_size = 0;
             $wpvivid_plugin->wpvivid_log->WriteLog('Start uploading '.basename($file),'notice');
+            $wpvivid_plugin->set_time_limit($task_id);
             if(!file_exists($file)){
                 $wpvivid_plugin->wpvivid_log->WriteLog('Uploading '.basename($file).' failed.','notice');
                 return array('result' =>WPVIVID_FAILED,'error' =>$file.' not found. The file might has been moved, renamed or deleted. Please reload the list and verify the file exists.');
@@ -166,13 +167,14 @@ class Wpvivid_S3Compat extends WPvivid_Remote{
                 $wpvivid_plugin->wpvivid_log->WriteLog('Uploading '.basename($file).' failed.','notice');
                 return $result;
             }
+            $upload_job['job_data'][basename($file)]['uploaded']=1;
             $wpvivid_plugin->wpvivid_log->WriteLog('Finished uploading '.basename($file),'notice');
+            WPvivid_taskmanager::update_backup_sub_task_progress($task_id,'upload',WPVIVID_REMOTE_S3COMPAT,WPVIVID_UPLOAD_SUCCESS,'Uploading '.basename($file).' completed.',$upload_job['job_data']);
         }
         return array('result' => WPVIVID_SUCCESS);
     }
     public function _put($task_id,$s3compat,$file,$callback){
         $path = $this->options['path'].'/'.basename($file);
-        $upload_job=WPvivid_taskmanager::get_backup_sub_task_progress($task_id,'upload',WPVIVID_REMOTE_DROPBOX);
         $this->current_file_size = filesize($file);
         $this->current_file_name = basename($file);
 

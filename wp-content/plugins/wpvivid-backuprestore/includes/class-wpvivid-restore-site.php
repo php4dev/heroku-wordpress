@@ -5,7 +5,6 @@ if (!defined('WPVIVID_PLUGIN_DIR')){
 }
 include_once plugin_dir_path( dirname( __FILE__ ) ) .'includes/class-wpvivid-zipclass.php';
 include_once plugin_dir_path( dirname( __FILE__ ) ) .'includes/class-wpvivid-backup.php';
-include_once plugin_dir_path( dirname( __FILE__ ) ) .'includes/class-wpvivid-rollback.php';
 class WPvivid_RestoreSite
 {
 

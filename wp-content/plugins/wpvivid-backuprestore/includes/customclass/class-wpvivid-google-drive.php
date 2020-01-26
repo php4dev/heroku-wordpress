@@ -589,12 +589,44 @@ class Wpvivid_Google_drive extends WPvivid_Remote
             if(!file_exists($file))
                 return array('result' =>WPVIVID_FAILED,'error' =>$file.' not found. The file might has been moved, renamed or deleted. Please reload the list and verify the file exists.');
             $wpvivid_plugin->wpvivid_log->WriteLog('Start uploading '.basename($file),'notice');
+            $wpvivid_plugin->set_time_limit($task_id);
             $result=$this->_upload($task_id, $file,$client,$service,$folder_id, $callback);
             if($result['result'] !==WPVIVID_SUCCESS){
                 return $result;
             }
+
+            $this->check_token($client);
         }
         return array('result' =>WPVIVID_SUCCESS);
+    }
+
+    public function check_token($client)
+    {
+        if ($client->isAccessTokenExpired())
+        {
+            // Refresh the token if possible, else fetch a new one.
+            if ($client->getRefreshToken())
+            {
+                $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
+                $token=$client->getAccessToken();
+                $remote_options=WPvivid_Setting::get_remote_option($this->options['id']);
+                $this->options['token']=json_decode(json_encode($token),1);
+                if($remote_options!==false)
+                {
+                    $remote_options['token']=$this->options['token'];
+                    WPvivid_Setting::update_remote_option($this->options['id'],$remote_options);
+                }
+                return array('result' => WPVIVID_SUCCESS);
+            }
+            else
+            {
+                return array('result' => WPVIVID_SUCCESS);
+            }
+        }
+        else
+        {
+            return array('result' => WPVIVID_SUCCESS);
+        }
     }
 
     public function _upload($task_id, $file,$client,$service,$folder_id, $callback = '')

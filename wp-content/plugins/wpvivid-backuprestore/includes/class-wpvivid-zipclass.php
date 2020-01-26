@@ -831,11 +831,6 @@ class WPvivid_ZipClass extends Wpvivid_Compress_Default
                                     $files[] = $path . DIRECTORY_SEPARATOR . $filename;
                                 }
                             }
-                            else
-                            {
-                                global $wpvivid_plugin;
-                                $wpvivid_plugin->wpvivid_log->WriteLog('file not readable:' . $path . DIRECTORY_SEPARATOR . $filename, 'notice');
-                            }
                         }
                     }
                 }

@@ -1085,6 +1085,20 @@ class WPvivid_Exporter_task
                 }
             }
 
+            //_thumbnail_id
+            $_thumbnail_id=get_post_meta($id,'_thumbnail_id',true);
+            if($_thumbnail_id!=false)
+            {
+                if(!in_array($_thumbnail_id,$attachment_added_ids))
+                {
+                    if(!is_null(get_post($_thumbnail_id)))
+                    {
+                        $attachment_ids[] = $_thumbnail_id;
+                        $attachment_added_ids[]=$_thumbnail_id;
+                    }
+                }
+            }
+
             $sum_attachment_ids=array_merge($sum_attachment_ids,$attachment_ids);
 
             foreach ($attachment_ids as $attachment_id)

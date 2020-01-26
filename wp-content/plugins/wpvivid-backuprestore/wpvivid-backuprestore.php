@@ -7,7 +7,7 @@
  * @wordpress-plugin
  * Plugin Name:       WPvivid Backup Plugin
  * Description:       Clone or copy WP sites then move or migrate them to new host (new domain), schedule backups, transfer backups to leading remote storage. All in one.
- * Version:           0.9.31
+ * Version:           0.9.32
  * Author:            WPvivid Team
  * Author URI:        https://wpvivid.com
  * License:           GPL-3.0+
@@ -21,7 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-define( 'WPVIVID_PLUGIN_VERSION', '0.9.31' );
+define( 'WPVIVID_PLUGIN_VERSION', '0.9.32' );
 //
 define('WPVIVID_RESTORE_INIT','init');
 define('WPVIVID_RESTORE_READY','ready');
@@ -30,7 +30,6 @@ define('WPVIVID_RESTORE_RUNNING','running');
 define('WPVIVID_RESTORE_ERROR','error');
 define('WPVIVID_RESTORE_WAIT','wait');
 define('WPVIVID_RESTORE_TIMEOUT',180);
-define('WPVIVID_ROLLBACK_TIMEOUT',180);
 
 define('WPVIVID_PLUGIN_SLUG','WPvivid');
 define('WPVIVID_PLUGIN_NAME',plugin_basename(__FILE__));
