@@ -200,6 +200,14 @@ class OnboardingPlugins extends \WC_REST_Data_Controller {
 		);
 
 		if ( is_wp_error( $api ) ) {
+			$properties = array(
+				/* translators: %s: plugin slug (example: woocommerce-services) */
+				'error_message' => __( 'The requested plugin `%s` could not be installed. Plugin API call failed.', 'woocommerce-admin' ),
+				'api'           => $api,
+				'slug'          => $slug,
+			);
+			wc_admin_record_tracks_event( 'install_plugin_error', $properties );
+
 			return new \WP_Error(
 				'woocommerce_rest_plugin_install',
 				sprintf(
@@ -215,6 +223,16 @@ class OnboardingPlugins extends \WC_REST_Data_Controller {
 		$result   = $upgrader->install( $api->download_link );
 
 		if ( is_wp_error( $result ) || is_null( $result ) ) {
+			$properties = array(
+				/* translators: %s: plugin slug (example: woocommerce-services) */
+				'error_message' => __( 'The requested plugin `%s` could not be installed.', 'woocommerce-admin' ),
+				'slug'          => $slug,
+				'api'           => $api,
+				'upgrader'      => $upgrader,
+				'result'        => $result,
+			);
+			wc_admin_record_tracks_event( 'install_plugin_error', $properties );
+
 			return new \WP_Error(
 				'woocommerce_rest_plugin_install',
 				sprintf(
@@ -236,10 +254,9 @@ class OnboardingPlugins extends \WC_REST_Data_Controller {
 	/**
 	 * Returns a list of active plugins.
 	 *
-	 * @param  WP_REST_Request $request Full details about the request.
 	 * @return array Active plugins
 	 */
-	public function active_plugins( $request ) {
+	public function active_plugins() {
 		$plugins = Onboarding::get_active_plugins();
 		return( array(
 			'plugins' => array_values( $plugins ),
@@ -300,8 +317,7 @@ class OnboardingPlugins extends \WC_REST_Data_Controller {
 		$redirect_url = apply_filters( 'woocommerce_admin_onboarding_jetpack_connect_redirect_url', esc_url_raw( $request['redirect_url'] ) );
 		$connect_url  = \Jetpack::init()->build_connect_url( true, $redirect_url, 'woocommerce-onboarding' );
 
-		// @todo When implementing user-facing split testing, this should be abled to a default of 'production'.
-		$calypso_env = defined( 'WOOCOMMERCE_CALYPSO_ENVIRONMENT' ) && in_array( WOOCOMMERCE_CALYPSO_ENVIRONMENT, array( 'development', 'wpcalypso', 'horizon', 'stage' ) ) ? WOOCOMMERCE_CALYPSO_ENVIRONMENT : 'wpcalypso';
+		$calypso_env = defined( 'WOOCOMMERCE_CALYPSO_ENVIRONMENT' ) && in_array( WOOCOMMERCE_CALYPSO_ENVIRONMENT, array( 'development', 'wpcalypso', 'horizon', 'stage' ) ) ? WOOCOMMERCE_CALYPSO_ENVIRONMENT : 'production';
 		$connect_url = add_query_arg( array( 'calypso_env' => $calypso_env ), $connect_url );
 
 		return( array(

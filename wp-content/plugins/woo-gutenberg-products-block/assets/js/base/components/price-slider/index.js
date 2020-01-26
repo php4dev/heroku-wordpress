@@ -17,7 +17,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import './style.scss';
-import { constrainRangeSliderValues } from './utils';
+import { constrainRangeSliderValues } from './constrain-range-slider-values';
 import { formatPrice } from '../../utils/price';
 import SubmitButton from './submit-button';
 import PriceLabel from './price-label';
@@ -81,21 +81,16 @@ const PriceSlider = ( {
 			};
 		}
 
-		// Normalize to whatever is the closest step (because range input will
-		// only jump to the closest step in the range).
-		const min = Math.round( minPrice / step ) * step;
-		const max = Math.round( maxPrice / step ) * step;
-
 		const low =
 			Math.round(
 				100 *
-					( ( min - minConstraint ) /
+					( ( minPrice - minConstraint ) /
 						( maxConstraint - minConstraint ) )
 			) - 0.5;
 		const high =
 			Math.round(
 				100 *
-					( ( max - minConstraint ) /
+					( ( maxPrice - minConstraint ) /
 						( maxConstraint - minConstraint ) )
 			) + 0.5;
 
@@ -162,8 +157,8 @@ const PriceSlider = ( {
 			);
 			const targetValue = event.target.value;
 			const currentValues = isMin
-				? [ targetValue, maxPrice ]
-				: [ minPrice, targetValue ];
+				? [ Math.round( targetValue / step ) * step, maxPrice ]
+				: [ minPrice, Math.round( targetValue / step ) * step ];
 			const values = constrainRangeSliderValues(
 				currentValues,
 				minConstraint,
@@ -194,8 +189,8 @@ const PriceSlider = ( {
 				: [ minPrice, targetValue ];
 			const values = constrainRangeSliderValues(
 				currentValues,
-				minConstraint,
-				maxConstraint,
+				null,
+				null,
 				step,
 				isMin
 			);
@@ -252,6 +247,11 @@ const PriceSlider = ( {
 		! hasValidConstraints && 'is-disabled'
 	);
 
+	const minRangeStep =
+		minRange && document.activeElement === minRange.current ? step : 1;
+	const maxRangeStep =
+		maxRange && document.activeElement === maxRange.current ? step : 1;
+
 	return (
 		<div className={ classes }>
 			<div
@@ -272,9 +272,13 @@ const PriceSlider = ( {
 								'Filter products by minimum price',
 								'woo-gutenberg-products-block'
 							) }
-							value={ minPrice || 0 }
+							value={
+								Number.isFinite( minPrice )
+									? minPrice
+									: minConstraint
+							}
 							onChange={ rangeInputOnChange }
-							step={ step }
+							step={ minRangeStep }
 							min={ minConstraint }
 							max={ maxConstraint }
 							ref={ minRange }
@@ -287,9 +291,13 @@ const PriceSlider = ( {
 								'Filter products by maximum price',
 								'woo-gutenberg-products-block'
 							) }
-							value={ maxPrice || 0 }
+							value={
+								Number.isFinite( maxPrice )
+									? maxPrice
+									: maxConstraint
+							}
 							onChange={ rangeInputOnChange }
-							step={ step }
+							step={ maxRangeStep }
 							min={ minConstraint }
 							max={ maxConstraint }
 							ref={ maxRange }

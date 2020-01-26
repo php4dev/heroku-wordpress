@@ -62,6 +62,7 @@ class OnboardingTasks {
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_onboarding_product_notice_admin_script' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_onboarding_homepage_notice_admin_script' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_onboarding_tax_notice_admin_script' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'add_onboarding_product_import_notice_admin_script' ) );
 	}
 
 	/**
@@ -83,7 +84,6 @@ class OnboardingTasks {
 		// @todo We may want to consider caching some of these and use to check against
 		// task completion along with cache busting for active tasks.
 		$settings['onboarding']['automatedTaxSupportedCountries'] = self::get_automated_tax_supported_countries();
-		$settings['onboarding']['customLogo']                     = get_theme_mod( 'custom_logo', false );
 		$settings['onboarding']['hasHomepage']                    = self::check_task_completion( 'homepage' ) || 'classic' === get_option( 'classic-editor-replace' );
 		$settings['onboarding']['hasPhysicalProducts']            = count(
 			wc_get_products(
@@ -96,7 +96,9 @@ class OnboardingTasks {
 		$settings['onboarding']['hasProducts']                    = self::check_task_completion( 'products' );
 		$settings['onboarding']['isTaxComplete']                  = self::check_task_completion( 'tax' );
 		$settings['onboarding']['shippingZonesCount']             = count( \WC_Shipping_Zones::get_zones() );
+		$settings['onboarding']['stylesheet']                     = get_option( 'stylesheet' );
 		$settings['onboarding']['taxJarActivated']                = class_exists( 'WC_Taxjar' );
+		$settings['onboarding']['themeMods']                      = get_theme_mods();
 
 		return $settings;
 	}
@@ -219,6 +221,19 @@ class OnboardingTasks {
 			! self::is_active_task_complete()
 		) {
 			wp_enqueue_script( 'onboarding-tax-notice', Loader::get_url( 'wp-admin-scripts/onboarding-tax-notice.js' ), array( 'wc-navigation', 'wp-i18n', 'wp-data' ), WC_ADMIN_VERSION_NUMBER, true );
+		}
+	}
+
+	/**
+	 * Adds a notice to return to the task list when the product importeris done running.
+	 *
+	 * @param string $hook Page hook.
+	 */
+	public function add_onboarding_product_import_notice_admin_script( $hook ) {
+		$step = isset( $_GET['step'] ) ? $_GET['step'] : ''; // phpcs:ignore csrf ok, sanitization ok.
+		if ( 'product_page_product_importer' === $hook && 'done' === $step && 'product-import' === self::get_active_task() ) {
+			delete_transient( self::ACTIVE_TASK_TRANSIENT );
+			wp_enqueue_script( 'onboarding-product-import-notice', Loader::get_url( 'wp-admin-scripts/onboarding-product-import-notice.js' ), array( 'wc-navigation', 'wp-i18n', 'wp-data' ), WC_ADMIN_VERSION_NUMBER, true );
 		}
 	}
 

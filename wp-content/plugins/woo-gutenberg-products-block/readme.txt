@@ -1,10 +1,10 @@
 === WooCommerce Blocks ===
-Contributors: automattic, claudiulodro, tiagonoronha, jameskoster, ryelle, levinmedia, aljullu, mikejolley, nerrad, joshuawold
+Contributors: automattic, claudiulodro, tiagonoronha, jameskoster, ryelle, levinmedia, aljullu, mikejolley, nerrad, joshuawold, assassinateur, haszari
 Tags: gutenberg, woocommerce, woo commerce, products, blocks, woocommerce blocks
 Requires at least: 5.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 2.5.7
+Stable tag: 2.5.11
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -77,7 +77,7 @@ We've also improved the category selection filter. If you select two or more cat
 
 * WordPress 5.0
 * WooCommerce 3.7 or greater
-* PHP version 5.2.4 or greater (PHP 7.2 or greater is recommended)
+* PHP version 5.6 or greater (PHP 7.2 or greater is recommended)
 * MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
 
 Visit the [WooCommerce server requirements documentation](https://docs.woocommerce.com/document/server-requirements/) for a detailed list of server requirements.
@@ -116,12 +116,30 @@ Release and roadmap notes available on the [WooCommerce Developers Blog](https:/
 
 == Changelog ==
 
-= 2.5.7 = 2019-12-20 =
+= 2.5.11 - 2020-01-20 =
+- bug: Fix a javascript error when editing All Products inner blocks "Link to Product Page" option #1593
+- bug: Fix an issue in All Products when ordering by newness was reversed #1598
+- bug: Fix a javascript error in editor when user re-selects same attribute in Filter Products by Attribute block #1596
+- bug: Fix a render issue for product attribute values with ampersand (&) or other special characters #1608
+- bug: Fix bug in Safari and other Webkit browsers that was causing the All Products block to show 0 results when resetting the sort value. #1611
+
+= 2.5.10 - 2020-01-09 =
+- All Products block: fix wrong price format for variable products with certain currency settings. #1518
+
+= 2.5.9 - 2020-01-07 =
+- Fix issue in All Products block that was causing Variable products price to exclude taxes in some cases. #1503
+
+= 2.5.8 - 2020-01-02 =
+- Fixed a bug where Filter by Price didn't show up. #1450
+- Price filter now allows entering any number in the input fields, even if it's out of constrains. #1457
+- Make price slider accurately represent the selected price #1453
+
+= 2.5.7 - 2019-12-20 =
 - Add translation comments and use correct functions #1412, #1415
 - bug: Fix Price Filter constraints when price is decimal #1419
 
-= 2.5.6 = 2019-12-17 =
-- bug: Fix broken build in 2.5.5. Has same changelog as 2.5.5.
+= 2.5.6 - 2019-12-17 =
+- Fix broken build resulting in blocks not working.
 
 = 2.5.5 - 2019-12-17 =
 - bug: Fix broken atomic blocks in the All Products Block #1402

@@ -255,11 +255,11 @@ class ProductSchema extends AbstractSchema {
 	public function get_item_response( $product ) {
 		return [
 			'id'             => $product->get_id(),
-			'name'           => $product->get_title(),
-			'variation'      => $product->is_type( 'variation' ) ? wc_get_formatted_variation( $product, true, true, false ) : '',
+			'name'           => $this->prepare_html_response( $product->get_title() ),
+			'variation'      => $this->prepare_html_response( $product->is_type( 'variation' ) ? wc_get_formatted_variation( $product, true, true, false ) : '' ),
 			'permalink'      => $product->get_permalink(),
-			'sku'            => $product->get_sku(),
-			'description'    => apply_filters( 'woocommerce_short_description', $product->get_short_description() ? $product->get_short_description() : wc_trim_string( $product->get_description(), 400 ) ),
+			'sku'            => $this->prepare_html_response( $product->get_sku() ),
+			'description'    => $this->prepare_html_response( apply_filters( 'woocommerce_short_description', $product->get_short_description() ? $product->get_short_description() : wc_trim_string( $product->get_description(), 400 ) ) ),
 			'on_sale'        => $product->is_on_sale(),
 			'prices'         => $this->get_prices( $product ),
 			'average_rating' => $product->get_average_rating(),
@@ -268,10 +268,12 @@ class ProductSchema extends AbstractSchema {
 			'has_options'    => $product->has_options(),
 			'is_purchasable' => $product->is_purchasable(),
 			'is_in_stock'    => $product->is_in_stock(),
-			'add_to_cart'    => [
-				'text'        => $product->add_to_cart_text(),
-				'description' => $product->add_to_cart_description(),
-			],
+			'add_to_cart'    => $this->prepare_html_response(
+				[
+					'text'        => $product->add_to_cart_text(),
+					'description' => $product->add_to_cart_description(),
+				]
+			),
 		];
 	}
 
@@ -333,8 +335,8 @@ class ProductSchema extends AbstractSchema {
 
 			if ( min( $prices['price'] ) !== max( $prices['price'] ) ) {
 				return [
-					'min_amount' => 'incl' === $tax_display_mode ? wc_get_price_including_tax( $product, [ 'price' => min( $prices['price'] ) ] ) : wc_get_price_excluding_tax( $product, [ 'price' => min( $prices['price'] ) ] ),
-					'max_amount' => 'incl' === $tax_display_mode ? wc_get_price_including_tax( $product, [ 'price' => max( $prices['price'] ) ] ) : wc_get_price_excluding_tax( $product, [ 'price' => max( $prices['price'] ) ] ),
+					'min_amount' => min( $prices['price'] ),
+					'max_amount' => max( $prices['price'] ),
 				];
 			}
 		}
@@ -342,10 +344,11 @@ class ProductSchema extends AbstractSchema {
 		if ( $product->is_type( 'grouped' ) ) {
 			$tax_display_mode = get_option( 'woocommerce_tax_display_shop' );
 			$children         = array_filter( array_map( 'wc_get_product', $product->get_children() ), 'wc_products_array_filter_visible_grouped' );
+			$price_function   = 'incl' === $tax_display_mode ? 'wc_get_price_including_tax' : 'wc_get_price_excluding_tax';
 
 			foreach ( $children as $child ) {
 				if ( '' !== $child->get_price() ) {
-					$child_prices[] = 'incl' === $tax_display_mode ? wc_get_price_including_tax( $child ) : wc_get_price_excluding_tax( $child );
+					$child_prices[] = $price_function( $child );
 				}
 			}
 

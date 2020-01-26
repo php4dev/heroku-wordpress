@@ -19,15 +19,15 @@ class Package {
 	 *
 	 * @var string
 	 */
-	const VERSION = '0.23.3';
+	const VERSION = '0.24.0';
 
 	/**
 	 * Init the package.
 	 *
-	 * Only initialize for WP 5.2 or greater.
+	 * Only initialize for WP 5.3 or greater.
 	 */
 	public static function init() {
-		$wordpress_minimum_met = version_compare( get_bloginfo( 'version' ), '5.2', '>=' );
+		$wordpress_minimum_met = version_compare( get_bloginfo( 'version' ), '5.3', '>=' );
 		if ( ! $wordpress_minimum_met ) {
 			return;
 		}
