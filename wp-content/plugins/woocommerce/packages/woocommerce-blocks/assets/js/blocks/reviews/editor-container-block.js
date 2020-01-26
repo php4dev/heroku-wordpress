@@ -11,7 +11,7 @@ import { Placeholder } from '@wordpress/components';
  * Internal dependencies
  */
 import EditorBlock from './editor-block.js';
-import { getBlockClassName, getOrderArgs } from './utils.js';
+import { getBlockClassName, getSortArgs } from './utils.js';
 
 /**
  * Container of the block rendered in the editor.
@@ -21,20 +21,36 @@ class EditorContainerBlock extends Component {
 		const { icon, name } = this.props;
 
 		return (
-			<Placeholder
-				icon={ icon }
-				label={ name }
-			>
-				{ __( 'The content for this block is hidden due to block settings.', 'woocommerce' ) }
+			<Placeholder icon={ icon } label={ name }>
+				{ __(
+					'The content for this block is hidden due to block settings.',
+					'woocommerce'
+				) }
 			</Placeholder>
 		);
 	}
 
 	render() {
 		const { attributes, className, noReviewsPlaceholder } = this.props;
-		const { categoryIds, productId, reviewsOnPageLoad, showProductName, showReviewDate, showReviewerName, showReviewContent, showReviewImage, showReviewRating } = attributes;
-		const { order, orderby } = getOrderArgs( attributes.orderby );
-		const isAllContentHidden = ! showReviewContent && ! showReviewRating && ! showReviewDate && ! showReviewerName && ! showReviewImage && ! showProductName;
+		const {
+			categoryIds,
+			productId,
+			reviewsOnPageLoad,
+			showProductName,
+			showReviewDate,
+			showReviewerName,
+			showReviewContent,
+			showReviewImage,
+			showReviewRating,
+		} = attributes;
+		const { order, orderby } = getSortArgs( attributes.orderby );
+		const isAllContentHidden =
+			! showReviewContent &&
+			! showReviewRating &&
+			! showReviewDate &&
+			! showReviewerName &&
+			! showReviewImage &&
+			! showProductName;
 
 		if ( isAllContentHidden ) {
 			return this.renderHiddenContentPlaceholder();

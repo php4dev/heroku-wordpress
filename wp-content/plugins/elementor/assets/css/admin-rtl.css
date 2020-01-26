@@ -1,4 +1,4 @@
-/*! elementor - v2.8.2 - 16-12-2019 */
+/*! elementor - v2.8.4 - 19-01-2020 */
 .elementor-button {
   font-weight: 500;
   text-transform: uppercase;
@@ -77,7 +77,6 @@
     .elementor-button.elementor-button-default:visited {
       color: #fff; }
   .elementor-button.elementor-button-go-pro {
-    color: #fff;
     background-color: #D30C5C; }
   .elementor-button i {
     margin-left: 10px; }
@@ -89,9 +88,7 @@
   margin-top: 1px; }
 
 #adminmenu #toplevel_page_elementor a[href="admin.php?page=go_elementor_pro"] {
-  color: #f22074;
-  font-weight: 700;
-  text-shadow: 1px 1px 1px #000; }
+  font-weight: 700; }
   #adminmenu #toplevel_page_elementor a[href="admin.php?page=go_elementor_pro"]:hover {
     color: #f43883; }
 
@@ -102,6 +99,9 @@
   content: '\e8ff';
   font-family: eicons;
   font-size: 18px; }
+
+body.admin-color-fresh #adminmenu #toplevel_page_elementor a[href="admin.php?page=go_elementor_pro"] {
+  color: #f22074; }
 
 .elementor-plugins-gopro {
   color: #D30C5C;

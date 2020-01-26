@@ -1,4 +1,4 @@
-/*! elementor - v2.8.2 - 16-12-2019 */
+/*! elementor - v2.8.4 - 19-01-2020 */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};

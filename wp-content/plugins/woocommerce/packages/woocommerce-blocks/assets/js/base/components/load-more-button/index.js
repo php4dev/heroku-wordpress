@@ -3,20 +3,17 @@
  */
 import { __ } from '@wordpress/i18n';
 import PropTypes from 'prop-types';
+import Label from '@woocommerce/base-components/label';
 
 /**
  * Internal dependencies
  */
-import Label from '../label';
 import './style.scss';
 
 export const LoadMoreButton = ( { onClick, label, screenReaderLabel } ) => {
 	return (
 		<div className="wp-block-button wc-block-load-more">
-			<button
-				className="wp-block-button__link"
-				onClick={ onClick }
-			>
+			<button className="wp-block-button__link" onClick={ onClick }>
 				<Label
 					label={ label }
 					screenReaderLabel={ screenReaderLabel }

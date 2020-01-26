@@ -1,4 +1,4 @@
-/*! elementor - v2.8.2 - 16-12-2019 */
+/*! elementor - v2.8.4 - 19-01-2020 */
 @charset "UTF-8";
 *, :before, :after {
   margin: 0;
@@ -344,7 +344,6 @@ body {
     .elementor-button.elementor-button-default:visited {
       color: #fff; }
   .elementor-button.elementor-button-go-pro {
-    color: #fff;
     background-color: #D30C5C; }
   .elementor-button i {
     margin-left: 10px; }
@@ -3474,14 +3473,9 @@ label.elementor-template-library-order-label {
       -webkit-transform: translateX(-50%) translateY(-50%);
           -ms-transform: translateX(-50%) translateY(-50%);
               transform: translateX(-50%) translateY(-50%); }
-  .elementor-template-library-template-remote .elementor-template-library-template-action {
-    background-color: transparent;
-    text-transform: none; }
-    .elementor-template-library-template-remote .elementor-template-library-template-action i {
-      margin-left: 0; }
   .elementor-template-library-template-remote .elementor-template-library-template-insert {
     color: #39b54a; }
-  .elementor-template-library-template-remote .elementor-button-go-pro {
+  .elementor-template-library-template-remote .elementor-go-pro {
     color: #D30C5C; }
   .elementor-template-library-template-remote .elementor-template-library-template-footer {
     display: -webkit-box;
@@ -4713,7 +4707,7 @@ body:not(.elementor-device-desktop) #elementor-notice-bar {
     left: 15px; }
 
 #elementor-icons-manager__tab__wrapper {
-  overflow: scroll;
+  overflow: auto;
   margin: 25px -15px 0;
   padding: 0 15px 15px; }
 
@@ -4764,13 +4758,10 @@ body:not(.elementor-device-desktop) #elementor-notice-bar {
     color: #c2cbd2; }
   #elementor-icons-manager__promotion__text {
     width: 300px;
-    color: #556068;
     font-size: 16px;
     padding-top: 25px; }
   #elementor-icons-manager__promotion__link {
-    color: #D30C5C;
-    padding-top: 20px;
-    font-size: 15px; }
+    margin-top: 20px; }
 
 .elementor-icons-manager__tab-link {
   padding: 15px 45px 15px 0;

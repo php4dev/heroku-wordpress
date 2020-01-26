@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'MaxMind\\Db\\' => array($vendorDir . '/maxmind-db/reader/src/MaxMind/Db'),
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
     'Automattic\\WooCommerce\\RestApi\\' => array($baseDir . '/packages/woocommerce-rest-api/src'),
     'Automattic\\WooCommerce\\Blocks\\' => array($baseDir . '/packages/woocommerce-blocks/src'),

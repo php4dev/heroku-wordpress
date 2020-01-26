@@ -18,14 +18,12 @@ import {
 import { Component, Fragment } from '@wordpress/element';
 import PropTypes from 'prop-types';
 import { HAS_TAGS } from '@woocommerce/block-settings';
-
-/**
- * Internal dependencies
- */
-import GridContentControl from '../../components/grid-content-control';
-import GridLayoutControl from '../../components/grid-layout-control';
-import ProductTagControl from '../../components/product-tag-control';
-import ProductOrderbyControl from '../../components/product-orderby-control';
+import GridContentControl from '@woocommerce/block-components/grid-content-control';
+import GridLayoutControl from '@woocommerce/block-components/grid-layout-control';
+import ProductTagControl from '@woocommerce/block-components/product-tag-control';
+import ProductOrderbyControl from '@woocommerce/block-components/product-orderby-control';
+import { IconProductTag } from '@woocommerce/block-components/icons';
+import { gridBlockPreview } from '@woocommerce/resource-previews';
 
 /**
  * Component to handle edit mode of "Products by Tag".
@@ -69,7 +67,12 @@ class ProductsByTagBlock extends Component {
 
 	setChangedAttributes( attributes ) {
 		this.setState( ( prevState ) => {
-			return { changedAttributes: { ...prevState.changedAttributes, ...attributes } };
+			return {
+				changedAttributes: {
+					...prevState.changedAttributes,
+					...attributes,
+				},
+			};
 		} );
 	}
 
@@ -96,7 +99,10 @@ class ProductsByTagBlock extends Component {
 		return (
 			<InspectorControls key="inspector">
 				<PanelBody
-					title={ __( 'Product Tag', 'woocommerce' ) }
+					title={ __(
+						'Product Tag',
+						'woocommerce'
+					) }
 					initialOpen={ ! attributes.tags.length && ! isEditing }
 				>
 					<ProductTagControl
@@ -128,7 +134,9 @@ class ProductsByTagBlock extends Component {
 				>
 					<GridContentControl
 						settings={ contentVisibility }
-						onChange={ ( value ) => setAttributes( { contentVisibility: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { contentVisibility: value } )
+						}
 					/>
 				</PanelBody>
 				<PanelBody
@@ -169,8 +177,11 @@ class ProductsByTagBlock extends Component {
 
 		return (
 			<Placeholder
-				icon="tag"
-				label={ __( 'Products by Tag', 'woocommerce' ) }
+				icon={ <IconProductTag className="block-editor-block-icon" /> }
+				label={ __(
+					'Products by Tag',
+					'woocommerce'
+				) }
 				className="wc-block-products-grid wc-block-product-tag"
 			>
 				{ __(
@@ -211,15 +222,25 @@ class ProductsByTagBlock extends Component {
 		return (
 			<Disabled>
 				{ selectedTags ? (
-					<ServerSideRender block={ name } attributes={ attributes } />
+					<ServerSideRender
+						block={ name }
+						attributes={ attributes }
+					/>
 				) : (
 					<Placeholder
-						icon="tag"
-						label={ __( 'Products by Tag', 'woocommerce' ) }
+						icon={
+							<IconProductTag className="block-editor-block-icon" />
+						}
+						label={ __(
+							'Products by Tag',
+							'woocommerce'
+						) }
 						className="wc-block-products-grid wc-block-product-tag"
 					>
-						{ __( 'This block displays products from selected tags. Select at least one tag to display its products.', 'woocommerce' ) }
-
+						{ __(
+							'This block displays products from selected tags. Select at least one tag to display its products.',
+							'woocommerce'
+						) }
 					</Placeholder>
 				) }
 			</Disabled>
@@ -228,6 +249,11 @@ class ProductsByTagBlock extends Component {
 
 	render() {
 		const { isEditing } = this.state;
+		const { attributes } = this.props;
+
+		if ( attributes.isPreview ) {
+			return gridBlockPreview;
+		}
 
 		return (
 			<Fragment>
@@ -239,27 +265,35 @@ class ProductsByTagBlock extends Component {
 									{
 										icon: 'edit',
 										title: __( 'Edit' ),
-										onClick: () => isEditing ? this.stopEditing() : this.startEditing(),
+										onClick: () =>
+											isEditing
+												? this.stopEditing()
+												: this.startEditing(),
 										isActive: isEditing,
 									},
 								] }
 							/>
 						</BlockControls>
 						{ this.getInspectorControls() }
-						{ isEditing ? (
-							this.renderEditMode()
-						) : (
-							this.renderViewMode()
-						) }
+						{ isEditing
+							? this.renderEditMode()
+							: this.renderViewMode() }
 					</Fragment>
 				) : (
 					<Placeholder
-						icon="tag"
-						label={ __( 'Products by Tag', 'woocommerce' ) }
+						icon={
+							<IconProductTag className="block-editor-block-icon" />
+						}
+						label={ __(
+							'Products by Tag',
+							'woocommerce'
+						) }
 						className="wc-block-products-grid wc-block-product-tag"
 					>
-						{ __( "This block displays products from selected tags. In order to preview this you'll first need to create a product and assign it some tags.", 'woocommerce' ) }
-
+						{ __(
+							"This block displays products from selected tags. In order to preview this you'll first need to create a product and assign it some tags.",
+							'woocommerce'
+						) }
 					</Placeholder>
 				) }
 			</Fragment>

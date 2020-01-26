@@ -464,7 +464,7 @@ function wc_delete_shop_order_transients( $order = 0 ) {
 	WC_Cache_Helper::get_transient_version( 'orders', true );
 
 	// Do the same for regular cache.
-	WC_Cache_Helper::incr_cache_prefix( 'orders' );
+	WC_Cache_Helper::invalidate_cache_group( 'orders' );
 
 	do_action( 'woocommerce_delete_shop_order_transients', $order_id );
 }
@@ -874,10 +874,11 @@ function wc_update_coupon_usage_counts( $order_id ) {
 					$coupon->decrease_usage_count( $used_by );
 					break;
 				case 'increase':
-					$coupon->increase_usage_count( $used_by );
+					$coupon->increase_usage_count( $used_by, $order );
 					break;
 			}
 		}
+		$order->get_data_store()->release_held_coupons( $order, true );
 	}
 }
 add_action( 'woocommerce_order_status_pending', 'wc_update_coupon_usage_counts' );

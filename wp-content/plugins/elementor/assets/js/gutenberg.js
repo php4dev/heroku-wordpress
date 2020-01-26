@@ -1,4 +1,4 @@
-/*! elementor - v2.8.2 - 16-12-2019 */
+/*! elementor - v2.8.4 - 19-01-2020 */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -91,7 +91,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = !__webpack_require__(21) && !__webpack_require__(22)(function () {
-  return Object.defineProperty(__webpack_require__(87)('div'), 'a', { get: function () { return 7; } }).a != 7;
+  return Object.defineProperty(__webpack_require__(88)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
 
@@ -116,10 +116,10 @@ module.exports = __webpack_require__(51)('native-function-to-string', Function.t
 // 5 -> Array#find
 // 6 -> Array#findIndex
 var ctx = __webpack_require__(70);
-var IObject = __webpack_require__(86);
+var IObject = __webpack_require__(87);
 var toObject = __webpack_require__(54);
 var toLength = __webpack_require__(37);
-var asc = __webpack_require__(129);
+var asc = __webpack_require__(130);
 module.exports = function (TYPE, $create) {
   var IS_MAP = TYPE == 1;
   var IS_FILTER = TYPE == 2;
@@ -156,19 +156,6 @@ module.exports = function (TYPE, $create) {
 
 /***/ }),
 
-/***/ 129:
-/***/ (function(module, exports, __webpack_require__) {
-
-// 9.4.2.3 ArraySpeciesCreate(originalArray, length)
-var speciesConstructor = __webpack_require__(130);
-
-module.exports = function (original, length) {
-  return new (speciesConstructor(original))(length);
-};
-
-
-/***/ }),
-
 /***/ 13:
 /***/ (function(module, exports) {
 
@@ -185,8 +172,21 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 /***/ 130:
 /***/ (function(module, exports, __webpack_require__) {
 
+// 9.4.2.3 ArraySpeciesCreate(originalArray, length)
+var speciesConstructor = __webpack_require__(131);
+
+module.exports = function (original, length) {
+  return new (speciesConstructor(original))(length);
+};
+
+
+/***/ }),
+
+/***/ 131:
+/***/ (function(module, exports, __webpack_require__) {
+
 var isObject = __webpack_require__(24);
-var isArray = __webpack_require__(131);
+var isArray = __webpack_require__(132);
 var SPECIES = __webpack_require__(9)('species');
 
 module.exports = function (original) {
@@ -205,7 +205,7 @@ module.exports = function (original) {
 
 /***/ }),
 
-/***/ 131:
+/***/ 132:
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.2.2 IsArray(argument)
@@ -234,7 +234,7 @@ $export($export.P + $export.F * forced, 'Array', {
     return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
-__webpack_require__(72)(KEY);
+__webpack_require__(73)(KEY);
 
 
 /***/ }),
@@ -406,7 +406,7 @@ module.exports = function (it) {
 
 var anObject = __webpack_require__(19);
 var IE8_DOM_DEFINE = __webpack_require__(101);
-var toPrimitive = __webpack_require__(88);
+var toPrimitive = __webpack_require__(89);
 var dP = Object.defineProperty;
 
 exports.f = __webpack_require__(21) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
@@ -494,7 +494,7 @@ var store = global[SHARED] || (global[SHARED] = {});
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
   version: core.version,
-  mode: __webpack_require__(90) ? 'pure' : 'global',
+  mode: __webpack_require__(91) ? 'pure' : 'global',
   copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 });
 
@@ -676,7 +676,7 @@ module.exports = function (fn, that, length) {
 
 /***/ }),
 
-/***/ 72:
+/***/ 73:
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.3.31 Array.prototype[@@unscopables]
@@ -705,7 +705,7 @@ module.exports = function (bitmap, value) {
 
 /***/ }),
 
-/***/ 86:
+/***/ 87:
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
@@ -718,7 +718,7 @@ module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
 
 /***/ }),
 
-/***/ 87:
+/***/ 88:
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(24);
@@ -732,7 +732,7 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ 88:
+/***/ 89:
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
@@ -769,7 +769,7 @@ $exports.store = store;
 
 /***/ }),
 
-/***/ 90:
+/***/ 91:
 /***/ (function(module, exports) {
 
 module.exports = false;

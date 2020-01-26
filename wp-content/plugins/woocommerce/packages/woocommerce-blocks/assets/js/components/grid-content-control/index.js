@@ -16,9 +16,15 @@ const GridContentControl = ( { onChange, settings } ) => {
 			<ToggleControl
 				label={ __( 'Product title', 'woocommerce' ) }
 				help={
-					title ?
-						__( 'Product title is visible.', 'woocommerce' ) :
-						__( 'Product title is hidden.', 'woocommerce' )
+					title
+						? __(
+								'Product title is visible.',
+								'woocommerce'
+						  )
+						: __(
+								'Product title is hidden.',
+								'woocommerce'
+						  )
 				}
 				checked={ title }
 				onChange={ () => onChange( { ...settings, title: ! title } ) }
@@ -26,9 +32,15 @@ const GridContentControl = ( { onChange, settings } ) => {
 			<ToggleControl
 				label={ __( 'Product price', 'woocommerce' ) }
 				help={
-					price ?
-						__( 'Product price is visible.', 'woocommerce' ) :
-						__( 'Product price is hidden.', 'woocommerce' )
+					price
+						? __(
+								'Product price is visible.',
+								'woocommerce'
+						  )
+						: __(
+								'Product price is hidden.',
+								'woocommerce'
+						  )
 				}
 				checked={ price }
 				onChange={ () => onChange( { ...settings, price: ! price } ) }
@@ -36,25 +48,34 @@ const GridContentControl = ( { onChange, settings } ) => {
 			<ToggleControl
 				label={ __( 'Product rating', 'woocommerce' ) }
 				help={
-					rating ?
-						__( 'Product rating is visible.', 'woocommerce' ) :
-						__( 'Product rating is hidden.', 'woocommerce' )
+					rating
+						? __(
+								'Product rating is visible.',
+								'woocommerce'
+						  )
+						: __(
+								'Product rating is hidden.',
+								'woocommerce'
+						  )
 				}
 				checked={ rating }
 				onChange={ () => onChange( { ...settings, rating: ! rating } ) }
 			/>
 			<ToggleControl
-				label={ __( 'Add to Cart button', 'woocommerce' ) }
+				label={ __(
+					'Add to Cart button',
+					'woocommerce'
+				) }
 				help={
-					button ?
-						__(
-							'Add to Cart button is visible.',
-							'woocommerce'
-						) :
-						__(
-							'Add to Cart button is hidden.',
-							'woocommerce'
-						)
+					button
+						? __(
+								'Add to Cart button is visible.',
+								'woocommerce'
+						  )
+						: __(
+								'Add to Cart button is hidden.',
+								'woocommerce'
+						  )
 				}
 				checked={ button }
 				onChange={ () => onChange( { ...settings, button: ! button } ) }

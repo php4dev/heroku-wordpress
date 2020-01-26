@@ -13,6 +13,7 @@ namespace Automattic\WooCommerce\Blocks\RestApi\Controllers;
 defined( 'ABSPATH' ) || exit;
 
 use \WC_REST_Products_Controller;
+use Automattic\WooCommerce\Blocks\RestApi\Utilities\ProductImages;
 
 /**
  * REST API Products controller class.
@@ -209,53 +210,37 @@ class Products extends WC_REST_Products_Controller {
 			'permalink'      => $product->get_permalink(),
 			'sku'            => $product->get_sku(),
 			'description'    => apply_filters( 'woocommerce_short_description', $product->get_short_description() ? $product->get_short_description() : wc_trim_string( $product->get_description(), 400 ) ),
+			'onsale'         => $product->is_on_sale(),
 			'price'          => $product->get_price(),
 			'price_html'     => $product->get_price_html(),
-			'images'         => $this->get_images( $product ),
+			'images'         => ( new ProductImages() )->images_to_array( $product ),
 			'average_rating' => $product->get_average_rating(),
 			'review_count'   => $product->get_review_count(),
+			'has_options'    => $product->has_options(),
+			'is_purchasable' => $product->is_purchasable(),
+			'is_in_stock'    => $product->is_in_stock(),
+			'add_to_cart'    => [
+				'text'        => $product->add_to_cart_text(),
+				'description' => $product->add_to_cart_description(),
+			],
 		);
 	}
 
 	/**
-	 * Get the images for a product or product variation.
+	 * Get a usable add to cart URL.
 	 *
 	 * @param \WC_Product|\WC_Product_Variation $product Product instance.
 	 * @return array
 	 */
-	protected function get_images( $product ) {
-		$images         = array();
-		$attachment_ids = array();
+	protected function get_add_to_cart_url( $product ) {
+		$url = $product->add_to_cart_url();
 
-		// Add featured image.
-		if ( $product->get_image_id() ) {
-			$attachment_ids[] = $product->get_image_id();
+		// Prevent relative URLs used by simple products.
+		if ( strstr( $url, '/wp-json/wc/' ) ) {
+			$url = '?add-to-cart=' . $product->get_id();
 		}
 
-		// Add gallery images.
-		$attachment_ids = array_merge( $attachment_ids, $product->get_gallery_image_ids() );
-
-		// Build image data.
-		foreach ( $attachment_ids as $attachment_id ) {
-			$attachment_post = get_post( $attachment_id );
-			if ( is_null( $attachment_post ) ) {
-				continue;
-			}
-
-			$attachment = wp_get_attachment_image_src( $attachment_id, 'full' );
-			if ( ! is_array( $attachment ) ) {
-				continue;
-			}
-
-			$images[] = array(
-				'id'   => (int) $attachment_id,
-				'src'  => current( $attachment ),
-				'name' => get_the_title( $attachment_id ),
-				'alt'  => get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ),
-			);
-		}
-
-		return $images;
+		return $url;
 	}
 
 	/**
@@ -351,6 +336,11 @@ class Products extends WC_REST_Products_Controller {
 					'description' => __( 'Current product price.', 'woocommerce' ),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
+				),
+				'onsale'         => array(
+					'description' => __( 'Is the product on sale?', 'woocommerce' ),
+					'type'        => 'boolean',
+					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'price_html'     => array(
@@ -378,26 +368,83 @@ class Products extends WC_REST_Products_Controller {
 					'items'       => array(
 						'type'       => 'object',
 						'properties' => array(
-							'id'   => array(
+							'id'        => array(
 								'description' => __( 'Image ID.', 'woocommerce' ),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 							),
-							'src'  => array(
-								'description' => __( 'Image URL.', 'woocommerce' ),
+							'src'       => array(
+								'description' => __( 'Full size image URL.', 'woocommerce' ),
 								'type'        => 'string',
 								'format'      => 'uri',
 								'context'     => array( 'view', 'edit' ),
 							),
-							'name' => array(
+							'thumbnail' => array(
+								'description' => __( 'Thumbnail URL.', 'woocommerce' ),
+								'type'        => 'string',
+								'format'      => 'uri',
+								'context'     => array( 'view', 'edit' ),
+							),
+							'srcset'    => array(
+								'description' => __( 'Thumbnail srcset for responsive images.', 'woocommerce' ),
+								'type'        => 'string',
+								'context'     => array( 'view', 'edit' ),
+							),
+							'sizes'     => array(
+								'description' => __( 'Thumbnail sizes for responsive images.', 'woocommerce' ),
+								'type'        => 'string',
+								'context'     => array( 'view', 'edit' ),
+							),
+							'name'      => array(
 								'description' => __( 'Image name.', 'woocommerce' ),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
-							'alt'  => array(
+							'alt'       => array(
 								'description' => __( 'Image alternative text.', 'woocommerce' ),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
+							),
+						),
+					),
+				),
+				'has_options'    => array(
+					'description' => __( 'Does the product have options?', 'woocommerce' ),
+					'type'        => 'boolean',
+					'context'     => array( 'view', 'edit' ),
+					'readonly'    => true,
+				),
+				'is_purchasable' => array(
+					'description' => __( 'Is the product purchasable?', 'woocommerce' ),
+					'type'        => 'boolean',
+					'context'     => array( 'view', 'edit' ),
+					'readonly'    => true,
+				),
+				'is_in_stock'    => array(
+					'description' => __( 'Is the product in stock?', 'woocommerce' ),
+					'type'        => 'boolean',
+					'context'     => array( 'view', 'edit' ),
+					'readonly'    => true,
+				),
+				'add_to_cart'    => array(
+					'description' => __( 'Add to cart button parameters.', 'woocommerce' ),
+					'type'        => 'object',
+					'context'     => array( 'view', 'edit' ),
+					'readonly'    => true,
+					'items'       => array(
+						'type'       => 'object',
+						'properties' => array(
+							'text'        => array(
+								'description' => __( 'Button text.', 'woocommerce' ),
+								'type'        => 'string',
+								'context'     => array( 'view', 'edit' ),
+								'readonly'    => true,
+							),
+							'description' => array(
+								'description' => __( 'Button description.', 'woocommerce' ),
+								'type'        => 'string',
+								'context'     => array( 'view', 'edit' ),
+								'readonly'    => true,
 							),
 						),
 					),

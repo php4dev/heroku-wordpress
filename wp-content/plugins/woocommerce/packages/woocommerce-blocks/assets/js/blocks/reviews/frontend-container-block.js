@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 /**
  * Internal dependencies
  */
-import { getOrderArgs } from './utils';
+import { getSortArgs } from './utils';
 import FrontendBlock from './frontend-block';
 
 /**
@@ -34,7 +34,8 @@ class FrontendContainerBlock extends Component {
 		const { reviewsToDisplay } = this.state;
 
 		this.setState( {
-			reviewsToDisplay: reviewsToDisplay + parseInt( attributes.reviewsOnLoadMore, 10 ),
+			reviewsToDisplay:
+				reviewsToDisplay + parseInt( attributes.reviewsOnLoadMore, 10 ),
 		} );
 	}
 
@@ -56,7 +57,7 @@ class FrontendContainerBlock extends Component {
 					newReviews.length,
 					'woocommerce'
 				),
-				newReviews.length,
+				newReviews.length
 			)
 		);
 	}
@@ -66,14 +67,19 @@ class FrontendContainerBlock extends Component {
 	}
 
 	onReviewsLoadError() {
-		speak( __( 'There was an error loading the reviews.', 'woocommerce' ) );
+		speak(
+			__(
+				'There was an error loading the reviews.',
+				'woocommerce'
+			)
+		);
 	}
 
 	render() {
 		const { attributes } = this.props;
 		const { categoryIds, productId } = attributes;
 		const { reviewsToDisplay } = this.state;
-		const { order, orderby } = getOrderArgs( this.state.orderby );
+		const { order, orderby } = getSortArgs( this.state.orderby );
 
 		return (
 			<FrontendBlock
