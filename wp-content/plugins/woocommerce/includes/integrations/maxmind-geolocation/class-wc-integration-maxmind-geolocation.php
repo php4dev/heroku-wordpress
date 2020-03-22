@@ -29,7 +29,7 @@ class WC_Integration_MaxMind_Geolocation extends WC_Integration {
 	 */
 	public function __construct() {
 		$this->id                 = 'maxmind_geolocation';
-		$this->method_title       = __( 'WooCommerce MaxMind Geolocation', 'woocommerce' );
+		$this->method_title       = __( 'MaxMind Geolocation', 'woocommerce' );
 		$this->method_description = __( 'An integration for utilizing MaxMind to do Geolocation lookups. Please note that this integration will only do country lookups.', 'woocommerce' );
 
 		/**
@@ -132,7 +132,10 @@ class WC_Integration_MaxMind_Geolocation extends WC_Integration {
 	 * @throws Exception When the license key is invalid.
 	 */
 	public function validate_license_key_field( $key, $value ) {
-		// Empty license keys have no need to validate the data.
+		// Trim whitespaces and strip slashes.
+		$value = $this->validate_password_field( $key, $value );
+
+		// Empty license keys have no need test downloading a database.
 		if ( empty( $value ) ) {
 			return $value;
 		}

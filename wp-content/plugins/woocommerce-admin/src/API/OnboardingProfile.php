@@ -102,7 +102,7 @@ class OnboardingProfile extends \WC_REST_Data_Controller {
 	public function get_items( $request ) {
 		include_once WC_ABSPATH . 'includes/admin/helper/class-wc-helper-options.php';
 
-		$onboarding_data = get_option( 'wc_onboarding_profile', array() );
+		$onboarding_data = get_option( Onboarding::PROFILE_DATA_OPTION, array() );
 		$item_schema     = $this->get_item_schema();
 
 		$items = array();
@@ -128,8 +128,8 @@ class OnboardingProfile extends \WC_REST_Data_Controller {
 	public function update_items( $request ) {
 		$params          = $request->get_json_params();
 		$query_args      = $this->prepare_objects_query( $params );
-		$onboarding_data = get_option( 'wc_onboarding_profile', array() );
-		update_option( 'wc_onboarding_profile', array_merge( $onboarding_data, $query_args ) );
+		$onboarding_data = get_option( Onboarding::PROFILE_DATA_OPTION, array() );
+		update_option( Onboarding::PROFILE_DATA_OPTION, array_merge( $onboarding_data, $query_args ) );
 
 		$result = array(
 			'status'  => 'success',
@@ -240,11 +240,9 @@ class OnboardingProfile extends \WC_REST_Data_Controller {
 				'description'       => __( 'Industry.', 'woocommerce-admin' ),
 				'context'           => array( 'view' ),
 				'readonly'          => true,
-				'sanitize_callback' => 'wp_parse_slug_list',
 				'validate_callback' => 'rest_validate_request_arg',
 				'items'             => array(
-					'enum' => array_keys( Onboarding::get_allowed_industries() ),
-					'type' => 'string',
+					'type' => 'json',
 				),
 			),
 			'product_types'       => array(
@@ -324,7 +322,11 @@ class OnboardingProfile extends \WC_REST_Data_Controller {
 				'sanitize_callback' => 'wp_parse_slug_list',
 				'validate_callback' => 'rest_validate_request_arg',
 				'items'             => array(
-					'enum' => array( 'mailchimp-for-woocommerce', 'facebook-for-woocommerce' ),
+					'enum' => array(
+						'mailchimp-for-woocommerce',
+						'facebook-for-woocommerce',
+						'kliken-marketing-for-google',
+					),
 					'type' => 'string',
 				),
 			),

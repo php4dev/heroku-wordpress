@@ -97,7 +97,7 @@ if ( ! function_exists( __NAMESPACE__ . '\autoloader' ) ) {
 						esc_html( $class_name ),
 						sprintf(
 							/* translators: %s Name of a PHP Class */
-							esc_html__( 'Not all plugins have loaded yet but we requested the class %s', 'jetpack' ),
+							esc_html__( 'Not all plugins have loaded yet but we requested the class %s', 'woocommerce' ),
 							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 							$class_name
 						),

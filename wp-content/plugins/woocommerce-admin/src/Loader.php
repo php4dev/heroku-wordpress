@@ -9,6 +9,7 @@
 namespace Automattic\WooCommerce\Admin;
 
 use \_WP_Dependency;
+use Automattic\WooCommerce\Admin\Features\Onboarding;
 
 /**
  * Loader Class.
@@ -56,7 +57,8 @@ class Loader {
 	 */
 	public function __construct() {
 		add_action( 'init', array( __CLASS__, 'define_tables' ) );
-		add_action( 'init', array( __CLASS__, 'load_features' ) );
+		// Load feature before WooCommerce update hooks.
+		add_action( 'init', array( __CLASS__, 'load_features' ), 4 );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'register_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'inject_wc_settings_dependencies' ), 14 );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'load_scripts' ), 15 );
@@ -172,10 +174,11 @@ class Loader {
 			return false;
 		}
 
-		$onboarding_opt_in        = 'yes' === get_option( 'wc_onboarding_opt_in', 'no' );
+		$onboarding_opt_in        = 'yes' === get_option( Onboarding::OPT_IN_OPTION, 'no' );
+		$legacy_onboarding_opt_in = 'yes' === get_option( 'wc_onboarding_opt_in', 'no' );
 		$onboarding_filter_opt_in = defined( 'WOOCOMMERCE_ADMIN_ONBOARDING_ENABLED' ) && true === WOOCOMMERCE_ADMIN_ONBOARDING_ENABLED;
 
-		if ( self::is_dev() || $onboarding_filter_opt_in || $onboarding_opt_in ) {
+		if ( self::is_dev() || $onboarding_filter_opt_in || $onboarding_opt_in || $legacy_onboarding_opt_in ) {
 			return true;
 		}
 
@@ -584,10 +587,7 @@ class Loader {
 	public static function update_admin_title( $admin_title ) {
 		if (
 			! did_action( 'current_screen' ) ||
-			(
-				! self::is_admin_page() &&
-				! self::is_embed_page()
-			)
+			! self::is_admin_page()
 		) {
 			return $admin_title;
 		}
@@ -632,6 +632,7 @@ class Loader {
 			global $wp_locale;
 			// inject data not available via older versions of wc_blocks/woo.
 			$settings['orderStatuses'] = self::get_order_statuses( wc_get_order_statuses() );
+			$settings['stockStatuses'] = self::get_order_statuses( wc_get_product_stock_status_options() );
 			$settings['currency']      = self::get_currency_settings();
 			$settings['locale']        = [
 				'siteLocale'    => isset( $settings['siteLocale'] )
@@ -676,7 +677,7 @@ class Loader {
 
 		$current_user_data = array();
 		foreach ( self::get_user_data_fields() as $user_field ) {
-			$current_user_data[ $user_field ] = json_decode( get_user_meta( get_current_user_id(), 'wc_admin_' . $user_field, true ) );
+			$current_user_data[ $user_field ] = json_decode( get_user_meta( get_current_user_id(), 'woocommerce_admin_' . $user_field, true ) );
 		}
 		$settings['currentUserData']      = $current_user_data;
 		$settings['reviewsEnabled']       = get_option( 'woocommerce_enable_reviews' );
@@ -863,7 +864,7 @@ class Loader {
 	public static function get_user_data_values( $user ) {
 		$values = array();
 		foreach ( self::get_user_data_fields() as $field ) {
-			$values[ $field ] = get_user_meta( $user['id'], 'wc_admin_' . $field, true );
+			$values[ $field ] = self::get_user_data_field( $user['id'], $field );
 		}
 		return $values;
 	}
@@ -885,7 +886,7 @@ class Loader {
 		foreach ( $values as $field => $value ) {
 			if ( in_array( $field, $fields, true ) ) {
 				$updates[ $field ] = $value;
-				update_user_meta( $user->ID, 'wc_admin_' . $field, $value );
+				self::update_user_data_field( $user->ID, $field, $value );
 			}
 		}
 		return $updates;
@@ -900,6 +901,44 @@ class Loader {
 	 */
 	public static function get_user_data_fields() {
 		return apply_filters( 'woocommerce_admin_get_user_data_fields', array() );
+	}
+
+	/**
+	 * Helper to update user data fields.
+	 *
+	 * @param int    $user_id  User ID.
+	 * @param string $field Field name.
+	 * @param mixed  $value  Field value.
+	 */
+	public static function update_user_data_field( $user_id, $field, $value ) {
+		update_user_meta( $user_id, 'woocommerce_admin_' . $field, $value );
+	}
+
+	/**
+	 * Helper to retrive user data fields.
+	 *
+	 * Migrates old key prefixes as well.
+	 *
+	 * @param int    $user_id  User ID.
+	 * @param string $field Field name.
+	 * @return mixed The user field value.
+	 */
+	public static function get_user_data_field( $user_id, $field ) {
+		$meta_value = get_user_meta( $user_id, 'woocommerce_admin_' . $field, true );
+
+		// Migrate old meta values (prefix changed from `wc_admin_` to `woocommerce_admin_`).
+		if ( '' === $meta_value ) {
+			$old_meta_value = get_user_meta( $user_id, 'wc_admin_' . $field, true );
+
+			if ( '' !== $old_meta_value ) {
+				self::update_user_data_field( $user_id, $field, $old_meta_value );
+				delete_user_meta( $user_id, 'wc_admin_' . $field );
+
+				$meta_value = $old_meta_value;
+			}
+		}
+
+		return $meta_value;
 	}
 
 	/**

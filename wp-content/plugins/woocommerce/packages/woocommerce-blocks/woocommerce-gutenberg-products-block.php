@@ -3,14 +3,14 @@
  * Plugin Name: WooCommerce Blocks
  * Plugin URI: https://github.com/woocommerce/woocommerce-gutenberg-products-block
  * Description: WooCommerce blocks for the Gutenberg editor.
- * Version: 2.5.11
+ * Version: 2.5.14
  * Author: Automattic
  * Author URI: https://woocommerce.com
  * Text Domain:  woo-gutenberg-products-block
  * Requires at least: 5.0
  * Requires PHP: 5.6
  * WC requires at least: 3.7
- * WC tested up to: 3.8
+ * WC tested up to: 4.0
  *
  * @package WooCommerce\Blocks
  * @internal This file is only used when running the REST API as a feature plugin.
@@ -121,7 +121,7 @@ add_action( 'plugins_loaded', array( '\Automattic\WooCommerce\Blocks\Package', '
  * @return string JSON translations.
  */
 function woocommerce_blocks_get_i18n_data_json( $translations, $file, $handle, $domain ) {
-	if ( 'woocommerce' !== $domain ) {
+	if ( 'woo-gutenberg-products-block' !== $domain ) {
 		return $translations;
 	}
 

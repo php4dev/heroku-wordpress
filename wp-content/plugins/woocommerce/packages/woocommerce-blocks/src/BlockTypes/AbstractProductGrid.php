@@ -427,7 +427,10 @@ abstract class AbstractProductGrid extends AbstractDynamicBlock {
 			return;
 		}
 
-		return '<span class="wc-block-grid__product-onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>';
+		return '<span class="wc-block-grid__product-onsale">
+			<span aria-hidden="true">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>
+			<span class="screen-reader-text">' . esc_html__( 'Product on sale', 'woocommerce' ) . '</span>
+		</span>';
 	}
 
 	/**

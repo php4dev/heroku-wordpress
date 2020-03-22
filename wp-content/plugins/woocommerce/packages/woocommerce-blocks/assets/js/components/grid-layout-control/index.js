@@ -49,15 +49,18 @@ const GridLayoutControl = ( {
 				max={ MAX_ROWS }
 			/>
 			<ToggleControl
-				label={ __( 'Align Buttons', 'woocommerce' ) }
+				label={ __(
+					'Align Last Block',
+					'woocommerce'
+				) }
 				help={
 					alignButtons
 						? __(
-								'Buttons are aligned vertically.',
+								'The last inner block will be aligned vertically.',
 								'woocommerce'
 						  )
 						: __(
-								'Buttons follow content.',
+								'The last inner block will follow other content.',
 								'woocommerce'
 						  )
 				}

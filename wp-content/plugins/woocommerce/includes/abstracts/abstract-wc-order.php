@@ -1050,10 +1050,10 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 		$result = $coupon->get_data_store()->check_and_hold_coupon( $coupon );
 		if ( false === $result ) {
 			// translators: Actual coupon code.
-			throw new Exception( sprintf( __( 'An unexpected error happened while applying the Coupon %s.', 'woocommerce' ), $coupon->get_code() ) );
+			throw new Exception( sprintf( __( 'An unexpected error happened while applying the Coupon %s.', 'woocommerce' ), esc_html( $coupon->get_code() ) ) );
 		} elseif ( 0 === $result ) {
 			// translators: Actual coupon code.
-			throw new Exception( sprintf( __( 'Coupon %s was used in another transaction during this checkout, and coupon usage limit is reached. Please remove the coupon and try again.', 'woocommerce' ), $coupon->get_code() ) );
+			throw new Exception( sprintf( __( 'Coupon %s was used in another transaction during this checkout, and coupon usage limit is reached. Please remove the coupon and try again.', 'woocommerce' ), esc_html( $coupon->get_code() ) ) );
 		}
 		return $result;
 	}
@@ -1072,10 +1072,10 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 		$result = $coupon->get_data_store()->check_and_hold_coupon_for_user( $coupon, $user_ids_and_emails, $user_alias );
 		if ( false === $result ) {
 			// translators: Actual coupon code.
-			throw new Exception( sprintf( __( 'An unexpected error happened while applying the Coupon %s.', 'woocommerce' ), $coupon->get_code() ) );
+			throw new Exception( sprintf( __( 'An unexpected error happened while applying the Coupon %s.', 'woocommerce' ), esc_html( $coupon->get_code() ) ) );
 		} elseif ( 0 === $result ) {
 			// translators: Actual coupon code.
-			throw new Exception( sprintf( __( 'You have used this coupon %s in another transaction during this checkout, and coupon usage limit is reached. Please remove the coupon and try again.', 'woocommerce' ), $coupon->get_code() ) );
+			throw new Exception( sprintf( __( 'You have used this coupon %s in another transaction during this checkout, and coupon usage limit is reached. Please remove the coupon and try again.', 'woocommerce' ), esc_html( $coupon->get_code() ) ) );
 		}
 		return $result;
 	}
@@ -1569,6 +1569,20 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 	}
 
 	/**
+	 * Calculate fees for all line items.
+	 *
+	 * @return float Fee total.
+	 */
+	public function get_total_fees() {
+		return array_reduce(
+			$this->get_fees(),
+			function( $carry, $item ) {
+				return $carry + $item->get_total();
+			}
+		);
+	}
+
+	/**
 	 * Update tax lines for the order based on the line item taxes themselves.
 	 */
 	public function update_taxes() {
@@ -1695,7 +1709,6 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 					$item->set_total( $max_discount );
 				}
 			}
-
 			$fees_total += $item->get_total();
 		}
 
