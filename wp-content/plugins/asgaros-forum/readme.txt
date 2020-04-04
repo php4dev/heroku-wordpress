@@ -3,9 +3,9 @@ Contributors: Asgaros
 Donate link: https://www.asgaros.de/donate/
 Tags: forum, forums, discussion, multisite, community, bulletin, board, asgaros, support
 Requires at least: 4.9
-Tested up to: 5.3
+Tested up to: 5.4
 Requires PHP: 5.2
-Stable tag: 1.15.2
+Stable tag: 1.15.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,6 +87,20 @@ You can find a list of available hooks and filters on this site:
 6. Manage general options.
 
 == Changelog ==
+= 1.15.4 =
+* Fixed: Fatal error when multibyte-extension is not installed
+= 1.15.3 =
+* Added: Show number of forum-posts for every user in administration area
+* Fixed: Prevent banned users from reacting to posts
+* Fixed: Allow line-breaks in biographical info of profile
+* Fixed: SQL syntax error when opening a non-existent topic
+* Fixed: Rare string-cutting issues
+* Fixed: Misleading strings
+* Fixed: Display issues with some themes
+* Fixed: Display issues on mobile devices
+* Improved compatibility with Rank Math SEO
+* Performance improvements and code optimizations
+* Compatibility with WordPress 5.4
 = 1.15.2 =
 * Added: Option to hide newest member
 * Added: Option to let users open their own topics

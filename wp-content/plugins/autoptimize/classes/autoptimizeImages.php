@@ -555,6 +555,8 @@ class autoptimizeImages
                         $_url = $url;
                     }
 
+                    $_url = $this->normalize_img_url( $_url );
+
                     $placeholder = '';
                     if ( $this->can_optimize_image( $_url ) && apply_filters( 'autoptimize_filter_imgopt_lazyload_dolqip', true ) ) {
                         $lqip_w = '';
@@ -815,7 +817,7 @@ class autoptimizeImages
             $options = $this->options;
 
             // set default exclusions.
-            $exclude_lazyload_array = array( 'skip-lazy', 'data-no-lazy', 'notlazy', 'data-src', 'data-srcset', 'data:image/', 'data-lazyload', 'rev-slidebg' );
+            $exclude_lazyload_array = array( 'skip-lazy', 'data-no-lazy', 'notlazy', 'data-src', 'data-srcset', 'data:image/', 'data-lazyload', 'rev-slidebg', 'loading="eager"' );
 
             // add from setting.
             if ( array_key_exists( 'autoptimize_imgopt_text_field_5', $options ) ) {
@@ -1154,7 +1156,7 @@ class autoptimizeImages
                     // translators: "associate your domain" will appear in a "a href".
                     $_imgopt_notice = $_imgopt_notice . ' ' . sprintf( __( 'If you already have enough credits then you may need to %1$sassociate your domain%2$s to your Shortpixel account.', 'autoptimize' ), '<a rel="noopener noreferrer" href="' . $_imgopt_assoc . '" target="_blank">', '</a>' );
                 } elseif ( -3 == $_stat['Status'] ) {
-                    // translators: "add more credits" will appear in a "a href".
+                    // translators: "check the documentation here" will appear in a "a href".
                     $_imgopt_notice = sprintf( __( 'It seems ShortPixel image optimization is not able to fetch images from your site, %1$scheck the documentation here%2$s for more information', 'autoptimize' ), '<a href="' . $_imgopt_unreach . '" target="_blank">', '</a>' );
                 } else {
                     $_imgopt_upsell = 'https://shortpixel.com/g/af/GWRGFLW109483';

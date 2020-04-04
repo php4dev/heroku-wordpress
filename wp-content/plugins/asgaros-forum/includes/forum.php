@@ -3,7 +3,7 @@
 if (!defined('ABSPATH')) exit;
 
 class AsgarosForum {
-    var $version = '1.15.2';
+    var $version = '1.15.4';
     var $executePlugin = false;
     var $db = null;
     var $tables = null;
@@ -271,11 +271,11 @@ class AsgarosForum {
         }
 
         if (empty($this->options['mail_template_new_post_subject'])) {
-            $this->options['mail_template_new_post_subject'] = __('New answer: ###TITLE###', 'asgaros-forum');
+            $this->options['mail_template_new_post_subject'] = __('New reply: ###TITLE###', 'asgaros-forum');
         }
 
         if (empty($this->options['mail_template_new_post_message'])) {
-            $this->options['mail_template_new_post_message'] = __('Hello ###USERNAME###,<br><br>You received this message because there is a new answer in a forum-topic you have subscribed to.<br><br>Topic:<br>###TITLE###<br><br>Author:<br>###AUTHOR###<br><br>Answer:<br>###CONTENT###<br><br>Link:<br>###LINK###<br><br>If you dont want to receive these mails anymore you can unsubscribe via the subscription-area. Please dont answer to this mail!', 'asgaros-forum');
+            $this->options['mail_template_new_post_message'] = __('Hello ###USERNAME###,<br><br>You received this message because there is a new reply in a forum-topic you have subscribed to.<br><br>Topic:<br>###TITLE###<br><br>Author:<br>###AUTHOR###<br><br>Reply:<br>###CONTENT###<br><br>Link:<br>###LINK###<br><br>If you dont want to receive these mails anymore you can unsubscribe via the subscription-area. Please dont reply to this mail!', 'asgaros-forum');
         }
 
         if (empty($this->options['mail_template_new_topic_subject'])) {
@@ -283,7 +283,7 @@ class AsgarosForum {
         }
 
         if (empty($this->options['mail_template_new_topic_message'])) {
-            $this->options['mail_template_new_topic_message'] = __('Hello ###USERNAME###,<br><br>You received this message because there is a new forum-topic.<br><br>Topic:<br>###TITLE###<br><br>Author:<br>###AUTHOR###<br><br>Text:<br>###CONTENT###<br><br>Link:<br>###LINK###<br><br>If you dont want to receive these mails anymore you can unsubscribe via the subscription-area. Please dont answer to this mail!', 'asgaros-forum');
+            $this->options['mail_template_new_topic_message'] = __('Hello ###USERNAME###,<br><br>You received this message because there is a new forum-topic.<br><br>Topic:<br>###TITLE###<br><br>Author:<br>###AUTHOR###<br><br>Text:<br>###CONTENT###<br><br>Link:<br>###LINK###<br><br>If you dont want to receive these mails anymore you can unsubscribe via the subscription-area. Please dont reply to this mail!', 'asgaros-forum');
         }
 
         if (empty($this->options['mail_template_mentioned_subject'])) {
@@ -922,7 +922,7 @@ class AsgarosForum {
                 // Show topic stats.
                 echo '<small class="topic-stats">';
                     $count_answers_i18n = number_format_i18n($topic_object->answers);
-                    echo sprintf(_n('%s Answer', '%s Answers', $topic_object->answers, 'asgaros-forum'), $count_answers_i18n);
+                    echo sprintf(_n('%s Reply', '%s Replies', $topic_object->answers, 'asgaros-forum'), $count_answers_i18n);
 
                     if ($this->options['count_topic_views']) {
                         $count_views_i18n = number_format_i18n($topic_object->views);
@@ -1184,11 +1184,27 @@ class AsgarosForum {
     }
 
     function cut_string($string, $length = 33, $at_next_space = false) {
+        $string_length = 0;
+
+        // Get string-length first.
+        if (function_exists('mb_strlen')) {
+            $string_length = mb_strlen($string, 'UTF-8');
+        } else {
+            $string_length = strlen($string);
+        }
+
         // Only cut string if it is longer than defined.
-        if (strlen($string) > $length) {
+        if ($string_length > $length) {
             // Try to find position of next space if necessary.
             if ($at_next_space) {
-                $space_position = strpos($string, ' ', $length);
+                $space_position = false;
+
+                // Get position of space.
+                if (function_exists('mb_strpos')) {
+                    $space_position = mb_strpos($string, ' ', $length, 'UTF-8');
+                } else {
+                    $space_position = strpos($string, ' ', $length);
+                }   
 
                 if ($space_position) {
                     $length = $space_position;
@@ -1197,7 +1213,12 @@ class AsgarosForum {
                 }
             }
 
-            return mb_substr($string, 0, $length, 'UTF-8') . ' &#8230;';
+            // Return substring.
+            if (function_exists('mb_substr')) {
+                return mb_substr($string, 0, $length, 'UTF-8').' &#8230;';
+            } else {
+                return substr($string, 0, $length).' &#8230;';
+            }
         }
 
         return $string;
@@ -1509,7 +1530,7 @@ class AsgarosForum {
 
         $current_user_id = get_current_user_id();
 
-        // Show answer and certain moderation-buttons only for approved topics.
+        // Show reply and certain moderation-buttons only for approved topics.
         if ($this->approval->is_topic_approved($this->current_topic)) {
             if ($this->permissions->can_create_post($current_user_id)) {
                 // Reply button.
