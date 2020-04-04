@@ -50,7 +50,7 @@ class WC_Site_Tracking {
 	public static function enqueue_scripts() {
 
 		// Add w.js to the page.
-		wp_enqueue_script( 'woo-tracks', 'https://stats.wp.com/w.js', array(), gmdate( 'YW' ), true );
+		// wp_enqueue_script( 'woo-tracks', 'https://stats.wp.com/w.js', array(), gmdate( 'YW' ), true );
 
 		// Expose tracking via a function in the wcTracks global namespace directly before wc_print_js.
 		add_filter( 'admin_footer', array( __CLASS__, 'add_tracking_function' ), 24 );
