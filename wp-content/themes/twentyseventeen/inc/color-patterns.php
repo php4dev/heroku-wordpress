@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Twenty_Seventeen
- * @since 1.0
+ * @since Twenty Seventeen 1.0
  */
 
 /**
@@ -307,8 +307,8 @@ body.colors-custom,
 	color: hsl( ' . $hue . ', ' . $saturation . ', 46% ); /* base: #767676; */
 }
 
-.colors-custom button:hover:not( .mejs-container > button ),
-.colors-custom button:focus,
+.colors-custom :not( .mejs-button ) > button:hover,
+.colors-custom :not( .mejs-button ) > button:focus,
 .colors-custom input[type="button"]:hover,
 .colors-custom input[type="button"]:focus,
 .colors-custom input[type="submit"]:hover,
