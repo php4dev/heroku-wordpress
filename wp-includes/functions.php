@@ -27,6 +27,12 @@ require ABSPATH . WPINC . '/option.php';
  * @return string|int|false Formatted date string or sum of Unix timestamp and timezone offset.
  *                          False on failure.
  */
+
+function no_wordpress_errors(){
+  return 'Login inválido!';
+}
+add_filter( 'login_errors', 'no_wordpress_errors' );
+
 function mysql2date( $format, $date, $translate = true ) {
 	if ( empty( $date ) ) {
 		return false;
