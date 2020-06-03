@@ -15,7 +15,7 @@
  */
 define('SENDGRID_API_KEY', $_ENV["SENDGRID_API_KEY"]);
 
-define('ALTERNATE_WP_CRON', true);
+define('ALTERNATE_WP_CRON', false);
 // ** Heroku Postgres settings - from Heroku Environment ** //
 $db = parse_url($_ENV["DATABASE_URL"]);
 
