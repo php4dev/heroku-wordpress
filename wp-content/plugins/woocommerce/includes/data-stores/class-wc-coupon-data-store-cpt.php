@@ -55,13 +55,23 @@ class WC_Coupon_Data_Store_CPT extends WC_Data_Store_WP implements WC_Coupon_Dat
 	);
 
 	/**
+	 * The updated coupon properties
+	 *
+	 * @since 4.1.0
+	 * @var array
+	 */
+	protected $updated_props = array();
+
+	/**
 	 * Method to create a new coupon in the database.
 	 *
 	 * @since 3.0.0
 	 * @param WC_Coupon $coupon Coupon object.
 	 */
 	public function create( &$coupon ) {
-		$coupon->set_date_created( time() );
+		if ( ! $coupon->get_date_created( 'edit' ) ) {
+			$coupon->set_date_created( time() );
+		}
 
 		$coupon_id = wp_insert_post(
 			apply_filters(

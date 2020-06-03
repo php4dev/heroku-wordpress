@@ -631,11 +631,11 @@ return array(
 		'path'    => $baseDir . '/src/Assets.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\AutoloadGenerator' => array(
-		'version' => '1.3.2.0',
+		'version' => '1.6.0.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadGenerator.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\CustomAutoloaderPlugin' => array(
-		'version' => '1.3.2.0',
+		'version' => '1.6.0.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/CustomAutoloaderPlugin.php'
 	),
 );

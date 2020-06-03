@@ -4,7 +4,7 @@ Tags: ecommerce, e-commerce, store, sales, reports, analytics, dashboard, activi
 Requires at least: 5.3.0
 Tested up to: 5.3.2
 Requires PHP: 5.6.20
-Stable tag: 1.0.3
+Stable tag: 1.2.3
 License: GPLv3
 License URI: https://github.com/woocommerce/woocommerce-admin/blob/master/license.txt
 
@@ -70,6 +70,94 @@ Release and roadmap notes are available on the [WooCommerce Developers Blog](htt
 3. Analytics
 
 == Changelog ==
+
+= 1.2.3 2020-05-22=
+- Tweak: Updates to WooCommerce Payments in Setup Checklist #4293
+
+= 1.2.2 2020-05-18=
+- Fix: Respect tracking opt-in before new page load. #4368
+- Enhancement: Add Jetpack connection to plugin benefits step #4374
+
+= 1.2.0 2020-05-8 =
+- Enhancement: Add onboarding payments note #4157 
+- Enhancement: Marketing Inbox Note #4030
+- Performance: Use Route based code splitting to reduce bundle size #4094
+- Performance: trim down inbox note API request. #3977
+- Fix: Proper display of elements in wc-admin pages when in a RTL environment. #4051
+- Fix: Update UX when knowledge base articles fail to retrieve #4133
+- Fix: Updated messaging after last step in OBW. #4148
+- Fix: Reset profiler when visiting old OBW URL #4166.
+- Fix: Dashboard flash before OBW chunk loads #4259
+- Tweak: Enable the default homepage template to be filtered #4072 🎉 @stevegrunwell
+- Tweak: Create admin note if Jetpack or WooCommerce Services plugin doesn't get installed due to an error during OBW #3888
+- Tweak: Update Email Marketing note. #4167
+- Tweak: Adjust "demo products" verbiage to "Sample Products" #4184 🎉 @jobthomas
+- Tweak: Don't reschedule imports on failed imports #4263
+- Tweak: Remove obsolete inbox messages #4182
+- Dev: Make query selector for admin alerts more specific #4289 🎉 @pauloiankoski 
+- Dev: Guard against null themes in OBW #4244
+- Dev: Update wcadmin db version after db callback #4323
+- Dev: Only migrate options on version change #4324
+- Dev: Use PAGE_ROOT constant to reduce redundant strings #4238 🎉 @codemascot
+- Dev: Decouple Plugins DataStore from onboarding feature #4048
+- Dev: Move API out of Onboarding #4093
+- Dev: Add Profiler Step View Tracks #4141
+- Dev: Add React Testing Library #4221
+- Dev: Add List and Link components to Storybook #4219
+- Dev: Cast Shipping Total to float #4042 🎉 @barryhughes
+- Dev: Dynamic Currency with Context API #4027
+- Dev: Remove Duplicate array entry #4049 🎉 @tivnet
+
+= 1.1.1 2020-04-28 =
+- Fix: Storefront should show at top of theme options in onboarding wizard. #4187
+- Tweak: Remove Stripe auto-connect from payment task. #4164
+- Tweak: Hide suggested extensions in Marketing Tab if opted out of "Marketplace Suggestions"
+
+= 1.1.0 2020-04-20 =
+- Tweak: Added link to "go shopping" button #3712
+- Fix: Make analytics tables use the site's date format setting #3715
+- Fix: Alignment of select text #3723 🎉 @edmundcwm
+- Tweak: Add PayFast payment gateway option for sites in South Africa #3738 
+- Tweak: Onboarding: Update screen order and remove Jetpack connection in profiler #3739
+- Tweak: Onboarding - business step: add more options in the competitors list and other fixes #3812
+- Tweak: Onboarding: Redesign plugin benefits screen #3764
+- Fix: inconsistent wording downloads report #3844 🎉 @jobthomas
+- Tweak: Onboarding: Use full width template for homepage in stores using Storefront #3846
+- Tweak: Remove 'add first product' note. #3876
+- Enhancement: Improve focus on task list #3796
+- Enhancement: Allow individual payment method setup in the onboarding task list #3782
+- Tweak: Onboarding: Add toggles to configured payments in task list #3801
+- Onboarding: Add offline payment methods #3832
+- Fix: Verify Stripe API keys in payment set up step. #3910
+- Fix: Connect to WooCommerce.com note disappears before connecting. #3909
+- Tweak: Onboarding - payments task: filter payment gateways if the user selects CBD #3745
+- Enahncement: Create flat rate or free shipping methods from the onboarding task list #3927
+- Fix: Add WooCommerce support if store is using default theme #3908
+- Fix: Make WooCommerce breadcrumbs use WooCommerce Branding if it is installed #3798
+- Fix undefined variable slug on theme activation error #3942 🎉 2nad@m1992 
+- Tweak: Style and icon updates for Activity Panel #3965
+- Fix: handle cases where coupon dates are in an unexpected format. #3984
+- Enhancement: "Personalize your store" reminder: new inbox notification #3895
+- Fix: Onboarding: only validate other platform name for 'other' selling venues #4011
+- Performance: only query necessary data in Orders Panel. #3969
+- Tweak: Remove icon-button classes from Tag component #3993
+- Enhancement: WooCommerce Shipping order page banner prompt #3955
+- Performance: speed up indicators endpoint response. #3997
+- Enahncement: Add WC Pay to startup checklist
+- Enhancement: Marketing Tab
+- Enhancement: Add WooCommerce Payments Inbox note #4013
+- Fix: Added hook to delete woocommerce_onboarding_homepage_post_id #4015
+- Performance: only query requested stat totals in reports. #4009
+- Fix: Show admin notices on legacy admin screens. #4019
+- Tweak: Reduce the number of default widgets on the dashboard. #4035
+- Tweak: Onboarding: Remove plugins step from profiler #3974
+- Fix: wc-admin pages work in Internet Explorer 11. #4037
+- Dev: Handle orphaned order statuses in analytics settings. #4090
+- Tweak: Overwrite button overflow css from Wordpress 5.4 defaults #4108
+- Dev: Fix usage of WP_Error in non-global namespaces. #4115
+- Tweak: business details step: increase max-height on competitors listbox #4111
+- Fix: OBW: Allow CBD only for US stores #4117
+
 
 = 1.0.3 2020-03-19 =
 
@@ -137,6 +225,13 @@ Release and roadmap notes are available on the [WooCommerce Developers Blog](htt
 - Fix: Create Onboarding homepage without redirect #3727
 - Add: Deactivation note for feature plugin #3687
 - Dev: Travis tests on Github for release branch #3751
+
+= 0.25.1 2020-02-07 =
+
+- Dev: Enable onboarding #3651 (Onboarding) 
+- Now `decodeEntities` method is used to correct the breadcrumb. #3653 (Activity Panel) 
+- Fix: Fix styling of search control in report table header and filters. #3603 (Analytics, Components, Packages) 
+🤯
 
 = 0.25.0 2020-01-29 =
 

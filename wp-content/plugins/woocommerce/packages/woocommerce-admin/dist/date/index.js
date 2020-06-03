@@ -1,1 +1,1672 @@
-this.wc=this.wc||{},this.wc.date=function(e){var r={};function t(o){if(r[o])return r[o].exports;var n=r[o]={i:o,l:!1,exports:{}};return e[o].call(n.exports,n,n.exports,t),n.l=!0,n.exports}return t.m=e,t.c=r,t.d=function(e,r,o){t.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:o})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,r){if(1&r&&(e=t(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(t.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var n in e)t.d(o,n,function(r){return e[r]}.bind(null,n));return o},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},t.p="",t(t.s=745)}({1:function(e,r){!function(){e.exports=this.wp.i18n}()},20:function(e,r){!function(){e.exports=this.moment}()},3:function(e,r){!function(){e.exports=this.lodash}()},55:function(e,r,t){"use strict";var o=t(92),n=t(93),a=t(77);e.exports={formats:a,parse:n,stringify:o}},62:function(e,r,t){"use strict";var o=Object.prototype.hasOwnProperty,n=Array.isArray,a=function(){for(var e=[],r=0;r<256;++r)e.push("%"+((r<16?"0":"")+r.toString(16)).toUpperCase());return e}(),i=function(e,r){for(var t=r&&r.plainObjects?Object.create(null):{},o=0;o<e.length;++o)void 0!==e[o]&&(t[o]=e[o]);return t};e.exports={arrayToObject:i,assign:function(e,r){return Object.keys(r).reduce((function(e,t){return e[t]=r[t],e}),e)},combine:function(e,r){return[].concat(e,r)},compact:function(e){for(var r=[{obj:{o:e},prop:"o"}],t=[],o=0;o<r.length;++o)for(var a=r[o],i=a.obj[a.prop],c=Object.keys(i),u=0;u<c.length;++u){var l=c[u],s=i[l];"object"==typeof s&&null!==s&&-1===t.indexOf(s)&&(r.push({obj:i,prop:l}),t.push(s))}return function(e){for(;e.length>1;){var r=e.pop(),t=r.obj[r.prop];if(n(t)){for(var o=[],a=0;a<t.length;++a)void 0!==t[a]&&o.push(t[a]);r.obj[r.prop]=o}}}(r),e},decode:function(e,r,t){var o=e.replace(/\+/g," ");if("iso-8859-1"===t)return o.replace(/%[0-9a-f]{2}/gi,unescape);try{return decodeURIComponent(o)}catch(e){return o}},encode:function(e,r,t){if(0===e.length)return e;var o=e;if("symbol"==typeof e?o=Symbol.prototype.toString.call(e):"string"!=typeof e&&(o=String(e)),"iso-8859-1"===t)return escape(o).replace(/%u[0-9a-f]{4}/gi,(function(e){return"%26%23"+parseInt(e.slice(2),16)+"%3B"}));for(var n="",i=0;i<o.length;++i){var c=o.charCodeAt(i);45===c||46===c||95===c||126===c||c>=48&&c<=57||c>=65&&c<=90||c>=97&&c<=122?n+=o.charAt(i):c<128?n+=a[c]:c<2048?n+=a[192|c>>6]+a[128|63&c]:c<55296||c>=57344?n+=a[224|c>>12]+a[128|c>>6&63]+a[128|63&c]:(i+=1,c=65536+((1023&c)<<10|1023&o.charCodeAt(i)),n+=a[240|c>>18]+a[128|c>>12&63]+a[128|c>>6&63]+a[128|63&c])}return n},isBuffer:function(e){return!(!e||"object"!=typeof e)&&!!(e.constructor&&e.constructor.isBuffer&&e.constructor.isBuffer(e))},isRegExp:function(e){return"[object RegExp]"===Object.prototype.toString.call(e)},merge:function e(r,t,a){if(!t)return r;if("object"!=typeof t){if(n(r))r.push(t);else{if(!r||"object"!=typeof r)return[r,t];(a&&(a.plainObjects||a.allowPrototypes)||!o.call(Object.prototype,t))&&(r[t]=!0)}return r}if(!r||"object"!=typeof r)return[r].concat(t);var c=r;return n(r)&&!n(t)&&(c=i(r,a)),n(r)&&n(t)?(t.forEach((function(t,n){if(o.call(r,n)){var i=r[n];i&&"object"==typeof i&&t&&"object"==typeof t?r[n]=e(i,t,a):r.push(t)}else r[n]=t})),r):Object.keys(t).reduce((function(r,n){var i=t[n];return o.call(r,n)?r[n]=e(r[n],i,a):r[n]=i,r}),c)}}},745:function(e,r,t){"use strict";t.r(r),t.d(r,"isoDateFormat",(function(){return u})),t.d(r,"presetValues",(function(){return l})),t.d(r,"periods",(function(){return s})),t.d(r,"appendTimestamp",(function(){return d})),t.d(r,"toMoment",(function(){return f})),t.d(r,"getRangeLabel",(function(){return p})),t.d(r,"getLastPeriod",(function(){return m})),t.d(r,"getCurrentPeriod",(function(){return y})),t.d(r,"getDateParamsFromQuery",(function(){return h})),t.d(r,"getCurrentDates",(function(){return v})),t.d(r,"getDateDifferenceInDays",(function(){return w})),t.d(r,"getPreviousDate",(function(){return g})),t.d(r,"getAllowedIntervalsForQuery",(function(){return O})),t.d(r,"getIntervalForQuery",(function(){return j})),t.d(r,"getChartTypeForQuery",(function(){return _})),t.d(r,"dayTicksThreshold",(function(){return k})),t.d(r,"weekTicksThreshold",(function(){return Y})),t.d(r,"defaultTableDateFormat",(function(){return D})),t.d(r,"getDateFormatsForInterval",(function(){return S})),t.d(r,"loadLocaleData",(function(){return x})),t.d(r,"dateValidationMessages",(function(){return L})),t.d(r,"validateDateInputForRange",(function(){return M}));var o=t(20),n=t.n(o),a=t(3),i=t(1),c=t(55),u="YYYY-MM-DD",l=[{value:"today",label:Object(i.__)("Today","woocommerce-admin")},{value:"yesterday",label:Object(i.__)("Yesterday","woocommerce-admin")},{value:"week",label:Object(i.__)("Week to Date","woocommerce-admin")},{value:"last_week",label:Object(i.__)("Last Week","woocommerce-admin")},{value:"month",label:Object(i.__)("Month to Date","woocommerce-admin")},{value:"last_month",label:Object(i.__)("Last Month","woocommerce-admin")},{value:"quarter",label:Object(i.__)("Quarter to Date","woocommerce-admin")},{value:"last_quarter",label:Object(i.__)("Last Quarter","woocommerce-admin")},{value:"year",label:Object(i.__)("Year to Date","woocommerce-admin")},{value:"last_year",label:Object(i.__)("Last Year","woocommerce-admin")},{value:"custom",label:Object(i.__)("Custom","woocommerce-admin")}],s=[{value:"previous_period",label:Object(i.__)("Previous Period","woocommerce-admin")},{value:"previous_year",label:Object(i.__)("Previous Year","woocommerce-admin")}],d=function(e,r){if(e=e.format(u),"start"===r)return e+"T00:00:00";if("now"===r)return e+"T"+n()().format("HH:mm:00");if("end"===r)return e+"T23:59:59";throw new Error("appendTimestamp requires second parameter to be either `start`, `now` or `end`")};function f(e,r){if(n.a.isMoment(r))return r.isValid()?r:null;if("string"==typeof r){var t=n()(r,[u,e],!0);return t.isValid()?t:null}throw new Error("toMoment requires a string to be passed as an argument")}function p(e,r){var t=e.year()===r.year(),o=t&&e.month()===r.month(),n=t&&o&&e.isSame(r,"day"),a=Object(i.__)("MMM D, YYYY","woocommerce-admin"),c=Object(i.__)("MMM D","woocommerce-admin");if(n)return e.format(a);if(o){var u=e.date();return e.format(a).replace(u,"".concat(u," - ").concat(r.date()))}return t?"".concat(e.format(c)," - ").concat(r.format(a)):"".concat(e.format(a)," - ").concat(r.format(a))}function m(e,r){var t,o,a=n()().startOf(e).subtract(1,e),i=a.clone().endOf(e);if("previous_period"===r)if("year"===e)o=(t=n()().startOf(e).subtract(2,e)).clone().endOf(e);else{var c=i.diff(a,"days");t=(o=a.clone().subtract(1,"days")).clone().subtract(c,"days")}else t=a.clone().subtract(1,"years"),o=i.clone().subtract(1,"years");return{primaryStart:a,primaryEnd:i,secondaryStart:t,secondaryEnd:o}}function y(e,r){var t,o,a=n()().startOf(e),i=n()(),c=i.diff(a,"days");return"previous_period"===r?(t=a.clone().subtract(1,e),o=i.clone().subtract(1,e)):o=(t=a.clone().subtract(1,"years")).clone().add(c+1,"days").subtract(1,"seconds"),{primaryStart:a,primaryEnd:i,secondaryStart:t,secondaryEnd:o}}function b(e,r,t,o){switch(e){case"today":return y("day",r);case"yesterday":return m("day",r);case"week":return y("week",r);case"last_week":return m("week",r);case"month":return y("month",r);case"last_month":return m("month",r);case"quarter":return y("quarter",r);case"last_quarter":return m("quarter",r);case"year":return y("year",r);case"last_year":return m("year",r);case"custom":var n=o.diff(t,"days");if("previous_period"===r){var a=t.clone().subtract(1,"days");return{primaryStart:t,primaryEnd:o,secondaryStart:a.clone().subtract(n,"days"),secondaryEnd:a}}return{primaryStart:t,primaryEnd:o,secondaryStart:t.clone().subtract(1,"years"),secondaryEnd:o.clone().subtract(1,"years")}}}var h=function(e){var r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"period=month&compare=previous_year",t=e.period,o=e.compare,a=e.after,i=e.before;if(t&&o)return{period:t,compare:o,after:a?n()(a):null,before:i?n()(i):null};var u=Object(c.parse)(r.replace(/&amp;/g,"&"));return{period:u.period,compare:u.compare,after:u.after?n()(u.after):null,before:u.before?n()(u.before):null}},v=function(e){var r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"period=month&compare=previous_year",t=h(e,r),o=t.period,n=t.compare,i=t.after,c=t.before,u=b(o,n,i,c),d=u.primaryStart,f=u.primaryEnd,m=u.secondaryStart,y=u.secondaryEnd;return{primary:{label:Object(a.find)(l,(function(e){return e.value===o})).label,range:p(d,f),after:d,before:f},secondary:{label:Object(a.find)(s,(function(e){return e.value===n})).label,range:p(m,y),after:m,before:y}}},w=function(e,r){var t=n()(e),o=n()(r);return t.diff(o,"days")},g=function(e,r,t,o,a){var i=n()(e);if("previous_year"===o)return i.clone().subtract(1,"years");var c=n()(r),u=n()(t),l=c.diff(u,a);return i.clone().subtract(l,a)};function O(e){var r=[];if("custom"===e.period){var t=v(e).primary,o=w(t.before,t.after);r=o>=365?["day","week","month","quarter","year"]:o>=90?["day","week","month","quarter"]:o>=28?["day","week","month"]:o>=7?["day","week"]:o>1&&o<7?["day"]:["hour","day"]}else switch(e.period){case"today":case"yesterday":r=["hour","day"];break;case"week":case"last_week":r=["day"];break;case"month":case"last_month":r=["day","week"];break;case"quarter":case"last_quarter":r=["day","week","month"];break;case"year":case"last_year":r=["day","week","month","quarter"];break;default:r=["day"]}return r}function j(e){var r=O(e),t=r[0],o=e.interval||t;return e.interval&&!r.includes(e.interval)&&(o=t),o}function _(e){var r=e.chartType;return["line","bar"].includes(r)?r:"line"}var k=63,Y=9,D="m/d/Y";function S(e){var r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:0,t="%B %-d, %Y",o="%B %-d, %Y",n="%Y-%m-%d",a="%b %Y",c=D;switch(e){case"hour":t="%_I%p %B %-d, %Y",o="%_I%p %b %-d, %Y",n="%_I%p",a="%b %-d, %Y",c="h A";break;case"day":r<k?n="%-d":(n="%b",a="%Y");break;case"week":r<Y?(n="%-d",a="%b %Y"):(n="%b",a="%Y"),t=Object(i.__)("Week of %B %-d, %Y","woocommerce-admin"),o=Object(i.__)("Week of %B %-d, %Y","woocommerce-admin");break;case"quarter":case"month":t="%B %Y",o="%B %Y",n="%b",a="%Y";break;case"year":t="%Y",o="%Y",n="%Y"}return{screenReaderFormat:t,tooltipLabelFormat:o,xFormat:n,x2Format:a,tableFormat:c}}function x(e){var r=e.userLocale,t=e.weekdaysShort;"en"!==n.a.locale()&&n.a.updateLocale(r,{longDateFormat:{L:Object(i.__)("MM/DD/YYYY","woocommerce-admin"),LL:Object(i.__)("MMMM D, YYYY","woocommerce-admin"),LLL:Object(i.__)("D MMMM YYYY LT","woocommerce-admin"),LLLL:Object(i.__)("dddd, D MMMM YYYY LT","woocommerce-admin"),LT:Object(i.__)("HH:mm","woocommerce-admin")},weekdaysMin:t})}var L={invalid:Object(i.__)("Invalid date","woocommerce-admin"),future:Object(i.__)("Select a date in the past","woocommerce-admin"),startAfterEnd:Object(i.__)("Start date must be before end date","woocommerce-admin"),endBeforeStart:Object(i.__)("Start date must be before end date","woocommerce-admin")};function M(e,r,t,o,a){var i=f(a,r);return i?n()().isBefore(i,"day")?{date:null,error:L.future}:"after"===e&&t&&i.isAfter(t,"day")?{date:null,error:L.startAfterEnd}:"before"===e&&o&&i.isBefore(o,"day")?{date:null,error:L.endBeforeStart}:{date:i}:{date:null,error:L.invalid}}},77:function(e,r,t){"use strict";var o=String.prototype.replace,n=/%20/g,a=t(62),i={RFC1738:"RFC1738",RFC3986:"RFC3986"};e.exports=a.assign({default:i.RFC3986,formatters:{RFC1738:function(e){return o.call(e,n,"+")},RFC3986:function(e){return String(e)}}},i)},92:function(e,r,t){"use strict";var o=t(62),n=t(77),a=Object.prototype.hasOwnProperty,i={brackets:function(e){return e+"[]"},comma:"comma",indices:function(e,r){return e+"["+r+"]"},repeat:function(e){return e}},c=Array.isArray,u=Array.prototype.push,l=function(e,r){u.apply(e,c(r)?r:[r])},s=Date.prototype.toISOString,d=n.default,f={addQueryPrefix:!1,allowDots:!1,charset:"utf-8",charsetSentinel:!1,delimiter:"&",encode:!0,encoder:o.encode,encodeValuesOnly:!1,format:d,formatter:n.formatters[d],indices:!1,serializeDate:function(e){return s.call(e)},skipNulls:!1,strictNullHandling:!1},p=function e(r,t,n,a,i,u,s,d,p,m,y,b,h){var v,w=r;if("function"==typeof s?w=s(t,w):w instanceof Date?w=m(w):"comma"===n&&c(w)&&(w=w.join(",")),null===w){if(a)return u&&!b?u(t,f.encoder,h,"key"):t;w=""}if("string"==typeof(v=w)||"number"==typeof v||"boolean"==typeof v||"symbol"==typeof v||"bigint"==typeof v||o.isBuffer(w))return u?[y(b?t:u(t,f.encoder,h,"key"))+"="+y(u(w,f.encoder,h,"value"))]:[y(t)+"="+y(String(w))];var g,O=[];if(void 0===w)return O;if(c(s))g=s;else{var j=Object.keys(w);g=d?j.sort(d):j}for(var _=0;_<g.length;++_){var k=g[_];i&&null===w[k]||(c(w)?l(O,e(w[k],"function"==typeof n?n(t,k):t,n,a,i,u,s,d,p,m,y,b,h)):l(O,e(w[k],t+(p?"."+k:"["+k+"]"),n,a,i,u,s,d,p,m,y,b,h)))}return O};e.exports=function(e,r){var t,o=e,u=function(e){if(!e)return f;if(null!==e.encoder&&void 0!==e.encoder&&"function"!=typeof e.encoder)throw new TypeError("Encoder has to be a function.");var r=e.charset||f.charset;if(void 0!==e.charset&&"utf-8"!==e.charset&&"iso-8859-1"!==e.charset)throw new TypeError("The charset option must be either utf-8, iso-8859-1, or undefined");var t=n.default;if(void 0!==e.format){if(!a.call(n.formatters,e.format))throw new TypeError("Unknown format option provided.");t=e.format}var o=n.formatters[t],i=f.filter;return("function"==typeof e.filter||c(e.filter))&&(i=e.filter),{addQueryPrefix:"boolean"==typeof e.addQueryPrefix?e.addQueryPrefix:f.addQueryPrefix,allowDots:void 0===e.allowDots?f.allowDots:!!e.allowDots,charset:r,charsetSentinel:"boolean"==typeof e.charsetSentinel?e.charsetSentinel:f.charsetSentinel,delimiter:void 0===e.delimiter?f.delimiter:e.delimiter,encode:"boolean"==typeof e.encode?e.encode:f.encode,encoder:"function"==typeof e.encoder?e.encoder:f.encoder,encodeValuesOnly:"boolean"==typeof e.encodeValuesOnly?e.encodeValuesOnly:f.encodeValuesOnly,filter:i,formatter:o,serializeDate:"function"==typeof e.serializeDate?e.serializeDate:f.serializeDate,skipNulls:"boolean"==typeof e.skipNulls?e.skipNulls:f.skipNulls,sort:"function"==typeof e.sort?e.sort:null,strictNullHandling:"boolean"==typeof e.strictNullHandling?e.strictNullHandling:f.strictNullHandling}}(r);"function"==typeof u.filter?o=(0,u.filter)("",o):c(u.filter)&&(t=u.filter);var s,d=[];if("object"!=typeof o||null===o)return"";s=r&&r.arrayFormat in i?r.arrayFormat:r&&"indices"in r?r.indices?"indices":"repeat":"indices";var m=i[s];t||(t=Object.keys(o)),u.sort&&t.sort(u.sort);for(var y=0;y<t.length;++y){var b=t[y];u.skipNulls&&null===o[b]||l(d,p(o[b],b,m,u.strictNullHandling,u.skipNulls,u.encode?u.encoder:null,u.filter,u.sort,u.allowDots,u.serializeDate,u.formatter,u.encodeValuesOnly,u.charset))}var h=d.join(u.delimiter),v=!0===u.addQueryPrefix?"?":"";return u.charsetSentinel&&("iso-8859-1"===u.charset?v+="utf8=%26%2310003%3B&":v+="utf8=%E2%9C%93&"),h.length>0?v+h:""}},93:function(e,r,t){"use strict";var o=t(62),n=Object.prototype.hasOwnProperty,a=Array.isArray,i={allowDots:!1,allowPrototypes:!1,arrayLimit:20,charset:"utf-8",charsetSentinel:!1,comma:!1,decoder:o.decode,delimiter:"&",depth:5,ignoreQueryPrefix:!1,interpretNumericEntities:!1,parameterLimit:1e3,parseArrays:!0,plainObjects:!1,strictNullHandling:!1},c=function(e){return e.replace(/&#(\d+);/g,(function(e,r){return String.fromCharCode(parseInt(r,10))}))},u=function(e,r,t){if(e){var o=t.allowDots?e.replace(/\.([^.[]+)/g,"[$1]"):e,a=/(\[[^[\]]*])/g,i=t.depth>0&&/(\[[^[\]]*])/.exec(o),c=i?o.slice(0,i.index):o,u=[];if(c){if(!t.plainObjects&&n.call(Object.prototype,c)&&!t.allowPrototypes)return;u.push(c)}for(var l=0;t.depth>0&&null!==(i=a.exec(o))&&l<t.depth;){if(l+=1,!t.plainObjects&&n.call(Object.prototype,i[1].slice(1,-1))&&!t.allowPrototypes)return;u.push(i[1])}return i&&u.push("["+o.slice(i.index)+"]"),function(e,r,t){for(var o=r,n=e.length-1;n>=0;--n){var a,i=e[n];if("[]"===i&&t.parseArrays)a=[].concat(o);else{a=t.plainObjects?Object.create(null):{};var c="["===i.charAt(0)&&"]"===i.charAt(i.length-1)?i.slice(1,-1):i,u=parseInt(c,10);t.parseArrays||""!==c?!isNaN(u)&&i!==c&&String(u)===c&&u>=0&&t.parseArrays&&u<=t.arrayLimit?(a=[])[u]=o:a[c]=o:a={0:o}}o=a}return o}(u,r,t)}};e.exports=function(e,r){var t=function(e){if(!e)return i;if(null!==e.decoder&&void 0!==e.decoder&&"function"!=typeof e.decoder)throw new TypeError("Decoder has to be a function.");if(void 0!==e.charset&&"utf-8"!==e.charset&&"iso-8859-1"!==e.charset)throw new Error("The charset option must be either utf-8, iso-8859-1, or undefined");var r=void 0===e.charset?i.charset:e.charset;return{allowDots:void 0===e.allowDots?i.allowDots:!!e.allowDots,allowPrototypes:"boolean"==typeof e.allowPrototypes?e.allowPrototypes:i.allowPrototypes,arrayLimit:"number"==typeof e.arrayLimit?e.arrayLimit:i.arrayLimit,charset:r,charsetSentinel:"boolean"==typeof e.charsetSentinel?e.charsetSentinel:i.charsetSentinel,comma:"boolean"==typeof e.comma?e.comma:i.comma,decoder:"function"==typeof e.decoder?e.decoder:i.decoder,delimiter:"string"==typeof e.delimiter||o.isRegExp(e.delimiter)?e.delimiter:i.delimiter,depth:"number"==typeof e.depth||!1===e.depth?+e.depth:i.depth,ignoreQueryPrefix:!0===e.ignoreQueryPrefix,interpretNumericEntities:"boolean"==typeof e.interpretNumericEntities?e.interpretNumericEntities:i.interpretNumericEntities,parameterLimit:"number"==typeof e.parameterLimit?e.parameterLimit:i.parameterLimit,parseArrays:!1!==e.parseArrays,plainObjects:"boolean"==typeof e.plainObjects?e.plainObjects:i.plainObjects,strictNullHandling:"boolean"==typeof e.strictNullHandling?e.strictNullHandling:i.strictNullHandling}}(r);if(""===e||null==e)return t.plainObjects?Object.create(null):{};for(var l="string"==typeof e?function(e,r){var t,u={},l=r.ignoreQueryPrefix?e.replace(/^\?/,""):e,s=r.parameterLimit===1/0?void 0:r.parameterLimit,d=l.split(r.delimiter,s),f=-1,p=r.charset;if(r.charsetSentinel)for(t=0;t<d.length;++t)0===d[t].indexOf("utf8=")&&("utf8=%E2%9C%93"===d[t]?p="utf-8":"utf8=%26%2310003%3B"===d[t]&&(p="iso-8859-1"),f=t,t=d.length);for(t=0;t<d.length;++t)if(t!==f){var m,y,b=d[t],h=b.indexOf("]="),v=-1===h?b.indexOf("="):h+1;-1===v?(m=r.decoder(b,i.decoder,p,"key"),y=r.strictNullHandling?null:""):(m=r.decoder(b.slice(0,v),i.decoder,p,"key"),y=r.decoder(b.slice(v+1),i.decoder,p,"value")),y&&r.interpretNumericEntities&&"iso-8859-1"===p&&(y=c(y)),y&&"string"==typeof y&&r.comma&&y.indexOf(",")>-1&&(y=y.split(",")),b.indexOf("[]=")>-1&&(y=a(y)?[y]:y),n.call(u,m)?u[m]=o.combine(u[m],y):u[m]=y}return u}(e,t):e,s=t.plainObjects?Object.create(null):{},d=Object.keys(l),f=0;f<d.length;++f){var p=d[f],m=u(p,l[p],t);s=o.merge(s,m,t)}return o.compact(s)}}});
+this["wc"] = this["wc"] || {}; this["wc"]["date"] =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 696);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 111:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(71);
+var formats = __webpack_require__(86);
+var has = Object.prototype.hasOwnProperty;
+
+var arrayPrefixGenerators = {
+    brackets: function brackets(prefix) {
+        return prefix + '[]';
+    },
+    comma: 'comma',
+    indices: function indices(prefix, key) {
+        return prefix + '[' + key + ']';
+    },
+    repeat: function repeat(prefix) {
+        return prefix;
+    }
+};
+
+var isArray = Array.isArray;
+var push = Array.prototype.push;
+var pushToArray = function (arr, valueOrArray) {
+    push.apply(arr, isArray(valueOrArray) ? valueOrArray : [valueOrArray]);
+};
+
+var toISO = Date.prototype.toISOString;
+
+var defaultFormat = formats['default'];
+var defaults = {
+    addQueryPrefix: false,
+    allowDots: false,
+    charset: 'utf-8',
+    charsetSentinel: false,
+    delimiter: '&',
+    encode: true,
+    encoder: utils.encode,
+    encodeValuesOnly: false,
+    format: defaultFormat,
+    formatter: formats.formatters[defaultFormat],
+    // deprecated
+    indices: false,
+    serializeDate: function serializeDate(date) {
+        return toISO.call(date);
+    },
+    skipNulls: false,
+    strictNullHandling: false
+};
+
+var isNonNullishPrimitive = function isNonNullishPrimitive(v) {
+    return typeof v === 'string'
+        || typeof v === 'number'
+        || typeof v === 'boolean'
+        || typeof v === 'symbol'
+        || typeof v === 'bigint';
+};
+
+var stringify = function stringify(
+    object,
+    prefix,
+    generateArrayPrefix,
+    strictNullHandling,
+    skipNulls,
+    encoder,
+    filter,
+    sort,
+    allowDots,
+    serializeDate,
+    formatter,
+    encodeValuesOnly,
+    charset
+) {
+    var obj = object;
+    if (typeof filter === 'function') {
+        obj = filter(prefix, obj);
+    } else if (obj instanceof Date) {
+        obj = serializeDate(obj);
+    } else if (generateArrayPrefix === 'comma' && isArray(obj)) {
+        obj = obj.join(',');
+    }
+
+    if (obj === null) {
+        if (strictNullHandling) {
+            return encoder && !encodeValuesOnly ? encoder(prefix, defaults.encoder, charset, 'key') : prefix;
+        }
+
+        obj = '';
+    }
+
+    if (isNonNullishPrimitive(obj) || utils.isBuffer(obj)) {
+        if (encoder) {
+            var keyValue = encodeValuesOnly ? prefix : encoder(prefix, defaults.encoder, charset, 'key');
+            return [formatter(keyValue) + '=' + formatter(encoder(obj, defaults.encoder, charset, 'value'))];
+        }
+        return [formatter(prefix) + '=' + formatter(String(obj))];
+    }
+
+    var values = [];
+
+    if (typeof obj === 'undefined') {
+        return values;
+    }
+
+    var objKeys;
+    if (isArray(filter)) {
+        objKeys = filter;
+    } else {
+        var keys = Object.keys(obj);
+        objKeys = sort ? keys.sort(sort) : keys;
+    }
+
+    for (var i = 0; i < objKeys.length; ++i) {
+        var key = objKeys[i];
+
+        if (skipNulls && obj[key] === null) {
+            continue;
+        }
+
+        if (isArray(obj)) {
+            pushToArray(values, stringify(
+                obj[key],
+                typeof generateArrayPrefix === 'function' ? generateArrayPrefix(prefix, key) : prefix,
+                generateArrayPrefix,
+                strictNullHandling,
+                skipNulls,
+                encoder,
+                filter,
+                sort,
+                allowDots,
+                serializeDate,
+                formatter,
+                encodeValuesOnly,
+                charset
+            ));
+        } else {
+            pushToArray(values, stringify(
+                obj[key],
+                prefix + (allowDots ? '.' + key : '[' + key + ']'),
+                generateArrayPrefix,
+                strictNullHandling,
+                skipNulls,
+                encoder,
+                filter,
+                sort,
+                allowDots,
+                serializeDate,
+                formatter,
+                encodeValuesOnly,
+                charset
+            ));
+        }
+    }
+
+    return values;
+};
+
+var normalizeStringifyOptions = function normalizeStringifyOptions(opts) {
+    if (!opts) {
+        return defaults;
+    }
+
+    if (opts.encoder !== null && opts.encoder !== undefined && typeof opts.encoder !== 'function') {
+        throw new TypeError('Encoder has to be a function.');
+    }
+
+    var charset = opts.charset || defaults.charset;
+    if (typeof opts.charset !== 'undefined' && opts.charset !== 'utf-8' && opts.charset !== 'iso-8859-1') {
+        throw new TypeError('The charset option must be either utf-8, iso-8859-1, or undefined');
+    }
+
+    var format = formats['default'];
+    if (typeof opts.format !== 'undefined') {
+        if (!has.call(formats.formatters, opts.format)) {
+            throw new TypeError('Unknown format option provided.');
+        }
+        format = opts.format;
+    }
+    var formatter = formats.formatters[format];
+
+    var filter = defaults.filter;
+    if (typeof opts.filter === 'function' || isArray(opts.filter)) {
+        filter = opts.filter;
+    }
+
+    return {
+        addQueryPrefix: typeof opts.addQueryPrefix === 'boolean' ? opts.addQueryPrefix : defaults.addQueryPrefix,
+        allowDots: typeof opts.allowDots === 'undefined' ? defaults.allowDots : !!opts.allowDots,
+        charset: charset,
+        charsetSentinel: typeof opts.charsetSentinel === 'boolean' ? opts.charsetSentinel : defaults.charsetSentinel,
+        delimiter: typeof opts.delimiter === 'undefined' ? defaults.delimiter : opts.delimiter,
+        encode: typeof opts.encode === 'boolean' ? opts.encode : defaults.encode,
+        encoder: typeof opts.encoder === 'function' ? opts.encoder : defaults.encoder,
+        encodeValuesOnly: typeof opts.encodeValuesOnly === 'boolean' ? opts.encodeValuesOnly : defaults.encodeValuesOnly,
+        filter: filter,
+        formatter: formatter,
+        serializeDate: typeof opts.serializeDate === 'function' ? opts.serializeDate : defaults.serializeDate,
+        skipNulls: typeof opts.skipNulls === 'boolean' ? opts.skipNulls : defaults.skipNulls,
+        sort: typeof opts.sort === 'function' ? opts.sort : null,
+        strictNullHandling: typeof opts.strictNullHandling === 'boolean' ? opts.strictNullHandling : defaults.strictNullHandling
+    };
+};
+
+module.exports = function (object, opts) {
+    var obj = object;
+    var options = normalizeStringifyOptions(opts);
+
+    var objKeys;
+    var filter;
+
+    if (typeof options.filter === 'function') {
+        filter = options.filter;
+        obj = filter('', obj);
+    } else if (isArray(options.filter)) {
+        filter = options.filter;
+        objKeys = filter;
+    }
+
+    var keys = [];
+
+    if (typeof obj !== 'object' || obj === null) {
+        return '';
+    }
+
+    var arrayFormat;
+    if (opts && opts.arrayFormat in arrayPrefixGenerators) {
+        arrayFormat = opts.arrayFormat;
+    } else if (opts && 'indices' in opts) {
+        arrayFormat = opts.indices ? 'indices' : 'repeat';
+    } else {
+        arrayFormat = 'indices';
+    }
+
+    var generateArrayPrefix = arrayPrefixGenerators[arrayFormat];
+
+    if (!objKeys) {
+        objKeys = Object.keys(obj);
+    }
+
+    if (options.sort) {
+        objKeys.sort(options.sort);
+    }
+
+    for (var i = 0; i < objKeys.length; ++i) {
+        var key = objKeys[i];
+
+        if (options.skipNulls && obj[key] === null) {
+            continue;
+        }
+        pushToArray(keys, stringify(
+            obj[key],
+            key,
+            generateArrayPrefix,
+            options.strictNullHandling,
+            options.skipNulls,
+            options.encode ? options.encoder : null,
+            options.filter,
+            options.sort,
+            options.allowDots,
+            options.serializeDate,
+            options.formatter,
+            options.encodeValuesOnly,
+            options.charset
+        ));
+    }
+
+    var joined = keys.join(options.delimiter);
+    var prefix = options.addQueryPrefix === true ? '?' : '';
+
+    if (options.charsetSentinel) {
+        if (options.charset === 'iso-8859-1') {
+            // encodeURIComponent('&#10003;'), the "numeric entity" representation of a checkmark
+            prefix += 'utf8=%26%2310003%3B&';
+        } else {
+            // encodeURIComponent('✓')
+            prefix += 'utf8=%E2%9C%93&';
+        }
+    }
+
+    return joined.length > 0 ? prefix + joined : '';
+};
+
+
+/***/ }),
+
+/***/ 112:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(71);
+
+var has = Object.prototype.hasOwnProperty;
+var isArray = Array.isArray;
+
+var defaults = {
+    allowDots: false,
+    allowPrototypes: false,
+    arrayLimit: 20,
+    charset: 'utf-8',
+    charsetSentinel: false,
+    comma: false,
+    decoder: utils.decode,
+    delimiter: '&',
+    depth: 5,
+    ignoreQueryPrefix: false,
+    interpretNumericEntities: false,
+    parameterLimit: 1000,
+    parseArrays: true,
+    plainObjects: false,
+    strictNullHandling: false
+};
+
+var interpretNumericEntities = function (str) {
+    return str.replace(/&#(\d+);/g, function ($0, numberStr) {
+        return String.fromCharCode(parseInt(numberStr, 10));
+    });
+};
+
+var parseArrayValue = function (val, options) {
+    if (val && typeof val === 'string' && options.comma && val.indexOf(',') > -1) {
+        return val.split(',');
+    }
+
+    return val;
+};
+
+var maybeMap = function maybeMap(val, fn) {
+    if (isArray(val)) {
+        var mapped = [];
+        for (var i = 0; i < val.length; i += 1) {
+            mapped.push(fn(val[i]));
+        }
+        return mapped;
+    }
+    return fn(val);
+};
+
+// This is what browsers will submit when the ✓ character occurs in an
+// application/x-www-form-urlencoded body and the encoding of the page containing
+// the form is iso-8859-1, or when the submitted form has an accept-charset
+// attribute of iso-8859-1. Presumably also with other charsets that do not contain
+// the ✓ character, such as us-ascii.
+var isoSentinel = 'utf8=%26%2310003%3B'; // encodeURIComponent('&#10003;')
+
+// These are the percent-encoded utf-8 octets representing a checkmark, indicating that the request actually is utf-8 encoded.
+var charsetSentinel = 'utf8=%E2%9C%93'; // encodeURIComponent('✓')
+
+var parseValues = function parseQueryStringValues(str, options) {
+    var obj = {};
+    var cleanStr = options.ignoreQueryPrefix ? str.replace(/^\?/, '') : str;
+    var limit = options.parameterLimit === Infinity ? undefined : options.parameterLimit;
+    var parts = cleanStr.split(options.delimiter, limit);
+    var skipIndex = -1; // Keep track of where the utf8 sentinel was found
+    var i;
+
+    var charset = options.charset;
+    if (options.charsetSentinel) {
+        for (i = 0; i < parts.length; ++i) {
+            if (parts[i].indexOf('utf8=') === 0) {
+                if (parts[i] === charsetSentinel) {
+                    charset = 'utf-8';
+                } else if (parts[i] === isoSentinel) {
+                    charset = 'iso-8859-1';
+                }
+                skipIndex = i;
+                i = parts.length; // The eslint settings do not allow break;
+            }
+        }
+    }
+
+    for (i = 0; i < parts.length; ++i) {
+        if (i === skipIndex) {
+            continue;
+        }
+        var part = parts[i];
+
+        var bracketEqualsPos = part.indexOf(']=');
+        var pos = bracketEqualsPos === -1 ? part.indexOf('=') : bracketEqualsPos + 1;
+
+        var key, val;
+        if (pos === -1) {
+            key = options.decoder(part, defaults.decoder, charset, 'key');
+            val = options.strictNullHandling ? null : '';
+        } else {
+            key = options.decoder(part.slice(0, pos), defaults.decoder, charset, 'key');
+            val = maybeMap(
+                parseArrayValue(part.slice(pos + 1), options),
+                function (encodedVal) {
+                    return options.decoder(encodedVal, defaults.decoder, charset, 'value');
+                }
+            );
+        }
+
+        if (val && options.interpretNumericEntities && charset === 'iso-8859-1') {
+            val = interpretNumericEntities(val);
+        }
+
+        if (part.indexOf('[]=') > -1) {
+            val = isArray(val) ? [val] : val;
+        }
+
+        if (has.call(obj, key)) {
+            obj[key] = utils.combine(obj[key], val);
+        } else {
+            obj[key] = val;
+        }
+    }
+
+    return obj;
+};
+
+var parseObject = function (chain, val, options, valuesParsed) {
+    var leaf = valuesParsed ? val : parseArrayValue(val, options);
+
+    for (var i = chain.length - 1; i >= 0; --i) {
+        var obj;
+        var root = chain[i];
+
+        if (root === '[]' && options.parseArrays) {
+            obj = [].concat(leaf);
+        } else {
+            obj = options.plainObjects ? Object.create(null) : {};
+            var cleanRoot = root.charAt(0) === '[' && root.charAt(root.length - 1) === ']' ? root.slice(1, -1) : root;
+            var index = parseInt(cleanRoot, 10);
+            if (!options.parseArrays && cleanRoot === '') {
+                obj = { 0: leaf };
+            } else if (
+                !isNaN(index)
+                && root !== cleanRoot
+                && String(index) === cleanRoot
+                && index >= 0
+                && (options.parseArrays && index <= options.arrayLimit)
+            ) {
+                obj = [];
+                obj[index] = leaf;
+            } else {
+                obj[cleanRoot] = leaf;
+            }
+        }
+
+        leaf = obj; // eslint-disable-line no-param-reassign
+    }
+
+    return leaf;
+};
+
+var parseKeys = function parseQueryStringKeys(givenKey, val, options, valuesParsed) {
+    if (!givenKey) {
+        return;
+    }
+
+    // Transform dot notation to bracket notation
+    var key = options.allowDots ? givenKey.replace(/\.([^.[]+)/g, '[$1]') : givenKey;
+
+    // The regex chunks
+
+    var brackets = /(\[[^[\]]*])/;
+    var child = /(\[[^[\]]*])/g;
+
+    // Get the parent
+
+    var segment = options.depth > 0 && brackets.exec(key);
+    var parent = segment ? key.slice(0, segment.index) : key;
+
+    // Stash the parent if it exists
+
+    var keys = [];
+    if (parent) {
+        // If we aren't using plain objects, optionally prefix keys that would overwrite object prototype properties
+        if (!options.plainObjects && has.call(Object.prototype, parent)) {
+            if (!options.allowPrototypes) {
+                return;
+            }
+        }
+
+        keys.push(parent);
+    }
+
+    // Loop through children appending to the array until we hit depth
+
+    var i = 0;
+    while (options.depth > 0 && (segment = child.exec(key)) !== null && i < options.depth) {
+        i += 1;
+        if (!options.plainObjects && has.call(Object.prototype, segment[1].slice(1, -1))) {
+            if (!options.allowPrototypes) {
+                return;
+            }
+        }
+        keys.push(segment[1]);
+    }
+
+    // If there's a remainder, just add whatever is left
+
+    if (segment) {
+        keys.push('[' + key.slice(segment.index) + ']');
+    }
+
+    return parseObject(keys, val, options, valuesParsed);
+};
+
+var normalizeParseOptions = function normalizeParseOptions(opts) {
+    if (!opts) {
+        return defaults;
+    }
+
+    if (opts.decoder !== null && opts.decoder !== undefined && typeof opts.decoder !== 'function') {
+        throw new TypeError('Decoder has to be a function.');
+    }
+
+    if (typeof opts.charset !== 'undefined' && opts.charset !== 'utf-8' && opts.charset !== 'iso-8859-1') {
+        throw new TypeError('The charset option must be either utf-8, iso-8859-1, or undefined');
+    }
+    var charset = typeof opts.charset === 'undefined' ? defaults.charset : opts.charset;
+
+    return {
+        allowDots: typeof opts.allowDots === 'undefined' ? defaults.allowDots : !!opts.allowDots,
+        allowPrototypes: typeof opts.allowPrototypes === 'boolean' ? opts.allowPrototypes : defaults.allowPrototypes,
+        arrayLimit: typeof opts.arrayLimit === 'number' ? opts.arrayLimit : defaults.arrayLimit,
+        charset: charset,
+        charsetSentinel: typeof opts.charsetSentinel === 'boolean' ? opts.charsetSentinel : defaults.charsetSentinel,
+        comma: typeof opts.comma === 'boolean' ? opts.comma : defaults.comma,
+        decoder: typeof opts.decoder === 'function' ? opts.decoder : defaults.decoder,
+        delimiter: typeof opts.delimiter === 'string' || utils.isRegExp(opts.delimiter) ? opts.delimiter : defaults.delimiter,
+        // eslint-disable-next-line no-implicit-coercion, no-extra-parens
+        depth: (typeof opts.depth === 'number' || opts.depth === false) ? +opts.depth : defaults.depth,
+        ignoreQueryPrefix: opts.ignoreQueryPrefix === true,
+        interpretNumericEntities: typeof opts.interpretNumericEntities === 'boolean' ? opts.interpretNumericEntities : defaults.interpretNumericEntities,
+        parameterLimit: typeof opts.parameterLimit === 'number' ? opts.parameterLimit : defaults.parameterLimit,
+        parseArrays: opts.parseArrays !== false,
+        plainObjects: typeof opts.plainObjects === 'boolean' ? opts.plainObjects : defaults.plainObjects,
+        strictNullHandling: typeof opts.strictNullHandling === 'boolean' ? opts.strictNullHandling : defaults.strictNullHandling
+    };
+};
+
+module.exports = function (str, opts) {
+    var options = normalizeParseOptions(opts);
+
+    if (str === '' || str === null || typeof str === 'undefined') {
+        return options.plainObjects ? Object.create(null) : {};
+    }
+
+    var tempObj = typeof str === 'string' ? parseValues(str, options) : str;
+    var obj = options.plainObjects ? Object.create(null) : {};
+
+    // Iterate over the keys and setup the new object
+
+    var keys = Object.keys(tempObj);
+    for (var i = 0; i < keys.length; ++i) {
+        var key = keys[i];
+        var newObj = parseKeys(key, tempObj[key], options, typeof str === 'string');
+        obj = utils.merge(obj, newObj, options);
+    }
+
+    return utils.compact(obj);
+};
+
+
+/***/ }),
+
+/***/ 12:
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["moment"]; }());
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["lodash"]; }());
+
+/***/ }),
+
+/***/ 3:
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["i18n"]; }());
+
+/***/ }),
+
+/***/ 58:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var stringify = __webpack_require__(111);
+var parse = __webpack_require__(112);
+var formats = __webpack_require__(86);
+
+module.exports = {
+    formats: formats,
+    parse: parse,
+    stringify: stringify
+};
+
+
+/***/ }),
+
+/***/ 696:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isoDateFormat", function() { return isoDateFormat; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "presetValues", function() { return presetValues; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "periods", function() { return periods; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appendTimestamp", function() { return appendTimestamp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toMoment", function() { return toMoment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getRangeLabel", function() { return getRangeLabel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLastPeriod", function() { return getLastPeriod; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrentPeriod", function() { return getCurrentPeriod; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDateParamsFromQuery", function() { return getDateParamsFromQuery; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrentDates", function() { return getCurrentDates; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDateDifferenceInDays", function() { return getDateDifferenceInDays; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPreviousDate", function() { return getPreviousDate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllowedIntervalsForQuery", function() { return getAllowedIntervalsForQuery; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getIntervalForQuery", function() { return getIntervalForQuery; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getChartTypeForQuery", function() { return getChartTypeForQuery; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dayTicksThreshold", function() { return dayTicksThreshold; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "weekTicksThreshold", function() { return weekTicksThreshold; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultTableDateFormat", function() { return defaultTableDateFormat; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDateFormatsForInterval", function() { return getDateFormatsForInterval; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadLocaleData", function() { return loadLocaleData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dateValidationMessages", function() { return dateValidationMessages; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validateDateInputForRange", function() { return validateDateInputForRange; });
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(12);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(58);
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(qs__WEBPACK_IMPORTED_MODULE_3__);
+/**
+ * External dependencies
+ */
+
+
+
+
+var isoDateFormat = 'YYYY-MM-DD';
+/**
+ * @typedef {Object} Moment - An instance of moment
+ * @typedef {Object} DateParams
+ */
+
+/**
+ * DateValue Object
+ *
+ * @typedef  {Object} DateValue - Describes the date range supplied by the date picker.
+ * @property {string} label - The translated value of the period.
+ * @property {string} range - The human readable value of a date range.
+ * @property {moment.Moment} after - Start of the date range.
+ * @property {moment.Moment} before - End of the date range.
+ */
+
+/**
+ * DateParams Object
+ *
+ * @typedef {Object} dateParams - date parameters derived from query parameters.
+ * @property {string} period - period value, ie `last_week`
+ * @property {string} compare - compare valuer, ie previous_year
+ * @param {moment.Moment|null} after - If the period supplied is "custom", this is the after date
+ * @param {moment.Moment|null} before - If the period supplied is "custom", this is the before date
+ */
+
+var presetValues = [{
+  value: 'today',
+  label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Today', 'woocommerce')
+}, {
+  value: 'yesterday',
+  label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Yesterday', 'woocommerce')
+}, {
+  value: 'week',
+  label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Week to Date', 'woocommerce')
+}, {
+  value: 'last_week',
+  label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Last Week', 'woocommerce')
+}, {
+  value: 'month',
+  label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Month to Date', 'woocommerce')
+}, {
+  value: 'last_month',
+  label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Last Month', 'woocommerce')
+}, {
+  value: 'quarter',
+  label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Quarter to Date', 'woocommerce')
+}, {
+  value: 'last_quarter',
+  label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Last Quarter', 'woocommerce')
+}, {
+  value: 'year',
+  label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Year to Date', 'woocommerce')
+}, {
+  value: 'last_year',
+  label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Last Year', 'woocommerce')
+}, {
+  value: 'custom',
+  label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Custom', 'woocommerce')
+}];
+var periods = [{
+  value: 'previous_period',
+  label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Previous Period', 'woocommerce')
+}, {
+  value: 'previous_year',
+  label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Previous Year', 'woocommerce')
+}];
+/**
+ * Adds timestamp to a string date.
+ *
+ * @param {moment.Moment} date - Date as a moment object.
+ * @param {string} timeOfDay - Either `start`, `now` or `end` of the day.
+ * @return {string} - String date with timestamp attached.
+ */
+
+var appendTimestamp = function appendTimestamp(date, timeOfDay) {
+  date = date.format(isoDateFormat);
+
+  if (timeOfDay === 'start') {
+    return date + 'T00:00:00';
+  }
+
+  if (timeOfDay === 'now') {
+    // Set seconds to 00 to avoid consecutives calls happening before the previous
+    // one finished.
+    return date + 'T' + moment__WEBPACK_IMPORTED_MODULE_0___default()().format('HH:mm:00');
+  }
+
+  if (timeOfDay === 'end') {
+    return date + 'T23:59:59';
+  }
+
+  throw new Error('appendTimestamp requires second parameter to be either `start`, `now` or `end`');
+};
+/**
+ * Convert a string to Moment object
+ *
+ * @param {string} format - localized date string format
+ * @param {string} str - date string
+ * @return {Moment|null} - Moment object representing given string
+ */
+
+function toMoment(format, str) {
+  if (moment__WEBPACK_IMPORTED_MODULE_0___default.a.isMoment(str)) {
+    return str.isValid() ? str : null;
+  }
+
+  if (typeof str === 'string') {
+    var date = moment__WEBPACK_IMPORTED_MODULE_0___default()(str, [isoDateFormat, format], true);
+    return date.isValid() ? date : null;
+  }
+
+  throw new Error('toMoment requires a string to be passed as an argument');
+}
+/**
+ * Given two dates, derive a string representation
+ *
+ * @param {Moment} after - start date
+ * @param {Moment} before - end date
+ * @return {string} - text value for the supplied date range
+ */
+
+function getRangeLabel(after, before) {
+  var isSameYear = after.year() === before.year();
+  var isSameMonth = isSameYear && after.month() === before.month();
+  var isSameDay = isSameYear && isSameMonth && after.isSame(before, 'day');
+
+  var fullDateFormat = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('MMM D, YYYY', 'woocommerce');
+
+  if (isSameDay) {
+    return after.format(fullDateFormat);
+  } else if (isSameMonth) {
+    var afterDate = after.date();
+    return after.format(fullDateFormat).replace(afterDate, "".concat(afterDate, " - ").concat(before.date()));
+  } else if (isSameYear) {
+    var monthDayFormat = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('MMM D', 'woocommerce');
+
+    return "".concat(after.format(monthDayFormat), " - ").concat(before.format(fullDateFormat));
+  }
+
+  return "".concat(after.format(fullDateFormat), " - ").concat(before.format(fullDateFormat));
+}
+/**
+ * Get a DateValue object for a period prior to the current period.
+ *
+ * @param {string} period - the chosen period
+ * @param {string} compare - `previous_period` or `previous_year`
+ * @return {DateValue} -  DateValue data about the selected period
+ */
+
+function getLastPeriod(period, compare) {
+  var primaryStart = moment__WEBPACK_IMPORTED_MODULE_0___default()().startOf(period).subtract(1, period);
+  var primaryEnd = primaryStart.clone().endOf(period);
+  var secondaryStart;
+  var secondaryEnd;
+
+  if (compare === 'previous_period') {
+    if (period === 'year') {
+      // Subtract two entire periods for years to take into account leap year
+      secondaryStart = moment__WEBPACK_IMPORTED_MODULE_0___default()().startOf(period).subtract(2, period);
+      secondaryEnd = secondaryStart.clone().endOf(period);
+    } else {
+      // Otherwise, use days in primary period to figure out how far to go back
+      var daysDiff = primaryEnd.diff(primaryStart, 'days');
+      secondaryEnd = primaryStart.clone().subtract(1, 'days');
+      secondaryStart = secondaryEnd.clone().subtract(daysDiff, 'days');
+    }
+  } else {
+    secondaryStart = primaryStart.clone().subtract(1, 'years');
+    secondaryEnd = primaryEnd.clone().subtract(1, 'years');
+  }
+
+  return {
+    primaryStart: primaryStart,
+    primaryEnd: primaryEnd,
+    secondaryStart: secondaryStart,
+    secondaryEnd: secondaryEnd
+  };
+}
+/**
+ * Get a DateValue object for a curent period. The period begins on the first day of the period,
+ * and ends on the current day.
+ *
+ * @param {string} period - the chosen period
+ * @param {string} compare - `previous_period` or `previous_year`
+ * @return {DateValue} -  DateValue data about the selected period
+ */
+
+function getCurrentPeriod(period, compare) {
+  var primaryStart = moment__WEBPACK_IMPORTED_MODULE_0___default()().startOf(period);
+  var primaryEnd = moment__WEBPACK_IMPORTED_MODULE_0___default()();
+  var daysSoFar = primaryEnd.diff(primaryStart, 'days');
+  var secondaryStart;
+  var secondaryEnd;
+
+  if (compare === 'previous_period') {
+    secondaryStart = primaryStart.clone().subtract(1, period);
+    secondaryEnd = primaryEnd.clone().subtract(1, period);
+  } else {
+    secondaryStart = primaryStart.clone().subtract(1, 'years'); // Set the end time to 23:59:59.
+
+    secondaryEnd = secondaryStart.clone().add(daysSoFar + 1, 'days').subtract(1, 'seconds');
+  }
+
+  return {
+    primaryStart: primaryStart,
+    primaryEnd: primaryEnd,
+    secondaryStart: secondaryStart,
+    secondaryEnd: secondaryEnd
+  };
+}
+/**
+ * Get a DateValue object for a period described by a period, compare value, and start/end
+ * dates, for custom dates.
+ *
+ * @param {string} period - the chosen period
+ * @param {string} compare - `previous_period` or `previous_year`
+ * @param {Moment} [after] - after date if custom period
+ * @param {Moment} [before] - before date if custom period
+ * @return {DateValue} - DateValue data about the selected period
+ */
+
+function getDateValue(period, compare, after, before) {
+  switch (period) {
+    case 'today':
+      return getCurrentPeriod('day', compare);
+
+    case 'yesterday':
+      return getLastPeriod('day', compare);
+
+    case 'week':
+      return getCurrentPeriod('week', compare);
+
+    case 'last_week':
+      return getLastPeriod('week', compare);
+
+    case 'month':
+      return getCurrentPeriod('month', compare);
+
+    case 'last_month':
+      return getLastPeriod('month', compare);
+
+    case 'quarter':
+      return getCurrentPeriod('quarter', compare);
+
+    case 'last_quarter':
+      return getLastPeriod('quarter', compare);
+
+    case 'year':
+      return getCurrentPeriod('year', compare);
+
+    case 'last_year':
+      return getLastPeriod('year', compare);
+
+    case 'custom':
+      var difference = before.diff(after, 'days');
+
+      if (compare === 'previous_period') {
+        var secondaryEnd = after.clone().subtract(1, 'days');
+        var secondaryStart = secondaryEnd.clone().subtract(difference, 'days');
+        return {
+          primaryStart: after,
+          primaryEnd: before,
+          secondaryStart: secondaryStart,
+          secondaryEnd: secondaryEnd
+        };
+      }
+
+      return {
+        primaryStart: after,
+        primaryEnd: before,
+        secondaryStart: after.clone().subtract(1, 'years'),
+        secondaryEnd: before.clone().subtract(1, 'years')
+      };
+  }
+}
+/**
+ * Add default date-related parameters to a query object
+ *
+ * @param {Object} query - query object
+ * @property {string} query.period - period value, ie `last_week`
+ * @property {string} query.compare - compare value, ie `previous_year`
+ * @property {string} query.after - date in iso date format, ie `2018-07-03`
+ * @property {string} query.before - date in iso date format, ie `2018-07-03`
+ * @param {string} defaultDateRange - the store's default date range
+ * @return {DateParams} - date parameters derived from query parameters with added defaults
+ */
+
+
+var getDateParamsFromQuery = function getDateParamsFromQuery(query) {
+  var defaultDateRange = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'period=month&compare=previous_year';
+  var period = query.period,
+      compare = query.compare,
+      after = query.after,
+      before = query.before;
+
+  if (period && compare) {
+    return {
+      period: period,
+      compare: compare,
+      after: after ? moment__WEBPACK_IMPORTED_MODULE_0___default()(after) : null,
+      before: before ? moment__WEBPACK_IMPORTED_MODULE_0___default()(before) : null
+    };
+  }
+
+  var queryDefaults = Object(qs__WEBPACK_IMPORTED_MODULE_3__["parse"])(defaultDateRange.replace(/&amp;/g, '&'));
+  return {
+    period: queryDefaults.period,
+    compare: queryDefaults.compare,
+    after: queryDefaults.after ? moment__WEBPACK_IMPORTED_MODULE_0___default()(queryDefaults.after) : null,
+    before: queryDefaults.before ? moment__WEBPACK_IMPORTED_MODULE_0___default()(queryDefaults.before) : null
+  };
+};
+/**
+ * Get Date Value Objects for a primary and secondary date range
+ *
+ * @param {Object} query - query object
+ * @property {string} query.period - period value, ie `last_week`
+ * @property {string} query.compare - compare value, ie `previous_year`
+ * @property {string} query.after - date in iso date format, ie `2018-07-03`
+ * @property {string} query.before - date in iso date format, ie `2018-07-03`
+ * @param {string} defaultDateRange - the store's default date range
+ * @return {{primary: DateValue, secondary: DateValue}} - Primary and secondary DateValue objects
+ */
+
+var getCurrentDates = function getCurrentDates(query) {
+  var defaultDateRange = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'period=month&compare=previous_year';
+
+  var _getDateParamsFromQue = getDateParamsFromQuery(query, defaultDateRange),
+      period = _getDateParamsFromQue.period,
+      compare = _getDateParamsFromQue.compare,
+      after = _getDateParamsFromQue.after,
+      before = _getDateParamsFromQue.before;
+
+  var _getDateValue = getDateValue(period, compare, after, before),
+      primaryStart = _getDateValue.primaryStart,
+      primaryEnd = _getDateValue.primaryEnd,
+      secondaryStart = _getDateValue.secondaryStart,
+      secondaryEnd = _getDateValue.secondaryEnd;
+
+  return {
+    primary: {
+      label: Object(lodash__WEBPACK_IMPORTED_MODULE_1__["find"])(presetValues, function (item) {
+        return item.value === period;
+      }).label,
+      range: getRangeLabel(primaryStart, primaryEnd),
+      after: primaryStart,
+      before: primaryEnd
+    },
+    secondary: {
+      label: Object(lodash__WEBPACK_IMPORTED_MODULE_1__["find"])(periods, function (item) {
+        return item.value === compare;
+      }).label,
+      range: getRangeLabel(secondaryStart, secondaryEnd),
+      after: secondaryStart,
+      before: secondaryEnd
+    }
+  };
+};
+/**
+ * Calculates the date difference between two dates. Used in calculating a matching date for previous period.
+ *
+ * @param {string} date - Date to compare
+ * @param {string} date2 - Seconary date to compare
+ * @return {number}  - Difference in days.
+ */
+
+var getDateDifferenceInDays = function getDateDifferenceInDays(date, date2) {
+  var _date = moment__WEBPACK_IMPORTED_MODULE_0___default()(date);
+
+  var _date2 = moment__WEBPACK_IMPORTED_MODULE_0___default()(date2);
+
+  return _date.diff(_date2, 'days');
+};
+/**
+ * Get the previous date for either the previous period of year.
+ *
+ * @param {string} date - Base date
+ * @param {string|Moment.moment} date1 - primary start
+ * @param {string|Moment.moment} date2 - secondary start
+ * @param {string} compare - `previous_period`  or `previous_year`
+ * @param {string} interval - interval
+ * @return {Moment.moment}  - Calculated date
+ */
+
+var getPreviousDate = function getPreviousDate(date, date1, date2, compare, interval) {
+  var dateMoment = moment__WEBPACK_IMPORTED_MODULE_0___default()(date);
+
+  if (compare === 'previous_year') {
+    return dateMoment.clone().subtract(1, 'years');
+  }
+
+  var _date1 = moment__WEBPACK_IMPORTED_MODULE_0___default()(date1);
+
+  var _date2 = moment__WEBPACK_IMPORTED_MODULE_0___default()(date2);
+
+  var difference = _date1.diff(_date2, interval);
+
+  return dateMoment.clone().subtract(difference, interval);
+};
+/**
+ * Returns the allowed selectable intervals for a specific query.
+ *
+ * @param  {Object} query Current query
+ * @return {Array} Array containing allowed intervals.
+ */
+
+function getAllowedIntervalsForQuery(query) {
+  var allowed = [];
+
+  if (query.period === 'custom') {
+    var _getCurrentDates = getCurrentDates(query),
+        primary = _getCurrentDates.primary;
+
+    var differenceInDays = getDateDifferenceInDays(primary.before, primary.after);
+
+    if (differenceInDays >= 365) {
+      allowed = ['day', 'week', 'month', 'quarter', 'year'];
+    } else if (differenceInDays >= 90) {
+      allowed = ['day', 'week', 'month', 'quarter'];
+    } else if (differenceInDays >= 28) {
+      allowed = ['day', 'week', 'month'];
+    } else if (differenceInDays >= 7) {
+      allowed = ['day', 'week'];
+    } else if (differenceInDays > 1 && differenceInDays < 7) {
+      allowed = ['day'];
+    } else {
+      allowed = ['hour', 'day'];
+    }
+  } else {
+    switch (query.period) {
+      case 'today':
+      case 'yesterday':
+        allowed = ['hour', 'day'];
+        break;
+
+      case 'week':
+      case 'last_week':
+        allowed = ['day'];
+        break;
+
+      case 'month':
+      case 'last_month':
+        allowed = ['day', 'week'];
+        break;
+
+      case 'quarter':
+      case 'last_quarter':
+        allowed = ['day', 'week', 'month'];
+        break;
+
+      case 'year':
+      case 'last_year':
+        allowed = ['day', 'week', 'month', 'quarter'];
+        break;
+
+      default:
+        allowed = ['day'];
+        break;
+    }
+  }
+
+  return allowed;
+}
+/**
+ * Returns the current interval to use.
+ *
+ * @param  {Object} query Current query
+ * @return {string} Current interval.
+ */
+
+function getIntervalForQuery(query) {
+  var allowed = getAllowedIntervalsForQuery(query);
+  var defaultInterval = allowed[0];
+  var current = query.interval || defaultInterval;
+
+  if (query.interval && !allowed.includes(query.interval)) {
+    current = defaultInterval;
+  }
+
+  return current;
+}
+/**
+ * Returns the current chart type to use.
+ *
+ * @param  {Object} query Current query
+ * @return {string} Current chart type.
+ */
+
+function getChartTypeForQuery(_ref) {
+  var chartType = _ref.chartType;
+
+  if (['line', 'bar'].includes(chartType)) {
+    return chartType;
+  }
+
+  return 'line';
+}
+var dayTicksThreshold = 63;
+var weekTicksThreshold = 9;
+var defaultTableDateFormat = 'm/d/Y';
+/**
+ * Returns date formats for the current interval.
+ * See https://github.com/d3/d3-time-format for chart formats.
+ *
+ * @param  {string} interval Interval to get date formats for.
+ * @param  {number}    [ticks] Number of ticks the axis will have.
+ * @return {string} Current interval.
+ */
+
+function getDateFormatsForInterval(interval) {
+  var ticks = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var screenReaderFormat = '%B %-d, %Y';
+  var tooltipLabelFormat = '%B %-d, %Y';
+  var xFormat = '%Y-%m-%d';
+  var x2Format = '%b %Y';
+  var tableFormat = defaultTableDateFormat;
+
+  switch (interval) {
+    case 'hour':
+      screenReaderFormat = '%_I%p %B %-d, %Y';
+      tooltipLabelFormat = '%_I%p %b %-d, %Y';
+      xFormat = '%_I%p';
+      x2Format = '%b %-d, %Y';
+      tableFormat = 'h A';
+      break;
+
+    case 'day':
+      if (ticks < dayTicksThreshold) {
+        xFormat = '%-d';
+      } else {
+        xFormat = '%b';
+        x2Format = '%Y';
+      }
+
+      break;
+
+    case 'week':
+      if (ticks < weekTicksThreshold) {
+        xFormat = '%-d';
+        x2Format = '%b %Y';
+      } else {
+        xFormat = '%b';
+        x2Format = '%Y';
+      }
+
+      screenReaderFormat = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Week of %B %-d, %Y', 'woocommerce');
+      tooltipLabelFormat = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Week of %B %-d, %Y', 'woocommerce');
+      break;
+
+    case 'quarter':
+    case 'month':
+      screenReaderFormat = '%B %Y';
+      tooltipLabelFormat = '%B %Y';
+      xFormat = '%b';
+      x2Format = '%Y';
+      break;
+
+    case 'year':
+      screenReaderFormat = '%Y';
+      tooltipLabelFormat = '%Y';
+      xFormat = '%Y';
+      break;
+  }
+
+  return {
+    screenReaderFormat: screenReaderFormat,
+    tooltipLabelFormat: tooltipLabelFormat,
+    xFormat: xFormat,
+    x2Format: x2Format,
+    tableFormat: tableFormat
+  };
+}
+/**
+ * Gutenberg's moment instance is loaded with i18n values, which are
+ * PHP date formats, ie 'LLL: "F j, Y g:i a"'. Override those with translations
+ * of moment style js formats.
+ *
+ * @param {Object} config Locale config object, from store settings.
+ */
+
+function loadLocaleData(_ref2) {
+  var userLocale = _ref2.userLocale,
+      weekdaysShort = _ref2.weekdaysShort; // Don't update if the wp locale hasn't been set yet, like in unit tests, for instance.
+
+  if (moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale() !== 'en') {
+    moment__WEBPACK_IMPORTED_MODULE_0___default.a.updateLocale(userLocale, {
+      longDateFormat: {
+        L: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('MM/DD/YYYY', 'woocommerce'),
+        LL: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('MMMM D, YYYY', 'woocommerce'),
+        LLL: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('D MMMM YYYY LT', 'woocommerce'),
+        LLLL: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('dddd, D MMMM YYYY LT', 'woocommerce'),
+        LT: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('HH:mm', 'woocommerce')
+      },
+      weekdaysMin: weekdaysShort
+    });
+  }
+}
+var dateValidationMessages = {
+  invalid: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Invalid date', 'woocommerce'),
+  future: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Select a date in the past', 'woocommerce'),
+  startAfterEnd: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Start date must be before end date', 'woocommerce'),
+  endBeforeStart: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Start date must be before end date', 'woocommerce')
+};
+/**
+ * @typedef {Object} validatedDate
+ * @property {Moment|null} validatedDate.date - A resulting Moment date object or null, if invalid
+ * @property {string} validatedDate.error - An optional error message if date is invalid
+ */
+
+/**
+ * Validate text input supplied for a date range.
+ *
+ * @param {string} type - Designate beginning or end of range, eg `before` or `after`.
+ * @param {string} value - User input value
+ * @param {Moment|null} [before] - If already designated, the before date parameter
+ * @param {Moment|null} [after] - If already designated, the after date parameter
+ * @param {string} format - The expected date format in a user's locale
+ * @return {Object} validatedDate - validated date object
+ */
+
+function validateDateInputForRange(type, value, before, after, format) {
+  var date = toMoment(format, value);
+
+  if (!date) {
+    return {
+      date: null,
+      error: dateValidationMessages.invalid
+    };
+  }
+
+  if (moment__WEBPACK_IMPORTED_MODULE_0___default()().isBefore(date, 'day')) {
+    return {
+      date: null,
+      error: dateValidationMessages.future
+    };
+  }
+
+  if (type === 'after' && before && date.isAfter(before, 'day')) {
+    return {
+      date: null,
+      error: dateValidationMessages.startAfterEnd
+    };
+  }
+
+  if (type === 'before' && after && date.isBefore(after, 'day')) {
+    return {
+      date: null,
+      error: dateValidationMessages.endBeforeStart
+    };
+  }
+
+  return {
+    date: date
+  };
+}
+
+/***/ }),
+
+/***/ 71:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var has = Object.prototype.hasOwnProperty;
+var isArray = Array.isArray;
+
+var hexTable = (function () {
+    var array = [];
+    for (var i = 0; i < 256; ++i) {
+        array.push('%' + ((i < 16 ? '0' : '') + i.toString(16)).toUpperCase());
+    }
+
+    return array;
+}());
+
+var compactQueue = function compactQueue(queue) {
+    while (queue.length > 1) {
+        var item = queue.pop();
+        var obj = item.obj[item.prop];
+
+        if (isArray(obj)) {
+            var compacted = [];
+
+            for (var j = 0; j < obj.length; ++j) {
+                if (typeof obj[j] !== 'undefined') {
+                    compacted.push(obj[j]);
+                }
+            }
+
+            item.obj[item.prop] = compacted;
+        }
+    }
+};
+
+var arrayToObject = function arrayToObject(source, options) {
+    var obj = options && options.plainObjects ? Object.create(null) : {};
+    for (var i = 0; i < source.length; ++i) {
+        if (typeof source[i] !== 'undefined') {
+            obj[i] = source[i];
+        }
+    }
+
+    return obj;
+};
+
+var merge = function merge(target, source, options) {
+    /* eslint no-param-reassign: 0 */
+    if (!source) {
+        return target;
+    }
+
+    if (typeof source !== 'object') {
+        if (isArray(target)) {
+            target.push(source);
+        } else if (target && typeof target === 'object') {
+            if ((options && (options.plainObjects || options.allowPrototypes)) || !has.call(Object.prototype, source)) {
+                target[source] = true;
+            }
+        } else {
+            return [target, source];
+        }
+
+        return target;
+    }
+
+    if (!target || typeof target !== 'object') {
+        return [target].concat(source);
+    }
+
+    var mergeTarget = target;
+    if (isArray(target) && !isArray(source)) {
+        mergeTarget = arrayToObject(target, options);
+    }
+
+    if (isArray(target) && isArray(source)) {
+        source.forEach(function (item, i) {
+            if (has.call(target, i)) {
+                var targetItem = target[i];
+                if (targetItem && typeof targetItem === 'object' && item && typeof item === 'object') {
+                    target[i] = merge(targetItem, item, options);
+                } else {
+                    target.push(item);
+                }
+            } else {
+                target[i] = item;
+            }
+        });
+        return target;
+    }
+
+    return Object.keys(source).reduce(function (acc, key) {
+        var value = source[key];
+
+        if (has.call(acc, key)) {
+            acc[key] = merge(acc[key], value, options);
+        } else {
+            acc[key] = value;
+        }
+        return acc;
+    }, mergeTarget);
+};
+
+var assign = function assignSingleSource(target, source) {
+    return Object.keys(source).reduce(function (acc, key) {
+        acc[key] = source[key];
+        return acc;
+    }, target);
+};
+
+var decode = function (str, decoder, charset) {
+    var strWithoutPlus = str.replace(/\+/g, ' ');
+    if (charset === 'iso-8859-1') {
+        // unescape never throws, no try...catch needed:
+        return strWithoutPlus.replace(/%[0-9a-f]{2}/gi, unescape);
+    }
+    // utf-8
+    try {
+        return decodeURIComponent(strWithoutPlus);
+    } catch (e) {
+        return strWithoutPlus;
+    }
+};
+
+var encode = function encode(str, defaultEncoder, charset) {
+    // This code was originally written by Brian White (mscdex) for the io.js core querystring library.
+    // It has been adapted here for stricter adherence to RFC 3986
+    if (str.length === 0) {
+        return str;
+    }
+
+    var string = str;
+    if (typeof str === 'symbol') {
+        string = Symbol.prototype.toString.call(str);
+    } else if (typeof str !== 'string') {
+        string = String(str);
+    }
+
+    if (charset === 'iso-8859-1') {
+        return escape(string).replace(/%u[0-9a-f]{4}/gi, function ($0) {
+            return '%26%23' + parseInt($0.slice(2), 16) + '%3B';
+        });
+    }
+
+    var out = '';
+    for (var i = 0; i < string.length; ++i) {
+        var c = string.charCodeAt(i);
+
+        if (
+            c === 0x2D // -
+            || c === 0x2E // .
+            || c === 0x5F // _
+            || c === 0x7E // ~
+            || (c >= 0x30 && c <= 0x39) // 0-9
+            || (c >= 0x41 && c <= 0x5A) // a-z
+            || (c >= 0x61 && c <= 0x7A) // A-Z
+        ) {
+            out += string.charAt(i);
+            continue;
+        }
+
+        if (c < 0x80) {
+            out = out + hexTable[c];
+            continue;
+        }
+
+        if (c < 0x800) {
+            out = out + (hexTable[0xC0 | (c >> 6)] + hexTable[0x80 | (c & 0x3F)]);
+            continue;
+        }
+
+        if (c < 0xD800 || c >= 0xE000) {
+            out = out + (hexTable[0xE0 | (c >> 12)] + hexTable[0x80 | ((c >> 6) & 0x3F)] + hexTable[0x80 | (c & 0x3F)]);
+            continue;
+        }
+
+        i += 1;
+        c = 0x10000 + (((c & 0x3FF) << 10) | (string.charCodeAt(i) & 0x3FF));
+        out += hexTable[0xF0 | (c >> 18)]
+            + hexTable[0x80 | ((c >> 12) & 0x3F)]
+            + hexTable[0x80 | ((c >> 6) & 0x3F)]
+            + hexTable[0x80 | (c & 0x3F)];
+    }
+
+    return out;
+};
+
+var compact = function compact(value) {
+    var queue = [{ obj: { o: value }, prop: 'o' }];
+    var refs = [];
+
+    for (var i = 0; i < queue.length; ++i) {
+        var item = queue[i];
+        var obj = item.obj[item.prop];
+
+        var keys = Object.keys(obj);
+        for (var j = 0; j < keys.length; ++j) {
+            var key = keys[j];
+            var val = obj[key];
+            if (typeof val === 'object' && val !== null && refs.indexOf(val) === -1) {
+                queue.push({ obj: obj, prop: key });
+                refs.push(val);
+            }
+        }
+    }
+
+    compactQueue(queue);
+
+    return value;
+};
+
+var isRegExp = function isRegExp(obj) {
+    return Object.prototype.toString.call(obj) === '[object RegExp]';
+};
+
+var isBuffer = function isBuffer(obj) {
+    if (!obj || typeof obj !== 'object') {
+        return false;
+    }
+
+    return !!(obj.constructor && obj.constructor.isBuffer && obj.constructor.isBuffer(obj));
+};
+
+var combine = function combine(a, b) {
+    return [].concat(a, b);
+};
+
+module.exports = {
+    arrayToObject: arrayToObject,
+    assign: assign,
+    combine: combine,
+    compact: compact,
+    decode: decode,
+    encode: encode,
+    isBuffer: isBuffer,
+    isRegExp: isRegExp,
+    merge: merge
+};
+
+
+/***/ }),
+
+/***/ 86:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var replace = String.prototype.replace;
+var percentTwenties = /%20/g;
+
+var util = __webpack_require__(71);
+
+var Format = {
+    RFC1738: 'RFC1738',
+    RFC3986: 'RFC3986'
+};
+
+module.exports = util.assign(
+    {
+        'default': Format.RFC3986,
+        formatters: {
+            RFC1738: function (value) {
+                return replace.call(value, percentTwenties, '+');
+            },
+            RFC3986: function (value) {
+                return String(value);
+            }
+        }
+    },
+    Format
+);
+
+
+/***/ })
+
+/******/ });

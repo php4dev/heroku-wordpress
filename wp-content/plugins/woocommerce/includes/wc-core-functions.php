@@ -322,7 +322,7 @@ function get_woocommerce_currency() {
 /**
  * Get full list of currency codes.
  *
- * Currency Symbols and mames should follow the Unicode CLDR recommendation (http://cldr.unicode.org/translation/currency-names)
+ * Currency symbols and names should follow the Unicode CLDR recommendation (http://cldr.unicode.org/translation/currency-names)
  *
  * @return array
  */
@@ -505,21 +505,17 @@ function get_woocommerce_currencies() {
 	return $currencies;
 }
 
-
 /**
- * Get Currency symbol.
+ * Get all available Currency symbols.
  *
- * Currency Symbols and mames should follow the Unicode CLDR recommendation (http://cldr.unicode.org/translation/currency-names)
+ * Currency symbols and names should follow the Unicode CLDR recommendation (http://cldr.unicode.org/translation/currency-names)
  *
- * @param string $currency Currency. (default: '').
- * @return string
+ * @since 4.1.0
+ * @return array
  */
-function get_woocommerce_currency_symbol( $currency = '' ) {
-	if ( ! $currency ) {
-		$currency = get_woocommerce_currency();
-	}
+function get_woocommerce_currency_symbols() {
 
-	$symbols         = apply_filters(
+	$symbols = apply_filters(
 		'woocommerce_currency_symbols',
 		array(
 			'AED' => '&#x62f;.&#x625;',
@@ -604,7 +600,7 @@ function get_woocommerce_currency_symbol( $currency = '' ) {
 			'KRW' => '&#8361;',
 			'KWD' => '&#x62f;.&#x643;',
 			'KYD' => '&#36;',
-			'KZT' => 'KZT',
+			'KZT' => '&#8376;',
 			'LAK' => '&#8365;',
 			'LBP' => '&#x644;.&#x644;',
 			'LKR' => '&#xdbb;&#xdd4;',
@@ -643,7 +639,7 @@ function get_woocommerce_currency_symbol( $currency = '' ) {
 			'QAR' => '&#x631;.&#x642;',
 			'RMB' => '&yen;',
 			'RON' => 'lei',
-			'RSD' => '&#x434;&#x438;&#x43d;.',
+			'RSD' => '&#1088;&#1089;&#1076;',
 			'RUB' => '&#8381;',
 			'RWF' => 'Fr',
 			'SAR' => '&#x631;.&#x633;',
@@ -688,6 +684,25 @@ function get_woocommerce_currency_symbol( $currency = '' ) {
 			'ZMW' => 'ZK',
 		)
 	);
+
+	return $symbols;
+}
+
+/**
+ * Get Currency symbol.
+ *
+ * Currency symbols and names should follow the Unicode CLDR recommendation (http://cldr.unicode.org/translation/currency-names)
+ *
+ * @param string $currency Currency. (default: '').
+ * @return string
+ */
+function get_woocommerce_currency_symbol( $currency = '' ) {
+	if ( ! $currency ) {
+		$currency = get_woocommerce_currency();
+	}
+
+	$symbols = get_woocommerce_currency_symbols();
+
 	$currency_symbol = isset( $symbols[ $currency ] ) ? $symbols[ $currency ] : '';
 
 	return apply_filters( 'woocommerce_currency_symbol', $currency_symbol, $currency );

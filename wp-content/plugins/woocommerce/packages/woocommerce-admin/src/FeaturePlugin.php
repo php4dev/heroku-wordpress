@@ -10,12 +10,12 @@ namespace Automattic\WooCommerce\Admin;
 defined( 'ABSPATH' ) || exit;
 
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Facebook_Extension;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Historical_Data;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Order_Milestones;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Welcome_Message;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Woo_Subscriptions_Notes;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Tracking_Opt_In;
+use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_WooCommerce_Payments;
+use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Install_JP_And_WCS_Plugins;
 
 /**
  * Feature plugin main class.
@@ -151,7 +151,7 @@ class FeaturePlugin {
 		$this->define( 'WC_ADMIN_PLUGIN_FILE', WC_ADMIN_ABSPATH . 'woocommerce-admin.php' );
 		// WARNING: Do not directly edit this version number constant.
 		// It is updated as part of the prebuild process from the package.json value.
-		$this->define( 'WC_ADMIN_VERSION_NUMBER', '1.0.3' );
+		$this->define( 'WC_ADMIN_VERSION_NUMBER', '1.2.3' );
 	}
 
 	/**
@@ -183,9 +183,9 @@ class FeaturePlugin {
 		new WC_Admin_Notes_Woo_Subscriptions_Notes();
 		new WC_Admin_Notes_Historical_Data();
 		new WC_Admin_Notes_Order_Milestones();
-		new WC_Admin_Notes_Welcome_Message();
-		new WC_Admin_Notes_Facebook_Extension();
 		new WC_Admin_Notes_Tracking_Opt_In();
+		new WC_Admin_Notes_WooCommerce_Payments();
+		new WC_Admin_Notes_Install_JP_And_WCS_Plugins();
 	}
 
 	/**
@@ -256,7 +256,7 @@ class FeaturePlugin {
 	 */
 	public function deactivate_self() {
 		deactivate_plugins( plugin_basename( WC_ADMIN_PLUGIN_FILE ) );
-		unset( $_GET['activate'] );
+		unset( $_GET['activate'] ); // phpcs:ignore CSRF ok.
 	}
 
 	/**

@@ -4,7 +4,7 @@ Tags: gutenberg, woocommerce, woo commerce, products, blocks, woocommerce blocks
 Requires at least: 5.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 2.5.14
+Stable tag: 2.5.16
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -115,6 +115,12 @@ Release and roadmap notes available on the [WooCommerce Developers Blog](https:/
 5. WooCommerce Product Blocks in the block inserter menu
 
 == Changelog ==
+
+= 2.5.16 - 2020-04-07 =
+- Performance: Use the latest version of Jetpack Autoloader. #2132
+
+= 2.5.15 - 2020-03-31 =
+- Fix broken product grid blocks styles in old versions of WordPress. #2000
 
 = 2.5.14 - 2020-03-03 =
 - Added screen reader text to product counts in the product category list block #1828

@@ -176,6 +176,10 @@ class PageController {
 			}
 		}
 
+		$woocommerce_breadcrumb = array( 'admin.php?page=' . self::PAGE_ROOT, __( 'WooCommerce', 'woocommerce' ) );
+
+		array_unshift( $breadcrumbs, $woocommerce_breadcrumb );
+
 		/**
 		 * The navigation breadcrumbs for the current page.
 		 *
@@ -451,10 +455,6 @@ class PageController {
 	 * Set up a div for the app to render into.
 	 */
 	public static function page_wrapper() {
-		?>
-		<div class="wrap">
-			<div id="root"></div>
-		</div>
-		<?php
+		Loader::page_wrapper();
 	}
 }

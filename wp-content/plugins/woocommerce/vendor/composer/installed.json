@@ -1,17 +1,17 @@
 [
     {
         "name": "automattic/jetpack-autoloader",
-        "version": "v1.3.2",
-        "version_normalized": "1.3.2.0",
+        "version": "v1.7.0",
+        "version_normalized": "1.7.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/Automattic/jetpack-autoloader.git",
-            "reference": "301c2fbcf070d4f0147753447616b6e982bda09e"
+            "reference": "7c6736eeee0f9fc49fa691fe3e958725efb27ca0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Automattic/jetpack-autoloader/zipball/301c2fbcf070d4f0147753447616b6e982bda09e",
-            "reference": "301c2fbcf070d4f0147753447616b6e982bda09e",
+            "url": "https://api.github.com/repos/Automattic/jetpack-autoloader/zipball/7c6736eeee0f9fc49fa691fe3e958725efb27ca0",
+            "reference": "7c6736eeee0f9fc49fa691fe3e958725efb27ca0",
             "shasum": ""
         },
         "require": {
@@ -20,7 +20,7 @@
         "require-dev": {
             "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5"
         },
-        "time": "2019-09-24T06:39:29+00:00",
+        "time": "2020-04-23T02:28:37+00:00",
         "type": "composer-plugin",
         "extra": {
             "class": "Automattic\\Jetpack\\Autoloader\\CustomAutoloaderPlugin"
@@ -39,23 +39,24 @@
     },
     {
         "name": "automattic/jetpack-constants",
-        "version": "v1.1.3",
-        "version_normalized": "1.1.3.0",
+        "version": "v1.2.0",
+        "version_normalized": "1.2.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/Automattic/jetpack-constants.git",
-            "reference": "5fdd94dec1151e7defd684a97e0b64fe6ff1bd3a"
+            "reference": "881618defb04134ddba120e7835af1a474a11edc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Automattic/jetpack-constants/zipball/5fdd94dec1151e7defd684a97e0b64fe6ff1bd3a",
-            "reference": "5fdd94dec1151e7defd684a97e0b64fe6ff1bd3a",
+            "url": "https://api.github.com/repos/Automattic/jetpack-constants/zipball/881618defb04134ddba120e7835af1a474a11edc",
+            "reference": "881618defb04134ddba120e7835af1a474a11edc",
             "shasum": ""
         },
         "require-dev": {
+            "php-mock/php-mock": "^2.1",
             "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5"
         },
-        "time": "2019-11-08T21:16:05+00:00",
+        "time": "2020-04-15T18:58:53+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -333,23 +334,23 @@
     },
     {
         "name": "symfony/css-selector",
-        "version": "v3.4.37",
-        "version_normalized": "3.4.37.0",
+        "version": "v3.4.40",
+        "version_normalized": "3.4.40.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/css-selector.git",
-            "reference": "e1b3e1a0621d6e48ee46092b4c7d8280f746b3c5"
+            "reference": "9ccf6e78077a3fc1596e6c7b5958008965a11518"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/css-selector/zipball/e1b3e1a0621d6e48ee46092b4c7d8280f746b3c5",
-            "reference": "e1b3e1a0621d6e48ee46092b4c7d8280f746b3c5",
+            "url": "https://api.github.com/repos/symfony/css-selector/zipball/9ccf6e78077a3fc1596e6c7b5958008965a11518",
+            "reference": "9ccf6e78077a3fc1596e6c7b5958008965a11518",
             "shasum": ""
         },
         "require": {
             "php": "^5.5.9|>=7.0.8"
         },
-        "time": "2020-01-01T11:03:25+00:00",
+        "time": "2020-03-16T08:31:04+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -388,17 +389,17 @@
     },
     {
         "name": "woocommerce/action-scheduler",
-        "version": "3.1.4",
-        "version_normalized": "3.1.4.0",
+        "version": "3.1.6",
+        "version_normalized": "3.1.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/woocommerce/action-scheduler.git",
-            "reference": "5a01f0b549a283dc88c2feeef877650215907a76"
+            "reference": "275d0ba54b1c263dfc62688de2fa9a25a373edf8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/woocommerce/action-scheduler/zipball/5a01f0b549a283dc88c2feeef877650215907a76",
-            "reference": "5a01f0b549a283dc88c2feeef877650215907a76",
+            "url": "https://api.github.com/repos/woocommerce/action-scheduler/zipball/275d0ba54b1c263dfc62688de2fa9a25a373edf8",
+            "reference": "275d0ba54b1c263dfc62688de2fa9a25a373edf8",
             "shasum": ""
         },
         "require-dev": {
@@ -406,7 +407,7 @@
             "woocommerce/woocommerce-sniffs": "0.0.8",
             "wp-cli/wp-cli": "~1.5.1"
         },
-        "time": "2020-03-18T15:05:10+00:00",
+        "time": "2020-05-12T16:22:33+00:00",
         "type": "wordpress-plugin",
         "extra": {
             "scripts-description": {
@@ -425,21 +426,21 @@
     },
     {
         "name": "woocommerce/woocommerce-admin",
-        "version": "v1.0.3",
-        "version_normalized": "1.0.3.0",
+        "version": "v1.2.3",
+        "version_normalized": "1.2.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/woocommerce/woocommerce-admin.git",
-            "reference": "36a0f6e6c237ad43357af21ea12e400baffa2aef"
+            "reference": "5560c9b6e31e1d794a55a0eb4ccf040fd2cee4c7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/woocommerce/woocommerce-admin/zipball/36a0f6e6c237ad43357af21ea12e400baffa2aef",
-            "reference": "36a0f6e6c237ad43357af21ea12e400baffa2aef",
+            "url": "https://api.github.com/repos/woocommerce/woocommerce-admin/zipball/5560c9b6e31e1d794a55a0eb4ccf040fd2cee4c7",
+            "reference": "5560c9b6e31e1d794a55a0eb4ccf040fd2cee4c7",
             "shasum": ""
         },
         "require": {
-            "automattic/jetpack-autoloader": "^1.2.0",
+            "automattic/jetpack-autoloader": "^1.6.0",
             "composer/installers": "1.7.0",
             "php": ">=5.6|>=7.0"
         },
@@ -447,7 +448,7 @@
             "phpunit/phpunit": "7.5.20",
             "woocommerce/woocommerce-sniffs": "0.0.9"
         },
-        "time": "2020-03-19T17:17:00+00:00",
+        "time": "2020-05-22T18:45:16+00:00",
         "type": "wordpress-plugin",
         "extra": {
             "scripts-description": {
@@ -474,28 +475,28 @@
     },
     {
         "name": "woocommerce/woocommerce-blocks",
-        "version": "v2.5.14",
-        "version_normalized": "2.5.14.0",
+        "version": "v2.5.16",
+        "version_normalized": "2.5.16.0",
         "source": {
             "type": "git",
             "url": "https://github.com/woocommerce/woocommerce-gutenberg-products-block.git",
-            "reference": "0dd70617085d2e73f3adfb38df98a90df3514816"
+            "reference": "3bd91b669247000fd3f5277954701d0b148d3f1a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/woocommerce/woocommerce-gutenberg-products-block/zipball/0dd70617085d2e73f3adfb38df98a90df3514816",
-            "reference": "0dd70617085d2e73f3adfb38df98a90df3514816",
+            "url": "https://api.github.com/repos/woocommerce/woocommerce-gutenberg-products-block/zipball/3bd91b669247000fd3f5277954701d0b148d3f1a",
+            "reference": "3bd91b669247000fd3f5277954701d0b148d3f1a",
             "shasum": ""
         },
         "require": {
-            "automattic/jetpack-autoloader": "1.3.2",
+            "automattic/jetpack-autoloader": "^1.6.0",
             "composer/installers": "1.7.0"
         },
         "require-dev": {
             "phpunit/phpunit": "6.5.14",
             "woocommerce/woocommerce-sniffs": "0.0.7"
         },
-        "time": "2020-03-03T13:25:56+00:00",
+        "time": "2020-04-07T11:47:19+00:00",
         "type": "wordpress-plugin",
         "extra": {
             "scripts-description": {
@@ -523,17 +524,17 @@
     },
     {
         "name": "woocommerce/woocommerce-rest-api",
-        "version": "1.0.7",
-        "version_normalized": "1.0.7.0",
+        "version": "1.0.8",
+        "version_normalized": "1.0.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/woocommerce/woocommerce-rest-api.git",
-            "reference": "49162ec26a25bd0c6efc0f3452b113cdfff0a823"
+            "reference": "0756027c669bb5749554ee58b9416cbdcceaa752"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/woocommerce/woocommerce-rest-api/zipball/49162ec26a25bd0c6efc0f3452b113cdfff0a823",
-            "reference": "49162ec26a25bd0c6efc0f3452b113cdfff0a823",
+            "url": "https://api.github.com/repos/woocommerce/woocommerce-rest-api/zipball/0756027c669bb5749554ee58b9416cbdcceaa752",
+            "reference": "0756027c669bb5749554ee58b9416cbdcceaa752",
             "shasum": ""
         },
         "require": {
@@ -543,7 +544,7 @@
             "phpunit/phpunit": "6.5.14",
             "woocommerce/woocommerce-sniffs": "0.0.9"
         },
-        "time": "2020-01-28T21:04:51+00:00",
+        "time": "2020-05-11T14:54:30+00:00",
         "type": "wordpress-plugin",
         "installation-source": "dist",
         "autoload": {

@@ -10,7 +10,6 @@ namespace Automattic\WooCommerce\Admin\Features;
 
 use \Automattic\WooCommerce\Admin\Loader;
 use Automattic\WooCommerce\Admin\API\Reports\Taxes\Stats\DataStore;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Onboarding;
 
 /**
  * Contains the logic for completing onboarding tasks.
@@ -45,7 +44,9 @@ class OnboardingTasks {
 	 */
 	public function __construct() {
 		// This hook needs to run when options are updated via REST.
-		add_action( 'add_option_woocommerce_task_list_complete', array( $this, 'add_completion_note' ), 10, 2 );
+		add_action( 'add_option_woocommerce_task_list_complete', array( $this, 'track_completion' ), 10, 2 );
+		add_action( 'add_option_woocommerce_task_list_tracked_completed_tasks', array( $this, 'track_task_completion' ), 10, 2 );
+		add_action( 'update_option_woocommerce_task_list_tracked_completed_tasks', array( $this, 'track_task_completion' ), 10, 2 );
 
 		if ( ! is_admin() ) {
 			return;
@@ -63,92 +64,6 @@ class OnboardingTasks {
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_onboarding_homepage_notice_admin_script' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_onboarding_tax_notice_admin_script' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_onboarding_product_import_notice_admin_script' ) );
-
-		// Update payment cache on payment gateways update.
-		add_action( 'update_option_woocommerce_stripe_settings', array( $this, 'check_stripe_completion' ), 10, 2 );
-		add_action( 'add_option_woocommerce_stripe_settings', array( $this, 'check_stripe_completion' ), 10, 2 );
-		add_action( 'update_option_woocommerce_ppec_paypal_settings', array( $this, 'check_paypal_completion' ), 10, 2 );
-		add_action( 'add_option_woocommerce_ppec_paypal_settings', array( $this, 'check_paypal_completion' ), 10, 2 );
-		add_action( 'add_option_wc_square_refresh_tokens', array( $this, 'check_square_completion' ), 10, 2 );
-	}
-
-	/**
-	 * Check if Square payment settings are complete.
-	 *
-	 * @param string $option Option name.
-	 * @param array  $value Current value.
-	 */
-	public static function check_square_completion( $option, $value ) {
-		if ( empty( $value ) ) {
-			return;
-		}
-
-		self::mark_payment_method_configured( 'square' );
-	}
-
-
-	/**
-	 * Check if Paypal payment settings are complete.
-	 *
-	 * @param mixed $old_value Old value.
-	 * @param array $value Current value.
-	 */
-	public static function check_paypal_completion( $old_value, $value ) {
-		if (
-			! isset( $value['enabled'] ) ||
-			'yes' !== $value['enabled'] ||
-			! isset( $value['api_username'] ) ||
-			empty( $value['api_username'] ) ||
-			! isset( $value['api_password'] ) ||
-			empty( $value['api_password'] )
-		) {
-			return;
-		}
-
-		self::mark_payment_method_configured( 'paypal' );
-	}
-
-	/**
-	 * Check if Stripe payment settings are complete.
-	 *
-	 * @param mixed $old_value Old value.
-	 * @param array $value Current value.
-	 */
-	public static function check_stripe_completion( $old_value, $value ) {
-		if (
-			! isset( $value['enabled'] ) ||
-			'yes' !== $value['enabled'] ||
-			! isset( $value['publishable_key'] ) ||
-			empty( $value['publishable_key'] ) ||
-			! isset( $value['secret_key'] ) ||
-			empty( $value['secret_key'] )
-		) {
-			return;
-		}
-
-		self::mark_payment_method_configured( 'stripe' );
-	}
-
-	/**
-	 * Update the payments cache to complete if not already.
-	 *
-	 * @param string $payment_method Payment method slug.
-	 */
-	public static function mark_payment_method_configured( $payment_method ) {
-		$task_list_payments         = get_option( 'woocommerce_task_list_payments', array() );
-		$payment_methods            = isset( $task_list_payments['methods'] ) ? $task_list_payments['methods'] : array();
-		$configured_payment_methods = isset( $task_list_payments['configured'] ) ? $task_list_payments['configured'] : array();
-
-		if ( ! in_array( $payment_method, $configured_payment_methods, true ) ) {
-			$configured_payment_methods[]     = $payment_method;
-			$task_list_payments['configured'] = $configured_payment_methods;
-		}
-
-		if ( 0 === count( array_diff( $payment_methods, $configured_payment_methods ) ) ) {
-			$task_list_payments['completed'] = 1;
-		}
-
-		update_option( 'woocommerce_task_list_payments', $task_list_payments );
 	}
 
 	/**
@@ -200,8 +115,8 @@ class OnboardingTasks {
 	 * Temporarily store the active task to persist across page loads when neccessary (such as publishing a product). Most tasks do not need to do this.
 	 */
 	public static function set_active_task() {
-		if ( isset( $_GET[ self::ACTIVE_TASK_TRANSIENT ] ) ) { // WPCS: csrf ok.
-			$task = sanitize_title_with_dashes( wp_unslash( $_GET[ self::ACTIVE_TASK_TRANSIENT ] ) );
+		if ( isset( $_GET[ self::ACTIVE_TASK_TRANSIENT ] ) ) { // phpcs:ignore csrf ok.
+			$task = sanitize_title_with_dashes( wp_unslash( $_GET[ self::ACTIVE_TASK_TRANSIENT ] ) ); // phpcs:ignore csrf ok.
 
 			if ( self::check_task_completion( $task ) ) {
 				return;
@@ -211,7 +126,7 @@ class OnboardingTasks {
 				self::ACTIVE_TASK_TRANSIENT,
 				$task,
 				DAY_IN_SECONDS
-			); // WPCS: csrf ok.
+			);
 		}
 	}
 
@@ -285,7 +200,7 @@ class OnboardingTasks {
 			return;
 		}
 
-		wp_enqueue_script( 'onboarding-product-notice', Loader::get_url( 'wp-admin-scripts/onboarding-product-notice.js' ), array( 'wc-navigation', 'wp-i18n', 'wp-data' ), WC_ADMIN_VERSION_NUMBER, true );
+		wp_enqueue_script( 'onboarding-product-notice', Loader::get_url( 'wp-admin-scripts/onboarding-product-notice', 'js' ), array( 'wc-navigation', 'wp-i18n', 'wp-data' ), WC_ADMIN_VERSION_NUMBER, true );
 	}
 
 	/**
@@ -296,7 +211,7 @@ class OnboardingTasks {
 	public static function add_onboarding_homepage_notice_admin_script( $hook ) {
 		global $post;
 		if ( 'post.php' === $hook && 'page' === $post->post_type && isset( $_GET[ self::ACTIVE_TASK_TRANSIENT ] ) && 'homepage' === $_GET[ self::ACTIVE_TASK_TRANSIENT ] ) { // phpcs:ignore csrf ok.
-			wp_enqueue_script( 'onboarding-homepage-notice', Loader::get_url( 'wp-admin-scripts/onboarding-homepage-notice.js' ), array( 'wc-navigation', 'wp-i18n', 'wp-data' ), WC_ADMIN_VERSION_NUMBER, true );
+			wp_enqueue_script( 'onboarding-homepage-notice', Loader::get_url( 'wp-admin-scripts/onboarding-homepage-notice', 'js' ), array( 'wc-navigation', 'wp-i18n', 'wp-data' ), WC_ADMIN_VERSION_NUMBER, true );
 		}
 	}
 
@@ -313,7 +228,7 @@ class OnboardingTasks {
 			'tax' === self::get_active_task() &&
 			! self::is_active_task_complete()
 		) {
-			wp_enqueue_script( 'onboarding-tax-notice', Loader::get_url( 'wp-admin-scripts/onboarding-tax-notice.js' ), array( 'wc-navigation', 'wp-i18n', 'wp-data' ), WC_ADMIN_VERSION_NUMBER, true );
+			wp_enqueue_script( 'onboarding-tax-notice', Loader::get_url( 'wp-admin-scripts/onboarding-tax-notice', 'js' ), array( 'wc-navigation', 'wp-i18n', 'wp-data' ), WC_ADMIN_VERSION_NUMBER, true );
 		}
 	}
 
@@ -326,7 +241,7 @@ class OnboardingTasks {
 		$step = isset( $_GET['step'] ) ? $_GET['step'] : ''; // phpcs:ignore csrf ok, sanitization ok.
 		if ( 'product_page_product_importer' === $hook && 'done' === $step && 'product-import' === self::get_active_task() ) {
 			delete_transient( self::ACTIVE_TASK_TRANSIENT );
-			wp_enqueue_script( 'onboarding-product-import-notice', Loader::get_url( 'wp-admin-scripts/onboarding-product-import-notice.js' ), array( 'wc-navigation', 'wp-i18n', 'wp-data' ), WC_ADMIN_VERSION_NUMBER, true );
+			wp_enqueue_script( 'onboarding-product-import-notice', Loader::get_url( 'wp-admin-scripts/onboarding-product-import-notice', 'js' ), array( 'wc-navigation', 'wp-i18n', 'wp-data' ), WC_ADMIN_VERSION_NUMBER, true );
 		}
 	}
 
@@ -346,14 +261,29 @@ class OnboardingTasks {
 	}
 
 	/**
-	 * Add the task list completion note after completing all tasks.
+	 * Records an event when all tasks are completed in the task list.
 	 *
 	 * @param mixed $old_value Old value.
 	 * @param mixed $new_value New value.
 	 */
-	public static function add_completion_note( $old_value, $new_value ) {
+	public static function track_completion( $old_value, $new_value ) {
 		if ( $new_value ) {
-			WC_Admin_Notes_Onboarding::add_task_list_complete_note();
+			wc_admin_record_tracks_event( 'tasklist_tasks_completed' );
+		}
+	}
+
+	/**
+	 * Records an event for individual task completion.
+	 *
+	 * @param mixed $old_value Old value.
+	 * @param mixed $new_value New value.
+	 */
+	public static function track_task_completion( $old_value, $new_value ) {
+		$old_value       = is_array( $old_value ) ? $old_value : array();
+		$untracked_tasks = array_diff( $new_value, $old_value );
+
+		foreach ( $untracked_tasks as $task ) {
+			wc_admin_record_tracks_event( 'tasklist_task_completed', array( 'task_name' => $task ) );
 		}
 	}
 }

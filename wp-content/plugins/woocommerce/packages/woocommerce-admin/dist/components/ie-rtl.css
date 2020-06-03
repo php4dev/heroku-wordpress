@@ -1,9 +1,5 @@
-/** @format */
-/** @format */
-/** @format */
 /* stylelint-disable block-closing-brace-newline-after */
 /* stylelint-enable */
-/** @format */
 /**
  * Breakpoint mixins
  */
@@ -12,7 +8,6 @@
 /**
  * Internal Dependencies
  */
-/** @format */
 .woocommerce-segmented-selection__item:nth-child(1) {
   -ms-grid-column: 1;
       grid-column-start: 1;

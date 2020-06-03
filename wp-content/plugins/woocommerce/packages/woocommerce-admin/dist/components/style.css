@@ -1,10 +1,6 @@
 @charset "UTF-8";
-/** @format */
-/** @format */
-/** @format */
 /* stylelint-disable block-closing-brace-newline-after */
 /* stylelint-enable */
-/** @format */
 /**
  * Breakpoint mixins
  */
@@ -13,7 +9,6 @@
 /**
  * Internal Dependencies
  */
-/** @format */
 @keyframes slide-in-left {
   0% {
     transform: translateX(100%); }
@@ -68,7 +63,6 @@ The CSSTransition element creates a containing div without a class
   .woocommerce-slide-animation .slide-exit-active {
     animation: none !important; } }
 
-/** @format */
 .woocommerce-calendar {
   width: 100%;
   background-color: #f8f9f9;
@@ -212,7 +206,6 @@ The CSSTransition element creates a containing div without a class
   padding: 1em;
   background-color: #fff; }
 
-/** @format */
 .woocommerce-card {
   margin-bottom: 24px;
   background: #fff;
@@ -301,7 +294,6 @@ The CSSTransition element creates a containing div without a class
   margin-bottom: 0;
   font-weight: 400; }
 
-/** @format */
 .woocommerce-chart {
   margin-top: -16px;
   margin-bottom: 24px;
@@ -412,11 +404,9 @@ The CSSTransition element creates a containing div without a class
     order: 0;
     margin-top: 0; } }
 
-/** @format */
 /**
  * Internal Dependencies
  */
-/** @format */
 .woocommerce-legend.has-total {
   padding-bottom: 50px;
   position: relative; }
@@ -500,7 +490,10 @@ The CSSTransition element creates a containing div without a class
           height: 6px;
           border: solid #fff;
           border-width: 0 2px 2px 0;
-          transform: rotate(45deg); }
+          transform: rotate(45deg);
+          /*!rtl:ignore*/ }
+          .rtl .woocommerce-legend__item > button .woocommerce-legend__item-container .woocommerce-legend__item-checkmark.woocommerce-legend__item-checkmark-checked::after {
+            transform: rotate(45deg) scaleX(-1); }
     .woocommerce-legend__item > button .woocommerce-legend__item-container .woocommerce-legend__item-total {
       margin-left: auto;
       font-weight: bold; }
@@ -679,7 +672,6 @@ The CSSTransition element creates a containing div without a class
   .d3-chart__container .barfocus {
     fill: rgba(0, 0, 0, 0.1); }
 
-/** @format */
 .d3-base {
   background: transparent;
   overflow-x: auto;
@@ -688,14 +680,12 @@ The CSSTransition element creates a containing div without a class
   width: 100%;
   height: 100%; }
 
-/** @format */
 .woocommerce-count {
   border: 1px solid;
   border-radius: 10px;
   padding: 0 8px;
   font-weight: bold; }
 
-/** @format */
 .woocommerce-page .woocommerce-dropdown-button {
   background-color: #fff;
   position: relative;
@@ -757,7 +747,6 @@ The CSSTransition element creates a containing div without a class
         font-size: 12px;
         font-size: 0.75rem; } }
 
-/** @format */
 .woocommerce-ellipsis-menu {
   text-align: center; }
 
@@ -804,7 +793,6 @@ The CSSTransition element creates a containing div without a class
   .woocommerce-ellipsis-menu__popover .components-base-control {
     margin: 0; }
 
-/** @format */
 .woocommerce-empty-content {
   margin-bottom: 16px;
   text-align: center; }
@@ -813,7 +801,6 @@ The CSSTransition element creates a containing div without a class
   .woocommerce-empty-content .woocommerce-empty-content__actions .components-button + .components-button {
     margin-left: 16px; }
 
-/** @format */
 .woocommerce-filters-advanced {
   margin: 24px 0; }
   .woocommerce-filters-advanced .woocommerce-card__header {
@@ -1016,7 +1003,6 @@ The CSSTransition element creates a containing div without a class
   .woocommerce-filters-advanced__input-range .separator {
     text-align: center; }
 
-/** @format */
 .woocommerce-filters-date__content.is-mobile .components-popover__header {
   border: none;
   height: 0; }
@@ -1115,7 +1101,6 @@ button.woocommerce-filters-date__tab {
     height: 34px;
     margin: 0 12px; }
 
-/** @format */
 .woocommerce-filters-filter__content.is-mobile .components-popover__header-title {
   font-size: 12px;
   font-size: 0.75rem;
@@ -1170,7 +1155,6 @@ button.woocommerce-filters-date__tab {
       top: 50%;
       transform: translate(0, -50%); }
 
-/** @format */
 .woocommerce-filters .components-base-control__field {
   margin-bottom: 0; }
 
@@ -1261,7 +1245,6 @@ button.woocommerce-filters-date__tab {
 .woocommerce-filters-advanced__list-item .components-base-control + .components-base-control {
   margin-bottom: 0; }
 
-/** @format */
 .woocommerce-flag span {
   vertical-align: middle; }
 
@@ -1273,7 +1256,6 @@ button.woocommerce-filters-date__tab {
   display: block;
   overflow: hidden; }
 
-/** @format */
 .woocommerce-gravatar {
   border-radius: 50%; }
 
@@ -1339,7 +1321,6 @@ button.woocommerce-filters-date__tab {
     align-items: center;
     margin-left: auto; }
 
-/** @format */
 .woocommerce-order-status {
   display: flex;
   align-items: center; }
@@ -1360,7 +1341,6 @@ button.woocommerce-filters-date__tab {
     background: #ffb900;
     border-color: #ffd566; }
 
-/** @format */
 .woocommerce-pagination {
   display: flex;
   flex-direction: row;
@@ -1441,11 +1421,9 @@ button.woocommerce-filters-date__tab {
   border-color: #d94f4f;
   box-shadow: 0 0 2px #d94f4f; }
 
-/** @format */
 .woocommerce-product-image {
   border-radius: 50%; }
 
-/** @format */
 .woocommerce-rating {
   position: relative;
   vertical-align: middle;
@@ -1463,7 +1441,6 @@ button.woocommerce-filters-date__tab {
     .woocommerce-rating .woocommerce-rating__star-outline .gridicon {
       fill: #555d66; }
 
-/** @format */
 .woocommerce-search.woocommerce-select-control {
   position: relative; }
   .woocommerce-search.woocommerce-select-control i.material-icons-outlined {
@@ -1684,7 +1661,6 @@ button.woocommerce-filters-date__tab {
   padding: 0;
   border-top: none; }
 
-/** @format */
 .woocommerce-section-header {
   padding: 13px;
   border-bottom: none;
@@ -1747,7 +1723,6 @@ button.woocommerce-filters-date__tab {
   line-height: 2.2;
   font-weight: 600; }
 
-/** @format */
 .woocommerce-segmented-selection {
   width: 100%;
   color: #555d66; }
@@ -1803,7 +1778,6 @@ button.woocommerce-filters-date__tab {
   .woocommerce-segmented-selection__input:focus + label .woocommerce-segmented-selection__label {
     box-shadow: inset 0 0 0 1px #24292d; }
 
-/** @format */
 .woocommerce-select-control {
   position: relative; }
   .woocommerce-select-control .components-base-control {
@@ -1903,7 +1877,6 @@ button.woocommerce-filters-date__tab {
     font-size: 12px;
     margin-top: -12px; }
 
-/** @format */
 .woocommerce-split-button {
   display: flex;
   align-items: center;
@@ -2001,7 +1974,6 @@ button.woocommerce-filters-date__tab {
 .woocommerce-split-button.is-primary .dashicons-arrow-down {
   fill: #fff; }
 
-/** @format */
 .woocommerce-stepper .woocommerce-stepper__steps {
   display: flex;
   justify-content: space-around;
@@ -2151,7 +2123,6 @@ button.woocommerce-filters-date__tab {
   animation: growAndShrink 2s ease-in-out infinite;
   stroke: #1d2327; }
 
-/** @format */
 .woocommerce-summary {
   margin: 16px 0;
   display: -ms-grid;
@@ -2468,7 +2439,10 @@ button.woocommerce-filters-date__tab {
   .woocommerce-summary__item .woocommerce-summary__item-delta-icon {
     vertical-align: middle;
     margin-right: 3px;
-    fill: currentColor; }
+    fill: currentColor;
+    /*!rtl:ignore*/ }
+    .rtl .woocommerce-summary__item .woocommerce-summary__item-delta-icon.gridicons-arrow-right {
+      transform: scaleX(-1); }
     .woocommerce-summary__item .woocommerce-summary__item-delta-icon.gridicons-arrow-up {
       transform: rotate(45deg); }
     .woocommerce-summary__item .woocommerce-summary__item-delta-icon.gridicons-arrow-down {
@@ -2501,7 +2475,6 @@ button.woocommerce-filters-date__tab {
     font-size: 11px;
     font-size: 0.6875rem; }
 
-/** @format */
 .woocommerce-table .woocommerce-card__body {
   padding: 0;
   position: relative; }
@@ -2709,14 +2682,13 @@ th.woocommerce-table__item {
   .woocommerce-table__summary-item .woocommerce-table__summary-value {
     font-weight: 600; }
 
-/** @format */
 .woocommerce-tag {
   display: inline-flex;
   margin: 1px 4px 1px 0;
   overflow: hidden;
   vertical-align: middle; }
   .woocommerce-tag .woocommerce-tag__text,
-  .woocommerce-tag .woocommerce-tag__remove.components-icon-button {
+  .woocommerce-tag .woocommerce-tag__remove {
     display: inline-block;
     line-height: 24px;
     background: #e2e4e7;
@@ -2733,17 +2705,16 @@ th.woocommerce-table__item {
   .woocommerce-tag.has-remove .woocommerce-tag__text {
     padding: 0 4px 0 8px;
     border-radius: 12px 0 0 12px; }
-  .woocommerce-tag .woocommerce-tag__remove.components-icon-button {
+  .woocommerce-tag .woocommerce-tag__remove {
     cursor: pointer;
     padding: 0 2px;
     border-radius: 0 12px 12px 0;
     color: #555d66;
     line-height: 10px;
     text-indent: 0; }
-    .woocommerce-tag .woocommerce-tag__remove.components-icon-button:hover {
+    .woocommerce-tag .woocommerce-tag__remove:hover {
       color: #32373c; }
 
-/** @format */
 .muriel-input-text {
   background: #fff;
   border: 1px solid #a7aaad;
@@ -2882,7 +2853,6 @@ th.woocommerce-table__item {
   border-left: none;
   border-radius: 0 4px 4px 0; }
 
-/** @format */
 .woocommerce-view-more-list {
   padding-left: 4px;
   margin: 0 0 0 4px;
