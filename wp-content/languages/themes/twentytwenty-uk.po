@@ -1,0 +1,539 @@
+# Translation of Themes - Twenty Twenty in Ukrainian
+# This file is distributed under the same license as the Themes - Twenty Twenty package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-04-02 08:05:46+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: uk_UA\n"
+"Project-Id-Version: Themes - Twenty Twenty\n"
+
+#. Description of the theme
+msgid "Our default theme for 2020 is designed to take full advantage of the flexibility of the block editor. Organizations and businesses have the ability to create dynamic landing pages with endless layouts using the group and column blocks. The centered content column and fine-tuned typography also makes it perfect for traditional blogs. Complete editor styles give you a good idea of what your content will look like, even before you publish. You can give your site a personal touch by changing the background colors and the accent color in the Customizer. The colors of all elements on your site are automatically calculated based on the colors you pick, ensuring a high, accessible color contrast for your visitors."
+msgstr "Наша тема за замовчуванням на 2020 рік розроблена для того, щоб максимально використати гнучкість редактора блоків. Організації та компанії мають можливість створювати динамічні цільові сторінки з нескінченними макетами за допомогою блоків групи та стовпців. У центрі стовпця із вмістом та налагоджена типографія також робить його ідеальним для традиційних блогів. Повні стилі редактора дають вам хороше уявлення про те, як виглядатиме ваш вміст, навіть перед публікацією. Ви можете надати своєму сайту особистого дотику, змінивши кольори фону та колір акценту у \"Настроювачі\". Кольори всіх елементів на вашому сайті автоматично розраховуються виходячи з вибраних кольорів, забезпечуючи високий, доступний кольоровий контраст для відвідувачів."
+
+#. Theme Name of the theme
+msgid "Twenty Twenty"
+msgstr "Twenty Twenty"
+
+#: classes/class-twentytwenty-customize.php:246
+msgid "Show author bio"
+msgstr "Показувати інформацію про автора"
+
+#: template-parts/entry-author-bio.php:29
+msgid "View Archive <span aria-hidden=\"true\">&rarr;</span>"
+msgstr "Перегляд архіву <span aria-hidden=\"true\">&rarr;</span>"
+
+#: inc/starter-content.php:38
+msgctxt "Theme starter content"
+msgid "The New UMoMA Opens its Doors"
+msgstr "Оновлена UMoMA відчиняє двері"
+
+#: inc/template-tags.php:393
+msgctxt "A string that is output before one or more categories"
+msgid "In"
+msgstr "В"
+
+#: inc/starter-content.php:150
+msgid "Join the Club"
+msgstr "Приєднуйтесь до клубу"
+
+#: inc/starter-content.php:147
+msgid "Members get access to exclusive exhibits and sales. Our memberships cost $99.99 and are billed annually."
+msgstr "Учасники отримують доступ до ексклюзивних експонатів та розпродажів. Наші членства коштують 99,99 дол. США і стягуються щорічно."
+
+#: inc/starter-content.php:144
+msgid "Become a Member and Get Exclusive Offers!"
+msgstr "Станьте членом та отримайте ексклюзивні пропозиції!"
+
+#: inc/starter-content.php:136
+msgid "The exhibitions are produced by UMoMA in collaboration with artists and museums around the world and they often attract international attention. UMoMA has received a Special Commendation from the European Museum of the Year, and was among the top candidates for the Swedish Museum of the Year Award as well as for the Council of Europe Museum Prize."
+msgstr "Виставки організовуються UMoMA у співпраці з художниками та музеями по всьому світу, і вони часто привертають міжнародну увагу. UMoMA отримала спеціальну подяку від Європейського музею року та була однією з найкращих кандидатів на премію Шведського музею року, а також на премію Музею Ради Європи."
+
+#: inc/starter-content.php:133
+msgid "With seven floors of striking architecture, UMoMA shows exhibitions of international contemporary art, sometimes along with art historical retrospectives. Existential, political and philosophical issues are intrinsic to our programme. As visitor you are invited to guided tours artist talks, lectures, film screenings and other events with free admission"
+msgstr "Завдяки семи поверхам яскравої архітектури, UMoMA демонструє виставки міжнародного сучасного мистецтва, іноді поряд із мистецькими історичними ретроспективами. Екзистенційні, політичні та філософські питання є суттєвими для нашої програми. В якості відвідувача вас запрошують на екскурсії художньої розмови, лекції, показ фільмів та інші заходи з вільним входом"
+
+#: inc/starter-content.php:129
+msgid "&#8220;Cyborgs, as the philosopher Donna Haraway established, are not reverent. They do not remember the cosmos.&#8221;"
+msgstr "&#8220;Кіборги, як встановив філософ Донна Харавей, не шануються. Вони не пам’ятають космос.&#8221;"
+
+#: inc/starter-content.php:113
+msgid "From Signac to Matisse"
+msgstr "Від Сигнака до Матісса"
+
+#: inc/starter-content.php:98
+msgid "The Life I Deserve"
+msgstr "Життя яке ви заслужили"
+
+#: inc/starter-content.php:84 inc/starter-content.php:116
+msgid "October 1 -- December 1"
+msgstr "1 Жовтня -- 1 Грудня"
+
+#: inc/starter-content.php:81
+msgid "Theatre of Operations"
+msgstr "Театр операцій"
+
+#: inc/starter-content.php:72 inc/starter-content.php:87
+#: inc/starter-content.php:104 inc/starter-content.php:119
+msgid "Read More"
+msgstr "Читати далі"
+
+#: inc/starter-content.php:69 inc/starter-content.php:101
+msgid "August 1 -- December 1"
+msgstr "1 Серпня - 1 Грудня"
+
+#: inc/starter-content.php:66
+msgid "Works and Days"
+msgstr "Дні роботи"
+
+#: inc/starter-content.php:55
+msgid "The premier destination for modern art in Northern Sweden. Open from 10 AM to 6 PM every day during the summer months."
+msgstr "Головне місце сучасного мистецтва в Північній Швеції. Відкрито з 10:00 до 18:00 щодня протягом літніх місяців."
+
+#: inc/starter-content.php:47
+msgid "The New UMoMA Opens its Doors"
+msgstr "Нова UMoMA відкриває свої двері"
+
+#: classes/class-twentytwenty-customize.php:395
+msgid "Overlay Opacity"
+msgstr "Непрозорість накладення"
+
+#: classes/class-twentytwenty-customize.php:375
+msgid "The color used for the text in the overlay."
+msgstr "Колір, який використовується для тексту в накладанні."
+
+#: classes/class-twentytwenty-customize.php:374
+msgid "Overlay Text Color"
+msgstr "Колір тексту накладення"
+
+#: classes/class-twentytwenty-customize.php:353
+msgid "The color used for the overlay. Defaults to the accent color."
+msgstr "Колір, який використовується для накладання. За замовчуванням колір акценту."
+
+#: classes/class-twentytwenty-customize.php:352
+msgid "Overlay Background Color"
+msgstr "Колір фону накладання"
+
+#: classes/class-twentytwenty-customize.php:283
+msgid "Settings for the \"Cover Template\" page template. Add a featured image to use as background."
+msgstr "Налаштування шаблону сторінки \"Шаблон обкладинка\". Додайте відображуване зображення, щоб використовувати його як фон."
+
+#: classes/class-twentytwenty-customize.php:183
+msgid "Apply a custom color for links, buttons, featured images."
+msgstr "Застосовуйте спеціальний колір для посилань, кнопок, відображуваних зображень."
+
+#: classes/class-twentytwenty-customize.php:126
+msgid "Custom"
+msgstr "Користувацький"
+
+#: classes/class-twentytwenty-customize.php:125
+msgid "Default"
+msgstr "За замовчуванням"
+
+#: classes/class-twentytwenty-customize.php:123
+msgid "Primary Color"
+msgstr "Основний колір"
+
+#: searchform.php:24 template-parts/modal-search.php:20
+msgid "Search for:"
+msgstr "Шукати:"
+
+#: index.php:99
+msgid "search again"
+msgstr "шукати знову"
+
+#. translators: %s: Number of search results.
+#: index.php:39
+msgid "We found %s result for your search."
+msgid_plural "We found %s results for your search."
+msgstr[0] "Ми знайшли %s результат для вашого пошуку"
+msgstr[1] "Ми знайшли %s результати для вашого пошуку"
+msgstr[2] "Ми знайшли %s результатів для вашого пошуку"
+
+#. translators: %s: HTML character for up arrow.
+#: footer.php:49
+msgid "Up %s"
+msgstr "Нагору %s"
+
+#. translators: %s: HTML character for up arrow.
+#: footer.php:43
+msgid "To the top %s"
+msgstr "На початок %s"
+
+#. translators: Copyright date format, see https://www.php.net/date
+#: footer.php:25
+msgctxt "copyright date format"
+msgid "Y"
+msgstr "Y"
+
+#: 404.php:24
+msgid "404 not found"
+msgstr "404 не знайдено"
+
+#. Template Name of the theme
+msgid "Full Width Template"
+msgstr "Шаблон без сайдбару"
+
+#: template-parts/pagination.php:25
+msgid "Older <span class=\"nav-short\">Posts</span>"
+msgstr "Старіші <span class=\"nav-short\">Записи</span>"
+
+#: template-parts/pagination.php:21
+msgid "Newer <span class=\"nav-short\">Posts</span>"
+msgstr "Новіші <span class=\"nav-short\">Записи</span>"
+
+#: template-parts/navigation.php:25
+msgid "Post"
+msgstr "Запис"
+
+#: template-parts/modal-search.php:26
+msgid "Close search"
+msgstr "Закрити пошук"
+
+#: template-parts/modal-menu.php:117
+msgid "Expanded Social links"
+msgstr "Розширені соціальні посилання"
+
+#: template-parts/modal-menu.php:73
+msgid "Mobile"
+msgstr "Мобільний"
+
+#: template-parts/modal-menu.php:48
+msgid "Expanded"
+msgstr "Розгорнуто"
+
+#: template-parts/modal-menu.php:21
+msgid "Close Menu"
+msgstr "Закрити меню"
+
+#: template-parts/footer-menus-widgets.php:57
+msgid "Social links"
+msgstr "Соціальні посилання"
+
+#: template-parts/footer-menus-widgets.php:37
+msgid "Footer"
+msgstr "Підвал"
+
+#. translators: %s: Author name.
+#: inc/template-tags.php:354 template-parts/entry-author-bio.php:20
+msgid "By %s"
+msgstr "Від %s"
+
+#: template-parts/content-cover.php:138 template-parts/content.php:48
+msgid "Pages:"
+msgstr "Сторінки:"
+
+#: template-parts/content-cover.php:138 template-parts/content.php:48
+msgid "Page"
+msgstr "Сторінка"
+
+#: template-parts/content-cover.php:88
+msgid "Scroll Down"
+msgstr "Прокрутити вниз"
+
+#: searchform.php:27
+msgctxt "submit button"
+msgid "Search"
+msgstr "Шукати"
+
+#: searchform.php:25
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Пошук &hellip;"
+
+#: index.php:48
+msgid "We could not find any results for your search. You can give it another try through the search form below."
+msgstr "Не вдалося знайти жодного результату для вашого пошуку. Ви можете спробувати ще раз через форму пошуку нижче."
+
+#: index.php:32
+msgid "Search:"
+msgstr "Пошук:"
+
+#. translators: %s: Post title. Only visible to screen readers.
+#: inc/template-tags.php:206
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr "Редагувати <span class=\"screen-reader-text\">%s</span>"
+
+#: inc/template-tags.php:445
+msgid "Sticky post"
+msgstr "Приліплений запис"
+
+#: inc/template-tags.php:407
+msgid "Tags"
+msgstr "Позначки"
+
+#: inc/template-tags.php:389 template-parts/entry-header.php:36
+#: template-parts/content-cover.php:70
+msgid "Categories"
+msgstr "Категорії"
+
+#: inc/template-tags.php:371
+msgid "Post date"
+msgstr "Дата запису"
+
+#: inc/template-tags.php:347
+msgid "Post author"
+msgstr "Автор запису"
+
+#: inc/starter-content.php:196
+msgid "Social Links Menu"
+msgstr "Меню соціальних посилань"
+
+#: inc/starter-content.php:176 inc/starter-content.php:186 functions.php:494
+msgid "Primary"
+msgstr "Головна"
+
+#: header.php:88
+msgid "Horizontal"
+msgstr "Горизонтально"
+
+#: header.php:76 header.php:137
+msgid "Menu"
+msgstr "Меню"
+
+#: header.php:53 header.php:157
+msgid "Search"
+msgstr "Пошук"
+
+#: template-parts/content.php:36
+msgid "Continue reading"
+msgstr "Продовжити читання"
+
+#: functions.php:551
+msgctxt "Short name of the larger font size in the block editor."
+msgid "XL"
+msgstr "XL"
+
+#: functions.php:550
+msgctxt "Name of the larger font size in the block editor"
+msgid "Larger"
+msgstr "Більше"
+
+#: functions.php:545
+msgctxt "Short name of the large font size in the block editor."
+msgid "L"
+msgstr "L"
+
+#: functions.php:544
+msgctxt "Name of the large font size in the block editor"
+msgid "Large"
+msgstr "Великий"
+
+#: functions.php:539
+msgctxt "Short name of the regular font size in the block editor."
+msgid "M"
+msgstr "M"
+
+#: functions.php:538
+msgctxt "Name of the regular font size in the block editor"
+msgid "Regular"
+msgstr "Звичайний"
+
+#: functions.php:533
+msgctxt "Short name of the small font size in the block editor."
+msgid "S"
+msgstr "S"
+
+#: functions.php:532
+msgctxt "Name of the small font size in the block editor"
+msgid "Small"
+msgstr "Малий"
+
+#: functions.php:517
+msgid "Background Color"
+msgstr "Колір фону"
+
+#: functions.php:504
+msgid "Subtle Background"
+msgstr "Тонкий фон"
+
+#: functions.php:499
+msgid "Secondary"
+msgstr "Вторинний"
+
+#: functions.php:489
+msgid "Accent Color"
+msgstr "Основний колір"
+
+#: functions.php:380
+msgid "Widgets in this area will be displayed in the second column in the footer."
+msgstr "Віджети в цій області відображатимуться у другому стовпці футера."
+
+#: functions.php:378
+msgid "Footer #2"
+msgstr "Підвал #2"
+
+#: functions.php:368
+msgid "Widgets in this area will be displayed in the first column in the footer."
+msgstr "Віджети в цій ділянці будуть показані в першому стовпчику футера."
+
+#: functions.php:366
+msgid "Footer #1"
+msgstr "Підвал #1"
+
+#: functions.php:341
+msgid "Skip to the content"
+msgstr "Перейти до вмісту"
+
+#: functions.php:262
+msgid "Social Menu"
+msgstr "Соціальне меню"
+
+#: functions.php:261
+msgid "Footer Menu"
+msgstr "Меню підвалу"
+
+#: functions.php:260
+msgid "Mobile Menu"
+msgstr "Мобільне меню"
+
+#: functions.php:259
+msgid "Desktop Expanded Menu"
+msgstr "Розгорнуте меню для комп'ютера"
+
+#: functions.php:258
+msgid "Desktop Horizontal Menu"
+msgstr "Горизонтальне меню для комп'ютера"
+
+#: footer.php:33
+msgid "Powered by WordPress"
+msgstr "Працює на WordPress"
+
+#: comments.php:127
+msgid "Comments are closed."
+msgstr "Обговорення закрито."
+
+#: comments.php:88
+msgid "Comments"
+msgstr "Коментарі"
+
+#: comments.php:75
+msgid "Older Comments"
+msgstr "Старіші коментарі"
+
+#: comments.php:74
+msgid "Newer Comments"
+msgstr "Новіші коментарі"
+
+#. translators: 1: Number of comments, 2: Post title.
+#: comments.php:41
+msgctxt "comments title"
+msgid "%1$s reply on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s replies on &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s коментар &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s коментарі &ldquo;%2$s&rdquo;"
+msgstr[2] "%1$s коментарів &ldquo;%2$s&rdquo;"
+
+#. translators: %s: Post title.
+#: comments.php:37
+msgctxt "comments title"
+msgid "One reply on &ldquo;%s&rdquo;"
+msgstr "Один коментар до &ldquo;%s&rdquo;"
+
+#: comments.php:34
+msgid "Leave a comment"
+msgstr "Залишити коментар"
+
+#: classes/class-twentytwenty-walker-page.php:107 inc/template-tags.php:555
+msgid "Show sub menu"
+msgstr "Показати підменю"
+
+#. translators: %d: ID of a post.
+#: classes/class-twentytwenty-walker-page.php:70
+msgid "#%d (no title)"
+msgstr "#%d (без назви)"
+
+#: classes/class-twentytwenty-walker-comment.php:127
+msgid "By Post Author"
+msgstr "Повідомлення автора"
+
+#: classes/class-twentytwenty-walker-comment.php:92
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш коментар чекає схвалення."
+
+#: classes/class-twentytwenty-walker-comment.php:77
+msgid "Edit"
+msgstr "Редагувати"
+
+#. translators: 1: Comment date, 2: Comment time.
+#: classes/class-twentytwenty-walker-comment.php:69
+msgid "%1$s at %2$s"
+msgstr "%1$s о %2$s"
+
+#: classes/class-twentytwenty-walker-comment.php:56
+msgid "says:"
+msgstr "говорить:"
+
+#: classes/class-twentytwenty-customize.php:396
+msgid "Make sure that the contrast is high enough so that the text is readable."
+msgstr "Переконайтеся, що контраст досить високий, щоб текст читався."
+
+#: classes/class-twentytwenty-customize.php:306
+msgid "Creates a parallax effect when the visitor scrolls."
+msgstr "Створює ефект паралакса, коли відвідувач прокручує."
+
+#: classes/class-twentytwenty-customize.php:305
+msgid "Fixed Background Image"
+msgstr "Фіксоване фонове зображення"
+
+#. Template Name of the theme
+#: classes/class-twentytwenty-customize.php:281
+msgid "Cover Template"
+msgstr "Шаблон обкладинки"
+
+#: classes/class-twentytwenty-customize.php:270
+msgid "Summary"
+msgstr "Короткий вміст"
+
+#: classes/class-twentytwenty-customize.php:269
+msgid "Full text"
+msgstr "Текст повністю"
+
+#: classes/class-twentytwenty-customize.php:267
+msgid "On archive pages, posts show:"
+msgstr "На сторінках архівів сторінок та записів показувати:"
+
+#: classes/class-twentytwenty-customize.php:225
+msgid "Show search in header"
+msgstr "Показати пошук у заголовку"
+
+#: classes/class-twentytwenty-customize.php:202
+msgid "Theme Options"
+msgstr "Параметри теми"
+
+#: classes/class-twentytwenty-customize.php:101
+msgid "Header &amp; Footer Background Color"
+msgstr "Кольори фону для заголовка і футера"
+
+#: classes/class-twentytwenty-customize.php:82
+msgid "Scales the logo to half its uploaded size, making it sharp on high-res screens."
+msgstr "Змінює розмір логотипу на половину від завантаженого розміру, роблячи його чітким на екранах з високою роздільною здатностю."
+
+#: classes/class-twentytwenty-customize.php:81
+msgid "Retina logo"
+msgstr "Логотип Retina"
+
+#: 404.php:19
+msgid "The page you were looking for could not be found. It might have been removed, renamed, or did not exist in the first place."
+msgstr "Сторінка яку ви шукаєте не знайдена, можливо вона була видалена, переіменована або ніколи не існувала."
+
+#: 404.php:17
+msgid "Page Not Found"
+msgstr "Сторінку не знайдено"
+
+#. Author URI of the theme
+#: footer.php:32
+msgid "https://wordpress.org/"
+msgstr "https://uk.wordpress.org/"
+
+#. Author of the theme
+msgid "the WordPress team"
+msgstr "Команда WordPress"
+
+#. Theme URI of the theme
+msgid "https://wordpress.org/themes/twentytwenty/"
+msgstr "https://uk.wordpress.org/themes/twentytwenty/"

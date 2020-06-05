@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Seventeen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-06-17 18:16:53+0000\n"
+"PO-Revision-Date: 2020-04-02 08:07:05+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,30 +23,30 @@ msgstr "Twenty Seventeen"
 msgid "Footer"
 msgstr "Підвал"
 
-#: functions.php:338
+#: functions.php:340
 msgid "Add widgets here to appear in your sidebar on blog posts and archive pages."
 msgstr "Додайте сюди віджети, щоб вони з'явилися на бічній колонці на сторінках записів блогу та архіву."
 
-#: sidebar.php:18 functions.php:336
+#: functions.php:338 sidebar.php:18
 msgid "Blog Sidebar"
 msgstr "Бічна колонка блогу"
 
-#: template-parts/navigation/navigation-top.php:31
 #: template-parts/header/site-branding.php:34
+#: template-parts/navigation/navigation-top.php:31
 msgid "Scroll down to content"
 msgstr "Перейти до вмісту"
 
-#: functions.php:179
+#: functions.php:181
 msgctxt "Theme starter content"
 msgid "Coffee"
 msgstr "Кава"
 
-#: functions.php:175
+#: functions.php:177
 msgctxt "Theme starter content"
 msgid "Sandwich"
 msgstr "Сендвіч"
 
-#: functions.php:171
+#: functions.php:173
 msgctxt "Theme starter content"
 msgid "Espresso"
 msgstr "Еспрессо"
@@ -59,9 +59,10 @@ msgstr "Призупинити фонове відео"
 msgid "Play background video"
 msgstr "Грати фонове відео"
 
-#: inc/template-tags.php:151
-msgid "Front Page Section %1$s Placeholder"
-msgstr "Заповнювач %1$s розділу головної сторінки"
+#. translators: %s: The section ID.
+#: inc/template-tags.php:158
+msgid "Front Page Section %s Placeholder"
+msgstr "Заповнювач %s розділу головної сторінки"
 
 #: inc/customizer.php:109
 msgid "When the two-column layout is assigned, the page title is in one column and content is in the other."
@@ -83,17 +84,17 @@ msgstr "Позначки"
 msgid "Categories"
 msgstr "Категорії"
 
-#. translators: used between list items, there is a space after the comma
+#. translators: Used between list items, there is a space after the comma.
 #: inc/template-tags.php:66
 msgid ", "
 msgstr ", "
 
-#. translators: %s: post date
+#. translators: %s: Post date.
 #: inc/template-tags.php:52
 msgid "<span class=\"screen-reader-text\">Posted on</span> %s"
 msgstr "<span class=\"screen-reader-text\">Опубліковано</span> %s"
 
-#. translators: %s: post author
+#. translators: %s: Post author.
 #: inc/template-tags.php:21
 msgid "by %s"
 msgstr "автором %s"
@@ -110,7 +111,7 @@ msgstr "Будь ласка, визначте параметри за замов
 msgid "Select pages to feature in each area from the dropdowns. Add an image to a section by setting a featured image in the page editor. Empty sections will not be displayed."
 msgstr "Виберіть обрані сторінки для кожної області з випадаючих списків. Додайте зображення в розділ встановивши обране зображення в редакторі сторінки. Порожні розділи не будуть відображатися."
 
-#. translators: %d is the front page section number
+#. translators: %d: The front page section number.
 #: inc/customizer.php:142
 msgid "Front Page Section %d Content"
 msgstr "Вміст %d розділу головної сторінки"
@@ -147,25 +148,25 @@ msgstr "Кольорова схема"
 msgid "Default Header Image"
 msgstr "Зображення заголовку за замовчуванням"
 
-#: functions.php:360
+#: functions.php:362
 msgid "Footer 2"
 msgstr "Підвал 2"
 
-#: functions.php:350 functions.php:362
+#: functions.php:352 functions.php:364
 msgid "Add widgets here to appear in your footer."
 msgstr "Додайте сюди віджети для відображення в підвалі сайту."
 
-#: functions.php:348
+#: functions.php:350
 msgid "Footer 1"
 msgstr "Підвал 1"
 
-#: functions.php:289
+#: functions.php:290
 msgctxt "Libre Franklin font: on or off"
 msgid "on"
 msgstr "on"
 
 #: template-parts/navigation/navigation-top.php:12 functions.php:64
-#: functions.php:203
+#: functions.php:205
 msgid "Top Menu"
 msgstr "Верхнє меню"
 
@@ -173,19 +174,20 @@ msgstr "Верхнє меню"
 msgid "Reply"
 msgstr "Відповідь"
 
-#: template-parts/post/content-none.php:28
+#: template-parts/post/content-none.php:33
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr "Схоже, що не вдалося знайти те, що ви шукаєте. Можливо допоможе пошук."
 
-#: search.php:54
+#: search.php:59
 msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
 msgstr "Вибачте, але за вашим пошуковим запитом нічого не знайдено. Будь ласка, спробуйте інші ключові слова."
 
-#: template-parts/post/content-none.php:24
-msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr "Готові опублікувати свій перший запис? <a href=\"%1$s\">Почніть звідси</a>."
+#. translators: %s: Post editor URL.
+#: template-parts/post/content-none.php:27
+msgid "Ready to publish your first post? <a href=\"%s\">Get started here</a>."
+msgstr "Готові опублікувати свій перший запис? <a href=\"%s\">Почніть звідси</a>."
 
-#: template-parts/post/content-none.php:17 search.php:21
+#: template-parts/post/content-none.php:17 search.php:26
 msgid "Nothing Found"
 msgstr "Нічого не знайдено"
 
@@ -216,17 +218,18 @@ msgctxt "label"
 msgid "Search for:"
 msgstr "Пошук за запитом:"
 
-#: search.php:19
+#. translators: Search query.
+#: search.php:22
 msgid "Search Results for: %s"
 msgstr "Результати пошуку для: %s"
 
-#. translators: %s: Name of current post
-#: template-parts/page/content-front-page-panels.php:45
-#: template-parts/page/content-front-page.php:42
-#: template-parts/post/content-audio.php:84 template-parts/post/content.php:57
-#: template-parts/post/content-gallery.php:71
+#. translators: %s: Post title.
+#: template-parts/post/content.php:57 template-parts/post/content-audio.php:84
+#: template-parts/post/content-image.php:61
 #: template-parts/post/content-video.php:83
-#: template-parts/post/content-image.php:61 functions.php:390
+#: template-parts/post/content-gallery.php:71
+#: template-parts/page/content-front-page.php:42
+#: template-parts/page/content-front-page-panels.php:45 functions.php:392
 msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr "Продовжити читання<span class=\"screen-reader-text\"> \"%s\"</span>"
 
@@ -234,20 +237,21 @@ msgstr "Продовжити читання<span class=\"screen-reader-text\"> \
 msgid "Dark"
 msgstr "Темна"
 
-#: inc/back-compat.php:39 inc/back-compat.php:52 inc/back-compat.php:70
+#. translators: %s: The current WordPress version.
+#: inc/back-compat.php:40 inc/back-compat.php:54 inc/back-compat.php:73
 msgid "Twenty Seventeen requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again."
 msgstr "Тема Twenty Seventeen вимагає WordPress версії 4.7 або вище. У вас версія %s. Будь ласка, оновіть WordPress і спробуйте ще раз."
 
-#. translators: %s: Name of current post
+#. translators: %s: Post title.
 #: inc/template-tags.php:117
 msgid "Edit<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr "Редагувати<span class=\"screen-reader-text\"> \"%s\"</span>"
 
-#: template-parts/page/content-page.php:26
-#: template-parts/post/content-audio.php:91 template-parts/post/content.php:64
-#: template-parts/post/content-gallery.php:78
-#: template-parts/post/content-video.php:90
+#: template-parts/post/content.php:64 template-parts/post/content-audio.php:91
 #: template-parts/post/content-image.php:68
+#: template-parts/post/content-video.php:90
+#: template-parts/post/content-gallery.php:78
+#: template-parts/page/content-page.php:26
 msgid "Pages:"
 msgstr "Сторінки:"
 
@@ -259,19 +263,20 @@ msgstr "Меню"
 msgid "Skip to content"
 msgstr "Перейти до вмісту"
 
-#: functions.php:482
+#: functions.php:484
 msgid "Collapse child menu"
 msgstr "Згорнути дочірнє меню"
 
-#: functions.php:481
+#: functions.php:483
 msgid "Expand child menu"
 msgstr "Розгорнути дочірнє меню"
 
-#: functions.php:65 functions.php:214
+#: functions.php:65 functions.php:216
 msgid "Social Links Menu"
 msgstr "Меню соціальних посилань"
 
-#: template-parts/footer/site-info.php:19
+#. translators: %s: WordPress
+#: template-parts/footer/site-info.php:21
 msgid "Proudly powered by %s"
 msgstr "Сайт працює на %s"
 
@@ -283,7 +288,7 @@ msgstr "Меню соціальних посилань підвалу"
 msgid "Comments are closed."
 msgstr "Коментарі закриті."
 
-#. translators: 1: number of comments, 2: post title
+#. translators: 1: Number of comments, 2: Post title.
 #: comments.php:41
 msgctxt "comments title"
 msgid "%1$s Reply to &ldquo;%2$s&rdquo;"
@@ -292,13 +297,13 @@ msgstr[0] "%1$s Відповісти на &ldquo;%2$s&rdquo;"
 msgstr[1] "%1$s Відповісти на &ldquo;%2$s&rdquo;"
 msgstr[2] "%1$s Відповісти на &ldquo;%2$s&rdquo;"
 
-#. translators: %s: post title
+#. translators: %s: Post title.
 #: comments.php:37
 msgctxt "comments title"
 msgid "One Reply to &ldquo;%s&rdquo;"
 msgstr "Один коментар до &ldquo;%s&rdquo;"
 
-#: archive.php:50 search.php:47 index.php:54
+#: index.php:55 archive.php:51 search.php:52
 msgid "Page"
 msgstr "Сторінка"
 
@@ -310,11 +315,11 @@ msgstr "Отакої! Цю сторінку не знайдено."
 msgid "It looks like nothing was found at this location. Maybe try a search?"
 msgstr "За даною адресою нічого не знайдено. Спробуйте скористатися пошуком."
 
-#: archive.php:48 search.php:45 index.php:52
+#: index.php:53 archive.php:49 search.php:50
 msgid "Previous page"
 msgstr "Попередня сторінка"
 
-#: archive.php:49 search.php:46 index.php:53
+#: index.php:54 archive.php:50 search.php:51
 msgid "Next page"
 msgstr "Наступна сторінка"
 

@@ -1,15 +1,15 @@
-# Translation of WordPress - 5.3.x - Development - Administration - Network Admin in Russian
-# This file is distributed under the same license as the WordPress - 5.3.x - Development - Administration - Network Admin package.
+# Translation of WordPress - 5.4.x - Development - Administration - Network Admin in Russian
+# This file is distributed under the same license as the WordPress - 5.4.x - Development - Administration - Network Admin package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-10-04 21:15:57+0000\n"
+"PO-Revision-Date: 2020-03-05 10:20:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: GlotPress/2.4.0-alpha\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/3.0.0-alpha\n"
 "Language: ru\n"
-"Project-Id-Version: WordPress - 5.3.x - Development - Administration - Network Admin\n"
+"Project-Id-Version: WordPress - 5.4.x - Development - Administration - Network Admin\n"
 
 #. translators: %s: Number of sites.
 #: wp-admin/includes/class-wp-ms-sites-list-table.php:255
@@ -235,7 +235,7 @@ msgstr "Интернет-адресом вашей сети будет %s."
 
 #. translators: 1: Site URL, 2: Host name, 3: www.
 #: wp-admin/includes/network.php:271
-msgid "We recommend you change your siteurl to %1$s before enabling the network feature. It will still be possible to visit your site using the %3$s prefix with an address like %2$s but any links will not have the %3$s prefix."
+msgid "We recommend you change your site domain to %1$s before enabling the network feature. It will still be possible to visit your site using the %3$s prefix with an address like %2$s but any links will not have the %3$s prefix."
 msgstr "Рекомендуем перед установкой сети изменить параметр siteurl на %1$s. Ваш сайт по-прежнему будет доступен с префиксом %3$s по адресу %2$s, однако в ссылках не будет префикса %3$s."
 
 #: wp-admin/includes/network.php:226
@@ -386,12 +386,12 @@ msgstr "Похоже, в настоящий момент у вас нет ни �
 msgid "No themes found."
 msgstr "Тем не найдено."
 
-#: wp-admin/includes/class-wp-ms-sites-list-table.php:704
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:705
 msgctxt "verb; site"
 msgid "Archive"
 msgstr "В&nbsp;архив"
 
-#: wp-admin/includes/class-wp-ms-sites-list-table.php:702
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:703
 msgid "Unarchive"
 msgstr "Из&nbsp;архива"
 
@@ -416,7 +416,7 @@ msgid "Last Updated"
 msgstr "Последнее обновление"
 
 #: wp-admin/includes/class-wp-ms-sites-list-table.php:294
-#: wp-admin/includes/class-wp-ms-sites-list-table.php:708
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:709
 msgctxt "site"
 msgid "Not Spam"
 msgstr "Не спам"
@@ -441,7 +441,7 @@ msgid "Deleted"
 msgstr "Удалён"
 
 #: wp-admin/includes/class-wp-ms-sites-list-table.php:40
-#: wp-admin/includes/class-wp-ms-sites-list-table.php:710
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:711
 #: wp-admin/network/site-info.php:186
 msgctxt "site"
 msgid "Spam"
@@ -766,11 +766,6 @@ msgstr "&laquo;Удалить&raquo; &#8212; необратимое действ
 msgid "Clicking on bold headings can re-sort this table."
 msgstr "Можно сортировать таблицу по столбцам, нажимая на их заголовки."
 
-#: wp-admin/network/themes.php:272 wp-admin/network/menu.php:81
-msgctxt "theme"
-msgid "Add New"
-msgstr "Добавить новую"
-
 #: wp-admin/network/sites.php:30
 msgid "Add New takes you to the Add New Site screen. You can search for a site by Name, ID number, or IP address. Screen Options allows you to choose how many sites to display on one page."
 msgstr "Кнопка &laquo;Добавить новый&raquo; ведёт на экран добавления нового сайта. Можно найти сайт по названию, идентификатору или IP-адресу. На вкладке &laquo;Настройки экрана&raquo; можно выбрать количество сайтов для отображения на одной странице."
@@ -922,7 +917,7 @@ msgid "Once you add this code and refresh your browser, multisite should be enab
 msgstr "Как только вы добавите этот код и обновите страницу браузера, сеть будет создана. На этом экране (теперь в разделе &laquo;Управление сетью&raquo;) останется памятка о добавленном коде. Можно переключаться между разделами &laquo;Управление сетью&raquo; и &laquo;Управление сайтом&raquo;, нажимая на ссылку &laquo;Управление сетью&raquo; или на название сайта в выпадающем меню &laquo;Мои сайты&raquo; в верхней панели."
 
 #: wp-admin/includes/network.php:157
-msgid "ERROR: The network could not be created."
+msgid "Error: The network could not be created."
 msgstr "ОШИБКА: Не удалось создать сеть."
 
 #: wp-admin/includes/network.php:243
