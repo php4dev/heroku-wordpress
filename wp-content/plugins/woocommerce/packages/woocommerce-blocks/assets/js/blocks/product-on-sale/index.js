@@ -4,12 +4,12 @@
 import { __ } from '@wordpress/i18n';
 import { createBlock, registerBlockType } from '@wordpress/blocks';
 import { without } from 'lodash';
-import { IconProductOnSale } from '@woocommerce/block-components/icons';
-
+import { Icon, tag } from '@woocommerce/icons';
 /**
  * Internal dependencies
  */
 import Block from './block';
+import './editor.scss';
 import { deprecatedConvertToShortcode } from '../../utils/deprecations';
 import sharedAttributes, {
 	sharedAttributeBlockTypes,
@@ -18,13 +18,13 @@ import sharedAttributes, {
 registerBlockType( 'woocommerce/product-on-sale', {
 	title: __( 'On Sale Products', 'woocommerce' ),
 	icon: {
-		src: <IconProductOnSale />,
+		src: <Icon srcElement={ tag } />,
 		foreground: '#96588a',
 	},
 	category: 'woocommerce',
 	keywords: [ __( 'WooCommerce', 'woocommerce' ) ],
 	description: __(
-		'Display a grid of on sale products.',
+		'Display a grid of products currently on sale.',
 		'woocommerce'
 	),
 	supports: {
@@ -77,6 +77,8 @@ registerBlockType( 'woocommerce/product-on-sale', {
 
 	/**
 	 * Renders and manages the block.
+	 *
+	 * @param {Object} props Props to pass to block.
 	 */
 	edit( props ) {
 		return <Block { ...props } />;

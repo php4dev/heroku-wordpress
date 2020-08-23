@@ -190,6 +190,7 @@ class WPCF7_FormTag implements ArrayAccess {
 		}
 
 		if ( preg_match( '/^today(?:([+-][0-9]+)([a-z]*))?/', $option, $matches ) ) {
+			$today = wp_date( 'Y-m-d' );
 			$number = isset( $matches[1] ) ? (int) $matches[1] : 0;
 			$unit = isset( $matches[2] ) ? $matches[2] : '';
 
@@ -197,9 +198,9 @@ class WPCF7_FormTag implements ArrayAccess {
 				$unit = 'days';
 			}
 
-			$date = gmdate( 'Y-m-d',
-				strtotime( sprintf( 'today %1$s %2$s', $number, $unit ) ) );
-			return $date;
+			$format = sprintf( '%1$s %2$s %3$s', $today, $number, $unit );
+
+			return gmdate( 'Y-m-d', strtotime( $format ) );
 		}
 
 		return false;
@@ -322,7 +323,7 @@ class WPCF7_FormTag implements ArrayAccess {
 		return apply_filters( 'wpcf7_form_tag_data_option', null, $options, $args );
 	}
 
-	public function get_limit_option( $default = 1048576 ) { // 1048576 = 1 MB
+	public function get_limit_option( $default = MB_IN_BYTES ) {
 		$pattern = '/^limit:([1-9][0-9]*)([kKmM]?[bB])?$/';
 
 		$matches = $this->get_first_match_option( $pattern );
@@ -334,9 +335,9 @@ class WPCF7_FormTag implements ArrayAccess {
 				$kbmb = strtolower( $matches[2] );
 
 				if ( 'kb' == $kbmb ) {
-					$size *= 1024;
+					$size *= KB_IN_BYTES;
 				} elseif ( 'mb' == $kbmb ) {
-					$size *= 1024 * 1024;
+					$size *= MB_IN_BYTES;
 				}
 			}
 

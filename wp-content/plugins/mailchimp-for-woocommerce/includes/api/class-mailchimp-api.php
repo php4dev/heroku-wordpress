@@ -196,14 +196,26 @@ class MailChimp_WooCommerce_MailChimpApi
      * @throws MailChimp_WooCommerce_Error
      * @throws MailChimp_WooCommerce_ServerError
      */
-    public function subscribe($list_id, $email, $subscribed = true, $merge_fields = array(), $list_interests = array())
+    public function subscribe($list_id, $email, $subscribed = true, $merge_fields = array(), $list_interests = array(), $language = null)
     {
+        if (is_string($subscribed)) {
+            $status = $subscribed;
+        } else {
+            if ($subscribed === true) {
+                $status = 'subscribed';
+            } elseif ($subscribed === false) {
+                $status = 'pending';
+            } else {
+                $status = 'transactional';
+            }
+        }
         $data = array(
             'email_type' => 'html',
             'email_address' => $email,
-            'status' => ($subscribed === true ? 'subscribed' : 'pending'),
+            'status' => $status,
             'merge_fields' => $merge_fields,
             'interests' => $list_interests,
+            'language' => $language
         );
 
         if (empty($data['merge_fields'])) {
@@ -213,10 +225,14 @@ class MailChimp_WooCommerce_MailChimpApi
         if (empty($data['interests'])) {
             unset($data['interests']);
         }
+        
+        if (empty($data['language'])) {
+            unset($data['language']);
+        }
 
         mailchimp_debug('api.subscribe', "Subscribing {$email}", $data);
 
-        return $this->post("lists/$list_id/members", $data);
+        return $this->post("lists/$list_id/members?skip_merge_validation=true", $data);
     }
 
     /**
@@ -229,7 +245,7 @@ class MailChimp_WooCommerce_MailChimpApi
      * @throws Exception
      * @throws MailChimp_WooCommerce_Error
      */
-    public function update($list_id, $email, $subscribed = true, $merge_fields = array(), $list_interests = array())
+    public function update($list_id, $email, $subscribed = true, $merge_fields = array(), $list_interests = array(), $language = null)
     {
         $hash = md5(strtolower(trim($email)));
 
@@ -248,20 +264,24 @@ class MailChimp_WooCommerce_MailChimpApi
             'status' => $status,
             'merge_fields' => $merge_fields,
             'interests' => $list_interests,
+            'language' => $language
         );
 
         if (empty($data['merge_fields'])) {
             unset($data['merge_fields']);
         }
 
-
         if (empty($data['interests'])) {
             unset($data['interests']);
         }
 
+        if (empty($data['language'])) {
+            unset($data['language']);
+        }
+
         mailchimp_debug('api.update_member', "Updating {$email}", $data);
 
-        return $this->patch("lists/$list_id/members/$hash", $data);
+        return $this->patch("lists/$list_id/members/$hash?skip_merge_validation=true", $data);
     }
 
     /**
@@ -314,10 +334,10 @@ class MailChimp_WooCommerce_MailChimpApi
     public function updateMemberTags($list_id, $email, $fail_silently = false)
     {
         $hash = md5(strtolower(trim($email)));
-        $tags = mailchimp_get_user_tags_to_update();
-        
+        $tags = mailchimp_get_user_tags_to_update($email);
+
         if (empty($tags)) return false;
-        
+
         $data = array(
             'tags' => $tags
         );
@@ -344,7 +364,7 @@ class MailChimp_WooCommerce_MailChimpApi
      * @throws MailChimp_WooCommerce_Error
      * @throws MailChimp_WooCommerce_ServerError
      */
-    public function updateOrCreate($list_id, $email, $subscribed = true, $merge_fields = array(), $list_interests = array())
+    public function updateOrCreate($list_id, $email, $subscribed = true, $merge_fields = array(), $list_interests = array(), $language = null)
     {
         $hash = md5(strtolower(trim($email)));
 
@@ -368,6 +388,7 @@ class MailChimp_WooCommerce_MailChimpApi
             'status_if_new' => $status_if_new,
             'merge_fields' => $merge_fields,
             'interests' => $list_interests,
+            'language' => $language
         );
 
         if (empty($data['merge_fields'])) {
@@ -377,7 +398,11 @@ class MailChimp_WooCommerce_MailChimpApi
         if (empty($data['interests'])) {
             unset($data['interests']);
         }
-
+        
+        if (empty($data['language'])) {
+            unset($data['language']);
+        }
+        
         mailchimp_debug('api.update_or_create', "Update Or Create {$email}", $data);
 
         return $this->put("lists/$list_id/members/$hash", $data);
@@ -396,6 +421,19 @@ class MailChimp_WooCommerce_MailChimpApi
     }
 
     /**
+     * @param string $list_id
+     * @param MailChimp_WooCommerce_CreateListSubmission $submission
+     * @return array|mixed|null|object
+     * @throws Exception
+     * @throws MailChimp_WooCommerce_Error
+     * @throws MailChimp_WooCommerce_ServerError
+     */
+    public function updateList($list_id, MailChimp_WooCommerce_CreateListSubmission $submission)
+    {
+        return $this->patch("lists/{$list_id}", $submission->getSubmission());
+    }
+
+    /**
      * @param bool $as_list
      * @param int $count
      * @return array|mixed|null|object
@@ -406,6 +444,10 @@ class MailChimp_WooCommerce_MailChimpApi
     public function getLists($as_list = false, $count = 100)
     {
         $result = $this->get('lists', array('count' => $count));
+
+        if (!is_array($result)) {
+            throw new MailChimp_WooCommerce_RateLimitError('getting lists api failure, retry again.');
+        }
 
         if ($as_list) {
             $lists = array();
@@ -447,7 +489,11 @@ class MailChimp_WooCommerce_MailChimpApi
      */
     public function getList($id)
     {
-        return $this->get('lists/' . $id);
+        $result = $this->get('lists/' . $id);
+        if (!is_array($result)) {
+            throw new MailChimp_WooCommerce_RateLimitError('getting list api failure, retry again.');
+        }
+        return $result;
     }
 
     /**
@@ -471,6 +517,7 @@ class MailChimp_WooCommerce_MailChimpApi
     public function getListsWithMergeFields()
     {
         $lists = $this->getLists(true);
+
         foreach ($lists as $id => $name) {
             $lists[$id] = $this->mergeFields($id, 100);
         }
@@ -489,6 +536,10 @@ class MailChimp_WooCommerce_MailChimpApi
     public function mergeFields($list_id, $count = 10)
     {
         $result = $this->get("lists/$list_id/merge-fields", array('count' => $count,));
+
+        if (!is_array($result)) {
+            throw new MailChimp_WooCommerce_RateLimitError('getting merge field api failure, retry again.');
+        }
 
         return $result;
     }
@@ -554,20 +605,42 @@ class MailChimp_WooCommerce_MailChimpApi
 
     /**
      * @param $store_id
-     * @return MailChimp_WooCommerce_Store|bool
+     * @return int|mixed
+     * @throws MailChimp_WooCommerce_Error
+     * @throws MailChimp_WooCommerce_ServerError
      */
-    public function getStore($store_id)
+    public function getOrderCount($store_id)
+    {
+        $data = $this->get("ecommerce/stores/{$store_id}/orders?count=1");
+        if (!is_array($data)) {
+            return 0;
+        }
+        return $data['total_items'];
+    }
+
+    /**
+     * @param $store_id
+     * @param bool $throw
+     * @return bool|MailChimp_WooCommerce_Store
+     * @throws MailChimp_WooCommerce_Error
+     */
+    public function getStore($store_id, $throw = false)
     {
         try {
             $data = $this->get("ecommerce/stores/$store_id");
+            if (!is_array($data)) {
+                throw new MailChimp_WooCommerce_RateLimitError('getting store api failure, retry again.');
+            }
             if (!isset($data['id']) || !isset($data['name'])) {
                 return false;
             }
             $store = new MailChimp_WooCommerce_Store();
             return $store->fromArray($data);
         } catch (MailChimp_WooCommerce_Error $e) {
+            if ($throw) throw $e;
             return false;
         } catch (\Exception $e) {
+            if ($throw) throw $e;
             return false;
         }
     }
@@ -580,8 +653,11 @@ class MailChimp_WooCommerce_MailChimpApi
      */
     public function getCampaign($campaign_id, $throw_if_invalid = true)
     {
+        // don't let an empty campaign ID do anything
+        if (empty($campaign_id)) return false;
+
         // if we found the campaign ID already and it's been stored in the cache, return it from the cache instead.
-        if (($data = get_site_transient('mailchimp-woocommerce-has-campaign-id-'.$campaign_id))) {
+        if (($data = get_site_transient('mailchimp-woocommerce-has-campaign-id-'.$campaign_id)) && !empty($data)) {
             return $data;
         }
         if (get_site_transient('mailchimp-woocommerce-no-campaign-id-'.$campaign_id)) {
@@ -641,7 +717,7 @@ class MailChimp_WooCommerce_MailChimpApi
         try {
             $data = $this->get("ecommerce/stores", array('count' => 1000));
 
-            if (!isset($data['stores']) || empty($data['stores'])) {
+            if (!isset($data['stores']) || empty($data['stores']) || !is_array($data['stores'])) {
                 return array();
             }
 
@@ -732,8 +808,10 @@ class MailChimp_WooCommerce_MailChimpApi
         try {
             return (bool) $this->delete("ecommerce/stores/$store_id");
         } catch (MailChimp_WooCommerce_Error $e) {
+            mailchimp_error("delete_store {$store_id}", $e->getMessage());
             return false;
         } catch (\Exception $e) {
+            mailchimp_error("delete_store {$store_id}", $e->getMessage());
             return false;
         }
     }
@@ -741,16 +819,21 @@ class MailChimp_WooCommerce_MailChimpApi
     /**
      * @param $store_id
      * @param $customer_id
+     * @param boolean $throw
      * @return bool|MailChimp_WooCommerce_Customer
      * @throws Exception
      */
-    public function getCustomer($store_id, $customer_id)
+    public function getCustomer($store_id, $customer_id, $throw = false)
     {
         try {
             $data = $this->get("ecommerce/stores/$store_id/customers/$customer_id");
+            if (!is_array($data)) {
+                throw new MailChimp_WooCommerce_RateLimitError('getting customer api failure, retry again.');
+            }
             $customer = new MailChimp_WooCommerce_Customer();
             return $customer->fromArray($data);
         } catch (MailChimp_WooCommerce_Error $e) {
+            if ($throw) throw $e;
             return false;
         }
     }
@@ -768,6 +851,9 @@ class MailChimp_WooCommerce_MailChimpApi
             return false;
         }
         $data = $this->post("ecommerce/stores", $customer->toArray());
+        if (!is_array($data)) {
+            throw new MailChimp_WooCommerce_RateLimitError('adding customer api failure, retry again.');
+        }
         $customer = new MailChimp_WooCommerce_Customer();
         return $customer->fromArray($data);
     }
@@ -981,7 +1067,7 @@ class MailChimp_WooCommerce_MailChimpApi
             }
             $order_id = $order->getId();
             $data = $this->patch("ecommerce/stores/{$store_id}/orders/{$order_id}", $order->toArray());
-            
+
             //update user tags
             $email_address = $order->getCustomer()->getEmailAddress();
 
@@ -1015,16 +1101,21 @@ class MailChimp_WooCommerce_MailChimpApi
     /**
      * @param $store_id
      * @param $order_id
+     * @param boolean $throw
      * @return bool|MailChimp_WooCommerce_Order
      * @throws Exception
      */
-    public function getStoreOrder($store_id, $order_id)
+    public function getStoreOrder($store_id, $order_id, $throw = false)
     {
         try {
             $data = $this->get("ecommerce/stores/$store_id/orders/$order_id");
+            if (!is_array($data)) {
+                throw new MailChimp_WooCommerce_RateLimitError('getting order api failure, retry again.');
+            }
             $order = new MailChimp_WooCommerce_Order();
             return $order->fromArray($data);
         } catch (MailChimp_WooCommerce_Error $e) {
+            if ($throw) throw $e;
             return false;
         }
     }
@@ -1063,16 +1154,21 @@ class MailChimp_WooCommerce_MailChimpApi
     /**
      * @param $store_id
      * @param $product_id
+     * @param boolean $throw
      * @return bool|MailChimp_WooCommerce_Product
      * @throws Exception
      */
-    public function getStoreProduct($store_id, $product_id)
+    public function getStoreProduct($store_id, $product_id, $throw = false)
     {
         try {
             $data = $this->get("ecommerce/stores/$store_id/products/$product_id");
+            if (!is_array($data)) {
+                throw new MailChimp_WooCommerce_RateLimitError('getting product api failure, retry again.');
+            }
             $product = new MailChimp_WooCommerce_Product();
             return $product->fromArray($data);
         } catch (MailChimp_WooCommerce_Error $e) {
+            if ($throw) throw $e;
             return false;
         }
     }
@@ -1154,12 +1250,48 @@ class MailChimp_WooCommerce_MailChimpApi
         $missing_products = array();
         foreach ($order->items() as $order_item) {
             /** @var \MailChimp_WooCommerce_LineItem $order_item */
-            $job = new MailChimp_WooCommerce_Single_Product($order_item->getId());
-            if ($missing_products[$order_item->getId()] = $job->createModeOnly()->handle()) {
+            // get the line item name from the order detail just in case we need that title for the product.
+            $job = new MailChimp_WooCommerce_Single_Product($order_item->getProductId(), $order_item->getFallbackTitle());
+            if ($missing_products[$order_item->getId()] = $job->createModeOnly()->fromOrderItem($order_item)->handle()) {
                 mailchimp_debug("missing_products.fallback", "Product {$order_item->getId()} had to be re-pushed into Mailchimp");
             }
         }
         return $missing_products;
+    }
+
+    /**
+     * @return MailChimp_WooCommerce_Product
+     */
+    public function createEmptyLineItemProductPlaceholder()
+    {
+        $product = new MailChimp_WooCommerce_Product();
+        $product->setId('empty_line_item_placeholder');
+        $product->setTitle('Empty Line Item Placeholder');
+        $product->setVendor('deleted');
+
+        $variation = new MailChimp_WooCommerce_ProductVariation();
+        $variation->setId($product->getId());
+        $variation->setTitle($product->getTitle());
+        $variation->setInventoryQuantity(0);
+        $variation->setVisibility('hidden');
+        $variation->setPrice(1);
+
+        $product->addVariant($variation);
+
+        if ((bool) mailchimp_get_data('empty_line_item_placeholder', false)) {
+            return $product;
+        }
+
+        $store_id = mailchimp_get_store_id();
+        $api = mailchimp_get_api();
+
+        try {
+            $response = $api->addStoreProduct($store_id, $product);
+            mailchimp_set_data('empty_line_item_placeholder', true, 'yes');
+            return $response;
+        } catch (\Exception $e) {
+            return $product;
+        }
     }
 
     /**
@@ -1602,7 +1734,7 @@ class MailChimp_WooCommerce_MailChimpApi
             CURLINFO_HEADER_OUT => true,
             CURLOPT_HTTPHEADER => array_merge(array(
                 'content-type: application/json',
-                'accept' => 'application/json',
+                'accept: application/json',
                 "user-agent: MailChimp for WooCommerce/{$env->version}; PHP/{$env->php_version}; WordPress/{$env->wp_version}; Woo/{$env->wc_version};",
             ), $headers)
         );
@@ -1610,6 +1742,11 @@ class MailChimp_WooCommerce_MailChimpApi
         // if we have a dedicated IP address, and have set a configuration for it, we'll use it here.
         if (defined('MAILCHIMP_USE_OUTBOUND_IP')) {
             $curl_options[CURLOPT_INTERFACE] = MAILCHIMP_USE_OUTBOUND_IP;
+        }
+
+        // if we need to define a specific http version being used for curl requests, we can override this here.
+        if (defined('MAILCHIMP_USE_HTTP_VERSION')) {
+            $curl_options[CURLOPT_HTTP_VERSION] = MAILCHIMP_USE_HTTP_VERSION;
         }
 
         return $curl_options;
@@ -1636,11 +1773,20 @@ class MailChimp_WooCommerce_MailChimpApi
 
         $data = json_decode($response, true);
 
-        if (empty($info) || ($info['http_code'] >= 200 && $info['http_code'] <= 400)) {
-            if ($info['http_code'] == 204) {
-                // possibily a successful DELETE operation
-                return true;
-            }
+        $http_code = !empty($info) && isset($info['http_code']) ? $info['http_code'] : -1;
+        $called_url = !empty($info) && isset($info['url']) ? $info['url'] : 'none';
+
+        // let's block these from doing anything below because the API seems to be having trouble.
+        if ($http_code <= 99) {
+            throw new MailChimp_WooCommerce_RateLimitError('API is failing - try again.');
+        }
+
+        // possibily a successful DELETE operation
+        if ($http_code == 204) {
+            return true;
+        }
+
+        if ($http_code >= 200 && $http_code <= 400) {
             if (is_array($data)) {
                 try {
                     $this->checkForErrors($data);
@@ -1651,18 +1797,21 @@ class MailChimp_WooCommerce_MailChimpApi
             return $data;
         }
 
-        if ($info['http_code'] >= 400 && $info['http_code'] <= 500) {
-            if ($info['http_code'] == 404) {
-                // mailchimp_error('api', 'processCurlResponse', array('info' => $info, 'data' => $data));
-            }
-            if ($info['http_code'] == 403) {
+        if ($http_code >= 400 && $http_code <= 500) {
+            if ($http_code == 403) {
                 throw new MailChimp_WooCommerce_RateLimitError();
             }
+
             throw new MailChimp_WooCommerce_Error($data['title'] .' :: '.$data['detail'], $data['status']);
         }
 
-        if ($info['http_code'] >= 500) {
+        if ($http_code >= 500) {
             throw new MailChimp_WooCommerce_ServerError($data['detail'], $data['status']);
+        }
+
+        if (!is_array($data)) {
+            mailchimp_error("api.debug", 'fallback when data is empty from API', array('url' => $called_url, 'response' => $response));
+            throw new MailChimp_WooCommerce_ServerError('API response could not be decoded.');
         }
 
         return null;

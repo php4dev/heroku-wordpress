@@ -1,26 +1,26 @@
 [
     {
         "name": "automattic/jetpack-autoloader",
-        "version": "v1.6.0",
-        "version_normalized": "1.6.0.0",
+        "version": "v2.2.0",
+        "version_normalized": "2.2.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/Automattic/jetpack-autoloader.git",
-            "reference": "3bcbe1ae19febd6beeb181cf11af0bf0b7abe7e7"
+            "reference": "66a5d150b3928be718d86696f85631a7f0b98a7b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Automattic/jetpack-autoloader/zipball/3bcbe1ae19febd6beeb181cf11af0bf0b7abe7e7",
-            "reference": "3bcbe1ae19febd6beeb181cf11af0bf0b7abe7e7",
+            "url": "https://api.github.com/repos/Automattic/jetpack-autoloader/zipball/66a5d150b3928be718d86696f85631a7f0b98a7b",
+            "reference": "66a5d150b3928be718d86696f85631a7f0b98a7b",
             "shasum": ""
         },
         "require": {
-            "composer-plugin-api": "^1.1"
+            "composer-plugin-api": "^1.1 || ^2.0"
         },
         "require-dev": {
             "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5"
         },
-        "time": "2020-03-26T07:57:53+00:00",
+        "time": "2020-08-14T20:34:36+00:00",
         "type": "composer-plugin",
         "extra": {
             "class": "Automattic\\Jetpack\\Autoloader\\CustomAutoloaderPlugin"

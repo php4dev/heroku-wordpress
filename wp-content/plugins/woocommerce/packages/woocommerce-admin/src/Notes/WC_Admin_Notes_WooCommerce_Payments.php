@@ -3,8 +3,6 @@
  * WooCommerce Admin WooCommerce Payments Note Provider.
  *
  * Adds a note to the merchant's inbox showing the benefits of the WooCommerce Payments.
- *
- * @package WooCommerce Admin
  */
 
 namespace Automattic\WooCommerce\Admin\Notes;
@@ -39,9 +37,7 @@ class WC_Admin_Notes_WooCommerce_Payments {
 	 * Attach hooks.
 	 */
 	public function __construct() {
-
 		add_action( 'woocommerce_note_action_install-now', array( $this, 'install' ) );
-
 		add_action( 'wc-admin-woocommerce-payments_add_note', array( $this, 'add_note' ) );
 	}
 
@@ -49,19 +45,21 @@ class WC_Admin_Notes_WooCommerce_Payments {
 	 * Maybe add a note on WooCommerce Payments for US based sites older than a week without the plugin installed.
 	 */
 	public static function possibly_add_note() {
-
 		if ( ! self::wc_admin_active_for( WEEK_IN_SECONDS ) || 'US' !== WC()->countries->get_base_country() ) {
 			return;
 		}
 
 		$data_store = \WC_Data_Store::load( 'admin-note' );
 
-		// We already have this note? Then exit, we're done.
+		// We already have this note? Then mark the note as actioned.
 		$note_ids = $data_store->get_notes_with_name( self::NOTE_NAME );
 		if ( ! empty( $note_ids ) ) {
 
 			$note_id = array_pop( $note_ids );
 			$note    = WC_Admin_Notes::get_note( $note_id );
+			if ( false === $note ) {
+				return;
+			}
 
 			// If the WooCommerce Payments plugin was installed after the note was created, make sure it's marked as actioned.
 			if ( self::is_installed() && WC_Admin_Note::E_WC_ADMIN_NOTE_ACTIONED !== $note->get_status() ) {
@@ -77,7 +75,12 @@ class WC_Admin_Notes_WooCommerce_Payments {
 
 		if ( $current_date >= $publish_date ) {
 
-			self::add_note();
+			$note = self::get_note();
+			if ( self::can_be_added() ) {
+				$note->save();
+			}
+
+			return;
 
 		} else {
 
@@ -92,14 +95,12 @@ class WC_Admin_Notes_WooCommerce_Payments {
 	/**
 	 * Add a note about WooCommerce Payments.
 	 */
-	public static function add_note() {
-
+	public static function get_note() {
 		$note = new WC_Admin_Note();
 		$note->set_title( __( 'Try the new way to get paid', 'woocommerce' ) );
 		$note->set_content( __( 'Securely accept credit and debit cards on your site. Manage transactions without leaving your WordPress dashboard. Only with WooCommerce Payments.', 'woocommerce' ) );
 		$note->set_content_data( (object) array() );
-		$note->set_type( WC_Admin_Note::E_WC_ADMIN_NOTE_INFORMATIONAL );
-		$note->set_icon( 'credit-card' );
+		$note->set_type( WC_Admin_Note::E_WC_ADMIN_NOTE_MARKETING );
 		$note->set_name( self::NOTE_NAME );
 		$note->set_source( 'woocommerce-admin' );
 		$note->add_action( 'learn-more', __( 'Learn more', 'woocommerce' ), 'https://woocommerce.com/payments/', WC_Admin_Note::E_WC_ADMIN_NOTE_UNACTIONED );
@@ -109,8 +110,7 @@ class WC_Admin_Notes_WooCommerce_Payments {
 		if ( self::is_installed() ) {
 			$note->set_status( WC_Admin_Note::E_WC_ADMIN_NOTE_ACTIONED );
 		}
-
-		$note->save();
+		return $note;
 	}
 
 
@@ -131,11 +131,10 @@ class WC_Admin_Notes_WooCommerce_Payments {
 	 * @param WC_Admin_Note $note Note being acted upon.
 	 */
 	public function install( $note ) {
-
-		if ( self::NOTE_NAME === $note->get_name() ) {
-			$install_request = array( 'plugin' => self::PLUGIN_SLUG );
+		if ( self::NOTE_NAME === $note->get_name() && current_user_can( 'install_plugins' ) ) {
+			$install_request = array( 'plugins' => self::PLUGIN_SLUG );
 			$installer       = new \Automattic\WooCommerce\Admin\API\Plugins();
-			$result          = $installer->install_plugin( $install_request );
+			$result          = $installer->install_plugins( $install_request );
 
 			if ( is_wp_error( $result ) ) {
 				return;

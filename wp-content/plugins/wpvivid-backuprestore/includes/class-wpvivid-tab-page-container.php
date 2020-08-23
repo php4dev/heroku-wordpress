@@ -199,7 +199,7 @@ class WPvivid_Tab_Page_Container
 
             if(isset($tab['can_delete']))
             {
-                echo '<div style="margin-right: 15px;">'.__($tab['title'], 'wpvivid').'</div>';
+                echo '<div style="margin-right: 15px;">'.__($tab['title'], 'wpvivid-backuprestore').'</div>';
                 if(isset($tab['redirect']))
                 {
                     echo '<div class="nav-tab-delete-img" redirect="'.$tab['redirect'].'">
@@ -215,7 +215,7 @@ class WPvivid_Tab_Page_Container
             }
             else
             {
-                echo __($tab['title'], 'wpvivid');
+                echo __($tab['title'], 'wpvivid-backuprestore');
             }
             echo '</a>';
         }

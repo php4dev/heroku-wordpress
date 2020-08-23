@@ -1,12 +1,10 @@
-/*! elementor - v2.8.4 - 19-01-2020 */
+/*! elementor - v2.9.14 - 21-07-2020 */
 .elementor-msie ul.products, .elementor-msie .elementor-grid {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
   .elementor-msie ul.products li.product, .elementor-msie ul.products .elementor-grid-item, .elementor-msie .elementor-grid li.product, .elementor-msie .elementor-grid .elementor-grid-item {
     word-break: break-word; }
 

@@ -83,28 +83,6 @@ function wpvivid_popup_tour(style) {
     }
 }
 
-function click_dismiss_restore_notice(obj){
-    wpvivid_display_restore_backup = false;
-    jQuery(obj).parent().remove();
-}
-
-function wpvivid_click_how_to_restore_backup(){
-    if(!wpvivid_display_restore_backup){
-        wpvivid_display_restore_backup = true;
-        var top = jQuery('#wpvivid_how_to_restore_backup_describe').offset().top-jQuery('#wpvivid_how_to_restore_backup_describe').height();
-        jQuery('html, body').animate({scrollTop:top}, 'slow');
-        var div = "<div class='notice notice-info is-dismissible inline'>" +
-            "<p>Step One: In the backup list, click the 'Restore' button on the backup you want to restore. This will bring up the restore tab</p>" +
-            "<p>Step Two: Choose an option to complete restore, if any</p>" +
-            "<p>Step Three: Click 'Restore' button</p>" +
-            "<button type='button' class='notice-dismiss' onclick='click_dismiss_restore_notice(this);'>" +
-            "<span class='screen-reader-text'>Dismiss this notice.</span>" +
-            "</button>" +
-            "</div>";
-        jQuery('#wpvivid_how_to_restore_backup').append(div);
-    }
-}
-
 window.onbeforeunload = function(e) {
     if (wpvivid_settings_changed) {
         if (wpvivid_location_href){
@@ -138,9 +116,10 @@ function wpvivid_activate_cron(){
  */
 function wpvivid_post_request(ajax_data, callback, error_callback, time_out){
     if(typeof time_out === 'undefined')    time_out = 30000;
+    ajax_data.nonce=wpvivid_ajax_object.ajax_nonce;
     jQuery.ajax({
         type: "post",
-        url: ajax_object.ajax_url,
+        url: wpvivid_ajax_object.ajax_url,
         data: ajax_data,
         success: function (data) {
             callback(data);
@@ -336,11 +315,16 @@ function wpvivid_check_runningtask(){
             catch(err){
                 alert(err);
             }
-        }, function (XMLHttpRequest, textStatus, errorThrown) {
-            setTimeout(function () {
-                m_need_update = true;
-                wpvivid_manage_task();
-            }, 3000);
+        }, function (XMLHttpRequest, textStatus, errorThrown)
+        {
+            task_retry_times++;
+            if (task_retry_times < 5)
+            {
+                setTimeout(function () {
+                    m_need_update = true;
+                    wpvivid_manage_task();
+                }, 3000);
+            }
         });
     }
 }
@@ -465,13 +449,13 @@ function wpvivid_interface_flow_control(){
         wpvivid_settings_changed = true;
     });
 
-    jQuery("#wpvivid_storage_account_block input:not([type=checkbox])").on("keyup", function(){
+    /*jQuery("#wpvivid_storage_account_block input:not([type=checkbox])").on("keyup", function(){
         wpvivid_settings_changed = true;
-    });
+    });*/
 
-    jQuery('#wpvivid_storage_account_block input[type=checkbox]').on("change", function(){
+    /*jQuery('#wpvivid_storage_account_block input[type=checkbox]').on("change", function(){
         wpvivid_settings_changed = true;
-    });
+    });*/
 
     jQuery('input:radio[option=restore]').click(function() {
         jQuery('input:radio[option=restore]').each(function () {
@@ -533,14 +517,14 @@ function wpvivid_add_notice(notice_action, notice_type, notice_msg){
         jQuery('#'+notice_id).show();
         var div = '';
         if(notice_type === "Warning"){
-            div = "<div class='notice notice-warning is-dismissible inline'><p>Warning: " + notice_msg + "</p>" +
+            div = "<div class='notice notice-warning is-dismissible inline'><p>" + wpvividlion.warning + notice_msg + "</p>" +
                 "<button type='button' class='notice-dismiss' onclick='click_dismiss_notice(this);'>" +
                 "<span class='screen-reader-text'>Dismiss this notice.</span>" +
                 "</button>" +
                 "</div>";
         }
         else if(notice_type === "Error"){
-            div = "<div class=\"notice notice-error inline\"><p>Error: " + notice_msg + "</p></div>";
+            div = "<div class=\"notice notice-error inline\"><p>" + wpvividlion.error + notice_msg + "</p></div>";
         }
         else if(notice_type === "Success"){
             wpvivid_clear_notice('wpvivid_backup_notice');
@@ -584,7 +568,8 @@ function wpvivid_clear_notice(notice_id){
     jQuery('#'+notice_id).hide();
 }
 
-function wpvivid_click_switch_page(tab, type, scroll){
+function wpvivid_click_switch_page(tab, type, scroll)
+{
     jQuery('.'+tab+'-tab-content:not(.' + type + ')').hide();
     jQuery('.'+tab+'-tab-content.' + type).show();
     jQuery('.'+tab+'-nav-tab:not(#' + type + ')').removeClass('nav-tab-active');

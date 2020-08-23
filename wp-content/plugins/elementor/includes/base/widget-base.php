@@ -1,6 +1,8 @@
 <?php
 namespace Elementor;
 
+use Elementor\Core\Settings\Manager as SettingsManager;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -298,12 +300,12 @@ abstract class Widget_Base extends Element_Base {
 	 * the control, element name, type, icon and more. This method also adds
 	 * widget type, keywords and categories.
 	 *
-	 * @since 1.0.10
+	 * @since 2.9.0
 	 * @access protected
 	 *
 	 * @return array The initial widget config.
 	 */
-	protected function _get_initial_config() {
+	protected function get_initial_config() {
 		$config = [
 			'widget_type' => $this->get_name(),
 			'keywords' => $this->get_keywords(),
@@ -319,7 +321,7 @@ abstract class Widget_Base extends Element_Base {
 			$config['tabs_controls'] = $this->get_tabs_controls();
 		}
 
-		return array_merge( parent::_get_initial_config(), $config );
+		return array_merge( parent::get_initial_config(), $config );
 	}
 
 	/**
@@ -413,6 +415,87 @@ abstract class Widget_Base extends Element_Base {
 		$settings = $this->get_settings();
 
 		$this->add_render_attribute( '_wrapper', 'data-widget_type', $this->get_name() . '.' . ( ! empty( $settings['_skin'] ) ? $settings['_skin'] : 'default' ) );
+	}
+
+	/**
+	 * Add lightbox data to image link.
+	 *
+	 * Used to add lightbox data attributes to image link HTML.
+	 *
+	 * @since 2.9.1
+	 * @access public
+	 *
+	 * @param string $link_html Image link HTML.
+	 * @param string $id Attachment id.
+	 *
+	 * @return string Image link HTML with lightbox data attributes.
+	 */
+	public function add_lightbox_data_to_image_link( $link_html, $id ) {
+		$settings = $this->get_settings_for_display();
+		$open_lightbox = isset( $settings['open_lightbox'] ) ? $settings['open_lightbox'] : null;
+
+		if ( Plugin::$instance->editor->is_edit_mode() ) {
+			$this->add_render_attribute( 'link', 'class', 'elementor-clickable', true );
+		}
+
+		$this->add_lightbox_data_attributes( 'link', $id, $open_lightbox, $this->get_id(), true );
+		return preg_replace( '/^<a/', '<a ' . $this->get_render_attribute_string( 'link' ), $link_html );
+	}
+
+	/**
+	 * Add Light-Box attributes.
+	 *
+	 * Used to add Light-Box-related data attributes to links that open media files.
+	 *
+	 * @param array|string $element         The link HTML element.
+	 * @param int $id                       The ID of the image
+	 * @param string $lightbox_setting_key  The setting key that dictates weather to open the image in a lightbox
+	 * @param string $group_id              Unique ID for a group of lightbox images
+	 * @param bool $overwrite               Optional. Whether to overwrite existing
+	 *                                      attribute. Default is false, not to overwrite.
+	 *
+	 * @return Widget_Base Current instance of the widget.
+	 * @since 2.9.0
+	 * @access public
+	 *
+	 */
+	public function add_lightbox_data_attributes( $element, $id = null, $lightbox_setting_key = null, $group_id = null, $overwrite = false ) {
+		$general_settings_model = SettingsManager::get_settings_managers( 'general' )->get_model();
+		$is_global_image_lightbox_enabled = 'yes' === $general_settings_model->get_settings( 'elementor_global_image_lightbox' );
+
+		if ( 'no' === $lightbox_setting_key ) {
+			if ( $is_global_image_lightbox_enabled ) {
+				$this->add_render_attribute( $element, 'data-elementor-open-lightbox', 'no' );
+			}
+
+			return $this;
+		}
+
+		if ( 'yes' !== $lightbox_setting_key && ! $is_global_image_lightbox_enabled ) {
+			return $this;
+		}
+
+		$attributes['data-elementor-open-lightbox'] = 'yes';
+
+		if ( $group_id ) {
+			$attributes['data-elementor-lightbox-slideshow'] = $group_id;
+		}
+
+		if ( $id ) {
+			$lightbox_image_attributes = Plugin::$instance->images_manager->get_lightbox_image_attributes( $id );
+
+			if ( isset( $lightbox_image_attributes['title'] ) ) {
+				$attributes['data-elementor-lightbox-title'] = $lightbox_image_attributes['title'];
+			}
+
+			if ( isset( $lightbox_image_attributes['description'] ) ) {
+				$attributes['data-elementor-lightbox-description'] = $lightbox_image_attributes['description'];
+			}
+		}
+
+		$this->add_render_attribute( $element, $attributes, null, $overwrite );
+
+		return $this;
 	}
 
 	/**

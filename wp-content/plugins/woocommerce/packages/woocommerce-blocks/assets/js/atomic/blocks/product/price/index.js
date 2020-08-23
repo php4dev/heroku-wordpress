@@ -3,13 +3,14 @@
  */
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import Gridicon from 'gridicons';
-import { ProductPrice } from '@woocommerce/atomic-components/product';
+import { CURRENCY } from '@woocommerce/settings';
 
 /**
  * Internal dependencies
  */
 import sharedConfig from '../shared-config';
+import attributes from './attributes';
+import edit from './edit';
 
 const blockConfig = {
 	title: __( 'Product Price', 'woocommerce' ),
@@ -18,14 +19,11 @@ const blockConfig = {
 		'woocommerce'
 	),
 	icon: {
-		src: <Gridicon icon="money" />,
+		src: <b style={ { color: '$96588a' } }>{ CURRENCY.symbol }</b>,
 		foreground: '#96588a',
 	},
-	edit( props ) {
-		const { attributes } = props;
-
-		return <ProductPrice product={ attributes.product } />;
-	},
+	edit,
+	attributes,
 };
 
 registerBlockType( 'woocommerce/product-price', {

@@ -13,8 +13,10 @@ class WPvivid_Backup_Database
     {
     }
 
-    public function wpvivid_archieve_database_info($databases, $data){
-        if(isset($data['dump_db'])){
+    public function wpvivid_archieve_database_info($databases, $data)
+    {
+        if(isset($data['dump_db']))
+        {
             $sql_info['file_name'] =$data['sql_file_name'];
             $sql_info['database'] = DB_NAME;
             $sql_info['host'] = DB_HOST;
@@ -55,20 +57,53 @@ class WPvivid_Backup_Database
             add_filter('wpvivid_exclude_db_table', array($this, 'exclude_table'),10,2);
             $exclude=array();
             $exclude = apply_filters('wpvivid_exclude_db_table',$exclude, $data);
+            $include=array();
+            $include = apply_filters('wpvivid_include_db_table',$include, $data);
+
+            $site_url = apply_filters('wpvivid_dump_set_site_url',get_site_url(), $data);
+            $home_url = apply_filters('wpvivid_dump_set_home_url',get_home_url(), $data);
+            $content_url=apply_filters('wpvivid_dump_set_content_url',content_url(), $data);
+
+            global $wpdb;
+            if (is_multisite() && !defined('MULTISITE'))
+            {
+                $prefix = $wpdb->base_prefix;
+            } else {
+                $prefix = $wpdb->get_blog_prefix(0);
+            }
+            $prefix=apply_filters('wpvivid_dump_set_prefix',$prefix, $data);
 
             add_filter('wpvivid_archieve_database_info', array($this, 'wpvivid_archieve_database_info'), 10, 2);
             $databases=array();
             $databases = apply_filters('wpvivid_archieve_database_info', $databases, $data);
+            $is_additional_db = false;
+            if($data['key'] === 'backup_additional_db')
+            {
+                $is_additional_db = true;
+            }
 
             $backup_files = array();
-            foreach ($databases as $sql_info) {
+            foreach ($databases as $sql_info)
+            {
                 $database_name = $sql_info['database'];
                 $backup_file = $sql_info['file_name'];
                 $backup_files[] = $backup_file;
                 $host = $sql_info['host'];
                 $user = $sql_info['user'];
                 $pass = $sql_info['pass'];
-                $dump = new WPvivid_Mysqldump($host, $database_name, $user, $pass, array('exclude-tables'=>$exclude,'add-drop-table' => true,'extended-insert'=>false));
+
+                $dumpSettings=array();
+                $dumpSettings['exclude-tables']=$exclude;
+                $dumpSettings['include-tables']=$include;
+                $dumpSettings['add-drop-table']=true;
+                $dumpSettings['extended-insert']=false;
+
+                $dumpSettings['site_url']=$site_url;
+                $dumpSettings['home_url']=$home_url;
+                $dumpSettings['content_url']=$content_url;
+                $dumpSettings['prefix']=$prefix;
+
+                $dump = new WPvivid_Mysqldump($host, $database_name, $user, $pass, $is_additional_db, $dumpSettings);
 
                 if (file_exists($backup_file))
                     @unlink($backup_file);

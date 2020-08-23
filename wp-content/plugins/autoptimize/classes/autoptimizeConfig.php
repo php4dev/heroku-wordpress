@@ -180,9 +180,10 @@ input[type=url]:invalid {color: red; border-color:red;} .form-table th{font-weig
 
 <div class="wrap">
 
-<?php if ( defined( 'AUTOPTIMIZE_LEGACY_MINIFIERS' ) ) { ?>
-    <div class="notice-error notice"><p>
-        <?php _e( "You are using the (no longer supported) AUTOPTIMIZE_LEGACY_MINIFIERS constant. Ensure your site is working properly and remove the constant, it doesn't do anything any more.", 'autoptimize' ); ?>
+<!-- Temporary nudge to disable aoccss power-up. -->
+<?php if ( autoptimizeUtils::is_plugin_active( 'autoptimize-criticalcss/ao_criticss_aas.php' ) ) { ?>
+    <div class="notice-info notice"><p>
+        <?php _e( 'Autoptimize now includes the criticalcss.com integration that was previously part of the separate power-up. If you want you can simply disable the power-up and Autoptimize will take over immediately.', 'autoptimize' ); ?>
     </p></div>
 <?php } ?>
 
@@ -301,13 +302,11 @@ echo ' <i>' . __( '(deprecated)', 'autoptimize' ) . '</i>';
 <th scope="row"><?php _e( 'Inline and Defer CSS?', 'autoptimize' ); ?></th>
 <td><label class="cb_label"><input type="checkbox" name="autoptimize_css_defer" id="autoptimize_css_defer" <?php echo autoptimizeOptionWrapper::get_option( 'autoptimize_css_defer' ) ? 'checked="checked" ' : ''; ?>/>
 <?php
-_e( 'Inline "above the fold CSS" while loading the main autoptimized CSS only after page load. <a href="http://wordpress.org/plugins/autoptimize/faq/" target="_blank">Check the FAQ</a> for more info.', 'autoptimize' );
-if ( ! autoptimizeUtils::is_plugin_active( 'autoptimize-criticalcss/ao_criticss_aas.php' ) ) {
-    echo ' ';
-    $critcss_install_url = network_admin_url() . 'plugin-install.php?s=autoptimize+criticalcss&tab=search&type=term';
-    // translators: links to plugin install screen with "autoptimize critical CSS" search.
-    echo sprintf( __( 'This can be fully automated for different types of pages with the %s.', 'autoptimize' ), '<a href="' . $critcss_install_url . '">Autoptimize CriticalCSS Power-Up</a>' );
-}
+_e( 'Inline "above the fold CSS" while loading the main autoptimized CSS only after page load. <a href="https://wordpress.org/plugins/autoptimize/faq/" target="_blank">Check the FAQ</a> for more info.', 'autoptimize' );
+echo ' ';
+$critcss_settings_url = get_admin_url( null, 'options-general.php?page=ao_critcss' );
+// translators: links "autoptimize critical CSS" tab.
+echo sprintf( __( 'This can be fully automated for different types of pages on the %s tab.', 'autoptimize' ), '<a href="' . $critcss_settings_url . '">CriticalCSS</a>' );
 ?>
 </label></td>
 </tr>
@@ -318,7 +317,7 @@ if ( ! autoptimizeUtils::is_plugin_active( 'autoptimize-criticalcss/ao_criticss_
 <tr valign="top" class="css_sub css_aggregate">
 <th scope="row"><?php _e( 'Inline all CSS?', 'autoptimize' ); ?></th>
 <td><label class="cb_label"><input type="checkbox" id="autoptimize_css_inline" name="autoptimize_css_inline" <?php echo autoptimizeOptionWrapper::get_option( 'autoptimize_css_inline' ) ? 'checked="checked" ' : ''; ?>/>
-<?php _e( 'Inlining all CSS can improve performance for sites with a low pageviews/ visitor-rate, but may slow down performance otherwise.', 'autoptimize' ); ?></label></td>
+<?php _e( 'Inlining all CSS is an easy way to stop the CSS from being render-blocking, but is generally not recommended because the size of the HTML increases significantly. Additionally it might push meta-tags down to a position where e.g. Facebook and Whatsapp will not find them any more, breaking thumbnails when sharing.', 'autoptimize' ); ?></label></td>
 </tr>
 <tr valign="top" class="css_sub">
 <th scope="row"><?php _e( 'Exclude CSS from Autoptimize:', 'autoptimize' ); ?></th>
@@ -380,7 +379,7 @@ echo __( 'A comma-separated list of CSS you want to exclude from being optimized
             $details = ', ~' . $ao_cache_size . ' total';
         }
         // translators: Kilobytes + timestamp shown.
-        printf( __( '%1$s files, totalling %2$s Kbytes (calculated at %3$s)', 'autoptimize' ), $ao_stat_arr[0], $ao_cache_size, date( 'H:i e', $ao_stat_arr[2] ) );
+        printf( __( '%1$s files, totalling %2$s (calculated at %3$s)', 'autoptimize' ), $ao_stat_arr[0], $ao_cache_size, date( 'H:i e', $ao_stat_arr[2] ) );
     }
     ?>
 </td>
@@ -408,8 +407,13 @@ echo __( 'A comma-separated list of CSS you want to exclude from being optimized
         <?php _e( 'When aggregating JS or CSS, excluded files that are not minified (based on filename) are by default minified by Autoptimize despite being excluded. Uncheck this option if anything breaks despite excluding.', 'autoptimize' ); ?></label></td>
     </tr>
     <tr valign="top">
+        <th scope="row"><?php _e( 'Enable 404 fallbacks?', 'autoptimize' ); ?></th>
+        <td><label class="cb_label"><input type="checkbox" name="autoptimize_cache_fallback" <?php echo autoptimizeOptionWrapper::get_option( 'autoptimize_cache_fallback', '1' ) ? 'checked="checked" ' : ''; ?>/>
+        <?php _e( 'Sometimes Autoptimized JS/ CSS is referenced in cached HTML but is already removed, resulting in broken sites. With this option on, Autoptimize will try to redirect those not-found files to "fallback"-versions, keeping the page/ site somewhat intact. In some cases this will require extra web-server level configuration to ensure <code>wp-content/autoptimize_404_handler.php</code> is set to handle 404\'s in <code>wp-content/cache/autoptimize</code>.', 'autoptimize' ); ?></label></td>
+    </tr>
+    <tr valign="top">
     <th scope="row"><?php _e( 'Also optimize for logged in editors/ administrators?', 'autoptimize' ); ?></th>
-    <td><label class="cb_label"><input type="checkbox" name="autoptimize_optimize_logged" <?php echo get_option( 'autoptimize_optimize_logged', '1' ) ? 'checked="checked" ' : ''; ?>/>
+    <td><label class="cb_label"><input type="checkbox" name="autoptimize_optimize_logged" <?php echo autoptimizeOptionWrapper::get_option( 'autoptimize_optimize_logged', '1' ) ? 'checked="checked" ' : ''; ?>/>
     <?php _e( 'By default Autoptimize is also active for logged on editors/ administrators, uncheck this option if you don\'t want Autoptimize to optimize when logged in e.g. to use a pagebuilder.', 'autoptimize' ); ?></label></td>
     </tr>
     <?php
@@ -477,7 +481,7 @@ echo __( 'A comma-separated list of CSS you want to exclude from being optimized
             </div>
         </div>
     </div>
-    <div style="float:right;margin:50px 15px;"><a href="http://blog.futtta.be/2013/10/21/do-not-donate-to-me/" target="_blank"><img width="100px" height="85px" src="<?php echo plugins_url() . '/' . plugin_basename( dirname( __FILE__ ) ) . '/external/do_not_donate_smallest.png'; ?>" title="<?php _e( 'Do not donate for this plugin!', 'autoptimize' ); ?>"></a></div>
+    <div style="float:right;margin:50px 15px;"><a href="https://blog.futtta.be/2013/10/21/do-not-donate-to-me/" target="_blank"><img width="100px" height="85px" src="<?php echo plugins_url() . '/' . plugin_basename( dirname( __FILE__ ) ) . '/external/do_not_donate_smallest.png'; ?>" title="<?php _e( 'Do not donate for this plugin!', 'autoptimize' ); ?>"></a></div>
 </div>
 
 <script type="text/javascript">
@@ -679,6 +683,7 @@ echo __( 'A comma-separated list of CSS you want to exclude from being optimized
         register_setting( 'autoptimize', 'autoptimize_optimize_logged' );
         register_setting( 'autoptimize', 'autoptimize_optimize_checkout' );
         register_setting( 'autoptimize', 'autoptimize_minify_excluded' );
+        register_setting( 'autoptimize', 'autoptimize_cache_fallback' );
     }
 
     public function setmeta( $links, $file = null )
@@ -738,6 +743,7 @@ echo __( 'A comma-separated list of CSS you want to exclude from being optimized
             'autoptimize_optimize_logged'    => 1,
             'autoptimize_optimize_checkout'  => 0,
             'autoptimize_minify_excluded'    => 1,
+            'autoptimize_cache_fallback'     => 1,
         );
 
         return $config;
@@ -780,24 +786,15 @@ echo __( 'A comma-separated list of CSS you want to exclude from being optimized
     }
 
     /**
-     * Returns preload polyfill JS.
-     *
-     * @return string
-     */
-    public static function get_ao_css_preload_polyfill()
-    {
-        $preload_poly = apply_filters( 'autoptimize_css_preload_polyfill', '<script data-cfasync=\'false\'>!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){function e(){t.media=a}var a=t.media||"all";t.addEventListener?t.addEventListener("load",e):t.attachEvent&&t.attachEvent("onload",e),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(e,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);</script>' );
-        return $preload_poly;
-    }
-
-    /**
      * Returns preload JS onload handler.
      *
+     * @param string $media media attribute value the JS to use.
+     *
      * @return string
      */
-    public static function get_ao_css_preload_onload()
+    public static function get_ao_css_preload_onload( $media = 'all' )
     {
-        $preload_onload = apply_filters( 'autoptimize_filter_css_preload_onload', "this.onload=null;this.rel='stylesheet'" );
+        $preload_onload = apply_filters( 'autoptimize_filter_css_preload_onload', "this.onload=null;this.media='" . $media . "';" );
         return $preload_onload;
     }
 

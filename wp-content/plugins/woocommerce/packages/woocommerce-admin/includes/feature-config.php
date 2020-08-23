@@ -8,14 +8,16 @@ if ( ! function_exists( 'wc_admin_get_feature_config' ) ) {
 			'analytics' => true,
 			'analytics-dashboard' => true,
 			'analytics-dashboard/customizable' => true,
+			'coupons' => true,
 			'devdocs' => false,
 			'marketing' => true,
-			'navigation' => false,
 			'onboarding' => true,
+			'remote-inbox-notifications' => false,
 			'shipping-label-banner' => true,
 			'store-alerts' => true,
+			'unminified-js' => false,
 			'wcpay' => true,
-			'homepage' => false,
+			'homescreen' => true,
 		);
 	}
 }

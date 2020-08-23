@@ -17,7 +17,9 @@ class WPvivid_RestoreDB
     private $default_charsets;
     private $default_collates;
     private $old_prefix;
+    private $old_base_prefix;
     private $new_prefix;
+
 
     private $old_site_url;
     private $old_home_url;
@@ -36,6 +38,8 @@ class WPvivid_RestoreDB
     private $replacing_table;
 
     private $db_method;
+
+    private $is_mu;
 
     public function restore($path,$sql_file,$options)
     {
@@ -82,6 +86,9 @@ class WPvivid_RestoreDB
                 $result = $this->execute_sql_file($path . $sql_file, $options);
 
                 $this->enable_plugins();
+
+                $this->wpvivid_fix_siteurl_home();
+
                 unset($this->db_method);
                 //do_action('wpvivid_restore_database_finish',$options);
             }
@@ -89,6 +96,28 @@ class WPvivid_RestoreDB
         }
         else {
             return array('result'=>'failed','error'=>'Database\'s .sql file not found. Please try again.');
+        }
+    }
+
+    private function wpvivid_fix_siteurl_home(){
+        global $wpvivid_plugin;
+        $option_table = $this->new_prefix.'options';
+        if($this->old_site_url!=$this->new_site_url)
+        {
+            //siteurl
+            $update_query ='UPDATE '.$option_table.' SET option_value="'.$this->new_site_url.'" WHERE option_name="siteurl";';
+            $wpvivid_plugin->restore_data->write_log($update_query, 'notice');
+            $wpvivid_plugin->restore_data->write_log('update query len:'.strlen($update_query), 'notice');
+            $this->execute_sql($update_query);
+        }
+
+        if($this->old_home_url!=$this->new_home_url)
+        {
+            //home
+            $update_query ='UPDATE '.$option_table.' SET option_value="'.$this->new_home_url.'" WHERE option_name="home";';
+            $wpvivid_plugin->restore_data->write_log($update_query, 'notice');
+            $wpvivid_plugin->restore_data->write_log('update query len:'.strlen($update_query), 'notice');
+            $this->execute_sql($update_query);
         }
     }
 
@@ -120,9 +149,11 @@ class WPvivid_RestoreDB
         $plugin_list=array();
         $plugin_list[]='wpvivid-backuprestore/wpvivid-backuprestore.php';
         $plugin_list=apply_filters('wpvivid_enable_plugins_list',$plugin_list);
-        //$plugin_list[]='WPvivid_backup_premium/WPvivid_backup_premium.php';
 
-        activate_plugins($plugin_list,'',false,true);
+        if(is_multisite())
+            activate_plugins($plugin_list,'',true,true);
+        else
+            activate_plugins($plugin_list,'',false,true);
     }
 
     private function execute_sql_file($file,$option)
@@ -137,6 +168,12 @@ class WPvivid_RestoreDB
         $this->default_engines=array();
         $this->default_charsets=array();
         $this->default_collates=array();
+
+        $this->is_mu=false;
+        if(isset($option['is_mu']))
+        {
+            $this->is_mu=true;
+        }
 
         if(isset($option['default_engine']))
         {
@@ -165,22 +202,63 @@ class WPvivid_RestoreDB
             $this->default_collates[]=DB_COLLATE;
         }
 
-        $this->old_prefix='';
-        $this->new_prefix=$wpdb->base_prefix;
+        if($this->is_mu&&isset($option['site_id']))
+        {
+            $this->old_prefix=$option['blog_prefix'];
 
-        $this->old_site_url='';
-        $this->old_home_url='';
-        $this->old_content_url='';
-        $this->old_upload_url='';
+            $wpvivid_plugin->restore_data->write_log('old site prefix:'.$this->old_prefix,'notice');
+            $this->old_site_url=$option['site_url'];
+            $wpvivid_plugin->restore_data->write_log('old site url:'.$this->old_site_url,'notice');
+            $this->old_home_url=$option['home_url'];
+            $wpvivid_plugin->restore_data->write_log('old home url:'.$this->old_home_url,'notice');
+            $this->old_content_url='';
+            $this->old_upload_url='';
 
-        $this->new_site_url= untrailingslashit(site_url());
+            if($option['overwrite'])
+            {
+                $this->new_prefix=$wpdb->get_blog_prefix($option['overwrite_site']);
+                $this->new_site_url= untrailingslashit(get_site_url($option['overwrite_site']));
+                $this->new_home_url=untrailingslashit(get_home_url($option['overwrite_site']));
+                $this->new_content_url=untrailingslashit(content_url());
+                $upload_dir  = wp_upload_dir();
+                $this->new_upload_url=untrailingslashit($upload_dir['baseurl']);
+            }
+            else
+            {
+                $this->new_prefix=$wpdb->get_blog_prefix($option['site_id']);
+                $this->new_site_url= untrailingslashit(get_site_url($option['site_id']));
+                $this->new_home_url=untrailingslashit(get_home_url($option['site_id']));
+                $this->new_content_url=untrailingslashit(content_url());
+                $upload_dir  = wp_upload_dir();
+                $this->new_upload_url=untrailingslashit($upload_dir['baseurl']);
+            }
 
-        $this->new_home_url=untrailingslashit(home_url());
+        }
+        else
+        {
+            $this->old_prefix='';
+            $this->old_base_prefix='';
+            if(isset($option['mu_migrate']))
+            {
+                $this->old_base_prefix=$option['base_prefix'];
+            }
+            $this->new_prefix=$wpdb->base_prefix;
 
-        $this->new_content_url=untrailingslashit(content_url());
+            $this->old_site_url='';
+            $this->old_home_url='';
+            $this->old_content_url='';
+            $this->old_upload_url='';
 
-        $upload_dir  = wp_upload_dir();
-        $this->new_upload_url=untrailingslashit($upload_dir['baseurl']);
+            $this->new_site_url= untrailingslashit(site_url());
+
+            $this->new_home_url=untrailingslashit(home_url());
+
+            $this->new_content_url=untrailingslashit(content_url());
+
+            $upload_dir  = wp_upload_dir();
+            $this->new_upload_url=untrailingslashit($upload_dir['baseurl']);
+        }
+
 
         $wpdb->query('SET FOREIGN_KEY_CHECKS=0;');
 
@@ -229,28 +307,45 @@ class WPvivid_RestoreDB
                     $matcher = array();
                     if(empty($this -> site_url) && preg_match('# site_url: (.*?) #',$line,$matcher))
                     {
-                        $this->old_site_url = $matcher[1];
-                        $wpvivid_plugin->restore_data->write_log('old site url:'.$this->old_site_url,'notice');
+                        if(empty( $this->old_site_url))
+                        {
+                            $this->old_site_url = $matcher[1];
+                            $wpvivid_plugin->restore_data->write_log('old site url:'.$this->old_site_url,'notice');
+                        }
+
                     }
                     if(empty($this -> home_url) && preg_match('# home_url: (.*?) #',$line,$matcher))
                     {
-                        $this->old_home_url = $matcher[1];
-                        $wpvivid_plugin->restore_data->write_log('old home url:'.$this->old_home_url,'notice');
+                        if(empty( $this->old_home_url))
+                        {
+                            $this->old_home_url = $matcher[1];
+                            $wpvivid_plugin->restore_data->write_log('old home url:'.$this->old_home_url,'notice');
+                        }
                     }
                     if(empty($this -> content_url) && preg_match('# content_url: (.*?) #',$line,$matcher))
                     {
-                        $this->old_content_url = $matcher[1];
-                        $wpvivid_plugin->restore_data->write_log('old content url:'.$this->old_content_url,'notice');
+                        if(empty( $this->old_content_url))
+                        {
+                            $this->old_content_url = $matcher[1];
+                            $wpvivid_plugin->restore_data->write_log('old content url:'.$this->old_content_url,'notice');
+                        }
                     }
                     if(empty($this -> upload_url) && preg_match('# upload_url: (.*?) #',$line,$matcher))
                     {
-                        $this->old_upload_url = $matcher[1];
-                        $wpvivid_plugin->restore_data->write_log('old upload url:'.$this->old_upload_url,'notice');
+                        if(empty( $this->old_upload_url))
+                        {
+                            $this->old_upload_url = $matcher[1];
+                            $wpvivid_plugin->restore_data->write_log('old upload url:'.$this->old_upload_url,'notice');
+                        }
+
                     }
                     if(empty($this -> table_prefix) && preg_match('# table_prefix: (.*?) #',$line,$matcher))
                     {
-                        $this->old_prefix = $matcher[1];
-                        $wpvivid_plugin->restore_data->write_log('old site prefix:'.$this->old_prefix,'notice');
+                        if(empty( $this->old_prefix))
+                        {
+                            $this->old_prefix = $matcher[1];
+                            $wpvivid_plugin->restore_data->write_log('old site prefix:'.$this->old_prefix,'notice');
+                        }
                     }
                 }
                 continue;
@@ -334,7 +429,17 @@ class WPvivid_RestoreDB
             if (preg_match('/^\s*LOCK TABLES +\`?([^\`]*)\`?/i', $query, $matches))
             {
                 $table_name = $matches[1];
-                $new_table_name=$this->new_prefix.substr($table_name,strlen($this->old_prefix));
+
+                if(!empty($this->old_base_prefix)&&(substr($table_name,strlen($this->old_base_prefix))=='users'||substr($table_name,strlen($this->old_base_prefix))=='usermeta'))
+                {
+                    $new_table_name=$this->new_prefix.substr($table_name,strlen($this->old_base_prefix));
+                }
+                else
+                {
+                    $new_table_name=$this->new_prefix.substr($table_name,strlen($this->old_prefix));
+                }
+
+                //$new_table_name=$this->new_prefix.substr($table_name,strlen($this->old_prefix));
                 $wpvivid_plugin->restore_data->write_log('lock replace table:'.$table_name.' to :'.$new_table_name,'notice');
                 $query=str_replace($table_name,$new_table_name,$query);
             }
@@ -366,7 +471,15 @@ class WPvivid_RestoreDB
 
         if(!empty($this->old_prefix)&&$this->old_prefix!=$this->new_prefix)
         {
-            $new_table_name=$this->new_prefix.substr($table_name,strlen($this->old_prefix));
+            if(!empty($this->old_base_prefix)&&(substr($table_name,strlen($this->old_base_prefix))=='users'||substr($table_name,strlen($this->old_base_prefix))=='usermeta'))
+            {
+                $new_table_name=$this->new_prefix.substr($table_name,strlen($this->old_base_prefix));
+            }
+            else
+            {
+                $new_table_name=$this->new_prefix.substr($table_name,strlen($this->old_prefix));
+            }
+
             $query=str_replace($table_name,$new_table_name,$query);
             $wpvivid_plugin->restore_data->write_log('Create table '.$new_table_name,'notice');
             $table_name=$new_table_name;
@@ -694,11 +807,20 @@ class WPvivid_RestoreDB
             if (preg_match('/^\s*INSERT INTO +\`?([^\`]*)\`?/i', $query, $matches))
             {
                 $table_name = $matches[1];
-                $new_table_name=$this->new_prefix.substr($table_name,strlen($this->old_prefix));
+
+                if(!empty($this->old_base_prefix)&&(substr($table_name,strlen($this->old_base_prefix))=='users'||substr($table_name,strlen($this->old_base_prefix))=='usermeta'))
+                {
+                    $new_table_name=$this->new_prefix.substr($table_name,strlen($this->old_base_prefix));
+                }
+                else
+                {
+                    $new_table_name=$this->new_prefix.substr($table_name,strlen($this->old_prefix));
+                }
+                //$new_table_name=$this->new_prefix.substr($table_name,strlen($this->old_prefix));
                 $query=str_replace($table_name,$new_table_name,$query);
             }
         }
-
+        //$query=str_replace('INSERT INTO', 'INSERT IGNORE INTO', $query);
         $this->execute_sql($query);
     }
 
@@ -710,8 +832,18 @@ class WPvivid_RestoreDB
             if (preg_match('/^\s*DROP TABLE IF EXISTS +\`?([^\`]*)\`?\s*;/i', $query, $matches))
             {
                 $table_name = $matches[1];
-                $new_table_name=$this->new_prefix.substr($table_name,strlen($this->old_prefix));
-                $wpvivid_plugin->restore_data->write_log('drop replace table:'.$table_name.' to :'.$new_table_name,'notice');
+
+                if(!empty($this->old_base_prefix)&&(substr($table_name,strlen($this->old_base_prefix))=='users'||substr($table_name,strlen($this->old_base_prefix))=='usermeta'))
+                {
+                    $new_table_name=$this->new_prefix.substr($table_name,strlen($this->old_base_prefix));
+                    $wpvivid_plugin->restore_data->write_log('find user table:'.$table_name.' to :'.$new_table_name,'notice');
+                }
+                else
+                {
+                    $new_table_name=$this->new_prefix.substr($table_name,strlen($this->old_prefix));
+                }
+
+                //$new_table_name=$this->new_prefix.substr($table_name,strlen($this->old_prefix));
                 $query=str_replace($table_name,$new_table_name,$query);
             }
         }
@@ -755,8 +887,83 @@ class WPvivid_RestoreDB
             }
         }
 
+        if(!empty($this->old_base_prefix)&&substr($table_name,strlen($this->old_base_prefix))=='usermeta')
+        {
+            if($this->old_base_prefix!=$this->new_prefix)
+            {
+                $update_query ='UPDATE '.$table_name.' SET meta_key=REPLACE(meta_key,"'.$this->old_base_prefix.'","'.$this->new_prefix.'") WHERE meta_key LIKE "'.str_replace('_','\_',$this->old_base_prefix).'%";';
+
+                $wpvivid_plugin->restore_data->write_log($update_query, 'notice');
+                $wpvivid_plugin->restore_data->write_log('update query len:'.strlen($update_query), 'notice');
+                $this->execute_sql($update_query);
+                return ;
+            }
+        }
+
         if($this->old_site_url==$this->new_site_url)
             return ;
+
+        if($this->is_mu)
+        {
+            if(substr($table_name, strlen($this->new_prefix))=='blogs')
+            {
+                $wpvivid_plugin->restore_data->write_log('update mu blogs', 'notice');
+
+                if((preg_match('#^https?://([^/]+)#i', $this->new_home_url, $matches) || preg_match('#^https?://([^/]+)#i', $this->new_site_url, $matches)) && (preg_match('#^https?://([^/]+)#i', $this->old_home_url, $old_matches) || preg_match('#^https?://([^/]+)#i', $this->old_site_url, $old_matches)))
+                {
+                    $new_string = strtolower($matches[1]);
+                    $old_string = strtolower($old_matches[1]);
+                    $new_path='';
+                    $old_path='';
+
+                    if(defined( 'PATH_CURRENT_SITE' ))
+                    {
+                        $new_path=PATH_CURRENT_SITE;
+                    }
+
+                    $query = 'SELECT * FROM `'.$table_name.'`';
+                    $result=$this->db_method->query($query,ARRAY_A);
+                    if($result && sizeof($result)>0)
+                    {
+                        $rows = $result;
+                        foreach ($rows as $row)
+                        {
+                            $update=array();
+                            $where=array();
+
+                            if($row['site_id']==1)
+                            {
+                                $old_path=$row['path'];
+                            }
+
+                            $old_domain_data = $row['domain'];
+                            $new_domain_data=str_replace($old_string,$new_string,$old_domain_data);
+
+                            $temp_where='`blog_id` = "' . $row['blog_id'] . '"';
+                            if (is_callable(array($wpdb, 'remove_placeholder_escape')))
+                                $temp_where = $wpdb->remove_placeholder_escape($temp_where);
+                            $where[] = $temp_where;
+                            $update[] = '`domain` = "' . $new_domain_data . '"';
+
+                            if(!empty($old_path)&&!empty($new_path))
+                            {
+                                $old_path_data= $row['path'];
+                                $new_path_data=str_replace($old_path,$new_path,$old_path_data);
+                                $update[] = '`path` = "' . $new_path_data . '"';
+                            }
+
+                            if(!empty($update)&&!empty($where))
+                            {
+                                $update_query = 'UPDATE `'.$table_name.'` SET '.implode(', ', $update).' WHERE '.implode(' AND ', array_filter($where)).';';
+                                $wpvivid_plugin->restore_data->write_log($update_query, 'notice');
+                                $this->execute_sql($update_query);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 
         $skip_table=false;
         if(apply_filters('wpvivid_restore_db_skip_replace_tables',$skip_table,$table_name))
@@ -848,7 +1055,6 @@ class WPvivid_RestoreDB
                         if(!empty($update)&&!empty($where))
                         {
                             $temp_query = 'UPDATE `'.$table_name.'` SET '.implode(', ', $update).' WHERE '.implode(' AND ', array_filter($where)).';';
-
                             $type=$this->db_method->get_type();
 
                             if($type=='pdo_mysql')
@@ -879,6 +1085,7 @@ class WPvivid_RestoreDB
                             else
                             {
                                 $update_query=$temp_query;
+                                //$wpvivid_plugin->restore_data->write_log('update replace rows', 'notice');
                                 $this->execute_sql($update_query);
                                 $update_query='';
                             }
@@ -892,7 +1099,6 @@ class WPvivid_RestoreDB
             if(!empty($update_query))
             {
                 $wpvivid_plugin->restore_data->write_log('update replace rows', 'notice');
-
                 $this->execute_sql($update_query);
             }
         }
@@ -904,7 +1110,7 @@ class WPvivid_RestoreDB
         $unserialize_data = @unserialize($old_data);
         if($unserialize_data===false)
         {
-            $old_data=$this->replace_string($old_data);
+            $old_data=$this->replace_string_v2($old_data);
         }
         else
         {
@@ -947,7 +1153,7 @@ class WPvivid_RestoreDB
             $serialize_data =@unserialize($data);
             if($serialize_data===false)
             {
-                $data=$this->replace_string($data);
+                $data=$this->replace_string_v2($data);
             }
             else
             {
@@ -960,7 +1166,7 @@ class WPvivid_RestoreDB
             {
                 if(is_string($value))
                 {
-                    $data[$key]=$this->replace_string($value);
+                    $data[$key]=$this->replace_string_v2($value);
                 }
                 else if(is_array($value))
                 {
@@ -991,9 +1197,11 @@ class WPvivid_RestoreDB
                 $props = get_object_vars($data);
                 foreach ($props as $key => $value)
                 {
+                    if (strpos($key, "\0")===0)
+                        continue;
                     if(is_string($value))
                     {
-                        $temp->$key =$this->replace_string($value);
+                        $temp->$key =$this->replace_string_v2($value);
                     }
                     else if(is_array($value))
                     {
@@ -1075,6 +1283,168 @@ class WPvivid_RestoreDB
     private function get_http_link_at_quote($url)
     {
         return str_replace('/','\/',$url);
+    }
+
+    public function replace_string_v2($old_string)
+    {
+        if(!is_string($old_string))
+        {
+            return $old_string;
+        }
+
+        $from=array();
+        $to=array();
+
+        $new_url_use_https=false;
+        if (0 === stripos($this->new_site_url, 'https://')|| stripos($this->new_site_url, 'https:\/\/'))
+        {
+            $new_url_use_https=true;
+        }
+        else if (0 === stripos($this->new_site_url, 'http://')|| stripos($this->new_site_url, 'http:\/\/'))
+        {
+            $new_url_use_https=false;
+        }
+
+        if($this->old_site_url!=$this->new_site_url)
+        {
+            if(substr($this->replacing_table, strlen($this->new_prefix))=='posts'||substr($this->replacing_table, strlen($this->new_prefix))=='postmeta'||substr($this->replacing_table, strlen($this->new_prefix))=='options')
+            {
+                $remove_http_link=$this->get_remove_http_link($this->old_site_url);
+                if($remove_http_link!==false)
+                {
+                    $new_remove_http_link=$this->get_remove_http_link($this->new_site_url);
+                    $from[]=$remove_http_link;
+                    $to[]=$new_remove_http_link;
+
+                    if($new_url_use_https)
+                    {
+                        $from[]='http:'.$new_remove_http_link;
+                        $to[]='https:'.$new_remove_http_link;
+                    }
+                    else
+                    {
+                        $from[]='https:'.$new_remove_http_link;
+                        $to[]='http:'.$new_remove_http_link;
+                    }
+
+                    $quote_old_site_url=$this->get_http_link_at_quote($remove_http_link);
+                    $quote_new_site_url=$this->get_http_link_at_quote($new_remove_http_link);
+                    $from[]=$quote_old_site_url;
+                    $to[]=$quote_new_site_url;
+                    if($new_url_use_https)
+                    {
+                        $from[]='http:'.$quote_new_site_url;
+                        $to[]='https:'.$quote_new_site_url;
+                    }
+                    else
+                    {
+                        $from[]='https:'.$quote_new_site_url;
+                        $to[]='http:'.$quote_new_site_url;
+                    }
+                }
+                else
+                {
+                    $remove_http_link=$this->get_remove_http_link_ex($this->old_site_url);
+                    if($remove_http_link!==false)
+                    {
+                        $new_remove_http_link=$this->get_remove_http_link_ex($this->new_site_url);
+                        $from[]=$remove_http_link;
+                        $to[]=$new_remove_http_link;
+
+                        if($new_url_use_https)
+                        {
+                            $from[]='http:'.$new_remove_http_link;
+                            $to[]='https:'.$new_remove_http_link;
+                        }
+                        else
+                        {
+                            $from[]='https:'.$new_remove_http_link;
+                            $to[]='http:'.$new_remove_http_link;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                $from[]=$this->old_site_url;
+                $to[]=$this->new_site_url;
+            }
+        }
+
+
+        if($this->old_home_url!=$this->old_site_url&&$this->old_home_url!=$this->new_home_url)
+        {
+            if(substr($this->replacing_table, strlen($this->new_prefix))=='posts'||substr($this->replacing_table, strlen($this->new_prefix))=='postmeta'||substr($this->replacing_table, strlen($this->new_prefix))=='options')
+            {
+                $remove_http_link=$this->get_remove_http_link($this->old_home_url);
+                if($remove_http_link!==false)
+                {
+                    $new_remove_http_link=$this->get_remove_http_link($this->new_home_url);
+                    $from[]=$remove_http_link;
+                    $to[]=$new_remove_http_link;
+
+                    if($new_url_use_https)
+                    {
+                        $from[]='http:'.$new_remove_http_link;
+                        $to[]='https:'.$new_remove_http_link;
+                    }
+                    else
+                    {
+                        $from[]='https:'.$new_remove_http_link;
+                        $to[]='http:'.$new_remove_http_link;
+                    }
+
+                    $quote_old_site_url=$this->get_http_link_at_quote($remove_http_link);
+                    $quote_new_site_url=$this->get_http_link_at_quote($new_remove_http_link);
+                    $from[]=$quote_old_site_url;
+                    $to[]=$quote_new_site_url;
+                    if($new_url_use_https)
+                    {
+                        $from[]='http:'.$quote_new_site_url;
+                        $to[]='https:'.$quote_new_site_url;
+                    }
+                    else
+                    {
+                        $from[]='https:'.$quote_new_site_url;
+                        $to[]='http:'.$quote_new_site_url;
+                    }
+                }
+                else
+                {
+                    $remove_http_link=$this->get_remove_http_link_ex($this->old_home_url);
+                    if($remove_http_link!==false)
+                    {
+                        $new_remove_http_link=$this->get_remove_http_link_ex($this->new_home_url);
+                        $from[]=$remove_http_link;
+                        $to[]=$new_remove_http_link;
+
+                        if($new_url_use_https)
+                        {
+                            $from[]='http:'.$new_remove_http_link;
+                            $to[]='https:'.$new_remove_http_link;
+                        }
+                        else
+                        {
+                            $from[]='https:'.$new_remove_http_link;
+                            $to[]='http:'.$new_remove_http_link;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                $from[]=$this->old_home_url;
+                $to[]=$this->new_home_url;
+            }
+        }
+
+
+        if(!empty($from)&&!empty($to))
+        {
+            $old_string=str_replace($from,$to,$old_string);
+        }
+
+        return $old_string;
     }
 
     private function replace_string($old_string)
@@ -1271,6 +1641,10 @@ class WPvivid_RestoreDB
         $skip_tables[]='duplicator_packages';
         $skip_tables[]='wsal_metadata';
         $skip_tables[]='wsal_occurrences';
+        $skip_tables[]='simple_history_contexts';
+        $skip_tables[]='simple_history';
+        $skip_tables[]='wffilemods';
+        //
         if(in_array(substr($table_name, strlen($this->new_prefix)),$skip_tables))
         {
             $skip_table=true;

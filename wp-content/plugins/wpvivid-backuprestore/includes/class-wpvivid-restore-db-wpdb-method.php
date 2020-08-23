@@ -116,7 +116,6 @@ class WPvivid_Restore_DB_WPDB_Method
         global $wpvivid_plugin;
 
         global $wpdb;
-        //$wpvivid_plugin->restore_data->write_log('query:'.$query, 'notice');
         if ($wpdb->get_results($query)===false)
         {
             $error=$wpdb->last_error;

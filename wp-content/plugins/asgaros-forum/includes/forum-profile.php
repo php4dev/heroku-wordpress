@@ -70,10 +70,16 @@ class AsgarosForumProfile {
     public function show_profile_header($user_data) {
         $userOnline = ($this->asgarosforum->online->is_user_online($user_data->ID)) ? ' class="user-online"' : '';
         $background_style = '';
+        $user_id = $user_data->ID;
 
         echo '<div id="profile-header"'.$userOnline.'>';
             if ($this->asgarosforum->options['enable_avatars']) {
-                $url = get_avatar_url($user_data->ID, 480);
+
+                $url = get_avatar_url($user_id, 480);
+
+                // Add filter for custom profile header
+                $url = apply_filters('asgarosforum_filter_profile_header_image', $url, $user_id);
+
                 $background_style = 'style="background-image: url(\''.$url.'\');"';
             }
 
@@ -88,15 +94,15 @@ class AsgarosForumProfile {
             echo '<div class="user-info">';
                 echo '<div class="profile-display-name">'.$user_data->display_name.'</div>';
 
-                $role = $this->asgarosforum->permissions->getForumRole($user_data->ID);
+                $role = $this->asgarosforum->permissions->getForumRole($user_id);
 
                 // Special styling for banned users.
-                if ($this->asgarosforum->permissions->get_forum_role($user_data->ID) === 'banned') {
+                if ($this->asgarosforum->permissions->get_forum_role($user_id) === 'banned') {
                     $role = '<span class="banned">'.$role.'</span>';
                 }
 
                 echo '<div class="profile-forum-role">';
-                $count_posts = $this->asgarosforum->countPostsByUser($user_data->ID);
+                $count_posts = $this->asgarosforum->countPostsByUser($user_id);
                 $this->asgarosforum->render_reputation_badges($count_posts);
                 echo $role;
                 echo '</div>';
@@ -251,7 +257,7 @@ class AsgarosForumProfile {
                     }
 
                     // Show last seen.
-                    if ($this->asgarosforum->online->functionality_enabled) {
+                    if ($this->asgarosforum->online->functionality_enabled && $this->asgarosforum->options['show_last_seen']) {
                         $cellTitle = __('Last seen:', 'asgaros-forum');
                         $cellValue = $this->asgarosforum->online->last_seen($userData->ID);
 
@@ -383,6 +389,9 @@ class AsgarosForumProfile {
     public function myProfileLink() {
         // First check if the user is logged in.
         if ($this->functionalityEnabled()) {
+
+            $profileLink = '';
+
             // Only continue if the current user is logged in.
             if (is_user_logged_in()) {
                 // Get current user.
@@ -391,7 +400,13 @@ class AsgarosForumProfile {
                 // Get and build profile link.
                 $profileLink = $this->getProfileLink($currentUserObject);
 
-                echo '<a class="profile-link" href="'.$profileLink.'">'.__('Profile', 'asgaros-forum').'</a>';
+                return array(
+                    'menu_class'        => 'profile-link',
+                    'menu_link_text'    => esc_html__('Profile', 'asgaros-forum'),
+                    'menu_url'          => $profileLink,
+                    'menu_login_status' => 1,
+                    'menu_new_tab'      => false
+                );
             }
         }
     }

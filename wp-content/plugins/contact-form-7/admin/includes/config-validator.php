@@ -69,7 +69,7 @@ function wpcf7_load_bulk_validate_page( $page, $action ) {
 	$contact_forms = WPCF7_ContactForm::find();
 
 	$result = array(
-		'timestamp' => current_time( 'timestamp' ),
+		'timestamp' => time(),
 		'version' => WPCF7_VERSION,
 		'count_valid' => 0,
 		'count_invalid' => 0,
@@ -107,8 +107,8 @@ function wpcf7_admin_bulk_validate_page() {
 	$submit_text = sprintf(
 		_n(
 			/* translators: %s: number of contact forms */
-			"Validate %s Contact Form Now",
-			"Validate %s Contact Forms Now",
+			"Validate %s contact form now",
+			"Validate %s contact forms now",
 			$count, 'contact-form-7'
 		),
 		number_format_i18n( $count )

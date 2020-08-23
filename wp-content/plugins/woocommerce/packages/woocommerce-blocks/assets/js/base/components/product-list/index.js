@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import { __, _n, sprintf } from '@wordpress/i18n';
 import { isEqual } from 'lodash';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -15,7 +16,8 @@ import {
 	useQueryStateByKey,
 } from '@woocommerce/base-hooks';
 import withScrollToTop from '@woocommerce/base-hocs/with-scroll-to-top';
-import { useProductLayoutContext } from '@woocommerce/base-context/product-layout-context';
+import { useInnerBlockLayoutContext } from '@woocommerce/shared-context';
+import { speak } from '@wordpress/a11y';
 
 /**
  * Internal dependencies
@@ -71,6 +73,29 @@ const extractPaginationAndSortAttributes = ( query ) => {
 	return totalQuery;
 };
 
+const announceLoadingCompletion = ( totalProducts ) => {
+	if ( ! Number.isFinite( totalProducts ) ) {
+		return;
+	}
+
+	if ( totalProducts === 0 ) {
+		speak( __( 'No products found', 'woocommerce' ) );
+	} else {
+		speak(
+			sprintf(
+				// translators: %s is an integer higher than 0 (1, 2, 3...)
+				_n(
+					'%d product found',
+					'%d products found',
+					totalProducts,
+					'woocommerce'
+				),
+				totalProducts
+			)
+		);
+	}
+};
+
 const ProductList = ( {
 	attributes,
 	currentPage,
@@ -86,11 +111,10 @@ const ProductList = ( {
 			currentPage,
 		} )
 	);
-	const results = useStoreProducts( queryState );
-	const { products, productsLoading } = results;
-	const totalProducts = parseInt( results.totalProducts );
-
-	const { layoutStyleClassPrefix } = useProductLayoutContext();
+	const { products, totalProducts, productsLoading } = useStoreProducts(
+		queryState
+	);
+	const { parentClassName } = useInnerBlockLayoutContext();
 	const totalQuery = extractPaginationAndSortAttributes( queryState );
 
 	// These are possible filters.
@@ -120,6 +144,11 @@ const ProductList = ( {
 		// reset pagination to the first page.
 		if ( ! isPreviousTotalQueryEqual ) {
 			onPageChange( 1 );
+
+			// Make sure there was a previous query, so we don't announce it on page load.
+			if ( previousQueryTotals ) {
+				announceLoadingCompletion( totalProducts );
+			}
 		}
 	}, [ queryState ] );
 
@@ -133,7 +162,7 @@ const ProductList = ( {
 		const alignClass = typeof align !== 'undefined' ? 'align' + align : '';
 
 		return classnames(
-			layoutStyleClassPrefix,
+			parentClassName,
 			alignClass,
 			'has-' + columns + '-columns',
 			{
@@ -177,7 +206,7 @@ const ProductList = ( {
 			) }
 			{ ! hasProducts && ! hasFilters && <NoProducts /> }
 			{ hasProducts && (
-				<ul className={ `${ layoutStyleClassPrefix }__products` }>
+				<ul className={ `${ parentClassName }__products` }>
 					{ listProducts.map( ( product = {}, i ) => (
 						<ProductListItem
 							key={ product.id || i }

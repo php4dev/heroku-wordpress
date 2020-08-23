@@ -60,7 +60,6 @@ abstract class Wpvivid_Compress_Default{
                         $packages[] = $package;
                         $package = array();
                         $sizenum = 0;
-                        $flag = true;
                     }
                     else
                     {
@@ -68,15 +67,13 @@ abstract class Wpvivid_Compress_Default{
                         $package = array();
                         $package[] = $file;
                         $sizenum = filesize($file);
-                        $flag = true;
                     }
 
                 }else{
                     $package[] = $file;
-                    $flag = false;
                 }
             }
-            if(!$flag)
+            if(!empty($package))
                 $packages[] = $package;
         }
         return $packages;

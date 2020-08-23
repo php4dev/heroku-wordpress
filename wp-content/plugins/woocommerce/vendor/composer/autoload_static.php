@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6740a6f568066dfec23033b636a5e288
+class ComposerStaticInite28a3826cc873afccbdf43e1e4d218ca
 {
     public static $prefixLengthsPsr4 = array (
         'S' => 
@@ -13,6 +13,7 @@ class ComposerStaticInit6740a6f568066dfec23033b636a5e288
         ),
         'P' => 
         array (
+            'Psr\\Container\\' => 14,
             'Pelago\\' => 7,
         ),
         'M' => 
@@ -26,6 +27,7 @@ class ComposerStaticInit6740a6f568066dfec23033b636a5e288
         'A' => 
         array (
             'Automattic\\WooCommerce\\Tests\\' => 29,
+            'Automattic\\WooCommerce\\Testing\\Tools\\' => 37,
             'Automattic\\WooCommerce\\RestApi\\' => 31,
             'Automattic\\WooCommerce\\Blocks\\' => 30,
             'Automattic\\WooCommerce\\Admin\\' => 29,
@@ -38,6 +40,10 @@ class ComposerStaticInit6740a6f568066dfec23033b636a5e288
         'Symfony\\Component\\CssSelector\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/css-selector',
+        ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
         ),
         'Pelago\\' => 
         array (
@@ -54,6 +60,10 @@ class ComposerStaticInit6740a6f568066dfec23033b636a5e288
         'Automattic\\WooCommerce\\Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests/php/src',
+        ),
+        'Automattic\\WooCommerce\\Testing\\Tools\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/tests/Tools',
         ),
         'Automattic\\WooCommerce\\RestApi\\' => 
         array (
@@ -179,9 +189,9 @@ class ComposerStaticInit6740a6f568066dfec23033b636a5e288
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6740a6f568066dfec23033b636a5e288::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6740a6f568066dfec23033b636a5e288::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit6740a6f568066dfec23033b636a5e288::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite28a3826cc873afccbdf43e1e4d218ca::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite28a3826cc873afccbdf43e1e4d218ca::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInite28a3826cc873afccbdf43e1e4d218ca::$classMap;
 
         }, null, ClassLoader::class);
     }

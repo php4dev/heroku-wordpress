@@ -485,7 +485,11 @@ class TypeAdapterMysql extends TypeAdapterFactory
 
     public function connect($host,$dbname,$user,$pass,$init_commands=array())
     {
-        $res = explode(':',DB_HOST);
+        if(empty($host))
+        {
+            $host=DB_HOST;
+        }
+        $res = explode(':',$host);
         $db_host = $res[0];
         $db_port = empty($res[1])?'':$res[1];
         if(!empty($db_port)) {
@@ -922,15 +926,31 @@ class TypeAdapterMysql extends TypeAdapterFactory
         return $colInfo;
     }
 
+    public function get_connection_charset($wpdb = null) {
+        if (null === $wpdb) {
+            global $wpdb;
+        }
+
+        $charset = (defined('DB_CHARSET') && DB_CHARSET) ? DB_CHARSET : 'utf8mb4';
+
+        if (method_exists($wpdb, 'determine_charset')) {
+            $charset_collate = $wpdb->determine_charset($charset, '');
+            if (!empty($charset_collate['charset'])) $charset = $charset_collate['charset'];
+        }
+
+        return $charset;
+    }
+
     public function backup_parameters()
     {
+        global $wpdb;
         $this->check_parameters(func_num_args(), $expected_num_args = 1, __METHOD__);
         $args = func_get_args();
         $dumpSettings = $args[0];
         $ret = "/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;" . PHP_EOL .
             "/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;" . PHP_EOL .
             "/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;" . PHP_EOL .
-            "/*!40101 SET NAMES " . $dumpSettings['default-character-set'] . " */;" . PHP_EOL;
+            "/*!40101 SET NAMES " . $this->get_connection_charset($wpdb) . " */;" . PHP_EOL;
 
         if (false === $dumpSettings['skip-tz-utc']) {
             $ret .= "/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;" . PHP_EOL .
@@ -1502,15 +1522,31 @@ class TypeAdapterWpdb extends TypeAdapterFactory
         return $colInfo;
     }
 
+    public function get_connection_charset($wpdb = null) {
+        if (null === $wpdb) {
+            global $wpdb;
+        }
+
+        $charset = (defined('DB_CHARSET') && DB_CHARSET) ? DB_CHARSET : 'utf8mb4';
+
+        if (method_exists($wpdb, 'determine_charset')) {
+            $charset_collate = $wpdb->determine_charset($charset, '');
+            if (!empty($charset_collate['charset'])) $charset = $charset_collate['charset'];
+        }
+
+        return $charset;
+    }
+
     public function backup_parameters()
     {
+        global $wpdb;
         $this->check_parameters(func_num_args(), $expected_num_args = 1, __METHOD__);
         $args = func_get_args();
         $dumpSettings = $args[0];
         $ret = "/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;" . PHP_EOL .
             "/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;" . PHP_EOL .
             "/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;" . PHP_EOL .
-            "/*!40101 SET NAMES " . $dumpSettings['default-character-set'] . " */;" . PHP_EOL;
+            "/*!40101 SET NAMES " . $this->get_connection_charset($wpdb) . " */;" . PHP_EOL;
 
         if (false === $dumpSettings['skip-tz-utc']) {
             $ret .= "/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;" . PHP_EOL .

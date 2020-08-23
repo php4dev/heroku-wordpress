@@ -3,7 +3,7 @@
 if (!defined('ABSPATH')) exit;
 
 class AsgarosForum {
-    var $version = '1.15.4';
+    var $version = '1.15.7';
     var $executePlugin = false;
     var $db = null;
     var $tables = null;
@@ -86,6 +86,7 @@ class AsgarosForum {
         'show_logout_button'                => true,
         'show_register_button'              => true,
         'show_who_is_online'                => true,
+        'show_last_seen'                    => true,
         'show_newest_member'                => true,
         'show_statistics'                   => true,
         'enable_breadcrumbs'                => true,
@@ -139,6 +140,7 @@ class AsgarosForum {
         'view_name_unread'                  => 'unread',
         'view_name_unapproved'              => 'unapproved',
         'view_name_reports'                 => 'reports',
+        'title_separator'                   => '-',
         'enable_spoilers'                   => true,
         'hide_spoilers_from_guests'         => false,
         'subforums_location'                => 'above',
@@ -197,10 +199,14 @@ class AsgarosForum {
         add_action('wp', array($this, 'prepare'));
         add_action('wp_enqueue_scripts', array($this, 'enqueue_css_js'), 10);
 
+        // Add certain classes to body-tag.
+        add_filter('body_class', array($this, 'add_body_classes'));
+
         // Add filters for modifying the title of the page.
         add_filter('wp_title', array($this, 'change_wp_title'), 100, 3);
         add_filter('document_title_parts', array($this, 'change_document_title_parts'), 100);
         add_filter('pre_get_document_title', array($this, 'change_pre_get_document_title'), 100);
+        add_filter('document_title_separator', array($this, 'change_document_title_separator'), 100);
 
         add_filter('oembed_dataparse', array($this, 'prevent_oembed_dataparse'), 10, 3);
 
@@ -253,7 +259,7 @@ class AsgarosForum {
 		$current_options = get_option('asgarosforum_options', array());
         $this->options = array_merge($this->options_default, $current_options);
 
-        // Ensure default values if some needed files got deleted.
+        // Ensure default values if some needed inputs got deleted.
         if (empty($this->options['forum_title'])) {
             $this->options['forum_title'] = __('Forum', 'asgaros-forum');
         }
@@ -293,6 +299,10 @@ class AsgarosForum {
         if (empty($this->options['mail_template_mentioned_message'])) {
             $this->options['mail_template_mentioned_message'] = __('Hello ###USERNAME###,<br><br>You have been mentioned in a forum-post.<br><br>Topic:<br>###TITLE###<br><br>Author:<br>###AUTHOR###<br><br>Text:<br>###CONTENT###<br><br>Link:<br>###LINK###', 'asgaros-forum');
         }
+
+        if (empty($this->options['title_separator'])) {
+            $this->options['title_separator'] = '-';
+        }
     }
 
     function save_options($options) {
@@ -324,12 +334,31 @@ class AsgarosForum {
         return $title;
     }
 
+    function change_document_title_separator($document_title_separator) {
+        if ($this->executePlugin) {
+            $document_title_separator = $this->get_title_separator();
+        }
+
+        return $document_title_separator;
+    }
+
+    function get_title_separator() {
+        // The default title-separator is based on the forum-settings.
+        $title_separator = $this->options['title_separator'];
+
+        // Allow other plugins to modify the title-separator.
+        $title_separator = apply_filters('asgarosforum_title_separator', $title_separator);
+
+        return $title_separator;
+    }
+
     function get_title($title) {
         if ($this->executePlugin) {
             $metaTitle = $this->getMetaTitle();
 
             if ($metaTitle) {
-                $title = $metaTitle.' - '.$title;
+                $title_separator = $this->get_title_separator();
+                $title = $metaTitle.' '.$title_separator.' '.$title;
             }
         }
 
@@ -344,13 +373,24 @@ class AsgarosForum {
         // Apply custom modifications.
         if (!$this->error && $this->current_view) {
             if ($this->current_view === 'forum' && $this->current_forum) {
-                $metaTitle = $this->addCurrentPageToString($metaTitle);
+                $metaTitle = $this->add_current_page_to_title($metaTitle);
             } else if ($this->current_view === 'topic' && $this->current_topic) {
-                $metaTitle = $this->addCurrentPageToString($metaTitle);
+                $metaTitle = $this->add_current_page_to_title($metaTitle);
             }
         }
 
         return $metaTitle;
+    }
+
+    // Adds the current page to a title.
+    function add_current_page_to_title($someString) {
+        if ($this->current_page > 0) {
+            $currentPage = $this->current_page + 1;
+            $title_separator = $this->get_title_separator();
+            $someString .= ' '.$title_separator.' '.__('Page', 'asgaros-forum').' '.$currentPage;
+        }
+
+        return $someString;
     }
 
     function prepare() {
@@ -556,8 +596,26 @@ class AsgarosForum {
 
         // Add a login-notice if necessary.
         if (!is_user_logged_in() && !$this->options['allow_guest_postings']) {
-            $notice = __('You need to log in to create posts and topics.', 'asgaros-forum');
+            $show_login = $this->showLoginLink();
+            $show_register = $this->showRegisterLink();
+
+            $notice = '';
+
+            if ($show_login) {
+                $login_link = '<u><a class="'.$show_login['menu_class'].'" href="'.$show_login['menu_url'].'">'.$show_login['menu_link_text'].'</a></u>';
+
+                if ($show_register) {
+                    $register_link = '<u><a class="'.$show_register['menu_class'].'" href="'.$show_register['menu_url'].'">'.$show_register['menu_link_text'].'</a></u>';
+                    $notice = sprintf(esc_html__('Please %s or %s to create posts and topics.', 'asgaros-forum'), $login_link, $register_link);
+                } else {
+                    $notice = sprintf(esc_html__('Please %s to create posts and topics.', 'asgaros-forum'), $login_link);
+                }
+            } else {
+                $notice = __('You need to log in to create posts and topics.', 'asgaros-forum');
+            }
+
             $notice = apply_filters('asgarosforum_filter_login_message', $notice);
+
             $this->add_notice($notice);
         }
     }
@@ -593,6 +651,16 @@ class AsgarosForum {
         }
 
         do_action('asgarosforum_enqueue_css_js');
+    }
+
+    // Add certain classes to body-tag.
+    function add_body_classes($classes) {
+        if ($this->executePlugin) {
+            $classes[] = 'asgaros-forum';
+            $classes[] = 'asgaros-forum-'.$this->current_view;
+        }
+
+        return $classes;
     }
 
     // Gets the pages main title.
@@ -638,16 +706,6 @@ class AsgarosForum {
         }
 
         return $mainTitle;
-    }
-
-    // Adds the current page to a string.
-    function addCurrentPageToString($someString) {
-        if ($this->current_page > 0) {
-            $currentPage = $this->current_page + 1;
-            $someString .= ' - '.__('Page', 'asgaros-forum').' '.$currentPage;
-        }
-
-        return $someString;
     }
 
     // Holds all notices.
@@ -1660,19 +1718,35 @@ class AsgarosForum {
             echo '<span class="screen-reader-text">'.__('Forum Navigation', 'asgaros-forum').'</span>';
 
             echo '<div id="forum-navigation">';
-                echo '<a class="home-link" href="'.$this->get_link('home').'">'.__('Forum', 'asgaros-forum').'</a>';
+                /**
+                 * $menu_entries = array(
+                 *     array(
+                 *         'menu_class'         => 'HTML Class'
+                 *         'menu_link_text'     => 'Link Text',
+                 *         'menu_url'           => '/url',
+                 *         'menu_login_status'  => '0', (0 = all, 1 = only logged in, 2 = only logged out)
+                 *         'menu_new_tab'       => true (true = open in new tab, false = open in same tab)
+                 *     )
+                 * );
+                 */
 
-                $this->profile->myProfileLink();
-                $this->memberslist->show_memberslist_link();
-                $this->notifications->show_subscription_overview_link();
-                $this->activity->show_activity_link();
+                $menu_entries = array();
+                $menu_entries['home'] = $this->homeLink();
+                $menu_entries['profile'] = $this->profile->myProfileLink();
+                $menu_entries['memberslist'] = $this->memberslist->show_memberslist_link();
+                $menu_entries['subscription'] = $this->notifications->show_subscription_overview_link();
+                $menu_entries['activity'] = $this->activity->show_activity_link();
+                $menu_entries['login'] = $this->showLoginLink();
+                $menu_entries['register'] = $this->showRegisterLink();
+                $menu_entries['logout'] = $this->showLogoutLink();
 
-                $this->showLoginLink();
-                $this->showRegisterLink();
-                $this->showLogoutLink();
+                // Apply filter to menu entries
+                $menu_entries = apply_filters('asgarosforum_filter_header_menu', $menu_entries);
 
+                $this->drawMenuEntries($menu_entries);
                 do_action('asgarosforum_custom_header_menu');
             echo '</div>';
+
             $this->search->show_search_input();
 
             echo '<div class="clear"></div>';
@@ -1681,33 +1755,104 @@ class AsgarosForum {
         $this->breadcrumbs->show_breadcrumbs();
     }
 
+    function drawMenuEntries($menu_entries) {
+        // Ensure that menu-entries are not empty.
+        if (empty($menu_entries) || !is_array($menu_entries)) return;
+
+        foreach ($menu_entries as $menu_entry) {
+            // Check menu entry.
+            if (empty($menu_entry)) continue;
+            if (!isset($menu_entry['menu_new_tab'])) $menu_entry['menu_new_tab'] = false;
+            if (!isset($menu_entry['menu_url'])) $menu_entry['menu_url'] = '/';
+            if (!isset($menu_entry['menu_login_status'])) $menu_entry['menu_login_status'] = 0;
+            if (!isset($menu_entry['menu_link_text'])) $menu_entry['menu_link_text'] = __('Link Text Missing', 'asgaros-forum');
+
+            // Check login status.
+            $login_status = is_user_logged_in();
+            $menu_login_status = $menu_entry['menu_login_status'];
+
+            if ($menu_login_status == 1 && ! $login_status) {
+                continue;
+            } else if ($menu_login_status == 2 && $login_status) {
+                continue;
+            }
+
+            // Check if menu-URL is a slug.
+            $menu_url = $menu_entry['menu_url'];
+
+            if ($menu_url[0] == '/') {
+                $menu_url = get_home_url().$menu_url;
+            }
+
+            // Check menu class.
+            $menu_class = (isset($menu_entry['menu_class'])) ? 'class="'.$menu_entry['menu_class'].'"' : '';
+
+            // Check if link has to open in a new tab.
+            $new_tab = ($menu_entry['menu_new_tab']) ? 'target="_blank"' : '';
+
+            echo '<a '.$menu_class.' href="'.$menu_url.'" '.$new_tab.'>'.$menu_entry['menu_link_text'].'</a>';
+        }
+    }
+
+    function homeLink(){
+        $home_url = $this->get_link('home');
+
+        return array(
+            'menu_class'        => 'home-link',
+            'menu_link_text'    => esc_html__('Forum', 'asgaros-forum'),
+            'menu_url'          => $home_url,
+            'menu_login_status' => 0,
+            'menu_new_tab'      => false
+        );
+    }
+
     function showLogoutLink() {
-        if (is_user_logged_in() && $this->options['show_logout_button']) {
-            echo '<a class="logout-link" href="'.wp_logout_url($this->get_link('current', false, false, '', false)).'">'.__('Logout', 'asgaros-forum').'</a>';
+        if ($this->options['show_logout_button']) {
+            $logout_url = wp_logout_url($this->get_link('current', false, false, '', false));
+
+            return array(
+                'menu_class'        => 'logout-link',
+                'menu_link_text'    => esc_html__('Logout', 'asgaros-forum'),
+                'menu_url'          => $logout_url,
+                'menu_login_status' => 1,
+                'menu_new_tab'      => false
+            );
         }
     }
 
     function showLoginLink() {
-        if (!is_user_logged_in() && $this->options['show_login_button']) {
+        if ($this->options['show_login_button']) {
             $login_url = wp_login_url($this->get_link('current', false, false, '', false));
 
             if (!empty($this->options['custom_url_login'])) {
                 $login_url = $this->options['custom_url_login'];
             }
 
-            echo '<a class="login-link" href="'.$login_url.'">'.__('Login', 'asgaros-forum').'</a>';
+            return array(
+                'menu_class'        => 'login-link',
+                'menu_link_text'    => esc_html__('Login', 'asgaros-forum'),
+                'menu_url'          => $login_url,
+                'menu_login_status' => 2,
+                'menu_new_tab'      => false
+            );
         }
     }
 
     function showRegisterLink() {
-        if (!is_user_logged_in() && $this->options['show_register_button']) {
+        if ( $this->options['show_register_button']) {
             $register_url = wp_registration_url();
 
             if (!empty($this->options['custom_url_register'])) {
                 $register_url = $this->options['custom_url_register'];
             }
 
-            echo '<a class="register-link" href="'.$register_url.'">'.__('Register', 'asgaros-forum').'</a>';
+            return array(
+                'menu_class'        => 'register-link',
+                'menu_link_text'    => esc_html__('Register', 'asgaros-forum'),
+                'menu_url'          => $register_url,
+                'menu_login_status' => 2,
+                'menu_new_tab'      => false
+            );
         }
     }
 
@@ -2147,6 +2292,9 @@ class AsgarosForum {
 
         // Trim it.
         $signature = trim($signature);
+
+        // Allow filtering the signature.
+        $signature = apply_filters('asgarosforum_signature', $signature);
 
         // Ensure signature is not empty.
         if (empty($signature)) {

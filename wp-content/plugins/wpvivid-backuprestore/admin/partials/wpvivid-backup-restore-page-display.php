@@ -4,32 +4,32 @@ function wpvivid_add_backup_type($html, $type_name)
 {
     $html .= '<label>
                     <input type="radio" option="backup" name="'.$type_name.'" value="files+db" checked />
-                    <span>'.__( 'Database + Files (WordPress Files)', 'wpvivid' ).'</span>
+                    <span>'.__( 'Database + Files (WordPress Files)', 'wpvivid-backuprestore' ).'</span>
                 </label><br>
                 <label>
                     <input type="radio" option="backup" name="'.$type_name.'" value="files" />
-                    <span>'.__( 'WordPress Files (Exclude Database)', 'wpvivid' ).'</span>
+                    <span>'.__( 'WordPress Files (Exclude Database)', 'wpvivid-backuprestore' ).'</span>
                 </label><br>
                 <label>
                     <input type="radio" option="backup" name="'.$type_name.'" value="db" />
-                    <span>'.__( 'Only Database', 'wpvivid' ).'</span>
+                    <span>'.__( 'Only Database', 'wpvivid-backuprestore' ).'</span>
                 </label><br>
                 <label>
                     <div style="float: left;">
                         <input type="radio" disabled />
-                        <span class="wpvivid-element-space-right" style="color: #ddd;">'.__('Create a staging site').'</span>
+                        <span class="wpvivid-element-space-right" style="color: #ddd;">'.__('Create a staging site', 'wpvivid-backuprestore').'</span>
                     </div>
                     <span class="wpvivid-feature-pro">
-                        <a href="https://wpvivid.com/wpvivid-backup-pro-create-staging-site" style="text-decoration: none;">Pro feature: learn more</a>
+                        <a href="https://wpvivid.com/wpvivid-backup-pro-create-staging-site" style="text-decoration: none;">'.__('Pro feature: learn more', 'wpvivid-backuprestore').'</a>
                     </span>
                 </label><br>
                 <label>
                     <div style="float: left;">
                         <input type="radio" disabled />
-                        <span class="wpvivid-element-space-right" style="color: #ddd;">'.__('Custom').'</span>
+                        <span class="wpvivid-element-space-right" style="color: #ddd;">'.__('Custom', 'wpvivid-backuprestore').'</span>
                     </div>
                     <span class="wpvivid-feature-pro">
-                        <a href="https://wpvivid.com/backup-migration-overview?utm_source=client_custom_backup&utm_medium=inner_link&utm_campaign=access" style="text-decoration: none;">Pro feature: learn more</a>
+                        <a href="https://wpvivid.com/backup-migration-overview?utm_source=client_custom_backup&utm_medium=inner_link&utm_campaign=access" style="text-decoration: none;">'.__('Pro feature: learn more', 'wpvivid-backuprestore').'</a>
                     </span>
                 </label><br>';
     return $html;
@@ -97,16 +97,16 @@ function wpvivid_backup_do_js(){
 }
 
 function wpvivid_download_backup_descript($html){
-    $html = '<p><strong>'.__('About backup download', 'wpvivid').'</strong></p>';
+    $html = '<p><strong>'.__('About backup download', 'wpvivid-backuprestore').'</strong></p>';
     $html .= '<ul>';
-    $html .= '<li>'.__('->If backups are stored in remote storage, our plugin will retrieve the backup to your web server first. This may take a little time depending on the size of backup files. Please be patient. Then you can download them to your PC.', 'wpvivid').'</li>';
-    $html .= '<li>'.__('->If backups are stored in web server, the plugin will list all relevant files immediately.', 'wpvivid').'</li>';
+    $html .= '<li>'.__('->If backups are stored in remote storage, our plugin will retrieve the backup to your web server first. This may take a little time depending on the size of backup files. Please be patient. Then you can download them to your PC.', 'wpvivid-backuprestore').'</li>';
+    $html .= '<li>'.__('->If backups are stored in web server, the plugin will list all relevant files immediately.', 'wpvivid-backuprestore').'</li>';
     $html .= '</ul>';
     return $html;
 }
 
 function wpvivid_restore_website_descript($html){
-    $html = '<p><a href="#" id="wpvivid_how_to_restore_backup_describe" onclick="wpvivid_click_how_to_restore_backup();" style="text-decoration: none;">'.__('How to restore your website from a backup(scheduled, manual, uploaded and received backup)', 'wpvivid').'</a></p>';
+    $html = '<p><a href="#" id="wpvivid_how_to_restore_backup_describe" onclick="wpvivid_click_how_to_restore_backup();" style="text-decoration: none;">'.__('How to restore your website from a backup(scheduled, manual, uploaded and received backup)', 'wpvivid-backuprestore').'</a></p>';
     $html .= '<div id="wpvivid_how_to_restore_backup"></div>';
     return $html;
 }
@@ -120,14 +120,14 @@ function wpvivid_backuppage_load_backuplist($backuplist_array){
 
 function wpvivid_backuppage_add_tab_backup(){
     ?>
-    <a href="#" id="wpvivid_tab_backup" class="nav-tab backup-nav-tab nav-tab-active" onclick="switchrestoreTabs(event,'page-backups')"><?php _e('Backups', 'wpvivid'); ?></a>
+    <a href="#" id="wpvivid_tab_backup" class="nav-tab backup-nav-tab nav-tab-active" onclick="switchrestoreTabs(event,'page-backups')"><?php _e('Backups', 'wpvivid-backuprestore'); ?></a>
     <?php
 }
 
 function wpvivid_backuppage_add_tab_log(){
     ?>
     <a href="#" id="wpvivid_tab_backup_log" class="nav-tab backup-nav-tab delete" onclick="switchrestoreTabs(event,'page-log')" style="display: none;">
-        <div style="margin-right: 15px;"><?php _e('Log', 'wpvivid'); ?></div>
+        <div style="margin-right: 15px;"><?php _e('Log', 'wpvivid-backuprestore'); ?></div>
         <div class="nav-tab-delete-img">
             <img src="<?php echo esc_url(plugins_url( 'images/delete-tab.png', __FILE__ )); ?>" style="vertical-align:middle; cursor:pointer;" onclick="wpvivid_close_tab(event, 'wpvivid_tab_backup_log', 'backup', 'wpvivid_tab_backup');" />
         </div>
@@ -138,7 +138,7 @@ function wpvivid_backuppage_add_tab_log(){
 function wpvivid_backuppage_add_tab_restore(){
     ?>
     <a href="#" id="wpvivid_tab_restore" class="nav-tab backup-nav-tab delete" onclick="switchrestoreTabs(event,'page-restore')" style="display: none;">
-        <div style="margin-right: 15px;"><?php _e('Restore', 'wpvivid'); ?></div>
+        <div style="margin-right: 15px;"><?php _e('Restore', 'wpvivid-backuprestore'); ?></div>
         <div class="nav-tab-delete-img">
             <img src="<?php echo esc_url(plugins_url( 'images/delete-tab.png', __FILE__ )); ?>" style="vertical-align:middle; cursor:pointer;" onclick="wpvivid_close_tab(event, 'wpvivid_tab_restore', 'backup', 'wpvivid_tab_backup');" />
         </div>
@@ -173,11 +173,11 @@ function wpvivid_backuppage_add_page_backup(){
             <thead>
             <tr class="backup-list-head" style="border-bottom: 0;">
                 <td></td>
-                <th><?php _e( 'Backup','wpvivid'); ?></th>
-                <th><?php _e( 'Storage','wpvivid'); ?></th>
-                <th><?php _e( 'Download','wpvivid'); ?></th>
-                <th><?php _e( 'Restore', 'wpvivid'); ?></th>
-                <th><?php _e( 'Delete','wpvivid'); ?></th>
+                <th><?php _e( 'Backup','wpvivid-backuprestore'); ?></th>
+                <th><?php _e( 'Storage','wpvivid-backuprestore'); ?></th>
+                <th><?php _e( 'Download','wpvivid-backuprestore'); ?></th>
+                <th><?php _e( 'Restore', 'wpvivid-backuprestore'); ?></th>
+                <th><?php _e( 'Delete','wpvivid-backuprestore'); ?></th>
             </tr>
             </thead>
             <tbody class="wpvivid-backuplist" id="wpvivid_backup_list">
@@ -190,7 +190,7 @@ function wpvivid_backuppage_add_page_backup(){
             <tfoot>
             <tr>
                 <th><input name="" type="checkbox" id="backup_list_all_check" value="1" /></th>
-                <th class="row-title" colspan="5"><a onclick="wpvivid_delete_backups_inbatches();" style="cursor: pointer;"><?php _e('Delete the selected backups', 'wpvivid'); ?></a></th>
+                <th class="row-title" colspan="5"><a onclick="wpvivid_delete_backups_inbatches();" style="cursor: pointer;"><?php _e('Delete the selected backups', 'wpvivid-backuprestore'); ?></a></th>
             </tr>
             </tfoot>
         </table>
@@ -531,7 +531,7 @@ function wpvivid_backuppage_add_page_backup(){
          */
         function wpvivid_download(backup_id, backup_type, file_name){
             wpvivid_location_href=true;
-            location.href =ajaxurl+'?action=wpvivid_download_backup&backup_id='+backup_id+'&download_type='+backup_type+'&file_name='+file_name;
+            location.href =ajaxurl+'?_wpnonce='+wpvivid_ajax_object.ajax_nonce+'&action=wpvivid_download_backup&backup_id='+backup_id+'&download_type='+backup_type+'&file_name='+file_name;
         }
 
         function wpvivid_initialize_restore(backup_id, backup_time, backup_type, restore_type='backup'){
@@ -722,16 +722,16 @@ function wpvivid_backuppage_add_page_backup(){
             var force_del = 0;
             var bdownloading = false;
             if(name === 'lock') {
-                descript = '<?php _e('This backup is locked, are you sure to remove it? This backup will be deleted permanently from your hosting (localhost) and remote storages.', 'wpvivid'); ?>';
+                descript = '<?php _e('This backup is locked, are you sure to remove it? This backup will be deleted permanently from your hosting (localhost) and remote storages.', 'wpvivid-backuprestore'); ?>';
                 force_del = 1;
             }
             else{
-                descript = '<?php _e('Are you sure to remove this backup? This backup will be deleted permanently from your hosting (localhost) and remote storages.', 'wpvivid'); ?>';
+                descript = '<?php _e('Are you sure to remove this backup? This backup will be deleted permanently from your hosting (localhost) and remote storages.', 'wpvivid-backuprestore'); ?>';
                 force_del = 0;
             }
             if(m_downloading_id === backup_id){
                 bdownloading = true;
-                descript = '<?php _e('This request will delete the backup being downloaded, are you sure you want to continue?', 'wpvivid'); ?>';
+                descript = '<?php _e('This request will delete the backup being downloaded, are you sure you want to continue?', 'wpvivid-backuprestore'); ?>';
                 force_del = 1;
             }
             var ret = confirm(descript);
@@ -770,15 +770,15 @@ function wpvivid_backuppage_add_page_backup(){
                 });
             });
             if( count === 0 ){
-                alert('<?php _e('Please select at least one item.','wpvivid'); ?>');
+                alert('<?php _e('Please select at least one item.','wpvivid-backuprestore'); ?>');
             }
             else {
                 var descript = '';
                 if(bdownloading) {
-                    descript = '<?php _e('This request might delete the backup being downloaded, are you sure you want to continue?', 'wpvivid'); ?>';
+                    descript = '<?php _e('This request might delete the backup being downloaded, are you sure you want to continue?', 'wpvivid-backuprestore'); ?>';
                 }
                 else{
-                    descript = '<?php _e('Are you sure to remove the selected backups? These backups will be deleted permanently from your hosting (localhost).', 'wpvivid'); ?>';
+                    descript = '<?php _e('Are you sure to remove the selected backups? These backups will be deleted permanently from your hosting (localhost).', 'wpvivid-backuprestore'); ?>';
                 }
                 var ret = confirm(descript);
                 if (ret === true) {
@@ -827,6 +827,28 @@ function wpvivid_backuppage_add_page_backup(){
                 });
             }
         });
+
+        function click_dismiss_restore_notice(obj){
+            wpvivid_display_restore_backup = false;
+            jQuery(obj).parent().remove();
+        }
+
+        function wpvivid_click_how_to_restore_backup(){
+            if(!wpvivid_display_restore_backup){
+                wpvivid_display_restore_backup = true;
+                var top = jQuery('#wpvivid_how_to_restore_backup_describe').offset().top-jQuery('#wpvivid_how_to_restore_backup_describe').height();
+                jQuery('html, body').animate({scrollTop:top}, 'slow');
+                var div = "<div class='notice notice-info is-dismissible inline'>" +
+                    "<p>" + wpvividlion.restore_step1 + "</p>" +
+                    "<p>" + wpvividlion.restore_step2 + "</p>" +
+                    "<p>" + wpvividlion.restore_step3 + "</p>" +
+                    "<button type='button' class='notice-dismiss' onclick='click_dismiss_restore_notice(this);'>" +
+                    "<span class='screen-reader-text'>Dismiss this notice.</span>" +
+                    "</button>" +
+                    "</div>";
+                jQuery('#wpvivid_how_to_restore_backup').append(div);
+            }
+        }
     </script>
     <?php
 }
@@ -842,36 +864,45 @@ function wpvivid_backuppage_add_page_log(){
 }
 
 function wpvivid_backuppage_add_page_restore(){
+    $general_setting=WPvivid_Setting::get_setting(true, "");
+    if(isset($general_setting['options']['wpvivid_common_setting']['restore_max_execution_time'])){
+        $restore_max_execution_time = intval($general_setting['options']['wpvivid_common_setting']['restore_max_execution_time']);
+    }
+    else{
+        $restore_max_execution_time = WPVIVID_RESTORE_MAX_EXECUTION_TIME;
+    }
     ?>
     <div class="backup-tab-content wpvivid_tab_restore" id="page-restore" style="display:none;">
         <div>
-            <h3><?php _e('Restore backup from:', 'wpvivid'); ?><span id="wpvivid_restore_backup_time"></span></h3>
-            <p><strong><?php _e('Please do not close the page or switch to other pages when a restore task is running, as it could trigger some unexpected errors.', 'wpvivid'); ?></strong></p>
-            <p><?php _e('Restore function will replace the current site\'s themes, plugins, uploads, database and/or other content directories with the existing equivalents in the selected backup.', 'wpvivid'); ?></p>
+            <h3><?php _e('Restore backup from:', 'wpvivid-backuprestore'); ?><span id="wpvivid_restore_backup_time"></span></h3>
+            <p><strong><?php _e('Please do not close the page or switch to other pages when a restore task is running, as it could trigger some unexpected errors.', 'wpvivid-backuprestore'); ?></strong></p>
+            <p><?php _e('Restore function will replace the current site\'s themes, plugins, uploads, database and/or other content directories with the existing equivalents in the selected backup.', 'wpvivid-backuprestore'); ?></p>
             <div id="wpvivid_restore_is_migrate" style="padding-bottom: 10px; display: none;">
                 <label >
-                    <input type="radio" id="wpvivid_replace_domain" option="restore" name="restore_domain" value="1" /><?php echo 'Restore and replace the original domain (URL) with '.home_url().' (migration)'; ?>
+                    <input type="radio" id="wpvivid_replace_domain" option="restore" name="restore_domain" value="1" /><?php echo sprintf(__('Restore and replace the original domain (URL) with %s (migration)', 'wpvivid-backuprestore'), home_url()); ?>
                 </label><br>
                 <label >
-                    <input type="radio" id="wpvivid_keep_domain" option="restore" name="restore_domain" value="0" /><?php _e('Restore and keep the original domain (URL) unchanged', 'wpvivid'); ?>
+                    <input type="radio" id="wpvivid_keep_domain" option="restore" name="restore_domain" value="0" /><?php _e('Restore and keep the original domain (URL) unchanged', 'wpvivid-backuprestore'); ?>
                 </label><br>
             </div>
             <div>
-                <p><strong>Tips:</strong> The plugin detects automatically either site restoration or migration (replacing the domain name) based on the current domain name. If the domain name in backup file is same as the current one, it starts restoring. On the contrary, restoring backup means to replace with the current domain name. The precondition is that the backup is created by version 0.9.21 or later.</p>
+                <p><strong><?php _e('Tips:', 'wpvivid-backuprestore'); ?></strong>&nbsp<?php _e('The plugin detects automatically either site restoration or migration (replacing the domain name) based on the current domain name. If the domain name in backup file is same as the current one, it starts restoring. On the contrary, restoring backup means to replace with the current domain name. The precondition is that the backup is created by version 0.9.21 or later.', 'wpvivid-backuprestore'); ?></p>
             </div>
             <div id="wpvivid_restore_check"></div>
-            <div class="restore-button-position" id="wpvivid_restore_part"><input class="button-primary" id="wpvivid_restore_btn" type="submit" name="restore" value="<?php esc_attr_e( 'Restore', 'wpvivid' ); ?>" onclick="wpvivid_start_restore();" /></div>
-            <div class="restore-button-position" id="wpvivid_clean_part"><input class="button-primary" id="wpvivid_clean_restore" type="submit" name="clear_restore" value="<?php esc_attr_e( 'Terminate', 'wpvivid' ); ?>" /></div>
-            <div class="restore-button-position" id="wpvivid_rollback_part"><input class="button-primary" id="wpvivid_rollback_btn" type="submit" name="rollback" value="<?php esc_attr_e( 'Rollback', 'wpvivid' ); ?>" /></div>
+            <div class="restore-button-position" id="wpvivid_restore_part"><input class="button-primary" id="wpvivid_restore_btn" type="submit" name="restore" value="<?php esc_attr_e( 'Restore', 'wpvivid-backuprestore' ); ?>" onclick="wpvivid_start_restore();" /></div>
+            <div class="restore-button-position" id="wpvivid_clean_part"><input class="button-primary" id="wpvivid_clean_restore" type="submit" name="clear_restore" value="<?php esc_attr_e( 'Terminate', 'wpvivid-backuprestore' ); ?>" /></div>
+            <div class="restore-button-position" id="wpvivid_rollback_part"><input class="button-primary" id="wpvivid_rollback_btn" type="submit" name="rollback" value="<?php esc_attr_e( 'Rollback', 'wpvivid-backuprestore' ); ?>" /></div>
             <div class="restore-button-position" id="wpvivid_download_part">
-                <input class="button-primary" id="wpvivid_download_btn" type="submit" name="download" value="<?php esc_attr_e( 'Retrieve the backup to localhost', 'wpvivid' ); ?>" />
-                <span>The backup is stored on the remote storage, click on the button to download it to localhost.</span>
+                <input class="button-primary" id="wpvivid_download_btn" type="submit" name="download" value="<?php esc_attr_e( 'Retrieve the backup to localhost', 'wpvivid-backuprestore' ); ?>" />
+                <span><?php _e('The backup is stored on the remote storage, click on the button to download it to localhost.', 'wpvivid-backuprestore'); ?></span>
             </div>
             <div class="spinner" id="wpvivid_init_restore_data" style="float:left;width:auto;height:auto;padding:10px 20px 20px 0;background-position:0 10px;"></div>
         </div>
         <div class="postbox restore_log" id="wpvivid_restore_log"></div>
     </div>
     <script>
+        var restore_max_exection_time = '<?php echo $restore_max_execution_time; ?>';
+        restore_max_exection_time = restore_max_exection_time * 1000;
         jQuery('#wpvivid_clean_restore').click(function(){
             wpvivid_delete_incompleted_restore();
         });
@@ -1351,7 +1382,7 @@ function wpvivid_backuppage_add_page_restore(){
             };
             setTimeout(function () {
                 wpvivid_restore_timeout = true;
-            }, 1800000);
+            }, restore_max_exection_time);
             wpvivid_post_request(ajax_data, function(data) {
             }, function(XMLHttpRequest, textStatus, errorThrown) {
             });
@@ -1455,23 +1486,23 @@ function wpvivid_backuppage_add_progress_module(){
             <div class="action-progress-bar-percent" id="wpvivid_action_progress_bar_percent" style="height:24px;width:0;"></div>
         </div>
         <div id="wpvivid_estimate_backup_info" style="float: left;">
-            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('Database Size:', 'wpvivid'); ?></span><span id="wpvivid_backup_database_size">N/A</span></div>
-            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('File Size:', 'wpvivid'); ?></span><span id="wpvivid_backup_file_size">N/A</span></div>
+            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('Database Size:', 'wpvivid-backuprestore'); ?></span><span id="wpvivid_backup_database_size">N/A</span></div>
+            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('File Size:', 'wpvivid-backuprestore'); ?></span><span id="wpvivid_backup_file_size">N/A</span></div>
         </div>
         <div id="wpvivid_estimate_upload_info" style="float: left;">
-            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('Total Size:', 'wpvivid'); ?></span><span>N/A</span></div>
-            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('Uploaded:', 'wpvivid'); ?></span><span>N/A</span></div>
-            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('Speed:', 'wpvivid'); ?></span><span>N/A</span></div>
+            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('Total Size:', 'wpvivid-backuprestore'); ?></span><span>N/A</span></div>
+            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('Uploaded:', 'wpvivid-backuprestore'); ?></span><span>N/A</span></div>
+            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('Speed:', 'wpvivid-backuprestore'); ?></span><span>N/A</span></div>
         </div>
         <div style="float: left;">
-            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('Network Connection:', 'wpvivid'); ?></span><span>N/A</span></div>
+            <div class="backup-basic-info"><span class="wpvivid-element-space-right"><?php _e('Network Connection:', 'wpvivid-backuprestore'); ?></span><span>N/A</span></div>
         </div>
         <div style="clear:both;"></div>
         <div style="margin-left:10px; float: left; width:100%;"><p id="wpvivid_current_doing"></p></div>
         <div style="clear: both;"></div>
         <div>
-            <div id="wpvivid_backup_cancel" class="backup-log-btn"><input class="button-primary" id="wpvivid_backup_cancel_btn" type="submit" value="<?php esc_attr_e( 'Cancel', 'wpvivid' ); ?>"  /></div>
-            <div id="wpvivid_backup_log" class="backup-log-btn"><input class="button-primary" id="wpvivid_backup_log_btn" type="submit" value="<?php esc_attr_e( 'Log', 'wpvivid' ); ?>" /></div>
+            <div id="wpvivid_backup_cancel" class="backup-log-btn"><input class="button-primary" id="wpvivid_backup_cancel_btn" type="submit" value="<?php esc_attr_e( 'Cancel', 'wpvivid-backuprestore' ); ?>"  /></div>
+            <div id="wpvivid_backup_log" class="backup-log-btn"><input class="button-primary" id="wpvivid_backup_log_btn" type="submit" value="<?php esc_attr_e( 'Log', 'wpvivid-backuprestore' ); ?>" /></div>
         </div>
         <div style="clear: both;"></div>
     </div>
@@ -1523,15 +1554,15 @@ function wpvivid_backup_module_add_descript(){
     $backupdir=WPvivid_Setting::get_backupdir();
     ?>
     <div style="font-size: 14px; padding: 8px 12px; margin: 0; line-height: 1.4; font-weight: 600;">
-        <span style="margin-right: 5px;"><?php _e( 'Back Up Manually','wpvivid'); ?></span>
+        <span style="margin-right: 5px;"><?php _e( 'Back Up Manually','wpvivid-backuprestore'); ?></span>
         <span style="margin-right: 5px;">|</span>
-        <span style="margin-right: 0;"><a href="<?php echo esc_url(admin_url().'admin.php?page=wpvivid-export-import'); ?>" style="text-decoration: none;">Export Content</a></span>
-        <span style="font-size: 10px; color: #FFA500; line-height: 10px;">(new feature)</span>
+        <span style="margin-right: 0;"><a href="<?php echo esc_url(admin_url().'admin.php?page=wpvivid-export-import'); ?>" style="text-decoration: none;"><?php _e('Export Content', 'wpvivid-backuprestore'); ?></a></span>
+        <span style="font-size: 10px; color: #FFA500; line-height: 10px;">(<?php _e('new feature', 'wpvivid-backuprestore'); ?>)</span>
     </div>
     <div class="quickstart-storage-setting">
-        <span class="list-top-chip backup" name="ismerge" value="1" style="margin: 10px 10px 10px 0;"><?php _e('Local Storage Directory: '); ?></span>
+        <span class="list-top-chip backup" name="ismerge" value="1" style="margin: 10px 10px 10px 0;"><?php _e('Local Storage Directory:', 'wpvivid-backuprestore'); ?></span>
         <span class="list-top-chip" id="wpvivid_local_storage_path" style="margin: 10px 10px 10px 0;"><?php _e(WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$backupdir); ?></span>
-        <span class="list-top-chip" style="margin: 10px 10px 10px 0;"><a href="#" onclick="wpvivid_click_switch_page('wrap', 'wpvivid_tab_setting', true);" style="text-decoration: none;"><?php _e(' rename directory', 'wpvivid'); ?></a></span>
+        <span class="list-top-chip" style="margin: 10px 10px 10px 0;"><a href="#" onclick="wpvivid_click_switch_page('wrap', 'wpvivid_tab_setting', true);" style="text-decoration: none;"><?php _e('rename directory', 'wpvivid-backuprestore'); ?></a></span>
     </div>
     <?php
 }
@@ -1560,11 +1591,11 @@ function wpvivid_backup_module_add_send_remote(){
             <legend class="screen-reader-text"><span>input type="checkbox"</span></legend>
             <label>
                 <input type="radio" id="wpvivid_backup_local" option="backup_ex" name="local_remote" value="local" checked />
-                <span><?php _e( 'Save Backups to Local', 'wpvivid' ); ?></span>
+                <span><?php _e( 'Save Backups to Local', 'wpvivid-backuprestore' ); ?></span>
             </label><br>
             <label>
                 <input type="radio" id="wpvivid_backup_remote" option="backup_ex" name="local_remote" value="remote" />
-                <span><?php _e( 'Send Backup to Remote Storage:', 'wpvivid' ); ?></span>
+                <span><?php _e( 'Send Backup to Remote Storage:', 'wpvivid-backuprestore' ); ?></span>
             </label><br>
             <div id="upload_storage" style="cursor:pointer;" title="Highlighted icon illuminates that you have choosed a remote storage to store backups">
                 <?php echo apply_filters('wpvivid_schedule_add_remote_pic',$pic); ?>
@@ -1577,12 +1608,12 @@ function wpvivid_backup_module_add_send_remote(){
 function wpvivid_backup_module_add_exec(){
     ?>
     <div class="quickstart-btn" style="padding-top:20px;">
-        <input class="button-primary quickbackup-btn" id="wpvivid_quickbackup_btn" type="submit" value="<?php esc_attr_e( 'Backup Now', 'wpvivid'); ?>" />
+        <input class="button-primary quickbackup-btn" id="wpvivid_quickbackup_btn" type="submit" value="<?php esc_attr_e( 'Backup Now', 'wpvivid-backuprestore'); ?>" />
         <div class="schedule-tab-block" style="text-align:center;">
             <fieldset>
                 <label>
                     <input type="checkbox" id="wpvivid_backup_lock" option="backup" name="lock" />
-                    <span><?php _e( 'This backup can only be deleted manually', 'wpvivid' ); ?></span>
+                    <span><?php _e( 'This backup can only be deleted manually', 'wpvivid-backuprestore' ); ?></span>
                 </label>
             </fieldset>
         </div>
@@ -1684,7 +1715,8 @@ function wpvivid_backup_module_add_exec(){
                     wpvivid_delete_ready_task(err);
                 }
             }, function (XMLHttpRequest, textStatus, errorThrown) {
-                var error_message = wpvivid_output_ajaxerror('preparing the backup', textStatus, errorThrown);
+                //var error_message = wpvivid_output_ajaxerror('preparing the backup', textStatus, errorThrown);
+                var error_message=wpvividlion.backup_calc_timeout;//'Calculating the size of files, folder and database timed out. If you continue to receive this error, please go to the plugin settings, uncheck \'Calculate the size of files, folder and database before backing up\', save changes, then try again.';
                 wpvivid_delete_ready_task(error_message);
             });
         }
@@ -1752,7 +1784,7 @@ function wpvivid_backup_module_add_exec(){
 function wpvivid_backup_module_add_tips(){
     ?>
     <div class="custom-info" style="float:left; width:100%;">
-        <strong><?php _e('Tips', 'wpvivid'); ?></strong><?php _e(': The settings are only for manual backup, which won\'t affect schedule settings.', 'wpvivid'); ?>
+        <strong><?php _e('Tips:', 'wpvivid-backuprestore'); ?></strong>&nbsp<?php _e('The settings are only for manual backup, which won\'t affect schedule settings.', 'wpvivid-backuprestore'); ?>
     </div>
     <?php
 }
@@ -1771,13 +1803,13 @@ function wpvivid_backuppage_add_schedule_module(){
     $last_message = apply_filters('wpvivid_get_last_backup_message', $last_message);
     ?>
     <div class="postbox qucikbackup-schedule" id="wpvivid_postbox_backup_schedule">
-        <h2><span><?php _e( 'Backup Schedule','wpvivid'); ?></span></h2>
+        <h2><span><?php _e( 'Backup Schedule','wpvivid-backuprestore'); ?></span></h2>
         <div class="schedule-block">
-            <p id="wpvivid_schedule_status"><strong><?php _e('Schedule Status: ', 'wpvivid'); ?></strong><?php _e($schedule_status); ?></p>
+            <p id="wpvivid_schedule_status"><strong><?php _e('Schedule Status: ', 'wpvivid-backuprestore'); ?></strong><?php _e($schedule_status); ?></p>
             <div id="wpvivid_schedule_info">
-                <p><strong><?php _e('Server Time: ', 'wpvivid'); ?></strong><?php _e(date("l, F d, Y H:i",time())); ?></p>
+                <p><strong><?php _e('Server Time: ', 'wpvivid-backuprestore'); ?></strong><?php _e(date("l, F d, Y H:i",time())); ?></p>
                 <p><span id="wpvivid_last_backup_msg"><?php _e($last_message); ?></span></p>
-                <p id="wpvivid_next_backup"><strong><?php _e('Next Backup: ', 'wpvivid'); ?></strong><?php _e($next_backup_time); ?></p>
+                <p id="wpvivid_next_backup"><strong><?php _e('Next Backup: ', 'wpvivid-backuprestore'); ?></strong><?php _e($next_backup_time); ?></p>
             </div>
         </div>
     </div>

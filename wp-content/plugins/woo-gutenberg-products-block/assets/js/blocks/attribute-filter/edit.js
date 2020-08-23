@@ -13,7 +13,7 @@ import {
 	Toolbar,
 	withSpokenMessages,
 } from '@wordpress/components';
-import Gridicon from 'gridicons';
+import { Icon, server, external } from '@woocommerce/icons';
 import { SearchListControl } from '@woocommerce/components';
 import { mapValues, toArray, sortBy, find } from 'lodash';
 import { ATTRIBUTES } from '@woocommerce/block-settings';
@@ -26,18 +26,19 @@ import BlockTitle from '@woocommerce/block-components/block-title';
  */
 import Block from './block.js';
 import './editor.scss';
-import { IconExternal } from '../../components/icons';
 import ToggleButtonControl from '../../components/toggle-button-control';
 
 const Edit = ( { attributes, setAttributes, debouncedSpeak } ) => {
 	const {
 		attributeId,
 		className,
+		displayStyle,
 		heading,
 		headingLevel,
 		isPreview,
 		queryType,
 		showCounts,
+		showFilterButton,
 	} = attributes;
 
 	const [ isEditing, setIsEditing ] = useState(
@@ -75,11 +76,11 @@ const Edit = ( { attributes, setAttributes, debouncedSpeak } ) => {
 						help={
 							showCounts
 								? __(
-										'Product counts are visible.',
+										'Product count is visible.',
 										'woo-gutenberg-products-block'
 								  )
 								: __(
-										'Product counts are hidden.',
+										'Product count is hidden.',
 										'woo-gutenberg-products-block'
 								  )
 						}
@@ -151,6 +152,57 @@ const Edit = ( { attributes, setAttributes, debouncedSpeak } ) => {
 							} )
 						}
 					/>
+					<ToggleButtonControl
+						label={ __(
+							'Display Style',
+							'woo-gutenberg-products-block'
+						) }
+						value={ displayStyle }
+						options={ [
+							{
+								label: __(
+									'List',
+									'woo-gutenberg-products-block'
+								),
+								value: 'list',
+							},
+							{
+								label: __(
+									'Dropdown',
+									'woo-gutenberg-products-block'
+								),
+								value: 'dropdown',
+							},
+						] }
+						onChange={ ( value ) =>
+							setAttributes( {
+								displayStyle: value,
+							} )
+						}
+					/>
+					<ToggleControl
+						label={ __(
+							'Filter button',
+							'woo-gutenberg-products-block'
+						) }
+						help={
+							showFilterButton
+								? __(
+										'Products will only update when the button is pressed.',
+										'woo-gutenberg-products-block'
+								  )
+								: __(
+										'Products will update as options are selected.',
+										'woo-gutenberg-products-block'
+								  )
+						}
+						checked={ showFilterButton }
+						onChange={ ( value ) =>
+							setAttributes( {
+								showFilterButton: value,
+							} )
+						}
+					/>
 				</PanelBody>
 				<PanelBody
 					title={ __(
@@ -168,7 +220,7 @@ const Edit = ( { attributes, setAttributes, debouncedSpeak } ) => {
 	const noAttributesPlaceholder = () => (
 		<Placeholder
 			className="wc-block-attribute-filter"
-			icon={ <Gridicon icon="menus" /> }
+			icon={ <Icon srcElement={ server } /> }
 			label={ __(
 				'Filter Products by Attribute',
 				'woo-gutenberg-products-block'
@@ -185,7 +237,7 @@ const Edit = ( { attributes, setAttributes, debouncedSpeak } ) => {
 				) }
 			</p>
 			<Button
-				className="wc-block-attribute-filter__add_attribute_button"
+				className="wc-block-attribute-filter__add-attribute-button"
 				isDefault
 				isLarge
 				href={ getAdminLink(
@@ -194,7 +246,7 @@ const Edit = ( { attributes, setAttributes, debouncedSpeak } ) => {
 			>
 				{ __( 'Add new attribute', 'woo-gutenberg-products-block' ) +
 					' ' }
-				<IconExternal />
+				<Icon srcElement={ external } />
 			</Button>
 			<Button
 				className="wc-block-attribute-filter__read_more_button"
@@ -210,7 +262,7 @@ const Edit = ( { attributes, setAttributes, debouncedSpeak } ) => {
 		setIsEditing( false );
 		debouncedSpeak(
 			__(
-				'Showing attribute filter block preview.',
+				'Showing Filter Products by Attribute block preview.',
 				'woo-gutenberg-products-block'
 			)
 		);
@@ -305,7 +357,7 @@ const Edit = ( { attributes, setAttributes, debouncedSpeak } ) => {
 		return (
 			<Placeholder
 				className="wc-block-attribute-filter"
-				icon={ <Gridicon icon="menus" /> }
+				icon={ <Icon srcElement={ server } /> }
 				label={ __(
 					'Filter Products by Attribute',
 					'woo-gutenberg-products-block'
@@ -317,7 +369,7 @@ const Edit = ( { attributes, setAttributes, debouncedSpeak } ) => {
 			>
 				<div className="wc-block-attribute-filter__selection">
 					{ renderAttributeControl() }
-					<Button isDefault onClick={ onDone }>
+					<Button isPrimary onClick={ onDone }>
 						{ __( 'Done', 'woo-gutenberg-products-block' ) }
 					</Button>
 				</div>

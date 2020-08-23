@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { without } from 'lodash';
-import Gridicon from 'gridicons';
+import { Icon, stonks } from '@woocommerce/icons';
 import { createBlock, registerBlockType } from '@wordpress/blocks';
 
 /**
@@ -18,7 +18,7 @@ import sharedAttributes, {
 registerBlockType( 'woocommerce/product-best-sellers', {
 	title: __( 'Best Selling Products', 'woocommerce' ),
 	icon: {
-		src: <Gridicon icon="stats-up-alt" />,
+		src: <Icon srcElement={ stonks } />,
 		foreground: '#96588a',
 	},
 	category: 'woocommerce',
@@ -69,6 +69,8 @@ registerBlockType( 'woocommerce/product-best-sellers', {
 
 	/**
 	 * Renders and manages the block.
+	 *
+	 * @param {Object} props Props to pass to block.
 	 */
 	edit( props ) {
 		return <Block { ...props } />;

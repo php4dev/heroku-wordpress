@@ -43,7 +43,8 @@ class Dropbox_Base{
         return $returnData;
     }
 
-    public function upload_session_append_v2($session_id, $offset, $postdata) {
+    public function upload_session_append_v2($session_id, $offset, $postdata)
+    {
         $endpoint = self::CONTENT_URL_V2."files/upload_session/append_v2";
         $headers = array(
             "Content-Type: application/octet-stream",

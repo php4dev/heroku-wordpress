@@ -3,23 +3,26 @@
  * Plugin Name: WooCommerce Blocks
  * Plugin URI: https://github.com/woocommerce/woocommerce-gutenberg-products-block
  * Description: WooCommerce blocks for the Gutenberg editor.
- * Version: 2.5.16
+ * Version: 3.1.0
  * Author: Automattic
  * Author URI: https://woocommerce.com
  * Text Domain:  woo-gutenberg-products-block
- * Requires at least: 5.0
+ * Requires at least: 5.2
  * Requires PHP: 5.6
- * WC requires at least: 3.7
- * WC tested up to: 4.0
+ * WC requires at least: 4.0
+ * WC tested up to: 4.2
  *
  * @package WooCommerce\Blocks
- * @internal This file is only used when running the REST API as a feature plugin.
+ * @internal This file is only used when running as a feature plugin.
  */
 
 defined( 'ABSPATH' ) || exit;
 
-$minimum_wp_version = '5.0';
+$minimum_wp_version = '5.2';
 
+if ( ! defined( 'WC_BLOCKS_IS_FEATURE_PLUGIN' ) ) {
+	define( 'WC_BLOCKS_IS_FEATURE_PLUGIN', true );
+}
 /**
  * Whether notices must be displayed in the current page (plugins and WooCommerce pages).
  *
@@ -180,3 +183,27 @@ JS;
 }
 
 add_filter( 'pre_load_script_translations', 'woocommerce_blocks_get_i18n_data_json', 10, 4 );
+
+/**
+ * Filter translations so we can retrieve translations from Core when the original and the translated
+ * texts are the same (which happens when translations are missing).
+ *
+ * @param string $translation Translated text based on WC Blocks translations.
+ * @param string $text        Text to translate.
+ * @param string $domain      The text domain.
+ * @return string WC Blocks translation. In case it's the same as $text, Core translation.
+ */
+function woocommerce_blocks_get_php_translation_from_core( $translation, $text, $domain ) {
+	if ( 'woo-gutenberg-products-block' !== $domain ) {
+		return $translation;
+	}
+
+	// When translation is the same, that could mean the string is not translated.
+	// In that case, load it from core.
+	if ( $translation === $text ) {
+		return translate( $text, 'woocommerce' ); // phpcs:ignore WordPress.WP.I18n.LowLevelTranslationFunction, WordPress.WP.I18n.NonSingularStringLiteralText, WordPress.WP.I18n.TextDomainMismatch
+	}
+	return $translation;
+}
+
+add_filter( 'gettext', 'woocommerce_blocks_get_php_translation_from_core', 10, 3 );

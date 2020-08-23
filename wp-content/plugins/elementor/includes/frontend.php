@@ -216,6 +216,9 @@ class Frontend extends App {
 
 		// Add Edit with the Elementor in Admin Bar.
 		add_action( 'admin_bar_menu', [ $this, 'add_menu_in_admin_bar' ], 200 );
+
+		// Detect Elementor documents via their css that printed before the Admin Bar.
+		add_action( 'elementor/css-file/post/enqueue', [ $this, 'add_document_to_admin_bar' ] );
 	}
 
 	/**
@@ -357,7 +360,7 @@ class Frontend extends App {
 			'swiper',
 			$this->get_js_assets_url( 'swiper', 'assets/lib/swiper/' ),
 			[],
-			'4.4.6',
+			'5.3.6',
 			true
 		);
 
@@ -380,7 +383,7 @@ class Frontend extends App {
 			[
 				'jquery-ui-position',
 			],
-			'4.7.3',
+			'4.7.6',
 			true
 		);
 
@@ -390,7 +393,17 @@ class Frontend extends App {
 			[
 				'jquery',
 			],
-			'1.1.0',
+			'1.1.3',
+			true
+		);
+
+		wp_register_script(
+			'share-link',
+			$this->get_js_assets_url( 'share-link', 'assets/lib/share-link/' ),
+			[
+				'jquery',
+			],
+			ELEMENTOR_VERSION,
 			true
 		);
 
@@ -402,6 +415,7 @@ class Frontend extends App {
 				'elementor-dialog',
 				'elementor-waypoints',
 				'swiper',
+				'share-link',
 			],
 			ELEMENTOR_VERSION,
 			true
@@ -448,7 +462,7 @@ class Frontend extends App {
 			'elementor-icons',
 			$this->get_css_assets_url( 'elementor-icons', 'assets/lib/eicons/css/' ),
 			[],
-			'5.5.0'
+			'5.7.0'
 		);
 
 		wp_register_style(
@@ -469,7 +483,7 @@ class Frontend extends App {
 			'elementor-gallery',
 			$this->get_css_assets_url( 'e-gallery', 'assets/lib/e-gallery/css/' ),
 			[],
-			'1.0.2'
+			'1.1.3'
 		);
 
 		$min_suffix = Utils::is_script_debug() ? '' : '.min';
@@ -578,6 +592,8 @@ class Frontend extends App {
 
 		if ( ! Plugin::$instance->preview->is_preview_mode() ) {
 			$this->parse_global_css_code();
+
+			do_action( 'elementor/frontend/after_enqueue_global' );
 
 			$post_id = get_the_ID();
 			// Check $post_id for virtual pages. check is singular because the $post_id is set to the first post on archive pages.
@@ -867,10 +883,6 @@ class Frontend extends App {
 		// Change the current post, so widgets can use `documents->get_current`.
 		Plugin::$instance->documents->switch_to_document( $document );
 
-		if ( $document->is_editable_by_current_user() ) {
-			$this->admin_bar_edit_documents[ $document->get_main_id() ] = $document;
-		}
-
 		$data = $document->get_elements_data();
 
 		/**
@@ -934,6 +946,17 @@ class Frontend extends App {
 		Plugin::$instance->documents->restore_document();
 
 		return $content;
+	}
+
+	/**
+	 * @param Post_CSS $css_file
+	 */
+	public function add_document_to_admin_bar( $css_file ) {
+		$document = Plugin::$instance->documents->get( $css_file->get_post_id() );
+
+		if ( $document::get_property( 'show_on_admin_bar' ) && $document->is_editable_by_current_user() ) {
+			$this->admin_bar_edit_documents[ $document->get_main_id() ] = $document;
+		}
 	}
 
 	/**
@@ -1096,6 +1119,10 @@ class Frontend extends App {
 		return $this->_has_elementor_in_page;
 	}
 
+	public function create_action_hash( $action, array $settings = [] ) {
+		return '#' . rawurlencode( sprintf( 'elementor-action:action=%1$s&settings=%2$s', $action, base64_encode( wp_json_encode( $settings ) ) ) );
+	}
+
 	/**
 	 * Get Init Settings
 	 *
@@ -1115,6 +1142,12 @@ class Frontend extends App {
 				'edit' => $is_preview_mode,
 				'wpPreview' => is_preview(),
 			],
+			'i18n' => [
+				'shareOnFacebook' => __( 'Share on Facebook', 'elementor' ),
+				'shareOnTwitter' => __( 'Share on Twitter', 'elementor' ),
+				'pinIt' => __( 'Pin it', 'elementor' ),
+				'downloadImage' => __( 'Download image', 'elementor' ),
+			],
 			'is_rtl' => is_rtl(),
 			'breakpoints' => Responsive::get_breakpoints(),
 			'version' => ELEMENTOR_VERSION,
@@ -1127,16 +1160,20 @@ class Frontend extends App {
 
 		if ( is_singular() ) {
 			$post = get_post();
+
+			$title = Utils::urlencode_html_entities( wp_get_document_title() );
+
 			$settings['post'] = [
 				'id' => $post->ID,
-				'title' => $post->post_title,
+				'title' => $title,
 				'excerpt' => $post->post_excerpt,
+				'featuredImage' => get_the_post_thumbnail_url(),
 			];
 		} else {
 			$settings['post'] = [
 				'id' => 0,
 				'title' => wp_get_document_title(),
-				'excerpt' => '',
+				'excerpt' => get_the_archive_description(),
 			];
 		}
 

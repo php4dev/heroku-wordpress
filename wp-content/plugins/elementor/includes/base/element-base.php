@@ -450,7 +450,7 @@ abstract class Element_Base extends Controls_Stack {
 		$attributes = [];
 
 		if ( ! empty( $url_control['url'] ) ) {
-			$attributes['href'] = $url_control['url'];
+			$attributes['href'] = esc_url( $url_control['url'] );
 		}
 
 		if ( ! empty( $url_control['is_external'] ) ) {
@@ -459,6 +459,11 @@ abstract class Element_Base extends Controls_Stack {
 
 		if ( ! empty( $url_control['nofollow'] ) ) {
 			$attributes['rel'] = 'nofollow';
+		}
+
+		if ( ! empty( $url_control['custom_attributes'] ) ) {
+			// Custom URL attributes should come as a string of comma-delimited key|value pairs
+			$attributes = array_merge( $attributes, Utils::parse_custom_attributes( $url_control['custom_attributes'] ) );
 		}
 
 		if ( $attributes ) {
@@ -862,12 +867,12 @@ abstract class Element_Base extends Controls_Stack {
 	 * Adds more configuration on top of the controls list and the tabs assigned
 	 * to the control. This method also adds element name, type, icon and more.
 	 *
-	 * @since 1.0.10
+	 * @since 2.9.0
 	 * @access protected
 	 *
 	 * @return array The initial config.
 	 */
-	protected function _get_initial_config() {
+	protected function get_initial_config() {
 		$config = [
 			'name' => $this->get_name(),
 			'elType' => $this->get_type(),
@@ -880,6 +885,10 @@ abstract class Element_Base extends Controls_Stack {
 			$config['help_url'] = $this->get_help_url();
 		} else {
 			$config['help_url'] = $this->get_custom_help_url();
+		}
+
+		if ( ! $this->is_editable() ) {
+			$config['editable'] = false;
 		}
 
 		return $config;

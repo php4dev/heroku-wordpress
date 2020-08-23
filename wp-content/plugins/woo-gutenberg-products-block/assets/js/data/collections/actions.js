@@ -29,8 +29,8 @@ Headers = Headers
  *                                    collection request.
  * @param {Array<*>} response.items	An array of items for the given collection.
  * @param {Headers}  response.headers A Headers object from the response
- *                                    @link https://developer.mozilla.org/en-US/docs/Web/API/Headers
- * @param {bool}     [replace=false]  If true, signals to replace the current
+ *                                    link https://developer.mozilla.org/en-US/docs/Web/API/Headers
+ * @param {boolean}     [replace=false]  If true, signals to replace the current
  *                                    items in the state with the provided
  *                                    items.
  * @return {
@@ -78,24 +78,58 @@ export function* __experimentalPersistItemToCollection(
 	if ( ! route ) {
 		return;
 	}
-	const item = yield apiFetch( {
-		path: route,
-		method: 'POST',
-		data,
-		cache: 'no-store',
-	} );
-	if ( item ) {
-		newCollection.push( item );
-		yield receiveCollection(
-			namespace,
-			resourceName,
-			'',
-			[],
-			{
-				items: newCollection,
-				headers: Headers,
-			},
-			true
-		);
+
+	try {
+		const item = yield apiFetch( {
+			path: route,
+			method: 'POST',
+			data,
+			cache: 'no-store',
+		} );
+
+		if ( item ) {
+			newCollection.push( item );
+			yield receiveCollection(
+				namespace,
+				resourceName,
+				'',
+				[],
+				{
+					items: newCollection,
+					headers: Headers,
+				},
+				true
+			);
+		}
+	} catch ( error ) {
+		yield receiveCollectionError( namespace, resourceName, '', [], error );
 	}
+}
+
+export function receiveCollectionError(
+	namespace,
+	resourceName,
+	queryString,
+	ids,
+	error
+) {
+	return {
+		type: 'ERROR',
+		namespace,
+		resourceName,
+		queryString,
+		ids,
+		response: {
+			items: [],
+			headers: Headers,
+			error,
+		},
+	};
+}
+
+export function receiveLastModified( timestamp ) {
+	return {
+		type: types.RECEIVE_LAST_MODIFIED,
+		timestamp,
+	};
 }

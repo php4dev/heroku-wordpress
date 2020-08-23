@@ -110,10 +110,7 @@ class Widget_Text_Editor extends Widget_Base {
 			[
 				'label' => '',
 				'type' => Controls_Manager::WYSIWYG,
-				'dynamic' => [
-					'active' => true,
-				],
-				'default' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'elementor' ),
+				'default' => '<p>' . __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'elementor' ) . '</p>',
 			]
 		);
 
@@ -262,9 +259,6 @@ class Widget_Text_Editor extends Widget_Base {
 				],
 				'default' => 'default',
 				'prefix_class' => 'elementor-drop-cap-view-',
-				'condition' => [
-					'drop_cap' => 'yes',
-				],
 			]
 		);
 
@@ -280,9 +274,6 @@ class Widget_Text_Editor extends Widget_Base {
 				'scheme' => [
 					'type' => Schemes\Color::get_type(),
 					'value' => Schemes\Color::COLOR_1,
-				],
-				'condition' => [
-					'drop_cap' => 'yes',
 				],
 			]
 		);
@@ -385,9 +376,6 @@ class Widget_Text_Editor extends Widget_Base {
 				'exclude' => [
 					'letter_spacing',
 				],
-				'condition' => [
-					'drop_cap' => 'yes',
-				],
 			]
 		);
 
@@ -433,10 +421,10 @@ class Widget_Text_Editor extends Widget_Base {
 	 *
 	 * Written as a Backbone JavaScript template and used to generate the live preview.
 	 *
-	 * @since 1.0.0
+	 * @since 2.9.0
 	 * @access protected
 	 */
-	protected function _content_template() {
+	protected function content_template() {
 		?>
 		<#
 		view.addRenderAttribute( 'editor', 'class', [ 'elementor-text-editor', 'elementor-clearfix' ] );

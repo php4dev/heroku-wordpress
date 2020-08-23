@@ -24,16 +24,6 @@ class WPvivid_Send_to_site extends WPvivid_Remote
             {
                 add_action('plugins_loaded', array($this, 'plugins_loaded'));
 
-                //add_action('wp_ajax_wpvivid_send_to_site_connect',array( $this,'send_to_site_connect'));
-                //add_action('wp_ajax_nopriv_wpvivid_send_to_site_finish',array( $this,'send_to_site_finish'));
-                //add_action('wp_ajax_wpvivid_send_to_site_finish',array( $this,'send_to_site_finish'));
-                //add_action('wp_ajax_nopriv_wpvivid_send_to_site_connect',array( $this,'send_to_site_connect'));
-                //add_action('wp_ajax_nopriv_wpvivid_send_to_site',array( $this,'send_to_site'));
-                //add_action('wp_ajax_wpvivid_send_to_site',array( $this,'send_to_site'));
-                //add_action('wp_ajax_nopriv_wpvivid_send_to_site_file_status',array( $this,'send_to_site_file_status'));
-                //add_action('wp_ajax_wpvivid_send_to_site_file_status',array( $this,'send_to_site_file_status'));
-                //add_filter('wpvivid_remote_register', array($this, 'init_remotes'),11);
-
                 define('WPVIVID_INIT_SEND_TO_SITE',1);
             }
         }

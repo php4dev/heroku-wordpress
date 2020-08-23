@@ -46,7 +46,7 @@ abstract class AbstractProductGrid extends AbstractDynamicBlock {
 		return array(
 			'className'         => $this->get_schema_string(),
 			'columns'           => $this->get_schema_number( wc_get_theme_support( 'product_blocks::default_columns', 3 ) ),
-			'rows'              => $this->get_schema_number( wc_get_theme_support( 'product_blocks::default_rows', 1 ) ),
+			'rows'              => $this->get_schema_number( wc_get_theme_support( 'product_blocks::default_rows', 3 ) ),
 			'categories'        => $this->get_schema_list_ids(),
 			'catOperator'       => array(
 				'type'    => 'string',
@@ -122,7 +122,7 @@ abstract class AbstractProductGrid extends AbstractDynamicBlock {
 		// These should match what's set in JS `registerBlockType`.
 		$defaults = array(
 			'columns'           => wc_get_theme_support( 'product_blocks::default_columns', 3 ),
-			'rows'              => wc_get_theme_support( 'product_blocks::default_rows', 1 ),
+			'rows'              => wc_get_theme_support( 'product_blocks::default_rows', 3 ),
 			'alignButtons'      => false,
 			'categories'        => array(),
 			'catOperator'       => 'any',
@@ -427,7 +427,10 @@ abstract class AbstractProductGrid extends AbstractDynamicBlock {
 			return;
 		}
 
-		return '<span class="wc-block-grid__product-onsale">' . esc_html__( 'Sale!', 'woo-gutenberg-products-block' ) . '</span>';
+		return '<div class="wc-block-grid__product-onsale">
+			<span aria-hidden="true">' . esc_html__( 'Sale', 'woo-gutenberg-products-block' ) . '</span>
+			<span class="screen-reader-text">' . esc_html__( 'Product on sale', 'woo-gutenberg-products-block' ) . '</span>
+		</div>';
 	}
 
 	/**

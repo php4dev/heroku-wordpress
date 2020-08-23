@@ -74,7 +74,7 @@ class WPvivid_Remote_collection
                 }
                 $ret['result']=WPVIVID_SUCCESS;
             }
-            else{
+            else {
                 $id = uniqid('wpvivid-');
                 $log_file_name = $id . '_add_remote';
                 $log = new WPvivid_Log();
@@ -83,8 +83,8 @@ class WPvivid_Remote_collection
                 if(isset($ret['error'])) {
                     $log->WriteLog($ret['error'], 'notice');
                 }
-                WPvivid_error_log::create_error_log($log->log_file);
                 $log->CloseFile();
+                WPvivid_error_log::create_error_log($log->log_file);
             }
         }
 

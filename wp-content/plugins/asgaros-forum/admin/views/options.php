@@ -240,6 +240,13 @@ if (!defined('ABSPATH')) exit;
                             <td><input type="checkbox" name="show_who_is_online" id="show_who_is_online" <?php checked(!empty($this->asgarosforum->options['show_who_is_online'])); ?>></td>
                         </tr>
                         <tr>
+                            <th>
+                                <label for="show_last_seen"><?php _e('Show "Last seen"', 'asgaros-forum'); ?></label>
+                                <span class="description"><?php _e('Shows when a user got last seen inside of his profile and in the members list. This information is only gathered and shown when the "Who is Online" functionality is enabled.', 'asgaros-forum'); ?></span>
+                            </th>
+                            <td><input type="checkbox" name="show_last_seen" id="show_last_seen" <?php checked(!empty($this->asgarosforum->options['show_last_seen'])); ?>></td>
+                        </tr>
+                        <tr>
                             <th><label for="show_newest_member"><?php _e('Show newest member', 'asgaros-forum'); ?></label></th>
                             <td><input type="checkbox" name="show_newest_member" id="show_newest_member" <?php checked(!empty($this->asgarosforum->options['show_newest_member'])); ?>></td>
                         </tr>
@@ -389,6 +396,13 @@ if (!defined('ABSPATH')) exit;
                                     </tr>
                                 </table>
                             </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="title_separator"><?php _e('Title Separator', 'asgaros-forum'); ?></label>
+                                <span class="description"><?php _e('Allows you to define a custom title-separator for the forum. This setting is useful when different title-separators are shown in parts of the title - which is a common problem when using other SEO plugins.', 'asgaros-forum'); ?></span>
+                            </th>
+                            <td><input class="small-text" type="text" name="title_separator" id="title_separator" value="<?php echo esc_html(stripslashes($this->asgarosforum->options['title_separator'])); ?>"></td>
                         </tr>
                     </table>
                 </div>
@@ -579,7 +593,7 @@ if (!defined('ABSPATH')) exit;
                             <td>
                                 <table>
                                     <tr>
-                                        <th><label for="memberslist_filter_normal"><?php _e('Normal', 'asgaros-forum'); ?>:</label></th>
+                                        <th><label for="memberslist_filter_normal"><?php _e('Users', 'asgaros-forum'); ?>:</label></th>
                                         <td><input type="checkbox" name="memberslist_filter_normal" id="memberslist_filter_normal" <?php checked(!empty($this->asgarosforum->options['memberslist_filter_normal'])); ?>></td>
                                     </tr>
                                     <tr>

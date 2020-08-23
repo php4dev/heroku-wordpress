@@ -121,7 +121,7 @@ export const getRoutes = createRegistrySelector(
  * @param {Array} [ids=[]]  Any id references that are to be replaced in
  *                            route placeholders.
  *
- * @returns {string}  The route or an empty string if nothing found.
+ * @return {string}  The route or an empty string if nothing found.
  */
 const getRouteFromResourceEntries = ( stateSlice, ids = [] ) => {
 	// convert to array for easier discovery
@@ -147,10 +147,10 @@ const getRouteFromResourceEntries = ( stateSlice, ids = [] ) => {
  * For a given route, route parts and ids,
  *
  * @param {string} route
- * @param {Array}  routeParts
+ * @param {Array}  routePlaceholders
  * @param {Array}  ids
  *
- * @returns {string}
+ * @return {string} Assembled route.
  */
 const assembleRouteWithPlaceholders = ( route, routePlaceholders, ids ) => {
 	routePlaceholders.forEach( ( part, index ) => {

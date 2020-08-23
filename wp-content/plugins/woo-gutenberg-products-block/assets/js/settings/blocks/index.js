@@ -1,2 +1,5 @@
+/**
+ * Internal dependencies
+ */
 export * from './constants';
-export { ENDPOINTS } from './endpoints';
+export * from './feature-flags';

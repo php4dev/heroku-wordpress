@@ -46,13 +46,13 @@ class WPvivid_Migrate
     public function wpvivid_add_tab_migrate()
     {
         ?>
-        <a href="#" id="wpvivid_tab_migrate" class="nav-tab wrap-nav-tab" onclick="switchTabs(event,'migrate-page')"><?php _e('Auto-Migration', 'wpvivid'); ?></a>
+        <a href="#" id="wpvivid_tab_migrate" class="nav-tab wrap-nav-tab" onclick="switchTabs(event,'migrate-page')"><?php _e('Auto-Migration', 'wpvivid-backuprestore'); ?></a>
         <?php
     }
 
     public function wpvivid_add_tab_key(){
         ?>
-        <a href="#" id="wpvivid_tab_key" class="nav-tab wrap-nav-tab" onclick="switchTabs(event,'key-page')"><?php _e('Key', 'wpvivid'); ?></a>
+        <a href="#" id="wpvivid_tab_key" class="nav-tab wrap-nav-tab" onclick="switchTabs(event,'key-page')"><?php _e('Key', 'wpvivid-backuprestore'); ?></a>
         <?php
     }
 
@@ -218,6 +218,7 @@ class WPvivid_Migrate
                                             jQuery('#wpvivid_upload_backup_percent').html(value.progress_html);
                                             jQuery('#wpvivid_upload_backup_percent').hide();
                                             migrate_task_need_update = true;
+                                            alert('Transfer succeeded. Please scan the backup list on the destination site to display the backup, then restore the backup.');
                                         }
                                         else if (value.status.str === 'error') {
                                             wpvivid_control_transfer_unlock();
@@ -356,7 +357,7 @@ class WPvivid_Migrate
                 <div style="margin-left:10px; float: left; width:100%;"><p id="wpvivid_upload_current_doing"></p></div>
                 <div style="clear: both;"></div>
                 <div>
-                    <div id="wpvivid_transfer_cancel" class="backup-log-btn"><input class="button-primary" id="wpvivid_transfer_cancel_btn" type="submit" value="<?php esc_attr_e( 'Cancel', 'wpvivid' ); ?>"  /></div>
+                    <div id="wpvivid_transfer_cancel" class="backup-log-btn"><input class="button-primary" id="wpvivid_transfer_cancel_btn" type="submit" value="<?php esc_attr_e( 'Cancel', 'wpvivid-backuprestore' ); ?>"  /></div>
                 </div>
             </div>
 
@@ -387,18 +388,18 @@ class WPvivid_Migrate
         <div id="key-page" class="wrap-tab-content wpvivid_tab_key" name="tab-key" style="display: none;">
             <div style="padding: 0 0 0 10px">
                 <div style="padding: 0 0 10px 0">
-                    <span>In order to allow another site to send a backup to this site, please generate a key below. Once the key is generated, this site is ready to receive a backup from another site. Then, please copy and paste the key in sending site and save it.</span>
+                    <span><?php _e('In order to allow another site to send a backup to this site, please generate a key below. Once the key is generated, this site is ready to receive a backup from another site. Then, please copy and paste the key in sending site and save it.', 'wpvivid-backuprestore'); ?></span>
                 </div>
-                <strong><?php _e('The key will expire in ', 'wpvivid'); ?></strong>
+                <strong><?php _e('The key will expire in ', 'wpvivid-backuprestore'); ?></strong>
                 <select id="wpvivid_generate_url_expires" style="margin-bottom: 2px;">
                     <option value="2 hour">2 hours</option>
                     <option selected="selected" value="8 hour">8 hours</option>
                     <option value="24 hour">24 hours</option>
                     <!--<option value="Never">Never</option>-->
                 </select>
-                <p>Tips: For security reason, please choose an appropriate expiration time for the key.</p>
+                <p><?php _e('Tips: For security reason, please choose an appropriate expiration time for the key.', 'wpvivid-backuprestore'); ?></p>
                 <div>
-                    <input class="button-primary" id="wpvivid_generate_url" type="submit" value="<?php esc_attr_e( 'Generate', 'wpvivid' ); ?>" onclick="wpvivid_click_generate_url();" />
+                    <input class="button-primary" id="wpvivid_generate_url" type="submit" value="<?php esc_attr_e( 'Generate', 'wpvivid-backuprestore' ); ?>" onclick="wpvivid_click_generate_url();" />
                 </div>
                 <div id="wpvivid_test_generate_url" style="padding-top: 10px;">
                     <textarea id="wpvivid_test_remote_site_url_text" style="width: 100%; height: 140px;"></textarea>
@@ -438,6 +439,9 @@ class WPvivid_Migrate
     {
         if(isset($_POST['url']))
         {
+            global $wpvivid_plugin;
+            $wpvivid_plugin->ajax_check_security();
+
             $url=strtok($_POST['url'],'?');
 
             if (filter_var($url, FILTER_VALIDATE_URL) === FALSE)
@@ -567,7 +571,10 @@ class WPvivid_Migrate
         die();
     }
 
-    public function delete_transfer_key(){
+    public function delete_transfer_key()
+    {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
         $ret['result']=WPVIVID_SUCCESS;
         delete_option('wpvivid_saved_api_token');
         $html='';
@@ -580,6 +587,9 @@ class WPvivid_Migrate
     public function send_backup_to_site()
     {
         try {
+            global $wpvivid_plugin;
+            $wpvivid_plugin->ajax_check_security();
+
             $options = WPvivid_Setting::get_option('wpvivid_saved_api_token');
 
             if (empty($options)) {
@@ -655,7 +665,7 @@ class WPvivid_Migrate
 
             if (WPvivid_taskmanager::is_tasks_backup_running()) {
                 $ret['result'] = 'failed';
-                $ret['error'] = __('A task is already running. Please wait until the running task is complete, and try again.', 'wpvivid');
+                $ret['error'] = __('A task is already running. Please wait until the running task is complete, and try again.', 'wpvivid-backuprestore');
                 echo json_encode($ret);
                 die();
             }
@@ -694,23 +704,29 @@ class WPvivid_Migrate
 
     public function migrate_now()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         if (!isset($_POST['task_id'])||empty($_POST['task_id'])||!is_string($_POST['task_id']))
         {
             $ret['result']='failed';
-            $ret['error']=__('Error occurred while parsing the request data. Please try to run backup again.', 'wpvivid');
+            $ret['error']=__('Error occurred while parsing the request data. Please try to run backup again.', 'wpvivid-backuprestore');
             echo json_encode($ret);
             die();
         }
         $task_id=sanitize_key($_POST['task_id']);
 
-        //Start backup site
-        global $wpvivid_plugin;
+        //flush buffer
+        $wpvivid_plugin->flush($task_id);
         $wpvivid_plugin->backup($task_id);
         die();
     }
 
     function export_download_backup()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         $schedule_options=WPvivid_Schedule::get_schedule();
         if(empty($schedule_options))
         {
@@ -729,9 +745,9 @@ class WPvivid_Migrate
         $task=$backup_task->new_backup_task($backup,'Manual', 'export');
 
         $task_id=$task['task_id'];
-        global $wpvivid_plugin;
         //add_action('wpvivid_handle_upload_succeed',array($this,'wpvivid_deal_upload_succeed'),11);
         $wpvivid_plugin->check_backup($task_id,$backup['backup_files']);
+        $wpvivid_plugin->flush($task_id);
         $wpvivid_plugin->backup($task_id);
         //}
         die();
@@ -778,6 +794,9 @@ class WPvivid_Migrate
     public function generate_url()
     {
         include_once WPVIVID_PLUGIN_DIR . '/vendor/autoload.php';
+
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
 
         $expires=time()+3600;
 
@@ -829,10 +848,10 @@ class WPvivid_Migrate
         $html='<div id="wpvivid_transfer_key">';
         $options=WPvivid_Setting::get_option('wpvivid_saved_api_token');
         if(empty($options)){
-            $html .= '<div style="padding: 0 0 10px 0;"><strong>'.__('Please paste the key below.', 'wpvivid').'</strong><a href="#" style="margin-left: 5px; text-decoration: none;" onclick="wpvivid_click_how_to_get_key();">How to get a site key?</a></div>
+            $html .= '<div style="padding: 0 0 10px 0;"><strong>'.__('Please paste the key below.', 'wpvivid-backuprestore').'</strong><a href="#" style="margin-left: 5px; text-decoration: none;" onclick="wpvivid_click_how_to_get_key();">'.__('How to get a site key?', 'wpvivid-backuprestore').'</a></div>
             <div id="wpvivid_how_to_get_key"></div>
             <div class="wpvivid-element-space-bottom"><textarea type="text" id="wpvivid_transfer_key_text" onKeyUp="wpvivid_check_key(this.value)" style="width: 100%; height: 140px;"/></textarea></div>
-            <div><input class="button-primary" id="wpvivid_save_url_button" type="submit" value="'.esc_attr( 'Save', 'wpvivid' ).'" onclick="wpvivid_click_save_site_url();" /></div>';
+            <div><input class="button-primary" id="wpvivid_save_url_button" type="submit" value="'.esc_attr( 'Save', 'wpvivid-backuprestore' ).'" onclick="wpvivid_click_save_site_url();" /></div>';
         }
         else{
             foreach ($options as $key => $value)
@@ -853,7 +872,7 @@ class WPvivid_Migrate
             $html .= '<div style="padding: 0 0 10px 0;">
                         <span>Key:</span>
                         <input type="text" id="wpvivid_send_remote_site_url_text" value="'.$token.'" readonly="readonly" />
-                        <input class="button-primary" id="wpvivid_delete_key_button" type="submit" value="'.esc_attr( 'Delete', 'wpvivid' ).'" onclick="wpvivid_click_delete_transfer_key();" />
+                        <input class="button-primary" id="wpvivid_delete_key_button" type="submit" value="'.esc_attr( 'Delete', 'wpvivid-backuprestore' ).'" onclick="wpvivid_click_delete_transfer_key();" />
                        </div>
                        <div class="wpvivid-element-space-bottom">'.$key_status.'</div>
                        <div>The connection is ok. Now you can transfer the site <strong>'.$source_dir.'</strong> to the site <strong>'.$target_dir.'</strong></div>';
@@ -948,9 +967,9 @@ class WPvivid_Migrate
                 if(!wpvivid_display_get_key) {
                     wpvivid_display_get_key = true;
                     var div = "<div class=\'notice notice-info is-dismissible inline\'>" +
-                        "<p>1. Visit Key tab page of WPvivid backup plugin of destination site.</p>" +
-                        "<p>2. Generate a key by clicking Generate button and copy it.</p>" +
-                        "<p>3. Go back to this page and paste the key in key box below. Lastly, click Save button.</p>" +
+                        "<p>" + wpvividlion.get_key_step1 + "</p>" +
+                        "<p>" + wpvividlion.get_key_step2 + "</p>" +
+                        "<p>" + wpvividlion.get_key_step3 + "</p>" +
                         "<button type=\'button\' class=\'notice-dismiss\' onclick=\'click_dismiss_key_notice(this);\'>" +
                         "<span class=\'screen-reader-text\'>Dismiss this notice.</span>" +
                         "</button>" +
@@ -964,7 +983,7 @@ class WPvivid_Migrate
 
     public function wpvivid_migrate_descript($html){
         $html .= '<div style="padding: 0 0 10px 0;">
-                    '.__('The feature can help you transfer a Wordpress site to a new domain(site). It would be a convenient way to migrate your WP site from dev environment to live server or from old server to the new.', 'wpvivid').'
+                    '.__('The feature can help you transfer a Wordpress site to a new domain(site). It would be a convenient way to migrate your WP site from dev environment to live server or from old server to the new.', 'wpvivid-backuprestore').'
                   </div>';
         return $html;
     }
@@ -974,7 +993,7 @@ class WPvivid_Migrate
         $type_name = 'transfer_type';
         $html = '<div class="postbox quicktransfer">
                     <div class="wpvivid-element-space-bottom">
-                        <h2 style="padding: 0;"><span>'.__( 'Choose the content you want to transfer', 'wpvivid').'</span></h2>
+                        <h2 style="padding: 0;"><span>'.__( 'Choose the content you want to transfer', 'wpvivid-backuprestore').'</span></h2>
                     </div>
                     <div class="quickstart-archive-block">
                         <fieldset>
@@ -989,7 +1008,7 @@ class WPvivid_Migrate
     public function wpvivid_migrate_part_exec($html){
         $html = '';
         $html .= '<div id="wpvivid_transfer_btn" style="float: left;">
-                        <input class="button-primary quicktransfer-btn" type="submit" value="'.esc_attr( 'Clone then Transfer', 'wpvivid').'" onclick="wpvivid_click_send_backup();" />
+                        <input class="button-primary quicktransfer-btn" type="submit" value="'.esc_attr( 'Clone then Transfer', 'wpvivid-backuprestore').'" onclick="wpvivid_click_send_backup();" />
                     </div>
                     <script>
                     function wpvivid_click_send_backup()
@@ -1069,44 +1088,44 @@ class WPvivid_Migrate
     }
 
     public function wpvivid_migrate_part_note($html){
-        $html .= ' <p>Note: </p>
-                <p>1. In order to successfully complete the migration, you\'d better deactivate <a href="https://wpvivid.com/best-redirect-plugins.html" target="_blank" style="text-decoration: none;">301 redirect plugin</a>, <a href="https://wpvivid.com/8-best-wordpress-firewall-plugins.html" target="_blank" style="text-decoration: none;">firewall and security plugin</a>, and <a href="https://wpvivid.com/best-free-wordpress-caching-plugins.html" target="_blank" style="text-decoration: none;">caching plugin</a> (if they exist) before transferring website.</p>
-                <p>2. Please migrate website with the manual way when using <strong>Local by Flywheel</strong> environment.</p>';
+        $html .= '<p>'.__('Note: ', 'wpvivid-backuprestore').'</p>
+                <p>'.__('1. In order to successfully complete the migration, you\'d better deactivate <a href="https://wpvivid.com/best-redirect-plugins.html" target="_blank" style="text-decoration: none;">301 redirect plugin</a>, <a href="https://wpvivid.com/8-best-wordpress-firewall-plugins.html" target="_blank" style="text-decoration: none;">firewall and security plugin</a>, and <a href="https://wpvivid.com/best-free-wordpress-caching-plugins.html" target="_blank" style="text-decoration: none;">caching plugin</a> (if they exist) before transferring website.', 'wpvivid-backuprestore').'</p>
+                <p>'.__('2. Please migrate website with the manual way when using <strong>Local by Flywheel</strong> environment.', 'wpvivid-backuprestore').'</p>';
         return $html;
     }
 
     public function wpvivid_migrate_part_tip($html){
         $backupdir=WPvivid_Setting::get_backupdir();
-        $html .= '<p><strong>Tips: </strong>The unstable connection between sites could cause a failure of files transfer. In this case, uploading backups to destination site is a good alternative to the automatic website migration.</p>
-                    <p><strong>How to migrate Wordpress site manually to a new domain(site) with WPvivid backup plugin?</strong></p>
-                    <p>1. Download a backup in backups list to your computer.</p>
-                    <p>2. Upload the backup to destination site. There are two ways available to use:</p>
-                    <p style="margin-left: 20px;">2.1 Upload the backup to the upload section of WPvivid backup plugin in destination site.</p>
-                    <p style="margin-left: 20px;">2.2 Upload the backup with FTP client to backup directory '.WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$backupdir.' in destination site, then click <strong>Scan uploaded backup or received backup</strong> button.</p>
-                    <p>3. Once done, the backup appears in backups list. Then, restore the backup.</p>';
+        $html .= '<p>'.__('<strong>Tips: </strong>The unstable connection between sites could cause a failure of files transfer. In this case, uploading backups to destination site is a good alternative to the automatic website migration.', 'wpvivid-backuprestore').'</p>
+                    <p><strong>'.__('How to migrate Wordpress site manually to a new domain(site) with WPvivid backup plugin?', 'wpvivid-backuprestore').'</strong></p>
+                    <p>'.__('1. Download a backup in backups list to your computer.', 'wpvivid-backuprestore').'</p>
+                    <p>'.__('2. Upload the backup to destination site. There are two ways available to use:', 'wpvivid-backuprestore').'</p>
+                    <p style="margin-left: 20px;">'.__('2.1 Upload the backup to the upload section of WPvivid backup plugin in destination site.', 'wpvivid-backuprestore').'</p>
+                    <p style="margin-left: 20px;">'.sprintf(__('2.2 Upload the backup with FTP client to backup directory %s in destination site, then click <strong>Scan uploaded backup or received backup</strong> button.', 'wpvivid-backuprestore'), WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$backupdir).'</p>
+                    <p>'.__('3. Once done, the backup appears in backups list. Then, restore the backup.', 'wpvivid-backuprestore').'</p>';
         return $html;
     }
 
     public function wpvivid_add_migrate_type($html, $name_type){
         $html .= '<label>
                     <input type="radio" option="migrate" name="'.$name_type.'" value="files+db" checked />
-                    <span>'.__( 'Database + Files (WordPress Files)', 'wpvivid' ).'</span>
+                    <span>'.__( 'Database + Files (WordPress Files)', 'wpvivid-backuprestore' ).'</span>
                   </label><br>
                   <label>
                     <input type="radio" option="migrate" name="'.$name_type.'" value="files" />
-                    <span>'.__( 'WordPress Files (Exclude Database)', 'wpvivid' ).'</span>
+                    <span>'.__( 'WordPress Files (Exclude Database)', 'wpvivid-backuprestore' ).'</span>
                   </label><br>
                   <label>
                     <input type="radio" option="migrate" name="'.$name_type.'" value="db" />
-                    <span>'.__( 'Only Database', 'wpvivid' ).'</span>
+                    <span>'.__( 'Only Database', 'wpvivid-backuprestore' ).'</span>
                   </label><br>
                   <label>
                    <div style="float: left;">
                         <input type="radio" disabled />
-                        <span class="wpvivid-element-space-right" style="color: #ddd;">'.__('Choose what to migrate').'</span>
+                        <span class="wpvivid-element-space-right" style="color: #ddd;">'.__('Choose what to migrate', 'wpvivid-backuprestore').'</span>
                     </div>
                     <span class="wpvivid-feature-pro">
-                        <a href="https://wpvivid.com/custom-migration-overview?utm_source=client_migration_custom_backup&utm_medium=inner_link&utm_campaign=access" style="text-decoration: none;">Pro feature: learn more</a>
+                        <a href="https://wpvivid.com/custom-migration-overview?utm_source=client_migration_custom_backup&utm_medium=inner_link&utm_campaign=access" style="text-decoration: none;">'.__('Pro feature: learn more', 'wpvivid-backuprestore').'</a>
                     </span>
                   </label><br>';
         return $html;
@@ -1115,6 +1134,7 @@ class WPvivid_Migrate
     public function list_tasks()
     {
         global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
         $tasks=WPvivid_Setting::get_tasks();
         $ret=array();
         $list_tasks=array();
@@ -1140,22 +1160,22 @@ class WPvivid_Migrate
                             <div class="action-progress-bar-percent" id="wpvivid_upload_progress_bar_percent" style="height:24px;width:' . $list_tasks[$task['id']]['task_info']['backup_percent'] . '"></div>
                          </div>
                          <div id="wpvivid_estimate_backup_info" style="float:left;">
-                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Database Size:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['db_size'] . '</span></div>
-                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('File Size:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['file_size'] . '</span></div>
+                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Database Size:', 'wpvivid-backuprestore') . '</span><span>' . $list_tasks[$task['id']]['task_info']['db_size'] . '</span></div>
+                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('File Size:', 'wpvivid-backuprestore') . '</span><span>' . $list_tasks[$task['id']]['task_info']['file_size'] . '</span></div>
                          </div>
                          <div id="wpvivid_estimate_upload_info" style="float: left;"> 
-                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Total Size:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['total'] . '</span></div>
-                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Uploaded:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['upload'] . '</span></div>
-                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Speed:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['speed'] . '</span></div>
+                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Total Size:', 'wpvivid-backuprestore') . '</span><span>' . $list_tasks[$task['id']]['task_info']['total'] . '</span></div>
+                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Uploaded:', 'wpvivid-backuprestore') . '</span><span>' . $list_tasks[$task['id']]['task_info']['upload'] . '</span></div>
+                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Speed:', 'wpvivid-backuprestore') . '</span><span>' . $list_tasks[$task['id']]['task_info']['speed'] . '</span></div>
                          </div>
                          <div style="float: left;">
-                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Network Connection:', 'wpvivid') . '</span><span>' . $list_tasks[$task['id']]['task_info']['network_connection'] . '</span></div>
+                            <div class="backup-basic-info"><span class="wpvivid-element-space-right">' . __('Network Connection:', 'wpvivid-backuprestore') . '</span><span>' . $list_tasks[$task['id']]['task_info']['network_connection'] . '</span></div>
                          </div>
                          <div style="clear:both;"></div>
                          <div style="margin-left:10px; float: left; width:100%;"><p id="wpvivid_upload_current_doing">' . $list_tasks[$task['id']]['task_info']['descript'] . '</p></div>
                          <div style="clear: both;"></div>
                          <div>
-                            <div id="wpvivid_transfer_cancel" class="backup-log-btn"><input class="button-primary" id="wpvivid_transfer_cancel_btn" type="submit" value="'.esc_attr( 'Cancel', 'wpvivid' ).'"  /></div>
+                            <div id="wpvivid_transfer_cancel" class="backup-log-btn"><input class="button-primary" id="wpvivid_transfer_cancel_btn" type="submit" value="'.esc_attr( 'Cancel', 'wpvivid-backuprestore' ).'"  /></div>
                          </div>';
             }
         }
@@ -1163,12 +1183,12 @@ class WPvivid_Migrate
 
         $backup_success_count=WPvivid_Setting::get_option('wpvivid_transfer_success_count');
         if(!empty($backup_success_count)){
-            $notice_msg = 'Transfer succeed, you have to refresh the backup list of target site in wpvivid plugin.';
-            $success_notice_html=__('<div class="notice notice-success is-dismissible inline"><p>'.$notice_msg.'</p>
+            $notice_msg = __('Transfer succeeded. Please scan the backup list on the destination site to display the backup, then restore the backup.', 'wpvivid-backuprestore');
+            $success_notice_html='<div class="notice notice-success is-dismissible inline"><p>'.$notice_msg.'</p>
                                     <button type="button" class="notice-dismiss" onclick="click_dismiss_notice(this);">
                                     <span class="screen-reader-text">Dismiss this notice.</span>
                                     </button>
-                                    </div>');
+                                    </div>';
             WPvivid_Setting::delete_option('wpvivid_transfer_success_count');
         }
         else {
@@ -1182,7 +1202,7 @@ class WPvivid_Migrate
             foreach ($backup_error_array as $key => $value){
                 $notice_msg = 'Transfer failed, '.$value['error_msg'];
                 $error_notice_html['bu_error']['task_id']=$value['task_id'];
-                $error_notice_html['bu_error']['error_msg']=__('<div class="notice notice-error inline"><p>'.$notice_msg.'</p></div>');
+                $error_notice_html['bu_error']['error_msg']='<div class="notice notice-error inline"><p>'.$notice_msg.'</p></div>';
             }
             WPvivid_Setting::delete_option('wpvivid_transfer_error_array');
         }
@@ -1223,7 +1243,7 @@ class WPvivid_Migrate
 
     function wpvivid_add_tab_upload(){
         ?>
-        <a href="#" id="wpvivid_tab_upload" class="nav-tab backup-nav-tab" onclick="switchrestoreTabs(event,'page-upload')"><?php _e('Upload', 'wpvivid'); ?></a>
+        <a href="#" id="wpvivid_tab_upload" class="nav-tab backup-nav-tab" onclick="switchrestoreTabs(event,'page-upload')"><?php _e('Upload', 'wpvivid-backuprestore'); ?></a>
         <?php
     }
 
@@ -1233,10 +1253,10 @@ class WPvivid_Migrate
         <div class="backup-tab-content wpvivid_tab_upload" id="page-upload" style="display:none;">
             <div style="padding: 10px 0 10px 0;">
                 <div style="padding-bottom: 10px;">
-                    <span>The backups will be uploaded to <?php echo WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$backupdir; ?> directory.</span>
+                    <span><?php echo sprintf(__('The backups will be uploaded to %s directory.', 'wpvivid-backuprestore'), WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$backupdir); ?></span>
                 </div>
                 <div style="padding-bottom: 10px;">
-                    <span>Note: The files you want to upload must be a backup created by WPvivid backup plugin. Make sure that uploading every part of a backup to the directory if the backup is split into many parts</span>
+                    <span><?php echo __('Note: The files you want to upload must be a backup created by WPvivid backup plugin. Make sure that uploading every part of a backup to the directory if the backup is split into many parts', 'wpvivid-backuprestore'); ?></span>
                 </div>
                 <?php
                 Wpvivid_BackupUploader::upload_meta_box();

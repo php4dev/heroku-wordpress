@@ -16,6 +16,7 @@ class MailChimp_WooCommerce_Cart_Update extends Mailchimp_Woocommerce_Job
     public $campaign_id;
     public $cart_data;
     public $ip_address;
+    public $user_language;
 
 
     /**
@@ -25,7 +26,7 @@ class MailChimp_WooCommerce_Cart_Update extends Mailchimp_Woocommerce_Job
      * @param null $campaign_id
      * @param array $cart_data
      */
-    public function __construct($uid = null, $email = null, $campaign_id = null, array $cart_data = array())
+    public function __construct($uid = null, $email = null, $campaign_id = null, array $cart_data = array(), $user_language = null)
     {
         if ($uid) {
             $this->id = $uid;
@@ -39,6 +40,10 @@ class MailChimp_WooCommerce_Cart_Update extends Mailchimp_Woocommerce_Job
 
         if ($campaign_id) {
             $this->campaign_id = $campaign_id;
+        }
+        
+        if ($user_language) {
+            $this->user_language = $user_language;
         }
 
         $this->assignIP();
@@ -115,9 +120,8 @@ class MailChimp_WooCommerce_Cart_Update extends Mailchimp_Woocommerce_Job
             // if we have a campaign id let's set it now.
             if (!empty($this->campaign_id)) {
                 try {
-                    $cart->setCampaignID($this->campaign_id);
-                }
-                catch (\Exception $e) {
+                    $cart->setCampaignID($this->campaign_id, true);
+                } catch (\Exception $e) {
                     mailchimp_log('cart_set_campaign_id.error', 'No campaign added to abandoned cart, with provided ID: '. $this->campaign_id. ' :: '. $e->getMessage(). ' :: in '.$e->getFile().' :: on '.$e->getLine());
                 }
             }
@@ -132,9 +136,11 @@ class MailChimp_WooCommerce_Cart_Update extends Mailchimp_Woocommerce_Job
 
             foreach ($this->cart_data as $hash => $item) {
                 try {
-                    $line = $this->transformLineItem($hash, $item);
-                    $cart->addItem($line);
-                    $order_total += ($item['quantity'] * $line->getPrice());
+                    $cart->addItem(($line = $this->transformLineItem($hash, $item)));
+                    $qty = isset($item['quantity']) && is_numeric($item['quantity']) ? $item['quantity'] : 1;
+                    if (($price = $line->getPrice()) && is_numeric($price)) {
+                        $order_total += ($qty * $price);
+                    }
                     $products[] = $line;
                 } catch (\Exception $e) {}
             }
@@ -146,9 +152,23 @@ class MailChimp_WooCommerce_Cart_Update extends Mailchimp_Woocommerce_Job
             $cart->setOrderTotal($order_total);
 
             try {
-                // if the post is successful we're all good.
-                if ($api->addCart($store_id, $cart, false) !== false) {
-                    mailchimp_log('abandoned_cart.success', "email: {$customer->getEmailAddress()} :: checkout_url: $checkout_url");
+                try {
+                    // if the post is successful we're all good.
+                    if ($api->addCart($store_id, $cart, false) !== false) {
+                        mailchimp_log('abandoned_cart.success', "email: {$customer->getEmailAddress()} :: checkout_url: $checkout_url");
+                    }
+                } catch (\Exception $e) {
+                    // for some reason this happens on carts and we need to make sure that this doesn't prevent
+                    // the submission from going through.
+                    if (mailchimp_string_contains($e->getMessage(), 'campaign with the')) {
+                        // remove the campaign ID and re-submit
+                        $cart->removeCampaignID();
+                        if ($api->addCart($store_id, $cart, false) !== false) {
+                            mailchimp_log('abandoned_cart.success', "email: {$customer->getEmailAddress()} :: checkout_url: $checkout_url");
+                        }
+                    } else {
+                        throw $e;
+                    }
                 }
             } catch (\Exception $e) {
 
@@ -171,10 +191,13 @@ class MailChimp_WooCommerce_Cart_Update extends Mailchimp_Woocommerce_Job
                 mailchimp_log('abandoned_cart.success', "email: {$customer->getEmailAddress()}");
             }
 
+            // Maybe sync subscriber to set correct member.language
+            mailchimp_member_language_update($this->email, $this->user_language, 'cart');
+
         } catch (MailChimp_WooCommerce_RateLimitError $e) {
             sleep(3);
-            $this->release();
             mailchimp_error('cart.error', mailchimp_error_trace($e, "RateLimited :: email {$this->email}"));
+            $this->retry();
         } catch (\Exception $e) {
             update_option('mailchimp-woocommerce-cart-error', $e->getMessage());
             mailchimp_error('abandoned_cart.error', $e);
@@ -190,22 +213,24 @@ class MailChimp_WooCommerce_Cart_Update extends Mailchimp_Woocommerce_Job
      */
     protected function transformLineItem($hash, $item)
     {
-        $product = wc_get_product($item['product_id']);
-        $price = $product ? $product->get_price() : 0;
+        $variant_id = isset($item['variation_id']) && $item['variation_id'] > 0 ? $item['variation_id'] : null;
+        $product_id = $item['product_id'];
 
-        $line = new MailChimp_WooCommerce_LineItem();
-        $line->setId($hash);
-        $line->setProductId($item['product_id']);
-
-        if (isset($item['variation_id']) && $item['variation_id'] > 0) {
-            $line->setProductVariantId($item['variation_id']);
+        // if the cart contains a variant id with no parent id, we need to use this instead of the main product id.
+        if ($variant_id) {
+            $product = wc_get_product($variant_id);
+            $product_id = $product->get_parent_id();
         } else {
-            $line->setProductVariantId($item['product_id']);
+            $product = wc_get_product($product_id);
         }
 
+        $price = $product ? $product->get_price() : 0;
+        $line = new MailChimp_WooCommerce_LineItem();
+        $line->setId($hash);
+        $line->setProductId($product_id);
+        $line->setProductVariantId((!empty($variant_id) ? $variant_id : $product_id));
         $line->setQuantity($item['quantity']);
         $line->setPrice($price);
-
         return $line;
     }
 }

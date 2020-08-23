@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { __, _n, sprintf } from '@wordpress/i18n';
-import { InspectorControls } from '@wordpress/editor';
+import { InspectorControls } from '@wordpress/block-editor';
 import {
 	Button,
 	PanelBody,
@@ -14,7 +14,7 @@ import { SearchListItem } from '@woocommerce/components';
 import { Fragment } from '@wordpress/element';
 import PropTypes from 'prop-types';
 import ProductCategoryControl from '@woocommerce/block-components/product-category-control';
-import { IconReviewsByCategory } from '@woocommerce/block-components/icons';
+import { Icon, review } from '@woocommerce/icons';
 
 /**
  * Internal dependencies
@@ -132,12 +132,16 @@ const ReviewsByCategoryEditor = ( {
 		return (
 			<Placeholder
 				icon={
-					<IconReviewsByCategory className="block-editor-block-icon" />
+					<Icon
+						srcElement={ review }
+						className="block-editor-block-icon"
+					/>
 				}
 				label={ __(
 					'Reviews by Category',
 					'woocommerce'
 				) }
+				className="wc-block-reviews-by-category"
 			>
 				{ __(
 					'Show product reviews from specific categories.',
@@ -152,7 +156,7 @@ const ReviewsByCategoryEditor = ( {
 						} }
 						showReviewCount={ true }
 					/>
-					<Button isDefault onClick={ onDone }>
+					<Button isPrimary onClick={ onDone }>
 						{ __( 'Done', 'woocommerce' ) }
 					</Button>
 				</div>
@@ -172,7 +176,10 @@ const ReviewsByCategoryEditor = ( {
 				attributes={ attributes }
 				className="wc-block-reviews-by-category"
 				icon={
-					<IconReviewsByCategory className="block-editor-block-icon" />
+					<Icon
+						srcElement={ review }
+						className="block-editor-block-icon"
+					/>
 				}
 				name={ __(
 					'Reviews by Category',

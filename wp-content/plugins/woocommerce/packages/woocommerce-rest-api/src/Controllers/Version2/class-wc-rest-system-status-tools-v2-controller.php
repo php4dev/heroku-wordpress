@@ -167,6 +167,15 @@ class WC_REST_System_Status_Tools_V2_Controller extends WC_REST_Controller {
 					__( 'This tool will delete all customer session data from the database, including current carts and saved carts in the database.', 'woocommerce' )
 				),
 			),
+			'clear_template_cache'               => array(
+				'name'   => __( 'Clear template cache', 'woocommerce' ),
+				'button' => __( 'Clear', 'woocommerce' ),
+				'desc'   => sprintf(
+					'<strong class="red">%1$s</strong> %2$s',
+					__( 'Note:', 'woocommerce' ),
+					__( 'This tool will empty the template cache.', 'woocommerce' )
+				),
+			),
 			'install_pages'                      => array(
 				'name'   => __( 'Create default WooCommerce pages', 'woocommerce' ),
 				'button' => __( 'Create pages', 'woocommerce' ),
@@ -200,10 +209,23 @@ class WC_REST_System_Status_Tools_V2_Controller extends WC_REST_Controller {
 				),
 			),
 		);
+		if ( method_exists( 'WC_Install', 'verify_base_tables' ) ) {
+			$tools['verify_db_tables'] = array(
+				'name'   => __( 'Verify base database tables', 'woocommerce' ),
+				'button' => __( 'Verify database', 'woocommerce' ),
+				'desc'   => sprintf(
+					__( 'Verify if all base database tables are present.', 'woocommerce' )
+				),
+			);
+		}
 
 		// Jetpack does the image resizing heavy lifting so you don't have to.
 		if ( ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'photon' ) ) || ! apply_filters( 'woocommerce_background_image_regeneration', true ) ) {
 			unset( $tools['regenerate_thumbnails'] );
+		}
+
+		if ( ! function_exists( 'wc_clear_template_cache' ) ) {
+			unset( $tools['clear_template_cache'] );
 		}
 
 		return apply_filters( 'woocommerce_debug_tools', $tools );
@@ -420,6 +442,7 @@ class WC_REST_System_Status_Tools_V2_Controller extends WC_REST_Controller {
 				wc_delete_product_transients();
 				wc_delete_shop_order_transients();
 				delete_transient( 'wc_count_comments' );
+				delete_transient( 'as_comment_count' );
 
 				$attribute_taxonomies = wc_get_attribute_taxonomies();
 
@@ -459,7 +482,7 @@ class WC_REST_System_Status_Tools_V2_Controller extends WC_REST_Controller {
 						$wpdb->prepare(
 							"DELETE FROM {$wpdb->prefix}woocommerce_downloadable_product_permissions
 							WHERE ( downloads_remaining != '' AND downloads_remaining = 0 ) OR ( access_expires IS NOT NULL AND access_expires < %s )",
-							date( 'Y-m-d', current_time( 'timestamp' ) )
+							gmdate( 'Y-m-d', current_time( 'timestamp' ) )
 						)
 					)
 				);
@@ -536,6 +559,33 @@ class WC_REST_System_Status_Tools_V2_Controller extends WC_REST_Controller {
 				// This method will make sure the database updates are executed even if cron is disabled. Nothing will happen if the updates are already running.
 				do_action( 'wp_' . $blog_id . '_wc_updater_cron' );
 				$message = __( 'Database upgrade routine has been scheduled to run in the background.', 'woocommerce' );
+				break;
+
+			case 'clear_template_cache':
+				if ( function_exists( 'wc_clear_template_cache' ) ) {
+					wc_clear_template_cache();
+					$message = __( 'Template cache cleared.', 'woocommerce' );
+				} else {
+					$message = __( 'The active version of WooCommerce does not support template cache clearing.', 'woocommerce' );
+					$ran = false;
+				}
+				break;
+
+			case 'verify_db_tables':
+				if ( ! method_exists( 'WC_Install', 'verify_base_tables' ) ) {
+					$message = __( 'You need WooCommerce 4.2 or newer to run this tool.', 'woocommerce' );
+					$ran = false;
+					break;
+				}
+				// Try to manually create table again.
+				$missing_tables = WC_Install::verify_base_tables( true, true );
+				if ( 0 === count( $missing_tables ) ) {
+					$message = __( 'Database verified successfully.', 'woocommerce' );
+				} else {
+					$message = __( 'Verifying database... One or more tables are still missing: ', 'woocommerce' );
+					$message .= implode( ', ', $missing_tables );
+					$ran = false;
+				}
 				break;
 
 			default:

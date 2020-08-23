@@ -3,13 +3,13 @@ if (!empty( $_REQUEST['handle'])) {
     if (!empty($_REQUEST['_wpnonce']) && wp_verify_nonce($_REQUEST['_wpnonce'], 'remove_log')) {
         $log_handler = new WC_Log_Handler_File();
         $log_handler->remove($_REQUEST['handle']);
-        wp_redirect('admin.php?page=mailchimp-woocommerce&tab=logs');
+        wp_redirect('admin.php?page=mailchimp-woocommerce&tab=logs&log_removed=1');
     }
 }
 $files  = defined('WC_LOG_DIR') ? @scandir( WC_LOG_DIR ) : array();
 $logs = array();
 if (!empty($files)) {
-    foreach ($files as $key => $value) {
+    foreach (array_reverse($files) as $key => $value) {
         if (!in_array( $value, array( '.', '..' ))) {
             if (!is_dir($value) && mailchimp_string_contains($value, 'mailchimp_woocommerce')) {
                 $logs[sanitize_title($value)] = $value;
@@ -35,11 +35,11 @@ $handle = !empty($viewed_log) ? substr($viewed_log, 0, strlen($viewed_log) > 37 
 
 <fieldset>
     <legend class="screen-reader-text">
-        <span><?php esc_html_e('Logging Preference', 'mc-woocommerce');?></span>
+        <span><?php esc_html_e('Logging Preferences', 'mailchimp-for-woocommerce');?></span>
     </legend>
     
-    <div class="box fieldset-header" >
-        <label for="<?php echo $this->plugin_name; ?>-logging"><h2 style="padding-top: 1em;"><?php esc_html_e('Logging Preferences', 'mc-woocommerce');?></h2></label>
+    <div class="box" >
+        <label for="<?php echo $this->plugin_name; ?>-logging"><h3><?php esc_html_e('Logging Preferences', 'mailchimp-for-woocommerce');?></h3></label>
     </div>
 
     <div class="box box-half">
@@ -47,32 +47,33 @@ $handle = !empty($viewed_log) ? substr($viewed_log, 0, strlen($viewed_log) > 37 
             <?php esc_html_e('Advanced troubleshooting can be conducted with the logging capability turned on.
             By default, it’s set to “standard” and you may toggle to either “debug” or “none” as needed.
             With standard logging, you can see basic information about the data submission to Mailchimp including any errors.
-            “Debug” gives a much deeper insight that is useful to share with support if problems arise.', 'mc-woocommerce');
+            “Debug” gives a much deeper insight that is useful to share with support if problems arise.', 'mailchimp-for-woocommerce');
             ?>
         </p>
     </div>
     <div class="box box-half">
-        <div class="mailchimp-select-wrapper">
-            <select name="<?php echo $this->plugin_name; ?>[mailchimp_logging]" required>
+        <div class="log-select mailchimp-select-wrapper">
+            <select id="mailchimp-log-pref" name="<?php echo $this->plugin_name; ?>[mailchimp_logging]" required>
                 <?php $logging_preference = mailchimp_environment_variables()->logging; ?>
                 <?php
-                foreach(array('none' => esc_html__('None', 'mc-woocommerce'), 'debug' => esc_html__('Debug', 'mc-woocommerce'), 'standard' => esc_html__('Standard', 'mc-woocommerce')) as $log_value => $log_label) {
+                foreach(array('none' => esc_html__('None', 'mailchimp-for-woocommerce'), 'debug' => esc_html__('Debug', 'mailchimp-for-woocommerce'), 'standard' => esc_html__('Standard', 'mailchimp-for-woocommerce')) as $log_value => $log_label) {
                     echo '<option value="'.esc_attr($log_value).'" '.selected($log_value === $logging_preference, true, false ) . '>' . esc_html($log_label) . '</option>';
                 }
                 ?>
             </select>
+            
         </div>
     </div>
 </fieldset>
 
 <fieldset>
     <div class="box fieldset-header" >
-        <h2>
-            <?php esc_html_e('Recent Logs', 'mc-woocommerce'); ?>
-        </h2>
+        <h3>
+            <?php esc_html_e('Recent Logs', 'mailchimp-for-woocommerce'); ?>
+        </h3>
     </div>
     
-    <div class="box">
+    <div class="box log-file-actions">
         <input type="hidden" name="<?php echo $this->plugin_name; ?>[mailchimp_active_tab]" value="logs"/>
         <div class="mailchimp-select-wrapper view-log-select">
             <select id="log_file" name="log_file">
@@ -81,30 +82,26 @@ $handle = !empty($viewed_log) ? substr($viewed_log, 0, strlen($viewed_log) > 37 
                 <?php endforeach; ?>
             </select>
         </div>
-        <input type="submit" class="button tab-content-submit view-log-submit" value="<?php esc_attr_e( 'View', 'woocommerce' ); ?>" />
+        <div id="log-actions">
+            <?php if ( ! empty( $handle ) ) : ?>
+                <a class="mc-woocommerce-log-button mc-woocommerce-copy-log-button" title="<?= __('Copy Log to clipboard', 'mailchimp-for-woocommerce');?>" href="#">
+                    <span class="dashicons dashicons-clipboard clipboard" style="transform: rotate(-45deg) translateY(2px) translateX(-2px);"></span>
+                    <span class="dashicons dashicons-yes yes"></span>
+                </a>
+                <a class="mc-woocommerce-log-button delete-log-button" title="<?= __('Delete Log', 'mailchimp-for-woocommerce');?>" href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'handle' => sanitize_title($viewed_log) ), admin_url( 'admin.php?page=mailchimp-woocommerce&tab=logs&mc_action=remove_log' ) ), 'remove_log' ) ); ?>">
+                    <span class="dashicons dashicons-trash"></span>
+                </a>
+            <?php endif; ?>
+        </div>
     </div>
 
 </fieldset>
 <div class="box">
     <?php if (isset($logs) && isset($viewed_log)) : ?>
         <div id="log-viewer">
-            <div style="height: 100px;">
-                <?php if ( ! empty( $handle ) ) : ?>
-                    <a style="display:inline-block" class="mc-woocommerce-delete-log-button" href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'handle' => sanitize_title($viewed_log) ), admin_url( 'admin.php?page=mailchimp-woocommerce&tab=logs&mc_action=remove_log' ) ), 'remove_log' ) ); ?>">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="#3C3C3C"/>
-                        </svg>
-                        <?php esc_html_e('Delete log', 'mc-woocommerce'); ?>
-                        
-                    </a>
-                    <a style="display:inline-block" class="mc-woocommerce-copy-log-button" href="#">
-                        <?php esc_html_e('Copy log', 'mc-woocommerce'); ?>
-                    </a>
-                <?php endif; ?>
-            </div>
-            <div>
-                <pre id="log-text"><?php echo esc_html( file_get_contents( WC_LOG_DIR . $viewed_log ) ); ?></pre>
-            </div>
+            <span class="spinner" style="display:none;"></span>
+            <textarea id="log-content" readonly><?php echo esc_html( file_get_contents( WC_LOG_DIR . $viewed_log ) ); ?></textarea>
+            
         </div>
     <?php else : ?>
         <div class="updated woocommerce-message inline"><p><?php _e( 'There are currently no logs to view.', 'woocommerce' ); ?></p></div>

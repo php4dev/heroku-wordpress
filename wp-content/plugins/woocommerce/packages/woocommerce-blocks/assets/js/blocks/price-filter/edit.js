@@ -15,13 +15,13 @@ import { PRODUCT_COUNT } from '@woocommerce/block-settings';
 import { getAdminLink } from '@woocommerce/settings';
 import HeadingToolbar from '@woocommerce/block-components/heading-toolbar';
 import BlockTitle from '@woocommerce/block-components/block-title';
+import { Icon, bill, external } from '@woocommerce/icons';
 
 /**
  * Internal dependencies
  */
 import Block from './block.js';
 import './editor.scss';
-import { IconMoney, IconExternal } from '../../components/icons';
 import ToggleButtonControl from '../../components/toggle-button-control';
 
 export default function( { attributes, setAttributes } ) {
@@ -78,11 +78,11 @@ export default function( { attributes, setAttributes } ) {
 						help={
 							showFilterButton
 								? __(
-										'Results will only update when the button is pressed.',
+										'Products will only update when the button is pressed.',
 										'woocommerce'
 								  )
 								: __(
-										'Results will update when the slider is moved.',
+										'Products will update when the slider is moved.',
 										'woocommerce'
 								  )
 						}
@@ -116,7 +116,7 @@ export default function( { attributes, setAttributes } ) {
 	const noProductsPlaceholder = () => (
 		<Placeholder
 			className="wc-block-price-slider"
-			icon={ <IconMoney /> }
+			icon={ <Icon srcElement={ bill } /> }
 			label={ __(
 				'Filter Products by Price',
 				'woocommerce'
@@ -133,14 +133,14 @@ export default function( { attributes, setAttributes } ) {
 				) }
 			</p>
 			<Button
-				className="wc-block-price-slider__add_product_button"
+				className="wc-block-price-slider__add-product-button"
 				isDefault
 				isLarge
 				href={ getAdminLink( 'post-new.php?post_type=product' ) }
 			>
 				{ __( 'Add new product', 'woocommerce' ) +
 					' ' }
-				<IconExternal />
+				<Icon srcElement={ external } />
 			</Button>
 			<Button
 				className="wc-block-price-slider__read_more_button"

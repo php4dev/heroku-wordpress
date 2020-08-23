@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import Gridicon from 'gridicons';
+import { Icon, tags } from '@woocommerce/icons';
 import { registerBlockType } from '@wordpress/blocks';
 import { DEFAULT_COLUMNS, DEFAULT_ROWS } from '@woocommerce/block-settings';
 
@@ -18,13 +18,13 @@ const blockTypeName = 'woocommerce/products-by-attribute';
 registerBlockType( blockTypeName, {
 	title: __( 'Products by Attribute', 'woocommerce' ),
 	icon: {
-		src: <Gridicon icon="custom-post-type" />,
+		src: <Icon srcElement={ tags } />,
 		foreground: '#96588a',
 	},
 	category: 'woocommerce',
 	keywords: [ __( 'WooCommerce', 'woocommerce' ) ],
 	description: __(
-		'Display a grid of products from your selected attributes.',
+		'Display a grid of products with selected attributes.',
 		'woocommerce'
 	),
 	supports: {
@@ -159,6 +159,8 @@ registerBlockType( blockTypeName, {
 
 	/**
 	 * Renders and manages the block.
+	 *
+	 * @param {Object} props Props to pass to block.
 	 */
 	edit( props ) {
 		return <Block { ...props } />;

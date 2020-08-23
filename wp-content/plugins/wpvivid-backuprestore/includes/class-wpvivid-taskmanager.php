@@ -199,13 +199,13 @@ class WPvivid_taskmanager
             $time_diff=strtotime($current_time)-strtotime($create_time);
             $running_time='';
             if(date("G",$time_diff) > 0){
-                $running_time .= date("G",$time_diff).'hour';
+                $running_time .= date("G",$time_diff).' hour(s)';
             }
             if(intval(date("i",$time_diff)) > 0){
-                $running_time .= intval(date("i",$time_diff)).'min';
+                $running_time .= intval(date("i",$time_diff)).' min(s)';
             }
             if(intval(date("s",$time_diff)) > 0){
-                $running_time .= intval(date("s",$time_diff)).'second';
+                $running_time .= intval(date("s",$time_diff)).' second(s)';
             }
             $next_resume_time=WPvivid_Schedule::get_next_resume_time($task['id']);
 
@@ -213,7 +213,7 @@ class WPvivid_taskmanager
             $ret['progress']=$task['data'][$ret['type']]['progress'];
             $ret['doing']=$task['data'][$ret['type']]['doing'];
             if(isset($task['data'][$ret['type']]['sub_job'][$ret['doing']]['progress']))
-                $ret['descript']=__($task['data'][$ret['type']]['sub_job'][$ret['doing']]['progress'], 'wpvivid');
+                $ret['descript']=__($task['data'][$ret['type']]['sub_job'][$ret['doing']]['progress'], 'wpvivid-backuprestore');
             else
                 $ret['descript']='';
             if(isset($task['data'][$ret['type']]['sub_job'][$ret['doing']]['upload_data']))

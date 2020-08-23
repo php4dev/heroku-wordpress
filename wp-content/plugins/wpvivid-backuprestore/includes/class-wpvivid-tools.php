@@ -13,6 +13,10 @@ class WPvivid_tools
         $home_url_prefix = $parse['host'].$tmppath;
         $path = WP_CONTENT_DIR.DIRECTORY_SEPARATOR.WPvivid_Setting::get_backupdir();
         $handler=opendir($path);
+        if($handler===false)
+        {
+            return ;
+        }
         while(($filename=readdir($handler))!==false)
         {
             if(is_dir($path.DIRECTORY_SEPARATOR.$filename) && preg_match('#temp-'.$home_url_prefix.'_'.'#',$filename))
@@ -105,14 +109,31 @@ class WPvivid_tools
     }
     public static function  file_get_array($file){
         global $wpvivid_plugin;
-        if(file_exists($file)){
+        if(file_exists($file))
+        {
             $get_file_ret = json_decode(file_get_contents($file),true);
-            if(empty($get_file_ret)){
-                $wpvivid_plugin->restore_data->write_log('Failed to decode restore data file.', 'notice');
+            if(empty($get_file_ret))
+            {
+                sleep(1);
+                $contents=file_get_contents($file);
+                if($contents==false)
+                {
+                    if( $wpvivid_plugin->restore_data)
+                        $wpvivid_plugin->restore_data->write_log('file_get_contents failed.', 'notice');
+                }
+                $get_file_ret = json_decode($contents,true);
+                if(empty($get_file_ret))
+                {
+                    if( $wpvivid_plugin->restore_data)
+                        $wpvivid_plugin->restore_data->write_log('Failed to decode restore data file.', 'notice');
+                }
+
+                return $get_file_ret;
             }
             return $get_file_ret;
         }else{
-            $wpvivid_plugin->restore_data->write_log('Failed to open restore data file, the file may not exist.', 'notice');
+            if( $wpvivid_plugin->restore_data)
+                $wpvivid_plugin->restore_data->write_log('Failed to open restore data file, the file may not exist.', 'notice');
             return array();
         }
     }

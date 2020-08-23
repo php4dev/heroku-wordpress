@@ -4,18 +4,11 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import ProductListContainer from '@woocommerce/base-components/product-list/container';
-import { InnerBlockConfigurationProvider } from '@woocommerce/base-context/inner-block-configuration-context';
-import { ProductLayoutContextProvider } from '@woocommerce/base-context/product-layout-context';
+import { InnerBlockLayoutContextProvider } from '@woocommerce/shared-context';
 import { gridBlockPreview } from '@woocommerce/resource-previews';
 
-const layoutContextConfig = {
-	layoutStyleClassPrefix: 'wc-block-grid',
-};
-
-const parentBlockConfig = { parentName: 'woocommerce/all-products' };
-
 /**
- * The All Products Block. @todo
+ * The All Products Block.
  */
 class Block extends Component {
 	static propTypes = {
@@ -39,14 +32,15 @@ class Block extends Component {
 		 * wc-block-{$this->block_name},
 		 */
 		return (
-			<InnerBlockConfigurationProvider value={ parentBlockConfig }>
-				<ProductLayoutContextProvider value={ layoutContextConfig }>
-					<ProductListContainer
-						attributes={ attributes }
-						urlParameterSuffix={ urlParameterSuffix }
-					/>
-				</ProductLayoutContextProvider>
-			</InnerBlockConfigurationProvider>
+			<InnerBlockLayoutContextProvider
+				parentName="woocommerce/all-products"
+				parentClassName="wc-block-grid"
+			>
+				<ProductListContainer
+					attributes={ attributes }
+					urlParameterSuffix={ urlParameterSuffix }
+				/>
+			</InnerBlockLayoutContextProvider>
 		);
 	}
 }

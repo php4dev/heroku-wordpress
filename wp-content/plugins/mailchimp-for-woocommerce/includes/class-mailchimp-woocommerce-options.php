@@ -25,13 +25,23 @@ abstract class MailChimp_WooCommerce_Options
      */
     public function adminReady()
     {
-        $this->is_admin = current_user_can('administrator');
+        $this->is_admin = current_user_can(mailchimp_get_allowed_capability());
         if (get_option('mailchimp_woocommerce_plugin_do_activation_redirect', false)) {
             delete_option('mailchimp_woocommerce_plugin_do_activation_redirect');
 
             // don't do the redirect while activating the plugin through the rest API. ( Bartosz from Woo asked for this )
             if ((defined( 'REST_REQUEST' ) && REST_REQUEST)) {
                 return;
+            }
+
+            // the woocommerce onboarding wizard will have a profile
+            $onboarding_profile = get_option('woocommerce_onboarding_profile');
+            // if the onboarding profile has business extensions
+            if (is_array($onboarding_profile) && array_key_exists('business_extensions', $onboarding_profile)) {
+                // if the business extensions contains our plugin, we just skip this.
+                if (is_array($onboarding_profile['business_extensions']) && in_array('mailchimp-for-woocommerce', $onboarding_profile['business_extensions'])) {
+                    return;
+                }
             }
 
             if (!isset($_GET['activate-multi'])) {

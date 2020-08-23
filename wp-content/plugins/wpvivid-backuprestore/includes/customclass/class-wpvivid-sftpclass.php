@@ -35,7 +35,7 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
     {
         ?>
         <div class="storage-providers" remote_type="sftp" onclick="select_remote_storage(event, 'storage_account_sftp');">
-            <img src="<?php echo esc_url(WPVIVID_PLUGIN_URL.'/admin/partials/images/storage-sftp.png'); ?>" style="vertical-align:middle;"/><?php _e('SFTP', 'wpvivid'); ?>
+            <img src="<?php echo esc_url(WPVIVID_PLUGIN_URL.'/admin/partials/images/storage-sftp.png'); ?>" style="vertical-align:middle;"/><?php _e('SFTP', 'wpvivid-backuprestore'); ?>
         </div>
         <?php
     }
@@ -45,7 +45,7 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
         ?>
         <div id="storage_account_sftp" class="storage-account-page" style="display:none;">
             <div style="padding: 0 10px 10px 0;">
-                <strong>Enter Your SFTP Account</strong>
+                <strong><?php _e('Enter Your SFTP Account', 'wpvivid-backuprestore'); ?></strong>
             </div>
             <table class="wp-list-table widefat plugins" style="width:100%;">
                 <tbody>
@@ -53,72 +53,72 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
-                            <input type="text" class="regular-text" autocomplete="off" option="sftp" name="name" placeholder="Enter a unique alias: e.g. SFTP-001" onkeyup="value=value.replace(/[^a-zA-Z0-9\-_]/g,'')" />
+                            <input type="text" class="regular-text" autocomplete="off" option="sftp" name="name" placeholder="<?php esc_attr_e('Enter a unique alias: e.g. SFTP-001', 'wpvivid-backuprestore'); ?>" onkeyup="value=value.replace(/[^a-zA-Z0-9\-_]/g,'')" />
                         </div>
                     </td>
                     <td class="column-description desc">
                         <div class="wpvivid-storage-form-desc">
-                            <i>A name to help you identify the storage if you have multiple remote storage connected.</i>
+                            <i><?php _e('A name to help you identify the storage if you have multiple remote storage connected.', 'wpvivid-backuprestore'); ?></i>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
-                            <input type="text" class="regular-text" autocomplete="off" option="sftp" name="host" placeholder="Server Address" />
+                            <input type="text" class="regular-text" autocomplete="off" option="sftp" name="host" placeholder="<?php esc_attr_e('Server Address', 'wpvivid-backuprestore'); ?>" />
                         </div>
                     </td>
                     <td class="column-description desc">
                         <div class="wpvivid-storage-form-desc">
-                            <i>Enter the server address.</i>
+                            <i><?php _e('Enter the server address.', 'wpvivid-backuprestore'); ?></i>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
-                            <input type="text" class="regular-text" autocomplete="off" option="sftp" name="username" placeholder="User Name" />
+                            <input type="text" class="regular-text" autocomplete="off" option="sftp" name="username" placeholder="<?php esc_attr_e('User Name', 'wpvivid-backuprestore'); ?>" />
                         </div>
                     </td>
                     <td class="column-description desc">
                         <div class="wpvivid-storage-form-desc">
-                            <i>Enter the user name.</i>
+                            <i><?php _e('Enter the user name.', 'wpvivid-backuprestore'); ?></i>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
-                            <input type="password" class="regular-text" autocomplete="new-password" option="sftp" name="password" placeholder="User Password" />
+                            <input type="password" class="regular-text" autocomplete="new-password" option="sftp" name="password" placeholder="<?php esc_attr_e('User Password', 'wpvivid-backuprestore'); ?>" />
                         </div>
                     </td>
                     <td class="column-description desc">
                         <div class="wpvivid-storage-form-desc">
-                            <i>Enter the user password.</i>
+                            <i><?php _e('Enter the user password.', 'wpvivid-backuprestore'); ?></i>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
-                            <input type="text" class="regular-text" autocomplete="off" option="sftp" name="port" placeholder="Port" onkeyup="value=value.replace(/\D/g,'')" />
+                            <input type="text" class="regular-text" autocomplete="off" option="sftp" name="port" placeholder="<?php esc_attr_e('Port', 'wpvivid-backuprestore'); ?>" onkeyup="value=value.replace(/\D/g,'')" />
                         </div>
                     </td>
                     <td class="column-description desc">
                         <div class="wpvivid-storage-form-desc">
-                            <i>Enter the server port.</i>
+                            <i><?php _e('Enter the server port.', 'wpvivid-backuprestore'); ?></i>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
-                            <input type="text" class="regular-text" autocomplete="off" option="sftp" name="path" placeholder="Absolute path must exist(e.g. /var)" />
+                            <input type="text" class="regular-text" autocomplete="off" option="sftp" name="path" placeholder="<?php esc_attr_e('Absolute path must exist(e.g. /var)', 'wpvivid-backuprestore'); ?>" />
                         </div>
                     </td>
                     <td class="column-description desc">
                         <div class="wpvivid-storage-form-desc">
-                            <i>Enter an absolute path and a custom subdirectory (optional) for holding the backups of current website. For example, /var/customfolder/</i>
+                            <i><?php _e('Enter an absolute path and a custom subdirectory (optional) for holding the backups of current website. For example, /var/customfolder/', 'wpvivid-backuprestore'); ?></i>
                         </div>
                     </td>
                 </tr>
@@ -126,13 +126,13 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-select">
                             <label>
-                                <input type="checkbox" option="sftp" name="default" checked />Set as the default remote storage.
+                                <input type="checkbox" option="sftp" name="default" checked /><?php _e('Set as the default remote storage.', 'wpvivid-backuprestore'); ?>
                             </label>
                         </div>
                     </td>
                     <td class="column-description desc">
                         <div class="wpvivid-storage-form-desc">
-                            <i>Once checked, all this sites backups sent to a remote storage destination will be uploaded to this storage by default.</i>
+                            <i><?php _e('Once checked, all this sites backups sent to a remote storage destination will be uploaded to this storage by default.', 'wpvivid-backuprestore'); ?></i>
                         </div>
                     </td>
                 </tr>
@@ -140,12 +140,12 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
-                            <input class="button-primary" option="add-remote" type="submit" value="Test and Add" />
+                            <input class="button-primary" option="add-remote" type="submit" value="<?php esc_attr_e('Test and Add', 'wpvivid-backuprestore'); ?>" />
                         </div>
                     </td>
                     <td class="column-description desc">
                         <div class="wpvivid-storage-form-desc">
-                            <i>Click the button to connect to SFTP server and add it to the storage list below.</i>
+                            <i><?php _e('Click the button to connect to SFTP server and add it to the storage list below.', 'wpvivid-backuprestore'); ?></i>
                         </div>
                     </td>
                 </tr>
@@ -160,7 +160,7 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
         ?>
         <div id="remote_storage_edit_sftp" class="postbox storage-account-block remote-storage-edit" style="display:none;">
             <div style="padding: 0 10px 10px 0;">
-                <strong>Enter Your SFTP Account</strong>
+                <strong><?php _e('Enter Your SFTP Account', 'wpvivid-backuprestore'); ?></strong>
             </div>
             <table class="wp-list-table widefat plugins" style="width:100%;">
                 <tbody>
@@ -168,72 +168,72 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
-                            <input type="text" class="regular-text" autocomplete="off" option="edit-sftp" name="name" placeholder="Enter a unique alias: e.g. SFTP-001" onkeyup="value=value.replace(/[^a-zA-Z0-9\-_]/g,'')" />
+                            <input type="text" class="regular-text" autocomplete="off" option="edit-sftp" name="name" placeholder="<?php esc_attr_e('Enter a unique alias: e.g. SFTP-001', 'wpvivid-backuprestore'); ?>" onkeyup="value=value.replace(/[^a-zA-Z0-9\-_]/g,'')" />
                         </div>
                     </td>
                     <td class="column-description desc">
                         <div class="wpvivid-storage-form-desc">
-                            <i>A name to help you identify the storage if you have multiple remote storage connected.</i>
+                            <i><?php _e('A name to help you identify the storage if you have multiple remote storage connected.', 'wpvivid-backuprestore'); ?></i>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
-                            <input type="text" class="regular-text" autocomplete="off" option="edit-sftp" name="host" placeholder="Server Address" />
+                            <input type="text" class="regular-text" autocomplete="off" option="edit-sftp" name="host" placeholder="<?php esc_attr_e('Server Address', 'wpvivid-backuprestore'); ?>" />
                         </div>
                     </td>
                     <td class="column-description desc">
                         <div class="wpvivid-storage-form-desc">
-                            <i>Enter the server address.</i>
+                            <i><?php _e('Enter the server address.', 'wpvivid-backuprestore'); ?></i>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
-                            <input type="text" class="regular-text" autocomplete="off" option="edit-sftp" name="username" placeholder="User Name" />
+                            <input type="text" class="regular-text" autocomplete="off" option="edit-sftp" name="username" placeholder="<?php esc_attr_e('User Name', 'wpvivid-backuprestore'); ?>" />
                         </div>
                     </td>
                     <td class="column-description desc">
                         <div class="wpvivid-storage-form-desc">
-                            <i>Enter the user name.</i>
+                            <i><?php _e('Enter the user name.', 'wpvivid-backuprestore'); ?></i>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
-                            <input type="password" class="regular-text" autocomplete="new-password" option="edit-sftp" name="password" placeholder="User Password" />
+                            <input type="password" class="regular-text" autocomplete="new-password" option="edit-sftp" name="password" placeholder="<?php esc_attr_e('User Password', 'wpvivid-backuprestore'); ?>" />
                         </div>
                     </td>
                     <td class="column-description desc">
                         <div class="wpvivid-storage-form-desc">
-                            <i>Enter the user password.</i>
+                            <i><?php _e('Enter the user password.', 'wpvivid-backuprestore'); ?></i>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
-                            <input type="text" class="regular-text" autocomplete="off" option="edit-sftp" name="port" placeholder="Port" onkeyup="value=value.replace(/\D/g,'')" />
+                            <input type="text" class="regular-text" autocomplete="off" option="edit-sftp" name="port" placeholder="<?php esc_attr_e('Port', 'wpvivid-backuprestore'); ?>" onkeyup="value=value.replace(/\D/g,'')" />
                         </div>
                     </td>
                     <td class="column-description desc">
                         <div class="wpvivid-storage-form-desc">
-                            <i>Enter the server port.</i>
+                            <i><?php _e('Enter the server port.', 'wpvivid-backuprestore'); ?></i>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
-                            <input type="text" class="regular-text" autocomplete="off" option="edit-sftp" name="path" placeholder="Absolute path must exist(e.g. /var)" />
+                            <input type="text" class="regular-text" autocomplete="off" option="edit-sftp" name="path" placeholder="<?php esc_attr_e('Absolute path must exist(e.g. /var)', 'wpvivid-backuprestore'); ?>" />
                         </div>
                     </td>
                     <td class="column-description desc">
                         <div class="wpvivid-storage-form-desc">
-                            <i>Enter an absolute path and a custom subdirectory (optional) for holding the backups of current website. For example, /var/customfolder/</i>
+                            <i><?php _e('Enter an absolute path and a custom subdirectory (optional) for holding the backups of current website. For example, /var/customfolder/', 'wpvivid-backuprestore'); ?></i>
                         </div>
                     </td>
                 </tr>
@@ -241,12 +241,12 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
                 <tr>
                     <td class="plugin-title column-primary">
                         <div class="wpvivid-storage-form">
-                            <input class="button-primary" option="edit-remote" type="submit" value="Save Changes" />
+                            <input class="button-primary" option="edit-remote" type="submit" value="<?php esc_attr_e('Save Changes', 'wpvivid-backuprestore'); ?>" />
                         </div>
                     </td>
                     <td class="column-description desc">
                         <div class="wpvivid-storage-form-desc">
-                            <i>Click the button to save the changes.</i>
+                            <i><?php _e('Click the button to save the changes.', 'wpvivid-backuprestore'); ?></i>
                         </div>
                     </td>
                 </tr>

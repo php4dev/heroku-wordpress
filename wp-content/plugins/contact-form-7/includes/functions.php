@@ -371,11 +371,40 @@ function wpcf7_deprecated_function( $function, $version, $replacement ) {
 
 	if ( WP_DEBUG and $trigger_error ) {
 		if ( function_exists( '__' ) ) {
-			trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since Contact Form 7 version %2$s! Use %3$s instead.', 'contact-form-7' ), $function, $version, $replacement ) );
+			trigger_error(
+				sprintf(
+					/* translators: 1: PHP function name, 2: version number, 3: alternative function name */
+					__( '%1$s is <strong>deprecated</strong> since Contact Form 7 version %2$s! Use %3$s instead.', 'contact-form-7' ),
+					$function, $version, $replacement
+				)
+			);
 		} else {
-			trigger_error( sprintf( '%1$s is <strong>deprecated</strong> since Contact Form 7 version %2$s! Use %3$s instead.', $function, $version, $replacement ) );
+			trigger_error(
+				sprintf(
+					'%1$s is <strong>deprecated</strong> since Contact Form 7 version %2$s! Use %3$s instead.',
+					$function, $version, $replacement
+				)
+			);
 		}
 	}
+}
+
+function wpcf7_apply_filters_deprecated( $tag, $args, $version, $replacement ) {
+	if ( ! has_filter( $tag ) ) {
+		return $args[0];
+	}
+
+	if ( WP_DEBUG and apply_filters( 'deprecated_hook_trigger_error', true ) ) {
+		trigger_error(
+			sprintf(
+				/* translators: 1: WordPress hook name, 2: version number, 3: alternative hook name */
+				__( '%1$s is <strong>deprecated</strong> since Contact Form 7 version %2$s! Use %3$s instead.', 'contact-form-7' ),
+				$tag, $version, $replacement
+			)
+		);
+	}
+
+	return apply_filters_ref_array( $tag, $args );
 }
 
 function wpcf7_log_remote_request( $url, $request, $response ) {

@@ -102,7 +102,7 @@ const CheckboxList = ( {
 		return (
 			<Fragment>
 				{ options.map( ( option, index ) => (
-					<Fragment key={ option.key }>
+					<Fragment key={ option.value }>
 						<li
 							{ ...( shouldTruncateOptions &&
 								! showExpanded &&
@@ -110,13 +110,15 @@ const CheckboxList = ( {
 						>
 							<input
 								type="checkbox"
-								id={ option.key }
-								value={ option.key }
-								onChange={ onChange }
-								checked={ checked.includes( option.key ) }
+								id={ option.value }
+								value={ option.value }
+								onChange={ ( event ) => {
+									onChange( event.target.value );
+								} }
+								checked={ checked.includes( option.value ) }
 								disabled={ isDisabled }
 							/>
-							<label htmlFor={ option.key }>
+							<label htmlFor={ option.value }>
 								{ option.label }
 							</label>
 						</li>
@@ -140,6 +142,7 @@ const CheckboxList = ( {
 
 	const classes = classNames(
 		'wc-block-checkbox-list',
+		'wc-block-components-checkbox-list',
 		{
 			'is-loading': isLoading,
 		},
@@ -157,8 +160,8 @@ CheckboxList.propTypes = {
 	onChange: PropTypes.func,
 	options: PropTypes.arrayOf(
 		PropTypes.shape( {
-			key: PropTypes.string.isRequired,
 			label: PropTypes.node.isRequired,
+			value: PropTypes.string.isRequired,
 		} )
 	),
 	checked: PropTypes.array,

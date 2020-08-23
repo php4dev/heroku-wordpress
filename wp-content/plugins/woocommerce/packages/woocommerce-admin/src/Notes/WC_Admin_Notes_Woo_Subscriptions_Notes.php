@@ -3,8 +3,6 @@
  * WooCommerce Admin (Dashboard) WooCommerce.com Extension Subscriptions Note Provider.
  *
  * Adds notes to the merchant's inbox concerning WooCommerce.com extension subscriptions.
- *
- * @package WooCommerce Admin
  */
 
 namespace Automattic\WooCommerce\Admin\Notes;
@@ -185,7 +183,6 @@ class WC_Admin_Notes_Woo_Subscriptions_Notes {
 		$note->set_content( __( 'Connect to get important product notifications and updates.', 'woocommerce' ) );
 		$note->set_content_data( (object) array() );
 		$note->set_type( WC_Admin_Note::E_WC_ADMIN_NOTE_INFORMATIONAL );
-		$note->set_icon( 'info' );
 		$note->set_name( self::CONNECTION_NOTE_NAME );
 		$note->set_source( 'woocommerce-admin' );
 		$note->add_action(
@@ -335,7 +332,6 @@ class WC_Admin_Notes_Woo_Subscriptions_Notes {
 		// Reset everything in case we are repurposing an expired note as an expiring note.
 		$note->set_title( $note_title );
 		$note->set_type( WC_Admin_Note::E_WC_ADMIN_NOTE_WARNING );
-		$note->set_icon( 'notice' );
 		$note->set_name( self::SUBSCRIPTION_NOTE_NAME );
 		$note->set_source( 'woocommerce-admin' );
 		$note->clear_actions();
@@ -399,7 +395,6 @@ class WC_Admin_Notes_Woo_Subscriptions_Notes {
 		$note->set_content( $note_content );
 		$note->set_content_data( $note_content_data );
 		$note->set_type( WC_Admin_Note::E_WC_ADMIN_NOTE_WARNING );
-		$note->set_icon( 'notice' );
 		$note->set_name( self::SUBSCRIPTION_NOTE_NAME );
 		$note->set_source( 'woocommerce-admin' );
 		$note->clear_actions();

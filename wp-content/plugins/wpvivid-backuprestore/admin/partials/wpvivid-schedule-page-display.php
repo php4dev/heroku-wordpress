@@ -4,7 +4,7 @@ function wpvivid_schedule_settings()
 {
     ?>
     <tr>
-        <td class="row-title wpvivid-backup-settings-table tablelistcolumn"><label for="tablecell"><?php _e('Schedule Settings', 'wpvivid'); ?></label></td>
+        <td class="row-title wpvivid-backup-settings-table tablelistcolumn"><label for="tablecell"><?php _e('Schedule Settings', 'wpvivid-backuprestore'); ?></label></td>
         <td class="tablelistcolumn">
             <div id="storage-brand-3">
                 <div>
@@ -12,16 +12,16 @@ function wpvivid_schedule_settings()
                         <div class="postbox schedule-tab-block">
                             <label for="wpvivid_schedule_enable">
                                 <input option="schedule" name="enable" type="checkbox" id="wpvivid_schedule_enable" />
-                                <span><?php _e( 'Enable backup schedule', 'wpvivid' ); ?></span>
+                                <span><?php _e( 'Enable backup schedule', 'wpvivid-backuprestore' ); ?></span>
                             </label><br>
                             <label>
                                 <div style="float: left;">
                                     <input type="checkbox" disabled />
-                                    <span class="wpvivid-element-space-right" style="color: #ddd;">Enable Incremental Backup</span>
+                                    <span class="wpvivid-element-space-right" style="color: #ddd;"><?php _e('Enable Incremental Backup', 'wpvivid-backuprestore'); ?></span>
                                 </div>
                                 <div style="float: left; height: 32px; line-height: 32px;">
                                     <span class="wpvivid-feature-pro">
-                                        <a href="https://wpvivid.com/wpvivid-backup-pro-incremental-backup">Pro feature: learn more</a>
+                                        <a href="https://wpvivid.com/wpvivid-backup-pro-incremental-backup"><?php _e('Pro feature: learn more', 'wpvivid-backuprestore'); ?></a>
                                     </span>
                                 </div>
                                 <div style="clear: both;"></div>
@@ -29,11 +29,11 @@ function wpvivid_schedule_settings()
                             <label>
                                 <div style="float: left;">
                                     <input type="checkbox" disabled />
-                                    <span class="wpvivid-element-space-right" style="color: #ddd;">Advanced Schedule</span>
+                                    <span class="wpvivid-element-space-right" style="color: #ddd;"><?php _e('Advanced Schedule', 'wpvivid-backuprestore'); ?></span>
                                 </div>
                                 <div style="float: left; height: 32px; line-height: 32px;">
                                     <span class="wpvivid-feature-pro">
-                                        <a href="https://wpvivid.com/wpvivid-backup-pro-schedule-overview?utm_source=client_advanced_schedule&utm_medium=inner_link&utm_campaign=access">Pro feature: learn more</a>
+                                        <a href="https://wpvivid.com/wpvivid-backup-pro-schedule-overview?utm_source=client_advanced_schedule&utm_medium=inner_link&utm_campaign=access"><?php _e('Pro feature: learn more', 'wpvivid-backuprestore'); ?></a>
                                     </span>
                                 </div>
                                 <div style="clear: both;"></div>
@@ -82,7 +82,7 @@ function wpvivid_schedule_settings()
                         echo $html;
                         ?>
                     </div>
-                    <div id="schedule_upload_storage" style="cursor:pointer;" title="Highlighted icon illuminates that you have choosed a remote storage to store backups">
+                    <div id="schedule_upload_storage" style="cursor:pointer;" title="<?php _e('Highlighted icon illuminates that you have choosed a remote storage to store backups', 'wpvivid-backuprestore'); ?>">
                         <?php
                         $pic='';
                         $pic= apply_filters('wpvivid_schedule_add_remote_pic',$pic);
@@ -92,10 +92,10 @@ function wpvivid_schedule_settings()
                 </div>
                 <div class="postbox schedule-tab-block">
                     <div style="float:left; color: #ddd; margin-right: 10px;">
-                        + Add another schedule
+                        <?php _e('+ Add another schedule', 'wpvivid-backuprestore'); ?>
                     </div>
                     <span class="wpvivid-feature-pro">
-                        <a href="https://wpvivid.com/wpvivid-backup-pro-creating-schedules?utm_source=client_multi_schedule&utm_medium=inner_link&utm_campaign=access">Pro feature: learn more</a>
+                        <a href="https://wpvivid.com/wpvivid-backup-pro-creating-schedules?utm_source=client_multi_schedule&utm_medium=inner_link&utm_campaign=access"><?php _e('Pro feature: learn more', 'wpvivid-backuprestore'); ?></a>
                     </span>
                 </div>
             </div>
@@ -114,8 +114,8 @@ function wpvivid_schedule_notice($html)
     $offset=get_option('gmt_offset');
     $time = '00:00:00';
     $utime = strtotime($time) + $offset * 60 * 60;
-    $html='<p>1) Scheduled job will start at utc time: '.date('H:i:s', $utime).'</p>';
-    $html.='<p>2) Being subjected to mechanisms of PHP, a scheduled backup task for your site will be triggered only when the site receives at least a visit at any page.</p>';
+    $html='<p>1) '.__('Scheduled job will start at <strong>UTC</strong> time:', 'wpvivid-backuprestore').'&nbsp'.date('H:i:s', $utime).'</p>';
+    $html.='<p>2) '.__('Being subjected to mechanisms of PHP, a scheduled backup task for your site will be triggered only when the site receives at least a visit at any page.', 'wpvivid-backuprestore').'</p>';
     return $html;
 }
 
@@ -123,27 +123,27 @@ function wpvivid_schedule_backup_type($html)
 {
     $html='<label>';
     $html.='<input type="radio" option="schedule" name="backup_type" value="files+db"/>';
-    $html.='<span>Database + Files (WordPress Files)</span>';
+    $html.='<span>'.__('Database + Files (WordPress Files)', 'wpvivid-backuprestore').'</span>';
     $html.='</label><br>';
 
     $html.='<label>';
     $html.='<input type="radio" option="schedule" name="backup_type" value="files"/>';
-    $html.='<span>WordPress Files (Exclude Database)</span>';
+    $html.='<span>'.__('WordPress Files (Exclude Database)', 'wpvivid-backuprestore').'</span>';
     $html.='</label><br>';
 
     $html.='<label>';
     $html.='<input type="radio" option="schedule" name="backup_type" value="db"/>';
-    $html.='<span>Only Database</span>';
+    $html.='<span>'.__('Only Database', 'wpvivid-backuprestore').'</span>';
     $html.='</label><br>';
 
     $html.='<label>';
     $html.='<div style="float: left;">';
     $html.='<input type="radio" disabled />';
-    $html.='<span class="wpvivid-element-space-right" style="color: #ddd;">'.__('Custom').'</span>';
+    $html.='<span class="wpvivid-element-space-right" style="color: #ddd;">'.__('Custom', 'wpvivid-backuprestore').'</span>';
     $html.='</div>';
     $html.='<div style="float: left; height: 32px; line-height: 32px;">';
     $html.='<span class="wpvivid-feature-pro">';
-    $html.='<a href="https://wpvivid.com/wpvivid-backup-pro-customize-what-to-backup-for-schedule?utm_source=client_schedule_custom_backup&utm_medium=inner_link&utm_campaign=access" style="text-decoration: none;">Pro feature: learn more</a>';
+    $html.='<a href="https://wpvivid.com/wpvivid-backup-pro-customize-what-to-backup-for-schedule?utm_source=client_schedule_custom_backup&utm_medium=inner_link&utm_campaign=access" style="text-decoration: none;">'.__('Pro feature: learn more', 'wpvivid-backuprestore').'</a>';
     $html.='</span>';
     $html.='</div>';
     $html.='</label><br>';

@@ -112,11 +112,13 @@ function wpcf7_checkbox_form_tag_handler( $tag ) {
 		if ( $label_first ) { // put label first, input last
 			$item = sprintf(
 				'<span class="wpcf7-list-item-label">%1$s</span><input %2$s />',
-				esc_html( $label ), $item_atts );
+				esc_html( $label ), $item_atts
+			);
 		} else {
 			$item = sprintf(
 				'<input %2$s /><span class="wpcf7-list-item-label">%1$s</span>',
-				esc_html( $label ), $item_atts );
+				esc_html( $label ), $item_atts
+			);
 		}
 
 		if ( $use_label_element ) {
@@ -139,8 +141,7 @@ function wpcf7_checkbox_form_tag_handler( $tag ) {
 			$class .= ' last';
 
 			if ( $free_text ) {
-				$free_text_name = sprintf(
-					'_wpcf7_%1$s_free_text_%2$s', $tag->basetype, $tag->name );
+				$free_text_name = $tag->name . '_free_text';
 
 				$free_text_atts = array(
 					'name' => $free_text_name,
@@ -170,7 +171,8 @@ function wpcf7_checkbox_form_tag_handler( $tag ) {
 
 	$html = sprintf(
 		'<span class="wpcf7-form-control-wrap %1$s"><span %2$s>%3$s</span>%4$s</span>',
-		sanitize_html_class( $tag->name ), $atts, $html, $validation_error );
+		sanitize_html_class( $tag->name ), $atts, $html, $validation_error
+	);
 
 	return $html;
 }
@@ -195,58 +197,6 @@ function wpcf7_checkbox_validation_filter( $result, $tag ) {
 	}
 
 	return $result;
-}
-
-
-/* Adding free text field */
-
-add_filter( 'wpcf7_posted_data', 'wpcf7_checkbox_posted_data', 10, 1 );
-
-function wpcf7_checkbox_posted_data( $posted_data ) {
-	$tags = wpcf7_scan_form_tags(
-		array( 'type' => array( 'checkbox', 'checkbox*', 'radio' ) ) );
-
-	if ( empty( $tags ) ) {
-		return $posted_data;
-	}
-
-	foreach ( $tags as $tag ) {
-		if ( ! isset( $posted_data[$tag->name] ) ) {
-			continue;
-		}
-
-		$posted_items = (array) $posted_data[$tag->name];
-
-		if ( $tag->has_option( 'free_text' ) ) {
-			if ( WPCF7_USE_PIPE ) {
-				$values = $tag->pipes->collect_afters();
-			} else {
-				$values = $tag->values;
-			}
-
-			$last = array_pop( $values );
-			$last = html_entity_decode( $last, ENT_QUOTES, 'UTF-8' );
-
-			if ( in_array( $last, $posted_items ) ) {
-				$posted_items = array_diff( $posted_items, array( $last ) );
-
-				$free_text_name = sprintf(
-					'_wpcf7_%1$s_free_text_%2$s', $tag->basetype, $tag->name );
-
-				$free_text = $posted_data[$free_text_name];
-
-				if ( ! empty( $free_text ) ) {
-					$posted_items[] = trim( $last . ' ' . $free_text );
-				} else {
-					$posted_items[] = $last;
-				}
-			}
-		}
-
-		$posted_data[$tag->name] = $posted_items;
-	}
-
-	return $posted_data;
 }
 
 
@@ -277,7 +227,7 @@ function wpcf7_tag_generator_checkbox( $contact_form, $args = '' ) {
 		$description = __( "Generate a form-tag for a group of radio buttons. For more details, see %s.", 'contact-form-7' );
 	}
 
-	$desc_link = wpcf7_link( __( 'https://contactform7.com/checkboxes-radio-buttons-and-menus/', 'contact-form-7' ), __( 'Checkboxes, Radio Buttons and Menus', 'contact-form-7' ) );
+	$desc_link = wpcf7_link( __( 'https://contactform7.com/checkboxes-radio-buttons-and-menus/', 'contact-form-7' ), __( 'Checkboxes, radio buttons and menus', 'contact-form-7' ) );
 
 ?>
 <div class="control-box">

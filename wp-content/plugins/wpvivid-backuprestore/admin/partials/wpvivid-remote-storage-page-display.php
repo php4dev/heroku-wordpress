@@ -3,7 +3,7 @@
 function wpvivid_add_tab_storage_list()
 {
     ?>
-    <a href="#" id="wpvivid_tab_storage_list" class="nav-tab storage-nav-tab nav-tab-active" onclick="switchstorageTabs(event,'page-storage-list','page-storage-list')"><?php _e('Storages', 'wpvivid'); ?></a>
+    <a href="#" id="wpvivid_tab_storage_list" class="nav-tab storage-nav-tab nav-tab-active" onclick="switchstorageTabs(event,'page-storage-list','page-storage-list')"><?php _e('Storages', 'wpvivid-backuprestore'); ?></a>
     <?php
 }
 
@@ -11,7 +11,7 @@ function wpvivid_add_tab_storage_edit()
 {
     ?>
     <a href="#" id="wpvivid_tab_storage_edit" class="nav-tab storage-nav-tab delete" onclick="switchstorageTabs(event,'page-storage_edit','page-storage_edit')" style="display: none;">
-        <div id="wpvivid_tab_storage_edit_text" style="margin-right: 15px;"><?php _e('Storage Edit', 'wpvivid'); ?></div>
+        <div id="wpvivid_tab_storage_edit_text" style="margin-right: 15px;"><?php _e('Storage Edit', 'wpvivid-backuprestore'); ?></div>
         <div class="nav-tab-delete-img">
             <img src="<?php echo esc_url(plugins_url( 'images/delete-tab.png', __FILE__ )); ?>" style="vertical-align:middle; cursor:pointer;" onclick="wpvivid_close_tab(event, 'wpvivid_tab_storage_edit', 'storage', 'wpvivid_tab_storage_list');" />
         </div>
@@ -23,7 +23,7 @@ function wpvivid_add_page_storage_list()
 {
     ?>
     <div class="storage-tab-content wpvivid_tab_storage_list" id="page-storage-list">
-        <div style="margin-top:10px;"><p><strong><?php _e('Please choose one storage to save your backups (remote storage)', 'wpvivid'); ?></strong></p></div>
+        <div style="margin-top:10px;"><p><strong><?php _e('Please choose one storage to save your backups (remote storage)', 'wpvivid-backuprestore'); ?></strong></p></div>
         <div class="schedule-tab-block"></div>
         <div class="">
             <table class="widefat">
@@ -31,9 +31,9 @@ function wpvivid_add_page_storage_list()
                 <tr>
                     <th></th>
                     <th></th>
-                    <th><?php _e( 'Storage Provider', 'wpvivid' ); ?></th>
-                    <th class="row-title"><?php _e( 'Remote Storage Alias', 'wpvivid' ); ?></th>
-                    <th><?php _e( 'Actions', 'wpvivid' ); ?></th>
+                    <th><?php _e( 'Storage Provider', 'wpvivid-backuprestore' ); ?></th>
+                    <th class="row-title"><?php _e( 'Remote Storage Alias', 'wpvivid-backuprestore' ); ?></th>
+                    <th><?php _e( 'Actions', 'wpvivid-backuprestore' ); ?></th>
                 </tr>
                 </thead>
                 <tbody class="wpvivid-remote-storage-list" id="wpvivid_remote_storage_list">
@@ -45,7 +45,7 @@ function wpvivid_add_page_storage_list()
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th colspan="5" class="row-title"><input class="button-primary" id="wpvivid_set_default_remote_storage" type="submit" name="choose-remote-storage" value="<?php esc_attr_e( 'Save Changes', 'wpvivid' ); ?>" /></th>
+                    <th colspan="5" class="row-title"><input class="button-primary" id="wpvivid_set_default_remote_storage" type="submit" name="choose-remote-storage" value="<?php esc_attr_e( 'Save Changes', 'wpvivid-backuprestore' ); ?>" /></th>
                 </tr>
                 </tfoot>
             </table>
@@ -56,10 +56,6 @@ function wpvivid_add_page_storage_list()
             var storage_type = jQuery(".storage-providers-active").attr("remote_type");
             wpvivid_add_remote_storage(storage_type);
             wpvivid_settings_changed = false;
-        });
-
-        jQuery('input[option=edit-remote]').click(function(){
-            wpvivid_edit_remote_storage();
         });
 
         jQuery('#wpvivid_set_default_remote_storage').click(function(){
@@ -308,22 +304,27 @@ function wpvivid_add_page_storage_edit()
     <div class="storage-tab-content wpvivid_tab_storage_edit" id="page-storage_edit" style="display:none;">
         <div><?php do_action('wpvivid_edit_remote_page'); ?></div>
     </div>
+    <script>
+        jQuery('input[option=edit-remote]').click(function(){
+            wpvivid_edit_remote_storage();
+        });
+    </script>
     <?php
 }
 
 function wpvivid_storage_list($html)
 {
     $html='<h2 class="nav-tab-wrapper" style="padding-bottom:0!important;">';
-    $html.='<a href="#" id="wpvivid_tab_storage_list" class="nav-tab storage-nav-tab nav-tab-active" onclick="switchstorageTabs(event,\'page-storage-list\',\'page-storage-list\')">'. __('Storages', 'wpvivid').'</a>';
+    $html.='<a href="#" id="wpvivid_tab_storage_list" class="nav-tab storage-nav-tab nav-tab-active" onclick="switchstorageTabs(event,\'page-storage-list\',\'page-storage-list\')">'. __('Storages', 'wpvivid-backuprestore').'</a>';
     $html.='<a href="#" id="wpvivid_tab_storage_edit" class="nav-tab storage-nav-tab delete" onclick="switchstorageTabs(event,\'page-storage_edit\',\'page-storage_edit\')" style="display: none;">
-        <div id="wpvivid_tab_storage_edit_text" style="margin-right: 15px;">'.__('Storage Edit', 'wpvivid').'</div>
+        <div id="wpvivid_tab_storage_edit_text" style="margin-right: 15px;">'.__('Storage Edit', 'wpvivid-backuprestore').'</div>
         <div class="nav-tab-delete-img">
             <img src="'.esc_url(plugins_url( 'images/delete-tab.png', __FILE__ )).'" style="vertical-align:middle; cursor:pointer;" onclick="wpvivid_close_tab(event, \'wpvivid_tab_storage_edit\', \'storage\', \'wpvivid_tab_storage_list\');" />
         </div>
     </a>';
     $html.='</h2>';
     $html.='<div class="storage-tab-content wpvivid_tab_storage_list" id="page-storage-list">
-        <div style="margin-top:10px;"><p><strong>'.__('Please choose one storage to save your backups (remote storage)', 'wpvivid').'</strong></p></div>
+        <div style="margin-top:10px;"><p><strong>'.__('Please choose one storage to save your backups (remote storage)', 'wpvivid-backuprestore').'</strong></p></div>
         <div class="schedule-tab-block"></div>
         <div class="">
             <table class="widefat">
@@ -331,9 +332,9 @@ function wpvivid_storage_list($html)
                 <tr>
                     <th></th>
                     <th></th>
-                    <th>'. __( 'Storage Provider', 'wpvivid' ).'</th>
-                    <th class="row-title">'. __( 'Remote Storage Alias', 'wpvivid' ).'</th>
-                    <th>'. __( 'Actions', 'wpvivid' ).'</th>
+                    <th>'. __( 'Storage Provider', 'wpvivid-backuprestore' ).'</th>
+                    <th class="row-title">'. __( 'Remote Storage Alias', 'wpvivid-backuprestore' ).'</th>
+                    <th>'. __( 'Actions', 'wpvivid-backuprestore' ).'</th>
                 </tr>
                 </thead>
                 <tbody class="wpvivid-remote-storage-list" id="wpvivid_remote_storage_list">
@@ -341,7 +342,7 @@ function wpvivid_storage_list($html)
     $html_list='';
     $html.= apply_filters('wpvivid_add_remote_storage_list', $html_list);
     $html.='</tbody><tfoot><tr>
-            <th colspan="5" class="row-title"><input class="button-primary" id="wpvivid_set_default_remote_storage" type="submit" name="choose-remote-storage" value="'.esc_attr__( 'Save Changes', 'wpvivid' ).'" /></th>
+            <th colspan="5" class="row-title"><input class="button-primary" id="wpvivid_set_default_remote_storage" type="submit" name="choose-remote-storage" value="'.esc_attr__( 'Save Changes', 'wpvivid-backuprestore' ).'" /></th>
             </tr></tfoot></table></div></div>';
 
     $html .= '<script>

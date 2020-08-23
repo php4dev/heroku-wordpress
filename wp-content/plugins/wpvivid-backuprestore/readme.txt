@@ -1,36 +1,43 @@
-﻿=== Migrate & Backup WordPress - WPvivid Backup Plugin ===
+=== Migrate & Backup WordPress - WPvivid Backup Plugin ===
 Contributors: wpvivid
 Tags: move, clone, migrate, copy, backup, restore, auto backup, cloud backup
 Requires at least: 4.5
-Tested up to: 5.3.2
+Tested up to: 5.5
 Requires PHP: 5.3
-Stable tag: 0.9.32
+Stable tag: 0.9.44
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
-Migrate a copy of WP site to a new host (a new domain),schedule backups,send backups to leading remote storage. All in one backup&migration plugin
+Migrate a backup of WP site to a new host (or domain),schedule and send a backup to leading remote storage. All in one backup & migration plugin
 
 == Description ==
 WPvivid Backup Plugin is the only free all-in-one backup, restore and migration WordPress plugin.
 
-Migrate a copy of WP site to a new host (a new domain),schedule backups,send backups to leading remote storage. All in one backup&migration plugin.
+Migrate a copy of WP site to a new host (a new domain), schedule backups, send backups to leading remote storage. All in one backup & migration plugin.
 
 == WPvivid Backup for MainWP ==
-[WPvivid Backup for MainWP](https://wordpress.org/plugins/wpvivid-backup-mainwp/) is now available to download.
-This extension allows you to set up and control WPvivid Backup Plugin for all child sites directly from your MainWP dashboard.
+[WPvivid Backup for MainWP](https://wpvivid.com/wpvivid-backup-for-mainwp) is now available to download.
+This extension allows you to set up and control WPvivid Backup Free and Pro for all child sites directly from your MainWP dashboard.
+
+Click to download [WPvivid Backup for MainWP](https://wordpress.org/plugins/wpvivid-backup-mainwp/)
 
 == WPvivid Backup Pro is Now Available ==
 * Customize everything to backup
 * Create staging sites and push staging to live site
-* Incremental backups(coming soon)
-* Rollback WordPress core, themes, and plugins
+* Incremental backups
+* Auto backup WordPress core, themes, and plugins
 * WordPress Multisite backup
 * Advanced remote storage
 * Advanced backup schedules
-* Restore from remote storage
+* Restore backups from remote storage
 * Migrate everything via remote storage
 * Edit user roles capabilities
-[Click to purchase WPvivid Backup Pro](https://pro.wpvivid.com/pricing)
+
+See a review video on WPvivid Backup Pro:
+
+https://www.youtube.com/watch?v=D1aYbayFpfU&t=7s
+
+[Click to Start A 14-Day Free Trial of WPvivid Backup Pro](https://wpvivid.com/pricing)
 
 == Supported Page Builders ==
 WPvivid Backup Plugin has been tested by our users to migrate well on websites built with:
@@ -41,7 +48,7 @@ WPvivid Backup Plugin has been tested by our users to migrate well on websites b
 == Core Features ==
 
 = 1. Easy Site Move or Migration (New Feature) =
-Migrate your WordPress site to a new domain with a single click. The plugin supports site migration from dev environment to a new server, from dev environment to a new domain or from a live server to another.
+Migrate your WordPress site to a new domain with a single click. WPvivid Backup Plugin supports site migration from dev environment to a new server, from dev environment to a new domain or from a live server to another.
 
 You can also migrate a site to a subdirectory, from a.com to b.com, from a.com to a.com/directory and from a.com to b.com/directory.
 
@@ -50,16 +57,17 @@ You are free to choose what to migrate: the entire site, files or just the datab
 Upload a backup to restore or migrate.
 You can migrate or restore backups created with 0.9.14 or a higher version.
 = 3. Automatic Backup =
-Setup and forget, the plugin will do the rest automatically backing up your website.
+Setup and forget, WPvivid Backup Plugin will do the rest automatically backing up your website.
 = 4. One-Click Restore =
 Restore your WordPress site from a backup with a single click.
 
 == Cloud Storage Supported ==
 
-Dropbox, Google Drive, Microsoft OneDrive, Amazon S3, DigitalOcean Spaces, SFTP, FTP and more are coming soon.
+Dropbox, Google Drive, Microsoft OneDrive, Amazon S3, DigitalOcean Spaces, SFTP, FTP.
+The pro version also supports Wasabi, pCloud and more are coming soon.
 
 == Site Migration Process ==
-1. Install the WPvivid Backup plugin on both the destination site and the sending site.
+1. Install WPvivid Backup plugin on both the destination site and the sending site.
 2. Generate a site key on the destination site with one click.
 3. Paste the key in the sending site and save it.
 4. Migrate the site with one-click.
@@ -68,10 +76,10 @@ Dropbox, Google Drive, Microsoft OneDrive, Amazon S3, DigitalOcean Spaces, SFTP,
 * One-Click Site Move or Migration
 * Upload Backups to Restore or Migrate
 * Schedule Automated Backups
-* One-Click Restore
-* Manual Backup
-* Filter Large Files
-* Large Database Support
+* Restore A Backup with One Click
+* Create A Manual Backup
+* Filter Large Files from A Backup
+* Large Database Backup Support
 * Optimized for Web Hosting/Shared Web Hosting
 * Set Backup Retention
 * Backup Splitting
@@ -98,29 +106,29 @@ Dropbox, Google Drive, Microsoft OneDrive, Amazon S3, DigitalOcean Spaces, SFTP,
 
 == Support ==
 We offer free support in 3 channels:
-= Forum Support: = Post questions and get faster answers from the plugin [support forum](https://wordpress.org/support/plugin/wpvivid-backuprestore/) on WordPress.org.
+= Forum Support: = Post questions and get faster answers from [WPvivid Backup Plugin support forum](https://wordpress.org/support/plugin/wpvivid-backuprestore/) on WordPress.org.
 = Email Support: = Leave us a message at our [contact page](https://wpvivid.com/contact-us) and we will back to you soon.
 = FAQs: = Check out our FAQs section on the page, you can easily find an answer for the most part.
 
 == Installation and Uninstallation ==
 
-= Installation =
+= Install WPvivid Backup Plugin =
 1.Go to your sites admin dashboard.
 2.Navigate to Plugin Menu and simply search for WPvivid.
 3.Click Install Now then click Activate Plugin.
 
-= Uninstallation =
+= Uninstall WPvivid Backup Plugin =
 1.Click Deactivate from the Plugin Menu.
 2.Click Delete.
 
 == Privacy Policy and GDPR Compliance ==
 WPvivid Backup plugin is created and operated with full respect and protection of users personal information, and is in full compliance with General Data Protection Regulation(GDPR). Check out the following content to know the details:
 = What personal data can WPvivid Backup plugin access and how is the data processed? =
-The free version of WPvivid Backup plugin is only available to download from WordPress plugin repository. Thus, all the data related to the updates of the versions as well as the support forum for the plugin on WordPress.org is held by WordPress.org.
+The free version of WPvivid Backup plugin is only available to download from WordPress plugin repository. Thus, all the data related to the updates of the versions as well as the support forum for WPvivid Backup Plugin on WordPress.org is held by WordPress.org.
 In addition, the implementations of all migrations, backups and restores of your site happen completely on your website server, there are no data come across any of our servers in the whole process.
 The only personal data currently we can access are the contact data when you contact us by email, which may include your name, email address and other contact details. The data will only be used for the purposes of handling and resolving your enquiry.
 = How does WPvivid Backup plugin help users create a GDPR compliant backup? =
-In order to help users create a GDPR compliant backup, the plugin comes with multiple features including selection for backup content, backup and restore logs, and email report. Moreover, as the plugin itself does not collect any personal data, you do not need to sign a Data Processing Agreement (DPA) with us.
+In order to help users create a GDPR compliant backup, WPvivid Backup Plugin comes with multiple features including selection for backup content, backup and restore logs, and email report. Moreover, as WPvivid Backup Plugin itself does not collect any personal data, you do not need to sign a Data Processing Agreement (DPA) with us.
 However, if you migrate your backups to cloud storage with Migrate & Backup WordPress - WPvivid Backup Plugin, the personal data is moved to that storage provider. You'll need to sign a Data Processing Agreement with that provider.
 Check out the [privacy policy](https://wpvivid.com/privacy-policy) involving the use of Google Drive, Dropbox and Microsoft OneDrive.
 
@@ -137,22 +145,22 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 6. Upload a backup to restore or migrate
 
 == Frequently Asked Questions ==
-= What does WPvivid Backup plugin do? =
-As its name says, it is an all in one free WP backup plugin that enables you to easily migrate a WordPress site to a new domain, to perform manual and scheduled backups of your WordPress site, to back up to cloud storage and restore backups directly from your sites admin dashboard.
-= Does the plugin also migrate my site? Is it a free feature? =
+= What does WPvivid Backup Plugin do? =
+As the name says, WPvivid Backup Plugin is an all in one free WP backup plugin that enables you to easily migrate a WordPress site to a new domain, to perform manual and scheduled backups of your WordPress site, to back up to cloud storage and restore backups directly from your sites admin dashboard.
+= Does WPvivid Backup Plugin also migrate my site? Is it a free feature? =
 Yes, we have added website migration feature since version 0.9.14.
 Yes, it's a completely free feature.
-= How many cloud options does it support? Are they free to access? =
+= How many cloud options does WPvivid Backup Plugin support? Are they free to access? =
 Out of the box we support Dropbox, Google Drive, Amazon S3, Microsoft OneDrive, DigitalOcean Spaces, we also support FTP, SFTP methods which you can use on any other remote storage provider supporting these methods. We are working hard to add more soon.
 
 Yes, all the cloud access is free.
-= Is the restore feature free? =
+= Can I use WPvivid Backup Plugin to restore my site? =
 Yes, absolutely. With no limits, no strings attached.
 = Will there be updates, will they be free and how can I update to the latest version? =
 Yes, we are dedicated to creating a secure and robust solution and will regularly update the plugin. These will be available totally free and can be easily applied through your WP admin area once they are available.
 = Do you provide support for the free version? Where? =
 Yes, absolutely. Whenever you need it, help can be found from the plugin [support forum](https://wordpress.org/support/plugin/wpvivid-backuprestore/) on WordPress.org, by [email](https://wpvivid.com/contact-us), on [Twitter](https://twitter.com/WPvividcom).
-= Will the plugin work on my host? =
+= Will WPvivid Backup Plugin work on my host? =
 If your website is running on WordPress then yes it will.
 
 The plugin has been extensively tested on the shared and dedicated hosting plans from the leading website hosting providers like Godaddy, Siteground, and many others.
@@ -160,15 +168,70 @@ The plugin has been extensively tested on the shared and dedicated hosting plans
 Yes, we do. Here are the guides for [migrating your site to a new host](https://wpvivid.com/get-started-transfer-site.html), [creating a manual backup](https://wpvivid.com/get-started-create-a-manual-backup.html), [restoring your site from a backup](https://wpvivid.com/get-started-restore-site.html), and more on [our docs page](https://wpvivid.com/documents).
 
 == Contact us ==
-Feel free to let us know how we can help using the [support forum](https://wordpress.org/support/plugin/wpvivid-backuprestore) for the plugin on WordPress.org or our [contact form](https://wpvivid.com/contact-us). You can also reach us with a direct message on [Twitter](https://twitter.com/WPvividcom).
+Feel free to let us know how we can help using the [support forum](https://wordpress.org/support/plugin/wpvivid-backuprestore) for WPvivid Backup Plugin on WordPress.org or our [contact form](https://wpvivid.com/contact-us). You can also reach us with a direct message on [Twitter](https://twitter.com/WPvividcom).
 
 == Languages and Translators ==
 Thank you for translating WPvivid Backup Plugin to your languages!
 
 * [Andrew Galas](https://profiles.wordpress.org/andrewgalas) (Polish)
-* [Shohei OKADA](https://ja.gravatar.com/silversword0630)(Japanese)
+* [Shohei OKADA](https://ja.gravatar.com/silversword0630) (Japanese)
+* Francesco Tosi (Italian)
+* Valentin Lyong (Bulgarian)
 
 == Changelog ==
+= 0.9.44 =
+- Successfully tested with WordPress 5.5.
+- Fixed: Refreshing Google Drive token failed in some cases.
+= 0.9.43 =
+- Optimized migration process.
+- Fixed some bugs in the plugin code.
+- Optimized the plugin code.
+= 0.9.42 =
+- Added Bulgarian language translation.
+- Fixed a fatal error occurred during website transfer in some cases.
+- Fixed some bugs in the plugin code.
+- Optimized the plugin code.
+= 0.9.41 =
+- Added an option in the plugin settings to delete the WPvivid directory when deleting the plugin.
+- Added Italian language translation.
+- Optimized the plugin UI.
+- Fixed some bugs in the plugin code.
+= 0.9.40 =
+- Fixed: Backup schedules failed in some cases.
+- Excluded the session_mm_cgi-fcgi file when creating a backup.
+- Fixed some bugs in the plugin code.
+= 0.9.39 =
+- Excluded the /wphb-cache directory when creating a backup.
+- Fixed: Root directory is now forbidden to set to '/' when connecting to a FTP server.
+- Fixed the pagination issue in the process of exporting pages.
+- Fixed some bugs in the plugin code.
+= 0.9.38 =
+- Successfully tested with WordPress 5.4.
+- Added a new language template for translators.
+= 0.9.37 =
+- Changed the time in the name of the backup zip to the sites local time.
+- Changed the time showed in the backup list and log list to the sites local time.
+- Fixed some bugs in the plugin code.
+= 0.9.36 =
+- Added an option to overwrite existing pages in an import.
+- Fixed: Could not retrieve posts list on a multilingual site in an export.
+- Fixed some bugs in the plugin code and optimized the plugin code.
+= 0.9.35 =
+- Fixed a bug occurred when connecting with remote storage in some cases.
+- Fixed some bugs in the plugin code.
+- Optimized the plugin UI.
+= 0.9.34 =
+- Fixed the PHP 7.4 compatibility issue.
+- Fixed: Backing up upload directory failed in some cases.
+- Fixed: Backup filenames did not match the downloads part numbers.
+- Updated the API for WPvivid Backup for MainWP extension.
+- Fixed some bugs in the plugin code.
+= 0.9.33 =
+- Fixed:Replacing domain failed after migrating on servers using innodb database engine.
+- Fixed: Compressed packages were lost in some cases.
+- Added a column to the backup list to display backup content type.
+- Temporarily removed translation files.
+- Optimized the plugin code.
 = 0.9.32 =
 - Updated the plugin code for WPvivid Backup for MainWP extension.
 - Fixed some bugs in the plugin code.

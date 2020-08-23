@@ -102,18 +102,17 @@ class WPvivid_mail_report
         $content='';
 
         $backup_options=$task['options']['backup_options'];
-
         if($backup_options!==false)
         {
-            if(isset($backup_options['backup']['backup_type'][WPVIVID_BACKUP_TYPE_DB])&&isset($backup_options['backup']['backup_type'][WPVIVID_BACKUP_TYPE_THEMES]))
+            if(isset($backup_options['backup'][WPVIVID_BACKUP_TYPE_DB])&&isset($backup_options['backup'][WPVIVID_BACKUP_TYPE_THEMES]))
             {
                 $content.='Entire Website';
             }
-            else if(isset($backup_options['backup']['backup_type'][WPVIVID_BACKUP_TYPE_DB]))
+            else if(isset($backup_options['backup'][WPVIVID_BACKUP_TYPE_DB]))
             {
                 $content.='Database';
             }
-            else if(isset($backup_options['backup']['backup_type'][WPVIVID_BACKUP_TYPE_THEMES]))
+            else if(isset($backup_options['backup'][WPVIVID_BACKUP_TYPE_THEMES]))
             {
                 $content.='All Files (Exclude Database)';
             }
@@ -500,10 +499,14 @@ class WPvivid_mail_report
         return $body;
     }
 
-    public static function wpvivid_send_debug_info($user_email){
+    public static function wpvivid_send_debug_info($user_email,$server_type,$host_provider,$comment)
+    {
         $send_to = 'support@wpvivid.com';
         $subject = 'Debug Information';
-        $body = 'User\'s email is '.$user_email;
+        $body = '<div>User\'s email: '.$user_email.'.</div>';
+        $body .= '<div>Server type: '.$server_type.'.</div>';
+        $body .= '<div>Host provider: '.$host_provider.'.</div>';
+        $body .= '<div>Comment: '.$comment.'.</div>';
         $headers = array('Content-Type: text/html; charset=UTF-8');
 
         $files=WPvivid_error_log::get_error_log();
@@ -524,7 +527,7 @@ class WPvivid_mail_report
         {
             if(!$archive->add($files,PCLZIP_OPT_REMOVE_ALL_PATH))
             {
-                echo __($archive->errorInfo(true).' <a href="'.admin_url().'admin.php?page=WPvivid">retry</a>.');
+                echo $archive->errorInfo(true).' <a href="'.admin_url().'admin.php?page=WPvivid">retry</a>.';
                 exit;
             }
         }
@@ -541,7 +544,7 @@ class WPvivid_mail_report
         file_put_contents($server_file_path,$server_info);
         if(!$archive->add($server_file_path,PCLZIP_OPT_REMOVE_ALL_PATH))
         {
-            echo __($archive->errorInfo(true).' <a href="'.admin_url().'admin.php?page=WPvivid">retry</a>.');
+            echo $archive->errorInfo(true).' <a href="'.admin_url().'admin.php?page=WPvivid">retry</a>.';
             exit;
         }
         @unlink( $server_file_path);
@@ -551,7 +554,7 @@ class WPvivid_mail_report
         if(wp_mail( $send_to, $subject, $body,$headers,$attachments)===false)
         {
             $ret['result']='failed';
-            $ret['error']=__('Unable to send email. Please check the configuration of email server.', 'wpvivid');
+            $ret['error']=__('Unable to send email. Please check the configuration of email server.', 'wpvivid-backuprestore');
         }
         else
         {

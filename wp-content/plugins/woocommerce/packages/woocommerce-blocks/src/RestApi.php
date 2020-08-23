@@ -9,29 +9,35 @@ namespace Automattic\WooCommerce\Blocks;
 
 defined( 'ABSPATH' ) || exit;
 
+use Automattic\WooCommerce\Blocks\StoreApi\RoutesController;
+use Automattic\WooCommerce\Blocks\StoreApi\SchemaController;
+
 /**
  * RestApi class.
  */
 class RestApi {
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		$this->init();
+	}
 
 	/**
 	 * Initialize class features.
 	 */
-	public static function init() {
-		add_action( 'rest_api_init', array( __CLASS__, 'register_rest_routes' ), 10 );
-		add_filter( 'rest_authentication_errors', array( __CLASS__, 'maybe_init_cart_session' ), 1 );
+	protected function init() {
+		add_action( 'rest_api_init', array( $this, 'register_rest_routes' ), 10 );
+		add_filter( 'rest_authentication_errors', array( $this, 'store_api_authentication' ) );
 	}
 
 	/**
 	 * Register REST API routes.
 	 */
-	public static function register_rest_routes() {
-		$controllers = self::get_controllers();
-
-		foreach ( $controllers as $name => $class ) {
-			$instance = new $class();
-			$instance->register_routes();
-		}
+	public function register_rest_routes() {
+		$schemas = new SchemaController();
+		$routes  = new RoutesController( $schemas );
+		$routes->register_routes();
 	}
 
 	/**
@@ -40,7 +46,7 @@ class RestApi {
 	 * @param string $namespace Namespace to retrieve.
 	 * @return array|null
 	 */
-	public static function get_routes_from_namespace( $namespace ) {
+	public function get_routes_from_namespace( $namespace ) {
 		$rest_server     = rest_get_server();
 		$namespace_index = $rest_server->get_namespace_index(
 			[
@@ -55,49 +61,32 @@ class RestApi {
 	}
 
 	/**
-	 * If we're making a cart request, we may need to load some additonal classes from WC Core so we're ready to deal with requests.
+	 * The Store API does not require authentication.
 	 *
-	 * Note: We load the session here early so guest nonces are in place.
-	 *
-	 * @todo check compat < WC 3.6. Make specific to cart endpoint.
-	 * @param mixed $return Value being filtered.
-	 * @return mixed
+	 * @param \WP_Error|mixed $result Error from another authentication handler, null if we should handle it, or another value if not.
+	 * @return \WP_Error|null|bool
 	 */
-	public static function maybe_init_cart_session( $return ) {
-		$wc_instance = wc();
-		// if WooCommerce instance isn't available or already have an
-		// authentication error, just return.
-		if ( ! method_exists( $wc_instance, 'initialize_session' ) || \is_wp_error( $return ) ) {
-			return $return;
+	public function store_api_authentication( $result ) {
+		// Pass through errors from other authentication methods used before this one.
+		if ( ! empty( $result ) || ! self::is_request_to_store_api() ) {
+			return $result;
 		}
-		$wc_instance->frontend_includes();
-		$wc_instance->initialize_session();
-		$wc_instance->initialize_cart();
-		$wc_instance->cart->get_cart();
-
-		return $return;
+		return true;
 	}
 
 	/**
-	 * Return a list of controller classes for this REST API namespace.
+	 * Check if is request to the Store API.
 	 *
-	 * @return array
+	 * @return bool
 	 */
-	protected static function get_controllers() {
-		return [
-			'product-attributes'            => __NAMESPACE__ . '\RestApi\Controllers\ProductAttributes',
-			'product-attribute-terms'       => __NAMESPACE__ . '\RestApi\Controllers\ProductAttributeTerms',
-			'product-categories'            => __NAMESPACE__ . '\RestApi\Controllers\ProductCategories',
-			'product-tags'                  => __NAMESPACE__ . '\RestApi\Controllers\ProductTags',
-			'products'                      => __NAMESPACE__ . '\RestApi\Controllers\Products',
-			'variations'                    => __NAMESPACE__ . '\RestApi\Controllers\Variations',
-			'product-reviews'               => __NAMESPACE__ . '\RestApi\Controllers\ProductReviews',
-			'store-cart'                    => __NAMESPACE__ . '\RestApi\StoreApi\Controllers\Cart',
-			'store-cart-items'              => __NAMESPACE__ . '\RestApi\StoreApi\Controllers\CartItems',
-			'store-products'                => __NAMESPACE__ . '\RestApi\StoreApi\Controllers\Products',
-			'store-product-collection-data' => __NAMESPACE__ . '\RestApi\StoreApi\Controllers\ProductCollectionData',
-			'store-product-attributes'      => __NAMESPACE__ . '\RestApi\StoreApi\Controllers\ProductAttributes',
-			'store-product-attribute-terms' => __NAMESPACE__ . '\RestApi\StoreApi\Controllers\ProductAttributeTerms',
-		];
+	protected function is_request_to_store_api() {
+		if ( empty( $_SERVER['REQUEST_URI'] ) ) {
+			return false;
+		}
+
+		$rest_prefix = trailingslashit( rest_get_url_prefix() );
+		$request_uri = esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) );
+
+		return false !== strpos( $request_uri, $rest_prefix . 'wc/store' );
 	}
 }

@@ -139,10 +139,11 @@ class WPvivid_downloader
         {
             $progress=0;
             $message=$ret['error'];
-            if($wpvivid_plugin->wpvivid_download_log){
+            if($wpvivid_plugin->wpvivid_download_log)
+            {
                 $wpvivid_plugin->wpvivid_download_log->WriteLog('Download failed, ' . $message ,'error');
-                WPvivid_error_log::create_error_log($wpvivid_plugin->wpvivid_download_log->log_file);
                 $wpvivid_plugin->wpvivid_download_log->CloseFile();
+                WPvivid_error_log::create_error_log($wpvivid_plugin->wpvivid_download_log->log_file);
             }
             else {
                 $id = uniqid('wpvivid-');
@@ -150,8 +151,8 @@ class WPvivid_downloader
                 $log = new WPvivid_Log();
                 $log->CreateLogFile($log_file_name, 'no_folder', 'download');
                 $log->WriteLog($message, 'notice');
-                WPvivid_error_log::create_error_log($log->log_file);
                 $log->CloseFile();
+                WPvivid_error_log::create_error_log($log->log_file);
             }
             WPvivid_taskmanager::update_download_task_v2($task,$progress,'error',$message);
             return $ret;

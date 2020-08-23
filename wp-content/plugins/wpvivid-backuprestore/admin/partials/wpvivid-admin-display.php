@@ -46,7 +46,7 @@ foreach ($page_array as $page_name){
     <h1><?php
         $plugin_display_name = 'WPvivid Backup Plugin';
         $plugin_display_name = apply_filters('wpvivid_display_pro_name', $plugin_display_name);
-        _e($plugin_display_name);
+        echo __('WPvivid Backup Plugin', 'wpvivid-backuprestore');
         ?></h1>
     <div id="wpvivid_backup_notice">
         <?php
@@ -60,7 +60,7 @@ foreach ($page_array as $page_name){
                     $default_remote_storage=$value;
                 }
                 if($default_remote_storage == ''){
-                    _e('<div class="notice notice-warning is-dismissible"><p>Warning: There is no default remote storage available for the scheduled backups, please set up it first.</p></div>');
+                    echo '<div class="notice notice-warning is-dismissible"><p>'.__('Warning: There is no default remote storage available for the scheduled backups, please set up it first.', 'wpvivid-backuprestore').'</p></div>';
                 }
             }
         }

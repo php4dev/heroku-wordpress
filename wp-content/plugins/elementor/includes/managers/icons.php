@@ -92,7 +92,7 @@ class Icons_Manager {
 				'prefix' => 'fa-',
 				'displayPrefix' => 'far',
 				'labelIcon' => 'fab fa-font-awesome-alt',
-				'ver' => '5.9.0',
+				'ver' => '5.12.0',
 				'fetchJson' => self::get_fa_asset_url( 'regular', 'js', false ),
 				'native' => true,
 			],
@@ -104,7 +104,7 @@ class Icons_Manager {
 				'prefix' => 'fa-',
 				'displayPrefix' => 'fas',
 				'labelIcon' => 'fab fa-font-awesome',
-				'ver' => '5.9.0',
+				'ver' => '5.12.0',
 				'fetchJson' => self::get_fa_asset_url( 'solid', 'js', false ),
 				'native' => true,
 			],
@@ -116,7 +116,7 @@ class Icons_Manager {
 				'prefix' => 'fa-',
 				'displayPrefix' => 'fab',
 				'labelIcon' => 'fab fa-font-awesome-flag',
-				'ver' => '5.9.0',
+				'ver' => '5.12.0',
 				'fetchJson' => self::get_fa_asset_url( 'brands', 'js', false ),
 				'native' => true,
 			],
@@ -142,12 +142,15 @@ class Icons_Manager {
 			[],
 			ELEMENTOR_VERSION
 		);
-		wp_enqueue_style(
-			'font-awesome-5-all',
-			self::get_fa_asset_url( 'all' ),
-			[],
-			ELEMENTOR_VERSION
-		);
+		// Make sure that the CSS in the 'all' file does not override FA Pro's CSS
+		if ( ! wp_script_is( 'font-awesome-pro' ) ) {
+			wp_enqueue_style(
+				'font-awesome-5-all',
+				self::get_fa_asset_url( 'all' ),
+				[],
+				ELEMENTOR_VERSION
+			);
+		}
 		wp_enqueue_style(
 			'font-awesome-4-shim',
 			self::get_fa_asset_url( 'v4-shims' ),
@@ -351,12 +354,15 @@ class Icons_Manager {
 			'callback' => function() {
 				echo '<h2>' . esc_html__( 'Font Awesome Upgrade', 'elementor' ) . '</h2>';
 				echo '<p>' .
-				esc_html__( 'Access 1,500+ amazing Font Awesome 5 icons and enjoy faster performance and design flexibility.', 'elementor' ) . '<br>' .
-				esc_html__( 'By upgrading, whenever you edit a page containing a Font Awesome 4 icon, Elementor will convert it to the new Font Awesome 5 icon.', 'elementor' ) .
+				__( 'Access 1,500+ amazing Font Awesome 5 icons and enjoy faster performance and design flexibility.', 'elementor' ) . '<br>' .
+				__( 'By upgrading, whenever you edit a page containing a Font Awesome 4 icon, Elementor will convert it to the new Font Awesome 5 icon.', 'elementor' ) .
 				'</p><p><strong>' .
-				esc_html__( 'Please note that the upgrade process may cause some of the previously used Font Awesome 4 icons to look a bit different due to minor design changes made by Font Awesome.', 'elementor' ) .
+				__( 'Please note that the upgrade process may cause some of the previously used Font Awesome 4 icons to look a bit different due to minor design changes made by Font Awesome.', 'elementor' ) .
 				'</strong></p><p>' .
-				esc_html__( 'This action is not reversible and cannot be undone by rolling back to previous versions.', 'elementor' ) .
+				__( 'The upgrade process includes a database update', 'elementor' ) . ' - ' .
+				__( 'We highly recommend backing up your database before performing this upgrade.', 'elementor' ) .
+				'</p>' .
+				__( 'This action is not reversible and cannot be undone by rolling back to previous versions.', 'elementor' ) .
 				'</p>';
 			},
 			'fields' => [
@@ -417,12 +423,20 @@ class Icons_Manager {
 		return $settings;
 	}
 
-	public function register_ajax_actions( Ajax $ajax ) {
-		$ajax->register_ajax_action( 'enable_svg_uploads', [ $this, 'ajax_enable_svg_uploads' ] );
+	/**
+	 * @since 3.0.0
+	 * @deprecated 3.0.0
+	 */
+	public function register_ajax_actions() {
+		_deprecated_function( __METHOD__, '3.0.0' );
 	}
 
+	/**
+	 * @since 3.0.0.
+	 * @deprecated 3.0.0
+	 */
 	public function ajax_enable_svg_uploads() {
-		update_option( 'elementor_allow_svg', 1 );
+		_deprecated_function( __METHOD__, '3.0.0' );
 	}
 
 	/**
@@ -439,9 +453,6 @@ class Icons_Manager {
 		add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'enqueue_fontawesome_css' ] );
 
 		add_action( 'elementor/frontend/after_register_styles', [ $this, 'register_styles' ] );
-
-		// Ajax.
-		add_action( 'elementor/ajax/register_actions', [ $this, 'register_ajax_actions' ] );
 
 		if ( ! self::is_migration_allowed() ) {
 			add_filter( 'elementor/editor/localize_settings', [ $this, 'add_update_needed_flag' ] );

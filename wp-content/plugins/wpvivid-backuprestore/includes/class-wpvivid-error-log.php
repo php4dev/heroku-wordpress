@@ -21,14 +21,27 @@ class WPvivid_error_log
                 @fclose($tempfile);
             }
         }
-        @copy($log_file_name,$dir.DIRECTORY_SEPARATOR.'error'.DIRECTORY_SEPARATOR.$file);
-        self::delete_oldest_error_log();
+
+        if(!file_exists($log_file_name))
+        {
+            return ;
+        }
+
+        if(file_exists($dir.DIRECTORY_SEPARATOR.'error'.DIRECTORY_SEPARATOR.$file))
+        {
+            @unlink($dir.DIRECTORY_SEPARATOR.'error'.DIRECTORY_SEPARATOR.$file);
+        }
+
+        @rename($log_file_name,$dir.DIRECTORY_SEPARATOR.'error'.DIRECTORY_SEPARATOR.$file);
+
+        //self::delete_oldest_error_log();
     }
 
     public static function create_restore_error_log($log_file_name)
     {
         $dir=dirname($log_file_name);
-        if(!is_dir($dir.DIRECTORY_SEPARATOR.'wpvivid_log'.DIRECTORY_SEPARATOR.'error')){
+        if(!is_dir($dir.DIRECTORY_SEPARATOR.'wpvivid_log'.DIRECTORY_SEPARATOR.'error'))
+        {
             @mkdir($dir.DIRECTORY_SEPARATOR.'wpvivid_log'.DIRECTORY_SEPARATOR.'error',0777,true);
             @fopen($dir.DIRECTORY_SEPARATOR.'wpvivid_log'.DIRECTORY_SEPARATOR.'error'.'/index.html', 'x');
             $tempfile=@fopen($dir.DIRECTORY_SEPARATOR.'wpvivid_log'.DIRECTORY_SEPARATOR.'error'.'/.htaccess', 'x');
@@ -41,8 +54,13 @@ class WPvivid_error_log
         }
         $id = uniqid('wpvivid-');
         $file=$id.'_restore_log.txt';
+        if(file_exists($dir.DIRECTORY_SEPARATOR.'error'.DIRECTORY_SEPARATOR.$file))
+        {
+            @unlink($dir.DIRECTORY_SEPARATOR.'error'.DIRECTORY_SEPARATOR.$file);
+        }
+
         @copy($log_file_name,$dir.DIRECTORY_SEPARATOR.'wpvivid_log'.DIRECTORY_SEPARATOR.'error'.DIRECTORY_SEPARATOR.$file);
-        self::delete_oldest_error_log();
+        //self::delete_oldest_error_log();
     }
 
     public static function delete_oldest_error_log()

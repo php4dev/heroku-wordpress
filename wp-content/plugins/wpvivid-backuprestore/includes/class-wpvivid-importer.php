@@ -83,11 +83,11 @@ class WPvivid_Export_List extends WP_List_Table
     {
         $posts_columns = array();
 
-        $posts_columns['file_name'] = __( 'File Name', 'column name' );
-        $posts_columns['export_type'] = __( 'Post Types' );
-        $posts_columns['posts_count'] = __( 'Count' );
-        $posts_columns['media_size'] = __( 'Media Files Size' );
-        $posts_columns['import'] = __( 'Action' );
+        $posts_columns['file_name'] = __( 'File Name', 'wpvivid-backuprestore' );
+        $posts_columns['export_type'] = __( 'Post Types', 'wpvivid-backuprestore' );
+        $posts_columns['posts_count'] = __( 'Count', 'wpvivid-backuprestore' );
+        $posts_columns['media_size'] = __( 'Media Files Size', 'wpvivid-backuprestore' );
+        $posts_columns['import'] = __( 'Action', 'wpvivid-backuprestore' );
 
         return $posts_columns;
     }
@@ -154,7 +154,7 @@ class WPvivid_Export_List extends WP_List_Table
                         '.$item['file_name'].'
                     </div>
                      <div style="padding-bottom: 5px;">
-                        <div class="backuptime">Data Modified: ' . __(date('M d, Y H:i', $item['time']), 'wpvivid') . '</div>              
+                        <div class="backuptime">Data Modified: ' . __(date('M d, Y H:i', $item['time']), 'wpvivid-backuprestore') . '</div>              
                     </div>
                 </td>';
     }
@@ -191,7 +191,7 @@ class WPvivid_Export_List extends WP_List_Table
     {
         echo '<td style="min-width:100px;">
                    <div class="export-list-import" style="cursor:pointer;padding:10px 0 10px 0;">
-                        <img src="' . esc_url(WPVIVID_PLUGIN_URL . '/admin/partials/images/Restore.png') . '" style="vertical-align:middle;" /><span>' . __('Import', 'wpvivid') . '</span>
+                        <img src="' . esc_url(WPVIVID_PLUGIN_URL . '/admin/partials/images/Restore.png') . '" style="vertical-align:middle;" /><span>' . __('Import', 'wpvivid-backuprestore') . '</span>
                    </div>                
                </td>';
     }
@@ -667,6 +667,15 @@ class WPvivid_media_importer
             $this->default_user=get_current_user_id();
         }
 
+        if(isset($options['update_exist']))
+        {
+            $update_exist=$options['update_exist'];
+        }
+        else
+        {
+            $update_exist=false;
+        }
+
         $ret=$this->import_start( $file );
 
         if($ret['result']=='failed')
@@ -697,7 +706,7 @@ class WPvivid_media_importer
         {
             return $ret;
         }
-        $ret=$this->process_posts_ex();
+        $ret=$this->process_posts_ex($update_exist);
         if($ret['result']=='failed')
         {
             return $ret;
@@ -987,7 +996,7 @@ class WPvivid_media_importer
         return $ret;
     }
 
-    private function process_posts_ex()
+    private function process_posts_ex($update_exist=false)
     {
         $this->import_log->wpvivid_write_import_log('Start importing posts.', 'notice');
         $ret['result']='success';
@@ -1005,6 +1014,82 @@ class WPvivid_media_importer
                 $this->import_log->wpvivid_write_import_log('The post already exists.', 'notice');
                 $comment_post_ID=$post_id = $post_exists;
                 $this->processed_posts[ intval( $post['post_id'] ) ] = intval( $post_exists );
+
+                if($update_exist)
+                {
+                    $post_parent = (int) $post['post_parent'];
+                    if ( $post_parent )
+                    {
+                        // if we already know the parent, map it to the new local ID
+                        if ( isset( $this->processed_posts[$post_parent] ) )
+                        {
+                            $post_parent = $this->processed_posts[$post_parent];
+                            // otherwise record the parent for later
+                        } else {
+                            $this->post_orphans[intval($post['post_id'])] = $post_parent;
+                            $post_parent = 0;
+                        }
+                    }
+                    $author = sanitize_user( $post['post_author'], true );
+                    if ( isset( $this->author_mapping[$author] ) ) {
+                        $author = $this->author_mapping[$author];
+                    }
+                    else {
+                        $author = (int)$this->default_user;
+                    }
+
+                    $postdata = array(
+                        'ID' => $post['post_id'], 'post_author' => $author, 'post_date' => $post['post_date'],
+                        'post_date_gmt' => $post['post_date_gmt'], 'post_content' => $post['post_content'],
+                        'post_excerpt' => $post['post_excerpt'], 'post_title' => $post['post_title'],
+                        'post_status' => $post['status'], 'post_name' => $post['post_name'],
+                        'comment_status' => $post['comment_status'], 'ping_status' => $post['ping_status'],
+                        'guid' => $post['guid'], 'post_parent' => $post_parent, 'menu_order' => $post['menu_order'],
+                        'post_type' => $post['post_type'], 'post_password' => $post['post_password']
+                    );
+
+                    wp_update_post($postdata);
+
+                    if ( ! empty( $post['postmeta'] ) )
+                    {
+                        foreach ( $post['postmeta'] as $meta )
+                        {
+                            $key = apply_filters( 'import_post_meta_key', $meta['key'], $post_id, $post );
+                            $value = false;
+
+                            if ( '_edit_last' == $key )
+                            {
+                                if ( isset( $this->processed_authors[intval($meta['value'])] ) )
+                                    $value = $this->processed_authors[intval($meta['value'])];
+                                else
+                                    $key = false;
+                            }
+
+                            if ( $key )
+                            {
+                                // export gets meta straight from the DB so could have a serialized string
+                                if ( ! $value )
+                                    $value = maybe_unserialize( $meta['value'] );
+                                if(metadata_exists('post', $post_id, $key))
+                                {
+                                    update_post_meta($post_id,$key,$value);
+                                }
+                                else
+                                {
+                                    add_post_meta( $post_id, $key, $value );
+                                }
+
+
+                                do_action( 'import_post_meta', $post_id, $key, $value );
+
+                                // if the post has a featured image, take note of this in case of remap
+                                if ( '_thumbnail_id' == $key )
+                                    $this->featured_images[$post_id] = (int) $value;
+                            }
+                        }
+                    }
+                }
+
             } else {
                 $post_parent = (int) $post['post_parent'];
                 if ( $post_parent )
@@ -1209,8 +1294,16 @@ class WPvivid_media_importer
                         // export gets meta straight from the DB so could have a serialized string
                         if ( ! $value )
                             $value = maybe_unserialize( $meta['value'] );
+                        if(metadata_exists('post', $post_id, $key))
+                        {
+                            update_post_meta($post_id,$key,$value);
+                        }
+                        else
+                        {
+                            add_post_meta( $post_id, $key, $value );
+                        }
 
-                        add_post_meta( $post_id, $key, $value );
+
                         do_action( 'import_post_meta', $post_id, $key, $value );
 
                         // if the post has a featured image, take note of this in case of remap
@@ -1573,7 +1666,7 @@ class WPvivid_media_importer
 
         if(!file_exists($new_file))
         {
-            return new WP_Error( 'import_file_error', __('File not exist ex file:'.$new_file, 'wordpress-importer') );
+            return new WP_Error( 'import_file_error', __('File not exist, file:'.$new_file, 'wpvivid-backuprestore') );
         }
 
         $wp_filetype = wp_check_filetype( $file_name );
@@ -1628,7 +1721,7 @@ class WPvivid_media_importer
     {
         if ( ! $this->fetch_attachments )
             return new WP_Error( 'attachment_processing_error',
-                __( 'Fetching attachments is not enabled', 'wordpress-importer' ) );
+                __( 'Fetching attachments is not enabled', 'wpvivid-backuprestore' ) );
 
         // if the URL is absolute, but does not contain address, then upload it assuming base_site_url
         if ( preg_match( '|^/[\w\W]+$|', $url ) )
@@ -1641,7 +1734,7 @@ class WPvivid_media_importer
         if ( $info = wp_check_filetype( $upload['file'] ) )
             $post['post_mime_type'] = $info['type'];
         else
-            return new WP_Error( 'attachment_processing_error', __('Invalid file type', 'wordpress-importer') );
+            return new WP_Error( 'attachment_processing_error', __('Invalid file type', 'wpvivid-backuprestore') );
 
         $post['guid'] = $upload['url'];
 
@@ -1686,7 +1779,7 @@ class WPvivid_media_importer
 
         if(!file_exists($new_file))
         {
-            return new WP_Error( 'import_file_error', __('File not exist file:'.$new_file, 'wordpress-importer') );
+            return new WP_Error( 'import_file_error', __('File not exist file:'.$new_file, 'wpvivid-backuprestore') );
         }
 
         return apply_filters(
@@ -1781,8 +1874,8 @@ class WPvivid_WXR_Parser
                 $error = $result->get_error_data();
                 $msg.= $error[0] . ':' . $error[1] . ' ' . esc_html( $error[2] );
             }
-            $msg.=__( 'There was an error when reading this WXR file', 'wordpress-importer' ) ;
-            $msg.=__( 'Details are shown above. The importer will now try again with a different parser...', 'wordpress-importer' );
+            $msg.=__( 'There was an error when reading this WXR file', 'wpvivid-backuprestore' ) ;
+            $msg.=__( 'Details are shown above. The importer will now try again with a different parser...', 'wpvivid-backuprestore' );
 
             return new WP_Error( 'WXR_Parser_error', $msg,'' );
         }
@@ -1817,7 +1910,7 @@ class WPvivid_WXR_Parser_SimpleXML
 
         if ( ! $success || isset( $dom->doctype ) )
         {
-            return new WP_Error( 'SimpleXML_parse_error', __( 'There was an error when reading this WXR file', 'wordpress-importer' ), libxml_get_errors() );
+            return new WP_Error( 'SimpleXML_parse_error', __( 'There was an error when reading this WXR file', 'wpvivid-backuprestore' ), libxml_get_errors() );
         }
 
         $xml = simplexml_import_dom( $dom );
@@ -1825,16 +1918,16 @@ class WPvivid_WXR_Parser_SimpleXML
 
         // halt if loading produces an error
         if ( ! $xml )
-            return new WP_Error( 'SimpleXML_parse_error', __( 'There was an error when reading this WXR file', 'wordpress-importer' ), libxml_get_errors() );
+            return new WP_Error( 'SimpleXML_parse_error', __( 'There was an error when reading this WXR file', 'wpvivid-backuprestore' ), libxml_get_errors() );
 
         $wxr_version = $xml->xpath('/rss/channel/wp:wxr_version');
         if ( ! $wxr_version )
-            return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+            return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wpvivid-backuprestore' ) );
 
         $wxr_version = (string) trim( $wxr_version[0] );
         // confirm that we are dealing with the correct file format
         if ( ! preg_match( '/^\d+\.\d+$/', $wxr_version ) )
-            return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+            return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wpvivid-backuprestore' ) );
 
         $base_url = $xml->xpath('/rss/channel/wp:base_site_url');
         $base_url = (string) trim( $base_url[0] );
@@ -2059,7 +2152,7 @@ class WPvivid_WXR_Parser_XML {
         xml_parser_free( $xml );
 
         if ( ! preg_match( '/^\d+\.\d+$/', $this->wxr_version ) )
-            return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+            return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wpvivid-backuprestore' ) );
 
         return array(
             'authors' => $this->authors,
@@ -2255,7 +2348,7 @@ class WPvivid_WXR_Parser_Regex {
         }
 
         if ( ! $wxr_version )
-            return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+            return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wpvivid-backuprestore' ) );
 
         return array(
             'authors' => $this->authors,

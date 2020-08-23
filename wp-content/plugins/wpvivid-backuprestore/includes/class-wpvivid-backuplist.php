@@ -339,21 +339,21 @@ class WPvivid_Backuplist
                 if ($list[$backup_id]['lock'] == 1) {
                     $backup_lock = '/admin/partials/images/locked.png';
                     $lock_status = 'lock';
-                    $ret['html'] = '<img src="' . esc_url(WPVIVID_PLUGIN_URL . $backup_lock) . '" name="' . esc_attr($lock_status, 'wpvivid') . '" onclick="wpvivid_set_backup_lock(\''.$backup_id.'\', \''.$lock_status.'\');" style="vertical-align:middle; cursor:pointer;"/>';
+                    $ret['html'] = '<img src="' . esc_url(WPVIVID_PLUGIN_URL . $backup_lock) . '" name="' . esc_attr($lock_status, 'wpvivid-backuprestore') . '" onclick="wpvivid_set_backup_lock(\''.$backup_id.'\', \''.$lock_status.'\');" style="vertical-align:middle; cursor:pointer;"/>';
                 } else {
                     $backup_lock = '/admin/partials/images/unlocked.png';
                     $lock_status = 'unlock';
-                    $ret['html'] = '<img src="' . esc_url(WPVIVID_PLUGIN_URL . $backup_lock) . '" name="' . esc_attr($lock_status, 'wpvivid') . '" onclick="wpvivid_set_backup_lock(\''.$backup_id.'\', \''.$lock_status.'\');" style="vertical-align:middle; cursor:pointer;"/>';
+                    $ret['html'] = '<img src="' . esc_url(WPVIVID_PLUGIN_URL . $backup_lock) . '" name="' . esc_attr($lock_status, 'wpvivid-backuprestore') . '" onclick="wpvivid_set_backup_lock(\''.$backup_id.'\', \''.$lock_status.'\');" style="vertical-align:middle; cursor:pointer;"/>';
                 }
             } else {
                 $backup_lock = '/admin/partials/images/unlocked.png';
                 $lock_status = 'unlock';
-                $ret['html'] = '<img src="' . esc_url(WPVIVID_PLUGIN_URL . $backup_lock) . '" name="' . esc_attr($lock_status, 'wpvivid') . '" onclick="wpvivid_set_backup_lock(\''.$backup_id.'\', \''.$lock_status.'\');" style="vertical-align:middle; cursor:pointer;"/>';
+                $ret['html'] = '<img src="' . esc_url(WPVIVID_PLUGIN_URL . $backup_lock) . '" name="' . esc_attr($lock_status, 'wpvivid-backuprestore') . '" onclick="wpvivid_set_backup_lock(\''.$backup_id.'\', \''.$lock_status.'\');" style="vertical-align:middle; cursor:pointer;"/>';
             }
         } else {
             $backup_lock = '/admin/partials/images/unlocked.png';
             $lock_status = 'unlock';
-            $ret['html'] = '<img src="' . esc_url(WPVIVID_PLUGIN_URL . $backup_lock) . '" name="' . esc_attr($lock_status, 'wpvivid') . '" onclick="wpvivid_set_backup_lock(\''.$backup_id.'\', \''.$lock_status.'\');" style="vertical-align:middle; cursor:pointer;"/>';
+            $ret['html'] = '<img src="' . esc_url(WPVIVID_PLUGIN_URL . $backup_lock) . '" name="' . esc_attr($lock_status, 'wpvivid-backuprestore') . '" onclick="wpvivid_set_backup_lock(\''.$backup_id.'\', \''.$lock_status.'\');" style="vertical-align:middle; cursor:pointer;"/>';
         }
         return $ret;
     }

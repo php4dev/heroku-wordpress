@@ -16,12 +16,14 @@
                 });
             }
             catch (err) {
-                setTimeout(function () {
+                setTimeout(function ()
+                {
                     wpvivid_get_ini_memory_limit();
                 }, 3000);
             }
         }, function (XMLHttpRequest, textStatus, errorThrown) {
-            setTimeout(function () {
+            setTimeout(function ()
+            {
                 wpvivid_get_ini_memory_limit();
             }, 3000);
         });

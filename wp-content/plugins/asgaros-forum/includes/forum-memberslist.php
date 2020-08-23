@@ -61,8 +61,15 @@ class AsgarosForumMembersList {
         if ($this->functionality_enabled()) {
             $membersLink = $this->asgarosforum->get_link('members');
             $membersLink = apply_filters('asgarosforum_filter_members_link', $membersLink);
+            $loginStatus = $this->asgarosforum->options['memberslist_loggedin_only'] ? 1 : 0;
 
-            echo '<a class="members-link" href="'.$membersLink.'">'.__('Members', 'asgaros-forum').'</a>';
+            return array(
+                'menu_class'        => 'members-link',
+                'menu_link_text'    => esc_html__('Members', 'asgaros-forum'),
+                'menu_url'          => $membersLink,
+                'menu_login_status' => $loginStatus,
+                'menu_new_tab'      => false
+            );
         }
     }
 
@@ -102,7 +109,7 @@ class AsgarosForumMembersList {
 
                         if (count($users) > 0) {
                             echo '&nbsp;&middot;&nbsp;';
-                            echo $this->render_filter_option('role', 'normal', __('Normal', 'asgaros-forum'));
+                            echo $this->render_filter_option('role', 'normal', __('Users', 'asgaros-forum'));
                         }
                     }
 
@@ -224,7 +231,7 @@ class AsgarosForumMembersList {
                         echo sprintf(_n('%s Post', '%s Posts', $element->forum_posts, 'asgaros-forum'), $member_posts_i18n);
                     echo '</div>';
 
-                    if ($this->asgarosforum->online->functionality_enabled) {
+                    if ($this->asgarosforum->online->functionality_enabled && $this->asgarosforum->options['show_last_seen']) {
                         echo '<div class="member-last-seen">';
                             echo '<i>'.$this->asgarosforum->online->last_seen($element->ID).'</i>';
                         echo '</div>';

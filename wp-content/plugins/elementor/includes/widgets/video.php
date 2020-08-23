@@ -218,7 +218,7 @@ class Widget_Video extends Widget_Base {
 				'label' => __( 'URL', 'elementor' ),
 				'type' => Controls_Manager::URL,
 				'autocomplete' => false,
-				'show_external' => false,
+				'options' => false,
 				'label_block' => true,
 				'show_label' => false,
 				'dynamic' => [
@@ -282,7 +282,7 @@ class Widget_Video extends Widget_Base {
 		$this->add_control(
 			'play_on_mobile',
 			[
-				'label' => __( 'Play on Mobile', 'elementor' ),
+				'label' => __( 'Play On Mobile', 'elementor' ),
 				'type' => Controls_Manager::SWITCHER,
 				'condition' => [
 					'autoplay' => 'yes',
@@ -1042,6 +1042,10 @@ class Widget_Video extends Widget_Base {
 
 		if ( $settings['mute'] ) {
 			$video_params['muted'] = 'muted';
+		}
+
+		if ( $settings['play_on_mobile'] ) {
+			$video_params['playsinline'] = '';
 		}
 
 		if ( ! $settings['download_button'] ) {

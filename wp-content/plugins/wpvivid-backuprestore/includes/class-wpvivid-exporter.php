@@ -262,32 +262,32 @@ class WPvivid_Post_List extends WP_List_Table
         global $mode;
 
         if ( '0000-00-00 00:00:00' === $post->post_date ) {
-            $t_time    = $h_time = __( 'Unpublished' );
+            $t_time    = $h_time = __( 'Unpublished', 'wpvivid-backuprestore' );
             $time_diff = 0;
         } else {
-            $t_time = get_the_time( __( 'Y/m/d g:i:s a' ) );
+            $t_time = get_the_time( 'Y/m/d g:i:s a' );
             $m_time = $post->post_date;
             $time   = get_post_time( 'G', true, $post );
 
             $time_diff = time() - $time;
 
             if ( $time_diff > 0 && $time_diff < DAY_IN_SECONDS ) {
-                $h_time = sprintf( __( '%s ago' ), human_time_diff( $time ) );
+                $h_time = sprintf( __( '%s ago', 'wpvivid-backuprestore' ), human_time_diff( $time ) );
             } else {
-                $h_time = mysql2date( __( 'Y/m/d' ), $m_time );
+                $h_time = mysql2date( 'Y/m/d', $m_time );
             }
         }
 
         if ( 'publish' === $post->post_status ) {
-            $status = __( 'Published' );
+            $status = __( 'Published', 'wpvivid-backuprestore' );
         } elseif ( 'future' === $post->post_status ) {
             if ( $time_diff > 0 ) {
-                $status = '<strong class="error-message">' . __( 'Missed schedule' ) . '</strong>';
+                $status = '<strong class="error-message">' . __( 'Missed schedule', 'wpvivid-backuprestore' ) . '</strong>';
             } else {
-                $status = __( 'Scheduled' );
+                $status = __( 'Scheduled', 'wpvivid-backuprestore' );
             }
         } else {
-            $status = __( 'Last Modified' );
+            $status = __( 'Last Modified', 'wpvivid-backuprestore' );
         }
 
         /**
@@ -402,7 +402,7 @@ class WPvivid_Post_List extends WP_List_Table
                     $out[] = $label;
                 }
                 /* translators: used between list items, there is a space after the comma */
-                echo join( __( ', ' ), $out );
+                echo join(  ', ', $out );
             } else {
                 echo '<span aria-hidden="true">&#8212;</span><span class="screen-reader-text">' . $taxonomy_object->labels->no_terms . '</span>';
             }
@@ -807,7 +807,7 @@ class WPvivid_Exporter_taskmanager
             $ret['progress']=$task['data'][$ret['type']]['progress'];
             $ret['doing']=$task['data'][$ret['type']]['doing'];
             if(isset($task['data'][$ret['type']]['sub_job'][$ret['doing']]['progress']))
-                $ret['descript']=__($task['data'][$ret['type']]['sub_job'][$ret['doing']]['progress'], 'wpvivid');
+                $ret['descript']=__($task['data'][$ret['type']]['sub_job'][$ret['doing']]['progress'], 'wpvivid-backuprestore');
             else
                 $ret['descript']='';
             if(isset($task['data'][$ret['type']]['sub_job'][$ret['doing']]['upload_data']))
@@ -1325,7 +1325,7 @@ class WPvivid_Exporter_Item{
                 ?>
                 <div style="float:left;margin:10px 10px 10px 0;text-align:center; width:180px;">
                     <span>Part01</span><br>
-                    <span><a class="wpvivid-download-export" id="trtr" name="<?php _e($file); ?>" style="cursor: pointer;">Download</a></span><br>
+                    <span><a class="wpvivid-download-export" id="trtr" name="<?php echo $file; ?>" style="cursor: pointer;">Download</a></span><br>
                     <div style="width:100%;height:5px; background-color:#dcdcdc;">
                         <div style="background-color:#0085ba; float:left;width:100%;height:5px;"></div>
                     </div>

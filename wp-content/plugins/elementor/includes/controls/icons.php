@@ -76,16 +76,16 @@ class Control_Icons extends Control_Base_Multiple {
 			<label class="elementor-control-title">{{{ data.label }}}</label>
 			<div class="elementor-control-input-wrapper elementor-aspect-ratio-219">
 				<div class="elementor-control-media__content elementor-control-tag-area elementor-control-preview-area elementor-fit-aspect-ratio">
-					<div class="elementor-control-media-upload-button elementor-fit-aspect-ratio">
+					<div class="elementor-control-media-upload-button elementor-control-media__content__upload-button elementor-fit-aspect-ratio">
 						<i class="eicon-plus-circle" aria-hidden="true"></i>
 					</div>
 					<div class="elementor-control-media-area elementor-fit-aspect-ratio">
-						<div class="elementor-control-media__remove" title="<?php echo __( 'Remove', 'elementor' ); ?>">
+						<div class="elementor-control-media__remove elementor-control-media__content__remove" title="<?php echo __( 'Remove', 'elementor' ); ?>">
 							<i class="eicon-trash"></i>
 						</div>
 						<div class="elementor-control-media__preview elementor-fit-aspect-ratio"></div>
 					</div>
-					<div class="elementor-control-media__tools">
+					<div class="elementor-control-media__tools elementor-control-dynamic-switcher-wrapper">
 						<div class="elementor-control-icon-picker elementor-control-media__tool"><?php echo __( 'Icon Library', 'elementor' ); ?></div>
 						<div class="elementor-control-svg-uploader elementor-control-media__tool"><?php echo __( 'Upload SVG', 'elementor' ); ?></div>
 					</div>
@@ -102,25 +102,25 @@ class Control_Icons extends Control_Base_Multiple {
 	public function render_inline_skin() {
 		$control_uid = $this->get_control_uid();
 		?>
-		<div class="elementor-control-field">
+		<div class="elementor-control-field elementor-control-inline-icon">
 			<label class="elementor-control-title">{{{ data.label }}}</label>
 			<div class="elementor-control-input-wrapper">
 				<div class="elementor-choices">
 					<input id="<?php echo $control_uid; ?>-none" type="radio" value="none">
-					<label class="elementor-choices-label tooltip-target elementor-control-icons--inline__none" for="<?php echo $control_uid; ?>-none" data-tooltip="<?php echo __( 'None', 'elementor' ); ?>" title="<?php echo __( 'None', 'elementor' ); ?>">
+					<label class="elementor-choices-label elementor-control-unit-1 tooltip-target elementor-control-icons--inline__none" for="<?php echo $control_uid; ?>-none" data-tooltip="<?php echo __( 'None', 'elementor' ); ?>" title="<?php echo __( 'None', 'elementor' ); ?>">
 						<i class="eicon-ban" aria-hidden="true"></i>
 						<span class="elementor-screen-only"><?php echo __( 'None', 'elementor' ); ?></span>
 					</label>
 					<# if ( ! data.exclude_inline_options.includes( 'svg' ) ) { #>
 						<input id="<?php echo $control_uid; ?>-svg" type="radio" value="svg">
-						<label class="elementor-choices-label tooltip-target elementor-control-icons--inline__svg" for="<?php echo $control_uid; ?>-svg" data-tooltip="<?php echo __( 'Upload SVG', 'elementor' ); ?>" title="<?php echo __( 'Upload SVG', 'elementor' ); ?>">
+						<label class="elementor-choices-label elementor-control-unit-1 tooltip-target elementor-control-icons--inline__svg" for="<?php echo $control_uid; ?>-svg" data-tooltip="<?php echo __( 'Upload SVG', 'elementor' ); ?>" title="<?php echo __( 'Upload SVG', 'elementor' ); ?>">
 							<i class="eicon-upload" aria-hidden="true"></i>
 							<span class="elementor-screen-only"><?php echo __( 'Upload SVG', 'elementor' ); ?></span>
 						</label>
 					<# }
 					if ( ! data.exclude_inline_options.includes( 'icon' ) ) { #>
 						<input id="<?php echo $control_uid; ?>-icon" type="radio" value="icon">
-						<label class="elementor-choices-label tooltip-target elementor-control-icons--inline__icon" for="<?php echo $control_uid; ?>-icon" data-tooltip="<?php echo __( 'Icon Library', 'elementor' ); ?>" title="<?php echo __( 'Icon Library', 'elementor' ); ?>">
+						<label class="elementor-choices-label elementor-control-unit-1 tooltip-target elementor-control-icons--inline__icon" for="<?php echo $control_uid; ?>-icon" data-tooltip="<?php echo __( 'Icon Library', 'elementor' ); ?>" title="<?php echo __( 'Icon Library', 'elementor' ); ?>">
 							<span class="elementor-control-icons--inline__displayed-icon">
 								<i class="eicon-circle" aria-hidden="true"></i>
 							</span>
@@ -157,7 +157,6 @@ class Control_Icons extends Control_Base_Multiple {
 			],
 			'search_bar' => true,
 			'recommended' => false,
-			'is_svg_enabled' => Svg_Handler::is_enabled(),
 			'skin' => 'media',
 			'exclude_inline_options' => [],
 		];

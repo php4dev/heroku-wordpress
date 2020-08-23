@@ -121,7 +121,7 @@ class WPvivid_Setting
         $common_option['log_save_location']=WPVIVID_DEFAULT_LOG_DIR;
         $common_option['max_backup_count']=WPVIVID_DEFAULT_BACKUP_COUNT;
         $common_option['show_admin_bar']=WPVIVID_DEFAULT_ADMIN_BAR;
-        $common_option['show_tab_menu']=WPVIVID_DEFAULT_TAB_MENU;
+        //$common_option['show_tab_menu']=WPVIVID_DEFAULT_TAB_MENU;
         $common_option['domain_include']=WPVIVID_DEFAULT_DOMAIN_INCLUDE;
         $common_option['estimate_backup']=WPVIVID_DEFAULT_ESTIMATE_BACKUP;
         $common_option['max_resume_count']=WPVIVID_RESUME_RETRY_TIMES;
@@ -596,6 +596,24 @@ class WPvivid_Setting
         }
     }
 
+    public static function get_retain_local_status()
+    {
+        $options=self::get_option('wpvivid_common_setting');
+        if(isset($options['retain_local']))
+        {
+            if($options['retain_local']){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public static function get_sync_data()
     {
         $wpvivid_info=apply_filters('wpvivid_get_wpvivid_info_addon_mainwp', false);
@@ -610,10 +628,14 @@ class WPvivid_Setting
         $check_ret=apply_filters('wpvivid_check_is_pro_mainwp', false);
         if(!$check_ret){
             $data['is_pro']=false;
+            $data['is_install']=false;
+            $data['is_login']=false;
             $data['latest_version']='';
         }
         else{
             $data['is_pro']=$check_ret['check_pro'];
+            $data['is_install']=isset($check_ret['check_install']) ? $check_ret['check_install'] : false;
+            $data['is_login']=isset($check_ret['check_login']) ? $check_ret['check_login'] : false;
             $data['latest_version']=$check_ret['latest_version'];
         }
         $data['time_zone']=apply_filters('wpvivid_get_time_zone_addon_mainwp', false);
@@ -635,6 +657,12 @@ class WPvivid_Setting
         $data['backup_custom_setting']=apply_filters('wpvivid_get_backup_custom_setting_mainwp', array());
 
         $data['report_addon'] = apply_filters('wpvivid_archieve_report_addon_mainwp', array());
+
+        $data['menu_capability'] = apply_filters('wpvivid_get_menu_capability_mainwp', array());
+
+        $data['white_label_setting'] = apply_filters('wpvivid_get_white_label_mainwp', array());
+
+        $data['incremental_backup_setting'] = apply_filters('wpvivid_get_incremental_backup_mainwp', array());
         return $data;
     }
 }

@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Elementor\Core\Schemes;
+use Elementor\Core\Settings\Manager;
 
 /**
  * Elementor image gallery widget.
@@ -70,22 +71,6 @@ class Widget_Image_Gallery extends Widget_Base {
 	 */
 	public function get_keywords() {
 		return [ 'image', 'photo', 'visual', 'gallery' ];
-	}
-
-	/**
-	 * Add lightbox data to image link.
-	 *
-	 * Used to add lightbox data attributes to image link HTML.
-	 *
-	 * @since 1.6.0
-	 * @access public
-	 *
-	 * @param string $link_html Image link HTML.
-	 *
-	 * @return string Image link HTML with lightbox data attributes.
-	 */
-	public function add_lightbox_data_to_image_link( $link_html ) {
-		return preg_replace( '/^<a/', '<a ' . $this->get_render_attribute_string( 'link' ), $link_html );
 	}
 
 	/**
@@ -386,18 +371,7 @@ class Widget_Image_Gallery extends Widget_Base {
 		?>
 		<div class="elementor-image-gallery">
 			<?php
-			$this->add_render_attribute( 'link', [
-				'data-elementor-open-lightbox' => $settings['open_lightbox'],
-				'data-elementor-lightbox-slideshow' => $this->get_id(),
-			] );
-
-			if ( Plugin::$instance->editor->is_edit_mode() ) {
-				$this->add_render_attribute( 'link', [
-					'class' => 'elementor-clickable',
-				] );
-			}
-
-			add_filter( 'wp_get_attachment_link', [ $this, 'add_lightbox_data_to_image_link' ] );
+			add_filter( 'wp_get_attachment_link', [ $this, 'add_lightbox_data_to_image_link' ], 10, 2 );
 
 			echo do_shortcode( '[gallery ' . $this->get_render_attribute_string( 'shortcode' ) . ']' );
 

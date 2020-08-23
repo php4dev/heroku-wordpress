@@ -10,7 +10,7 @@ define('WPVIVID_BACKUP_TYPE_THEMES','backup_themes');
 define('WPVIVID_BACKUP_TYPE_PLUGIN','backup_plugin');
 define('WPVIVID_BACKUP_TYPE_UPLOADS','backup_uploads');
 define('WPVIVID_BACKUP_TYPE_UPLOADS_FILES','backup_uploads_files');
-define('WPVIVID_BACKUP_TYPE_UPLOADS_FILES_OTHER','backup_uploads_files_other');
+//define('WPVIVID_BACKUP_TYPE_UPLOADS_FILES_OTHER','backup_uploads_files_other');
 define('WPVIVID_BACKUP_TYPE_CONTENT','backup_content');
 define('WPVIVID_BACKUP_TYPE_CORE','backup_core');
 define('WPVIVID_BACKUP_TYPE_OTHERS','backup_others');
@@ -19,7 +19,7 @@ define('WPVIVID_BACKUP_TYPE_MERGE','backup_merge');
 define('WPVIVID_BACKUP_ROOT_WP_CONTENT','wp-content');
 define('WPVIVID_BACKUP_ROOT_CUSTOM','custom');
 define('WPVIVID_BACKUP_ROOT_WP_ROOT','root');
-
+define('WPVIVID_BACKUP_ROOT_WP_UPLOADS','uploads');
 class WPvivid_Backup_Task
 {
     protected $task;
@@ -43,13 +43,74 @@ class WPvivid_Backup_Task
         $this->backup_type_collect[WPVIVID_BACKUP_TYPE_PLUGIN]=1;
         $this->backup_type_collect[WPVIVID_BACKUP_TYPE_UPLOADS]=1;
         $this->backup_type_collect[WPVIVID_BACKUP_TYPE_UPLOADS_FILES]=1;
-        $this->backup_type_collect[WPVIVID_BACKUP_TYPE_UPLOADS_FILES_OTHER]=1;
+        //$this->backup_type_collect[WPVIVID_BACKUP_TYPE_UPLOADS_FILES_OTHER]=1;
         $this->backup_type_collect[WPVIVID_BACKUP_TYPE_CONTENT]=1;
         $this->backup_type_collect[WPVIVID_BACKUP_TYPE_CORE]=1;
         $this->backup_type_collect[WPVIVID_BACKUP_TYPE_OTHERS]=1;
         $this->backup_type_collect[WPVIVID_BACKUP_TYPE_MERGE]=1;
 
         add_filter('wpvivid_set_backup', array($this, 'wpvivid_set_backup'),10);
+        add_filter('wpvivid_exclude_plugins',array($this,'exclude_plugins'),20);
+        add_filter('wpvivid_get_backup_exclude_regex',array($this, 'get_backup_exclude_regex'),10,2);
+    }
+
+    public function get_backup_exclude_regex($exclude_regex,$backup_type)
+    {
+        if($backup_type==WPVIVID_BACKUP_TYPE_UPLOADS||$backup_type==WPVIVID_BACKUP_TYPE_UPLOADS_FILES)
+        {
+            $upload_dir = wp_upload_dir();
+            $backup_data['files_root']=$this -> transfer_path($upload_dir['basedir']);
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR.'backwpup', '/').'#';  // BackWPup backup directory
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR.'ShortpixelBackups', '/').'#';//ShortpixelBackups
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR.'backup', '/').'#';
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR.'backwpup', '/').'#';  // BackWPup backup directory
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR.'backup-guard', '/').'#';  // Wordpress Backup and Migrate Plugin backup directory
+        }
+        else if($backup_type==WPVIVID_BACKUP_TYPE_CONTENT)
+        {
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'updraft', '/').'#';   // Updraft Plus backup directory
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'ai1wm-backups', '/').'#'; // All-in-one WP migration backup directory
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'backups', '/').'#'; // Xcloner backup directory
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'upgrade', '/').'#';
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'wpvivid', '/').'#';
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.WPvivid_Setting::get_backupdir(), '/').'#';
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'plugins', '/').'#';
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'cache', '/').'#';
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'wphb-cache', '/').'#';
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'backup', '/').'#';
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'Dropbox_Backup', '/').'#';
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'mysql.sql', '/').'#';//mysql
+            $upload_dir = wp_upload_dir();
+            $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']), '/').'#';
+            $exclude_regex[]='#^'.preg_quote($this->transfer_path(get_theme_root()), '/').'#';
+        }
+
+        return $exclude_regex;
+    }
+
+    public function exclude_plugins($exclude_plugins)
+    {
+        if(in_array('wpvivid-backuprestore',$exclude_plugins))
+        {
+            $exclude_plugins[]='wpvivid-backuprestore';
+        }
+
+        if(in_array('wp-cerber',$exclude_plugins))
+        {
+            $exclude_plugins[]='wp-cerber';
+        }
+
+        if(in_array('.',$exclude_plugins))
+        {
+            $exclude_plugins[]='.';
+        }
+
+        if(in_array('wpvivid-backup-pro',$exclude_plugins))
+        {
+            $exclude_plugins[]='wpvivid-backup-pro';
+        }
+
+        return $exclude_plugins;
     }
 
     public function get_id()
@@ -148,10 +209,13 @@ class WPvivid_Backup_Task
             }
         }
         $this->task['options']['backup_prefix']=$backup_prefix;
+        $offset=get_option('gmt_offset');
         if(empty($backup_prefix))
-            $this->task['options']['file_prefix'] = $this->task['id'] . '_' . date('Y-m-d-H-i', $this->task['status']['start_time']);
+            $this->task['options']['file_prefix'] = $this->task['id'] . '_' . date('Y-m-d-H-i', $this->task['status']['start_time']+$offset*60*60);
         else
-            $this->task['options']['file_prefix'] = $backup_prefix . '_' . $this->task['id'] . '_' . date('Y-m-d-H-i', $this->task['status']['start_time']);
+            $this->task['options']['file_prefix'] = $backup_prefix . '_' . $this->task['id'] . '_' . date('Y-m-d-H-i', $this->task['status']['start_time']+$offset*60*60);
+
+        $this->task['options']['file_prefix'] = apply_filters('wpvivid_backup_file_prefix',$this->task['options']['file_prefix'],$backup_prefix,$this->task['id'],$this->task['status']['start_time']);
 
         if(isset($general_setting['options']['wpvivid_common_setting']['ismerge']))
         {
@@ -188,7 +252,7 @@ class WPvivid_Backup_Task
                 if(isset($general_setting['options']['wpvivid_compress_setting']['subpackage_plugin_upload']) && !empty($general_setting['options']['wpvivid_compress_setting']['subpackage_plugin_upload'])){
                     if($general_setting['options']['wpvivid_compress_setting']['subpackage_plugin_upload']){
                         $this->set_backup(WPVIVID_BACKUP_TYPE_UPLOADS_FILES);
-                        $this->set_backup(WPVIVID_BACKUP_TYPE_UPLOADS_FILES_OTHER);
+                        //$this->set_backup(WPVIVID_BACKUP_TYPE_UPLOADS_FILES_OTHER);
                     }
                     else{
                         $this->set_backup(WPVIVID_BACKUP_TYPE_UPLOADS);
@@ -208,7 +272,7 @@ class WPvivid_Backup_Task
                 if(isset($general_setting['options']['wpvivid_compress_setting']['subpackage_plugin_upload']) && !empty($general_setting['options']['wpvivid_compress_setting']['subpackage_plugin_upload'])){
                     if($general_setting['options']['wpvivid_compress_setting']['subpackage_plugin_upload']){
                         $this->set_backup(WPVIVID_BACKUP_TYPE_UPLOADS_FILES);
-                        $this->set_backup(WPVIVID_BACKUP_TYPE_UPLOADS_FILES_OTHER);
+                        //$this->set_backup(WPVIVID_BACKUP_TYPE_UPLOADS_FILES_OTHER);
                     }
                     else{
                         $this->set_backup(WPVIVID_BACKUP_TYPE_UPLOADS);
@@ -257,7 +321,7 @@ class WPvivid_Backup_Task
         return $parse['host'].$path;
     }
 
-    public function set_backup($backup)
+    public function set_backup($backup, $task_type='')
     {
         if(is_string($backup))
         {
@@ -277,6 +341,10 @@ class WPvivid_Backup_Task
                 $backup_data['json_info']['dump_db']=1;
                 $backup_data['json_info']['home_url']=home_url();
                 $backup_data['json_info']['file_type']='databases';
+                if(is_multisite())
+                {
+                    $backup_data['json_info']['is_mu']=1;
+                }
                 $backup_data['prefix']=$this->get_prefix().'_backup_db';
             }
             else if($backup==WPVIVID_BACKUP_TYPE_THEMES)
@@ -296,15 +364,13 @@ class WPvivid_Backup_Task
                 //$backup_data['root_path']=WP_CONTENT_DIR;
                 $backup_data['root_flag']=WPVIVID_BACKUP_ROOT_WP_CONTENT;
                 $backup_data['prefix']=$this->get_prefix().'_backup_plugin';
-                //if(isset($backup_data['compress']['subpackage_plugin_upload'])&&$backup_data['compress']['subpackage_plugin_upload'])
-                //{
-                //    $backup_data['plugin_subpackage']=1;
-                //}
+                if(isset($backup_data['compress']['subpackage_plugin_upload'])&&$backup_data['compress']['subpackage_plugin_upload'])
+                {
+                    $backup_data['plugin_subpackage']=1;
+                }
                 $backup_data['files_root']=$this->transfer_path(WP_PLUGIN_DIR);
 
-                $exclude_plugins[]='wpvivid-backuprestore';
-                $exclude_plugins[]='wp-cerber';
-                $exclude_plugins[]='.';
+                $exclude_plugins=array();
                 $exclude_plugins=apply_filters('wpvivid_exclude_plugins',$exclude_plugins);
                 $exclude_regex=array();
                 foreach ($exclude_plugins as $exclude_plugin)
@@ -323,9 +389,9 @@ class WPvivid_Backup_Task
                 $backup_data['prefix']=$this->get_prefix().'_backup_uploads';
                 $upload_dir = wp_upload_dir();
                 $backup_data['files_root']=$this -> transfer_path($upload_dir['basedir']);
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR.'backwpup', '/').'#';  // BackWPup backup directory
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR.'backup-guard', '/').'#';  // Wordpress Backup and Migrate Plugin backup directory
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR.'ShortpixelBackups', '/').'#';//ShortpixelBackups
+
+                $exclude_regex=array();
+                $exclude_regex=apply_filters('wpvivid_get_backup_exclude_regex',$exclude_regex,WPVIVID_BACKUP_TYPE_UPLOADS);
                 $backup_data['exclude_regex']=$exclude_regex;
                 $backup_data['include_regex']=array();
                 $backup_data['json_info']['file_type']='upload';
@@ -338,26 +404,11 @@ class WPvivid_Backup_Task
                 $backup_data['uploads_subpackage']=1;
                 $upload_dir = wp_upload_dir();
                 $backup_data['files_root']=$this -> transfer_path($upload_dir['basedir']);
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR.'backwpup', '/').'#';  // BackWPup backup directory
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR.'backup-guard', '/').'#';  // Wordpress Backup and Migrate Plugin backup directory
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR.'ShortpixelBackups', '/').'#';
-                $backup_data['exclude_regex']=$exclude_regex;
-                $backup_data['include_regex'][]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR, '/').'[0-9]{4}#';
-                $backup_data['json_info']['file_type']='upload';
-            }
-            else if($backup==WPVIVID_BACKUP_TYPE_UPLOADS_FILES_OTHER)
-            {
-                //$backup_data['root_path']=WP_CONTENT_DIR;
-                $backup_data['root_flag']=WPVIVID_BACKUP_ROOT_WP_CONTENT;
-                $backup_data['prefix']=$this->get_prefix().'_backup_uploads_other';
-                $upload_dir = wp_upload_dir();
-                $backup_data['files_root']=$this -> transfer_path($upload_dir['basedir']);
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR.'backwpup', '/').'#';  // BackWPup backup directory
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR.'backup-guard', '/').'#';  // Wordpress Backup and Migrate Plugin backup directory
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR.'ShortpixelBackups', '/').'#';
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR, '/').'[0-9]{4}#';
-                $backup_data['exclude_regex']=$exclude_regex;
+                $exclude_regex=array();
+                $exclude_regex=apply_filters('wpvivid_get_backup_exclude_regex',$exclude_regex,WPVIVID_BACKUP_TYPE_UPLOADS_FILES);
                 $backup_data['include_regex']=array();
+                $backup_data['exclude_regex']=$exclude_regex;
+                //$backup_data['include_regex'][]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']).DIRECTORY_SEPARATOR, '/').'[0-9]{4}#';
                 $backup_data['json_info']['file_type']='upload';
             }
             else if($backup==WPVIVID_BACKUP_TYPE_CONTENT)
@@ -366,19 +417,8 @@ class WPvivid_Backup_Task
                 $backup_data['root_flag']=WPVIVID_BACKUP_ROOT_WP_ROOT;
                 $backup_data['prefix']=$this->get_prefix().'_backup_content';
                 $backup_data['files_root']=$this -> transfer_path(WP_CONTENT_DIR);
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'updraft', '/').'#';   // Updraft Plus backup directory
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'ai1wm-backups', '/').'#'; // All-in-one WP migration backup directory
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'backups', '/').'#'; // Xcloner backup directory
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'upgrade', '/').'#';
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'wpvivid', '/').'#';
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.WPvivid_Setting::get_backupdir(), '/').'#';
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'plugins', '/').'#';
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'cache', '/').'#';
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'Dropbox_Backup', '/').'#';
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path(WP_CONTENT_DIR).DIRECTORY_SEPARATOR.'mysql.sql', '/').'#';//mysql
-                $upload_dir = wp_upload_dir();
-                $exclude_regex[]='#^'.preg_quote($this -> transfer_path($upload_dir['basedir']), '/').'#';
-                $exclude_regex[]='#^'.preg_quote($this->transfer_path(get_theme_root()), '/').'#';
+                $exclude_regex=array();
+                $exclude_regex=apply_filters('wpvivid_get_backup_exclude_regex',$exclude_regex,WPVIVID_BACKUP_TYPE_CONTENT);
                 $backup_data['exclude_regex']=$exclude_regex;
                 $backup_data['include_regex']=array();
                 $backup_data['json_info']['file_type']='wp-content';
@@ -397,6 +437,8 @@ class WPvivid_Backup_Task
                 $include_regex[]='#^'.preg_quote($this->transfer_path(ABSPATH.DIRECTORY_SEPARATOR.'wp-includes'), '/').'#';
                 $exclude_regex[]='#^'.preg_quote($this->transfer_path(ABSPATH.DIRECTORY_SEPARATOR.'wp-admin'.DIRECTORY_SEPARATOR), '/').'pclzip-.*\.tmp#';
                 $exclude_regex[]='#^'.preg_quote($this->transfer_path(ABSPATH.DIRECTORY_SEPARATOR.'wp-admin'.DIRECTORY_SEPARATOR), '/').'pclzip-.*\.gz#';
+                $exclude_regex[]='#session_mm_cgi-fcgi#';
+                $exclude_regex=apply_filters('wpvivid_get_backup_exclude_regex',$exclude_regex,WPVIVID_BACKUP_TYPE_CORE);
                 $backup_data['exclude_regex']=$exclude_regex;
                 $backup_data['include_regex']=$include_regex;
                 $backup_data['json_info']['file_type']='wp-core';
@@ -405,7 +447,9 @@ class WPvivid_Backup_Task
             {
                 //$backup_data['root_path']=WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$this->task['options']['backup_options']['dir'];
                 $backup_data['root_flag']=WPVIVID_BACKUP_ROOT_CUSTOM;
-                $backup_data['prefix']=$this->get_prefix().'_backup_all';
+                $file_name = $this->get_prefix().'_backup_all';
+                $file_name = apply_filters('wpvivid_set_incremental_backup_file_name', $file_name, $this->get_prefix(), $task_type);
+                $backup_data['prefix']=$file_name;
                 $backup_data['files']=array();
                 $backup_data['json_info']['has_child']=1;
                 foreach ($this->task['options']['backup_options']['backup'] as $backup_finished_data)
@@ -472,21 +516,25 @@ class WPvivid_Backup_Task
         if(is_dir($root))
         {
             $handler = opendir($root);
-            while (($filename = readdir($handler)) !== false)
+            if($handler!==false)
             {
-                if ($filename != "." && $filename != "..") {
-                    $count++;
+                while (($filename = readdir($handler)) !== false)
+                {
+                    if ($filename != "." && $filename != "..") {
+                        $count++;
 
-                    if (is_dir($root . DIRECTORY_SEPARATOR . $filename))
-                    {
-                        $size=$this->get_folder_size($root . DIRECTORY_SEPARATOR . $filename,$size);
-                    } else {
-                        $size+=filesize($root . DIRECTORY_SEPARATOR . $filename);
+                        if (is_dir($root . DIRECTORY_SEPARATOR . $filename))
+                        {
+                            $size=$this->get_folder_size($root . DIRECTORY_SEPARATOR . $filename,$size);
+                        } else {
+                            $size+=filesize($root . DIRECTORY_SEPARATOR . $filename);
+                        }
                     }
                 }
+                if($handler)
+                    @closedir($handler);
             }
-            if($handler)
-                @closedir($handler);
+
         }
         return $size;
     }
@@ -590,7 +638,7 @@ class WPvivid_Backup_Task
                 {
                     if(!array_key_exists(WPVIVID_BACKUP_TYPE_MERGE,$this->task['options']['backup_options']['backup']))
                     {
-                        $this->set_backup(WPVIVID_BACKUP_TYPE_MERGE);
+                        $this->set_backup(WPVIVID_BACKUP_TYPE_MERGE, $this->task['type']);
                         WPvivid_Setting::update_task($this->task['id'],$this->task);
                         $backup=$this->task['options']['backup_options']['backup'][WPVIVID_BACKUP_TYPE_MERGE];
                     }
@@ -766,39 +814,44 @@ class WPvivid_Backup_Task
         if(is_dir($path))
         {
             $handler = opendir($path);
-            while (($filename = readdir($handler)) !== false) {
-                if ($filename != "." && $filename != "..") {
-                    $count++;
+            if($handler!==false)
+            {
+                while (($filename = readdir($handler)) !== false)
+                {
+                    if ($filename != "." && $filename != "..") {
+                        $count++;
 
-                    if (is_dir($path . DIRECTORY_SEPARATOR . $filename))
-                    {
-                        if ($this->regex_match($exclude_regex, $path . DIRECTORY_SEPARATOR . $filename, 0)) {
-                            if ($this->regex_match($include_regex, $path . DIRECTORY_SEPARATOR . $filename, 1)) {
-                                $this->getFileLoop($files, $path . DIRECTORY_SEPARATOR . $filename, $exclude_regex, $include_regex, $exclude_file_size, $include_dir);
-                            }
-                        }
-                    } else {
-                        if($this->regex_match($exclude_regex, $path . DIRECTORY_SEPARATOR . $filename, 0)){
-                            if ($exclude_file_size == 0)
-                            {
-                                if(is_readable($path . DIRECTORY_SEPARATOR . $filename))
-                                {
-                                    $files[] = $path . DIRECTORY_SEPARATOR . $filename;
+                        if (is_dir($path . DIRECTORY_SEPARATOR . $filename))
+                        {
+                            if ($this->regex_match($exclude_regex, $path . DIRECTORY_SEPARATOR . $filename, 0)) {
+                                if ($this->regex_match($include_regex, $path . DIRECTORY_SEPARATOR . $filename, 1)) {
+                                    $this->getFileLoop($files, $path . DIRECTORY_SEPARATOR . $filename, $exclude_regex, $include_regex, $exclude_file_size, $include_dir);
                                 }
-                            } else {
-                                if(is_readable($path . DIRECTORY_SEPARATOR . $filename))
+                            }
+                        } else {
+                            if($this->regex_match($exclude_regex, $path . DIRECTORY_SEPARATOR . $filename, 0)){
+                                if ($exclude_file_size == 0)
                                 {
-                                    if (filesize($path . DIRECTORY_SEPARATOR . $filename) < $exclude_file_size * 1024 * 1024) {
+                                    if(is_readable($path . DIRECTORY_SEPARATOR . $filename))
+                                    {
                                         $files[] = $path . DIRECTORY_SEPARATOR . $filename;
+                                    }
+                                } else {
+                                    if(is_readable($path . DIRECTORY_SEPARATOR . $filename))
+                                    {
+                                        if (filesize($path . DIRECTORY_SEPARATOR . $filename) < $exclude_file_size * 1024 * 1024) {
+                                            $files[] = $path . DIRECTORY_SEPARATOR . $filename;
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                 }
+                if($handler)
+                    @closedir($handler);
             }
-            if($handler)
-                @closedir($handler);
+
         }
         if($include_dir && $count == 0){
             $files[] = $path;
@@ -1041,7 +1094,7 @@ class WPvivid_Backup_Task
         $list_tasks['task_info']['need_update_last_task']=false;
         if($list_tasks['status']['str']=='ready')
         {
-            $list_tasks['task_info']['descript']=__('Ready to backup. Progress: 0%, running time: 0second.','wpvivid');
+            $list_tasks['task_info']['descript']=__('Ready to backup. Progress: 0%, running time: 0second.','wpvivid-backuprestore');
             $list_tasks['task_info']['css_btn_cancel']='pointer-events: none; opacity: 0.4;';
             $list_tasks['task_info']['css_btn_log']='pointer-events: none; opacity: 0.4;';
         }
@@ -1076,7 +1129,7 @@ class WPvivid_Backup_Task
                     }
 
                     $list_tasks['task_info']['speed'] = $speed;
-                    $list_tasks['task_info']['descript'] = $descript.__(' Progress: ', 'wpvivid') . $list_tasks['task_info']['backup_percent'] . __(', running time: ', 'wpvivid') . $list_tasks['data']['running_time'];
+                    $list_tasks['task_info']['descript'] = $descript.' '.__('Progress: ', 'wpvivid-backuprestore') . $list_tasks['task_info']['backup_percent'] . ', ' . __('running time: ', 'wpvivid-backuprestore') . $list_tasks['data']['running_time'];
 
                     $time_spend=time()-$list_tasks['status']['run_time'];
                     if($time_spend>30)
@@ -1089,13 +1142,13 @@ class WPvivid_Backup_Task
                     }
                 }
                 else {
-                    $list_tasks['task_info']['descript'] = $list_tasks['data']['descript'] . __(' Progress: ', 'wpvivid') . $list_tasks['task_info']['backup_percent'] . __(', running time: ', 'wpvivid') . $list_tasks['data']['running_time'];
+                    $list_tasks['task_info']['descript'] = $list_tasks['data']['descript'] . ' '. __('Progress: ', 'wpvivid-backuprestore') . $list_tasks['task_info']['backup_percent'] . ', '. __('running time: ', 'wpvivid-backuprestore') . $list_tasks['data']['running_time'];
                 }
                 $list_tasks['task_info']['css_btn_cancel']='pointer-events: auto; opacity: 1;';
                 $list_tasks['task_info']['css_btn_log']='pointer-events: auto; opacity: 1;';
             }
             else{
-                $list_tasks['task_info']['descript']=__('The backup will be canceled after backing up the current chunk ends.','wpvivid');
+                $list_tasks['task_info']['descript']=__('The backup will be canceled after backing up the current chunk ends.','wpvivid-backuprestore');
                 $list_tasks['task_info']['css_btn_cancel']='pointer-events: none; opacity: 0.4;';
                 $list_tasks['task_info']['css_btn_log']='pointer-events: auto; opacity: 1;';
             }
@@ -1112,7 +1165,7 @@ class WPvivid_Backup_Task
                 $list_tasks['task_info']['css_btn_log']='pointer-events: auto; opacity: 1;';
             }
             else{
-                $list_tasks['task_info']['descript']=__('The backup will be canceled after backing up the current chunk ends.','wpvivid');
+                $list_tasks['task_info']['descript']=__('The backup will be canceled after backing up the current chunk ends.','wpvivid-backuprestore');
                 $list_tasks['task_info']['css_btn_cancel']='pointer-events: none; opacity: 0.4;';
                 $list_tasks['task_info']['css_btn_log']='pointer-events: auto; opacity: 1;';
             }
@@ -1262,44 +1315,47 @@ class WPvivid_Backup_Task
         if(is_dir($path))
         {
             $handler = opendir($path);
-            while (($filename = readdir($handler)) !== false)
+            if($handler!==false)
             {
-                if ($filename != "." && $filename != "..")
+                while (($filename = readdir($handler)) !== false)
                 {
-                    $count++;
-
-                    if (is_dir($path . DIRECTORY_SEPARATOR . $filename))
+                    if ($filename != "." && $filename != "..")
                     {
-                        if ($this->regex_match($exclude_regex, $path . DIRECTORY_SEPARATOR . $filename, 0))
+                        $count++;
+
+                        if (is_dir($path . DIRECTORY_SEPARATOR . $filename))
                         {
-                            if ($this->regex_match($include_regex, $path . DIRECTORY_SEPARATOR . $filename, 1))
+                            if ($this->regex_match($exclude_regex, $path . DIRECTORY_SEPARATOR . $filename, 0))
                             {
-                                $files[] = $path . DIRECTORY_SEPARATOR . $filename;
-                            }
-                        }
-                    } else {
-                        if($this->regex_match($exclude_regex, $path . DIRECTORY_SEPARATOR . $filename, 0)){
-                            if ($exclude_file_size == 0)
-                            {
-                                if(is_readable($path . DIRECTORY_SEPARATOR . $filename))
+                                if ($this->regex_match($include_regex, $path . DIRECTORY_SEPARATOR . $filename, 1))
                                 {
                                     $files[] = $path . DIRECTORY_SEPARATOR . $filename;
                                 }
-                            } else {
-                                if(is_readable($path . DIRECTORY_SEPARATOR . $filename))
+                            }
+                        } else {
+                            if($this->regex_match($exclude_regex, $path . DIRECTORY_SEPARATOR . $filename, 0)){
+                                if ($exclude_file_size == 0)
                                 {
-                                    if (filesize($path . DIRECTORY_SEPARATOR . $filename) < $exclude_file_size * 1024 * 1024)
+                                    if(is_readable($path . DIRECTORY_SEPARATOR . $filename))
                                     {
                                         $files[] = $path . DIRECTORY_SEPARATOR . $filename;
+                                    }
+                                } else {
+                                    if(is_readable($path . DIRECTORY_SEPARATOR . $filename))
+                                    {
+                                        if (filesize($path . DIRECTORY_SEPARATOR . $filename) < $exclude_file_size * 1024 * 1024)
+                                        {
+                                            $files[] = $path . DIRECTORY_SEPARATOR . $filename;
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                 }
+                if($handler)
+                    @closedir($handler);
             }
-            if($handler)
-                @closedir($handler);
         }
         if($include_dir && $count == 0)
         {
@@ -1322,16 +1378,19 @@ class WPvivid_Backup_Task
     public function get_uploads_folder_list($root,$exclude_regex,$include_regex,$exclude_file_size)
     {
         $files=array();
+        $files[] = $root;
         $this->getUploadsFolder($files,$root,$exclude_regex,$include_regex,$exclude_file_size);
         return $files;
     }
 
-    public function getUploadsFolder(&$files,$path,$exclude_regex=array(),$include_regex=array(),$exclude_file_size=array(),$include_dir = true,$subdir=false)
+    public function getUploadsFolder(&$files,$path,$exclude_regex=array(),$include_regex=array(),$exclude_file_size=array(),$include_dir = true)
     {
         $count = 0;
         if(is_dir($path))
         {
             $handler = opendir($path);
+            if($handler===false)
+                return;
             while (($filename = readdir($handler)) !== false)
             {
                 if ($filename != "." && $filename != "..")
@@ -1344,14 +1403,9 @@ class WPvivid_Backup_Task
                         {
                             if ($this->regex_match($include_regex, $path . DIRECTORY_SEPARATOR . $filename, 1))
                             {
-                                if($subdir)
-                                    $files[] = $path . DIRECTORY_SEPARATOR . $filename;
-                                else
-                                    $this->getUploadsFolder($files,$path . DIRECTORY_SEPARATOR . $filename,$exclude_regex,$include_regex,$exclude_file_size,$include_dir,true);
+                                $this->getUploadsFolder($files,$path . DIRECTORY_SEPARATOR . $filename,$exclude_regex,$include_regex,$exclude_file_size,$include_dir);
                             }
                         }
-                    } else {
-
                     }
                 }
             }
@@ -1360,8 +1414,7 @@ class WPvivid_Backup_Task
         }
         if($include_dir && $count == 0)
         {
-            if($subdir)
-                $files[] = $path;
+            $files[] = $path;
         }
     }
 
@@ -1511,7 +1564,8 @@ class WPvivid_Backup_Item
             $tmp_data = $this->config['backup']['data']['meta']['files'];
         }
 
-        if($b_has_data){
+        if($b_has_data)
+        {
             $b_need_download=false;
             $b_not_found=false;
             $b_test=false;
@@ -1521,15 +1575,17 @@ class WPvivid_Backup_Item
                 $path=$this->get_local_path().$file['file_name'];
                 if(file_exists($path))
                 {
-                    if(filesize($path) == $file['size']){
-                        if($wpvivid_plugin->wpvivid_check_zip_valid()) {
+                    if(filesize($path) == $file['size'])
+                    {
+                        if($wpvivid_plugin->wpvivid_check_zip_valid())
+                        {
                             $res = TRUE;
                         }
                         else{
                             $res = FALSE;
                         }
                     }
-                    else{
+                    else {
                         $res = FALSE;
                     }
                     if ($res !== TRUE)
@@ -1922,7 +1978,8 @@ class WPvivid_Backup_Item
     {
         $zip=new WPvivid_ZipClass();
         $ret=$zip->get_json_data($file_name);
-        if($ret['result'] === WPVIVID_SUCCESS) {
+        if($ret['result'] === WPVIVID_SUCCESS)
+        {
             $json=$ret['json_data'];
             $json = json_decode($json, 1);
             if (is_null($json)) {
@@ -1958,6 +2015,33 @@ class WPvivid_Backup_Item
                 }
             }
         }
+        asort($files);
+        uasort($files, function ($a, $b) {
+            $file_name_1 = $a['file_name'];
+            $file_name_2 = $b['file_name'];
+            $index_1 = 0;
+            if(preg_match('/wpvivid-.*_.*_.*\.part.*\.zip$/', $file_name_1)) {
+                if (preg_match('/part.*$/', $file_name_1, $matches)) {
+                    $index_1 = $matches[0];
+                    $index_1 = preg_replace("/part/","", $index_1);
+                    $index_1 = preg_replace("/.zip/","", $index_1);
+                }
+            }
+            $index_2 = 0;
+            if(preg_match('/wpvivid-.*_.*_.*\.part.*\.zip$/', $file_name_2)) {
+                if (preg_match('/part.*$/', $file_name_2, $matches)) {
+                    $index_2 = $matches[0];
+                    $index_2 = preg_replace("/part/", "", $index_2);
+                    $index_2 = preg_replace("/.zip/", "", $index_2);
+                }
+            }
+            if($index_1 !== 0 && $index_2 === 0){
+                return -1;
+            }
+            if($index_1 === 0 && $index_2 !== 0){
+                return 1;
+            }
+        });
         return $files;
     }
 
@@ -2172,6 +2256,7 @@ class WPvivid_Backup_Item
 class WPvivid_Backup
 {
     public $task;
+    public $backup_type_report = '';
     //public $config;
 
     public function __construct($task_id=false,$task=false)
@@ -2201,24 +2286,28 @@ class WPvivid_Backup
         $this->init_options($task_id);
         $next_backup=$this->task->get_need_backup();
 
+        $this->backup_type_report = '';
+
         while($next_backup!==false)
         {
             global $wpvivid_plugin;
             $wpvivid_plugin->set_time_limit($this->task->get_id());
-            $this->task->update_sub_task_progress($next_backup['key'],0,'Start backing up '.$next_backup['key'].'.');
+            $this->task->update_sub_task_progress($next_backup['key'],0, sprintf(__('Start backing up %s.', 'wpvivid-backuprestore'), $next_backup['key']));
             $wpvivid_plugin->wpvivid_log->WriteLog('Prepare to backup '.$next_backup['key'].' files.','notice');
+            $this->backup_type_report .= $next_backup['key'].',';
             if(isset($next_backup['files'])) {
                 $wpvivid_plugin->wpvivid_log->WriteLog('File number: ' . sizeof($next_backup['files']), 'notice');
             }
             $result = $this->_backup($next_backup);
             $wpvivid_plugin->wpvivid_log->WriteLog('Backing up '.$next_backup['key'].' completed.','notice');
-            $this->task->update_sub_task_progress($next_backup['key'],1,'Backing up '.$next_backup['key'].' finished.');
+            $this->task->update_sub_task_progress($next_backup['key'],1, sprintf(__('Backing up %s finished.', 'wpvivid-backuprestore'), $next_backup['key']));
             $this->task->update_backup_result($next_backup,$result);
             $wpvivid_plugin->check_cancel_backup($task_id);
             unset($next_backup);
             $next_backup=$this->task->get_need_backup();
         }
 
+        WPvivid_Setting::update_option('wpvivid_backup_report', $this->backup_type_report);
         $this->cleanup();
 
         $ret=$this->task->get_backup_result();
@@ -2233,7 +2322,8 @@ class WPvivid_Backup
 
         $is_type_db = false;
         $is_type_db = apply_filters('wpvivid_check_type_database', $is_type_db, $data);
-        if($is_type_db){
+        if($is_type_db)
+        {
             include_once WPVIVID_PLUGIN_DIR .'/includes/class-wpvivid-backup-database.php';
             $wpvivid_plugin->wpvivid_log->WriteLog('Start exporting database.','notice');
             $backup_database = new WPvivid_Backup_Database();
@@ -2344,11 +2434,12 @@ class WPvivid_Backup
             if($is_additional_db){
                 $result =$zip->compress_additional_database($data);
             }
-            else{
+            else {
                 $result =$zip->compress($data);
             }
 
-            if($is_type_db){
+            if($is_type_db)
+            {
                 foreach ($data['files'] as $sql_file)
                 {
                     @unlink($sql_file);
@@ -2390,14 +2481,17 @@ class WPvivid_Backup
     {
         $path = WP_CONTENT_DIR.DIRECTORY_SEPARATOR.WPvivid_Setting::get_backupdir();
         $handler=opendir($path);
-        while(($filename=readdir($handler))!==false)
+        if($handler!==false)
         {
-            if(preg_match('#'.$this->task->get_id().'#',$filename))
+            while(($filename=readdir($handler))!==false)
             {
-                @unlink($path.DIRECTORY_SEPARATOR.$filename);
+                if(preg_match('#'.$this->task->get_id().'#',$filename) || preg_match('#'.apply_filters('wpvivid_fix_wpvivid_free', $this->task->get_id()).'#',$filename))
+                {
+                    @unlink($path.DIRECTORY_SEPARATOR.$filename);
+                }
             }
+            @closedir($handler);
         }
-        @closedir($handler);
     }
 
     public function clearcache()
@@ -2405,24 +2499,28 @@ class WPvivid_Backup
         $task_id=$this->task->get_prefix();
         $path = WP_CONTENT_DIR.DIRECTORY_SEPARATOR.WPvivid_Setting::get_backupdir();
         $handler=opendir($path);
-        while(($filename=readdir($handler))!==false)
+        if($handler!==false)
         {
-            if(is_dir($path.DIRECTORY_SEPARATOR.$filename) && preg_match('#temp-'.$task_id.'#',$filename))
+            while(($filename=readdir($handler))!==false)
             {
-                $this->deldir($path.DIRECTORY_SEPARATOR.$filename,'',true);
+                if(is_dir($path.DIRECTORY_SEPARATOR.$filename) && preg_match('#temp-'.$task_id.'#',$filename))
+                {
+                    $this->deldir($path.DIRECTORY_SEPARATOR.$filename,'',true);
+                }
+                if(is_dir($path.DIRECTORY_SEPARATOR.$filename) && preg_match('#temp-'.$task_id.'#',$filename))
+                {
+                    $this->deldir($path.DIRECTORY_SEPARATOR.$filename,'',true);
+                }
+                if(preg_match('#pclzip-.*\.tmp#', $filename)){
+                    @unlink($path.DIRECTORY_SEPARATOR.$filename);
+                }
+                if(preg_match('#pclzip-.*\.gz#', $filename)){
+                    @unlink($path.DIRECTORY_SEPARATOR.$filename);
+                }
             }
-            if(is_dir($path.DIRECTORY_SEPARATOR.$filename) && preg_match('#temp-'.$task_id.'#',$filename))
-            {
-                $this->deldir($path.DIRECTORY_SEPARATOR.$filename,'',true);
-            }
-            if(preg_match('#pclzip-.*\.tmp#', $filename)){
-                @unlink($path.DIRECTORY_SEPARATOR.$filename);
-            }
-            if(preg_match('#pclzip-.*\.gz#', $filename)){
-                @unlink($path.DIRECTORY_SEPARATOR.$filename);
-            }
+            @closedir($handler);
         }
-        @closedir($handler);
+
     }
 
     public function deldir($path,$exclude=array(),$flag = false)
