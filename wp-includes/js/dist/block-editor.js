@@ -3020,7 +3020,7 @@ unstable_useIdState.__keys = keys;
 /* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_RESULT__;// TinyColor v1.4.1
+var __WEBPACK_AMD_DEFINE_RESULT__;// TinyColor v1.4.2
 // https://github.com/bgrins/TinyColor
 // Brian Grinstead, MIT License
 
@@ -11153,7 +11153,7 @@ var chevronUp = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createEl
   viewBox: "0 0 24 24",
   xmlns: "http://www.w3.org/2000/svg"
 }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__["Path"], {
-  d: "M12 8l-6 5.4 1 1.2 5-4.6 5 4.6 1-1.2z"
+  d: "M6.5 12.4L12 8l5.5 4.4-.9 1.2L12 10l-4.5 3.6-1-1.2z"
 }));
 /* harmony default export */ __webpack_exports__["a"] = (chevronUp);
 
@@ -11177,7 +11177,7 @@ var chevronDown = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["create
   viewBox: "0 0 24 24",
   xmlns: "http://www.w3.org/2000/svg"
 }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__["Path"], {
-  d: "M17 9.4L12 14 7 9.4l-1 1.2 6 5.4 6-5.4z"
+  d: "M17.5 11.6L12 16l-5.5-4.4.9-1.2L12 14l4.5-3.6 1 1.2z"
 }));
 /* harmony default export */ __webpack_exports__["a"] = (chevronDown);
 
@@ -27460,23 +27460,25 @@ function NavigableToolbar(_ref) {
 
 /* harmony default export */ var navigable_toolbar = (NavigableToolbar);
 
-// CONCATENATED MODULE: ./node_modules/@wordpress/block-editor/build-module/components/block-mover/index.js
+// CONCATENATED MODULE: ./node_modules/@wordpress/icons/build-module/library/drag-handle.js
 
-
-
-
-
-
-
-
-
-function block_mover_createSuper(Derived) { return function () { var Super = Object(getPrototypeOf["a" /* default */])(Derived), result; if (block_mover_isNativeReflectConstruct()) { var NewTarget = Object(getPrototypeOf["a" /* default */])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(possibleConstructorReturn["a" /* default */])(this, result); }; }
-
-function block_mover_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 /**
- * External dependencies
+ * WordPress dependencies
  */
+
+var dragHandle = Object(external_this_wp_element_["createElement"])(external_this_wp_primitives_["SVG"], {
+  width: "18",
+  height: "18",
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 18 18"
+}, Object(external_this_wp_element_["createElement"])(external_this_wp_primitives_["Path"], {
+  d: "M5 4h2V2H5v2zm6-2v2h2V2h-2zm-6 8h2V8H5v2zm6 0h2V8h-2v2zm-6 6h2v-2H5v2zm6 0h2v-2h-2v2z"
+}));
+/* harmony default export */ var drag_handle = (dragHandle);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/block-editor/build-module/components/block-draggable/draggable-chip.js
+
 
 
 /**
@@ -27492,89 +27494,343 @@ function block_mover_isNativeReflectConstruct() { if (typeof Reflect === "undefi
  */
 
 
-var block_mover_BlockMover = /*#__PURE__*/function (_Component) {
-  Object(inherits["a" /* default */])(BlockMover, _Component);
+function BlockDraggableChip(_ref) {
+  var clientIds = _ref.clientIds;
+  var icon = Object(external_this_wp_data_["useSelect"])(function (select) {
+    if (clientIds.length !== 1) {
+      return;
+    }
 
-  var _super = block_mover_createSuper(BlockMover);
+    var _select = select('core/block-editor'),
+        getBlockName = _select.getBlockName;
 
-  function BlockMover() {
-    var _this;
+    var _clientIds = Object(slicedToArray["a" /* default */])(clientIds, 1),
+        firstId = _clientIds[0];
 
-    Object(classCallCheck["a" /* default */])(this, BlockMover);
+    var blockName = getBlockName(firstId);
+    return Object(external_this_wp_blocks_["getBlockType"])(blockName).icon;
+  }, [clientIds]);
+  return Object(external_this_wp_element_["createElement"])("div", {
+    className: "block-editor-block-draggable-chip-wrapper"
+  }, Object(external_this_wp_element_["createElement"])("div", {
+    className: "block-editor-block-draggable-chip"
+  }, Object(external_this_wp_element_["createElement"])(external_this_wp_components_["Flex"], {
+    justify: "center",
+    className: "block-editor-block-draggable-chip__content"
+  }, Object(external_this_wp_element_["createElement"])(external_this_wp_components_["FlexItem"], null, icon ? Object(external_this_wp_element_["createElement"])(BlockIcon, {
+    icon: icon
+  }) : Object(external_this_wp_i18n_["sprintf"])(
+  /* translators: %d: Number of blocks. */
+  Object(external_this_wp_i18n_["_n"])('%d block', '%d blocks', clientIds.length), clientIds.length)), Object(external_this_wp_element_["createElement"])(external_this_wp_components_["FlexItem"], null, Object(external_this_wp_element_["createElement"])(BlockIcon, {
+    icon: drag_handle
+  })))));
+}
 
-    _this = _super.apply(this, arguments);
-    _this.state = {
-      isFocused: false
+// CONCATENATED MODULE: ./node_modules/@wordpress/block-editor/build-module/components/block-draggable/use-scroll-when-dragging.js
+/**
+ * WordPress dependencies
+ */
+
+
+var SCROLL_INACTIVE_DISTANCE_PX = 50;
+var SCROLL_INTERVAL_MS = 25;
+var PIXELS_PER_SECOND_PER_PERCENTAGE = 1000;
+var VELOCITY_MULTIPLIER = PIXELS_PER_SECOND_PER_PERCENTAGE * (SCROLL_INTERVAL_MS / 1000);
+/**
+ * React hook that scrolls the scroll container when a block is being dragged.
+ *
+ * @return {Function[]} `startScrolling`, `scrollOnDragOver`, `stopScrolling`
+ *                      functions to be called in `onDragStart`, `onDragOver`
+ *                      and `onDragEnd` events respectively.
+ */
+
+function useScrollWhenDragging() {
+  var dragStartY = Object(external_this_wp_element_["useRef"])(null);
+  var velocityY = Object(external_this_wp_element_["useRef"])(null);
+  var scrollParentY = Object(external_this_wp_element_["useRef"])(null);
+  var scrollEditorInterval = Object(external_this_wp_element_["useRef"])(null); // Clear interval when unmounting.
+
+  Object(external_this_wp_element_["useEffect"])(function () {
+    return function () {
+      if (scrollEditorInterval.current) {
+        clearInterval(scrollEditorInterval.current);
+        scrollEditorInterval.current = null;
+      }
     };
-    _this.onFocus = _this.onFocus.bind(Object(assertThisInitialized["a" /* default */])(_this));
-    _this.onBlur = _this.onBlur.bind(Object(assertThisInitialized["a" /* default */])(_this));
-    return _this;
+  }, []);
+  var startScrolling = Object(external_this_wp_element_["useCallback"])(function (event) {
+    dragStartY.current = event.clientY; // Find nearest parent(s) to scroll.
+
+    scrollParentY.current = Object(external_this_wp_dom_["getScrollContainer"])(event.target);
+    scrollEditorInterval.current = setInterval(function () {
+      if (scrollParentY.current && velocityY.current) {
+        var newTop = scrollParentY.current.scrollTop + velocityY.current; // Setting `behavior: 'smooth'` as a scroll property seems to hurt performance.
+        // Better to use a small scroll interval.
+
+        scrollParentY.current.scroll({
+          top: newTop
+        });
+      }
+    }, SCROLL_INTERVAL_MS);
+  }, []);
+  var scrollOnDragOver = Object(external_this_wp_element_["useCallback"])(function (event) {
+    if (!scrollParentY.current) {
+      return;
+    }
+
+    var scrollParentHeight = scrollParentY.current.offsetHeight;
+    var offsetDragStartPosition = dragStartY.current - scrollParentY.current.offsetTop;
+    var offsetDragPosition = event.clientY - scrollParentY.current.offsetTop;
+
+    if (event.clientY > offsetDragStartPosition) {
+      // User is dragging downwards.
+      var moveableDistance = Math.max(scrollParentHeight - offsetDragStartPosition - SCROLL_INACTIVE_DISTANCE_PX, 0);
+      var dragDistance = Math.max(offsetDragPosition - offsetDragStartPosition - SCROLL_INACTIVE_DISTANCE_PX, 0);
+      var distancePercentage = dragDistance / moveableDistance;
+      velocityY.current = VELOCITY_MULTIPLIER * distancePercentage;
+    } else if (event.clientY < offsetDragStartPosition) {
+      // User is dragging upwards.
+      var _moveableDistance = Math.max(offsetDragStartPosition - SCROLL_INACTIVE_DISTANCE_PX, 0);
+
+      var _dragDistance = Math.max(offsetDragStartPosition - offsetDragPosition - SCROLL_INACTIVE_DISTANCE_PX, 0);
+
+      var _distancePercentage = _dragDistance / _moveableDistance;
+
+      velocityY.current = -VELOCITY_MULTIPLIER * _distancePercentage;
+    } else {
+      velocityY.current = 0;
+    }
+  }, []);
+
+  var stopScrolling = function stopScrolling() {
+    dragStartY.current = null;
+    scrollParentY.current = null;
+
+    if (scrollEditorInterval.current) {
+      clearInterval(scrollEditorInterval.current);
+      scrollEditorInterval.current = null;
+    }
+  };
+
+  return [startScrolling, scrollOnDragOver, stopScrolling];
+}
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/block-editor/build-module/components/block-draggable/index.js
+
+
+
+/**
+ * WordPress dependencies
+ */
+
+
+
+/**
+ * Internal dependencies
+ */
+
+
+
+
+var block_draggable_BlockDraggable = function BlockDraggable(_ref) {
+  var children = _ref.children,
+      clientIds = _ref.clientIds,
+      cloneClassname = _ref.cloneClassname,
+      _onDragStart = _ref.onDragStart,
+      _onDragEnd = _ref.onDragEnd;
+
+  var _useSelect = Object(external_this_wp_data_["useSelect"])(function (select) {
+    var _select = select('core/block-editor'),
+        getBlockRootClientId = _select.getBlockRootClientId,
+        getTemplateLock = _select.getTemplateLock;
+
+    var rootClientId = getBlockRootClientId(clientIds[0]);
+    var templateLock = rootClientId ? getTemplateLock(rootClientId) : null;
+    return {
+      srcRootClientId: rootClientId,
+      isDraggable: 'all' !== templateLock
+    };
+  }, [clientIds]),
+      srcRootClientId = _useSelect.srcRootClientId,
+      isDraggable = _useSelect.isDraggable;
+
+  var isDragging = Object(external_this_wp_element_["useRef"])(false);
+
+  var _useScrollWhenDraggin = useScrollWhenDragging(),
+      _useScrollWhenDraggin2 = Object(slicedToArray["a" /* default */])(_useScrollWhenDraggin, 3),
+      startScrolling = _useScrollWhenDraggin2[0],
+      scrollOnDragOver = _useScrollWhenDraggin2[1],
+      stopScrolling = _useScrollWhenDraggin2[2];
+
+  var _useDispatch = Object(external_this_wp_data_["useDispatch"])('core/block-editor'),
+      startDraggingBlocks = _useDispatch.startDraggingBlocks,
+      stopDraggingBlocks = _useDispatch.stopDraggingBlocks; // Stop dragging blocks if the block draggable is unmounted
+
+
+  Object(external_this_wp_element_["useEffect"])(function () {
+    return function () {
+      if (isDragging.current) {
+        stopDraggingBlocks();
+      }
+    };
+  }, []);
+
+  if (!isDraggable) {
+    return children({
+      isDraggable: false
+    });
   }
 
-  Object(createClass["a" /* default */])(BlockMover, [{
-    key: "onFocus",
-    value: function onFocus() {
-      this.setState({
-        isFocused: true
-      });
-    }
-  }, {
-    key: "onBlur",
-    value: function onBlur() {
-      this.setState({
-        isFocused: false
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          isFirst = _this$props.isFirst,
-          isLast = _this$props.isLast,
-          clientIds = _this$props.clientIds,
-          isLocked = _this$props.isLocked,
-          isHidden = _this$props.isHidden,
-          rootClientId = _this$props.rootClientId,
-          orientation = _this$props.orientation;
-      var isFocused = this.state.isFocused;
+  var transferData = {
+    type: 'block',
+    srcClientIds: clientIds,
+    srcRootClientId: srcRootClientId
+  };
+  return Object(external_this_wp_element_["createElement"])(external_this_wp_components_["Draggable"], {
+    cloneClassname: cloneClassname,
+    elementId: "block-".concat(clientIds[0]),
+    transferData: transferData,
+    onDragStart: function onDragStart(event) {
+      startDraggingBlocks();
+      isDragging.current = true;
+      startScrolling(event);
 
-      if (isLocked || isFirst && isLast && !rootClientId) {
-        return null;
-      } // We emulate a disabled state because forcefully applying the `disabled`
-      // attribute on the buttons while it has focus causes the screen to change
-      // to an unfocused state (body as active element) without firing blur on,
-      // the rendering parent, leaving it unable to react to focus out.
+      if (_onDragStart) {
+        _onDragStart();
+      }
+    },
+    onDragOver: scrollOnDragOver,
+    onDragEnd: function onDragEnd() {
+      stopDraggingBlocks();
+      isDragging.current = false;
+      stopScrolling();
+
+      if (_onDragEnd) {
+        _onDragEnd();
+      }
+    },
+    __experimentalDragComponent: Object(external_this_wp_element_["createElement"])(BlockDraggableChip, {
+      clientIds: clientIds
+    })
+  }, function (_ref2) {
+    var onDraggableStart = _ref2.onDraggableStart,
+        onDraggableEnd = _ref2.onDraggableEnd;
+    return children({
+      isDraggable: true,
+      onDraggableStart: onDraggableStart,
+      onDraggableEnd: onDraggableEnd
+    });
+  });
+};
+
+/* harmony default export */ var block_draggable = (block_draggable_BlockDraggable);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/block-editor/build-module/components/block-mover/index.js
 
 
-      return Object(external_this_wp_element_["createElement"])("div", {
-        className: classnames_default()('block-editor-block-mover', {
-          'is-visible': isFocused || !isHidden,
-          'is-horizontal': orientation === 'horizontal'
-        })
-      }, Object(external_this_wp_element_["createElement"])(external_this_wp_components_["ToolbarGroup"], null, Object(external_this_wp_element_["createElement"])(external_this_wp_components_["__experimentalToolbarItem"], {
-        onFocus: this.onFocus,
-        onBlur: this.onBlur
-      }, function (itemProps) {
-        return Object(external_this_wp_element_["createElement"])(BlockMoverUpButton, Object(esm_extends["a" /* default */])({
-          clientIds: clientIds
-        }, itemProps));
-      }), Object(external_this_wp_element_["createElement"])(external_this_wp_components_["__experimentalToolbarItem"], {
-        onFocus: this.onFocus,
-        onBlur: this.onBlur
-      }, function (itemProps) {
-        return Object(external_this_wp_element_["createElement"])(BlockMoverDownButton, Object(esm_extends["a" /* default */])({
-          clientIds: clientIds
-        }, itemProps));
-      })));
-    }
-  }]);
 
-  return BlockMover;
-}(external_this_wp_element_["Component"]);
-/* harmony default export */ var block_mover = (Object(external_this_wp_data_["withSelect"])(function (select, _ref) {
+
+/**
+ * External dependencies
+ */
+
+
+/**
+ * WordPress dependencies
+ */
+
+
+
+
+
+
+
+/**
+ * Internal dependencies
+ */
+
+
+
+
+function BlockMover(_ref) {
+  var isFirst = _ref.isFirst,
+      isLast = _ref.isLast,
+      clientIds = _ref.clientIds,
+      isLocked = _ref.isLocked,
+      isHidden = _ref.isHidden,
+      rootClientId = _ref.rootClientId,
+      orientation = _ref.orientation,
+      hideDragHandle = _ref.hideDragHandle;
+
+  var _useState = Object(external_this_wp_element_["useState"])(false),
+      _useState2 = Object(slicedToArray["a" /* default */])(_useState, 2),
+      isFocused = _useState2[0],
+      setIsFocused = _useState2[1];
+
+  var onFocus = function onFocus() {
+    return setIsFocused(true);
+  };
+
+  var onBlur = function onBlur() {
+    return setIsFocused(false);
+  };
+
+  if (isLocked || isFirst && isLast && !rootClientId) {
+    return null;
+  }
+
+  var dragHandleLabel = clientIds.length === 1 ? Object(external_this_wp_i18n_["__"])('Drag block') : Object(external_this_wp_i18n_["__"])('Drag blocks'); // We emulate a disabled state because forcefully applying the `disabled`
+  // attribute on the buttons while it has focus causes the screen to change
+  // to an unfocused state (body as active element) without firing blur on,
+  // the rendering parent, leaving it unable to react to focus out.
+
+  return Object(external_this_wp_element_["createElement"])("div", {
+    className: classnames_default()('block-editor-block-mover', {
+      'is-visible': isFocused || !isHidden,
+      'is-horizontal': orientation === 'horizontal'
+    })
+  }, !hideDragHandle && Object(external_this_wp_element_["createElement"])(block_draggable, {
+    clientIds: clientIds,
+    cloneClassname: "block-editor-block-mover__drag-clone"
+  }, function (_ref2) {
+    var isDraggable = _ref2.isDraggable,
+        onDraggableStart = _ref2.onDraggableStart,
+        onDraggableEnd = _ref2.onDraggableEnd;
+    return Object(external_this_wp_element_["createElement"])(external_this_wp_components_["Button"], {
+      icon: drag_handle,
+      className: "block-editor-block-mover__drag-handle",
+      "aria-hidden": "true",
+      label: dragHandleLabel // Should not be able to tab to drag handle as this
+      // button can only be used with a pointer device.
+      ,
+      tabIndex: "-1",
+      onDragStart: onDraggableStart,
+      onDragEnd: onDraggableEnd,
+      draggable: isDraggable
+    });
+  }), Object(external_this_wp_element_["createElement"])(external_this_wp_components_["ToolbarGroup"], {
+    className: "block-editor-block-mover__move-button-container"
+  }, Object(external_this_wp_element_["createElement"])(external_this_wp_components_["__experimentalToolbarItem"], {
+    onFocus: onFocus,
+    onBlur: onBlur
+  }, function (itemProps) {
+    return Object(external_this_wp_element_["createElement"])(BlockMoverUpButton, Object(esm_extends["a" /* default */])({
+      clientIds: clientIds
+    }, itemProps));
+  }), Object(external_this_wp_element_["createElement"])(external_this_wp_components_["__experimentalToolbarItem"], {
+    onFocus: onFocus,
+    onBlur: onBlur
+  }, function (itemProps) {
+    return Object(external_this_wp_element_["createElement"])(BlockMoverDownButton, Object(esm_extends["a" /* default */])({
+      clientIds: clientIds
+    }, itemProps));
+  })));
+}
+
+/* harmony default export */ var block_mover = (Object(external_this_wp_data_["withSelect"])(function (select, _ref3) {
   var _getBlockListSettings;
 
-  var clientIds = _ref.clientIds;
+  var clientIds = _ref3.clientIds;
 
   var _select = select('core/block-editor'),
       getBlock = _select.getBlock,
@@ -27602,7 +27858,7 @@ var block_mover_BlockMover = /*#__PURE__*/function (_Component) {
     isLast: isLast,
     orientation: (_getBlockListSettings = getBlockListSettings(rootClientId)) === null || _getBlockListSettings === void 0 ? void 0 : _getBlockListSettings.orientation
   };
-})(block_mover_BlockMover));
+})(BlockMover));
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/block-editor/build-module/components/block-parent-selector/index.js
 
@@ -28821,6 +29077,7 @@ function BlockSettingsDropdown(_ref) {
       return _ref2.apply(this, arguments);
     };
   }() : external_this_lodash_["noop"], [__experimentalSelectBlock]);
+  var removeBlockLabel = count === 1 ? Object(external_this_wp_i18n_["__"])('Remove block') : Object(external_this_wp_i18n_["__"])('Remove blocks');
   return Object(external_this_wp_element_["createElement"])(BlockActions, {
     clientIds: clientIds,
     __experimentalUpdateSelection: !__experimentalSelectBlock
@@ -28886,7 +29143,7 @@ function BlockSettingsDropdown(_ref) {
       }), Object(external_this_wp_element_["createElement"])(external_this_wp_components_["MenuGroup"], null, !isLocked && Object(external_this_wp_element_["createElement"])(external_this_wp_components_["MenuItem"], {
         onClick: Object(external_this_lodash_["flow"])(onClose, onRemove, updateSelection),
         shortcut: shortcuts.remove
-      }, Object(external_this_wp_i18n_["_n"])('Remove Block', 'Remove Blocks', count))));
+      }, removeBlockLabel)));
     });
   });
 }
@@ -28918,269 +29175,6 @@ function BlockSettingsMenu(_ref) {
   }));
 }
 /* harmony default export */ var block_settings_menu = (BlockSettingsMenu);
-
-// CONCATENATED MODULE: ./node_modules/@wordpress/icons/build-module/library/handle.js
-
-
-/**
- * WordPress dependencies
- */
-
-var handle = Object(external_this_wp_element_["createElement"])(external_this_wp_primitives_["SVG"], {
-  viewBox: "0 0 24 24",
-  xmlns: "http://www.w3.org/2000/svg"
-}, Object(external_this_wp_element_["createElement"])(external_this_wp_primitives_["Path"], {
-  d: "M7 16.5h10V15H7v1.5zm0-9V9h10V7.5H7z"
-}));
-/* harmony default export */ var library_handle = (handle);
-
-// CONCATENATED MODULE: ./node_modules/@wordpress/block-editor/build-module/components/block-draggable/draggable-chip.js
-
-
-
-/**
- * WordPress dependencies
- */
-
-
-
-
-
-/**
- * Internal dependencies
- */
-
-
-function BlockDraggableChip(_ref) {
-  var clientIds = _ref.clientIds;
-  var icon = Object(external_this_wp_data_["useSelect"])(function (select) {
-    if (clientIds.length !== 1) {
-      return;
-    }
-
-    var _select = select('core/block-editor'),
-        getBlockName = _select.getBlockName;
-
-    var _clientIds = Object(slicedToArray["a" /* default */])(clientIds, 1),
-        firstId = _clientIds[0];
-
-    var blockName = getBlockName(firstId);
-    return Object(external_this_wp_blocks_["getBlockType"])(blockName).icon;
-  }, [clientIds]);
-  return Object(external_this_wp_element_["createElement"])("div", {
-    className: "block-editor-block-draggable-chip-wrapper"
-  }, Object(external_this_wp_element_["createElement"])("div", {
-    className: "block-editor-block-draggable-chip"
-  }, Object(external_this_wp_element_["createElement"])(external_this_wp_components_["Flex"], {
-    justify: "center",
-    className: "block-editor-block-draggable-chip__content"
-  }, Object(external_this_wp_element_["createElement"])(external_this_wp_components_["FlexItem"], null, Object(external_this_wp_element_["createElement"])(BlockIcon, {
-    icon: library_handle
-  })), Object(external_this_wp_element_["createElement"])(external_this_wp_components_["FlexItem"], null, icon ? Object(external_this_wp_element_["createElement"])(BlockIcon, {
-    icon: icon
-  }) : Object(external_this_wp_i18n_["sprintf"])(
-  /* translators: %d: Number of blocks. */
-  Object(external_this_wp_i18n_["_n"])('%d block', '%d blocks', clientIds.length), clientIds.length)))));
-}
-
-// CONCATENATED MODULE: ./node_modules/@wordpress/block-editor/build-module/components/block-draggable/use-scroll-when-dragging.js
-/**
- * WordPress dependencies
- */
-
-
-var SCROLL_INACTIVE_DISTANCE_PX = 50;
-var SCROLL_INTERVAL_MS = 25;
-var PIXELS_PER_SECOND_PER_PERCENTAGE = 1000;
-var VELOCITY_MULTIPLIER = PIXELS_PER_SECOND_PER_PERCENTAGE * (SCROLL_INTERVAL_MS / 1000);
-/**
- * React hook that scrolls the scroll container when a block is being dragged.
- *
- * @return {Function[]} `startScrolling`, `scrollOnDragOver`, `stopScrolling`
- *                      functions to be called in `onDragStart`, `onDragOver`
- *                      and `onDragEnd` events respectively.
- */
-
-function useScrollWhenDragging() {
-  var dragStartY = Object(external_this_wp_element_["useRef"])(null);
-  var velocityY = Object(external_this_wp_element_["useRef"])(null);
-  var scrollParentY = Object(external_this_wp_element_["useRef"])(null);
-  var scrollEditorInterval = Object(external_this_wp_element_["useRef"])(null); // Clear interval when unmounting.
-
-  Object(external_this_wp_element_["useEffect"])(function () {
-    return function () {
-      if (scrollEditorInterval.current) {
-        clearInterval(scrollEditorInterval.current);
-        scrollEditorInterval.current = null;
-      }
-    };
-  }, []);
-  var startScrolling = Object(external_this_wp_element_["useCallback"])(function (event) {
-    dragStartY.current = event.clientY; // Find nearest parent(s) to scroll.
-
-    scrollParentY.current = Object(external_this_wp_dom_["getScrollContainer"])(event.target);
-    scrollEditorInterval.current = setInterval(function () {
-      if (scrollParentY.current && velocityY.current) {
-        var newTop = scrollParentY.current.scrollTop + velocityY.current; // Setting `behavior: 'smooth'` as a scroll property seems to hurt performance.
-        // Better to use a small scroll interval.
-
-        scrollParentY.current.scroll({
-          top: newTop
-        });
-      }
-    }, SCROLL_INTERVAL_MS);
-  }, []);
-  var scrollOnDragOver = Object(external_this_wp_element_["useCallback"])(function (event) {
-    if (!scrollParentY.current) {
-      return;
-    }
-
-    var scrollParentHeight = scrollParentY.current.offsetHeight;
-    var offsetDragStartPosition = dragStartY.current - scrollParentY.current.offsetTop;
-    var offsetDragPosition = event.clientY - scrollParentY.current.offsetTop;
-
-    if (event.clientY > offsetDragStartPosition) {
-      // User is dragging downwards.
-      var moveableDistance = Math.max(scrollParentHeight - offsetDragStartPosition - SCROLL_INACTIVE_DISTANCE_PX, 0);
-      var dragDistance = Math.max(offsetDragPosition - offsetDragStartPosition - SCROLL_INACTIVE_DISTANCE_PX, 0);
-      var distancePercentage = dragDistance / moveableDistance;
-      velocityY.current = VELOCITY_MULTIPLIER * distancePercentage;
-    } else if (event.clientY < offsetDragStartPosition) {
-      // User is dragging upwards.
-      var _moveableDistance = Math.max(offsetDragStartPosition - SCROLL_INACTIVE_DISTANCE_PX, 0);
-
-      var _dragDistance = Math.max(offsetDragStartPosition - offsetDragPosition - SCROLL_INACTIVE_DISTANCE_PX, 0);
-
-      var _distancePercentage = _dragDistance / _moveableDistance;
-
-      velocityY.current = -VELOCITY_MULTIPLIER * _distancePercentage;
-    } else {
-      velocityY.current = 0;
-    }
-  }, []);
-
-  var stopScrolling = function stopScrolling() {
-    dragStartY.current = null;
-    scrollParentY.current = null;
-
-    if (scrollEditorInterval.current) {
-      clearInterval(scrollEditorInterval.current);
-      scrollEditorInterval.current = null;
-    }
-  };
-
-  return [startScrolling, scrollOnDragOver, stopScrolling];
-}
-
-// CONCATENATED MODULE: ./node_modules/@wordpress/block-editor/build-module/components/block-draggable/index.js
-
-
-
-/**
- * WordPress dependencies
- */
-
-
-
-/**
- * Internal dependencies
- */
-
-
-
-
-var block_draggable_BlockDraggable = function BlockDraggable(_ref) {
-  var children = _ref.children,
-      clientIds = _ref.clientIds,
-      cloneClassname = _ref.cloneClassname,
-      _onDragStart = _ref.onDragStart,
-      _onDragEnd = _ref.onDragEnd;
-
-  var _useSelect = Object(external_this_wp_data_["useSelect"])(function (select) {
-    var _select = select('core/block-editor'),
-        getBlockRootClientId = _select.getBlockRootClientId,
-        getTemplateLock = _select.getTemplateLock;
-
-    var rootClientId = getBlockRootClientId(clientIds[0]);
-    var templateLock = rootClientId ? getTemplateLock(rootClientId) : null;
-    return {
-      srcRootClientId: rootClientId,
-      isDraggable: 'all' !== templateLock
-    };
-  }, [clientIds]),
-      srcRootClientId = _useSelect.srcRootClientId,
-      isDraggable = _useSelect.isDraggable;
-
-  var isDragging = Object(external_this_wp_element_["useRef"])(false);
-
-  var _useScrollWhenDraggin = useScrollWhenDragging(),
-      _useScrollWhenDraggin2 = Object(slicedToArray["a" /* default */])(_useScrollWhenDraggin, 3),
-      startScrolling = _useScrollWhenDraggin2[0],
-      scrollOnDragOver = _useScrollWhenDraggin2[1],
-      stopScrolling = _useScrollWhenDraggin2[2];
-
-  var _useDispatch = Object(external_this_wp_data_["useDispatch"])('core/block-editor'),
-      startDraggingBlocks = _useDispatch.startDraggingBlocks,
-      stopDraggingBlocks = _useDispatch.stopDraggingBlocks; // Stop dragging blocks if the block draggable is unmounted
-
-
-  Object(external_this_wp_element_["useEffect"])(function () {
-    return function () {
-      if (isDragging.current) {
-        stopDraggingBlocks();
-      }
-    };
-  }, []);
-
-  if (!isDraggable) {
-    return children({
-      isDraggable: false
-    });
-  }
-
-  var transferData = {
-    type: 'block',
-    srcClientIds: clientIds,
-    srcRootClientId: srcRootClientId
-  };
-  return Object(external_this_wp_element_["createElement"])(external_this_wp_components_["Draggable"], {
-    cloneClassname: cloneClassname,
-    elementId: "block-".concat(clientIds[0]),
-    transferData: transferData,
-    onDragStart: function onDragStart(event) {
-      startDraggingBlocks();
-      isDragging.current = true;
-      startScrolling(event);
-
-      if (_onDragStart) {
-        _onDragStart();
-      }
-    },
-    onDragOver: scrollOnDragOver,
-    onDragEnd: function onDragEnd() {
-      stopDraggingBlocks();
-      isDragging.current = false;
-      stopScrolling();
-
-      if (_onDragEnd) {
-        _onDragEnd();
-      }
-    },
-    __experimentalDragComponent: Object(external_this_wp_element_["createElement"])(BlockDraggableChip, {
-      clientIds: clientIds
-    })
-  }, function (_ref2) {
-    var onDraggableStart = _ref2.onDraggableStart,
-        onDraggableEnd = _ref2.onDraggableEnd;
-    return children({
-      isDraggable: true,
-      onDraggableStart: onDraggableStart,
-      onDraggableEnd: onDraggableEnd
-    });
-  });
-};
-
-/* harmony default export */ var block_draggable = (block_draggable_BlockDraggable);
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/block-editor/build-module/components/block-toolbar/utils.js
 
@@ -29379,10 +29373,10 @@ function useShowMoversGestures(_ref2) {
 
 
 
+
 /**
  * Internal dependencies
  */
-
 
 
 
@@ -29466,24 +29460,14 @@ function BlockToolbar(_ref) {
     className: "block-editor-block-toolbar__block-parent-selector-wrapper"
   }, Object(external_this_wp_element_["createElement"])(BlockParentSelector, {
     clientIds: blockClientIds
-  })), (shouldShowVisualToolbar || isMultiToolbar) && Object(external_this_wp_element_["createElement"])(block_switcher, {
+  })), (shouldShowVisualToolbar || isMultiToolbar) && Object(external_this_wp_element_["createElement"])(external_this_wp_components_["ToolbarGroup"], {
+    className: "block-editor-block-toolbar__block-controls"
+  }, Object(external_this_wp_element_["createElement"])(block_switcher, {
     clientIds: blockClientIds
-  })), (shouldShowVisualToolbar || isMultiToolbar) && Object(external_this_wp_element_["createElement"])(block_draggable, {
+  }), Object(external_this_wp_element_["createElement"])(block_mover, {
     clientIds: blockClientIds,
-    cloneClassname: "block-editor-block-toolbar__drag-clone"
-  }, function (_ref2) {
-    var isDraggable = _ref2.isDraggable,
-        onDraggableStart = _ref2.onDraggableStart,
-        onDraggableEnd = _ref2.onDraggableEnd;
-    return Object(external_this_wp_element_["createElement"])("div", {
-      className: "block-editor-block-toolbar__drag-handle-area",
-      draggable: isDraggable && !hideDragHandle,
-      onDragStart: onDraggableStart,
-      onDragEnd: onDraggableEnd
-    }, Object(external_this_wp_element_["createElement"])(block_mover, {
-      clientIds: blockClientIds
-    }));
-  }), shouldShowVisualToolbar && Object(external_this_wp_element_["createElement"])(external_this_wp_element_["Fragment"], null, Object(external_this_wp_element_["createElement"])(block_controls.Slot, {
+    hideDragHandle: hideDragHandle
+  }))), shouldShowVisualToolbar && Object(external_this_wp_element_["createElement"])(external_this_wp_element_["Fragment"], null, Object(external_this_wp_element_["createElement"])(block_controls.Slot, {
     bubblesVirtually: true,
     className: "block-editor-block-toolbar__slot"
   }), Object(external_this_wp_element_["createElement"])(block_format_controls.Slot, {
@@ -30593,7 +30577,7 @@ function BlockNavigationBlockSelectButton(_ref, ref) {
       isSelected = _ref.isSelected,
       onClick = _ref.onClick,
       position = _ref.position,
-      siblingCount = _ref.siblingCount,
+      siblingBlockCount = _ref.siblingBlockCount,
       level = _ref.level,
       tabIndex = _ref.tabIndex,
       onFocus = _ref.onFocus;
@@ -30603,7 +30587,7 @@ function BlockNavigationBlockSelectButton(_ref, ref) {
   var blockDisplayName = Object(external_this_wp_blocks_["__experimentalGetBlockLabel"])(blockType, attributes);
   var instanceId = Object(external_this_wp_compose_["useInstanceId"])(BlockNavigationBlockSelectButton);
   var descriptionId = "block-navigation-block-select-button__".concat(instanceId);
-  var blockPositionDescription = utils_getBlockPositionDescription(position, siblingCount, level);
+  var blockPositionDescription = utils_getBlockPositionDescription(position, siblingBlockCount, level);
   return Object(external_this_wp_element_["createElement"])(external_this_wp_element_["Fragment"], null, Object(external_this_wp_element_["createElement"])(external_this_wp_components_["Button"], {
     className: classnames_default()('block-editor-block-navigation-block-select-button', className),
     onClick: onClick,
@@ -30673,14 +30657,14 @@ function BlockNavigationBlockSlot(props, ref) {
         block = props.block,
         isSelected = props.isSelected,
         position = props.position,
-        siblingCount = props.siblingCount,
+        siblingBlockCount = props.siblingBlockCount,
         level = props.level,
         tabIndex = props.tabIndex,
         onFocus = props.onFocus;
     var name = block.name;
     var blockType = Object(external_this_wp_blocks_["getBlockType"])(name);
     var descriptionId = "block-navigation-block-slot__".concat(instanceId);
-    var blockPositionDescription = utils_getBlockPositionDescription(position, siblingCount, level);
+    var blockPositionDescription = utils_getBlockPositionDescription(position, siblingBlockCount, level);
     var forwardedFillProps = {
       // Ensure that the component in the slot can receive
       // keyboard navigation.
@@ -30736,9 +30720,9 @@ var BlockNavigationBlockContents = Object(external_this_wp_element_["forwardRef"
       block = _ref.block,
       isSelected = _ref.isSelected,
       position = _ref.position,
-      siblingCount = _ref.siblingCount,
+      siblingBlockCount = _ref.siblingBlockCount,
       level = _ref.level,
-      props = Object(objectWithoutProperties["a" /* default */])(_ref, ["onClick", "block", "isSelected", "position", "siblingCount", "level"]);
+      props = Object(objectWithoutProperties["a" /* default */])(_ref, ["onClick", "block", "isSelected", "position", "siblingBlockCount", "level"]);
 
   var _useBlockNavigationCo = context_useBlockNavigationContext(),
       withBlockNavigationSlots = _useBlockNavigationCo.__experimentalFeatures;
@@ -30750,7 +30734,7 @@ var BlockNavigationBlockContents = Object(external_this_wp_element_["forwardRef"
     onClick: onClick,
     isSelected: isSelected,
     position: position,
-    siblingCount: siblingCount,
+    siblingBlockCount: siblingBlockCount,
     level: level
   }, props)) : Object(external_this_wp_element_["createElement"])(block_select_button, Object(esm_extends["a" /* default */])({
     ref: ref,
@@ -30759,7 +30743,7 @@ var BlockNavigationBlockContents = Object(external_this_wp_element_["forwardRef"
     onClick: onClick,
     isSelected: isSelected,
     position: position,
-    siblingCount: siblingCount,
+    siblingBlockCount: siblingBlockCount,
     level: level
   }, props));
 });
@@ -30801,6 +30785,7 @@ function BlockNavigationBlock(_ref) {
       position = _ref.position,
       level = _ref.level,
       rowCount = _ref.rowCount,
+      siblingBlockCount = _ref.siblingBlockCount,
       showBlockMovers = _ref.showBlockMovers,
       terminatedLevels = _ref.terminatedLevels,
       path = _ref.path;
@@ -30819,10 +30804,8 @@ function BlockNavigationBlock(_ref) {
   var _useDispatch = Object(external_this_wp_data_["useDispatch"])('core/block-editor'),
       selectEditorBlock = _useDispatch.selectBlock;
 
-  var clientId = block.clientId; // Subtract 1 from rowCount, as it includes the block appender.
-
-  var siblingCount = rowCount - 1;
-  var hasSiblings = siblingCount > 1;
+  var clientId = block.clientId;
+  var hasSiblings = siblingBlockCount > 0;
   var hasRenderedMovers = showBlockMovers && hasSiblings;
   var hasVisibleMovers = isHovered || isFocused;
   var moverCellClassName = classnames_default()('block-editor-block-navigation-block__mover-cell', {
@@ -30881,7 +30864,7 @@ function BlockNavigationBlock(_ref) {
       },
       isSelected: isSelected,
       position: position,
-      siblingCount: siblingCount,
+      siblingBlockCount: siblingBlockCount,
       level: level,
       ref: ref,
       tabIndex: tabIndex,
@@ -31062,7 +31045,8 @@ function BlockNavigationBranch(props) {
 
   var hasAppender = itemHasAppender(parentBlockClientId); // Add +1 to the rowCount to take the block appender into account.
 
-  var rowCount = hasAppender ? filteredBlocks.length + 1 : filteredBlocks.length;
+  var blockCount = filteredBlocks.length;
+  var rowCount = hasAppender ? blockCount + 1 : blockCount;
   var appenderPosition = rowCount;
   return Object(external_this_wp_element_["createElement"])(external_this_wp_element_["Fragment"], null, Object(external_this_lodash_["map"])(filteredBlocks, function (block, index) {
     var clientId = block.clientId,
@@ -31082,6 +31066,7 @@ function BlockNavigationBranch(props) {
       level: level,
       position: position,
       rowCount: rowCount,
+      siblingBlockCount: blockCount,
       showBlockMovers: showBlockMovers,
       terminatedLevels: terminatedLevels,
       path: updatedPath
@@ -33117,7 +33102,7 @@ var url_input_URLInput = /*#__PURE__*/function (_Component) {
     _this.bindSuggestionNode = _this.bindSuggestionNode.bind(Object(assertThisInitialized["a" /* default */])(_this));
     _this.autocompleteRef = props.autocompleteRef || Object(external_this_wp_element_["createRef"])();
     _this.inputRef = Object(external_this_wp_element_["createRef"])();
-    _this.updateSuggestions = Object(external_this_lodash_["throttle"])(_this.updateSuggestions.bind(Object(assertThisInitialized["a" /* default */])(_this)), 200);
+    _this.updateSuggestions = Object(external_this_lodash_["debounce"])(_this.updateSuggestions.bind(Object(assertThisInitialized["a" /* default */])(_this)), 200);
     _this.suggestionNodes = [];
     _this.isUpdatingSuggestions = false;
     _this.state = {
@@ -36315,6 +36300,8 @@ function useResizeCanvas(deviceType) {
   };
 
   var contentInlineStyles = function contentInlineStyles(device) {
+    var height = device === 'Mobile' ? '768px' : '1024px';
+
     switch (device) {
       case 'Tablet':
       case 'Mobile':
@@ -36322,7 +36309,9 @@ function useResizeCanvas(deviceType) {
           width: getCanvasWidth(device),
           margin: marginValue() + 'px auto',
           flexGrow: 0,
-          maxHeight: device === 'Mobile' ? '768px' : '1024px',
+          height: height,
+          minHeight: height,
+          maxHeight: height,
           overflowY: 'auto'
         };
 

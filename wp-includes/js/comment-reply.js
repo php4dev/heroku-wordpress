@@ -175,11 +175,19 @@ window.addComment = ( function( window ) {
 		var headingText = temporaryElement.textContent;
 		temporaryElement.parentNode.replaceChild( respondElement, temporaryElement );
 		cancelLink.style.display = 'none';
-		var replyHeadingElement = getElementById( config.commentReplyTitleId );
+
+		var replyHeadingElement  = getElementById( config.commentReplyTitleId );
 		var replyHeadingTextNode = replyHeadingElement && replyHeadingElement.firstChild;
+		var replyLinkToParent    = replyHeadingTextNode && replyHeadingTextNode.nextSibling;
+
 		if ( replyHeadingTextNode && replyHeadingTextNode.nodeType === Node.TEXT_NODE && headingText ) {
+			if ( replyLinkToParent && 'A' === replyLinkToParent.nodeName && replyLinkToParent.id !== config.cancelReplyId ) {
+				replyLinkToParent.style.display = '';
+			}
+
 			replyHeadingTextNode.textContent = headingText;
 		}
+
 		event.preventDefault();
 	}
 
@@ -314,8 +322,9 @@ window.addComment = ( function( window ) {
 		var postIdField     = getElementById( config.postIdFieldId );
 		var element, cssHidden, style;
 
-		var replyHeading = getElementById( config.commentReplyTitleId );
+		var replyHeading         = getElementById( config.commentReplyTitleId );
 		var replyHeadingTextNode = replyHeading && replyHeading.firstChild;
+		var replyLinkToParent    = replyHeadingTextNode && replyHeadingTextNode.nextSibling;
 
 		if ( ! addBelowElement || ! respondElement || ! parentIdField ) {
 			// Missing key elements, fail.
@@ -337,9 +346,15 @@ window.addComment = ( function( window ) {
 
 		cancelElement.style.display = '';
 		addBelowElement.parentNode.insertBefore( respondElement, addBelowElement.nextSibling );
-		if ( replyHeadingTextNode.nodeType === Node.TEXT_NODE ) {
+
+		if ( replyHeadingTextNode && replyHeadingTextNode.nodeType === Node.TEXT_NODE ) {
+			if ( replyLinkToParent && 'A' === replyLinkToParent.nodeName && replyLinkToParent.id !== config.cancelReplyId ) {
+				replyLinkToParent.style.display = 'none';
+			}
+
 			replyHeadingTextNode.textContent = replyTo;
 		}
+
 		/*
 		 * This is for backward compatibility with third party commenting systems
 		 * hooking into the event using older techniques.
@@ -408,7 +423,7 @@ window.addComment = ( function( window ) {
 		var temporaryFormId  = config.temporaryFormId;
 		var temporaryElement = getElementById( temporaryFormId );
 		var replyElement = getElementById( config.commentReplyTitleId );
-		var initialHeadingText = ( 'undefined' !== typeof replyElement ) ? replyElement.firstChild.textContent : '';
+		var initialHeadingText = replyElement ? replyElement.firstChild.textContent : '';
 
 		if ( temporaryElement ) {
 			// The element already exists, no need to recreate.

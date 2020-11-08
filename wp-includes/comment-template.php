@@ -552,11 +552,9 @@ function get_comment_class( $class = '', $comment_id = null, $post_id = null ) {
 function get_comment_date( $format = '', $comment_ID = 0 ) {
 	$comment = get_comment( $comment_ID );
 
-	if ( '' === $format ) {
-		$date = mysql2date( get_option( 'date_format' ), $comment->comment_date );
-	} else {
-		$date = mysql2date( $format, $comment->comment_date );
-	}
+	$_format = ! empty( $format ) ? $format : get_option( 'date_format' );
+
+	$date = mysql2date( $_format, $comment->comment_date );
 
 	/**
 	 * Filters the returned comment date.
@@ -1046,11 +1044,9 @@ function get_comment_time( $format = '', $gmt = false, $translate = true ) {
 
 	$comment_date = $gmt ? $comment->comment_date_gmt : $comment->comment_date;
 
-	if ( '' === $format ) {
-		$date = mysql2date( get_option( 'time_format' ), $comment_date, $translate );
-	} else {
-		$date = mysql2date( $format, $comment_date, $translate );
-	}
+	$_format = ! empty( $format ) ? $format : get_option( 'time_format' );
+
+	$date = mysql2date( $_format, $comment_date, $translate );
 
 	/**
 	 * Filters the returned comment time.
@@ -2484,7 +2480,7 @@ function comment_form( $args = array(), $post_id = null ) {
 	 */
 	$args = wp_parse_args( $args, apply_filters( 'comment_form_defaults', $defaults ) );
 
-	// Ensure that the filtered args contain all required default values.
+	// Ensure that the filtered arguments contain all required default values.
 	$args = array_merge( $defaults, $args );
 
 	// Remove `aria-describedby` from the email field if there's no associated description.
