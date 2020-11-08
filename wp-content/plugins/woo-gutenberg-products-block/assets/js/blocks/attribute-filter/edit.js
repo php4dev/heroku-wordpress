@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { __, sprintf, _n } from '@wordpress/i18n';
-import { Fragment, useState, useCallback } from '@wordpress/element';
+import { Fragment, useState } from '@wordpress/element';
 import { InspectorControls, BlockControls } from '@wordpress/block-editor';
 import {
 	Placeholder,
@@ -18,15 +18,15 @@ import { SearchListControl } from '@woocommerce/components';
 import { mapValues, toArray, sortBy, find } from 'lodash';
 import { ATTRIBUTES } from '@woocommerce/block-settings';
 import { getAdminLink } from '@woocommerce/settings';
-import HeadingToolbar from '@woocommerce/block-components/heading-toolbar';
-import BlockTitle from '@woocommerce/block-components/block-title';
+import HeadingToolbar from '@woocommerce/editor-components/heading-toolbar';
+import BlockTitle from '@woocommerce/editor-components/block-title';
+import ToggleButtonControl from '@woocommerce/editor-components/toggle-button-control';
 
 /**
  * Internal dependencies
  */
 import Block from './block.js';
 import './editor.scss';
-import ToggleButtonControl from '../../components/toggle-button-control';
 
 const Edit = ( { attributes, setAttributes, debouncedSpeak } ) => {
 	const {
@@ -258,7 +258,7 @@ const Edit = ( { attributes, setAttributes, debouncedSpeak } ) => {
 		</Placeholder>
 	);
 
-	const onDone = useCallback( () => {
+	const onDone = () => {
 		setIsEditing( false );
 		debouncedSpeak(
 			__(
@@ -266,37 +266,34 @@ const Edit = ( { attributes, setAttributes, debouncedSpeak } ) => {
 				'woo-gutenberg-products-block'
 			)
 		);
-	}, [] );
+	};
 
-	const onChange = useCallback(
-		( selected ) => {
-			if ( ! selected || ! selected.length ) {
-				return;
-			}
+	const onChange = ( selected ) => {
+		if ( ! selected || ! selected.length ) {
+			return;
+		}
 
-			const selectedId = selected[ 0 ].id;
-			const productAttribute = find( ATTRIBUTES, [
-				'attribute_id',
-				selectedId.toString(),
-			] );
+		const selectedId = selected[ 0 ].id;
+		const productAttribute = find( ATTRIBUTES, [
+			'attribute_id',
+			selectedId.toString(),
+		] );
 
-			if ( ! productAttribute || attributeId === selectedId ) {
-				return;
-			}
+		if ( ! productAttribute || attributeId === selectedId ) {
+			return;
+		}
 
-			const attributeName = productAttribute.attribute_label;
+		const attributeName = productAttribute.attribute_label;
 
-			setAttributes( {
-				attributeId: selectedId,
-				heading: sprintf(
-					// Translators: %s attribute name.
-					__( 'Filter by %s', 'woo-gutenberg-products-block' ),
-					attributeName
-				),
-			} );
-		},
-		[ attributeId ]
-	);
+		setAttributes( {
+			attributeId: selectedId,
+			heading: sprintf(
+				// Translators: %s attribute name.
+				__( 'Filter by %s', 'woo-gutenberg-products-block' ),
+				attributeName
+			),
+		} );
+	};
 
 	const renderAttributeControl = () => {
 		const messages = {
@@ -315,6 +312,7 @@ const Edit = ( { attributes, setAttributes, debouncedSpeak } ) => {
 			),
 			selected: ( n ) =>
 				sprintf(
+					// Translators: %d is the number of attributes selected.
 					_n(
 						'%d attribute selected',
 						'%d attributes selected',

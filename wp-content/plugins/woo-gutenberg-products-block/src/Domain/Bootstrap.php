@@ -1,10 +1,4 @@
 <?php
-/**
- * Contains the Bootstrap class
- *
- * @package WooCommerce/Blocks
- */
-
 namespace Automattic\WooCommerce\Blocks\Domain;
 
 use Automattic\WooCommerce\Blocks\Assets as BlockAssets;
@@ -23,6 +17,8 @@ use Automattic\WooCommerce\Blocks\Payments\Integrations\PayPal;
 use Automattic\WooCommerce\Blocks\Payments\Integrations\BankTransfer;
 use Automattic\WooCommerce\Blocks\Payments\Integrations\CashOnDelivery;
 use Automattic\WooCommerce\Blocks\Domain\Services\DraftOrders;
+use Automattic\WooCommerce\Blocks\Domain\Services\CreateAccount;
+use Automattic\WooCommerce\Blocks\Domain\Services\Email\CustomerNewAccount;
 
 /**
  * Takes care of bootstrapping the plugin.
@@ -81,6 +77,7 @@ class Bootstrap {
 			BlockAssets::init();
 		}
 		$this->container->get( DraftOrders::class )->init();
+		$this->container->get( CreateAccount::class )->init();
 		$this->container->get( PaymentsApi::class );
 		$this->container->get( RestApi::class );
 		Library::init();
@@ -197,6 +194,12 @@ class Bootstrap {
 			DraftOrders::class,
 			function( Container $container ) {
 				return new DraftOrders( $container->get( Package::class ) );
+			}
+		);
+		$this->container->register(
+			CreateAccount::class,
+			function( Container $container ) {
+				return new CreateAccount( $container->get( Package::class ) );
 			}
 		);
 	}

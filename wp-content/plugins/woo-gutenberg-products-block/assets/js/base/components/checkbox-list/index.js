@@ -13,6 +13,15 @@ import './style.scss';
 
 /**
  * Component used to show a list of checkboxes in a group.
+ *
+ * @param {Object} props Incoming props for the component.
+ * @param {string} props.className CSS class used.
+ * @param {function(string):any} props.onChange Function called when inputs change.
+ * @param {Array} props.options Options for list.
+ * @param {Array} props.checked Which items are checked.
+ * @param {boolean} props.isLoading If loading or not.
+ * @param {boolean} props.isDisabled If inputs are disabled or not.
+ * @param {number} props.limit Whether to limit the number of inputs showing.
  */
 const CheckboxList = ( {
 	className,
@@ -49,6 +58,7 @@ const CheckboxList = ( {
 						} }
 						aria-expanded={ false }
 						aria-label={ sprintf(
+							/* Translators: %s is referring the remaining count of options */
 							_n(
 								'Show %s more option',
 								'Show %s more options',
@@ -132,6 +142,7 @@ const CheckboxList = ( {
 		);
 	}, [
 		options,
+		onChange,
 		checked,
 		showExpanded,
 		limit,

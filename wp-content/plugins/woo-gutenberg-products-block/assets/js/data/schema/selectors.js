@@ -33,10 +33,9 @@ import { STORE_KEY } from './constants';
  */
 export const getRoute = createRegistrySelector(
 	( select ) => ( state, namespace, resourceName, ids = [] ) => {
-		const hasResolved = select( STORE_KEY ).hasFinishedResolution(
-			'getRoutes',
-			[ namespace ]
-		);
+		const hasResolved = select(
+			STORE_KEY
+		).hasFinishedResolution( 'getRoutes', [ namespace ] );
 		state = state.routes;
 		let error = '';
 		if ( ! state[ namespace ] ) {
@@ -64,7 +63,7 @@ export const getRoute = createRegistrySelector(
 			if ( hasResolved ) {
 				throw new Error(
 					sprintf(
-						'While there is a route for the given namespace (%s) and resource name (%s), there is no route utilizing the number of ids you included in the select arguments. The available routes are: (%s)',
+						'While there is a route for the given namespace (%1$s) and resource name (%2$s), there is no route utilizing the number of ids you included in the select arguments. The available routes are: (%3$s)',
 						namespace,
 						resourceName,
 						JSON.stringify( state[ namespace ][ resourceName ] )
@@ -86,10 +85,9 @@ export const getRoute = createRegistrySelector(
  */
 export const getRoutes = createRegistrySelector(
 	( select ) => ( state, namespace ) => {
-		const hasResolved = select( STORE_KEY ).hasFinishedResolution(
-			'getRoutes',
-			[ namespace ]
-		);
+		const hasResolved = select(
+			STORE_KEY
+		).hasFinishedResolution( 'getRoutes', [ namespace ] );
 		const routes = state.routes[ namespace ];
 		if ( ! routes ) {
 			if ( hasResolved ) {

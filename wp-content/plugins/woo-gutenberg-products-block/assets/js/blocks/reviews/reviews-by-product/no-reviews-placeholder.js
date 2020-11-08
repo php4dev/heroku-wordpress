@@ -4,7 +4,7 @@
 import { __, sprintf } from '@wordpress/i18n';
 import { Placeholder, Spinner } from '@wordpress/components';
 import PropTypes from 'prop-types';
-import ErrorPlaceholder from '@woocommerce/block-components/error-placeholder';
+import ErrorPlaceholder from '@woocommerce/editor-components/error-placeholder';
 import { Icon, comment } from '@woocommerce/icons';
 import { withProduct } from '@woocommerce/block-hocs';
 
@@ -27,6 +27,7 @@ const NoReviewsPlaceholder = ( { error, getProduct, isLoading, product } ) => {
 			<Spinner />
 		) : (
 			sprintf(
+				// Translators: %s is the product name.
 				__(
 					"This block lists reviews for a selected product. %s doesn't have any reviews yet, but they will show up here when it does.",
 					'woo-gutenberg-products-block'

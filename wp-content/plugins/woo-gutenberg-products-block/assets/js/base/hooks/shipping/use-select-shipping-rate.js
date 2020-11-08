@@ -8,14 +8,16 @@ import { useThrowError } from '@woocommerce/base-hooks';
 
 /**
  * This is a custom hook for loading the selected shipping rate from the cart store and actions for selecting a rate.
-See also: https://github.com/woocommerce/woocommerce-gutenberg-products-block/tree/main/src/RestApi/StoreApi
+See also: https://github.com/woocommerce/woocommerce-gutenberg-products-block/tree/trunk/src/RestApi/StoreApi
  *
  * @param {Array} shippingRates an array of packages with shipping rates.
  * @return {Object} This hook will return an object with two properties:
  * - selectShippingRate    A function that immediately returns the selected
  * rate and dispatches an action generator.
  * - selectedShippingRates An object of selected shipping rates and package id as key, maintained
- * locally by a state and updated optimistically.
+ * locally by a state and updated optimistically, this will only return packages that has selected
+ * shipping rates.
+ *
  */
 export const useSelectShippingRate = ( shippingRates ) => {
 	const throwError = useThrowError();
@@ -34,7 +36,9 @@ export const useSelectShippingRate = ( shippingRates ) => {
 				)
 				// A fromEntries ponyfill, creates an object from an array of arrays.
 				.reduce( ( obj, [ key, val ] ) => {
-					obj[ key ] = val;
+					if ( val ) {
+						obj[ key ] = val;
+					}
 					return obj;
 				}, {} ),
 		[ shippingRates ]

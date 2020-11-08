@@ -3,7 +3,7 @@
  */
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
-import { CartCheckoutFeedbackPrompt } from '@woocommerce/block-components/feedback-prompt';
+import { CartCheckoutFeedbackPrompt } from '@woocommerce/editor-components/feedback-prompt';
 import { InspectorControls } from '@wordpress/block-editor';
 import {
 	Disabled,
@@ -12,8 +12,8 @@ import {
 	Notice,
 } from '@wordpress/components';
 import PropTypes from 'prop-types';
-import ViewSwitcher from '@woocommerce/block-components/view-switcher';
-import PageSelector from '@woocommerce/block-components/page-selector';
+import ViewSwitcher from '@woocommerce/editor-components/view-switcher';
+import PageSelector from '@woocommerce/editor-components/page-selector';
 import { SHIPPING_ENABLED, CART_PAGE_ID } from '@woocommerce/block-settings';
 import BlockErrorBoundary from '@woocommerce/base-components/block-error-boundary';
 import {
@@ -21,7 +21,7 @@ import {
 	useEditorContext,
 	CartProvider,
 } from '@woocommerce/base-context';
-import { __experimentalCreateInterpolateElement } from 'wordpress-element';
+import { createInterpolateElement } from 'wordpress-element';
 import { useRef } from '@wordpress/element';
 import { getAdminLink } from '@woocommerce/settings';
 import { previewCart } from '@woocommerce/resource-previews';
@@ -50,7 +50,7 @@ const BlockSettings = ( { attributes, setAttributes } ) => {
 					isDismissible={ false }
 					status="warning"
 				>
-					{ __experimentalCreateInterpolateElement(
+					{ createInterpolateElement(
 						__(
 							'If you would like to use this block as your default cart you must update your <a>page settings in WooCommerce</a>.',
 							'woo-gutenberg-products-block'
@@ -161,6 +161,11 @@ const BlockSettings = ( { attributes, setAttributes } ) => {
  *       if the user saves the page without having triggered the 'Empty Cart'
  *       view, inner blocks would not be saved and they wouldn't be visible
  *       in the frontend.
+ *
+ * @param {Object} props Incoming props for the component.
+ * @param {string} props.className CSS class used.
+ * @param {Object} props.attributes Attributes available.
+ * @param {function(any):any} props.setAttributes Setter for attributes.
  */
 const CartEditor = ( { className, attributes, setAttributes } ) => {
 	return (

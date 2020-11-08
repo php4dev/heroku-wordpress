@@ -1,18 +1,12 @@
 <?php
-/**
- * Checkout schema for the Store API.
- *
- * @package WooCommerce/Blocks
- */
-
 namespace Automattic\WooCommerce\Blocks\StoreApi\Schemas;
-
-defined( 'ABSPATH' ) || exit;
 
 use Automattic\WooCommerce\Blocks\Payments\PaymentResult;
 
 /**
  * CheckoutSchema class.
+ *
+ * @internal This API is used internally by Blocks--it is still in flux and may be subject to revisions.
  */
 class CheckoutSchema extends AbstractSchema {
 	/**
@@ -98,6 +92,11 @@ class CheckoutSchema extends AbstractSchema {
 			'payment_method'   => [
 				'description' => __( 'The ID of the payment method being used to process the payment.', 'woo-gutenberg-products-block' ),
 				'type'        => 'string',
+				'context'     => [ 'view', 'edit' ],
+			],
+			'create_account'   => [
+				'description' => __( 'Whether to create a new user account as part of order processing.', 'woo-gutenberg-products-block' ),
+				'type'        => 'boolean',
 				'context'     => [ 'view', 'edit' ],
 			],
 			'payment_result'   => [

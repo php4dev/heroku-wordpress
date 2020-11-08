@@ -1,20 +1,14 @@
 <?php
-/**
- * Cart block.
- *
- * @package WooCommerce/Blocks
- */
-
 namespace Automattic\WooCommerce\Blocks\BlockTypes;
 
 use Automattic\WooCommerce\Blocks\Package;
 use Automattic\WooCommerce\Blocks\Assets;
 use Automattic\WooCommerce\Blocks\Assets\AssetDataRegistry;
 
-defined( 'ABSPATH' ) || exit;
-
 /**
  * Cart class.
+ *
+ * @internal
  */
 class Cart extends AbstractBlock {
 	/**
@@ -55,14 +49,6 @@ class Cart extends AbstractBlock {
 		do_action( 'woocommerce_blocks_enqueue_cart_block_scripts_before' );
 		$this->enqueue_assets( $block_attributes );
 		do_action( 'woocommerce_blocks_enqueue_cart_block_scripts_after' );
-
-		// Add placeholder element to footer to push content for the sticky bar on mobile.
-		add_action(
-			'wp_footer',
-			function() {
-				echo '<div class="wc-block-cart__submit-container-push"></div>';
-			}
-		);
 
 		// Deregister core cart scripts and styles.
 		wp_deregister_script( 'wc-cart' );

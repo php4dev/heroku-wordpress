@@ -30,7 +30,6 @@ import './style.scss';
  * @param {string}  [props.customColor]    Custom title color value.
  * @param {string}  [props.fontSize]       Title font size name.
  * @param {number } [props.customFontSize] Custom font size value.
- * @param {Object}  [props.product]        Optional product object. Product from context
  * will be used if this is not provided.
  * @return {*} The component.
  */
@@ -69,9 +68,8 @@ export const Block = ( {
 						[ `${ parentClassName }__product-title` ]: parentClassName,
 						[ `wc-block-components-product-title--align-${ align }` ]:
 							align && isFeaturePluginBuild(),
-						[ titleClasses ]: isFeaturePluginBuild()
-					},
-
+						[ titleClasses ]: isFeaturePluginBuild(),
+					}
 				) }
 				style={ gatedStyledText( {
 					color: customColor,
@@ -91,9 +89,9 @@ export const Block = ( {
 				'wc-block-components-product-title',
 				{
 					[ `${ parentClassName }__product-title` ]: parentClassName,
-					[ `wc-block-components-product-title__align-${ align }` ]:
+					[ `wc-block-components-product-title--align-${ align }` ]:
 						align && isFeaturePluginBuild(),
-				},
+				}
 			) }
 		>
 			{ productLink ? (
@@ -111,7 +109,17 @@ export const Block = ( {
 					{ productName }
 				</a>
 			) : (
-				productName
+				<span
+					className={ classnames( {
+						[ titleClasses ]: isFeaturePluginBuild(),
+					} ) }
+					style={ gatedStyledText( {
+						color: customColor,
+						fontSize: customFontSize,
+					} ) }
+				>
+					{ productName }
+				</span>
 			) }
 		</TagName>
 	);

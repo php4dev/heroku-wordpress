@@ -16,28 +16,44 @@ import {
 	usePaymentMethodDataContext,
 } from '@woocommerce/base-context';
 
+/**
+ * Internal dependencies
+ */
+import PaymentMethodErrorBoundary from './payment-method-error-boundary';
+
 const ExpressPaymentMethods = () => {
 	const { isEditor } = useEditorContext();
 	const {
 		setActivePaymentMethod,
 		activePaymentMethod,
+		paymentMethodData,
 		setPaymentStatus,
 	} = usePaymentMethodDataContext();
 	const paymentMethodInterface = usePaymentMethodInterface();
 	const { paymentMethods } = useExpressPaymentMethods();
 	const previousActivePaymentMethod = useRef( activePaymentMethod );
+	const previousPaymentMethodData = useRef( paymentMethodData );
 
 	const onExpressPaymentClick = useCallback(
 		( paymentMethodId ) => () => {
 			previousActivePaymentMethod.current = activePaymentMethod;
+			previousPaymentMethodData.current = paymentMethodData;
 			setPaymentStatus().started();
 			setActivePaymentMethod( paymentMethodId );
 		},
-		[ setActivePaymentMethod, setPaymentStatus, activePaymentMethod ]
+		[
+			activePaymentMethod,
+			paymentMethodData,
+			setActivePaymentMethod,
+			setPaymentStatus,
+		]
 	);
 	const onExpressPaymentClose = useCallback( () => {
 		setActivePaymentMethod( previousActivePaymentMethod.current );
-	}, [ setActivePaymentMethod ] );
+		if ( previousPaymentMethodData.current.isSavedToken ) {
+			setPaymentStatus().success( previousPaymentMethodData.current );
+		}
+	}, [ setActivePaymentMethod, setPaymentStatus ] );
 	const paymentMethodIds = Object.keys( paymentMethods );
 	const content =
 		paymentMethodIds.length > 0 ? (
@@ -59,9 +75,11 @@ const ExpressPaymentMethods = () => {
 			<li key="noneRegistered">No registered Payment Methods</li>
 		);
 	return (
-		<ul className="wc-block-components-express-checkout-payment-event-buttons">
-			{ content }
-		</ul>
+		<PaymentMethodErrorBoundary isEditor={ isEditor }>
+			<ul className="wc-block-components-express-payment__event-buttons">
+				{ content }
+			</ul>
+		</PaymentMethodErrorBoundary>
 	);
 };
 

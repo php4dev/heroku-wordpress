@@ -6,7 +6,7 @@ import { useState } from '@wordpress/element';
 import { Placeholder, Button, PanelBody } from '@wordpress/components';
 import { withProduct } from '@woocommerce/block-hocs';
 import BlockErrorBoundary from '@woocommerce/base-components/block-error-boundary';
-import EditProductLink from '@woocommerce/block-components/edit-product-link';
+import EditProductLink from '@woocommerce/editor-components/edit-product-link';
 import { singleProductBlockPreview } from '@woocommerce/resource-previews';
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -22,6 +22,16 @@ import { BLOCK_TITLE, BLOCK_ICON, BLOCK_DESCRIPTION } from '../constants';
 
 /**
  * Component to handle edit mode of the "Single Product Block".
+ *
+ * @param {Object} props Incoming props for the component.
+ * @param {string} props.className
+ * @param {Object} props.attributes Incoming block attributes.
+ * @param {function(any):any} props.setAttributes Setter for block attributes.
+ * @param {string} props.error
+ * @param {function(any):any} props.getProduct
+ * @param {Object} props.product
+ * @param {boolean} props.isLoading
+ * @param {string} props.clientId
  */
 const Editor = ( {
 	className,

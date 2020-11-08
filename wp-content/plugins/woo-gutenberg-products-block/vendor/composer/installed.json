@@ -1,17 +1,17 @@
 [
     {
         "name": "automattic/jetpack-autoloader",
-        "version": "v2.0.2",
-        "version_normalized": "2.0.2.0",
+        "version": "v2.4.0",
+        "version_normalized": "2.4.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/Automattic/jetpack-autoloader.git",
-            "reference": "4502da4b2443fc1b61389cacc94c34876aca2b3d"
+            "reference": "75596db2f4843668792a1d2cc786cf82f60e9b72"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Automattic/jetpack-autoloader/zipball/4502da4b2443fc1b61389cacc94c34876aca2b3d",
-            "reference": "4502da4b2443fc1b61389cacc94c34876aca2b3d",
+            "url": "https://api.github.com/repos/Automattic/jetpack-autoloader/zipball/75596db2f4843668792a1d2cc786cf82f60e9b72",
+            "reference": "75596db2f4843668792a1d2cc786cf82f60e9b72",
             "shasum": ""
         },
         "require": {
@@ -20,13 +20,16 @@
         "require-dev": {
             "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5"
         },
-        "time": "2020-07-09T13:18:38+00:00",
+        "time": "2020-09-28T14:13:14+00:00",
         "type": "composer-plugin",
         "extra": {
             "class": "Automattic\\Jetpack\\Autoloader\\CustomAutoloaderPlugin"
         },
         "installation-source": "dist",
         "autoload": {
+            "classmap": [
+                "src/AutoloadGenerator.php"
+            ],
             "psr-4": {
                 "Automattic\\Jetpack\\Autoloader\\": "src"
             }
@@ -39,31 +42,34 @@
     },
     {
         "name": "composer/installers",
-        "version": "v1.7.0",
-        "version_normalized": "1.7.0.0",
+        "version": "v1.9.0",
+        "version_normalized": "1.9.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/composer/installers.git",
-            "reference": "141b272484481432cda342727a427dc1e206bfa0"
+            "reference": "b93bcf0fa1fccb0b7d176b0967d969691cd74cca"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/composer/installers/zipball/141b272484481432cda342727a427dc1e206bfa0",
-            "reference": "141b272484481432cda342727a427dc1e206bfa0",
+            "url": "https://api.github.com/repos/composer/installers/zipball/b93bcf0fa1fccb0b7d176b0967d969691cd74cca",
+            "reference": "b93bcf0fa1fccb0b7d176b0967d969691cd74cca",
             "shasum": ""
         },
         "require": {
-            "composer-plugin-api": "^1.0"
+            "composer-plugin-api": "^1.0 || ^2.0"
         },
         "replace": {
             "roundcube/plugin-installer": "*",
             "shama/baton": "*"
         },
         "require-dev": {
-            "composer/composer": "1.0.*@dev",
-            "phpunit/phpunit": "^4.8.36"
+            "composer/composer": "1.6.* || 2.0.*@dev",
+            "composer/semver": "1.0.* || 2.0.*@dev",
+            "phpunit/phpunit": "^4.8.36",
+            "sebastian/comparator": "^1.2.4",
+            "symfony/process": "^2.3"
         },
-        "time": "2019-08-12T15:00:31+00:00",
+        "time": "2020-04-07T06:57:05+00:00",
         "type": "composer-plugin",
         "extra": {
             "class": "Composer\\Installers\\Plugin",
@@ -99,6 +105,7 @@
             "Kanboard",
             "Lan Management System",
             "MODX Evo",
+            "MantisBT",
             "Mautic",
             "Maya",
             "OXID",
@@ -153,12 +160,23 @@
             "shopware",
             "silverstripe",
             "sydes",
+            "sylius",
             "symfony",
             "typo3",
             "wordpress",
             "yawik",
             "zend",
             "zikula"
+        ],
+        "funding": [
+            {
+                "url": "https://packagist.com",
+                "type": "custom"
+            },
+            {
+                "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                "type": "tidelift"
+            }
         ]
     }
 ]

@@ -1,20 +1,14 @@
 <?php
-/**
- * Helper class to bridge the gap between the cart API and Woo core.
- *
- * @package WooCommerce/Blocks
- */
-
 namespace Automattic\WooCommerce\Blocks\StoreApi\Utilities;
-
-defined( 'ABSPATH' ) || exit;
 
 use Automattic\WooCommerce\Blocks\StoreApi\Routes\RouteException;
 use Automattic\WooCommerce\Blocks\StoreApi\Utilities\NoticeHandler;
 
 /**
  * Woo Cart Controller class.
+ * Helper class to bridge the gap between the cart API and Woo core.
  *
+ * @internal This API is used internally by Blocks--it is still in flux and may be subject to revisions.
  * @since 2.5.0
  */
 class CartController {
@@ -62,7 +56,7 @@ class CartController {
 					'woocommerce_rest_cart_product_sold_individually',
 					sprintf(
 						/* translators: %s: product name */
-						__( '"%s" is already inside your cart.', 'woo-gutenberg-products-block' ),
+						__( 'You cannot add another "%s" to your cart.', 'woo-gutenberg-products-block' ),
 						$product->get_name()
 					),
 					400
@@ -131,7 +125,7 @@ class CartController {
 				'woocommerce_rest_cart_product_sold_individually',
 				sprintf(
 					/* translators: %s: product name */
-					__( '"%s" is already inside your cart.', 'woo-gutenberg-products-block' ),
+					__( 'You cannot add another "%s" to your cart.', 'woo-gutenberg-products-block' ),
 					$product->get_name()
 				),
 				400
@@ -313,7 +307,7 @@ class CartController {
 
 		/**
 		 * Fire action to validate add to cart. Functions hooking into this should throw an \Exception to prevent
-		 * add to cart from occuring.
+		 * add to cart from occurring.
 		 *
 		 * @param \WC_Product $product Product object being added to the cart.
 		 * @param array       $cart_item Cart item array.

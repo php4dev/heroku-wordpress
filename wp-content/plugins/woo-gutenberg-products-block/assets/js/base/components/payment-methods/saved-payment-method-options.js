@@ -8,6 +8,8 @@ import {
 	usePaymentMethodDataContext,
 } from '@woocommerce/base-context';
 import RadioControl from '@woocommerce/base-components/radio-control';
+import { getPaymentMethods } from '@woocommerce/blocks-registry';
+import PropTypes from 'prop-types';
 
 /**
  * @typedef {import('@woocommerce/type-defs/contexts').CustomerPaymentMethod} CustomerPaymentMethod
@@ -30,6 +32,7 @@ const getCcOrEcheckPaymentMethodOption = (
 	return {
 		value: tokenId + '',
 		label: sprintf(
+			/* Translators: %1$s is referring to the payment method brand, %2$s is referring to the last 4 digits of the payment card, %3$s is referring to the expiry date.  */
 			__(
 				'%1$s ending in %2$s (expires %3$s)',
 				'woo-gutenberg-product-blocks'
@@ -68,6 +71,7 @@ const getDefaultPaymentMethodOptions = (
 	return {
 		value: tokenId + '',
 		label: sprintf(
+			// Translators: %s is the name of the payment method gateway.
 			__( 'Saved token for %s', 'woo-gutenberg-products-block' ),
 			method.gateway
 		),
@@ -84,7 +88,7 @@ const getDefaultPaymentMethodOptions = (
 	};
 };
 
-const SavedPaymentMethodOptions = ( { onSelect } ) => {
+const SavedPaymentMethodOptions = ( { onChange } ) => {
 	const { isEditor } = useEditorContext();
 	const {
 		setPaymentStatus,
@@ -92,89 +96,85 @@ const SavedPaymentMethodOptions = ( { onSelect } ) => {
 		setActivePaymentMethod,
 	} = usePaymentMethodDataContext();
 	const [ selectedToken, setSelectedToken ] = useState( '' );
+	const standardMethods = getPaymentMethods();
 
 	/**
 	 * @type      {Object} Options
 	 * @property  {Array}  current  The current options on the type.
 	 */
 	const currentOptions = useRef( [] );
-	useEffect( () => {
-		let options = [];
-		const paymentMethodKeys = Object.keys( customerPaymentMethods );
-		if ( paymentMethodKeys.length > 0 ) {
-			paymentMethodKeys.forEach( ( type ) => {
-				const paymentMethods = customerPaymentMethods[ type ];
-				if ( paymentMethods.length > 0 ) {
-					options = options.concat(
-						paymentMethods.map( ( paymentMethod ) => {
-							const option =
-								type === 'cc' || type === 'echeck'
-									? getCcOrEcheckPaymentMethodOption(
-											paymentMethod,
-											setActivePaymentMethod,
-											setPaymentStatus
-									  )
-									: getDefaultPaymentMethodOptions(
-											paymentMethod,
-											setActivePaymentMethod,
-											setPaymentStatus
-									  );
-							if (
-								paymentMethod.is_default &&
-								selectedToken === ''
-							) {
-								setSelectedToken( paymentMethod.tokenId + '' );
-								option.onChange( paymentMethod.tokenId );
-							}
-							return option;
-						} )
-					);
-				}
-			} );
-			if ( options.length > 0 ) {
-				currentOptions.current = options;
-				currentOptions.current.push( {
-					value: '0',
-					label: __(
-						'Use a new payment method',
-						'woo-gutenberg-product-blocks'
-					),
-					name: `wc-saved-payment-method-token-new`,
-				} );
-			}
-		}
-	}, [
-		customerPaymentMethods,
-		selectedToken,
-		setActivePaymentMethod,
-		setPaymentStatus,
-	] );
+
 	const updateToken = useCallback(
 		( token ) => {
 			if ( token === '0' ) {
 				setPaymentStatus().started();
 			}
 			setSelectedToken( token );
-			onSelect( token );
+			onChange( token );
 		},
-		[ setSelectedToken, setPaymentStatus, onSelect ]
+		[ onChange, setSelectedToken, setPaymentStatus ]
 	);
+
 	useEffect( () => {
-		if ( selectedToken && currentOptions.current.length > 0 ) {
-			updateToken( selectedToken );
-		}
-	}, [ selectedToken, updateToken ] );
+		const types = Object.keys( customerPaymentMethods );
+		const options = types
+			.flatMap( ( type ) => {
+				const typeMethods = customerPaymentMethods[ type ];
+				return typeMethods.map( ( paymentMethod ) => {
+					const method =
+						standardMethods[ paymentMethod.method.gateway ];
+					if ( ! method?.supports?.savePaymentInfo ) {
+						return null;
+					}
+					const option =
+						type === 'cc' || type === 'echeck'
+							? getCcOrEcheckPaymentMethodOption(
+									paymentMethod,
+									setActivePaymentMethod,
+									setPaymentStatus
+							  )
+							: getDefaultPaymentMethodOptions(
+									paymentMethod,
+									setActivePaymentMethod,
+									setPaymentStatus
+							  );
+					if ( paymentMethod.is_default && selectedToken === '' ) {
+						updateToken( paymentMethod.tokenId + '' );
+						option.onChange( paymentMethod.tokenId );
+					}
+					return option;
+				} );
+			} )
+			.filter( Boolean );
+		currentOptions.current = options;
+	}, [
+		customerPaymentMethods,
+		updateToken,
+		selectedToken,
+		setActivePaymentMethod,
+		setPaymentStatus,
+		standardMethods,
+	] );
 
 	// In the editor, show `Use a new payment method` option as selected.
 	const selectedOption = isEditor ? '0' : selectedToken + '';
+	const newPaymentMethodOption = {
+		value: '0',
+		label: __( 'Use a new payment method', 'woo-gutenberg-product-blocks' ),
+		name: `wc-saved-payment-method-token-new`,
+	};
 	return currentOptions.current.length > 0 ? (
 		<RadioControl
 			id={ 'wc-payment-method-saved-tokens' }
 			selected={ selectedOption }
 			onChange={ updateToken }
-			options={ currentOptions.current }
+			options={ [ ...currentOptions.current, newPaymentMethodOption ] }
 		/>
 	) : null;
+};
+
+SavedPaymentMethodOptions.propTypes = {
+	onChange: PropTypes.func.isRequired,
 };
 
 export default SavedPaymentMethodOptions;

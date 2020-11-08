@@ -18,6 +18,7 @@ import {
 	DISPLAY_CART_PRICES_INCLUDING_TAX,
 } from '@woocommerce/block-settings';
 import { getCurrencyFromPriceResponse } from '@woocommerce/base-utils';
+import { CartExpressPayment } from '@woocommerce/base-components/payment-methods';
 import {
 	useStoreCartCoupons,
 	useStoreCart,
@@ -45,6 +46,9 @@ import './style.scss';
 
 /**
  * Component that renders the Cart block when user has something in cart aka "full".
+ *
+ * @param {Object} props Incoming props for the component.
+ * @param {Object} props.attributes Incoming attributes for block.
  */
 const Cart = ( { attributes } ) => {
 	const {
@@ -59,6 +63,7 @@ const Cart = ( { attributes } ) => {
 		cartIsLoading,
 		cartItemsCount,
 		cartItemErrors,
+		cartNeedsPayment,
 		cartNeedsShipping,
 	} = useStoreCart();
 
@@ -80,7 +85,7 @@ const Cart = ( { attributes } ) => {
 				id: error.code,
 			} );
 		} );
-	}, [ cartItemErrors ] );
+	}, [ addErrorNotice, cartItemErrors ] );
 
 	const totalsCurrency = getCurrencyFromPriceResponse( cartTotals );
 
@@ -141,12 +146,15 @@ const Cart = ( { attributes } ) => {
 					currency={ totalsCurrency }
 					values={ cartTotals }
 				/>
-				<CheckoutButton
-					link={ getSetting(
-						'page-' + attributes?.checkoutPageId,
-						false
-					) }
-				/>
+				<div className="wc-block-cart__payment-options">
+					{ cartNeedsPayment && <CartExpressPayment /> }
+					<CheckoutButton
+						link={ getSetting(
+							'page-' + attributes?.checkoutPageId,
+							false
+						) }
+					/>
+				</div>
 			</Sidebar>
 		</SidebarLayout>
 	);
