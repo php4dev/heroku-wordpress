@@ -3,14 +3,14 @@
  * Plugin Name: WooCommerce Blocks
  * Plugin URI: https://github.com/woocommerce/woocommerce-gutenberg-products-block
  * Description: WooCommerce blocks for the Gutenberg editor.
- * Version: 3.1.0
+ * Version: 3.4.0
  * Author: Automattic
  * Author URI: https://woocommerce.com
  * Text Domain:  woo-gutenberg-products-block
- * Requires at least: 5.2
+ * Requires at least: 5.3
  * Requires PHP: 5.6
- * WC requires at least: 4.0
- * WC tested up to: 4.2
+ * WC requires at least: 4.2
+ * WC tested up to: 4.5
  *
  * @package WooCommerce\Blocks
  * @internal This file is only used when running as a feature plugin.
@@ -18,7 +18,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$minimum_wp_version = '5.2';
+$minimum_wp_version = '5.3';
 
 if ( ! defined( 'WC_BLOCKS_IS_FEATURE_PLUGIN' ) ) {
 	define( 'WC_BLOCKS_IS_FEATURE_PLUGIN', true );
@@ -63,6 +63,44 @@ if ( version_compare( $GLOBALS['wp_version'], $minimum_wp_version, '<' ) ) {
 	add_action( 'admin_notices', 'woocommerce_blocks_admin_unsupported_wp_notice' );
 	return;
 }
+
+/**
+ * Returns whether the current version is a development version
+ * Note this relies on composer.json version, not plugin version.
+ * Development installs of the plugin don't have a version defined in
+ * composer json.
+ *
+ * @return bool True means the current version is a development version.
+ */
+function woocommerce_blocks_is_development_version() {
+	$composer_file = __DIR__ . '/composer.json';
+	if ( ! is_readable( $composer_file ) ) {
+		return false;
+	}
+	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- including local file
+	$composer_config = json_decode( file_get_contents( $composer_file ), true );
+	return ! isset( $composer_config['version'] );
+}
+
+/**
+ * If development version is detected and the Jetpack constant is not defined, show a notice.
+ */
+if ( woocommerce_blocks_is_development_version() && ! defined( 'JETPACK_AUTOLOAD_DEV' ) ) {
+	add_action(
+		'admin_notices',
+		function() {
+			echo '<div class="error"><p>';
+			printf(
+				/* Translators: %1$s is referring to a php constant name, %2$s is referring to the wp-config.php file. */
+				esc_html__( 'WooCommerce Blocks development mode requires the %1$s constant to be defined and true in your %2$s file. Otherwise you are loading the blocks package from WooCommerce core.', 'woocommerce' ),
+				'JETPACK_AUTOLOAD_DEV',
+				'wp-config.php'
+			);
+			echo '</p></div>';
+		}
+	);
+}
+
 
 /**
  * Autoload packages.

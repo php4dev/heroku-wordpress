@@ -1,19 +1,14 @@
 <?php
-/**
- * Initializes block assets.
- *
- * @package WooCommerce/Blocks
- */
-
 namespace Automattic\WooCommerce\Blocks;
-
-defined( 'ABSPATH' ) || exit;
 
 use Automattic\WooCommerce\Blocks\Package;
 use Automattic\WooCommerce\Blocks\Assets\Api as AssetApi;
 
 /**
  * Assets class.
+ * Initializes block assets.
+ *
+ * @internal
  */
 class Assets {
 
@@ -186,6 +181,8 @@ class Assets {
 				'checkoutAllowsSignup'          => 'yes' === get_option( 'woocommerce_enable_signup_and_login_from_checkout' ),
 				'baseLocation'                  => wc_get_base_location(),
 				'woocommerceBlocksPhase'        => WOOCOMMERCE_BLOCKS_PHASE,
+				'hasDarkEditorStyleSupport'     => current_theme_supports( 'dark-editor-style' ),
+				'loginUrl'                      => wp_login_url(),
 
 				/*
 				 * translators: If your word count is based on single characters (e.g. East Asian characters),

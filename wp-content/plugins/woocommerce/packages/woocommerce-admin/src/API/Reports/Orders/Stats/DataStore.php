@@ -178,6 +178,29 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 			implode( ',', $query_args['tax_rate_excludes'] )
 		);
 
+		// Product attribute filters.
+		$attribute_subqueries = $this->get_attribute_subqueries( $query_args );
+		if ( $attribute_subqueries['join'] && $attribute_subqueries['where'] ) {
+			// Build a subquery for getting order IDs by product attribute(s).
+			// Done here since our use case is a little more complicated than get_object_where_filter() can handle.
+			$attribute_subquery = new SqlQuery();
+			$attribute_subquery->add_sql_clause( 'select', "{$orders_stats_table}.order_id" );
+			$attribute_subquery->add_sql_clause( 'from', $orders_stats_table );
+
+			// JOIN on product lookup.
+			$attribute_subquery->add_sql_clause( 'join', "JOIN {$product_lookup} ON {$orders_stats_table}.order_id = {$product_lookup}.order_id" );
+
+			// Add JOINs for matching attributes.
+			foreach ( $attribute_subqueries['join'] as $attribute_join ) {
+				$attribute_subquery->add_sql_clause( 'join', $attribute_join );
+			}
+			// Add WHEREs for matching attributes.
+			$attribute_subquery->add_sql_clause( 'where', 'AND (' . implode( " {$operator} ", $attribute_subqueries['where'] ) . ')' );
+
+			// Generate subquery statement and add to our where filters.
+			$where_filters[] = "{$orders_stats_table}.order_id IN (" . $attribute_subquery->get_query_statement() . ')';
+		}
+
 		$where_filters[] = $this->get_customer_subquery( $query_args );
 		$refund_subquery = $this->get_refund_subquery( $query_args );
 		$from_clause    .= $refund_subquery['from_clause'];
@@ -458,20 +481,31 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 			return -1;
 		}
 
-		$data   = array(
-			'order_id'           => $order->get_id(),
-			'parent_id'          => $order->get_parent_id(),
-			'date_created'       => $order->get_date_created()->date( 'Y-m-d H:i:s' ),
-			'date_created_gmt'   => gmdate( 'Y-m-d H:i:s', $order->get_date_created()->getTimestamp() ),
-			'num_items_sold'     => self::get_num_items_sold( $order ),
-			'total_sales'        => $order->get_total(),
-			'tax_total'          => $order->get_total_tax(),
-			'shipping_total'     => $order->get_shipping_total(),
-			'net_total'          => self::get_net_total( $order ),
-			'status'             => self::normalize_order_status( $order->get_status() ),
-			'customer_id'        => $order->get_report_customer_id(),
-			'returning_customer' => $order->is_returning_customer(),
+		/**
+		 * Filters order stats data.
+		 *
+		 * @param array $data Data written to order stats lookup table.
+		 * @param WC_Order $order  Order object.
+		 */
+		$data = apply_filters(
+			'woocommerce_analytics_update_order_stats_data',
+			array(
+				'order_id'           => $order->get_id(),
+				'parent_id'          => $order->get_parent_id(),
+				'date_created'       => $order->get_date_created()->date( 'Y-m-d H:i:s' ),
+				'date_created_gmt'   => gmdate( 'Y-m-d H:i:s', $order->get_date_created()->getTimestamp() ),
+				'num_items_sold'     => self::get_num_items_sold( $order ),
+				'total_sales'        => $order->get_total(),
+				'tax_total'          => $order->get_total_tax(),
+				'shipping_total'     => $order->get_shipping_total(),
+				'net_total'          => self::get_net_total( $order ),
+				'status'             => self::normalize_order_status( $order->get_status() ),
+				'customer_id'        => $order->get_report_customer_id(),
+				'returning_customer' => $order->is_returning_customer(),
+			),
+			$order
 		);
+
 		$format = array(
 			'%d',
 			'%d',

@@ -12,12 +12,12 @@ if ( ! function_exists( 'wc_admin_get_feature_config' ) ) {
 			'devdocs' => false,
 			'marketing' => true,
 			'onboarding' => true,
-			'remote-inbox-notifications' => false,
+			'remote-inbox-notifications' => true,
 			'shipping-label-banner' => true,
 			'store-alerts' => true,
-			'unminified-js' => false,
+			'minified-js' => false,
 			'wcpay' => true,
-			'homescreen' => true,
+			'mobile-app-banner' => true,
 		);
 	}
 }

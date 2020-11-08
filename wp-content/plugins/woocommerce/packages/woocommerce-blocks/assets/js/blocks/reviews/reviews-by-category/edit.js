@@ -13,7 +13,7 @@ import {
 import { SearchListItem } from '@woocommerce/components';
 import { Fragment } from '@wordpress/element';
 import PropTypes from 'prop-types';
-import ProductCategoryControl from '@woocommerce/block-components/product-category-control';
+import ProductCategoryControl from '@woocommerce/editor-components/product-category-control';
 import { Icon, review } from '@woocommerce/icons';
 
 /**
@@ -174,7 +174,6 @@ const ReviewsByCategoryEditor = ( {
 			{ getInspectorControls() }
 			<EditorContainerBlock
 				attributes={ attributes }
-				className="wc-block-reviews-by-category"
 				icon={
 					<Icon
 						srcElement={ review }

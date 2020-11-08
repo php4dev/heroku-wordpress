@@ -1,13 +1,5 @@
 <?php
-/**
- * Payment Api class.
- *
- * @package WooCommerce/Blocks
- */
-
 namespace Automattic\WooCommerce\Blocks\Payments;
-
-defined( 'ABSPATH' ) || exit;
 
 use Automattic\WooCommerce\Blocks\Package;
 use Automattic\WooCommerce\Blocks\Assets\AssetDataRegistry;
@@ -77,11 +69,28 @@ class Api {
 	}
 
 	/**
+	 * Returns true if the payment gateway is enabled.
+	 *
+	 * @param object $gateway Payment gateway.
+	 * @return boolean
+	 */
+	private function is_payment_gateway_enabled( $gateway ) {
+		return filter_var( $gateway->enabled, FILTER_VALIDATE_BOOLEAN );
+	}
+
+	/**
 	 * Add payment method data to Asset Registry.
 	 */
 	public function add_payment_method_script_data() {
-		$script_data = $this->payment_method_registry->get_all_registered_script_data();
+		// Enqueue the order of enabled gateways as `paymentGatewaySortOrder`.
+		if ( ! $this->asset_registry->exists( 'paymentGatewaySortOrder' ) ) {
+			$payment_gateways = WC()->payment_gateways->payment_gateways();
+			$enabled_gateways = array_filter( $payment_gateways, array( $this, 'is_payment_gateway_enabled' ) );
+			$this->asset_registry->add( 'paymentGatewaySortOrder', array_keys( $enabled_gateways ) );
+		}
 
+		// Enqueue all registered gateway data (settings/config etc).
+		$script_data = $this->payment_method_registry->get_all_registered_script_data();
 		foreach ( $script_data as $asset_data_key => $asset_data_value ) {
 			if ( ! $this->asset_registry->exists( $asset_data_key ) ) {
 				$this->asset_registry->add( $asset_data_key, $asset_data_value );

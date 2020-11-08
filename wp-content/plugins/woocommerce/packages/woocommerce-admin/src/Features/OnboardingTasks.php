@@ -53,7 +53,7 @@ class OnboardingTasks {
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_media_scripts' ) );
 		// Old settings injection.
 		// Run after Onboarding.
-		add_filter( 'woocommerce_components_settings', array( $this, 'component_settings' ), 30 );
+		add_filter( 'woocommerce_components_settings', array( __CLASS__, 'component_settings' ), 30 );
 		// New settings injection.
 		add_filter( 'woocommerce_shared_settings', array( $this, 'component_settings' ), 30 );
 
@@ -72,6 +72,55 @@ class OnboardingTasks {
 	}
 
 	/**
+	 * Get task item data for settings filter.
+	 *
+	 * @return array
+	 */
+	public static function get_settings() {
+		$settings            = array();
+		$wc_pay_is_connected = false;
+		if ( class_exists( '\WC_Payments' ) ) {
+			$wc_payments_gateway = \WC_Payments::get_gateway();
+			$wc_pay_is_connected = method_exists( $wc_payments_gateway, 'is_connected' )
+				? $wc_payments_gateway->is_connected()
+				: false;
+		}
+
+		$gateways         = WC()->payment_gateways->get_available_payment_gateways();
+		$enabled_gateways = array_filter(
+			$gateways,
+			function( $gateway ) {
+				return 'yes' === $gateway->enabled;
+			}
+		);
+
+		// @todo We may want to consider caching some of these and use to check against
+		// task completion along with cache busting for active tasks.
+		$settings['automatedTaxSupportedCountries'] = self::get_automated_tax_supported_countries();
+		$settings['hasHomepage']                    = self::check_task_completion( 'homepage' ) || 'classic' === get_option( 'classic-editor-replace' );
+		$settings['hasPaymentGateway']              = ! empty( $enabled_gateways );
+		$settings['hasPhysicalProducts']            = count(
+			wc_get_products(
+				array(
+					'virtual' => false,
+					'limit'   => 1,
+				)
+			)
+		) > 0;
+		$settings['hasProducts']                    = self::check_task_completion( 'products' );
+		$settings['isAppearanceComplete']           = get_option( 'woocommerce_task_list_appearance_complete' );
+		$settings['isTaxComplete']                  = self::check_task_completion( 'tax' );
+		$settings['shippingZonesCount']             = count( \WC_Shipping_Zones::get_zones() );
+		$settings['stripeSupportedCountries']       = self::get_stripe_supported_countries();
+		$settings['stylesheet']                     = get_option( 'stylesheet' );
+		$settings['taxJarActivated']                = class_exists( 'WC_Taxjar' );
+		$settings['themeMods']                      = get_theme_mods();
+		$settings['wcPayIsConnected']               = $wc_pay_is_connected;
+
+		return $settings;
+	}
+
+	/**
 	 * Add task items to component settings.
 	 *
 	 * @param array $settings Component settings.
@@ -86,34 +135,17 @@ class OnboardingTasks {
 			return $settings;
 		}
 
-		$wc_pay_is_connected = false;
-		if ( class_exists( '\WC_Payments' ) ) {
-			$wc_payments_gateway = \WC_Payments::get_gateway();
-			$wc_pay_is_connected = method_exists( $wc_payments_gateway, 'is_connected' )
-				? $wc_payments_gateway->is_connected()
-				: false;
+		// If onboarding isn't enabled this will throw warnings.
+		if ( ! isset( $settings['onboarding'] ) ) {
+			$settings['onboarding'] = array();
 		}
 
-		// @todo We may want to consider caching some of these and use to check against
-		// task completion along with cache busting for active tasks.
-		$settings['onboarding']['automatedTaxSupportedCountries'] = self::get_automated_tax_supported_countries();
-		$settings['onboarding']['hasHomepage']                    = self::check_task_completion( 'homepage' ) || 'classic' === get_option( 'classic-editor-replace' );
-		$settings['onboarding']['hasPhysicalProducts']            = count(
-			wc_get_products(
-				array(
-					'virtual' => false,
-					'limit'   => 1,
-				)
+		$settings['onboarding'] = array_merge(
+			$settings['onboarding'],
+			array(
+				'tasksStatus' => self::get_settings(),
 			)
-		) > 0;
-		$settings['onboarding']['hasProducts']                    = self::check_task_completion( 'products' );
-		$settings['onboarding']['isAppearanceComplete']           = get_option( 'woocommerce_task_list_appearance_complete' );
-		$settings['onboarding']['isTaxComplete']                  = self::check_task_completion( 'tax' );
-		$settings['onboarding']['shippingZonesCount']             = count( \WC_Shipping_Zones::get_zones() );
-		$settings['onboarding']['stylesheet']                     = get_option( 'stylesheet' );
-		$settings['onboarding']['taxJarActivated']                = class_exists( 'WC_Taxjar' );
-		$settings['onboarding']['themeMods']                      = get_theme_mods();
-		$settings['onboarding']['wcPayIsConnected']               = $wc_pay_is_connected;
+		);
 
 		return $settings;
 	}
@@ -176,7 +208,7 @@ class OnboardingTasks {
 		switch ( $task ) {
 			case 'products':
 				$products = wp_count_posts( 'product' );
-				return (int) $products->publish > 0 || (int) $products->draft > 0;
+				return (int) $products->publish > 0;
 			case 'homepage':
 				$homepage_id = get_option( 'woocommerce_onboarding_homepage_post_id', false );
 				if ( ! $homepage_id ) {
@@ -186,7 +218,9 @@ class OnboardingTasks {
 				$completed = $post && 'publish' === $post->post_status;
 				return $completed;
 			case 'tax':
-				return 'yes' === get_option( 'wc_connect_taxes_enabled' ) || count( DataStore::get_taxes( array() ) ) > 0;
+				return 'yes' === get_option( 'wc_connect_taxes_enabled' ) ||
+					count( DataStore::get_taxes( array() ) ) > 0 ||
+					false !== get_option( 'woocommerce_no_sales_tax' );
 		}
 		return false;
 	}
@@ -265,6 +299,57 @@ class OnboardingTasks {
 		);
 
 		return $tax_supported_countries;
+	}
+
+	/**
+	 * Returns a list of Stripe supported countries. This method can be removed once merged to core.
+	 *
+	 * @return array
+	 */
+	private static function get_stripe_supported_countries() {
+		// https://stripe.com/global.
+		return array(
+			'AU',
+			'AT',
+			'BE',
+			'BG',
+			// 'BR', // Preview, requires invite.
+			'CA',
+			'CY',
+			'CZ',
+			'DK',
+			'EE',
+			'FI',
+			'FR',
+			'DE',
+			'GR',
+			'HK',
+			'IN', // Preview.
+			'IE',
+			'IT',
+			'JP',
+			'LV',
+			'LT',
+			'LU',
+			'MY',
+			'MT',
+			'MX',
+			'NL',
+			'NZ',
+			'NO',
+			'PL',
+			'PT',
+			'RO',
+			'SG',
+			'SK',
+			'SI',
+			'ES',
+			'SE',
+			'CH',
+			'GB',
+			'US',
+			'PR',
+		);
 	}
 
 	/**

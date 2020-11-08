@@ -26,6 +26,7 @@ const AddressFields = {
 			'woocommerce'
 		),
 		autocomplete: 'given-name',
+		autocapitalize: 'sentences',
 		required: true,
 		hidden: false,
 		index: 1,
@@ -37,6 +38,7 @@ const AddressFields = {
 			'woocommerce'
 		),
 		autocomplete: 'family-name',
+		autocapitalize: 'sentences',
 		required: true,
 		hidden: false,
 		index: 2,
@@ -48,6 +50,7 @@ const AddressFields = {
 			'woocommerce'
 		),
 		autocomplete: 'organization',
+		autocapitalize: 'sentences',
 		required: false,
 		hidden: false,
 		index: 3,
@@ -59,6 +62,7 @@ const AddressFields = {
 			'woocommerce'
 		),
 		autocomplete: 'address-line1',
+		autocapitalize: 'sentences',
 		required: true,
 		hidden: false,
 		index: 4,
@@ -70,6 +74,7 @@ const AddressFields = {
 			'woocommerce'
 		),
 		autocomplete: 'address-line2',
+		autocapitalize: 'sentences',
 		required: false,
 		hidden: false,
 		index: 5,
@@ -89,6 +94,7 @@ const AddressFields = {
 		label: __( 'City', 'woocommerce' ),
 		optionalLabel: __( 'City (optional)', 'woocommerce' ),
 		autocomplete: 'address-level2',
+		autocapitalize: 'sentences',
 		required: true,
 		hidden: false,
 		index: 7,
@@ -100,6 +106,7 @@ const AddressFields = {
 			'woocommerce'
 		),
 		autocomplete: 'address-level1',
+		autocapitalize: 'sentences',
 		required: true,
 		hidden: false,
 		index: 8,
@@ -111,6 +118,7 @@ const AddressFields = {
 			'woocommerce'
 		),
 		autocomplete: 'postal-code',
+		autocapitalize: 'characters',
 		required: true,
 		hidden: false,
 		index: 9,

@@ -46,7 +46,7 @@ import {
 	emitEventWithAbort,
 	reducer as emitReducer,
 } from './event-emit';
-import { useValidationContext } from '../validation';
+import { useValidationContext } from '../../shared/validation';
 
 /**
  * @typedef {import('@woocommerce/type-defs/contexts').PaymentMethodDataContext} PaymentMethodDataContext
@@ -75,6 +75,33 @@ const PaymentMethodDataContext = createContext( DEFAULT_PAYMENT_METHOD_DATA );
  */
 export const usePaymentMethodDataContext = () => {
 	return useContext( PaymentMethodDataContext );
+};
+
+/**
+ * Gets the payment methods saved for the current user after filtering out
+ * disabled ones.
+ *
+ * @param {Object[]} availablePaymentMethods List of available payment methods.
+ * @return {Object} Object containing the payment methods saved for a specific
+ *                  user which are available.
+ */
+const getCustomerPaymentMethods = ( availablePaymentMethods = [] ) => {
+	const customerPaymentMethods = getSetting( 'customerPaymentMethods', {} );
+	const paymentMethodKeys = Object.keys( customerPaymentMethods );
+	if ( paymentMethodKeys.length === 0 ) {
+		return {};
+	}
+	const enabledCustomerPaymentMethods = {};
+	paymentMethodKeys.forEach( ( type ) => {
+		enabledCustomerPaymentMethods[ type ] = customerPaymentMethods[
+			type
+		].filter( ( paymentMethod ) => {
+			return Object.keys( availablePaymentMethods ).includes(
+				paymentMethod.method.gateway
+			);
+		} );
+	} );
+	return enabledCustomerPaymentMethods;
 };
 
 /**
@@ -107,10 +134,6 @@ export const PaymentMethodDataProvider = ( { children } ) => {
 	const currentObservers = useRef( observers );
 
 	const { isEditor, previewData } = useEditorContext();
-	const customerPaymentMethods =
-		isEditor && previewData?.previewSavedPaymentMethods
-			? previewData?.previewSavedPaymentMethods
-			: getSetting( 'customerPaymentMethods', {} );
 	const [ paymentData, dispatch ] = useReducer(
 		reducer,
 		DEFAULT_PAYMENT_DATA
@@ -149,6 +172,24 @@ export const PaymentMethodDataProvider = ( { children } ) => {
 		},
 		[ dispatch ]
 	);
+
+	const customerPaymentMethods = useMemo( () => {
+		if ( isEditor && previewData.previewSavedPaymentMethods ) {
+			return previewData.previewSavedPaymentMethods;
+		}
+		if (
+			! paymentMethodsInitialized ||
+			paymentData.paymentMethods.length === 0
+		) {
+			return {};
+		}
+		return getCustomerPaymentMethods( paymentData.paymentMethods );
+	}, [
+		isEditor,
+		previewData.previewSavedPaymentMethods,
+		paymentMethodsInitialized,
+		paymentData.paymentMethods,
+	] );
 
 	const setExpressPaymentError = useCallback(
 		( message ) => {
@@ -300,22 +341,19 @@ export const PaymentMethodDataProvider = ( { children } ) => {
 			return;
 		}
 
-		// If there's no active payment method, or the active payment method has
-		// been removed (e.g. COD vs shipping methods), set one as active.
-		if (
-			! activePaymentMethod ||
-			! paymentMethodKeys.includes( activePaymentMethod )
-		) {
-			setActivePaymentMethod(
-				Object.keys( paymentData.paymentMethods )[ 0 ]
-			);
-		}
-	}, [
-		activePaymentMethod,
-		paymentMethodsInitialized,
-		paymentData.paymentMethods,
-		setActivePaymentMethod,
-	] );
+		setActive( ( currentActivePaymentMethod ) => {
+			// If there's no active payment method, or the active payment method has
+			// been removed (e.g. COD vs shipping methods), set one as active.
+			if (
+				! currentActivePaymentMethod ||
+				! paymentMethodKeys.includes( currentActivePaymentMethod )
+			) {
+				dispatch( statusOnly( PRISTINE ) );
+				return Object.keys( paymentData.paymentMethods )[ 0 ];
+			}
+			return currentActivePaymentMethod;
+		} );
+	}, [ paymentMethodsInitialized, paymentData.paymentMethods, setActive ] );
 
 	// emit events.
 	useEffect( () => {

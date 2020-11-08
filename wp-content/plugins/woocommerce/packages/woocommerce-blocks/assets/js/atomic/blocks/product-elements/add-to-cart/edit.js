@@ -2,11 +2,17 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import EditProductLink from '@woocommerce/block-components/edit-product-link';
+import EditProductLink from '@woocommerce/editor-components/edit-product-link';
 import { useProductDataContext } from '@woocommerce/shared-context';
 import classnames from 'classnames';
-import { Disabled, PanelBody, ToggleControl } from '@wordpress/components';
+import {
+	Disabled,
+	PanelBody,
+	ToggleControl,
+	Notice,
+} from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
+import { productSupportsAddToCartForm } from '@woocommerce/base-utils';
 
 /**
  * Internal dependencies
@@ -28,11 +34,11 @@ const Edit = ( { attributes, setAttributes } ) => {
 			) }
 		>
 			<EditProductLink productId={ product.id } />
-			{ product.type !== 'external' && (
-				<InspectorControls>
-					<PanelBody
-						title={ __( 'Layout', 'woocommerce' ) }
-					>
+			<InspectorControls>
+				<PanelBody
+					title={ __( 'Layout', 'woocommerce' ) }
+				>
+					{ productSupportsAddToCartForm( product ) ? (
 						<ToggleControl
 							label={ __(
 								'Display form elements',
@@ -49,9 +55,20 @@ const Edit = ( { attributes, setAttributes } ) => {
 								} )
 							}
 						/>
-					</PanelBody>
-				</InspectorControls>
-			) }
+					) : (
+						<Notice
+							className="wc-block-components-product-add-to-cart-notice"
+							isDismissible={ false }
+							status="info"
+						>
+							{ __(
+								'This product does not support the block based add to cart form. A link to the product page will be shown instead.',
+								'woocommerce'
+							) }
+						</Notice>
+					) }
+				</PanelBody>
+			</InspectorControls>
 			<Disabled>
 				<Block { ...attributes } />
 			</Disabled>
@@ -63,7 +80,7 @@ export default withProductSelector( {
 	icon: BLOCK_ICON,
 	label: BLOCK_TITLE,
 	description: __(
-		"Choose a product to display it's add to cart form.",
+		'Choose a product to display its add to cart form.',
 		'woocommerce'
 	),
 } )( Edit );

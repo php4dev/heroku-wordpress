@@ -61,6 +61,8 @@ class Controller extends ReportsController implements ExportableInterface {
 		$args['match']             = $request['match'];
 		$args['order_includes']    = $request['order_includes'];
 		$args['order_excludes']    = $request['order_excludes'];
+		$args['attribute_is']      = (array) $request['attribute_is'];
+		$args['attribute_is_not']  = (array) $request['attribute_is_not'];
 
 		return $args;
 	}
@@ -429,6 +431,24 @@ class Controller extends ReportsController implements ExportableInterface {
 				'type' => 'integer',
 			),
 		);
+		$params['attribute_is']      = array(
+			'description'       => __( 'Limit result set to orders that include products with the specified attributes.', 'woocommerce' ),
+			'type'              => 'array',
+			'items'             => array(
+				'type' => 'array',
+			),
+			'default'           => array(),
+			'validate_callback' => 'rest_validate_request_arg',
+		);
+		$params['attribute_is_not']  = array(
+			'description'       => __( 'Limit result set to orders that don\'t include products with the specified attributes.', 'woocommerce' ),
+			'type'              => 'array',
+			'items'             => array(
+				'type' => 'array',
+			),
+			'default'           => array(),
+			'validate_callback' => 'rest_validate_request_arg',
+		);
 
 		return $params;
 	}
@@ -470,7 +490,7 @@ class Controller extends ReportsController implements ExportableInterface {
 	 * @return array Key value pair of Column ID => Label.
 	 */
 	public function get_export_columns() {
-		return array(
+		$export_columns = array(
 			'date_created'   => __( 'Date', 'woocommerce' ),
 			'order_number'   => __( 'Order #', 'woocommerce' ),
 			'status'         => __( 'Status', 'woocommerce' ),
@@ -479,6 +499,17 @@ class Controller extends ReportsController implements ExportableInterface {
 			'num_items_sold' => __( 'Items Sold', 'woocommerce' ),
 			'coupons'        => __( 'Coupon(s)', 'woocommerce' ),
 			'net_total'      => __( 'N. Revenue', 'woocommerce' ),
+		);
+
+		/**
+		 * Filter to add or remove column names from the orders report for
+		 * export.
+		 *
+		 * @since 1.6.0
+		 */
+		return apply_filters(
+			'woocommerce_report_orders_export_columns',
+			$export_columns
 		);
 	}
 
@@ -489,7 +520,7 @@ class Controller extends ReportsController implements ExportableInterface {
 	 * @return array Key value pair of Column ID => Row Value.
 	 */
 	public function prepare_item_for_export( $item ) {
-		return array(
+		$export_item = array(
 			'date_created'   => $item['date_created'],
 			'order_number'   => $item['order_number'],
 			'status'         => $item['status'],
@@ -498,6 +529,18 @@ class Controller extends ReportsController implements ExportableInterface {
 			'num_items_sold' => $item['num_items_sold'],
 			'coupons'        => isset( $item['extended_info']['coupons'] ) ? $this->_get_coupons( $item['extended_info']['coupons'] ) : null,
 			'net_total'      => $item['net_total'],
+		);
+
+		/**
+		 * Filter to prepare extra columns in the export item for the orders
+		 * report.
+		 *
+		 * @since 1.6.0
+		 */
+		return apply_filters(
+			'woocommerce_report_orders_prepare_export_item',
+			$export_item,
+			$item
 		);
 	}
 }

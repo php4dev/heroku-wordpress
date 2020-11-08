@@ -112,22 +112,21 @@ class Analytics {
 	 * Registers report pages.
 	 */
 	public function register_pages() {
-		$homepage_enabled = Loader::is_feature_enabled( 'homescreen' );
 		$report_pages = array(
 			array(
 				'id'       => 'woocommerce-analytics',
 				'title'    => __( 'Analytics', 'woocommerce' ),
 				'path'     => '/analytics/overview',
-				'path'     => $homepage_enabled ? '/analytics/overview' : '/analytics/revenue',
+				'path'     => '/analytics/overview',
 				'icon'     => 'dashicons-chart-bar',
 				'position' => 56, // After WooCommerce & Product menu items.
 			),
-			$homepage_enabled ? array(
-				'id'       => 'woocommerce-analytics-overview',
-				'title'    => __( 'Overview', 'woocommerce' ),
+			array(
+				'id'     => 'woocommerce-analytics-overview',
+				'title'  => __( 'Overview', 'woocommerce' ),
 				'parent' => 'woocommerce-analytics',
-				'path'     => '/analytics/overview',
-			) : null,
+				'path'   => '/analytics/overview',
+			),
 			array(
 				'id'     => 'woocommerce-analytics-revenue',
 				'title'  => __( 'Revenue', 'woocommerce' ),

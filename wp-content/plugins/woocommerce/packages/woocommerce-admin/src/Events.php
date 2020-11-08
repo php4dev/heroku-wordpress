@@ -30,11 +30,13 @@ use \Automattic\WooCommerce\Admin\Loader;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Insight_First_Sale;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Home_Screen_Feedback;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Need_Some_Inspiration;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Learn_More_About_Product_Settings;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Online_Clothing_Store;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_First_Product;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Customize_Store_With_Blocks;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Facebook_Marketing_Expert;
+use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Google_Ads_And_Marketing;
+use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Test_Checkout;
+use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Edit_Products_On_The_Move;
+use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Performance_On_Mobile;
 
 /**
  * WC_Admin_Events Class.
@@ -96,17 +98,39 @@ class Events {
 		WC_Admin_Notes_Launch_Checklist::possibly_add_note();
 		WC_Admin_Notes_Home_Screen_Feedback::possibly_add_note();
 		WC_Admin_Notes_Need_Some_Inspiration::possibly_add_note();
-		WC_Admin_Notes_Learn_More_About_Product_Settings::possibly_add_note();
 		WC_Admin_Notes_Online_Clothing_Store::possibly_add_note();
 		WC_Admin_Notes_First_Product::possibly_add_note();
 		WC_Admin_Notes_Choose_Niche::possibly_add_note();
 		WC_Admin_Notes_Real_Time_Order_Alerts::possibly_add_note();
 		WC_Admin_Notes_Customize_Store_With_Blocks::possibly_add_note();
-		WC_Admin_Notes_Facebook_Marketing_Expert::possibly_add_note();
+		WC_Admin_Notes_Google_Ads_And_Marketing::possibly_add_note();
+		WC_Admin_Notes_Test_Checkout::possibly_add_note();
+		WC_Admin_Notes_Edit_Products_On_The_Move::possibly_add_note();
+		WC_Admin_Notes_Performance_On_Mobile::possibly_add_note();
 
-		if ( Loader::is_feature_enabled( 'remote-inbox-notifications' ) ) {
+		if ( $this->is_remote_inbox_notifications_enabled() ) {
 			DataSourcePoller::read_specs_from_data_sources();
 			RemoteInboxNotificationsEngine::run();
 		}
+	}
+
+	/**
+	 * Checks if remote inbox notifications are enabled.
+	 *
+	 * @return bool Whether remote inbox notifications are enabled.
+	 */
+	protected function is_remote_inbox_notifications_enabled() {
+		// Check if the feature flag is disabled.
+		if ( ! Loader::is_feature_enabled( 'remote-inbox-notifications' ) ) {
+			return false;
+		}
+
+		// Check if the site has opted out of marketplace suggestions.
+		if ( 'yes' !== get_option( 'woocommerce_show_marketplace_suggestions', 'yes' ) ) {
+			return false;
+		}
+
+		// All checks have passed.
+		return true;
 	}
 }
