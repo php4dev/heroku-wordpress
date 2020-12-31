@@ -23,8 +23,17 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 		 */
 		public function __construct() {
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-			add_action( 'admin_notices', array( $this, 'admin_notices' ), 99 );
+
+			/*
+			* In case the user has installed the Storefront theme without WooCommerce plugin this will detect this scenario and show the admin notice.
+			*/
+			if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '4.8.0', '>=' ) ) {
+				add_action( 'admin_notices', array( $this, 'admin_inbox_messages' ), 99 );
+			} else {
+				add_action( 'admin_notices', array( $this, 'admin_notices' ), 99 );
+			}
 			add_action( 'wp_ajax_storefront_dismiss_notice', array( $this, 'dismiss_nux' ) );
+
 			add_action( 'admin_post_storefront_starter_content', array( $this, 'redirect_customizer' ) );
 			add_action( 'init', array( $this, 'log_fresh_site_state' ) );
 			add_filter( 'admin_body_class', array( $this, 'admin_body_class' ) );
@@ -45,6 +54,7 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 			$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 			wp_enqueue_style( 'storefront-admin-nux', get_template_directory_uri() . '/assets/css/admin/admin.css', '', $storefront_version );
+			wp_style_add_data( 'storefront-admin-nux', 'rtl', 'replace' );
 
 			wp_enqueue_script( 'storefront-admin-nux', get_template_directory_uri() . '/assets/js/admin/admin' . $suffix . '.js', array( 'jquery' ), $storefront_version, 'all' );
 
@@ -77,7 +87,22 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 				<span class="sf-icon">
 					<?php echo '<img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/admin/storefront-icon.svg" alt="Storefront" width="250" />'; ?>
 				</span>
+				<?php
+					self::admin_notices_content();
+				?>
+			</div>
+			<?php
+		}
 
+		/**
+		 * Admin notices body.
+		 * Extracted to a separate static function to be usable in other than admin_notice context.
+		 *
+		 * @since 3.0.0
+		 */
+		public static function admin_notices_content() {
+			global $pagenow;
+			?>
 				<div class="notice-content">
 					<?php if ( ! storefront_is_woocommerce_activated() && current_user_can( 'install_plugins' ) && current_user_can( 'activate_plugins' ) ) : ?>
 						<h2><?php esc_html_e( 'Thanks for installing Storefront, you rock! 🤘', 'storefront' ); ?></h2>
@@ -104,35 +129,39 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 								<input type="hidden" name="homepage" value="on">
 							<?php endif; ?>
 
-							<?php if ( true === (bool) get_option( 'storefront_nux_fresh_site' ) && true === $this->_is_woocommerce_empty() ) : ?>
+							<?php if ( true === (bool) get_option( 'storefront_nux_fresh_site' ) && true === self::_is_woocommerce_empty() ) : ?>
 								<input type="hidden" name="products" value="on">
 							<?php endif; ?>
 
 							<?php if ( false === (bool) get_option( 'storefront_nux_fresh_site' ) ) : ?>
-								<label>
-									<input type="checkbox" name="homepage" checked>
-									<?php
-									if ( 'page' === get_option( 'show_on_front' ) ) {
-										esc_html_e( 'Apply the Storefront homepage template', 'storefront' );
-									} else {
-										esc_html_e( 'Create a homepage using Storefront\'s homepage template', 'storefront' );
-									}
-									?>
-								</label>
-
-								<?php if ( true === $this->_is_woocommerce_empty() ) : ?>
+								<div class="notice-input">
 									<label>
-										<input type="checkbox" name="products" checked>
-										<?php esc_html_e( 'Add example products', 'storefront' ); ?>
+										<input type="checkbox" name="homepage" checked>
+										<?php
+										if ( 'page' === get_option( 'show_on_front' ) ) {
+											esc_html_e( 'Apply the Storefront homepage template', 'storefront' );
+										} else {
+											esc_html_e( 'Create a homepage using Storefront\'s homepage template', 'storefront' );
+										}
+										?>
 									</label>
+								</div>
+
+								<?php if ( true === self::_is_woocommerce_empty() ) : ?>
+									<div class="notice-input">
+										<label>
+											<input type="checkbox" name="products" checked>
+											<?php esc_html_e( 'Add example products', 'storefront' ); ?>
+										</label>
+									</div>
 								<?php endif; ?>
 							<?php endif; ?>
 
 							<input type="submit" name="storefront-guided-tour" class="sf-nux-button" value="<?php esc_attr_e( 'Let\'s go!', 'storefront' ); ?>">
+							<a href="#" class="sf-nux-dismiss-button" ><?php esc_attr_e( 'Skip', 'storefront' ); ?></a>
 						</form>
 					<?php endif; ?>
 				</div>
-			</div>
 			<?php
 		}
 
@@ -147,6 +176,21 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 			}
 
 			update_option( 'storefront_nux_dismissed', true );
+		}
+
+		/**
+		 * Prints Storefront inbox messages.
+		 *
+		 * @since 3.0.0
+		 */
+		public function admin_inbox_messages() {
+			// The setup already has happened. No inbox message needed.
+			if ( true === (bool) get_option( 'storefront_nux_dismissed' ) ) {
+				return;
+			}
+			// Storefront settings page link and welcome message.
+			require 'class-storefront-nux-admin-inbox-messages-customize.php';
+			Storefront_NUX_Admin_Inbox_Messages_Customize::possibly_add_note();
 		}
 
 		/**
@@ -210,7 +254,8 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 			$woocommerce_pages = array();
 
 			$wc_pages_options = apply_filters(
-				'storefront_page_option_names', array(
+				'storefront_page_option_names',
+				array(
 					'woocommerce_cart_page_id',
 					'woocommerce_checkout_page_id',
 					'woocommerce_myaccount_page_id',
@@ -297,7 +342,7 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 		 * @since 2.2.0
 		 * @return bool
 		 */
-		private function _is_woocommerce_empty() {
+		private static function _is_woocommerce_empty() {
 			$products = wp_count_posts( 'product' );
 
 			if ( 0 < $products->publish ) {

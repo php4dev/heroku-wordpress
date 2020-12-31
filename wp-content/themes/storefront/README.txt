@@ -1,9 +1,9 @@
 === Storefront ===
 Contributors: automattic, tiagonoronha, jameskoster
-Requires at least: 4.7
-Tested up to: 5.2
-Stable tag: 2.5.3
-Version: 2.5.3
+Requires at least: 5.3.4
+Tested up to: 5.6.0
+Stable tag: 2.9.0
+Version: 3.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: e-commerce, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, threaded-comments, accessibility-ready, rtl-language-support, footer-widgets, sticky-post, theme-options, editor-style
@@ -48,6 +48,100 @@ To the best of our knowledge, Google doesn’t track nor share end user data.
 Privacy Policy for the Google Fonts API: https://developers.google.com/fonts/faq#what_does_using_the_google_fonts_api_mean_for_the_privacy_of_my_users
 
 == Changelog ==
+
+= 3.0.0 - 2020-12-15 = 
+* Enhancement - Add missing link text on cart button in handheld footer bar [#1205](https://github.com/woocommerce/storefront/issues/1205)
+* Enhancement - Move Storefront admin notice content to the Storefront Appearance page.[#1544](https://github.com/woocommerce/storefront/pull/1544)
+* Fix - Implode parameters order compatibility for PHP8 [#1553](https://github.com/woocommerce/storefront/pull/1553)
+* Dev - Update various dependencies, including major updates:
+  - `@wordpress/env` to v2 [#1459](https://github.com/woocommerce/storefront/pull/1459)
+  - `autoprefixer` to v10.0.4 [#1548](https://github.com/woocommerce/storefront/pull/1548)
+  - `puppeteer` to v5 [#1410](https://github.com/woocommerce/storefront/pull/1410)
+  - `grunt-contrib-uglify` to v5 [#1426](https://github.com/woocommerce/storefront/pull/1426)
+  - `bourbon` to v7 [#1388](https://github.com/woocommerce/storefront/pull/1388)
+
+= 2.9.0 - 2020-11-10 =
+* Enhancement – Added styles to the Filter Products by Price block, so the accent color is used in the slider. [#1508](https://github.com/woocommerce/storefront/pull/1508)
+* Performance – Added CSS minification. [#1503](https://github.com/woocommerce/storefront/pull/1503)
+* Fix - Cover block text color attributes not being applied. [#1513](https://github.com/woocommerce/storefront/pull/1513)
+* Fix - Inconsistent font sizes of category and product titles in shop page. [#1501](https://github.com/woocommerce/storefront/pull/1501)
+* Dev - Update various dependencies, including major updates:
+  - `autoprefixer` v10 and `postcss` v8 [#1502](https://github.com/woocommerce/storefront/pull/1502)
+  - `grunt-contrib-jshint` v3 [#1507](https://github.com/woocommerce/storefront/pull/1507)
+  - `node-sass` v5 [#1523](https://github.com/woocommerce/storefront/pull/1523)
+
+= 2.8.0 - 2020-10-13 =
+- Dev: Reinstate PHPcs linting #1463
+- Dev: Add `wp-env` npm script alias #1489
+- Dev: Tweak npm config & scripts for release tooling changes #1462 
+- Dev: Various dependency updates 
+
+= 2.7.0 - 2020-09-02 =
+* Fix - Respect user-selected Color and Font size values for All Products' Product Title Block. [#1424](https://github.com/woocommerce/storefront/pull/1424)
+* Fix - Fix issue with draft products showing up in pagination [#1452](https://github.com/woocommerce/storefront/pull/1452)
+* Enhancement - Add icons to notices. [#1453](https://github.com/woocommerce/storefront/pull/1453)
+
+= 2.6.0 - 2020-08-18 =
+* Fix - Add defensive checks for WC Cart instance [#1440](https://github.com/woocommerce/storefront/pull/1440)
+* Fix - Fix focus outline in My Account page with Firefox [#1428](https://github.com/woocommerce/storefront/pull/1428)
+* Fix - Merge duplicate CSS Selectors [#1419](https://github.com/woocommerce/storefront/pull/1419) 👏[@ismail-elkorchi](https://github.com/woocommerce/storefront/issues?q=is%3Apr+author%3AIsmail-elkorchi)
+* Fix - incorrect starter content for Home page [#1422](https://github.com/woocommerce/storefront/pull/1422)
+* Enhancement - Add Cart and Checkout block styles [#1412](https://github.com/woocommerce/storefront/pull/1412)
+
+= 2.5.8 - 2020-06-19 =
+* Fix – Stylesheet storefront-woocommerce-style has storefront-style and storefront-icons as explicit dependencies, so child themes can define storefront-woocommerce-style as a dependency without the risk of breaking the stylesheets order. #1369
+* Fix – Removed woocommerce-legacy.css stylesheets for unsupported versions of WooCommerce (< 4.0). #1368
+* Dev - Adopt RenovateBot for managing dependencies. #1363
+* Dev - Update various dependencies, including major updates:
+  - `@wordpress/babel-preset-default` v4 #1387
+  - `stylelint` v13 #1390
+
+= 2.5.7 - 2020-06-02 =
+* Fix - Edit, reply and author icons are now displayed in comment list. #1319
+* Fix - Updated font-weight of the All Products block so it matches the other product grid blocks. #1344
+* Dev - Include FontAwesome brands icon set. #1345
+
+
+= 2.5.6 - 2020-05-05 =
+* Enhancement - Custom site background color is now used in editor preview. #1317
+* Fix - Ensure mobile sticky footer navigation links are visible when colours are customised (use header/nav colour scheme, consistent with 2.5.4 and earlier releases). #1321
+* Fix – Fix issue where product and category images were not centered on homepage & category pages. #1313
+* Fix – "Reveal password" button (eye icon) is now positioned correctly in new password fields (my account change password and signup). #1325
+* Fix - Fix several mispositioned :focus rings (in Firefox and other browsers). #1318
+* Fix – Ensure product images have appropriate bottom margin. #1313
+* Fix – Buttons blocks now respect the border radius set by the user. #1323
+* Fix - Buttons blocks no longer show an underline. #1310
+* Fix – Product page, cart, and checkout layout fixes affecting stores with longer product names on smaller screens. #1326
+* Fix - WordPress 5.4 compatibility – Text inside the Calendar block is now centered, in line with the Calendar widget. #1315
+* Fix – WordPress 5.4 compatibility – Ensure block editor uses theme typography styling. #1316
+* Fix – WordPress 5.4 compatibility – Adapt block editor width if sidebar widgets are present/disabled. #1316
+* Compatibility - Disable the footer bar when used with Checkout or Cart blocks (currently in development). #1307
+* i18n – Use correct direction arrow icons in RTL languages (next, previous and forward). #1306
+* i18n – Fix inappropriate use of disambiguation context in admin notice 'or' string. #1303
+* Tweak – Improve HTML5 compliance for enqueued scripts and styles. #1309
+* Tweak – Removed unnecessary vertical-align css rule for button, select, input and textarea elements. #1295
+* Dependencies – Update Font Awesome icon font to 5.13.0. #1279
+
+= 2.5.5 - 2020-02-28 =
+* Fix - Blocks: Fix vertical alignment of left/right aligned image blocks. #1265
+* Fix - Blocks: Correct center alignment of product image in Top Rated Products block with small number of columns. #1267
+* Fix - Blocks: Improve margins between floated embed/image block and list block. #1272 #1274
+* Fix - Customizer: Ensure headings and links in the footer use colors set in Customizer. #1261
+
+= 2.5.4 - 2020-02-19 =
+* Feature - Add support for new `wp_body_open` hook. #1208
+* Fix - Customizer: Move "Product Page" settings into WooCommerce tab. #1224
+* Fix - Blocks: Ensure product grid blocks don't wrap unnecessarily. #1217
+* Fix - Editor: Fix layout issue with image block placeholder buttons. #1242
+* Fix - Improve "Sale!" badge legibility by using white background (was transparent). #1251
+* Fix - Improve accessibility of screen reader skip links. #1216
+* Fix - Prevent search engine indexing of add-to-cart link. #1207
+* Fix - Ensure password visibility button is not hidden on login form. #1238
+* Fix - Allow translation of "or" in admin notice for activating WooCommerce plugin. #1257
+* Fix - Remove underline from @wordpress/components button links. #1187
+* Fix - Use `noreferrer` on footer credit link. #1243
+* Dev - Update npm dev dependencies. #1258
+* Dev - Automatically exclude storefront folder & zip when preparing release. #1199
 
 = 2.5.3 - 2019-08-19 =
 * Fix - Remove directory that was included in the previous release by mistake.

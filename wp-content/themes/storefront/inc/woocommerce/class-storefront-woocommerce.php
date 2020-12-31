@@ -57,8 +57,10 @@ if ( ! class_exists( 'Storefront_WooCommerce' ) ) :
 		 */
 		public function setup() {
 			add_theme_support(
-				'woocommerce', apply_filters(
-					'storefront_woocommerce_args', array(
+				'woocommerce',
+				apply_filters(
+					'storefront_woocommerce_args',
+					array(
 						'single_image_width'    => 416,
 						'thumbnail_image_width' => 324,
 						'product_grid'          => array(
@@ -139,7 +141,7 @@ if ( ! class_exists( 'Storefront_WooCommerce' ) ) :
 
 			$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
-			wp_enqueue_style( 'storefront-woocommerce-style', get_template_directory_uri() . '/assets/css/woocommerce/woocommerce.css', array(), $storefront_version );
+			wp_enqueue_style( 'storefront-woocommerce-style', get_template_directory_uri() . '/assets/css/woocommerce/woocommerce.css', array( 'storefront-style', 'storefront-icons' ), $storefront_version );
 			wp_style_add_data( 'storefront-woocommerce-style', 'rtl', 'replace' );
 
 			wp_register_script( 'storefront-header-cart', get_template_directory_uri() . '/assets/js/woocommerce/header-cart' . $suffix . '.js', array(), $storefront_version, true );
@@ -149,11 +151,6 @@ if ( ! class_exists( 'Storefront_WooCommerce' ) ) :
 
 			if ( ! class_exists( 'Storefront_Sticky_Add_to_Cart' ) && is_product() ) {
 				wp_register_script( 'storefront-sticky-add-to-cart', get_template_directory_uri() . '/assets/js/sticky-add-to-cart' . $suffix . '.js', array(), $storefront_version, true );
-			}
-
-			if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '3.3', '<' ) ) {
-				wp_enqueue_style( 'storefront-woocommerce-legacy', get_template_directory_uri() . '/assets/css/woocommerce/woocommerce-legacy.css', array(), $storefront_version );
-				wp_style_add_data( 'storefront-woocommerce-legacy', 'rtl', 'replace' );
 			}
 		}
 
@@ -188,7 +185,8 @@ if ( ! class_exists( 'Storefront_WooCommerce' ) ) :
 		 */
 		public function related_products_args( $args ) {
 			$args = apply_filters(
-				'storefront_related_products_args', array(
+				'storefront_related_products_args',
+				array(
 					'posts_per_page' => 3,
 					'columns'        => 3,
 				)
