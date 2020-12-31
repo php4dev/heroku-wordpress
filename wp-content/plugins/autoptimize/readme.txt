@@ -3,16 +3,16 @@ Contributors: futtta, optimizingmatters, zytzagoo, turl
 Tags: optimize, minify, performance, pagespeed, images, lazy-load, google fonts
 Donate link: http://blog.futtta.be/2013/10/21/do-not-donate-to-me/
 Requires at least: 4.9
-Tested up to: 5.5
+Tested up to: 5.6
 Requires PHP: 5.6
-Stable tag: 2.7.6
+Stable tag: 2.8.1
 
 Autoptimize speeds up your website by optimizing JS, CSS, images (incl. lazy-load), HTML and Google Fonts, asyncing JS, removing emoji cruft and more.
 
 == Description ==
 
-Autoptimize makes optimizing your site really easy. It can aggregate, minify and cache scripts and styles, injects CSS in the page head by default but can also inline critical CSS and defer the aggregated full CSS, moves and defers scripts to the footer and minifies HTML. You can optimize and lazy-load images, optimize Google Fonts, async non-aggregated JavaScript, remove WordPress core emoji cruft and more. As such it can improve your site's performance even when already on HTTP/2! There is extensive API available to enable you to tailor Autoptimize to each and every site's specific needs.
-If you consider performance important, you really should use one of the many caching plugins to do page caching. Some good candidates to complement Autoptimize that way are e.g. [Speed Booster Pack](https://wordpress.org/plugins/speed-booster-pack/), [KeyCDN's Cache Enabler](https://wordpress.org/plugins/cache-enabler) or [WP Super Cache](http://wordpress.org/plugins/wp-super-cache/).
+Autoptimize makes optimizing your site really easy. It can aggregate, minify and cache scripts and styles, injects CSS in the page head by default but can also inline critical CSS and defer the aggregated full CSS, moves and defers scripts to the footer and minifies HTML. You can optimize and lazy-load images (with support for WebP and AVIF formats), optimize Google Fonts, async non-aggregated JavaScript, remove WordPress core emoji cruft and more. As such it can improve your site's performance even when already on HTTP/2! There is extensive API available to enable you to tailor Autoptimize to each and every site's specific needs.
+If you consider performance important, you really should use one of the many caching plugins to do page caching. Some good candidates to complement Autoptimize that way are e.g. [Speed Booster pack](https://wordpress.org/plugins/speed-booster-pack/), [KeyCDN's Cache Enabler](https://wordpress.org/plugins/cache-enabler), [WP Super Cache](http://wordpress.org/plugins/wp-super-cache/) or if you use Cloudflare [WP Cloudflare Super Page Cache](https://wordpress.org/plugins/wp-cloudflare-page-cache/).
 
 > <strong>Premium Support</strong><br>
 > We provide great [Autoptimize Pro Support and Web Performance Optimization services](https://autoptimize.com/), check out our offering on [https://autoptimize.com/](https://autoptimize.com/)!
@@ -29,6 +29,10 @@ Just install from your WordPress "Plugins > Add New" screen and all will be well
 
 == Frequently Asked Questions ==
 
+= Do you offer or recommend a course on how to speed up WordPress/ use Autoptimize? =
+
+There are many great resources online, both free and premium, but [the "Autoptimize Masterclass" by Load Labz](https://misc.optimizingmatters.com/partners/?from=faq&partner=loadlabz) stands out for the systematic and detailed approach in the video-based course. Have a look at the free sample class(es) and when interested make sure to use the `EarlyBird` coupon to get a discount!
+
 = What does the plugin do to help speed up my site? =
 
 It concatenates all scripts and styles, minifies and compresses them, adds expires headers, caches them, and moves styles to the page head, and scripts (optionally) to the footer. It also minifies the HTML code itself, making your page really lightweight.
@@ -41,9 +45,9 @@ HTTP/2 is a great step forward for sure, reducing the impact of multiple request
 
 Although Autoptimize comes without any warranties, it will in general work flawlessly if you configure it correctly. See "Troubleshooting" below for info on how to configure in case of problems.
 
-= Why is jquery.js not optimized =
+= Why is jquery.min.js not optimized =
 
-Starting from AO 2.1 WordPress core's jquery.js is not optimized for the simple reason a lot of popular plugins inject inline JS that is not aggregated either (due to possible cache size issues with unique code in inline JS) which relies on jquery being available, so excluding jquery.js ensures that most sites will work out of the box. If you want optimize jquery as well, you can remove it from the JS optimization exclusion-list (you might have to enable "also aggregate inline JS" as well or switch to "force JS in head").
+Starting from AO 2.1 WordPress core's jquery.min.js is not optimized for the simple reason a lot of popular plugins inject inline JS that is not aggregated either (due to possible cache size issues with unique code in inline JS) which relies on jquery being available, so excluding jquery.min.js ensures that most sites will work out of the box. If you want optimize jquery as well, you can remove it from the JS optimization exclusion-list (you might have to enable "also aggregate inline JS" as well or switch to "force JS in head").
 
 = Why is Autoptimized JS render blocking? =
 
@@ -110,7 +114,7 @@ If you want your uploaded images to be on the CDN as well, you can change the up
 
 Autoptimize supports this, but it is not enabled by default because [non-local fonts might require some extra configuration](http://davidwalsh.name/cdn-fonts). But if you have your cross-origin request policy in order, you can tell Autoptimize to put your fonts on the CDN by hooking into the API, setting `autoptimize_filter_css_fonts_cdn` to `true` this way;
 
-`add_filter('autoptimize_filter_css_fonts_cdn',__return_true);`
+`add_filter( 'autoptimize_filter_css_fonts_cdn', '__return_true' );`
 
 = I'm using Cloudflare, what should I enter as CDN root directory =
 
@@ -136,8 +140,8 @@ If your blog doesn't function normally after having turned on Autoptimize, here 
 
 * If all works but you notice your blog is slower, ensure you have a page caching plugin installed (WP Super Cache or similar) and check the info on cache size (the soution for that problem also impacts performance for uncached pages) in this FAQ as well.
 * In case your blog looks weird, i.e. when the layout gets messed up, there is problem with CSS optimization. Try excluding one or more CSS-files from being optimized. You can also force CSS not to be aggregated by wrapping it in noptimize-tags in your theme or widget or by adding filename (for external stylesheets) or string (for inline styles) to the exclude-list.
-* In case some functionality on your site stops working (a carroussel, a menu, the search input, ...) you're likely hitting JavaScript optimization trouble. Change the "Aggregate inline JS" and/ or "Force JavaScript in head?" settings and try again. Excluding 'js/jquery/jquery.js' from optimization (see below) and optionally activating "[Add try/catch wrapping](http://blog.futtta.be/2014/08/18/when-should-you-trycatch-javascript/)") can also help. Alternatively -for the technically savvy- you can exclude specific scripts from being treated (moved and/ or aggregated) by Autoptimize by adding a string that will match the offending Javascript or excluding it from within your template files or widgets by wrapping the code between noptimize-tags. Identifying the offending JavaScript and choosing the correct exclusion-string can be trial and error, but in the majority of cases JavaScript optimization issues can be solved this way. When debugging JavaScript issues, your browsers error console is the most important tool to help you understand what is going on.
-* If your theme or plugin require jQuery, you can try either forcing all in head and/ or excluding jquery.js (and jQuery-plugins if needed).
+* In case some functionality on your site stops working (a carroussel, a menu, the search input, ...) you're likely hitting JavaScript optimization trouble. Change the "Aggregate inline JS" and/ or "Force JavaScript in head?" settings and try again. Excluding 'js/jquery/jquery.min.js' from optimization (see below) and optionally activating "[Add try/catch wrapping](http://blog.futtta.be/2014/08/18/when-should-you-trycatch-javascript/)") can also help. Alternatively -for the technically savvy- you can exclude specific scripts from being treated (moved and/ or aggregated) by Autoptimize by adding a string that will match the offending Javascript or excluding it from within your template files or widgets by wrapping the code between noptimize-tags. Identifying the offending JavaScript and choosing the correct exclusion-string can be trial and error, but in the majority of cases JavaScript optimization issues can be solved this way. When debugging JavaScript issues, your browsers error console is the most important tool to help you understand what is going on.
+* If your theme or plugin require jQuery, you can try either forcing all in head and/ or excluding jquery.min.js (and jQuery-plugins if needed).
 * If you can't get either CSS or JS optimization working, you can off course always continue using the other two optimization-techniques.
 * If you tried the troubleshooting tips above and you still can't get CSS and JS working at all, you can ask for support on the [WordPress Autoptimize support forum](http://wordpress.org/support/plugin/autoptimize). See below for a description of what information you should provide in your "trouble ticket"
 
@@ -183,11 +187,11 @@ Disable the option to optimize cart/ checkout pages (works for WooCommerce, Easy
 
 = Revolution Slider is broken! =
 
-Make sure `js/jquery/jquery.js` is in the comma-separated list of JS optimization exclusions (this is excluded in the default configuration).
+Make sure `js/jquery/jquery.min.js` is in the comma-separated list of JS optimization exclusions (this is excluded in the default configuration).
 
 = I'm getting "jQuery is not defined" errors =
 
-In that case you have un-aggregated JavaScript that requires jQuery to be loaded, so you'll have to add `js/jquery/jquery.js` to the comma-separated list of JS optimization exclusions.
+In that case you have un-aggregated JavaScript that requires jQuery to be loaded, so you'll have to add `js/jquery/jquery.min.js` to the comma-separated list of JS optimization exclusions.
 
 = I use NextGen Galleries and a lot of JS is not aggregated/ minified? =
 
@@ -207,6 +211,10 @@ Yes, if you want to serve files from e.g. /wp-content/resources/aggregated_12345
 define('AUTOPTIMIZE_CACHE_CHILD_DIR','/resources/');
 define('AUTOPTIMIZE_CACHEFILE_PREFIX','aggregated_');
 `
+
+= Does this work with non-default WP_CONTENT_URL ? =
+
+No, Autoptimize does not support a non-default WP_CONTENT_URL out-of-the-box, but this can be accomplished with a couple of lines of code hooking into Autoptimize's API.
 
 = Can the generated JS/ CSS be pre-gzipped? =
 
@@ -230,7 +238,7 @@ Preconnect is a somewhat advanced feature to instruct browsers ([if they support
 
 = When can('t) I async JS? =
 
-JavaScript files that are not autoptimized (because they were excluded or because they are hosted elsewhere) are typically render-blocking. By adding them in the comma-separated "async JS" field, Autoptimize will add the async flag causing the browser to load those files asynchronously (i.e. non-render blocking). This can however break your site (page), e.g. if you async "js/jquery/jquery.js" you will very likely get "jQuery is not defined"-errors. Use with care.
+JavaScript files that are not autoptimized (because they were excluded or because they are hosted elsewhere) are typically render-blocking. By adding them in the comma-separated "async JS" field, Autoptimize will add the async flag causing the browser to load those files asynchronously (i.e. non-render blocking). This can however break your site (page), e.g. if you async "js/jquery/jquery.min.js" you will very likely get "jQuery is not defined"-errors. Use with care.
 
 = How does image optimization work? =
 
@@ -311,6 +319,34 @@ Just [fork Autoptimize on Github](https://github.com/futtta/autoptimize) and cod
 
 == Changelog ==
 
+= 2.8.1 =
+* Images: new option not to lazyload first X images
+* fix for "array to string" conversion errors in image optimization logic of .ico files
+* switch jQuery shorthand .click (in toolbar JS & PaND dismiss notice JS) to please jQuery Migrate helper (and because it's better that way)
+
+= 2.8.0 =
+* JavaScript: new option "defer but don't aggregate"
+* JavaScript: ensure Autoptimize also acts on jQuery in WordPress 5.6 which is renamed to jquery.min.js from jquery.js before.
+* Images: add field to exclude images from being optimized.
+* Images: new filter (`autoptimize_filter_imgopt_lazyload_from_nth`) to tell AO not to lazyload the first X images (to improve LCP/ CLS).
+* Critical CSS: major improvements of the job processing mechanism, reducing time spent from up to 1 minute to just a couple of seconds.
+* Critical CSS: under "advanced options" replace "request limit" with "queue processing time limit" (default 30s).
+* Extra | Google Fonts: better parsing of version 2 Google Font URL's (/css2/).
+* Misc. other minor fixes, see the [GitHub commit log](https://github.com/futtta/autoptimize/commits/beta).
+
+= 2.7.8 =
+* Image optimization: add support for AVIF image format for browsers that support it (enabled with the existing WebP-option, also requires lazy-load to be active)
+* Critical CSS: further security improvements of critical CSS import settings upload, based on the input of [Marcin Weglowski of afine.com](https://afine.com)
+* Misc. other minor fixes, see the [GitHub commit log](https://github.com/futtta/autoptimize/commits/beta).
+
+= 2.7.7 =
+* critical CSS: make sure pages get a path-based rule even if a CPT or template matches (when "path based rules for pages" option is on)
+* critical CSS: make sure the "unload CCSS javascript" is only added once
+* settings screens: switch jQuery .attr() to .prop() as suggested by jQuery Migrate to prepare for [the great oncoming big jQuery updates](https://wptavern.com/major-jquery-changes-on-the-way-for-wordpress-5-5-and-beyond)
+* HTML minify: reverse placeholder array to make sure last replaced placeholder is changed back first to fix rare issues
+* security fix: kudos to [Erin Germ](https://eringerm.com/) for finding & reporting an authenticated XSS vulnerability
+* security fix: props to an anonymous pentester for finding & reporting an authenticated malicous file upload vulnerability
+
 = 2.7.6 =
 * fix for top frontend admin-bar being invisible when "inline & defer" is active.
 * fix for 3rd party CSS-files not being deferred when "inline & defer" is active.
@@ -357,42 +393,6 @@ Just [fork Autoptimize on Github](https://github.com/futtta/autoptimize) and cod
 * Integration of critical CSS power-up.
 * New option to ensure missing autoptimized files are served with fallback JS/ CSS.
 * Batch of misc. smaller improvements & fixes, more info in the [GitHub commit log](https://github.com/futtta/autoptimize/commits/beta).
-
-= 2.6.2 =
-* auto-exclude images from lazyload when they have `loading="eager"` attribute.
-* bugfix: don't take querystring into account when deciding as-value for preloaded resources.
-* bugfix; ensure lqip images (used when both image optimization and lazyload are active) always work by normalizing the URL before sending it to shortpixel.
-* minimum WordPress version bumped to 4.4.
-
-= 2.6.1 =
-* bugfixes for multiple lazyload bugs causing images not to load or load incorrectly
-* bugfixes for multiple multisite bugs causing settings-screen to be unavailable
-* bugfix re-added 3rd parameter to `autoptimize_filter_js_minify_excluded`-filter to ensure backwards-compatibility and thus avoid breaking Smart Cookie Kit which expected that 3rd parameter.
-
-= 2.6.0 =
-* New: Autoptimize can be configured at network level or at individual site-level when on multisite.
-* Extra: new option to specify what resources need to be preloaded.
-* Extra: add `display=swap` to Autoptimized (CSS-based) Google Fonts.
-* Images: support for lazyloading of background-images when set in the inline style attribute of a div.
-* Images: updated to lazysizes 5.2.
-* CSS/ JS: no longer add type attributes to Autoptimized resources.
-* Improvement: cache clearing now also integrates with Kinsta, WP-Optimize & Nginx helper.
-* Added "Critical CSS" tab to highlight the criticalcss.com integration, which will be fully included in Autoptimize 2.7.
-* Batch of misc. smaller improvements & fixes, more info in the [GitHub commit log](https://github.com/futtta/autoptimize/commits/beta).
-
-= 2.5.1 =
-* Images: Also optimize & lazyload &lt;picture>&lt;source>
-* Images: Misc. improvements to lazyload
-* Images: Updated to LazySizes 5.0.0
-* CSS: improvements to the deferring logic for non-aggregated CSS resources.
-* Settings-page: Show "JS, CSS & HTML" advanced options by default (many people did not see the button)
-
-= 2.5.0 =
-* moved image optimization to a separate tab and move all code to a separate file.
-* added lazyloading (using lazysizes)
-* added webp support (requires image optimization and lazyloading to be active)
-* added option to enable/ disable the minification of excluded JS/ CSS files (on by default)
-* misc. bugfixes and smaller improvements
 
 = older =
 * see [https://plugins.svn.wordpress.org/autoptimize/tags/2.7.2/readme.txt](https://plugins.svn.wordpress.org/autoptimize/tags/2.7.2/readme.txt)

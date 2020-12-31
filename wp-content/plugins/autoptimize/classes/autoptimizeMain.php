@@ -65,7 +65,6 @@ class autoptimizeMain
         add_action( 'autoptimize_setup_done', array( $this, 'maybe_run_notfound_fallback' ), 10 );
 
         add_action( 'init', array( $this, 'load_textdomain' ) );
-        add_action( 'admin_init', array( 'PAnD', 'init' ) );
 
         if ( is_multisite() && is_admin() ) {
             // Only if multisite and if in admin we want to check if we need to save options on network level.
@@ -431,14 +430,29 @@ class autoptimizeMain
      */
     public static function is_amp_markup( $content )
     {
-        // Short-circuit when a function is available to determine whether the response is (or will be) an AMP page.
-        if ( function_exists( 'is_amp_endpoint' ) ) {
-            return is_amp_endpoint();
+        // Short-circuit if the page is already AMP from the start.
+        if (
+            preg_match(
+                sprintf(
+                    '#^(?:<!.*?>|\s+)*+<html(?=\s)[^>]*?\s(%1$s|%2$s|%3$s)(\s|=|>)#is',
+                    'amp',
+                    "\xE2\x9A\xA1", // From \AmpProject\Attribute::AMP_EMOJI.
+                    "\xE2\x9A\xA1\xEF\xB8\x8F" // From \AmpProject\Attribute::AMP_EMOJI_ALT, per https://github.com/ampproject/amphtml/issues/25990.
+                ),
+                $content
+            )
+        ) {
+            return true;
         }
 
-        $is_amp_markup = preg_match( '/<html[^>]*(?:amp|⚡)/i', $content );
+        // Or else short-circuit if the AMP plugin will be processing the output to be an AMP page.
+        if ( function_exists( 'amp_is_request' ) ) {
+            return amp_is_request(); // For AMP plugin v2.0+.
+        } elseif ( function_exists( 'is_amp_endpoint' ) ) {
+            return is_amp_endpoint(); // For older/other AMP plugins (still supported in 2.0 as an alias).
+        }
 
-        return (bool) $is_amp_markup;
+        return false;
     }
 
     /**
@@ -472,14 +486,15 @@ class autoptimizeMain
 
         $classoptions = array(
             'autoptimizeScripts' => array(
-                'aggregate'       => $conf->get( 'autoptimize_js_aggregate' ),
-                'justhead'        => $conf->get( 'autoptimize_js_justhead' ),
-                'forcehead'       => $conf->get( 'autoptimize_js_forcehead' ),
-                'trycatch'        => $conf->get( 'autoptimize_js_trycatch' ),
-                'js_exclude'      => $conf->get( 'autoptimize_js_exclude' ),
-                'cdn_url'         => $conf->get( 'autoptimize_cdn_url' ),
-                'include_inline'  => $conf->get( 'autoptimize_js_include_inline' ),
-                'minify_excluded' => $conf->get( 'autoptimize_minify_excluded' ),
+                'aggregate'           => $conf->get( 'autoptimize_js_aggregate' ),
+                'defer_not_aggregate' => $conf->get( 'autoptimize_js_defer_not_aggregate' ),
+                'justhead'            => $conf->get( 'autoptimize_js_justhead' ),
+                'forcehead'           => $conf->get( 'autoptimize_js_forcehead' ),
+                'trycatch'            => $conf->get( 'autoptimize_js_trycatch' ),
+                'js_exclude'          => $conf->get( 'autoptimize_js_exclude' ),
+                'cdn_url'             => $conf->get( 'autoptimize_cdn_url' ),
+                'include_inline'      => $conf->get( 'autoptimize_js_include_inline' ),
+                'minify_excluded'     => $conf->get( 'autoptimize_minify_excluded' ),
             ),
             'autoptimizeStyles'  => array(
                 'aggregate'       => $conf->get( 'autoptimize_css_aggregate' ),
@@ -551,6 +566,7 @@ class autoptimizeMain
             'autoptimize_enable_site_config',
             'autoptimize_js',
             'autoptimize_js_aggregate',
+            'autoptimize_js_defer_not_aggregate',
             'autoptimize_js_exclude',
             'autoptimize_js_forcehead',
             'autoptimize_js_justhead',
@@ -576,6 +592,7 @@ class autoptimizeMain
             'autoptimize_ccss_viewport',
             'autoptimize_ccss_finclude',
             'autoptimize_ccss_rlimit',
+            'autoptimize_ccss_rtimelimit',
             'autoptimize_ccss_noptimize',
             'autoptimize_ccss_debug',
             'autoptimize_ccss_key',
@@ -611,8 +628,8 @@ class autoptimizeMain
         $ao_ccss_dir = WP_CONTENT_DIR . '/uploads/ao_ccss/';
         if ( file_exists( $ao_ccss_dir ) && is_dir( $ao_ccss_dir ) ) {
             // fixme: should check for subdirs when in multisite and remove contents of those as well.
-            array_map( 'unlink', glob( AO_CCSS_DIR . '*.{css,html,json,log,zip,lock}', GLOB_BRACE ) );
-            rmdir( AO_CCSS_DIR );
+            array_map( 'unlink', glob( $ao_ccss_dir . '*.{css,html,json,log,zip,lock}', GLOB_BRACE ) );
+            rmdir( $ao_ccss_dir );
         }
     }
 

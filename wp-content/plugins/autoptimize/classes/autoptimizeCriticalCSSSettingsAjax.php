@@ -218,7 +218,7 @@ class autoptimizeCriticalCSSSettingsAjax {
         $settings['additional'] = get_option( 'autoptimize_ccss_additional' );
         $settings['viewport']   = get_option( 'autoptimize_ccss_viewport' );
         $settings['finclude']   = get_option( 'autoptimize_ccss_finclude' );
-        $settings['rlimit']     = get_option( 'autoptimize_ccss_rlimit' );
+        $settings['rtimelimit'] = get_option( 'autoptimize_ccss_rtimelimit' );
         $settings['noptimize']  = get_option( 'autoptimize_ccss_noptimize' );
         $settings['debug']      = get_option( 'autoptimize_ccss_debug' );
         $settings['key']        = get_option( 'autoptimize_ccss_key' );
@@ -281,22 +281,36 @@ class autoptimizeCriticalCSSSettingsAjax {
         $error = false;
 
         // Process an uploaded file with no errors.
-        if ( ! $_FILES['file']['error'] ) {
-            // Save file to the cache directory.
-            $zipfile = AO_CCSS_DIR . $_FILES['file']['name'];
+        if ( current_user_can( 'manage_options' ) && ! $_FILES['file']['error'] && $_FILES['file']['size'] < 500001 && strpos( $_FILES['file']['name'], '.zip' ) === strlen( $_FILES['file']['name'] ) - 4 ) {
+            // create tmp dir with hard guess name in AO_CCSS_DIR.
+            $_secret_dir     = wp_hash( uniqid( md5( AUTOPTIMIZE_CACHE_URL ), true ) );
+            $_import_tmp_dir = trailingslashit( AO_CCSS_DIR . $_secret_dir );
+            mkdir( $_import_tmp_dir );
+
+            // Save file to that tmp directory but give it our own name to prevent directory traversal risks when using original name.
+            $zipfile = $_import_tmp_dir . uniqid( 'import_settings-', true ) . '.zip';
             move_uploaded_file( $_FILES['file']['tmp_name'], $zipfile );
 
-            // Extract archive.
+            // Extract archive in the tmp directory.
             $zip = new ZipArchive;
             if ( $zip->open( $zipfile ) === true ) {
-                $zip->extractTo( AO_CCSS_DIR );
+                // loop through all files in the zipfile.
+                for ($i = 0; $i < $zip->numFiles; $i++) {
+                    // but only extract known good files.
+                    if ( preg_match('/^settings\.json$|^ccss_[a-z0-9]{32}\.css$/', $zip->getNameIndex( $i ) ) > 0 ) {
+                        $zip->extractTo( AO_CCSS_DIR, $zip->getNameIndex( $i ) );
+                    }
+                }
                 $zip->close();
             } else {
-                $error = 'extracting';
+                $error = 'could not extract';
             }
+            
+            // and remove temp. dir with all contents (the import-zipfile).
+            $this->rrmdir( $_import_tmp_dir );
 
             if ( ! $error ) {
-                // Archive extraction ok, continue settings importing
+                // Archive extraction ok, continue importing settings from AO_CCSS_DIR.
                 // Settings file.
                 $importfile = AO_CCSS_DIR . 'settings.json';
 
@@ -309,7 +323,7 @@ class autoptimizeCriticalCSSSettingsAjax {
                     update_option( 'autoptimize_ccss_additional', $settings['additional'] );
                     update_option( 'autoptimize_ccss_viewport', $settings['viewport'] );
                     update_option( 'autoptimize_ccss_finclude', $settings['finclude'] );
-                    update_option( 'autoptimize_ccss_rlimit', $settings['rlimit'] );
+                    update_option( 'autoptimize_ccss_rtimelimit', $settings['rtimelimit'] );
                     update_option( 'autoptimize_ccss_noptimize', $settings['noptimize'] );
                     update_option( 'autoptimize_ccss_debug', $settings['debug'] );
                     update_option( 'autoptimize_ccss_key', $settings['key'] );
@@ -318,6 +332,8 @@ class autoptimizeCriticalCSSSettingsAjax {
                     $error = 'settings file does not exist';
                 }
             }
+        } else {
+            $error = 'file could not be saved';
         }
 
         // Prepare response.
@@ -348,5 +364,17 @@ class autoptimizeCriticalCSSSettingsAjax {
         } else {
             return true;
         }
+    }
+    
+    public function rrmdir( $path ) {
+        // recursively remove a directory as found on
+        // https://andy-carter.com/blog/recursively-remove-a-directory-in-php.
+        $files = glob($path . '/*');
+        foreach ( $files as $file ) {
+            is_dir( $file ) ? $this->rrmdir( $file ) : unlink( $file );
+        }
+        rmdir( $path );
+
+        return;
     }
 }
