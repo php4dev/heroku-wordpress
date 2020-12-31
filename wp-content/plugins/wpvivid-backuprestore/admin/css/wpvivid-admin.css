@@ -246,3 +246,21 @@
 .export-import-block{width:100%; box-sizing:border-box;margin-right:10px; padding:10px;}
 .export-import-block label{display:inline-block;}
 .export-import-block a{text-decoration: none;}
+
+.quickbackup-addon{width:100%; box-sizing:border-box;margin-right:10px; padding:10px;}
+.quickbackup-addon label{display:inline-block;}
+@media screen and (max-width:1650px) {
+	.quickbackup-addon{
+		float:none;
+		width:100%;
+	}
+}
+.quickbackup-addon a{
+	text-decoration: none;
+}
+
+.wpvivid-backup-tips{
+	float:left;
+	width:100%;
+	background-color:#f1f1f1;
+}

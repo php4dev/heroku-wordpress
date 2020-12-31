@@ -3,7 +3,7 @@
 if (!defined('ABSPATH')) exit;
 
 class AsgarosForum {
-    var $version = '1.15.7';
+    var $version = '1.15.8';
     var $executePlugin = false;
     var $db = null;
     var $tables = null;
@@ -1440,7 +1440,7 @@ class AsgarosForum {
                 $output .= '<a href="'.$post_link.'">'.esc_html($this->cut_string(stripslashes($lastpost->name), 25)).'</a><br>';
                 $output .= '<small>';
                 $output .= '<a href="'.$post_link.'">'.sprintf(__('%s ago', 'asgaros-forum'), human_time_diff(strtotime($lastpost->date), current_time('timestamp'))).'</a>';
-                $output .= '&nbsp;&middot;&nbsp;';
+                $output .= '<span>&nbsp;&middot;&nbsp;</span>';
                 $output .= $this->getUsername($lastpost->author_id);
                 $output .= '</small>';
                 $output .= '</div>';
@@ -2363,11 +2363,13 @@ class AsgarosForum {
             return;
         }
 
+        $post_types = apply_filters('asgarosforum_filter_meta_post_type', array('post', 'page'));
+
         add_meta_box(
             'asgaros-forum-topic-meta-box',
             __('Create Forum Topic', 'asgaros-forum'),
             array($this, 'add_topic_meta_box_content'),
-            array('post', 'page'),
+            $post_types,
             'side',
             'low'
         );

@@ -91,12 +91,14 @@ class WPvivid_one_drive extends WPvivid_Remote
                         }
                     }
 
+                    $auth_id = uniqid('wpvivid-auth-');
+
                     $url = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize'
                         . '?client_id=' . urlencode('37668be9-b55f-458f-b6a3-97e6f8aa10c9')
                         . '&scope=' . urlencode('offline_access files.readwrite')
                         . '&response_type=code'
                         . '&redirect_uri=' . urlencode('https://auth.wpvivid.com/onedrive_v2/')
-                        . '&state=' . urlencode(admin_url() . 'admin.php?page=WPvivid' . '&action=wpvivid_one_drive_finish_auth&name=' . $_GET['name'] . '&default=' . $_GET['default'])
+                        . '&state=' . urlencode(admin_url() . 'admin.php?page=WPvivid' . '&action=wpvivid_one_drive_finish_auth&name=' . $_GET['name'] . '&default=' . $_GET['default'].'&auth_id='.$auth_id)
                         . '&display=popup'
                         . '&locale=en';
                     header('Location: ' . esc_url_raw($url));
@@ -116,6 +118,14 @@ class WPvivid_one_drive extends WPvivid_Remote
                         return;
                     }
 
+                    $remoteslist = WPvivid_Setting::get_all_remote_options();
+                    foreach ($remoteslist as $key => $value) {
+                        if (isset($value['auth_id']) && isset($_GET['auth_id']) && $value['auth_id'] == $_GET['auth_id']) {
+                            _e('<div class="notice notice-success is-dismissible"><p>You have authenticated the Microsoft OneDrive account as your remote storage.</p></div>');
+                            return;
+                        }
+                    }
+
                     global $wpvivid_plugin;
 
                     $remote_options['type'] = WPVIVID_REMOTE_ONEDRIVE;
@@ -126,6 +136,7 @@ class WPvivid_one_drive extends WPvivid_Remote
                     $remote_options['name'] = $_GET['name'];
                     $remote_options['default'] = $_GET['default'];
                     $remote_options['path'] = WPVIVID_ONEDRIVE_DEFAULT_FOLDER;
+                    $remote_options['auth_id'] = $_GET['auth_id'];
                     $ret = $wpvivid_plugin->remote_collection->add_remote($remote_options);
 
                     if ($ret['result'] == 'success') {
@@ -164,7 +175,7 @@ class WPvivid_one_drive extends WPvivid_Remote
                     }
 
                     $_GET['name'] = sanitize_text_field($_GET['name']);
-
+                    $auth_id = uniqid('wpvivid-auth-');
                     $remoteslist = WPvivid_Setting::get_all_remote_options();
                     foreach ($remoteslist as $key => $value) {
                         if (isset($value['name']) && $value['name'] == $_GET['name'] && $key != $_GET['id']) {
@@ -178,7 +189,7 @@ class WPvivid_one_drive extends WPvivid_Remote
                         . '&scope=' . urlencode('offline_access files.readwrite')
                         . '&response_type=code'
                         . '&redirect_uri=' . urlencode('https://auth.wpvivid.com/onedrive_v2/')
-                        . '&state=' . urlencode(admin_url() . 'admin.php?page=WPvivid' . '&action=wpvivid_one_drive_update_finish_auth&name=' . $_GET['name'] . '&id=' . $_GET['id'])
+                        . '&state=' . urlencode(admin_url() . 'admin.php?page=WPvivid' . '&action=wpvivid_one_drive_update_finish_auth&name=' . $_GET['name'] . '&id=' . $_GET['id'].'&auth_id='.$auth_id)
                         . '&display=popup'
                         . '&locale=en';
                     header('Location: ' . esc_url_raw($url));
@@ -197,6 +208,14 @@ class WPvivid_one_drive extends WPvivid_Remote
                         return;
                     }
 
+                    $remoteslist = WPvivid_Setting::get_all_remote_options();
+                    foreach ($remoteslist as $key => $value) {
+                        if (isset($value['auth_id']) && isset($_GET['auth_id']) && $value['auth_id'] == $_GET['auth_id']) {
+                            _e('<div class="notice notice-success is-dismissible"><p>You have successfully updated the storage alias.</p></div>');
+                            return;
+                        }
+                    }
+
                     global $wpvivid_plugin;
 
                     $remote_options['type'] = WPVIVID_REMOTE_ONEDRIVE;
@@ -205,6 +224,7 @@ class WPvivid_one_drive extends WPvivid_Remote
                     $remote_options['token']['expires']=time()+$_POST['expires_in'];
                     $remote_options['name'] = $_GET['name'];
                     $remote_options['path'] = WPVIVID_ONEDRIVE_DEFAULT_FOLDER;
+                    $remote_options['auth_id'] = $_GET['auth_id'];
                     $ret = $wpvivid_plugin->remote_collection->update_remote($_GET['id'], $remote_options);
 
                     if ($ret['result'] == 'success') {

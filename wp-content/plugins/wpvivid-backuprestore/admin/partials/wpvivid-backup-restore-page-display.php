@@ -1,5 +1,390 @@
 <?php
 
+if ( ! class_exists( 'WP_List_Table' ) )
+{
+    require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+}
+
+class WPvivid_Files_List extends WP_List_Table
+{
+    public $page_num;
+    public $file_list;
+    public $backup_id;
+
+    public function __construct( $args = array() )
+    {
+        parent::__construct(
+            array(
+                'plural' => 'files',
+                'screen' => 'files'
+            )
+        );
+    }
+
+    protected function get_table_classes()
+    {
+        return array( 'widefat striped' );
+    }
+
+    public function print_column_headers( $with_id = true )
+    {
+        list( $columns, $hidden, $sortable, $primary ) = $this->get_column_info();
+
+        if (!empty($columns['cb'])) {
+            static $cb_counter = 1;
+            $columns['cb'] = '<label class="screen-reader-text" for="cb-select-all-' . $cb_counter . '">' . __('Select All') . '</label>'
+                . '<input id="cb-select-all-' . $cb_counter . '" type="checkbox"/>';
+            $cb_counter++;
+        }
+
+        foreach ( $columns as $column_key => $column_display_name )
+        {
+            $class = array( 'manage-column', "column-$column_key" );
+
+            if ( in_array( $column_key, $hidden ) )
+            {
+                $class[] = 'hidden';
+            }
+
+            if ( $column_key === $primary )
+            {
+                $class[] = 'column-primary';
+            }
+
+            if ( $column_key === 'cb' )
+            {
+                $class[] = 'check-column';
+            }
+
+            $tag   = ( 'cb' === $column_key ) ? 'td' : 'th';
+            $scope = ( 'th' === $tag ) ? 'scope="col"' : '';
+            $id    = $with_id ? "id='$column_key'" : '';
+
+            if ( ! empty( $class ) )
+            {
+                $class = "class='" . join( ' ', $class ) . "'";
+            }
+
+            echo "<$tag $scope $id $class>$column_display_name</$tag>";
+        }
+    }
+
+    public function get_columns()
+    {
+        $columns = array();
+        $columns['wpvivid_file'] = __( 'File', 'wpvivid' );
+        return $columns;
+    }
+
+    public function _column_wpvivid_file( $file )
+    {
+        $html='<td class="tablelistcolumn">
+                    <div style="padding:0 0 10px 0;">
+                        <span>'. $file['key'].'</span>
+                    </div>
+                    <div class="wpvivid-download-status" style="padding:0;">';
+        if($file['status']=='completed')
+        {
+            $html.='<span>'.__('File Size: ', 'wpvivid').'</span><span class="wpvivid-element-space-right wpvivid-download-file-size">'.$file['size'].'</span><span class="wpvivid-element-space-right">|</span><span class=" wpvivid-element-space-right wpvivid-ready-download"><a style="cursor: pointer;">Download</a></span>';
+        }
+        else if($file['status']=='file_not_found')
+        {
+            $html.='<span>' . __('File not found', 'wpvivid') . '</span>';
+        }
+        else if($file['status']=='need_download')
+        {
+            $html.='<span>'.__('File Size: ', 'wpvivid').'</span><span class="wpvivid-element-space-right wpvivid-download-file-size">'.$file['size'].'</span><span class="wpvivid-element-space-right">|</span><span class="wpvivid-element-space-right"><a class="wpvivid-download" style="cursor: pointer;">Prepare to Download</a></span>';
+        }
+        else if($file['status']=='running')
+        {
+            $html.='<div class="wpvivid-element-space-bottom">
+                        <span class="wpvivid-element-space-right">Retriving (remote storage to web server)</span><span class="wpvivid-element-space-right">|</span><span>File Size: </span><span class="wpvivid-element-space-right wpvivid-download-file-size">'.$file['size'].'</span><span class="wpvivid-element-space-right">|</span><span>Downloaded Size: </span><span>'.$file['downloaded_size'].'</span>
+                    </div>
+                    <div style="width:100%;height:10px; background-color:#dcdcdc;">
+                        <div style="background-color:#0085ba; float:left;width:'.$file['progress_text'].'%;height:10px;"></div>
+                    </div>';
+        }
+        else if($file['status']=='timeout')
+        {
+            $html.='<div class="wpvivid-element-space-bottom">
+                        <span>Download timeout, please retry.</span>
+                    </div>
+                    <div>
+                        <span>'.__('File Size: ', 'wpvivid').'</span><span class="wpvivid-element-space-right wpvivid-download-file-size">'.$file['size'].'</span><span class="wpvivid-element-space-right">|</span><span class="wpvivid-element-space-right"><a class="wpvivid-download" style="cursor: pointer;">Prepare to Download</a></span>
+                    </div>';
+        }
+        else if($file['status']=='error')
+        {
+            $html.='<div class="wpvivid-element-space-bottom">
+                        <span>'.$file['error'].'</span>
+                    </div>
+                    <div>
+                        <span>'.__('File Size: ', 'wpvivid').'</span><span class="wpvivid-element-space-right wpvivid-download-file-size">'.$file['size'].'</span><span class="wpvivid-element-space-right">|</span><span class="wpvivid-element-space-right"><a class="wpvivid-download" style="cursor: pointer;">Prepare to Download</a></span>
+                    </div>';
+        }
+
+        $html.='</div></td>';
+        echo $html;
+        //size
+    }
+
+    public function set_files_list($file_list,$backup_id,$page_num=1)
+    {
+        $this->file_list=$file_list;
+        $this->backup_id=$backup_id;
+        $this->page_num=$page_num;
+    }
+
+    public function get_pagenum()
+    {
+        if($this->page_num=='first')
+        {
+            $this->page_num=1;
+        }
+        else if($this->page_num=='last')
+        {
+            $this->page_num=$this->_pagination_args['total_pages'];
+        }
+        $pagenum = $this->page_num ? $this->page_num : 0;
+
+        if ( isset( $this->_pagination_args['total_pages'] ) && $pagenum > $this->_pagination_args['total_pages'] )
+        {
+            $pagenum = $this->_pagination_args['total_pages'];
+        }
+
+        return max( 1, $pagenum );
+    }
+
+    public function prepare_items()
+    {
+        $columns = $this->get_columns();
+        $hidden = array();
+        $sortable = array();
+        $this->_column_headers = array($columns, $hidden, $sortable);
+
+        $total_items =sizeof($this->file_list);
+
+        $this->set_pagination_args(
+            array(
+                'total_items' => $total_items,
+                'per_page'    => 10,
+            )
+        );
+    }
+
+    public function has_items()
+    {
+        return !empty($this->file_list);
+    }
+
+    public function display_rows()
+    {
+        $this->_display_rows($this->file_list);
+    }
+
+    private function _display_rows($file_list)
+    {
+        $page=$this->get_pagenum();
+
+        $page_file_list=array();
+        $count=0;
+        while ( $count<$page )
+        {
+            $page_file_list = array_splice( $file_list, 0, 10);
+            $count++;
+        }
+        foreach ( $page_file_list as $key=>$file)
+        {
+            $file['key']=$key;
+            $this->single_row($file);
+        }
+    }
+
+    public function single_row($file)
+    {
+        ?>
+        <tr slug="<?php echo $file['key']?>">
+            <?php $this->single_row_columns( $file ); ?>
+        </tr>
+        <?php
+    }
+
+    protected function pagination( $which )
+    {
+        if ( empty( $this->_pagination_args ) )
+        {
+            return;
+        }
+
+        $total_items     = $this->_pagination_args['total_items'];
+        $total_pages     = $this->_pagination_args['total_pages'];
+        $infinite_scroll = false;
+        if ( isset( $this->_pagination_args['infinite_scroll'] ) )
+        {
+            $infinite_scroll = $this->_pagination_args['infinite_scroll'];
+        }
+
+        if ( 'top' === $which && $total_pages > 1 )
+        {
+            $this->screen->render_screen_reader_content( 'heading_pagination' );
+        }
+
+        $output = '<span class="displaying-num">' . sprintf( _n( '%s item', '%s items', $total_items ), number_format_i18n( $total_items ) ) . '</span>';
+
+        $current              = $this->get_pagenum();
+
+        $page_links = array();
+
+        $total_pages_before = '<span class="paging-input">';
+        $total_pages_after  = '</span></span>';
+
+        $disable_first = $disable_last = $disable_prev = $disable_next = false;
+
+        if ( $current == 1 ) {
+            $disable_first = true;
+            $disable_prev  = true;
+        }
+        if ( $current == 2 ) {
+            $disable_first = true;
+        }
+        if ( $current == $total_pages ) {
+            $disable_last = true;
+            $disable_next = true;
+        }
+        if ( $current == $total_pages - 1 ) {
+            $disable_last = true;
+        }
+
+        if ( $disable_first ) {
+            $page_links[] = '<span class="tablenav-pages-navspan button disabled" aria-hidden="true">&laquo;</span>';
+        } else {
+            $page_links[] = sprintf(
+                "<div class='first-page button'><span class='screen-reader-text'>%s</span><span aria-hidden='true'>%s</span></div>",
+                __( 'First page' ),
+                '&laquo;'
+            );
+        }
+
+        if ( $disable_prev ) {
+            $page_links[] = '<span class="tablenav-pages-navspan button disabled" aria-hidden="true">&lsaquo;</span>';
+        } else {
+            $page_links[] = sprintf(
+                "<div class='prev-page button' value='%s'><span class='screen-reader-text'>%s</span><span aria-hidden='true'>%s</span></div>",
+                $current,
+                __( 'Previous page' ),
+                '&lsaquo;'
+            );
+        }
+
+        if ( 'bottom' === $which ) {
+            $html_current_page  = $current;
+            $total_pages_before = '<span class="screen-reader-text">' . __( 'Current Page' ) . '</span><span id="table-paging" class="paging-input"><span class="tablenav-paging-text">';
+        } else {
+            $html_current_page = sprintf(
+                "%s<input class='current-page' id='current-page-selector-filelist' type='text' name='paged' value='%s' size='%d' aria-describedby='table-paging' /><span class='tablenav-paging-text'>",
+                '<label for="current-page-selector-filelist" class="screen-reader-text">' . __( 'Current Page' ) . '</label>',
+                $current,
+                strlen( $total_pages )
+            );
+        }
+        $html_total_pages = sprintf( "<span class='total-pages'>%s</span>", number_format_i18n( $total_pages ) );
+        $page_links[]     = $total_pages_before . sprintf( _x( '%1$s of %2$s', 'paging' ), $html_current_page, $html_total_pages ) . $total_pages_after;
+
+        if ( $disable_next ) {
+            $page_links[] = '<span class="tablenav-pages-navspan button disabled" aria-hidden="true">&rsaquo;</span>';
+        } else {
+            $page_links[] = sprintf(
+                "<div class='next-page button' value='%s'><span class='screen-reader-text'>%s</span><span aria-hidden='true'>%s</span></div>",
+                $current,
+                __( 'Next page' ),
+                '&rsaquo;'
+            );
+        }
+
+        if ( $disable_last ) {
+            $page_links[] = '<span class="tablenav-pages-navspan button disabled" aria-hidden="true">&raquo;</span>';
+        } else {
+            $page_links[] = sprintf(
+                "<div class='last-page button'><span class='screen-reader-text'>%s</span><span aria-hidden='true'>%s</span></div>",
+                __( 'Last page' ),
+                '&raquo;'
+            );
+        }
+
+        $pagination_links_class = 'pagination-links';
+        if ( ! empty( $infinite_scroll ) ) {
+            $pagination_links_class .= ' hide-if-js';
+        }
+        $output .= "\n<span class='$pagination_links_class'>" . join( "\n", $page_links ) . '</span>';
+
+        if ( $total_pages ) {
+            $page_class = $total_pages < 2 ? ' one-page' : '';
+        } else {
+            $page_class = ' no-pages';
+        }
+        $this->_pagination = "<div class='tablenav-pages{$page_class}'>$output</div>";
+
+        echo $this->_pagination;
+    }
+
+    protected function display_tablenav( $which ) {
+        $css_type = '';
+        if ( 'top' === $which ) {
+            wp_nonce_field( 'bulk-' . $this->_args['plural'] );
+            $css_type = 'margin: 0 0 10px 0';
+        }
+        else if( 'bottom' === $which ) {
+            $css_type = 'margin: 10px 0 0 0';
+        }
+
+        $total_pages     = $this->_pagination_args['total_pages'];
+        if ( $total_pages >1)
+        {
+            ?>
+            <div class="tablenav <?php echo esc_attr( $which ); ?>" style="<?php esc_attr_e($css_type); ?>">
+                <?php
+                $this->extra_tablenav( $which );
+                $this->pagination( $which );
+                ?>
+
+                <br class="clear" />
+            </div>
+            <?php
+        }
+    }
+
+    public function display()
+    {
+        $singular = $this->_args['singular'];
+
+        $this->display_tablenav( 'top' );
+
+        $this->screen->render_screen_reader_content( 'heading_list' );
+        ?>
+        <table class="wp-list-table <?php echo implode( ' ', $this->get_table_classes() ); ?>">
+            <thead>
+            <tr>
+                <?php $this->print_column_headers(); ?>
+            </tr>
+            </thead>
+
+            <tbody id="the-list"
+                <?php
+                if ( $singular ) {
+                    echo " data-wp-lists='list:$singular'";
+                }
+                ?>
+            >
+            <?php $this->display_rows_or_placeholder(); ?>
+            </tbody>
+
+        </table>
+        <?php
+        $this->display_tablenav( 'bottom' );
+    }
+}
+
+
 function wpvivid_add_backup_type($html, $type_name)
 {
     $html .= '<label>
@@ -115,6 +500,7 @@ function wpvivid_backuppage_load_backuplist($backuplist_array){
     $backuplist_array['list_backup'] = array('index' => '1', 'tab_func' => 'wpvivid_backuppage_add_tab_backup', 'page_func' => 'wpvivid_backuppage_add_page_backup');
     $backuplist_array['list_log'] = array('index' => '3', 'tab_func' => 'wpvivid_backuppage_add_tab_log', 'page_func' => 'wpvivid_backuppage_add_page_log');
     $backuplist_array['list_restore'] = array('index' => '4', 'tab_func' => 'wpvivid_backuppage_add_tab_restore', 'page_func' => 'wpvivid_backuppage_add_page_restore');
+    $backuplist_array['list_download'] = array('index' => '5', 'tab_func' => 'wpvivid_backuppage_add_tab_downlaod', 'page_func' => 'wpvivid_backuppage_add_page_downlaod');
     return $backuplist_array;
 }
 
@@ -141,6 +527,17 @@ function wpvivid_backuppage_add_tab_restore(){
         <div style="margin-right: 15px;"><?php _e('Restore', 'wpvivid-backuprestore'); ?></div>
         <div class="nav-tab-delete-img">
             <img src="<?php echo esc_url(plugins_url( 'images/delete-tab.png', __FILE__ )); ?>" style="vertical-align:middle; cursor:pointer;" onclick="wpvivid_close_tab(event, 'wpvivid_tab_restore', 'backup', 'wpvivid_tab_backup');" />
+        </div>
+    </a>
+    <?php
+}
+
+function wpvivid_backuppage_add_tab_downlaod(){
+    ?>
+    <a href="#" id="wpvivid_tab_download" class="nav-tab backup-nav-tab delete" onclick="switchrestoreTabs(event,'page-download')" style="display: none;">
+        <div style="margin-right: 15px;"><?php _e('Download', 'wpvivid-backuprestore'); ?></div>
+        <div class="nav-tab-delete-img">
+            <img src="<?php echo esc_url(plugins_url( 'images/delete-tab.png', __FILE__ )); ?>" style="vertical-align:middle; cursor:pointer;" onclick="wpvivid_close_tab(event, 'wpvivid_tab_download', 'backup', 'wpvivid_tab_backup');" />
         </div>
     </a>
     <?php
@@ -383,7 +780,7 @@ function wpvivid_backuppage_add_page_backup(){
             });
         }
 
-        function wpvivid_initialize_download(backup_id, list_name){
+        /*function wpvivid_initialize_download(backup_id, list_name){
             wpvivid_reset_backup_list(list_name);
             jQuery('#wpvivid_download_loading_'+backup_id).addClass('is-active');
             tmp_current_click_backupid = backup_id;
@@ -454,7 +851,7 @@ function wpvivid_backuppage_add_page_backup(){
                 var error_message = wpvivid_output_ajaxerror('initializing download information', textStatus, errorThrown);
                 alert(error_message);
             });
-        }
+        }*/
 
         function wpvivid_reset_backup_list(list_name){
             jQuery('#'+list_name+' tr').each(function(i){
@@ -1479,6 +1876,323 @@ function wpvivid_backuppage_add_page_restore(){
     <?php
 }
 
+function wpvivid_backuppage_add_page_downlaod(){
+    ?>
+    <div class="backup-tab-content wpvivid_tab_download" id="page-download" style="padding-top: 1em; display:none;">
+        <div id="wpvivid_init_download_info">
+            <div style="float: left; height: 20px; line-height: 20px; margin-top: 4px;">Initializing the download info</div>
+            <div class="spinner" style="float: left;"></div>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="wpvivid-element-space-bottom" id="wpvivid_files_list">
+        </div>
+    </div>
+
+    <script>
+        var wpvivid_download_files_list = wpvivid_download_files_list || {};
+        wpvivid_download_files_list.backup_id='';
+        wpvivid_download_files_list.wpvivid_download_file_array = Array();
+        wpvivid_download_files_list.wpvivid_download_lock_array = Array();
+        wpvivid_download_files_list.init=function(backup_id) {
+            wpvivid_download_files_list.backup_id=backup_id;
+            wpvivid_download_files_list.wpvivid_download_file_array.splice(0, wpvivid_download_files_list.wpvivid_download_file_array.length);
+        };
+
+        wpvivid_download_files_list.add_download_queue=function(filename) {
+            var download_file_size = jQuery("[slug='"+filename+"']").find('.wpvivid-download-status').find('.wpvivid-download-file-size').html();
+            var tmp_html = '<div class="wpvivid-element-space-bottom">' +
+                '<span class="wpvivid-element-space-right">Retriving (remote storage to web server)</span><span class="wpvivid-element-space-right">|</span><span>File Size: </span><span class="wpvivid-element-space-right">'+download_file_size+'</span><span class="wpvivid-element-space-right">|</span><span>Downloaded Size: </span><span>0</span>' +
+                '</div>' +
+                '<div style="width:100%;height:10px; background-color:#dcdcdc;">' +
+                '<div style="background-color:#0085ba; float:left;width:0%;height:10px;"></div>' +
+                '</div>';
+            jQuery("[slug='"+filename+"']").find('.wpvivid-download-status').html(tmp_html);
+            if(jQuery.inArray(filename, wpvivid_download_files_list.wpvivid_download_file_array) === -1) {
+                wpvivid_download_files_list.wpvivid_download_file_array.push(filename);
+            }
+            var ajax_data = {
+                'action': 'wpvivid_prepare_download_backup',
+                'backup_id':wpvivid_download_files_list.backup_id,
+                'file_name':filename
+            };
+            wpvivid_post_request(ajax_data, function(data)
+            {
+            }, function(XMLHttpRequest, textStatus, errorThrown)
+            {
+            }, 0);
+
+            wpvivid_download_files_list.check_queue();
+        };
+
+        wpvivid_download_files_list.check_queue=function() {
+            if(jQuery.inArray(wpvivid_download_files_list.backup_id, wpvivid_download_files_list.wpvivid_download_lock_array) !== -1){
+                return;
+            }
+            var ajax_data = {
+                'action': 'wpvivid_get_download_progress',
+                'backup_id':wpvivid_download_files_list.backup_id,
+            };
+            wpvivid_download_files_list.wpvivid_download_lock_array.push(wpvivid_download_files_list.backup_id);
+            wpvivid_post_request(ajax_data, function(data)
+            {
+                wpvivid_download_files_list.wpvivid_download_lock_array.splice(jQuery.inArray(wpvivid_download_files_list.backup_id, wpvivid_download_files_list.wpvivid_download_file_array),1);
+                var jsonarray = jQuery.parseJSON(data);
+                if (jsonarray.result === 'success')
+                {
+                    jQuery.each(jsonarray.files,function (index, value)
+                    {
+                        if(jQuery.inArray(index, wpvivid_download_files_list.wpvivid_download_file_array) !== -1) {
+                            if(value.status === 'timeout' || value.status === 'completed' || value.status === 'error'){
+                                wpvivid_download_files_list.wpvivid_download_file_array.splice(jQuery.inArray(index, wpvivid_download_files_list.wpvivid_download_file_array),1);
+                            }
+                            wpvivid_download_files_list.update_item(index, value);
+                        }
+                    });
+
+                    //if(jsonarray.need_update)
+                    if(wpvivid_download_files_list.wpvivid_download_file_array.length > 0)
+                    {
+                        setTimeout(function()
+                        {
+                            wpvivid_download_files_list.check_queue();
+                        }, 3000);
+                    }
+                }
+            }, function(XMLHttpRequest, textStatus, errorThrown)
+            {
+                wpvivid_download_files_list.wpvivid_download_lock_array.splice(jQuery.inArray(wpvivid_download_files_list.backup_id, wpvivid_download_files_list.wpvivid_download_file_array),1);
+                setTimeout(function()
+                {
+                    wpvivid_download_files_list.check_queue();
+                }, 3000);
+            }, 0);
+        };
+
+        wpvivid_download_files_list.update_item=function(index,file) {
+            jQuery("[slug='"+index+"']").find('.wpvivid-download-status').html(file.html);
+        };
+
+        wpvivid_download_files_list.download_now=function(filename) {
+            wpvivid_location_href=true;
+            location.href =ajaxurl+'?_wpnonce='+wpvivid_ajax_object.ajax_nonce+'&action=wpvivid_download_backup&backup_id='+wpvivid_download_files_list.backup_id+'&file_name='+filename;
+        };
+
+        function wpvivid_initialize_download(backup_id, list_name){
+            jQuery('#wpvivid_tab_download').show();
+            wpvivid_click_switch_page('backup', 'wpvivid_tab_download', true);
+            wpvivid_init_download_page(backup_id);
+
+
+            /*wpvivid_reset_backup_list(list_name);
+            jQuery('#wpvivid_download_loading_'+backup_id).addClass('is-active');
+            tmp_current_click_backupid = backup_id;
+            var ajax_data = {
+                'action':'wpvivid_init_download_page',
+                'backup_id':backup_id
+            };
+            wpvivid_post_request(ajax_data, function(data){
+                try {
+                    var jsonarray = jQuery.parseJSON(data);
+                    jQuery('#wpvivid_download_loading_'+backup_id).removeClass('is-active');
+                    if (jsonarray.result === 'success') {
+                        jQuery('#wpvivid_file_part_' + backup_id).html("");
+                        var i = 0;
+                        var file_not_found = false;
+                        var file_name = '';
+                        jQuery.each(jsonarray.files, function (index, value) {
+                            i++;
+                            file_name = index;
+                            if (value.status === 'need_download') {
+                                jQuery('#wpvivid_file_part_' + backup_id).append(value.html);
+                                //tmp_current_click_backupid = '';
+                            }
+                            else if (value.status === 'running') {
+                                if (m_downloading_file_name === file_name) {
+                                    wpvivid_lock_download(tmp_current_click_backupid);
+                                }
+                                jQuery('#wpvivid_file_part_' + backup_id).append(value.html);
+                            }
+                            else if (value.status === 'completed') {
+                                if (m_downloading_file_name === file_name) {
+                                    wpvivid_unlock_download(tmp_current_click_backupid);
+                                    m_downloading_id = '';
+                                    m_downloading_file_name = '';
+                                }
+                                jQuery('#wpvivid_file_part_' + backup_id).append(value.html);
+                                //tmp_current_click_backupid = '';
+                            }
+                            else if (value.status === 'timeout') {
+                                if (m_downloading_file_name === file_name) {
+                                    wpvivid_unlock_download(tmp_current_click_backupid);
+                                    m_downloading_id = '';
+                                    m_downloading_file_name = '';
+                                }
+                                jQuery('#wpvivid_file_part_' + backup_id).append(value.html);
+                                //tmp_current_click_backupid = '';
+                            }
+                            else if (value.status === 'file_not_found') {
+                                wpvivid_unlock_download(tmp_current_click_backupid);
+                                wpvivid_reset_backup_list(list_name);
+                                file_not_found = true;
+                                alert("Download failed, file not found. The file might has been moved, renamed or deleted. Please verify the file exists and try again.");
+                                //tmp_current_click_backupid = '';
+                                return false;
+                            }
+                        });
+                        if (file_not_found === false) {
+                            jQuery('#wpvivid_file_part_' + backup_id).append(jsonarray.place_html);
+                        }
+                    }
+                }
+                catch(err){
+                    alert(err);
+                    jQuery('#wpvivid_download_loading_'+backup_id).removeClass('is-active');
+                }
+            },function(XMLHttpRequest, textStatus, errorThrown){
+                jQuery('#wpvivid_download_loading_'+backup_id).removeClass('is-active');
+                var error_message = wpvivid_output_ajaxerror('initializing download information', textStatus, errorThrown);
+                alert(error_message);
+            });*/
+        }
+
+        function wpvivid_init_download_page(backup_id){
+            jQuery('#wpvivid_files_list').html('');
+            jQuery('#wpvivid_init_download_info').show();
+            jQuery('#wpvivid_init_download_info').find('.spinner').addClass('is-active');
+            var ajax_data = {
+                'action':'wpvivid_init_download_page',
+                'backup_id':backup_id
+            };
+            var retry = '<input type="button" class="button button-primary" value="Retry the initialization" onclick="wpvivid_init_download_page(\''+backup_id+'\');" />';
+
+            wpvivid_post_request(ajax_data, function(data)
+            {
+                jQuery('#wpvivid_init_download_info').hide();
+                jQuery('#wpvivid_init_download_info').find('.spinner').removeClass('is-active');
+                try
+                {
+                    var jsonarray = jQuery.parseJSON(data);
+                    if (jsonarray.result === 'success')
+                    {
+                        wpvivid_download_files_list.init(backup_id);
+                        var need_check_queue = false;
+                        jQuery.each(jsonarray.files,function (index, value)
+                        {
+                            if(value.status === 'running'){
+                                if(jQuery.inArray(index, wpvivid_download_files_list.wpvivid_download_file_array) === -1) {
+                                    wpvivid_download_files_list.wpvivid_download_file_array.push(index);
+                                    need_check_queue = true;
+                                }
+                            }
+                        });
+                        if(need_check_queue) {
+                            wpvivid_download_files_list.check_queue();
+                        }
+                        jQuery('#wpvivid_files_list').html(jsonarray.html);
+                    }
+                    else{
+                        alert(jsonarray.error);
+                        jQuery('#wpvivid_files_list').html(retry);
+                    }
+                }
+                catch(err)
+                {
+                    alert(err);
+                    jQuery('#wpvivid_files_list').html(retry);
+                }
+            },function(XMLHttpRequest, textStatus, errorThrown)
+            {
+                jQuery('#wpvivid_init_download_info').hide();
+                jQuery('#wpvivid_init_download_info').find('.spinner').removeClass('is-active');
+                var error_message = wpvivid_output_ajaxerror('initializing download information', textStatus, errorThrown);
+                alert(error_message);
+                jQuery('#wpvivid_files_list').html(retry);
+            });
+        }
+
+        function wpvivid_download_change_page(page)
+        {
+            var backup_id=wpvivid_download_files_list.backup_id;
+
+            var ajax_data = {
+                'action':'wpvivid_get_download_page_ex',
+                'backup_id':backup_id,
+                'page':page
+            };
+
+            jQuery('#wpvivid_files_list').html('');
+            jQuery('#wpvivid_init_download_info').show();
+            jQuery('#wpvivid_init_download_info').find('.spinner').addClass('is-active');
+
+            wpvivid_post_request_addon(ajax_data, function(data)
+            {
+                jQuery('#wpvivid_init_download_info').hide();
+                jQuery('#wpvivid_init_download_info').find('.spinner').removeClass('is-active');
+                try
+                {
+                    var jsonarray = jQuery.parseJSON(data);
+                    if (jsonarray.result === 'success')
+                    {
+                        jQuery('#wpvivid_files_list').html(jsonarray.html);
+                    }
+                    else{
+                        alert(jsonarray.error);
+                    }
+                }
+                catch(err)
+                {
+                    alert(err);
+                }
+            },function(XMLHttpRequest, textStatus, errorThrown)
+            {
+                jQuery('#wpvivid_init_download_info').hide();
+                jQuery('#wpvivid_init_download_info').find('.spinner').removeClass('is-active');
+                var error_message = wpvivid_output_ajaxerror('initializing download information', textStatus, errorThrown);
+                alert(error_message);
+            });
+        }
+
+        jQuery('#wpvivid_files_list').on("click",'.wpvivid-download',function()
+        {
+            var Obj=jQuery(this);
+            var file_name=Obj.closest('tr').attr('slug');
+            wpvivid_download_files_list.add_download_queue(file_name);
+        });
+        jQuery('#wpvivid_files_list').on("click",'.wpvivid-ready-download',function()
+        {
+            var Obj=jQuery(this);
+            var file_name=Obj.closest('tr').attr('slug');
+            wpvivid_download_files_list.download_now(file_name);
+        });
+
+        jQuery('#wpvivid_files_list').on("click",'.first-page',function() {
+            wpvivid_download_change_page('first');
+        });
+
+        jQuery('#wpvivid_files_list').on("click",'.prev-page',function() {
+            var page=parseInt(jQuery(this).attr('value'));
+            wpvivid_download_change_page(page-1);
+        });
+
+        jQuery('#wpvivid_files_list').on("click",'.next-page',function() {
+            var page=parseInt(jQuery(this).attr('value'));
+            wpvivid_download_change_page(page+1);
+        });
+
+        jQuery('#wpvivid_files_list').on("click",'.last-page',function() {
+            wpvivid_download_change_page('last');
+        });
+
+        jQuery('#wpvivid_files_list').on("keypress", '.current-page', function(){
+            if(event.keyCode === 13){
+                var page = jQuery(this).val();
+                wpvivid_download_change_page(page);
+            }
+        });
+    </script>
+    <?php
+}
+
 function wpvivid_backuppage_add_progress_module(){
     ?>
     <div class="postbox" id="wpvivid_postbox_backup_percent" style="display: none;">
@@ -1556,7 +2270,7 @@ function wpvivid_backup_module_add_descript(){
     <div style="font-size: 14px; padding: 8px 12px; margin: 0; line-height: 1.4; font-weight: 600;">
         <span style="margin-right: 5px;"><?php _e( 'Back Up Manually','wpvivid-backuprestore'); ?></span>
         <span style="margin-right: 5px;">|</span>
-        <span style="margin-right: 0;"><a href="<?php echo esc_url(admin_url().'admin.php?page=wpvivid-export-import'); ?>" style="text-decoration: none;"><?php _e('Export Content', 'wpvivid-backuprestore'); ?></a></span>
+        <span style="margin-right: 0;"><a href="<?php echo esc_url(admin_url().'admin.php?page=wpvivid-cleaner'); ?>" style="text-decoration: none;"><?php _e('Unused Image Cleaner', 'wpvivid-backuprestore'); ?></a></span>
         <span style="font-size: 10px; color: #FFA500; line-height: 10px;">(<?php _e('new feature', 'wpvivid-backuprestore'); ?>)</span>
     </div>
     <div class="quickstart-storage-setting">
@@ -1784,7 +2498,7 @@ function wpvivid_backup_module_add_exec(){
 function wpvivid_backup_module_add_tips(){
     ?>
     <div class="custom-info" style="float:left; width:100%;">
-        <strong><?php _e('Tips:', 'wpvivid-backuprestore'); ?></strong>&nbsp<?php _e('The settings are only for manual backup, which won\'t affect schedule settings.', 'wpvivid-backuprestore'); ?>
+        <strong><?php _e('Tip:', 'wpvivid-backuprestore'); ?></strong>&nbsp<?php _e('The settings are only for manual backup, which won\'t affect schedule settings.', 'wpvivid-backuprestore'); ?>
     </div>
     <?php
 }

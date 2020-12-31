@@ -656,13 +656,15 @@ class WPvivid_Setting
 
         $data['backup_custom_setting']=apply_filters('wpvivid_get_backup_custom_setting_mainwp', array());
 
-        $data['report_addon'] = apply_filters('wpvivid_archieve_report_addon_mainwp', array());
+        //$data['report_addon'] = apply_filters('wpvivid_archieve_report_addon_mainwp', array());
 
         $data['menu_capability'] = apply_filters('wpvivid_get_menu_capability_mainwp', array());
 
         $data['white_label_setting'] = apply_filters('wpvivid_get_white_label_mainwp', array());
 
         $data['incremental_backup_setting'] = apply_filters('wpvivid_get_incremental_backup_mainwp', array());
+
+        $data['last_backup_report'] = apply_filters('wpvivid_get_backup_report_addon_mainwp', array());
         return $data;
     }
 }

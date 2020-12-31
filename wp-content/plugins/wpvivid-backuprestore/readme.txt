@@ -1,19 +1,19 @@
-=== Migrate & Backup WordPress - WPvivid Backup Plugin ===
+=== Backup & Migration & Unused Images Cleaner - WPvivid Backup Plugin ===
 Contributors: wpvivid
-Tags: move, clone, migrate, copy, backup, restore, auto backup, cloud backup
+Tags: move, clone, migrate, cleaner, backup, restore, auto backup, cloud backup
 Requires at least: 4.5
-Tested up to: 5.5
+Tested up to: 5.6
 Requires PHP: 5.3
-Stable tag: 0.9.44
+Stable tag: 0.9.48
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
-Migrate a backup of WP site to a new host (or domain),schedule and send a backup to leading remote storage. All in one backup & migration plugin
+Migrate a backup of WP site, schedule offsite backups, clean unused images before backup and migration. All in one backup & migration plugin
 
 == Description ==
-WPvivid Backup Plugin is the only free all-in-one backup, restore and migration WordPress plugin.
+WPvivid Backup Plugin offers backup and migration as basic features, and is integrating more and more elegant features, such as unused images cleaner etc.
 
-Migrate a copy of WP site to a new host (a new domain), schedule backups, send backups to leading remote storage. All in one backup & migration plugin.
+Migrate a copy of WP site to a new host (a new domain), schedule backups, send backups to leading remote storage, clean unused images before backup and migration. All in one backup & migration plugin.
 
 == WPvivid Backup for MainWP ==
 [WPvivid Backup for MainWP](https://wpvivid.com/wpvivid-backup-for-mainwp) is now available to download.
@@ -25,13 +25,20 @@ Click to download [WPvivid Backup for MainWP](https://wordpress.org/plugins/wpvi
 * Customize everything to backup
 * Create staging sites and push staging to live site
 * Incremental backups
+* Database backups encryption
 * Auto backup WordPress core, themes, and plugins
+* Unused images cleaner (Beta)
 * WordPress Multisite backup
+* Create a staging for a WordPress MU
+* Create a fresh WP install
 * Advanced remote storage
 * Advanced backup schedules
 * Restore backups from remote storage
 * Migrate everything via remote storage
+* Migrate a childsite (MU) to a single WordPress install
+* White label
 * Edit user roles capabilities
+* [More amazing features](https://wpvivid.com/backup-plugin-pro)
 
 See a review video on WPvivid Backup Pro:
 
@@ -44,37 +51,36 @@ WPvivid Backup Plugin has been tested by our users to migrate well on websites b
 1. [Elementor Page Builder](https://wordpress.org/plugins/elementor/)
 2. [Page Builder by SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/)
 3. [WordPress Page Builder – Beaver Builder](https://wordpress.org/plugins/beaver-builder-lite-version/)
+4. More other page builders
 
 == Core Features ==
 
-= 1. Easy Site Move or Migration (New Feature) =
+= 1. Easy Backups =
+Easily create a backup of your WordPress site. You can choose to back up the entire site(database+files), all files, or database only.
+= 2. Auto Migration =
 Migrate your WordPress site to a new domain with a single click. WPvivid Backup Plugin supports site migration from dev environment to a new server, from dev environment to a new domain or from a live server to another.
 
 You can also migrate a site to a subdirectory, from a.com to b.com, from a.com to a.com/directory and from a.com to b.com/directory.
 
-You are free to choose what to migrate: the entire site, files or just the database only.
-= 2. Upload Backups (New Feature) =
-Upload a backup to restore or migrate.
-You can migrate or restore backups created with 0.9.14 or a higher version.
-= 3. Automatic Backup =
-Setup and forget, WPvivid Backup Plugin will do the rest automatically backing up your website.
-= 4. One-Click Restore =
+You are free to choose what to migrate: the entire site, files or just database only.
+= 3. Scheduled Backups =
+Set a schedule to run backups automatically on your website. You can set the backups to run every 12 hours, daily, weekly, fortnightly, monthly, and choose backup items and destination.
+= 4. Offsite Backup to Remote Storage =
+Send your backups offsite to a remote location. WPvivid Backup Plugin supports the leading cloud storage providers: Dropbox, Google Drive, Amazon S3, Microsoft OneDrive, DigitalOcean Spaces, FTP and SFTP.
+= 5. One-Click Restore =
 Restore your WordPress site from a backup with a single click.
+= 6. Unused Images Cleaner (Beta) =
+Scan your WP media library to find unused images, then you can choose to clean specific or all unused images.
 
 == Cloud Storage Supported ==
 
 Dropbox, Google Drive, Microsoft OneDrive, Amazon S3, DigitalOcean Spaces, SFTP, FTP.
 The pro version also supports Wasabi, pCloud and more are coming soon.
 
-== Site Migration Process ==
-1. Install WPvivid Backup plugin on both the destination site and the sending site.
-2. Generate a site key on the destination site with one click.
-3. Paste the key in the sending site and save it.
-4. Migrate the site with one-click.
-
 == Features Spotlight ==
 * One-Click Site Move or Migration
 * Upload Backups to Restore or Migrate
+* Unused Images Cleaner (Beta)
 * Schedule Automated Backups
 * Restore A Backup with One Click
 * Create A Manual Backup
@@ -175,10 +181,33 @@ Thank you for translating WPvivid Backup Plugin to your languages!
 
 * [Andrew Galas](https://profiles.wordpress.org/andrewgalas) (Polish)
 * [Shohei OKADA](https://ja.gravatar.com/silversword0630) (Japanese)
-* Francesco Tosi (Italian)
-* Valentin Lyong (Bulgarian)
+* [Francesco Tosi](https://profiles.wordpress.org/seventhose/) (Italian)
+* [Valentin Lyong](https://profiles.wordpress.org/icedge/) (Bulgarian)
+* [Daniel Wilczkowiak](https://profiles.wordpress.org/virtual03/) (German)
 
 == Changelog ==
+= 0.9.48 =
+- Redesigned the Download section for better UX.
+- Fixed the insufficient permission error that occurred when authenticating FTP in some cases.
+- Fixed the incorrect credential error that occurred when authenticating SFTP in some cases.
+- Successfully tested with WordPress 5.6.
+= 0.9.47 =
+- Added support for Amazon S3 South Africa region.
+- Fixed: Folder would not be backed up when it's name matches regex: ^uploads.*$.
+- Successfully tested with WordPress 5.5.3.
+- Fixed some bugs in the plugin code.
+- Optimized the plugin code.
+= 0.9.46 =
+- Fixed: Some special characters in database could not be restored properly.
+- Fixed: Only 1000 backups stored on Amazon S3 could be displayed.
+- Fixed: Unused image cleaner also isolated images used in CSS files.
+- Successfully tested with WordPress 5.5.1.
+- Fixed some bugs in the plugin code.
+- Optimized the plugin code.
+= 0.9.45 =
+- New feature Added: Find and clean unused images in your WP media library.
+- Fixed some bugs in the plugin code.
+- Optimized the plugin code.
 = 0.9.44 =
 - Successfully tested with WordPress 5.5.
 - Fixed: Refreshing Google Drive token failed in some cases.

@@ -238,7 +238,7 @@ function wpvivid_check_runningtask(){
                         running_backup_taskid='';
                     }
                 }
-                if (jsonarray.download.length !== 0) {
+                /*if (jsonarray.download.length !== 0) {
                     if(jsonarray.download.result === 'success') {
                         b_has_data = true;
                         task_retry_times = 0;
@@ -304,7 +304,7 @@ function wpvivid_check_runningtask(){
                         b_has_data = true;
                         alert(jsonarray.download.error);
                     }
-                }
+                }*/
                 if (!b_has_data) {
                     task_retry_times++;
                     if (task_retry_times < 5) {

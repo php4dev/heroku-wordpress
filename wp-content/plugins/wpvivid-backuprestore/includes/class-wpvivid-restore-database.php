@@ -931,7 +931,7 @@ class WPvivid_RestoreDB
                             $update=array();
                             $where=array();
 
-                            if($row['site_id']==1)
+                            if($row['blog_id']==1)
                             {
                                 $old_path=$row['path'];
                             }
@@ -1692,7 +1692,7 @@ class WPvivid_RestoreDB
                 if(is_array($max_allowed_packet)&&isset($max_allowed_packet[0])&&isset($max_allowed_packet[0][0]))
                 {
                     if($max_allowed_packet[0][0]<16777216){
-                        $max_all_packet_warning = 'max_allow_packet = '.size_format($max_allowed_packet[0][0]).' is too small. The recommended value is 16M or higher. Too small value could lead to a failure when importing a larger database.';
+                        $max_all_packet_warning = 'max_allowed_packet = '.size_format($max_allowed_packet[0][0]).' is too small. The recommended value is 16M or higher. Too small value could lead to a failure when importing a larger database.';
                     }
                 }
             }

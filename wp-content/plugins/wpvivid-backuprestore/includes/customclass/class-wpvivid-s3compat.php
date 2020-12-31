@@ -64,12 +64,18 @@ class Wpvivid_S3Compat extends WPvivid_Remote{
             $this -> bucket=$this->options['bucket'];
         }
 
+        if(isset($this->options['is_encrypt']) && $this->options['is_encrypt'] == 1){
+            $secret = base64_decode($this->options['secret']);
+        }
+        else {
+            $secret = $this->options['secret'];
+        }
         include_once WPVIVID_PLUGIN_DIR.'/vendor/autoload.php';
         $s3compat = S3Client::factory(
             array(
                 'credentials' => array(
                     'key' => $this -> options['access'],
-                    'secret' => $this -> options['secret'],
+                    'secret' => $secret,
                 ),
                 'version' => 'latest',
                 'region'  => $this -> region,

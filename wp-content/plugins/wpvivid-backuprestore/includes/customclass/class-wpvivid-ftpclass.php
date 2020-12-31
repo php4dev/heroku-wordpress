@@ -278,7 +278,12 @@ class WPvivid_FTPClass extends WPvivid_Remote{
         $passive =$this->options['passive'];
         $host = $this->options['host'];
         $username = $this->options['username'];
-        $password = $this->options['password'];
+        if(isset($this->options['is_encrypt']) && $this->options['is_encrypt'] == 1){
+            $password = base64_decode($this->options['password']);
+        }
+        else {
+            $password = $this->options['password'];
+        }
         $path = $this->options['path'];
         $port = empty($this->options['port'])?21:$this->options['port'];
         $conn = $this -> do_connect($host,$username,$password,$port);
@@ -409,14 +414,32 @@ class WPvivid_FTPClass extends WPvivid_Remote{
         }
 	}
     public function do_chdir($conn,$path){
+        @ftp_chdir($conn,'/');
         if(!@ftp_chdir($conn,$path))
         {
-            if ( ! ftp_mkdir( $conn, $path ) ) {
+            $parts = explode('/',$path);
+            foreach($parts as $part){
+                if($part !== '') {
+                    if (!@ftp_chdir($conn, $part)) {
+                        if (!ftp_mkdir($conn, $part)) {
+                            return array('result' => WPVIVID_FAILED, 'error' => 'Failed to create a backup. Make sure you have sufficient privileges to perform the operation.');
+                        }
+
+                        if (!@ftp_chdir($conn, $part)) {
+                            return array('result' => WPVIVID_FAILED, 'error' => 'Failed to create a backup. Make sure you have sufficient privileges to perform the operation.');
+                        }
+                    }
+                }
+            }
+
+            /*if ( ! ftp_mkdir( $conn, $path ) )
+            {
                 return array('result'=>WPVIVID_FAILED,'error'=>'Failed to create a backup. Make sure you have sufficient privileges to perform the operation.');
             }
-            if (!@ftp_chdir($conn,$path)){
+            if (!@ftp_chdir($conn,$path))
+            {
                 return array('result'=>WPVIVID_FAILED,'error'=>'Failed to create a backup. Make sure you have sufficient privileges to perform the operation.');
-            }
+            }*/
         }
         $temp_file = md5(rand());
         $temp_path = trailingslashit(WP_CONTENT_DIR).WPvivid_Setting::get_backupdir().DIRECTORY_SEPARATOR.$temp_file;
@@ -437,7 +460,12 @@ class WPvivid_FTPClass extends WPvivid_Remote{
         $passive =$this->options['passive'];
         $host = $this->options['host'];
         $username = $this->options['username'];
-        $password = $this->options['password'];
+        if(isset($this->options['is_encrypt']) && $this->options['is_encrypt'] == 1){
+            $password = base64_decode($this->options['password']);
+        }
+        else {
+            $password = $this->options['password'];
+        }
         $path = $this->options['path'];
         $port = empty($this->options['port'])?21:$this->options['port'];
 
@@ -546,7 +574,12 @@ class WPvivid_FTPClass extends WPvivid_Remote{
             $passive = $this->options['passive'];
             $host = $this->options['host'];
             $username = $this->options['username'];
-            $password = $this->options['password'];
+            if(isset($this->options['is_encrypt']) && $this->options['is_encrypt'] == 1){
+                $password = base64_decode($this->options['password']);
+            }
+            else {
+                $password = $this->options['password'];
+            }
             $path = $this->options['path'];
             $port = empty($this->options['port']) ? 21 : $this->options['port'];
 
@@ -616,7 +649,12 @@ class WPvivid_FTPClass extends WPvivid_Remote{
 	public function cleanup($file){
         $host = $this->options['host'];
         $username = $this->options['username'];
-        $password = $this->options['password'];
+        if(isset($this->options['is_encrypt']) && $this->options['is_encrypt'] == 1){
+            $password = base64_decode($this->options['password']);
+        }
+        else {
+            $password = $this->options['password'];
+        }
         $path = $this->options['path'];
         $port = empty($this->options['port'])?21:$this->options['port'];
 

@@ -195,13 +195,15 @@ class WPvivid {
 
         include_once WPVIVID_PLUGIN_DIR . '/includes/class-wpvivid-interface-mainwp.php';
 
+        include_once WPVIVID_PLUGIN_DIR . '/includes/upload-cleaner/class-wpvivid-uploads-cleaner.php';
+
         $this->function_realize=new WPvivid_Function_Realize();
         $this->migrate=new WPvivid_Migrate();
         $this->backup_uploader=new Wpvivid_BackupUploader();
         $this->interface_mainwp = new WPvivid_Interface_MainWP();
         $send_to_site=new WPvivid_Send_to_site();
         $export_import = new WPvivid_Export_Import();
-
+        $cleaner=new WPvivid_Uploads_Cleaner();
 	}
 
 	public function init_pclzip_tmp_folder()
@@ -299,6 +301,8 @@ class WPvivid {
         add_action('wp_ajax_wpvivid_view_log',array( $this,'view_log'));
         //Prepare download backup files
         add_action('wp_ajax_wpvivid_prepare_download_backup',array( $this,'prepare_download_backup'));
+        //Get download progress
+        add_action('wp_ajax_wpvivid_get_download_progress',array($this,'get_download_progress'));
         //Download backup from site
         add_action('wp_ajax_wpvivid_download_backup',array( $this,'download_backup'));
         //Delete backup record
@@ -307,6 +311,8 @@ class WPvivid {
         add_action('wp_ajax_wpvivid_delete_backup_array',array( $this,'delete_backup_array'));
         //
         add_action('wp_ajax_wpvivid_init_download_page',array( $this,'init_download_page'));
+        //Download backuplist change page
+        add_action('wp_ajax_wpvivid_get_download_page_ex',array($this,'get_download_page_ex'));
         //Set security lock for backup record
         add_action('wp_ajax_wpvivid_set_security_lock',array( $this,'set_security_lock'));
         //Delete task
@@ -2154,7 +2160,7 @@ class WPvivid {
      *
      * @since 0.9.1
      */
-    public function init_download_page()
+    /*public function init_download_page()
     {
         $this->ajax_check_security();
         try {
@@ -2171,7 +2177,218 @@ class WPvivid {
             die();
         }
         die();
+    }*/
+
+    /**
+     * return initialization download page data
+     *
+     * @var string $task_id
+     *
+     * @since 0.9.48
+     */
+    public function init_download_page()
+    {
+        $this->ajax_check_security();
+        try {
+            if (isset($_POST['backup_id']) && !empty($_POST['backup_id']) && is_string($_POST['backup_id'])) {
+                $backup_id = sanitize_key($_POST['backup_id']);
+                $backup = WPvivid_Backuplist::get_backup_by_id($backup_id);
+                if ($backup === false) {
+                    $ret['result'] = WPVIVID_FAILED;
+                    $ret['error'] = 'backup id not found';
+                    echo json_encode($ret);
+                    die();
+                }
+
+                $backup_item = new WPvivid_Backup_Item($backup);
+
+                $backup_files = $backup_item->get_download_backup_files($backup_id);
+
+                if ($backup_files['result'] == WPVIVID_SUCCESS) {
+                    $ret['result'] = WPVIVID_SUCCESS;
+
+                    $remote = $backup_item->get_remote();
+
+                    foreach ($backup_files['files'] as $file) {
+                        $path = $backup_item->get_local_path() . $file['file_name'];
+
+                        if (file_exists($path)) {
+                            if (filesize($path) == $file['size']) {
+                                if (WPvivid_taskmanager::get_download_task_v2($file['file_name']))
+                                    WPvivid_taskmanager::delete_download_task_v2($file['file_name']);
+                                $ret['files'][$file['file_name']]['status'] = 'completed';
+                                $ret['files'][$file['file_name']]['size'] = size_format(filesize($path), 2);
+                                $ret['files'][$file['file_name']]['download_path'] = $path;
+                                $download_url = $backup_item->get_local_url() . $file['file_name'];
+                                $ret['files'][$file['file_name']]['download_url'] = $download_url;
+
+                                continue;
+                            }
+                        }
+                        $ret['files'][$file['file_name']]['size'] = size_format($file['size'], 2);
+
+                        if (empty($remote)) {
+                            $ret['files'][$file['file_name']]['status'] = 'file_not_found';
+                        } else {
+                            $task = WPvivid_taskmanager::get_download_task_v2($file['file_name']);
+                            if ($task === false) {
+                                $ret['files'][$file['file_name']]['status'] = 'need_download';
+                            } else {
+                                $ret['result'] = WPVIVID_SUCCESS;
+                                if ($task['status'] === 'running') {
+                                    $ret['files'][$file['file_name']]['status'] = 'running';
+                                    $ret['files'][$file['file_name']]['progress_text'] = $task['progress_text'];
+                                    if (file_exists($path)) {
+                                        $ret['files'][$file['file_name']]['downloaded_size'] = size_format(filesize($path), 2);
+                                    } else {
+                                        $ret['files'][$file['file_name']]['downloaded_size'] = '0';
+                                    }
+                                } elseif ($task['status'] === 'timeout') {
+                                    $ret['files'][$file['file_name']]['status'] = 'timeout';
+                                    $ret['files'][$file['file_name']]['progress_text'] = $task['progress_text'];
+                                    WPvivid_taskmanager::delete_download_task_v2($file['file_name']);
+                                } elseif ($task['status'] === 'completed') {
+                                    $ret['files'][$file['file_name']]['status'] = 'completed';
+                                    WPvivid_taskmanager::delete_download_task_v2($file['file_name']);
+                                } elseif ($task['status'] === 'error') {
+                                    $ret['files'][$file['file_name']]['status'] = 'error';
+                                    $ret['files'][$file['file_name']]['error'] = $task['error'];
+                                    WPvivid_taskmanager::delete_download_task_v2($file['file_name']);
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    $ret = $backup_files;
+                }
+
+
+                if (!class_exists('WPvivid_Files_List'))
+                    include_once WPVIVID_PLUGIN_DIR .'/admin/partials/wpvivid-backup-restore-page-display.php';
+
+                $files_list = new WPvivid_Files_List();
+
+                $files_list->set_files_list($ret['files'], $backup_id);
+                $files_list->prepare_items();
+                ob_start();
+                $files_list->display();
+                $ret['html'] = ob_get_clean();
+
+                echo json_encode($ret);
+            }
+        }
+        catch (Exception $error) {
+            $message = 'An exception has occurred. class: '.get_class($error).';msg: '.$error->getMessage().';code: '.$error->getCode().';line: '.$error->getLine().';in_file: '.$error->getFile().';';
+            error_log($message);
+            echo json_encode(array('result'=>'failed','error'=>$message));
+        }
+        die();
     }
+
+    public function get_download_page_ex()
+    {
+        $this->ajax_check_security();
+        try {
+            if (isset($_POST['backup_id']) && !empty($_POST['backup_id']) && is_string($_POST['backup_id'])) {
+                if (isset($_POST['page'])) {
+                    $page = $_POST['page'];
+                } else {
+                    $page = 1;
+                }
+
+                $backup_id = sanitize_key($_POST['backup_id']);
+                $backup = WPvivid_Backuplist::get_backup_by_id($backup_id);
+                if ($backup === false) {
+                    $ret['result'] = WPVIVID_FAILED;
+                    $ret['error'] = 'backup id not found';
+                    echo json_encode($ret);
+                    die();
+                }
+
+                $backup_item = new WPvivid_Backup_Item($backup);
+
+                $backup_files = $backup_item->get_download_backup_files($backup_id);
+
+                if ($backup_files['result'] == WPVIVID_SUCCESS) {
+                    $ret['result'] = WPVIVID_SUCCESS;
+
+                    $remote = $backup_item->get_remote();
+
+                    foreach ($backup_files['files'] as $file) {
+                        $path = $backup_item->get_local_path() . $file['file_name'];
+
+                        if (file_exists($path)) {
+                            if (filesize($path) == $file['size']) {
+                                if (WPvivid_taskmanager::get_download_task_v2($file['file_name']))
+                                    WPvivid_taskmanager::delete_download_task_v2($file['file_name']);
+                                $ret['files'][$file['file_name']]['status'] = 'completed';
+                                $ret['files'][$file['file_name']]['size'] = size_format(filesize($path), 2);
+                                $ret['files'][$file['file_name']]['download_path'] = $path;
+                                $download_url = $backup_item->get_local_url() . $file['file_name'];
+                                $ret['files'][$file['file_name']]['download_url'] = $download_url;
+
+                                continue;
+                            }
+                        }
+                        $ret['files'][$file['file_name']]['size'] = size_format($file['size'], 2);
+
+                        if (empty($remote)) {
+                            $ret['files'][$file['file_name']]['status'] = 'file_not_found';
+                        } else {
+                            $task = WPvivid_taskmanager::get_download_task_v2($file['file_name']);
+                            if ($task === false) {
+                                $ret['files'][$file['file_name']]['status'] = 'need_download';
+                            } else {
+                                $ret['result'] = WPVIVID_SUCCESS;
+                                if ($task['status'] === 'running') {
+                                    $ret['files'][$file['file_name']]['status'] = 'running';
+                                    $ret['files'][$file['file_name']]['progress_text'] = $task['progress_text'];
+                                    if (file_exists($path)) {
+                                        $ret['files'][$file['file_name']]['downloaded_size'] = size_format(filesize($path), 2);
+                                    } else {
+                                        $ret['files'][$file['file_name']]['downloaded_size'] = '0';
+                                    }
+                                } elseif ($task['status'] === 'timeout') {
+                                    $ret['files'][$file['file_name']]['status'] = 'timeout';
+                                    $ret['files'][$file['file_name']]['progress_text'] = $task['progress_text'];
+                                    WPvivid_taskmanager::delete_download_task_v2($file['file_name']);
+                                } elseif ($task['status'] === 'completed') {
+                                    $ret['files'][$file['file_name']]['status'] = 'completed';
+                                    WPvivid_taskmanager::delete_download_task_v2($file['file_name']);
+                                } elseif ($task['status'] === 'error') {
+                                    $ret['files'][$file['file_name']]['status'] = 'error';
+                                    $ret['files'][$file['file_name']]['error'] = $task['error'];
+                                    WPvivid_taskmanager::delete_download_task_v2($file['file_name']);
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    $ret = $backup_files;
+                }
+
+                if (!class_exists('WPvivid_Files_List'))
+                    include_once WPVIVID_PLUGIN_DIR .'/admin/partials/wpvivid-backup-restore-page-display.php';
+
+                $files_list = new WPvivid_Files_List();
+
+                $files_list->set_files_list($ret['files'], $backup_id, $page);
+                $files_list->prepare_items();
+                ob_start();
+                $files_list->display();
+                $ret['html'] = ob_get_clean();
+
+                echo json_encode($ret);
+            }
+        }
+        catch (Exception $error) {
+            $message = 'An exception has occurred. class: '.get_class($error).';msg: '.$error->getMessage().';code: '.$error->getCode().';line: '.$error->getLine().';in_file: '.$error->getFile().';';
+            error_log($message);
+            echo json_encode(array('result'=>'failed','error'=>$message));
+        }
+        die();
+    }
+
     /**
      * prepare download backup
      *
@@ -2234,6 +2451,95 @@ class WPvivid {
         }
         $this->wpvivid_download_log->CloseFile();
         $this->end_shutdown_function=true;
+        die();
+    }
+
+    public function get_download_progress()
+    {
+        $this->ajax_check_security();
+        try {
+            if (isset($_POST['backup_id'])) {
+                $backup_id = sanitize_key($_POST['backup_id']);
+                $ret['result'] = WPVIVID_SUCCESS;
+                $ret['files'] = array();
+                $ret['need_update'] = false;
+
+                $backup = WPvivid_Backuplist::get_backup_by_id($backup_id);
+                if ($backup === false) {
+                    $ret['result'] = WPVIVID_FAILED;
+                    $ret['error'] = 'backup id not found';
+                    return $ret;
+                }
+
+                $backup_item = new WPvivid_Backup_Item($backup);
+
+                $backup_files = $backup_item->get_download_backup_files($backup_id);
+
+                foreach ($backup_files['files'] as $file) {
+                    $path = $backup_item->get_local_path() . $file['file_name'];
+                    if (file_exists($path)) {
+                        $downloaded_size = size_format(filesize($path), 2);
+                    } else {
+                        $downloaded_size = '0';
+                    }
+                    $file['size'] = size_format($file['size'], 2);
+
+                    $task = WPvivid_taskmanager::get_download_task_v2($file['file_name']);
+                    if ($task === false) {
+                        $ret['files'][$file['file_name']]['status'] = 'need_download';
+                        $ret['files'][$file['file_name']]['html'] = '<div class="wpvivid-element-space-bottom">
+                                                                        <span class="wpvivid-element-space-right">Retriving (remote storage to web server)</span><span class="wpvivid-element-space-right">|</span><span>File Size: </span><span class="wpvivid-element-space-right">' . $file['size'] . '</span><span class="wpvivid-element-space-right">|</span><span>Downloaded Size: </span><span>0</span>
+                                                                   </div>
+                                                                   <div style="width:100%;height:10px; background-color:#dcdcdc;">
+                                                                        <div style="background-color:#0085ba; float:left;width:0%;height:10px;"></div>
+                                                                   </div>';
+                        $ret['need_update'] = true;
+                    } else {
+                        if ($task['status'] === 'running') {
+                            $ret['files'][$file['file_name']]['status'] = 'running';
+                            $ret['files'][$file['file_name']]['progress_text'] = $task['progress_text'];
+                            $ret['files'][$file['file_name']]['html'] = '<div class="wpvivid-element-space-bottom">
+                                                                            <span class="wpvivid-element-space-right">Retriving (remote storage to web server)</span><span class="wpvivid-element-space-right">|</span><span>File Size: </span><span class="wpvivid-element-space-right">' . $file['size'] . '</span><span class="wpvivid-element-space-right">|</span><span>Downloaded Size: </span><span>' . $downloaded_size . '</span>
+                                                                        </div>
+                                                                        <div style="width:100%;height:10px; background-color:#dcdcdc;">
+                                                                            <div style="background-color:#0085ba; float:left;width:' . $task['progress_text'] . '%;height:10px;"></div>
+                                                                        </div>';
+                            $ret['need_update'] = true;
+                        } elseif ($task['status'] === 'timeout') {
+                            $ret['files'][$file['file_name']]['status'] = 'timeout';
+                            $ret['files'][$file['file_name']]['progress_text'] = $task['progress_text'];
+                            $ret['files'][$file['file_name']]['html'] = '<div class="wpvivid-element-space-bottom">
+                                                                            <span>Download timeout, please retry.</span>
+                                                                         </div>
+                                                                         <div>
+                                                                            <span>' . __('File Size: ', 'wpvivid') . '</span><span class="wpvivid-element-space-right">' . $file['size'] . '</span><span class="wpvivid-element-space-right">|</span><span class="wpvivid-element-space-right"><a class="wpvivid-download" style="cursor: pointer;">Prepare to Download</a></span>
+                                                                        </div>';
+                            WPvivid_taskmanager::delete_download_task_v2($file['file_name']);
+                        } elseif ($task['status'] === 'completed') {
+                            $ret['files'][$file['file_name']]['status'] = 'completed';
+                            $ret['files'][$file['file_name']]['html'] = '<span>' . __('File Size: ', 'wpvivid') . '</span><span class="wpvivid-element-space-right">' . $file['size'] . '</span><span class="wpvivid-element-space-right">|</span><span class="wpvivid-element-space-right wpvivid-ready-download"><a style="cursor: pointer;">Download</a></span>';
+                            WPvivid_taskmanager::delete_download_task_v2($file['file_name']);
+                        } elseif ($task['status'] === 'error') {
+                            $ret['files'][$file['file_name']]['status'] = 'error';
+                            $ret['files'][$file['file_name']]['error'] = $task['error'];
+                            $ret['files'][$file['file_name']]['html'] = '<div class="wpvivid-element-space-bottom">
+                                                                            <span>' . $task['error'] . '</span>
+                                                                         </div>
+                                                                         <div>
+                                                                            <span>' . __('File Size: ', 'wpvivid') . '</span><span class="wpvivid-element-space-right">' . $file['size'] . '</span><span class="wpvivid-element-space-right">|</span><span class="wpvivid-element-space-right"><a class="wpvivid-download" style="cursor: pointer;">Prepare to Download</a></span>
+                                                                         </div>';
+                            WPvivid_taskmanager::delete_download_task_v2($file['file_name']);
+                        }
+                    }
+                }
+                echo json_encode($ret);
+            }
+        }
+        catch (Exception $error) {
+            $message = 'An exception has occurred. class: '.get_class($error).';msg: '.$error->getMessage().';code: '.$error->getCode().';line: '.$error->getLine().';in_file: '.$error->getFile().';';
+            error_log($message);
+            echo json_encode(array('result'=>'failed','error'=>$message));
+        }
         die();
     }
 
@@ -3535,6 +3841,7 @@ class WPvivid {
     public function update_last_backup_task($task)
     {
         WPvivid_Setting::update_option('wpvivid_last_msg',$task);
+        apply_filters('wpvivid_set_backup_report_addon_mainwp', $task);
     }
     /**
      * Get last backup information
@@ -5745,12 +6052,9 @@ class WPvivid {
                                 // send the current file part to the browser
                                 print fread($file, round($download_rate * 1024));
                                 // flush the content to the browser
+                                ob_flush();
                                 flush();
 
-                                if (ob_get_level())
-                                {
-                                    ob_end_clean();
-                                }
                                 // sleep one second
                                 sleep(1);
                             }

@@ -749,7 +749,7 @@ class Wpvivid_BackupUploader
                 {
                     var backuplist_count = data;
                     if(backuplist_count >= backup_max_count){
-                        alert("The maximum number for listing backups is reached, please manually remove a backup from backups list to start uploading.");
+                        alert("The backup retention limit for localhost(web server) is reached, please either increase the retention from WPvivid General Settings, or manually delete some old backups.");
                     }
                     else {
                         jQuery("#wpvivid_upload_submit_btn").prop('disabled', true);

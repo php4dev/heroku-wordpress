@@ -2154,7 +2154,6 @@ final class WPvivid_S3Request
 
     private $s3;
 
-
 	/**
 	* Constructor
 	*
@@ -2187,7 +2186,6 @@ final class WPvivid_S3Request
 			$this->resource = $this->uri;
 		}
 
-
 		$this->headers['Date'] = gmdate('D, d M Y H:i:s T');
 		$this->response = new STDClass;
 		$this->response->error = false;
@@ -2207,6 +2205,20 @@ final class WPvivid_S3Request
 	{
 		$this->parameters[$key] = $value;
 	}
+
+	public function unsetParameter($bucket)
+    {
+        if (sizeof($this->parameters) > 0) {
+            foreach ($this->parameters as $key => $value){
+                unset($this->parameters[$key]);
+            }
+        }
+        $this->uri = '/';
+        if ($bucket !== '')
+        {
+            $this->uri = '/'.$bucket.$this->uri;
+        }
+    }
 
 
 	/**
@@ -2240,7 +2252,7 @@ final class WPvivid_S3Request
 	*
 	* @return object | false
 	*/
-    public function getResponse() {
+    /*public function getResponse() {
         $query = '';
         if (sizeof($this->parameters) > 0) {
             $query = ('?' !== substr($this->uri, -1)) ? '?' : '&';
@@ -2260,6 +2272,166 @@ final class WPvivid_S3Request
                 $this->resource .= $query;
         }
 
+        $url = ($this->s3->useSSL ? 'https://' : 'http://') . ('' !== $this->headers['Host'] ? $this->headers['Host'] : $this->endpoint) . $this->uri;
+        //var_dump('bucket: ' . $this->bucket, 'uri: ' . $this->uri, 'resource: ' . $this->resource, 'url: ' . $url);
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_USERAGENT, 'S3/php');
+
+        if ($this->s3->useSSL) {
+            // SSL Validation can now be optional for those with broken OpenSSL installations
+            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, $this->s3->useSSLValidation ? 2 : 0);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, $this->s3->useSSLValidation ? 1 : 0);
+
+            if (null !== $this->s3->sslKey) curl_setopt($curl, CURLOPT_SSLKEY, $this->s3->sslKey);
+            if (null !== $this->s3->sslCert) curl_setopt($curl, CURLOPT_SSLCERT, $this->s3->sslCert);
+            if (null !== $this->s3->sslCACert) curl_setopt($curl, CURLOPT_CAINFO, $this->s3->sslCACert);
+        }
+
+        curl_setopt($curl, CURLOPT_URL, $url);
+
+        // Headers
+        $headers = array(); $amz = array();
+        foreach ($this->amzHeaders as $header => $value)
+            if (strlen($value) > 0) $headers[] = $header.': '.$value;
+        foreach ($this->headers as $header => $value)
+            if (strlen($value) > 0) $headers[] = $header . ': ' . $value;
+
+        // Collect AMZ headers for signature
+        foreach ($this->amzHeaders as $header => $value)
+            if (strlen($value) > 0) $amz[] = strtolower($header).':'.$value;
+
+        // AMZ headers must be sorted
+        if (sizeof($amz) > 0) {
+            //sort($amz);
+            usort($amz, array(&$this, '__sortMetaHeadersCmp'));
+            $amz = "\n".implode("\n", $amz);
+        } else {
+            $amz = '';
+        }
+
+        if ($this->s3->hasAuth()) {
+            // Authorization string (CloudFront stringToSign should only contain a date)
+            if ('cloudfront.amazonaws.com' == $this->headers['Host']) {
+                $headers[] = 'Authorization: ' . $this->s3->__getSignature($this->headers['Date']);
+            } else {
+                if ('v2' === $this->s3->signVer) {
+                    $headers[] = 'Authorization: ' . $this->s3->__getSignature(
+                            $this->verb."\n".
+                            $this->headers['Content-MD5']."\n".
+                            $this->headers['Content-Type']."\n".
+                            $this->headers['Date'].$amz."\n".
+                            $this->resource
+                        );
+                } else {
+                    $amzHeaders = $this->s3->__getSignatureV4(
+                        $this->amzHeaders,
+                        $this->headers,
+                        $this->verb,
+                        $this->uri,
+                        $this->data
+                    );
+                    foreach ($amzHeaders as $k => $v) {
+                        $headers[] = $k . ': ' . $v;
+                    }
+                }
+            }
+        }
+//        if (false !== $this->s3->port) curl_setopt($curl, CURLOPT_PORT, $this->s3->port);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, false);
+        curl_setopt($curl, CURLOPT_WRITEFUNCTION, array(&$this, '__responseWriteCallback'));
+        curl_setopt($curl, CURLOPT_HEADERFUNCTION, array(&$this, '__responseHeaderCallback'));
+        @curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+
+        // Request types
+        switch ($this->verb) {
+            case 'GET': break;
+            case 'PUT': case 'POST':
+            if (false !== $this->fp) {
+                curl_setopt($curl, CURLOPT_PUT, true);
+                curl_setopt($curl, CURLOPT_INFILE, $this->fp);
+                if ($this->size >= 0) {
+                    curl_setopt($curl, CURLOPT_INFILESIZE, $this->size);
+                }
+            } elseif (false !== $this->data) {
+                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $this->verb);
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $this->data);
+                curl_setopt($curl, CURLOPT_INFILESIZE, strlen($this->data));
+            } else {
+                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $this->verb);
+            }
+            break;
+            case 'HEAD':
+                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'HEAD');
+                curl_setopt($curl, CURLOPT_NOBODY, true);
+                break;
+            case 'DELETE':
+                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'DELETE');
+                break;
+            default: break;
+        }
+
+        // Execute, grab errors
+        if (curl_exec($curl))
+            $this->response->code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        else
+            $this->response->error = array(
+                'code' => curl_errno($curl),
+                'message' => curl_error($curl),
+                'resource' => $this->resource
+            );
+
+        @curl_close($curl);
+
+        // Parse body into XML
+        // The case in which there is not application/xml content-type header is to support a DreamObjects case seen, April 2018
+        if (false === $this->response->error && isset($this->response->body) && ((isset($this->response->headers['type']) && 'application/xml' == $this->response->headers['type']) || (!isset($this->response->headers['type']) && 0 === strpos($this->response->body, '<?xml')))) {
+            $this->response->body = simplexml_load_string($this->response->body);
+
+            // Grab S3 errors
+            if (!in_array($this->response->code, array(200, 204, 206)) &&
+                isset($this->response->body->Code)) {
+                $this->response->error = array(
+                    'code' => (string)$this->response->body->Code,
+                );
+                $this->response->error['message'] = isset($this->response->body->Message) ? $this->response->body->Message : '';
+                if (isset($this->response->body->Resource))
+                    $this->response->error['resource'] = (string)$this->response->body->Resource;
+                unset($this->response->body);
+            }
+        }
+
+        // Clean up file resources
+//        if (false !== $this->fp && is_resource($this->fp)) fclose($this->fp);
+        return $this->response;
+    }*/
+    public function getResponse() {
+        $query = '';
+        if (sizeof($this->parameters) > 0) {
+            $query = ('?' !== substr($this->uri, -1)) ? '?' : '&';
+            foreach ($this->parameters as $var => $value)
+                if (null == $value || '' == $value) $query .= $var.'&';
+                else if($var !== 'continuation-token'){
+                    $query .= $var.'='.rawurlencode($value).'&';
+                }
+                else{
+                    $query .= $var.'='.rawurlencode($value).'&';
+                    //$query .= $var.'='.$value.'&';
+                }
+            $query = substr($query, 0, -1);
+            $this->uri .= $query;
+
+            if (array_key_exists('acl', $this->parameters) ||
+                array_key_exists('location', $this->parameters) ||
+                array_key_exists('torrent', $this->parameters) ||
+                array_key_exists('logging', $this->parameters) ||
+                array_key_exists('partNumber', $this->parameters) ||
+                array_key_exists('uploads', $this->parameters) ||
+                array_key_exists('uploadId', $this->parameters))
+                $this->resource .= $query;
+        }
         $url = ($this->s3->useSSL ? 'https://' : 'http://') . ('' !== $this->headers['Host'] ? $this->headers['Host'] : $this->endpoint) . $this->uri;
         //var_dump('bucket: ' . $this->bucket, 'uri: ' . $this->uri, 'resource: ' . $this->resource, 'url: ' . $url);
 

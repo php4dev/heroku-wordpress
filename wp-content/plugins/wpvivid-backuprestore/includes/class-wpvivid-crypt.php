@@ -79,6 +79,12 @@ class WPvivid_crypt
         $this->rsa->loadKey($this->public_key);
         return $this->rsa->encrypt($info);
     }
+
+    public function encrypt_token($token)
+    {
+        $this->rsa->loadKey($this->public_key);
+        return $this->rsa->encrypt($token);
+    }
 }
 
 class WPvivid_Crypt_File

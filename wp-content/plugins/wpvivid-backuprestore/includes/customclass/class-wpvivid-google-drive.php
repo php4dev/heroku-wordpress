@@ -80,6 +80,7 @@ class Wpvivid_Google_drive extends WPvivid_Remote
                 }
 
                 $_GET['name']=sanitize_text_field($_GET['name']);
+                $auth_id = uniqid('wpvivid-auth-');
 
                 $remoteslist=WPvivid_Setting::get_all_remote_options();
                 foreach ($remoteslist as $key=>$value)
@@ -102,7 +103,7 @@ class Wpvivid_Google_drive extends WPvivid_Remote
                     $client->setApprovalPrompt('force');
                     $client->addScope(Google_Service_Drive::DRIVE_FILE);
                     $client->setAccessType('offline');
-                    $client->setState(admin_url() . 'admin.php?page=WPvivid' . '&action=wpvivid_google_drive_finish_auth&name=' . $_GET['name'] . '&default=' . $_GET['default']);
+                    $client->setState(admin_url() . 'admin.php?page=WPvivid' . '&action=wpvivid_google_drive_finish_auth&name=' . $_GET['name'] . '&default=' . $_GET['default'].'&auth_id='.$auth_id);
                     $auth_url = $client->createAuthUrl();
                     header('Location: ' . filter_var($auth_url, FILTER_SANITIZE_URL));
                 }
@@ -129,6 +130,13 @@ class Wpvivid_Google_drive extends WPvivid_Remote
 
                         return;
                     }
+                    $remoteslist = WPvivid_Setting::get_all_remote_options();
+                    foreach ($remoteslist as $key => $value) {
+                        if (isset($value['auth_id']) && isset($_GET['auth_id']) && $value['auth_id'] == $_GET['auth_id']) {
+                            _e('<div class="notice notice-success is-dismissible"><p>You have authenticated the Google Drive account as your remote storage.</p></div>');
+                            return;
+                        }
+                    }
                     if(isset($_POST) && !empty($_POST) && !isset($_POST['refresh_token']))
                     {
                         $err = 'No refresh token was received from Google, which means that you entered client secret incorrectly, or that you did not re-authenticated yet after you corrected it. Please authenticate again.';
@@ -149,6 +157,7 @@ class Wpvivid_Google_drive extends WPvivid_Remote
                     $remote_options['name'] = $_GET['name'];
                     $remote_options['default'] = $_GET['default'];
                     $remote_options['path'] = WPVIVID_GOOGLEDRIVE_DEFAULT_FOLDER;
+                    $remote_options['auth_id'] = $_GET['auth_id'];
                     $ret = $wpvivid_plugin->remote_collection->add_remote($remote_options);
 
                     if ($ret['result'] == 'success') {
@@ -187,6 +196,7 @@ class Wpvivid_Google_drive extends WPvivid_Remote
                 }
 
                 $_GET['name']=sanitize_text_field($_GET['name']);
+                $auth_id = uniqid('wpvivid-auth-');
 
                 $remoteslist=WPvivid_Setting::get_all_remote_options();
                 foreach ($remoteslist as $key=>$value)
@@ -205,7 +215,7 @@ class Wpvivid_Google_drive extends WPvivid_Remote
                     $client->setApprovalPrompt('force');
                     $client->addScope(Google_Service_Drive::DRIVE_FILE);
                     $client->setAccessType('offline');
-                    $client->setState(admin_url() . 'admin.php?page=WPvivid' . '&action=wpvivid_google_drive_finish_update_auth&name=' . $_GET['name'] . '&id=' . $_GET['id']);
+                    $client->setState(admin_url() . 'admin.php?page=WPvivid' . '&action=wpvivid_google_drive_finish_update_auth&name=' . $_GET['name'] . '&id=' . $_GET['id'].'&auth_id='.$auth_id);
                     $auth_url = $client->createAuthUrl();
                     header('Location: ' . filter_var($auth_url, FILTER_SANITIZE_URL));
                 }
@@ -232,6 +242,13 @@ class Wpvivid_Google_drive extends WPvivid_Remote
 
                         return;
                     }
+                    $remoteslist = WPvivid_Setting::get_all_remote_options();
+                    foreach ($remoteslist as $key => $value) {
+                        if (isset($value['auth_id']) && isset($_GET['auth_id']) && $value['auth_id'] == $_GET['auth_id']) {
+                            _e('<div class="notice notice-success is-dismissible"><p>You have successfully updated the storage alias.</p></div>');
+                            return;
+                        }
+                    }
 
                     global $wpvivid_plugin;
 
@@ -244,6 +261,7 @@ class Wpvivid_Google_drive extends WPvivid_Remote
                     $remote_options['token']['created'] = $_POST['created'];
                     $remote_options['name'] = $_GET['name'];
                     $remote_options['path'] = WPVIVID_GOOGLEDRIVE_DEFAULT_FOLDER;
+                    $remote_options['auth_id'] = $_GET['auth_id'];
                     $ret = $wpvivid_plugin->remote_collection->update_remote($_GET['id'], $remote_options);
 
                     if ($ret['result'] == 'success') {

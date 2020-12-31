@@ -294,6 +294,7 @@ class WPvivid_Restore
 
         $wpvivid_backup_pro='wpvivid-backup-pro/wpvivid-backup-pro.php';
         $wpvivid_backup='wpvivid-backuprestore/wpvivid-backuprestore.php';
+        $wpvivid_dashboard='wpvividdashboard/wpvividdashboard.php';
 
         if (($key = array_search($wpvivid_backup_pro, $active_plugins)) !== false)
         {
@@ -301,6 +302,11 @@ class WPvivid_Restore
         }
 
         if (($key = array_search($wpvivid_backup, $active_plugins)) !== false)
+        {
+            unset($active_plugins[$key]);
+        }
+
+        if (($key = array_search($wpvivid_dashboard, $active_plugins)) !== false)
         {
             unset($active_plugins[$key]);
         }
@@ -329,12 +335,14 @@ class WPvivid_Restore
 
         $wpvivid_backup_pro='wpvivid-backup-pro/wpvivid-backup-pro.php';
         $wpvivid_backup='wpvivid-backuprestore/wpvivid-backuprestore.php';
+        $wpvivid_dashboard='wpvividdashboard/wpvividdashboard.php';
 
         $wpvivid_plugin->restore_data->write_log('Deleting all plugins','notice');
 
         $all_plugins = get_plugins();
         unset($all_plugins[$wpvivid_backup_pro]);
         unset($all_plugins[$wpvivid_backup]);
+        unset($all_plugins[$wpvivid_dashboard]);
 
         if (!empty($all_plugins))
         {

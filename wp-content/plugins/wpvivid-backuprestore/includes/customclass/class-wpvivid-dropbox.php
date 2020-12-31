@@ -313,7 +313,8 @@ class WPvivid_Dropbox extends WPvivid_Remote {
                             return;
                         }
                     }
-                    $state = admin_url() . 'admin.php?page=WPvivid' . '&action=wpvivid_dropbox_finish_auth&name=' . $_GET['name'] . '&bdefault=' . $_GET['bdefault'];
+                    $auth_id = uniqid('wpvivid-auth-');
+                    $state = admin_url() . 'admin.php?page=WPvivid' . '&action=wpvivid_dropbox_finish_auth&name=' . $_GET['name'] . '&bdefault=' . $_GET['bdefault'].'&auth_id='.$auth_id;
                     $url = Dropbox_Base::getUrl($this->redirect_url, $state);
                     header('Location: ' . filter_var($url, FILTER_SANITIZE_URL));
                 }
@@ -324,6 +325,13 @@ class WPvivid_Dropbox extends WPvivid_Remote {
             else if($_GET['action'] === 'wpvivid_dropbox_finish_auth')
             {
                 try {
+                    $remoteslist = WPvivid_Setting::get_all_remote_options();
+                    foreach ($remoteslist as $key => $value) {
+                        if (isset($value['auth_id']) && isset($_GET['auth_id']) && $value['auth_id'] == $_GET['auth_id']) {
+                            _e('<div class="notice notice-success is-dismissible"><p>You have authenticated the Dropbox account as your remote storage.</p></div>');
+                            return;
+                        }
+                    }
                     if (!isset($_POST['code'])) {
                         header('Location: ' . admin_url() . 'admin.php?page=' . WPVIVID_PLUGIN_SLUG . '&action=wpvivid_dropbox_drive&result=error&resp_msg=' . 'Get Dropbox token failed.');
                     } else {
@@ -333,6 +341,7 @@ class WPvivid_Dropbox extends WPvivid_Remote {
                         $remote_options['name'] = $_GET['name'];
                         $remote_options['path'] = WPVIVID_DROPBOX_DEFAULT_FOLDER;
                         $remote_options['default'] = $_GET['bdefault'];
+                        $remote_options['auth_id'] = $_GET['auth_id'];
                         $ret = $wpvivid_plugin->remote_collection->add_remote($remote_options);
                         if ($ret['result'] == 'success') {
                             header('Location: ' . admin_url() . 'admin.php?page=' . WPVIVID_PLUGIN_SLUG . '&action=wpvivid_dropbox_drive&result=success');
@@ -371,7 +380,7 @@ class WPvivid_Dropbox extends WPvivid_Remote {
                     }
 
                     $_GET['name'] = sanitize_text_field($_GET['name']);
-
+                    $auth_id = uniqid('wpvivid-auth-');
                     $remoteslist = WPvivid_Setting::get_all_remote_options();
                     foreach ($remoteslist as $key => $value) {
                         if (isset($value['name']) && $value['name'] == $_GET['name'] && $key != $_GET['id']) {
@@ -379,7 +388,7 @@ class WPvivid_Dropbox extends WPvivid_Remote {
                             return;
                         }
                     }
-                    $state = admin_url() . 'admin.php?page=WPvivid' . '&action=wpvivid_dropbox_finish_update_auth&name=' . $_GET['name'] . '&id=' . $_GET['id'];
+                    $state = admin_url() . 'admin.php?page=WPvivid' . '&action=wpvivid_dropbox_finish_update_auth&name=' . $_GET['name'] . '&id=' . $_GET['id'].'&auth_id='.$auth_id;
                     $url = Dropbox_Base::getUrl($this->redirect_url, $state);
                     header('Location: ' . filter_var($url, FILTER_SANITIZE_URL));
                 }
@@ -390,6 +399,13 @@ class WPvivid_Dropbox extends WPvivid_Remote {
             else if($_GET['action'] === 'wpvivid_dropbox_finish_update_auth')
             {
                 try {
+                    $remoteslist = WPvivid_Setting::get_all_remote_options();
+                    foreach ($remoteslist as $key => $value) {
+                        if (isset($value['auth_id']) && isset($_GET['auth_id']) && $value['auth_id'] == $_GET['auth_id']) {
+                            _e('<div class="notice notice-success is-dismissible"><p>You have successfully updated the storage alias.</p></div>');
+                            return;
+                        }
+                    }
                     if (!isset($_POST['code'])) {
                         header('Location: ' . admin_url() . 'admin.php?page=' . WPVIVID_PLUGIN_SLUG . '&action=wpvivid_dropbox_drive_update&result=error&resp_msg=' . 'Get Dropbox token failed.');
                     } else {
@@ -398,6 +414,7 @@ class WPvivid_Dropbox extends WPvivid_Remote {
                         $remote_options['token'] = $_POST['code'];
                         $remote_options['name'] = $_GET['name'];
                         $remote_options['path'] = WPVIVID_DROPBOX_DEFAULT_FOLDER;
+                        $remote_options['auth_id'] = $_GET['auth_id'];
                         $ret = $wpvivid_plugin->remote_collection->update_remote($_GET['id'], $remote_options);
                         if ($ret['result'] == 'success') {
                             header('Location: ' . admin_url() . 'admin.php?page=' . WPVIVID_PLUGIN_SLUG . '&action=wpvivid_dropbox_drive_update&result=success');

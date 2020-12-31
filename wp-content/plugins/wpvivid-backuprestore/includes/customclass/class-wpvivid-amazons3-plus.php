@@ -693,7 +693,14 @@ class WPvivid_AMAZONS3Class extends WPvivid_Remote{
                 $this->bucket = $path_temp;
                 $this->options['s3Path'] = '';
             }
-            $amazons3 = new WPvivid_Base_S3($this->options['access'],$this->options['secret']);
+
+            if(isset($this->options['is_encrypt']) && $this->options['is_encrypt'] == 1){
+                $secret = base64_decode($this->options['secret']);
+            }
+            else {
+                $secret = $this->options['secret'];
+            }
+            $amazons3 = new WPvivid_Base_S3($this->options['access'],$secret);
 
             $amazons3 -> setExceptions();
             if($this->options['classMode'])
@@ -714,7 +721,13 @@ class WPvivid_AMAZONS3Class extends WPvivid_Remote{
         else
         {
             $this->bucket= $this->options['bucket'];
-            $amazons3 = new WPvivid_Base_S3($this->options['access'],$this->options['secret']);
+            if(isset($this->options['is_encrypt']) && $this->options['is_encrypt'] == 1){
+                $secret = base64_decode($this->options['secret']);
+            }
+            else {
+                $secret = $this->options['secret'];
+            }
+            $amazons3 = new WPvivid_Base_S3($this->options['access'],$secret);
             $amazons3 -> setExceptions();
             if($this->options['classMode'])
                 $amazons3 -> setStorageClass();
@@ -770,6 +783,9 @@ class WPvivid_AMAZONS3Class extends WPvivid_Remote{
                 break;
             case 'cn-north-1':
                 $endpoint = 's3.'.$region.'.amazonaws.com.cn';
+                break;
+            case 'af-south-1':
+                $endpoint = 's3.'.$region.'.amazonaws.com';
                 break;
             default:
                 $endpoint = 's3.amazonaws.com';

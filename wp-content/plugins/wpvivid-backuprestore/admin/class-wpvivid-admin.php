@@ -316,7 +316,7 @@ class WPvivid_Admin {
     public function add_action_links( $links )
     {
         $settings_link = array(
-            '<a href="' . admin_url( 'admin.php?page=' . $this->plugin_name ) . '">' . __('Settings', $this->plugin_name) . '</a>',
+            '<a href="' . admin_url( 'admin.php?page=' . apply_filters('wpvivid_white_label_slug', $this->plugin_name) ) . '">' . __('Settings', $this->plugin_name) . '</a>',
         );
         return array_merge(  $settings_link, $links );
     }
@@ -996,7 +996,7 @@ class WPvivid_Admin {
                 var comment = jQuery('#wpvivid_debug_comment').val();
 
                 var ajax_data = {
-                    'action': 'Awpvivid_send_debug_info',
+                    'action': 'wpvivid_send_debug_info',
                     'user_mail': wpvivid_user_mail,
                     'server_type':server_type,
                     'host_provider':host_provider,

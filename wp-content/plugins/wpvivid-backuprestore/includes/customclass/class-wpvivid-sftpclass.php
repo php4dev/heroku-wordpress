@@ -268,7 +268,12 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
     {
         $host = $this->options['host'];
         $username = $this->options['username'];
-        $password = $this->options['password'];
+        if(isset($this->options['is_encrypt']) && $this->options['is_encrypt'] == 1){
+            $password = base64_decode($this->options['password']);
+        }
+        else {
+            $password = $this->options['password'];
+        }
         $path = $this->options['path'];
 
         $port = empty($this->options['port'])?22:$this->options['port'];
@@ -353,7 +358,7 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
             return $ret;
         }
 
-        $this->options['password']=sanitize_text_field($this->options['password']);
+        //$this->options['password']=sanitize_text_field($this->options['password']);
 
         if(empty($this->options['password']))
         {
@@ -435,7 +440,12 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
             $this->options['port'] = 22;
         $host = $this->options['host'];
         $username = $this->options['username'];
-        $password = $this->options['password'];
+        if(isset($this->options['is_encrypt']) && $this->options['is_encrypt'] == 1){
+            $password = base64_decode($this->options['password']);
+        }
+        else {
+            $password = $this->options['password'];
+        }
         $path = $this->options['path'];
         $port = $this->options['port'];
 
@@ -522,7 +532,12 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
 
             $host = $this->options['host'];
             $username = $this->options['username'];
-            $password = $this->options['password'];
+            if(isset($this->options['is_encrypt']) && $this->options['is_encrypt'] == 1){
+                $password = base64_decode($this->options['password']);
+            }
+            else {
+                $password = $this->options['password'];
+            }
             $path = $this->options['path'];
             $port = empty($this->options['port']) ? 22 : $this->options['port'];
             $local_path = trailingslashit($local_path) . $file['file_name'];
@@ -576,7 +591,12 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
     public function delete($remote,$files){
         $host = $remote['options']['host'];
         $username = $remote['options']['username'];
-        $password = $remote['options']['password'];
+        if(isset($remote['options']['is_encrypt']) && $remote['options']['is_encrypt'] == 1){
+            $password = base64_decode($remote['options']['password']);
+        }
+        else {
+            $password = $remote['options']['password'];
+        }
         $path = $remote['options']['path'];
         $port = empty($remote['options']['port'])?22:$remote['options']['port'];
 
