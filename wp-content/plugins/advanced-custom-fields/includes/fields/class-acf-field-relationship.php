@@ -250,7 +250,7 @@ class acf_field_relationship extends acf_field {
 			
 			
 			// order posts by search
-			if( $is_search && empty($args['orderby']) ) {
+			if( $is_search && empty($args['orderby']) && isset($args['s']) ) {
 				
 				$posts = acf_order_by_search( $posts, $args['s'] );
 				
@@ -473,9 +473,7 @@ class acf_field_relationship extends acf_field {
 		/* search */	
 		if( in_array('search', $filters) ): ?>
 		<div class="filter -search">
-			<span>
-				<?php acf_text_input( array('placeholder' => __("Search...",'acf'), 'data-filter' => 's') ); ?>
-			</span>
+			<?php acf_text_input( array('placeholder' => __("Search...",'acf'), 'data-filter' => 's') ); ?>
 		</div>
 		<?php endif; 
 		
@@ -483,9 +481,7 @@ class acf_field_relationship extends acf_field {
 		/* post_type */	
 		if( in_array('post_type', $filters) ): ?>
 		<div class="filter -post_type">
-			<span>
-				<?php acf_select_input( array('choices' => $filter_post_type_choices, 'data-filter' => 'post_type') ); ?>
-			</span>
+			<?php acf_select_input( array('choices' => $filter_post_type_choices, 'data-filter' => 'post_type') ); ?>
 		</div>
 		<?php endif; 
 		
@@ -493,9 +489,7 @@ class acf_field_relationship extends acf_field {
 		/* post_type */	
 		if( in_array('taxonomy', $filters) ): ?>
 		<div class="filter -taxonomy">
-			<span>
-				<?php acf_select_input( array('choices' => $filter_taxonomy_choices, 'data-filter' => 'taxonomy') ); ?>
-			</span>
+			<?php acf_select_input( array('choices' => $filter_taxonomy_choices, 'data-filter' => 'taxonomy') ); ?>
 		</div>
 		<?php endif; ?>		
 	</div>
@@ -521,7 +515,7 @@ class acf_field_relationship extends acf_field {
 					<li>
 						<?php acf_hidden_input( array('name' => $field['name'].'[]', 'value' => $post->ID) ); ?>
 						<span data-id="<?php echo esc_attr($post->ID); ?>" class="acf-rel-item">
-							<?php echo $this->get_post_title( $post, $field ); ?>
+							<?php echo acf_esc_html( $this->get_post_title( $post, $field ) ); ?>
 							<a href="#" class="acf-icon -minus small dark" data-name="remove_item"></a>
 						</span>
 					</li>
@@ -649,7 +643,7 @@ class acf_field_relationship extends acf_field {
 	/*
 	*  format_value()
 	*
-	*  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
+	*  This filter is applied to the $value after it is loaded from the db and before it is returned to the template
 	*
 	*  @type	filter
 	*  @since	3.6
@@ -739,7 +733,7 @@ class acf_field_relationship extends acf_field {
 	/*
 	*  update_value()
 	*
-	*  This filter is appied to the $value before it is updated in the db
+	*  This filter is applied to the $value before it is updated in the db
 	*
 	*  @type	filter
 	*  @since	3.6
