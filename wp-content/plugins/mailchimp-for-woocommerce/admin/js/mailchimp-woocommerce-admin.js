@@ -2,18 +2,6 @@
 	'use strict';
 
 	$( window ).load(function() {
-		// show/hide wizard tabs tooltips
-		$('.wizard-tab a').hover(function (e) {
-			e.stopPropagation();
-			$('.wizard-tab-tooltip').hide();
-			$(this).next('.wizard-tab-tooltip').show();
-		});
-
-		$('.wizard-tab a').mouseleave(function (e) {
-			e.stopPropagation();
-			$('.wizard-tab-tooltip').hide();
-			$('.wizard-tab-active .wizard-tab-tooltip').show();
-		});
 
 		// show/hide optional settings
 		var optionalSettings = false;
@@ -59,8 +47,6 @@
 				$('#log-viewer .spinner').hide().css("visibility", "hidden");
 				$('#log-viewer #log-content').css("visibility", "visible");
 			});
-			
-			
 		});
 
 		$('#mailchimp-log-pref').change(function (e) {
@@ -97,14 +83,8 @@
 		});
 
 		// delete log button
-		var mailchimp_woocommerce_delete_log = false;
 		$('.delete-log-button').click(function (e) {
-			if (mailchimp_woocommerce_delete_log) {
-				mailchimp_woocommerce_delete_log = false; // reset flag
-				return; // let the event bubble away
-			}
 			e.preventDefault();
-			var me = $(e.target);
 
 			Swal.fire({
 				title: phpVars.l10n.are_you_sure,
@@ -124,8 +104,22 @@
 
 			}).then((result) => {
 				if (result.value) {
-					mailchimp_woocommerce_delete_log = true;
-					me.click();
+					var data = {
+						action:'mailchimp_woocommerce_delete_log_file',
+						log_file: $('#log_file').val()
+					};
+
+					$('#log-viewer #log-content').css("visibility", "hidden");
+					$('#log-viewer .spinner').show().css("visibility", "visible");
+
+					$.post(ajaxurl, data, function(response) {
+						console.log('deleted log file', data.log_file);
+						if (response.success) {
+							window.location.reload();
+						}
+						$('#log-viewer .spinner').hide().css("visibility", "hidden");
+						$('#log-viewer #log-content').css("visibility", "visible");
+					});
 				}
 			})
 		});
@@ -133,7 +127,7 @@
 		$('.mc-woocommerce-resync-button').click(function(e) {
 			e.preventDefault();
 			Swal.fire({
-				title: 'Resync Request In Progress',
+				title: phpVars.l10n.resync_in_progress,
 				onBeforeOpen: () => {
 					Swal.showLoading()
 				}
@@ -145,7 +139,7 @@
 				window.location.reload();
 			}).fail(function(xhr) {
 				Swal.hideLoading();
-				Swal.showValidationMessage("Could not resync orders, please try again.");
+				Swal.showValidationMessage(phpVars.l10n.resync_failed);
 			});
 		});
 
@@ -167,7 +161,7 @@
 
 			const swalWithBootstrapButtons = Swal.mixin({
 				customClass: {
-				  confirmButton: 'button button-primary tab-content-submit disconnect-button',
+				  confirmButton: 'button button-primary tab-content-submit disconnect-confirm',
 				  cancelButton: 'button button-default mc-woocommerce-resync-button disconnect-button'
 				},
 				buttonsStyling: false,
@@ -178,6 +172,8 @@
 				text: phpVars.l10n.store_disconnect_subtitle,
 				type: 'warning',
 				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
 				confirmButtonText: phpVars.l10n.store_disconnect_confirm,
 				cancelButtonText: phpVars.l10n.no_cancel,
 				reverseButtons: true,
@@ -195,7 +191,7 @@
 						data+="&mailchimp_woocommerce_disconnect_store=1"
 
 						Swal.fire({
-							title: 'Disconnecting Store In Progress',
+							title: phpVars.l10n.store_disconnect_in_progress,
 							onBeforeOpen: () => {
 								Swal.showLoading()
 							}
@@ -288,14 +284,14 @@
 				
 				swalWithBootstrapButtons.fire({
 					type : 'error',
-					title: 'Login Popup is blocked!',
-					text: 'Please allow your browser to show popups for this page',
+					title: phpVars.l10n.login_popup_blocked,
+					text: phpVars.l10n.login_popup_blocked_desc,
 					footer: '<a href="https://mailchimp.com/help/enable-pop-ups-in-your-browser/">How to Enable Pop-ups in Your Browser</a>',
 					showCancelButton: true,
 					cancelButtonColor: '#d33',
 					confirmButtonColor: '#7fad45',
-					cancelButtonText: 'Cancel',
-					confirmButtonText: 'Try again',
+					cancelButtonText: phpVars.l10n.no_cancel,
+					confirmButtonText: phpVars.l10n.try_again,
 					reverseButtons: true
 				}).then((result) => {
 					if (result.value) {
@@ -314,22 +310,14 @@
 						$('#mailchimp-oauth-waiting').hide();
 						$('#mailchimp-oauth-connecting').show();
 
-						// grab a copy of the ajax settings default headers
-						var previous_default_headers = ($.ajaxSettings && $.ajaxSettings.headers) ?
-							$.ajaxSettings.headers : {};
+						var checkData = {
+							action:'mailchimp_woocommerce_oauth_status',
+							url: domain + '/api/status/' + token,
+						};
 
-						// set the default headers to NOTHING because the oauth server will block
-						// any non standard header that it was not expecting to receive and it was
-						// preventing folks from being able to connect.
-						$.ajaxSettings.headers = {};
-						
 						// ping status to check if auth was accepted
-						$.post(domain + '/api/status/' + token).done(function(statusData) {
-
-							// set the headers back to the previous defaults
-							$.ajaxSettings.headers = previous_default_headers;
-
-							if (statusData.status == "accepted") {
+						$.post(ajaxurl, checkData).done(function(statusData) {							
+							if (statusData.data.status == "accepted") {
 								// call for finish endpoint to retrieve access_token
 								var finishData = {
 									action: 'mailchimp_woocommerce_oauth_finish', 
@@ -396,12 +384,12 @@
 			$.post(ajaxurl, data, function(response) {
 				if (response.success) {
 					$('#mc-comm-save').html(response.data);
-					$('#mc-comm-save').css('color', '#628735').show().fadeOut(5000);
+					$('#mc-comm-save').css('color', '#628735').show().fadeOut(3000);
 					switch_button.checked = opt;
 				}
 				else {
 					$('#mc-comm-save').html(response.data.error);
-					$('#mc-comm-save').css('color', 'red').show().fadeOut(5000);
+					$('#mc-comm-save').css('color', 'red').show().fadeOut(3000);
 					switch_button.checked = 1 - opt;
 					$('.comm_box_status').hide();
 					$('#comm_box_status_' + (1 - opt)).show();
@@ -432,7 +420,7 @@
 		});
 
 		// Account create functionality
-		$('#mc-woocommerce-create-account-next').click(function () {
+		$('#mc-woocommerce-create-account-next').unbind().click(function (e) {
 			var next_button = $(this);
 			var spinner = $(this).next('.spinner');
 			spinner.css('visibility', 'visible')
@@ -491,7 +479,7 @@
 			
 		});
 
-		$('#mc-woocommerce-create-account-go').click(function () {
+		$('#mc-woocommerce-create-account-go').unbind().click(function () {
 			var email = $('input#email');
 			var firstName = $('input#first_name');
 			var lastName = $('input#last_name');
@@ -715,8 +703,8 @@
 				};
 
 				Swal.fire({
-					title: 'Sending Support Request',
-					html: 'please wait',
+					title: phpVars.l10n.support_message_sending,
+					html: phpVars.l10n.please_wait,
 					onBeforeOpen: () => {
 						Swal.showLoading();
 						$.post(ajaxurl, data, function(response) {
@@ -730,8 +718,8 @@
 								Swal.fire({
 									icon: 'success',
 									timer: 2000,
-									title: 'Message Received',
-									html: 'Thanks, your message has been received.',
+									title: phpVars.l10n.support_message_ok,
+									html: phpVars.l10n.support_message_desc,
 								});
 							} else if (response.data.error) {
 								$('#error').show();
@@ -753,6 +741,40 @@
 			}
 		});
 
+		var checkbox_label = phpVars.l10n.subscribe_newsletter;
+		var label = checkbox_label;
+		$('#mailchimp-woocommerce-newsletter-checkbox-label').keyup(function(event){
+			event.stopPropagation();
+			if ($('#mailchimp-woocommerce-newsletter-checkbox-label').val() == "") {
+				label = checkbox_label;
+			}
+			else label = $('#mailchimp-woocommerce-newsletter-checkbox-label').val(); 
+			$('#preview-label').html(label);
+		});
+		
+		switchPreviewCheckbox(phpVars.current_optin_state)
+		$('input[type="radio"]').change(function(event){
+			event.stopPropagation();
+			switchPreviewCheckbox(event.currentTarget.value);
+		});
+		
+		function switchPreviewCheckbox(currentState) {
+			switch (currentState) {
+				case 'check':
+					$('.mailchimp-newsletter').show();
+					$('.mailchimp-newsletter input').prop( "checked", true );
+					break;
+				case 'uncheck':
+					$('.mailchimp-newsletter').show();
+					$('.mailchimp-newsletter input').prop( "checked", false );
+					break;
+				case 'hide':
+					$('.mailchimp-newsletter').hide();
+					break;
+				default:
+					break;
+			}
+		}
 	});
 })( jQuery );
 

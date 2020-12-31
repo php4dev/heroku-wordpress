@@ -22,11 +22,11 @@
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-namespace SkyVerge\WooCommerce\PluginFramework\v5_5_4;
+namespace SkyVerge\WooCommerce\PluginFramework\v5_10_0;
 
 defined( 'ABSPATH' ) or exit;
 
-if ( ! class_exists( '\\SkyVerge\\WooCommerce\\PluginFramework\\v5_5_4\\SV_WC_Plugin' ) ) :
+if ( ! class_exists( '\\SkyVerge\\WooCommerce\\PluginFramework\\v5_10_0\\SV_WC_Plugin' ) ) :
 
 
 /**
@@ -37,13 +37,13 @@ if ( ! class_exists( '\\SkyVerge\\WooCommerce\\PluginFramework\\v5_5_4\\SV_WC_Pl
  * plugin.  This class handles all the "non-feature" support tasks such
  * as verifying dependencies are met, loading the text domain, etc.
  *
- * @version 5.5.0
+ * @version 5.8.0
  */
 abstract class SV_WC_Plugin {
 
 
 	/** Plugin Framework Version */
-	const VERSION = '5.5.4';
+	const VERSION = '5.10.0';
 
 	/** @var object single instance of plugin */
 	protected static $instance;
@@ -221,7 +221,7 @@ abstract class SV_WC_Plugin {
 	 */
 	protected function init_hook_deprecator() {
 
-		$this->hook_deprecator = new SV_WC_Hook_Deprecator( $this->get_plugin_name(), $this->get_deprecated_hooks() );
+		$this->hook_deprecator = new SV_WC_Hook_Deprecator( $this->get_plugin_name(), array_merge( $this->get_framework_deprecated_hooks(), $this->get_deprecated_hooks() ) );
 	}
 
 
@@ -418,9 +418,15 @@ abstract class SV_WC_Plugin {
 		require_once(  $framework_path . '/Addresses/Address.php' );
 		require_once(  $framework_path . '/Addresses/Customer_Address.php' );
 
+		// Settings API
+		require_once( $framework_path . '/Settings_API/Abstract_Settings.php' );
+		require_once( $framework_path . '/Settings_API/Setting.php' );
+		require_once( $framework_path . '/Settings_API/Control.php' );
+
 		// common utility methods
 		require_once( $framework_path . '/class-sv-wc-helper.php' );
 		require_once( $framework_path . '/Country_Helper.php' );
+		require_once( $framework_path . '/admin/Notes_Helper.php' );
 
 		// backwards compatibility for older WC versions
 		require_once( $framework_path . '/class-sv-wc-plugin-compatibility.php' );
@@ -445,7 +451,11 @@ abstract class SV_WC_Plugin {
 		require_once( $framework_path . '/api/abstract-sv-wc-api-json-request.php' );
 		require_once( $framework_path . '/api/abstract-sv-wc-api-json-response.php' );
 
+		// REST API Controllers
+		require_once( $framework_path . '/rest-api/Controllers/Settings.php' );
+
 		// Handlers
+		require_once( $framework_path . '/Handlers/Script_Handler.php' );
 		require_once( $framework_path . '/class-sv-wc-plugin-dependencies.php' );
 		require_once( $framework_path . '/class-sv-wc-hook-deprecator.php' );
 		require_once( $framework_path . '/class-sv-wp-admin-message-handler.php' );
@@ -456,8 +466,49 @@ abstract class SV_WC_Plugin {
 
 
 	/**
-	 * Return deprecated/removed hooks. Implementing classes should override this
-	 * and return an array of deprecated/removed hooks in the following format:
+	 * Gets a list of framework deprecated/removed hooks.
+	 *
+	 * @see SV_WC_Plugin::init_hook_deprecator()
+	 * @see SV_WC_Plugin::get_deprecated_hooks()
+	 *
+	 * @since 5.8.0
+	 *
+	 * @return array associative array
+	 */
+	private function get_framework_deprecated_hooks() {
+
+		$plugin_id          = $this->get_id();
+		$deprecated_hooks   = [];
+		$deprecated_filters = [
+			/** @see SV_WC_Payment_Gateway_My_Payment_Methods handler - once migrated to WC core tokens UI, we removed these and have no replacement */
+			// TODO: remove deprecated hooks handling by version 6.0.0 or by 2021-02-25 {FN 2020-02-25}
+			"wc_{$plugin_id}_my_payment_methods_table_html",
+			"wc_{$plugin_id}_my_payment_methods_table_head_html",
+			"wc_{$plugin_id}_my_payment_methods_table_title",
+			"wc_{$plugin_id}_my_payment_methods_table_title_html",
+			"wc_{$plugin_id}_my_payment_methods_table_row_html",
+			"wc_{$plugin_id}_my_payment_methods_table_body_html",
+			"wc_{$plugin_id}_my_payment_methods_table_body_row_data",
+			"wc_{$plugin_id}_my_payment_methods_table_method_expiry_html",
+			"wc_{$plugin_id}_my_payment_methods_table_actions_html",
+		];
+
+		foreach ( $deprecated_filters as $deprecated_filter ) {
+			$deprecated_hooks[ $deprecated_filter ] = [
+				'removed'     => true,
+				'replacement' => false,
+				'version'     => '5.8.1'
+			];
+		}
+
+		return $deprecated_hooks;
+	}
+
+
+	/**
+	 * Gets a list of the plugin's deprecated/removed hooks.
+	 *
+	 * Implementing classes should override this and return an array of deprecated/removed hooks in the following format:
 	 *
 	 * $old_hook_name = array {
 	 *   @type string $version version the hook was deprecated/removed in
@@ -467,12 +518,13 @@ abstract class SV_WC_Plugin {
 	 * }
 	 *
 	 * @since 4.3.0
+	 *
 	 * @return array
 	 */
 	protected function get_deprecated_hooks() {
 
 		// stub method
-		return array();
+		return [];
 	}
 
 
@@ -928,6 +980,21 @@ abstract class SV_WC_Plugin {
 	public function get_admin_notice_handler() {
 
 		return $this->admin_notice_handler;
+	}
+
+
+	/**
+	 * Gets the settings API handler instance.
+	 *
+	 * Plugins can use this to init the settings API handler.
+	 *
+	 * @since 5.7.0
+	 *
+	 * @return void|Settings_API\Abstract_Settings
+	 */
+	public function get_settings_handler() {
+
+		return;
 	}
 
 

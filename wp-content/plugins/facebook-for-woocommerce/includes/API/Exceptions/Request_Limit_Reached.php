@@ -12,7 +12,7 @@ namespace SkyVerge\WooCommerce\Facebook\API\Exceptions;
 
 defined( 'ABSPATH' ) or exit;
 
-use SkyVerge\WooCommerce\PluginFramework\v5_5_4 as Framework;
+use SkyVerge\WooCommerce\PluginFramework\v5_10_0 as Framework;
 
 /**
  * Exception thrown in response to a rate limiting error.
@@ -20,6 +20,36 @@ use SkyVerge\WooCommerce\PluginFramework\v5_5_4 as Framework;
  * @since 2.0.0
  */
 class Request_Limit_Reached extends Framework\SV_WC_API_Exception {
+
+
+	/** @var \DateTime date & time representing when the request limit will be lifted */
+	protected $throttle_end;
+
+
+	/**
+	 * Gets the estimated throttle end.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @return \DateTime|null
+	 */
+	public function get_throttle_end() {
+
+		return $this->throttle_end;
+	}
+
+
+	/**
+	 * Sets the estimated throttle end.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param \DateTime $date_time date time object representing when the throttle will end
+	 */
+	public function set_throttle_end( \DateTime $date_time ) {
+
+		$this->throttle_end = $date_time;
+	}
 
 
 }

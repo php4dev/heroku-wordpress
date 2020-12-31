@@ -9,7 +9,7 @@
  */
 
 use SkyVerge\WooCommerce\Facebook\Products;
-use SkyVerge\WooCommerce\PluginFramework\v5_5_4 as Framework;
+use SkyVerge\WooCommerce\PluginFramework\v5_10_0 as Framework;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -25,6 +25,12 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 	 * Custom FB Product proxy class
 	 */
 	class WC_Facebook_Product {
+		// Used for the background sync
+		const PRODUCT_PREP_TYPE_ITEMS_BATCH = 'items_batch';
+		// Used for the background feed upload
+		const PRODUCT_PREP_TYPE_FEED = 'feed';
+		// Used for direct update and create calls
+		const PRODUCT_PREP_TYPE_NORMAL = 'normal';
 
 		// Should match facebook-commerce.php while we migrate that code over
 		// to this object.
@@ -53,14 +59,14 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 			$this->woo_product            = wc_get_product( $wpid );
 			$this->gallery_urls           = null;
 			$this->fb_use_parent_image    = null;
-			$this->fb_price               = 0;
 			$this->main_description       = '';
 			$this->sync_short_description = \WC_Facebookcommerce_Integration::PRODUCT_DESCRIPTION_MODE_SHORT === facebook_for_woocommerce()->get_integration()->get_product_description_mode();
 
 			if ( $meta = get_post_meta( $wpid, self::FB_VISIBILITY, true ) ) {
 				$this->fb_visibility = wc_string_to_bool( $meta );
 			} else {
-				$this->fb_visibility = ''; // for products that haven't synced yet
+				$this->fb_visibility = '';
+				// for products that haven't synced yet
 			}
 
 			// Variable products should use some data from the parent_product
@@ -123,47 +129,16 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 			}
 		}
 
-		public function get_fb_price() {
-			// Cache the price in this object in case of multiple calls.
-			if ( $this->fb_price ) {
-				return $this->fb_price;
-			}
+		public function get_fb_price( $for_items_batch = false ) {
+			$product_price = Products::get_product_price( $this->woo_product );
 
-			$price = get_post_meta(
-				$this->id,
-				self::FB_PRODUCT_PRICE,
-				true
-			);
+			return $for_items_batch ? self::format_price_for_fb_items_batch( $product_price ) : $product_price;
+		}
 
-			if ( is_numeric( $price ) ) {
-				return intval( round( $price * 100 ) );
-			}
-
-			// If product is composite product, we rely on their pricing.
-			if ( class_exists( 'WC_Product_Composite' )
-			&& $this->woo_product->get_type() === 'composite' ) {
-				$price          = get_option( 'woocommerce_tax_display_shop' ) === 'incl'
-				? $this->woo_product->get_composite_price_including_tax()
-				: $this->woo_product->get_composite_price();
-				$this->fb_price = intval( round( $price * 100 ) );
-				return $this->fb_price;
-			}
-
-			// Get regular price: regular price doesn't include sales
-			$regular_price = floatval( $this->get_regular_price() );
-
-			// If it's a bookable product, the normal price is null/0.
-			if ( ! $regular_price && $this->is_bookable_product() ) {
-
-				$product       = new WC_Product_Booking( $this->woo_product );
-				$regular_price = is_callable( [ $product, 'get_display_cost' ] ) ? $product->get_display_cost() : 0;
-			}
-
-			// Get regular price plus tax, if it's set to display and taxable
-			// whether price includes tax is based on 'woocommerce_tax_display_shop'
-			$price          = $this->get_price_plus_tax( $regular_price );
-			$this->fb_price = intval( round( $price * 100 ) );
-			return $this->fb_price;
+		private static function format_price_for_fb_items_batch( $price ) {
+			// items_batch endpoint requires a string and a currency code
+			$formatted = ( $price / 100.0 ) . ' ' . get_woocommerce_currency();
+			return $formatted;
 		}
 
 
@@ -178,7 +153,7 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 		 */
 		private function is_bookable_product() {
 
-			return facebook_for_woocommerce()->is_plugin_active( 'woocommerce-bookings.php') && class_exists( 'WC_Product_Booking' ) && is_callable( 'is_wc_booking_product' ) && is_wc_booking_product( $this );
+			return facebook_for_woocommerce()->is_plugin_active( 'woocommerce-bookings.php' ) && class_exists( 'WC_Product_Booking' ) && is_callable( 'is_wc_booking_product' ) && is_wc_booking_product( $this );
 		}
 
 
@@ -189,7 +164,7 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 		 */
 		public function get_all_image_urls() {
 
-			$image_urls = [];
+			$image_urls = array();
 
 			$product_image_url        = wp_get_attachment_url( $this->woo_product->get_image_id() );
 			$parent_product_image_url = null;
@@ -206,17 +181,17 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 			switch ( $this->woo_product->get_meta( Products::PRODUCT_IMAGE_SOURCE_META_KEY ) ) {
 
 				case Products::PRODUCT_IMAGE_SOURCE_CUSTOM:
-					$image_urls = [ $custom_image_url, $product_image_url, $parent_product_image_url ];
-				break;
+					$image_urls = array( $custom_image_url, $product_image_url, $parent_product_image_url );
+					break;
 
 				case Products::PRODUCT_IMAGE_SOURCE_PARENT_PRODUCT:
-					$image_urls = [ $parent_product_image_url, $product_image_url ];
-				break;
+					$image_urls = array( $parent_product_image_url, $product_image_url );
+					break;
 
 				case Products::PRODUCT_IMAGE_SOURCE_PRODUCT:
 				default:
-					$image_urls = [ $product_image_url, $parent_product_image_url ];
-				break;
+					$image_urls = array( $product_image_url, $parent_product_image_url );
+					break;
 			}
 
 			$image_urls = array_merge( $image_urls, $this->get_gallery_urls() );
@@ -229,6 +204,24 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 
 			return $image_urls;
 		}
+
+
+		/**
+		 * Gets the list of additional image URLs for the product from the complete list of image URLs.
+		 *
+		 * It assumes the first URL will be used as the product image.
+		 * It returns 20 or less image URLs because Facebook doesn't allow more items on the additional_image_urls field.
+		 *
+		 * @since 2.0.2
+		 *
+		 * @param array $image_urls all image URLs for the product
+		 * @return array
+		 */
+		private function get_additional_image_urls( $image_urls ) {
+
+			return array_slice( $image_urls, 1, 20 );
+		}
+
 
 		// Returns the parent image id for variable products only.
 		public function get_parent_image_id() {
@@ -265,7 +258,6 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 
 		public function set_price( $price ) {
 			if ( is_numeric( $price ) ) {
-				$this->fb_price = intval( round( $price * 100 ) );
 				update_post_meta(
 					$this->id,
 					self::FB_PRODUCT_PRICE,
@@ -350,17 +342,24 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 			return $description;
 		}
 
-		public function add_sale_price( $product_data ) {
-			// initialize sale date and sale_price
-			$product_data['sale_price_start_date'] = self::MIN_DATE_1 . self::MIN_TIME;
-			$product_data['sale_price_end_date']   = self::MIN_DATE_2 . self::MAX_TIME;
-			$product_data['sale_price']            = $product_data['price'];
+		public function add_sale_price( $product_data, $for_items_batch = false ) {
+
+			// initialise sale price
+			if ( $for_items_batch ) {
+				$product_data['sale_price_effective_date'] = self::MIN_DATE_1 . self::MIN_TIME . '/' . self::MIN_DATE_2 . self::MAX_TIME;
+			} else {
+				$product_data['sale_price_start_date'] = self::MIN_DATE_1 . self::MIN_TIME;
+				$product_data['sale_price_end_date']   = self::MIN_DATE_2 . self::MAX_TIME;
+			}
+			$product_data['sale_price'] = $product_data['price'];
 
 			$sale_price = $this->woo_product->get_sale_price();
+
 			// check if sale exist
 			if ( ! is_numeric( $sale_price ) ) {
 				return $product_data;
 			}
+
 			$sale_price =
 			intval( round( $this->get_price_plus_tax( $sale_price ) * 100 ) );
 
@@ -375,9 +374,15 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 			: self::MAX_DATE . self::MAX_TIME;
 
 			// check if sale is expired and sale time range is valid
-			$product_data['sale_price_start_date'] = $sale_start;
-			$product_data['sale_price_end_date']   = $sale_end;
-			$product_data['sale_price']            = $sale_price;
+			if ( $for_items_batch ) {
+				$product_data['sale_price_effective_date'] = $sale_start . '/' . $sale_end;
+				$product_data['sale_price']                = self::format_price_for_fb_items_batch( $sale_price );
+			} else {
+				$product_data['sale_price_start_date'] = $sale_start;
+				$product_data['sale_price_end_date']   = $sale_end;
+				$product_data['sale_price']            = $sale_price;
+			}
+
 			return $product_data;
 		}
 
@@ -385,29 +390,16 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 		/**
 		 * Determines whether a product should be excluded from all-products sync or the feed file.
 		 *
-		 * The plugin also avoids trying to get the Facebook ID of products where is_hidden() returns true.
-		 *
 		 * @see SkyVerge\WooCommerce\Facebook\Products\Sync::create_or_update_all_products()
 		 * @see WC_Facebook_Product_Feed::write_product_feed_file()
-		 * @see WC_Facebookcommerce_Integration::get_product_fbid()
+		 *
+		 * @deprecated 2.0.2
 		 */
 		public function is_hidden() {
-			$wpid = $this->id;
-			if ( WC_Facebookcommerce_Utils::is_variation_type( $this->get_type() ) ) {
-				$wpid = $this->get_parent_id();
-			}
-			$hidden_from_catalog = has_term(
-				'exclude-from-catalog',
-				'product_visibility',
-				$wpid
-			);
-			$hidden_from_search  = has_term(
-				'exclude-from-search',
-				'product_visibility',
-				$wpid
-			);
 
-			return ( $hidden_from_catalog && $hidden_from_search ) || ! $this->get_fb_price();
+			wc_deprecated_function( __METHOD__, '2.0.2', 'Products::product_should_be_synced()' );
+
+			return $this->woo_product instanceof \WC_Product && ! Products::product_should_be_synced( $this->woo_product );
 		}
 
 
@@ -433,7 +425,7 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 			// Convert all slug_names in $option_values into the visible names that
 			// advertisers have set to be the display names for a given attribute value
 			$terms = get_the_terms( $this->id, $key );
-			return array_map(
+			return ! is_array( $terms ) ? [] : array_map(
 				function ( $slug_name ) use ( $terms ) {
 					foreach ( $terms as $term ) {
 						if ( $term->slug === $slug_name ) {
@@ -498,32 +490,11 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 			}
 		}
 
-		/**
-		 * Gets product data to send to Facebook.
-		 *
-		 * @param string $retailer_id the retailer ID of the product
-		 * @param bool $prepare_for_product_feed whether the data is going to be used in a feed upload
-		 * @return array
-		 */
-		public function prepare_product( $retailer_id = null, $prepare_for_product_feed = false ) {
-
-			if ( ! $retailer_id ) {
-				$retailer_id =
-				WC_Facebookcommerce_Utils::get_fb_retailer_id( $this );
-			}
-			$image_urls = $this->get_all_image_urls();
-
-			// Replace WordPress sanitization's ampersand with a real ampersand.
-			$product_url = str_replace(
-				'&amp%3B',
-				'&',
-				html_entity_decode( $this->get_permalink() )
-			);
-
+		private function build_checkout_url( $product_url ) {
 			// Use product_url for external/bundle product setting.
 			$product_type = $this->get_type();
 			if ( ! $product_type || ! isset( self::$use_checkout_url[ $product_type ] ) ) {
-				  $checkout_url = $product_url;
+					$checkout_url = $product_url;
 			} elseif ( wc_get_cart_url() ) {
 				$char = '?';
 				// Some merchant cart pages are actually a querystring
@@ -556,7 +527,30 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 
 			} else {
 				$checkout_url = null;
+			}//end if
+		}
+
+		/**
+		 * Gets product data to send to Facebook.
+		 *
+		 * @param string $retailer_id the retailer ID of the product
+		 * @param string $type_to_prepare_for whether the data is going to be used in a feed upload, an items_batch update or a direct api call
+		 * @return array
+		 */
+		public function prepare_product( $retailer_id = null, $type_to_prepare_for = self::PRODUCT_PREP_TYPE_NORMAL ) {
+
+			if ( ! $retailer_id ) {
+				$retailer_id =
+				WC_Facebookcommerce_Utils::get_fb_retailer_id( $this );
 			}
+			$image_urls = $this->get_all_image_urls();
+
+			// Replace WordPress sanitization's ampersand with a real ampersand.
+			$product_url = str_replace(
+				'&amp%3B',
+				'&',
+				html_entity_decode( $this->get_permalink() )
+			);
 
 			$id = $this->get_id();
 			if ( WC_Facebookcommerce_Utils::is_variation_type( $this->get_type() ) ) {
@@ -568,32 +562,59 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 			$brand = get_the_term_list( $id, 'product_brand', '', ', ' );
 			$brand = is_wp_error( $brand ) || ! $brand ? wp_strip_all_tags( WC_Facebookcommerce_Utils::get_store_name() ) : WC_Facebookcommerce_Utils::clean_string( $brand );
 
-			$product_data = array(
-				'name'                  => WC_Facebookcommerce_Utils::clean_string(
-					$this->get_title()
-				),
-				'description'           => $this->get_fb_description(),
-				'image_url'             => $image_urls[0], // The array can't be empty.
-				'additional_image_urls' => array_slice( $image_urls, 1 ),
-				'url'                   => $product_url,
-				'category'              => $categories['categories'],
-				'brand'                 => Framework\SV_WC_Helper::str_truncate( $brand, 100 ),
-				'retailer_id'           => $retailer_id,
-				'price'                 => $this->get_fb_price(),
-				'currency'              => get_woocommerce_currency(),
-				'availability'          => $this->is_in_stock() ? 'in stock' :
-				'out of stock',
-				'visibility'            => ! $this->is_hidden()
-				? \WC_Facebookcommerce_Integration::FB_SHOP_PRODUCT_VISIBLE
-				: \WC_Facebookcommerce_Integration::FB_SHOP_PRODUCT_HIDDEN,
-			);
+			if ( self::PRODUCT_PREP_TYPE_ITEMS_BATCH === $type_to_prepare_for ) {
+				$product_data = array(
+					'title'                 => WC_Facebookcommerce_Utils::clean_string(
+						$this->get_title()
+					),
+					'description'           => $this->get_fb_description(),
+					'image_link'            => $image_urls[0],
+					'additional_image_link' => $this->get_additional_image_urls( $image_urls ),
+					'link'                  => $product_url,
+					'brand'                 => Framework\SV_WC_Helper::str_truncate( $brand, 100 ),
+					'retailer_id'           => $retailer_id,
+					'price'                 => $this->get_fb_price( true ),
+					'availability'          => $this->is_in_stock() ? 'in stock' : 'out of stock',
+					'visibility'            => Products::is_product_visible( $this->woo_product ) ? \WC_Facebookcommerce_Integration::FB_SHOP_PRODUCT_VISIBLE : \WC_Facebookcommerce_Integration::FB_SHOP_PRODUCT_HIDDEN,
+				);
+				$product_data = $this->add_sale_price( $product_data, true );
+			} else {
+				$product_data = array(
+					'name'                  => WC_Facebookcommerce_Utils::clean_string(
+						$this->get_title()
+					),
+					'description'           => $this->get_fb_description(),
+					'image_url'             => $image_urls[0],
+					'additional_image_urls' => $this->get_additional_image_urls( $image_urls ),
+					'url'                   => $product_url,
+					'category'              => $categories['categories'],
+					'brand'                 => Framework\SV_WC_Helper::str_truncate( $brand, 100 ),
+					'retailer_id'           => $retailer_id,
+					'price'                 => $this->get_fb_price(),
+					'currency'              => get_woocommerce_currency(),
+					'availability'          => $this->is_in_stock() ? 'in stock' : 'out of stock',
+					'visibility'            => Products::is_product_visible( $this->woo_product ) ? \WC_Facebookcommerce_Integration::FB_SHOP_PRODUCT_VISIBLE : \WC_Facebookcommerce_Integration::FB_SHOP_PRODUCT_HIDDEN,
+				);
+				$product_data = $this->add_sale_price( $product_data );
+			}//end if
 
-			// Only use checkout URLs if they exist.
-			if ( $checkout_url ) {
-				  $product_data['checkout_url'] = $checkout_url;
+			$google_product_category = Products::get_google_product_category_id( $this->woo_product );
+			// Currently only items batch and feed support enhanced catalog fields
+			if ( self::PRODUCT_PREP_TYPE_NORMAL !== $type_to_prepare_for && $google_product_category ) {
+				$product_data['google_product_category'] = $google_product_category;
+				$product_data                            = $this->apply_enhanced_catalog_fields_from_attributes( $product_data, $google_product_category );
 			}
 
-			$product_data = $this->add_sale_price( $product_data );
+			// add the Commerce values (only inventory for the moment)
+			if ( Products::is_product_ready_for_commerce( $this->woo_product ) ) {
+				$product_data['inventory'] = (int) max( 0, $this->woo_product->get_stock_quantity() );
+			}
+
+			// Only use checkout URLs if they exist.
+			$checkout_url = $this->build_checkout_url( $product_url );
+			if ( $checkout_url ) {
+				$product_data['checkout_url'] = $checkout_url;
+			}
 
 			// IF using WPML, set the product to staging unless it is in the
 			// default language. WPML >= 3.2 Supported.
@@ -606,11 +627,11 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 			// Exclude variations that are "virtual" products from export to Facebook &&
 			// No Visibility Option for Variations
 			if ( true === $this->get_virtual() ) {
-				  $product_data['visibility'] = \WC_Facebookcommerce_Integration::FB_SHOP_PRODUCT_HIDDEN;
+				$product_data['visibility'] = \WC_Facebookcommerce_Integration::FB_SHOP_PRODUCT_HIDDEN;
 			}
 
-			if ( ! $prepare_for_product_feed ) {
-				  $this->prepare_variants_for_item( $product_data );
+			if ( self::PRODUCT_PREP_TYPE_FEED !== $type_to_prepare_for ) {
+				$this->prepare_variants_for_item( $product_data );
 			} elseif (
 			WC_Facebookcommerce_Utils::is_all_caps( $product_data['description'] )
 			) {
@@ -631,6 +652,36 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 			);
 		}
 
+		/**
+		 * Adds enhanced catalog fields to product data array. Separated from
+		 * the main function to make it easier to develop and debug, potentially
+		 * worth refactoring into main prepare_product function when complete.
+		 *
+		 * @param array $product_data map
+		 * @return array
+		 */
+		private function apply_enhanced_catalog_fields_from_attributes( $product_data, $google_category_id ) {
+			$google_category_id = $product_data['google_product_category'];
+			$category_handler   = facebook_for_woocommerce()->get_facebook_category_handler();
+			if ( empty( $google_category_id ) || ! $category_handler->is_category( $google_category_id ) ) {
+				return $product_data;
+			}
+			$enhanced_data = array();
+
+			$category       = $category_handler->get_category_with_attrs( $google_category_id );
+			$all_attributes = $category['attributes'];
+			foreach ( $all_attributes as $attribute ) {
+				$value = Products::get_enhanced_catalog_attribute( $attribute['key'], $this->woo_product );
+
+				if ( ! empty( $value ) &&
+					$category_handler->is_valid_value_for_attribute( $google_category_id, $attribute['key'], $value )
+				) {
+					$enhanced_data[ $attribute['key'] ] = $value;
+				}
+			}
+
+			return array_merge( $product_data, $enhanced_data );
+		}
 
 		/**
 		 * Normalizes variant data for Facebook.
@@ -644,21 +695,26 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 			$product = $this;
 
 			if ( ! $product->is_type( 'variation' ) ) {
-				return [];
+				return array();
 			}
 
 			$attributes = $product->get_variation_attributes();
 
 			if ( ! $attributes ) {
-				return [];
+				return array();
 			}
 
 			$variant_names = array_keys( $attributes );
-			$variant_data  = [];
+			$variant_data  = array();
 
 			// Loop through variants (size, color, etc) if they exist
 			// For each product field type, pull the single variant
 			foreach ( $variant_names as $original_variant_name ) {
+
+				// don't handle any attributes that are designated as Commerce attributes
+				if ( in_array( str_replace( 'attribute_', '', strtolower( $original_variant_name ) ), Products::get_distinct_product_attributes( $this->woo_product ), true ) ) {
+					continue;
+				}
 
 				// Retrieve label name for attribute
 				$label = wc_attribute_label( $original_variant_name, $product );
@@ -679,7 +735,7 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 
 					} else {
 
-						$option_values = [ $options ];
+						$option_values = array( $options );
 
 						// If this attribute has value 'any', options will be empty strings
 						// Redirect to product page to select variants.
@@ -691,7 +747,7 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 						}
 					}
 
-					if ( \WC_Facebookcommerce_Utils::FB_VARIANT_GENDER === $new_name ) {
+					if ( \WC_Facebookcommerce_Utils::FB_VARIANT_GENDER === $new_name && ! isset( $product_data[ \WC_Facebookcommerce_Utils::FB_VARIANT_GENDER ] ) ) {
 
 						// If we can't validate the gender, this will be null.
 						$product_data[ $new_name ] = \WC_Facebookcommerce_Utils::validateGender( $option_values[0] );
@@ -699,53 +755,36 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 
 					switch ( $new_name ) {
 
-						case \WC_Facebookcommerce_Utils::FB_VARIANT_SIZE:
-						case \WC_Facebookcommerce_Utils::FB_VARIANT_COLOR:
-						case \WC_Facebookcommerce_Utils::FB_VARIANT_PATTERN:
-
-							$variant_data[] = [
-								'product_field' => $new_name,
-								'label'         => $label,
-								'options'       => $option_values,
-							];
-
-							$product_data[ $new_name ] = $option_values[0];
-
-						break;
-
 						case \WC_Facebookcommerce_Utils::FB_VARIANT_GENDER:
-
 							// If we can't validate the GENDER field, we'll fall through to the
 							// default case and set the gender into custom data.
 							if ( $product_data[ $new_name ] ) {
 
-								$variant_data[] = [
+								$variant_data[] = array(
 									'product_field' => $new_name,
 									'label'         => $label,
 									'options'       => $option_values,
-								];
+								);
 							}
 
-						break;
+							break;
 
 						default:
-
 							// This is for any custom_data.
 							if ( ! isset( $product_data['custom_data'] ) ) {
-								$product_data['custom_data'] = [];
+								$product_data['custom_data'] = array();
 							}
 
 							$product_data['custom_data'][ $new_name ] = urldecode( $option_values[0] );
 
-						break;
-					}
-
+							break;
+					}//end switch
 				} else {
 
 					\WC_Facebookcommerce_Utils::log( $product->get_id() . ': No options for ' . $original_variant_name );
 					continue;
-				}
-			}
+				}//end if
+			}//end foreach
 
 			return $variant_data;
 		}
@@ -761,7 +800,7 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 
 			/** @var \WC_Product_Variable $product */
 			$product        = $this;
-			$final_variants = [];
+			$final_variants = array();
 
 			try {
 
@@ -772,7 +811,7 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 				$variation_attributes = $product->get_variation_attributes();
 
 				if ( ! $variation_attributes ) {
-					return [];
+					return array();
 				}
 
 				foreach ( array_keys( $product->get_attributes() ) as $name ) {
@@ -814,31 +853,46 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 						$option_values = $this->get_grouped_product_option_names( $key, $option_values );
 					}
 
-					/**
-					 * For API approach, product_field need to start with 'custom_data:'
-					 * @link https://developers.facebook.com/docs/marketing-api/reference/product-variant/
-					 * Clean up variant name (e.g. pa_color should be color):
-					 */
-					$name = \WC_Facebookcommerce_Utils::sanitize_variant_name( $name );
+					switch ( $name ) {
+
+						case Products::get_product_color_attribute( $this->woo_product ):
+							$name = WC_Facebookcommerce_Utils::FB_VARIANT_COLOR;
+							break;
+
+						case Products::get_product_size_attribute( $this->woo_product ):
+							$name = WC_Facebookcommerce_Utils::FB_VARIANT_SIZE;
+							break;
+
+						case Products::get_product_pattern_attribute( $this->woo_product ):
+							$name = WC_Facebookcommerce_Utils::FB_VARIANT_PATTERN;
+							break;
+
+						default:
+							/**
+							 * For API approach, product_field need to start with 'custom_data:'
+							 *
+							 * @link https://developers.facebook.com/docs/marketing-api/reference/product-variant/
+							 */
+							$name = \WC_Facebookcommerce_Utils::sanitize_variant_name( $name );
+					}//end switch
 
 					// for feed uploading, product field should remove prefix 'custom_data:'
 					if ( $feed_data ) {
 						$name = str_replace( 'custom_data:', '', $name );
 					}
 
-					$final_variants[] = [
+					$final_variants[] = array(
 						'product_field' => $name,
 						'label'         => $label,
 						'options'       => $option_values,
-					];
-				}
-
+					);
+				}//end foreach
 			} catch ( \Exception $e ) {
 
 				\WC_Facebookcommerce_Utils::fblog( $e->getMessage() );
 
-				return [];
-			}
+				return array();
+			}//end try
 
 			return $final_variants;
 		}

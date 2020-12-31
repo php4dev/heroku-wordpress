@@ -11,7 +11,8 @@
 use SkyVerge\WooCommerce\Facebook\API;
 use SkyVerge\WooCommerce\Facebook\Lifecycle;
 use SkyVerge\WooCommerce\Facebook\Utilities\Background_Handle_Virtual_Products_Variations;
-use SkyVerge\WooCommerce\PluginFramework\v5_5_4 as Framework;
+use SkyVerge\WooCommerce\Facebook\Utilities\Background_Remove_Duplicate_Visibility_Meta;
+use SkyVerge\WooCommerce\PluginFramework\v5_10_0 as Framework;
 
 if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 
@@ -21,7 +22,7 @@ if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 
 
 		/** @var string the plugin version */
-		const VERSION = '2.0.1';
+		const VERSION = '2.2.0';
 
 		/** @var string for backwards compatibility TODO: remove this in v2.0.0 {CW 2020-02-06} */
 		const PLUGIN_VERSION = self::VERSION;
@@ -57,6 +58,12 @@ if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 		/** @var Background_Handle_Virtual_Products_Variations instance */
 		protected $background_handle_virtual_products_variations;
 
+		/** @var Background_Remove_Duplicate_Visibility_Meta job handler instance */
+		protected $background_remove_duplicate_visibility_meta;
+
+		/** @var \SkyVerge\WooCommerce\Facebook\Products\Stock products stock handler */
+		private $products_stock_handler;
+
 		/** @var \SkyVerge\WooCommerce\Facebook\Products\Sync products sync handler */
 		private $products_sync_handler;
 
@@ -68,6 +75,9 @@ if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 
 		/** @var \SkyVerge\WooCommerce\Facebook\Integrations\Integrations integrations handler */
 		private $integrations;
+
+		/** @var \SkyVerge\WooCommerce\Facebook\Commerce commerce handler */
+		private $commerce_handler;
 
 
 		/**
@@ -105,24 +115,33 @@ if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 				require_once $this->get_framework_path() . '/utilities/class-sv-wp-async-request.php';
 				require_once $this->get_framework_path() . '/utilities/class-sv-wp-background-job-handler.php';
 
+				require_once __DIR__ . '/includes/Locale.php';
+				require_once __DIR__ . '/includes/AJAX.php';
 				require_once __DIR__ . '/includes/Handlers/Connection.php';
 				require_once __DIR__ . '/includes/Integrations/Integrations.php';
+				require_once __DIR__ . '/includes/Product_Categories.php';
 				require_once __DIR__ . '/includes/Products.php';
 				require_once __DIR__ . '/includes/Products/Feed.php';
+				require_once __DIR__ . '/includes/Products/FBCategories.php';
+				require_once __DIR__ . '/includes/Products/Stock.php';
 				require_once __DIR__ . '/includes/Products/Sync.php';
 				require_once __DIR__ . '/includes/Products/Sync/Background.php';
 				require_once __DIR__ . '/includes/fbproductfeed.php';
 				require_once __DIR__ . '/facebook-commerce-messenger-chat.php';
+				require_once __DIR__ . '/includes/Commerce.php';
 				require_once __DIR__ . '/includes/Events/Event.php';
+				require_once __DIR__ . '/includes/Events/Normalizer.php';
+				require_once __DIR__ . '/includes/Events/AAMSettings.php';
+				require_once __DIR__ . '/includes/Utilities/Shipment.php';
 
 				$this->product_feed            = new \SkyVerge\WooCommerce\Facebook\Products\Feed();
+				$this->products_stock_handler  = new \SkyVerge\WooCommerce\Facebook\Products\Stock();
 				$this->products_sync_handler   = new \SkyVerge\WooCommerce\Facebook\Products\Sync();
 				$this->sync_background_handler = new \SkyVerge\WooCommerce\Facebook\Products\Sync\Background();
+				$this->commerce_handler        = new \SkyVerge\WooCommerce\Facebook\Commerce();
+				$this->fb_categories 					 = new \SkyVerge\WooCommerce\Facebook\Products\FBCategories();
 
 				if ( is_ajax() ) {
-
-					require_once __DIR__ . '/includes/AJAX.php';
-
 					$this->ajax = new \SkyVerge\WooCommerce\Facebook\AJAX();
 				}
 
@@ -133,6 +152,14 @@ if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 					require_once __DIR__ . '/includes/Utilities/Background_Handle_Virtual_Products_Variations.php';
 
 					$this->background_handle_virtual_products_variations = new Background_Handle_Virtual_Products_Variations();
+
+				}
+
+				if ( 'yes' !== get_option( 'wc_facebook_background_remove_duplicate_visibility_meta_complete', 'no' ) ) {
+
+					require_once __DIR__ . '/includes/Utilities/Background_Remove_Duplicate_Visibility_Meta.php';
+
+					$this->background_remove_duplicate_visibility_meta = new Background_Remove_Duplicate_Visibility_Meta();
 				}
 
 				$this->connection_handler = new \SkyVerge\WooCommerce\Facebook\Handlers\Connection( $this );
@@ -145,6 +172,9 @@ if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 					require_once __DIR__ . '/includes/Admin/Settings_Screens/Connection.php';
 					require_once __DIR__ . '/includes/Admin/Settings_Screens/Product_Sync.php';
 					require_once __DIR__ . '/includes/Admin/Settings_Screens/Messenger.php';
+					require_once __DIR__ . '/includes/Admin/Settings_Screens/Advertise.php';
+					require_once __DIR__ . '/includes/Admin/Google_Product_Category_Field.php';
+					require_once __DIR__ . '/includes/Admin/Enhanced_Catalog_Attribute_Fields.php';
 
 					$this->admin_settings = new \SkyVerge\WooCommerce\Facebook\Admin\Settings();
 				}
@@ -164,6 +194,24 @@ if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 			require_once __DIR__ . '/includes/Admin.php';
 
 			$this->admin = new \SkyVerge\WooCommerce\Facebook\Admin();
+		}
+
+
+		/**
+		 * Gets deprecated and removed hooks.
+		 *
+		 * @since 2.1.0
+		 *
+		 * @return array
+		 */
+		protected function get_deprecated_hooks() {
+
+			return [
+				'wc_facebook_page_access_token' => [
+					'version'     => '2.1.0',
+					'replacement' => false,
+				],
+			];
 		}
 
 
@@ -268,6 +316,29 @@ if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 					'notice_class' => 'notice-error',
 				] );
 			}
+
+			if ( Framework\SV_WC_Plugin_Compatibility::is_enhanced_admin_available() ) {
+
+				$is_marketing_enabled = is_callable( 'Automattic\WooCommerce\Admin\Loader::is_feature_enabled' )
+				                        && Automattic\WooCommerce\Admin\Loader::is_feature_enabled( 'marketing' );
+
+				if ( $is_marketing_enabled ) {
+
+					$this->get_admin_notice_handler()->add_admin_notice(
+						sprintf(
+							/* translators: Placeholders: %1$s - opening <a> HTML link tag, %2$s - closing </a> HTML link tag */
+							esc_html__( 'Heads up! The Facebook menu is now located under the %1$sMarketing%2$s menu.', 'facebook-for-woocommerce' ),
+							'<a href="' . esc_url( $this->get_settings_url() ) . '">','</a>'
+						),
+						'settings_moved_to_marketing',
+						[
+							'dismissible'             => true,
+							'always_show_on_settings' => false,
+							'notice_class'            => 'notice-info',
+						]
+					);
+				}
+			}
 		}
 
 
@@ -304,14 +375,20 @@ if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 		 *
 		 * @since 2.0.0
 		 *
+		 * @param string $access_token access token to use for this API request
 		 * @return \SkyVerge\WooCommerce\Facebook\API
 		 * @throws Framework\SV_WC_API_Exception
 		 */
-		public function get_api() {
+		public function get_api( $access_token = '' ) {
+
+			// if none provided, use the general access token
+			if ( ! $access_token ) {
+				$access_token = $this->get_connection_handler()->get_access_token();
+			}
 
 			if ( ! is_object( $this->api ) ) {
 
-				if ( ! $this->get_connection_handler()->get_access_token() ) {
+				if ( ! $access_token ) {
 					throw new Framework\SV_WC_API_Exception( __( 'Cannot create the API instance because the access token is missing.', 'facebook-for-woocommerce' ) );
 				}
 
@@ -329,6 +406,10 @@ if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 
 				if ( ! trait_exists( API\Traits\Paginated_Response::class, false ) ) {
 					require_once __DIR__ . '/includes/API/Traits/Paginated_Response.php';
+				}
+
+				if ( ! trait_exists( API\Traits\Idempotent_Request::class, false ) ) {
+					require_once __DIR__ . '/includes/API/Traits/Idempotent_Request.php';
 				}
 
 				if ( ! class_exists( API::class ) ) {
@@ -439,7 +520,51 @@ if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 					require_once __DIR__ . '/includes/API/Exceptions/Request_Limit_Reached.php';
 				}
 
-				$this->api = new SkyVerge\WooCommerce\Facebook\API( $this->get_connection_handler()->get_access_token() );
+				if ( ! class_exists( API\Orders\Order::class ) ) {
+					require_once __DIR__ . '/includes/API/Orders/Order.php';
+				}
+
+				if ( ! class_exists( API\Orders\Abstract_Request::class ) ) {
+					require_once __DIR__ . '/includes/API/Orders/Abstract_Request.php';
+				}
+
+				if ( ! class_exists( API\Orders\Acknowledge\Request::class ) ) {
+					require_once __DIR__ . '/includes/API/Orders/Acknowledge/Request.php';
+				}
+
+				if ( ! class_exists( API\Orders\Cancel\Request::class ) ) {
+					require_once __DIR__ . '/includes/API/Orders/Cancel/Request.php';
+				}
+
+				if ( ! class_exists( API\Orders\Fulfillment\Request::class ) ) {
+					require_once __DIR__ . '/includes/API/Orders/Fulfillment/Request.php';
+				}
+
+				if ( ! class_exists( API\Orders\Read\Request::class ) ) {
+					require_once __DIR__ . '/includes/API/Orders/Read/Request.php';
+				}
+
+				if ( ! class_exists( API\Orders\Read\Response::class ) ) {
+					require_once __DIR__ . '/includes/API/Orders/Read/Response.php';
+				}
+
+				if ( ! class_exists( API\Orders\Refund\Request::class ) ) {
+					require_once __DIR__ . '/includes/API/Orders/Refund/Request.php';
+				}
+
+				if ( ! class_exists( API\Orders\Request::class ) ) {
+					require_once __DIR__ . '/includes/API/Orders/Request.php';
+				}
+
+				if ( ! class_exists( API\Orders\Response::class ) ) {
+					require_once __DIR__ . '/includes/API/Orders/Response.php';
+				}
+
+				$this->api = new SkyVerge\WooCommerce\Facebook\API( $access_token );
+
+			} else {
+
+				$this->api->set_access_token( $access_token );
 			}
 
 			return $this->api;
@@ -484,6 +609,16 @@ if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 			return $this->product_feed;
 		}
 
+		/**
+		 * Gets the category handler.
+		 *
+		 * @since 1.11.0
+		 *
+		 * @return \SkyVerge\WooCommerce\Facebook\Products\FBCategories
+		 */
+		public function get_facebook_category_handler() {
+			return $this->fb_categories;
+		}
 
 		/**
 		 * Gets the background handle virtual products and variations handler instance.
@@ -495,6 +630,32 @@ if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 		public function get_background_handle_virtual_products_variations_instance() {
 
 			return $this->background_handle_virtual_products_variations;
+		}
+
+
+		/**
+		 * Gets the background remove duplicate visibility meta data handler instance.
+		 *
+		 * @since 2.0.3
+		 *
+		 * @return Background_Remove_Duplicate_Visibility_Meta
+		 */
+		public function get_background_remove_duplicate_visibility_meta_instance() {
+
+			return $this->background_remove_duplicate_visibility_meta;
+		}
+
+
+		/**
+		 * Gets the products stock handler.
+		 *
+		 * @since 2.0.5
+		 *
+		 * @return \SkyVerge\WooCommerce\Facebook\Products\Stock
+		 */
+		public function get_products_stock_handler() {
+
+			return $this->products_stock_handler;
 		}
 
 
@@ -553,6 +714,18 @@ if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 			return $this->integration;
 		}
 
+
+		/**
+		 * Gets the commerce handler instance.
+		 *
+		 * @since 2.1.0
+		 *
+		 * @return \SkyVerge\WooCommerce\Facebook\Commerce commerce handler instance
+		 */
+		public function get_commerce_handler() {
+
+			return $this->commerce_handler;
+		}
 
 		/**
 		 * Gets the settings page URL.
@@ -712,7 +885,6 @@ if ( ! class_exists( 'WC_Facebookcommerce' ) ) :
 
 			wc_deprecated_function( __METHOD__, '1.10.0' );
 		}
-
 
 	}
 

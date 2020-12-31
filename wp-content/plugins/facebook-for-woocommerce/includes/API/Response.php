@@ -12,7 +12,7 @@ namespace SkyVerge\WooCommerce\Facebook\API;
 
 defined( 'ABSPATH' ) or exit;
 
-use SkyVerge\WooCommerce\PluginFramework\v5_5_4 as Framework;
+use SkyVerge\WooCommerce\PluginFramework\v5_10_0 as Framework;
 
 /**
  * Base API response object
@@ -89,6 +89,19 @@ class Response extends Framework\SV_WC_API_JSON_Response {
 	public function get_api_error_code() {
 
 		return isset( $this->error->code ) ? (int) $this->error->code : null;
+	}
+
+
+	/**
+	 * Gets the user error message.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @return string|null
+	 */
+	public function get_user_error_message() {
+
+		return isset( $this->error->error_user_msg ) ? $this->error->error_user_msg : null;
 	}
 
 

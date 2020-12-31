@@ -229,7 +229,7 @@ class MailChimp_WooCommerce
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
 
 		// Add menu item
-		$this->loader->add_action('admin_menu', $plugin_admin, 'add_plugin_admin_menu');
+		$this->loader->add_action('admin_menu', $plugin_admin, 'add_plugin_admin_menu', 71);
 
         // Add WooCommerce Navigation Bar
         $this->loader->add_action('admin_menu', $plugin_admin, 'add_woocommerce_navigation_bar');
@@ -241,7 +241,7 @@ class MailChimp_WooCommerce
 		// make sure we're listening for the admin init
         $this->loader->add_action('admin_init', $plugin_admin, 'options_update');
         $this->loader->add_action('admin_notices', $plugin_admin, 'initial_notice');
-
+        
 		// put the menu on the admin top bar.
 		//$this->loader->add_action('admin_bar_menu', $plugin_admin, 'admin_bar', 100);
 
@@ -259,6 +259,7 @@ class MailChimp_WooCommerce
 
         // Mailchimp oAuth
         $this->loader->add_action( 'wp_ajax_mailchimp_woocommerce_oauth_start', $plugin_admin, 'mailchimp_woocommerce_ajax_oauth_start' );
+        $this->loader->add_action( 'wp_ajax_mailchimp_woocommerce_oauth_status', $plugin_admin, 'mailchimp_woocommerce_ajax_oauth_status' );
         $this->loader->add_action( 'wp_ajax_mailchimp_woocommerce_oauth_finish', $plugin_admin, 'mailchimp_woocommerce_ajax_oauth_finish' );
 
         // Create new mailchimp Account methods
@@ -274,6 +275,9 @@ class MailChimp_WooCommerce
 
         // Load log file via ajax
         $this->loader->add_action( 'wp_ajax_mailchimp_woocommerce_load_log_file', $plugin_admin, 'mailchimp_woocommerce_ajax_load_log_file' );
+
+        // delete log file via ajax
+        $this->loader->add_action( 'wp_ajax_mailchimp_woocommerce_delete_log_file', $plugin_admin, 'mailchimp_woocommerce_ajax_delete_log_file' );
     }
 
 	/**
@@ -288,6 +292,9 @@ class MailChimp_WooCommerce
 		$plugin_public = new MailChimp_WooCommerce_Public( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
         $this->loader->add_action('wp_footer', $plugin_public, 'add_inline_footer_script');
+
+        $this->loader->add_action('woocommerce_after_checkout_form', $plugin_public, 'add_JS_checkout', 10);
+        $this->loader->add_action('woocommerce_register_form', $plugin_public, 'add_JS_checkout', 10);
 	}
 
 	/**

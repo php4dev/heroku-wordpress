@@ -2,8 +2,8 @@
 Contributors: facebook, automattic, woothemes
 Tags: facebook, shop, catalog, advertise, pixel, product
 Requires at least: 4.4
-Tested up to: 5.3.2
-Stable tag: 2.0.1
+Tested up to: 5.5.3
+Stable tag: 2.2.0
 Requires PHP: 5.6 or greater
 MySQL: 5.6 or greater
 License: GPLv2 or later
@@ -38,6 +38,53 @@ When opening a bug on GitHub, please give us as many details as possible.
 * Current version of Facebook-for-WooCommerce, WooCommerce, Wordpress, PHP
 
 == Changelog ==
+
+= 2020.11.19 - version 2.2.0 =
+ * Feature - Add an Advertise tab in the Facebook settings page to manage Facebook ads from within WooCommerce
+ * Tweak - Move the Facebook settings page into the Marketing menu item (WooCommerce 4.0+)
+ * Fix - Move the filter `facebook_for_woocommerce_integration_pixel_enabled` initialization to avoid possible uncaught JavaScript errors in front end
+ * Fix - Update field name and format for additional_variant_attribute to resolve Facebook catalog sync for variable products.
+
+= 2020.11.04 - version 2.1.4 =
+ * Fix - Ensure product variant attributes are correctly handled when checking for enhanced attribute values.
+
+= 2020.10.29 - version 2.1.3 =
+ * Fix - Prevent error triggered while trying to refund orders
+
+= 2020.10.28 - version 2.1.2 =
+ * Tweak - Default variation selection will be synced to Facebook if the default product variation is already synced
+ * Fix - Trigger a pixel Search event for product search requests with a single result (works for logged in users or visitors with an active WooCommerce session)
+ * Fix - Prevent a JavaScript error on the Add New Product page when Facebook for WooCommerce is not connected to Facebook
+
+= 2020.10.27 - version 2.1.1 =
+ * Fix - Adjust code syntax that may have issued errors in installations running PHP lower than 7.3
+
+= 2020.10.26 - version 2.1.0 =
+ * Feature - Set Google category at the shop level for the Facebook catalog sync (on the product sync tab).
+ * Feature - Set Google category for the Facebook catalog sync at the WooCommerce category level.
+ * Feature - Set Google category for the Facebook catalog sync at the product level.
+ * Feature - Set Enhanced Catalog category specific fields for the Facebook catalog sync at the WooCommerce category level.
+ * Feature - Set Enhanced Catalog category specific fields for the Facebook catalog sync at the product level.
+
+= 2020.10.12 - version 2.0.5 =
+ * Tweak - Update product availability when stock changes in the store
+ * Fix - Don't prevent variation products from being updated when they're set to not sync with Facebook but have their categories excluded from syncing
+ * Fix - Prevent an error during the feed generation when variable products are still using deleted terms
+
+= 2020.10.08 - version 2.0.4 =
+ * Fix - Fix SQL errors triggered while trying to remove duplicate visibility meta entries from postmeta table
+
+= 2020.10.02 - version 2.0.3 =
+ * Tweak - Pixel events now can include advanced matching information
+ * Fix - Send contents parameter for ViewContent event using the correct format
+ * Fix - Remove duplicate visibility meta entries from postmeta table
+
+= 2020.09.25 - version 2.0.2 =
+ * Tweak - Allow simple and variable products with zero/empty price to sync to Facebook
+ * Tweak - Use the bundle price for Product Bundles products with individually priced items
+ * Fix - Update connection parameters to use an array to pass the Messenger domain
+ * Fix - Ensure out-of-stock products are marked as such in Facebook when the feed file replacement is run
+ * Fix - Address a potential error when connecting from a site whose title contains special characters
 
 = 2020.08.17 - version 2.0.1 =
  * Fix - Ensure the configured business name is never empty when connecting to Facebook

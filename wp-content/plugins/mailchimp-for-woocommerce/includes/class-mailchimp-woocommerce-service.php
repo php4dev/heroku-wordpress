@@ -148,6 +148,9 @@ class MailChimp_Service extends MailChimp_WooCommerce_Options
         $campaign_id = isset($tracking) && isset($tracking['campaign_id']) ? $tracking['campaign_id'] : null;
         $landing_site = isset($tracking) && isset($tracking['landing_site']) ? $tracking['landing_site'] : null;
         $language = $newOrder ? substr( get_locale(), 0, 2 ) : null;
+        
+        $gdpr_fields = isset($_POST['mailchimp_woocommerce_gdpr']) ? 
+            $_POST['mailchimp_woocommerce_gdpr'] : false;
 
         if (isset($tracking)) {
             // update the post meta with campaing tracking details for future sync
@@ -155,7 +158,7 @@ class MailChimp_Service extends MailChimp_WooCommerce_Options
             update_post_meta($order_id, 'mailchimp_woocommerce_landing_site', $landing_site);
         }
 
-        $handler = new MailChimp_WooCommerce_Single_Order($order_id, null, $campaign_id, $landing_site, $language);
+        $handler = new MailChimp_WooCommerce_Single_Order($order_id, null, $campaign_id, $landing_site, $language, $gdpr_fields);
         $handler->is_update = $newOrder ? !$newOrder : null;
         $handler->is_admin_save = is_admin();
         
@@ -375,14 +378,19 @@ class MailChimp_Service extends MailChimp_WooCommerce_Options
     {
         if (!mailchimp_is_configured()) return;
 
-        $subscribed = (bool) isset($_POST['mailchimp_woocommerce_newsletter']) ?
-            $_POST['mailchimp_woocommerce_newsletter'] : false;
+        $subscribed = (bool) isset($_POST['mailchimp_woocommerce_newsletter']) && $_POST['mailchimp_woocommerce_newsletter'] ? true : false;
+
+        if (isset($_POST['mailchimp_woocommerce_newsletter']) && $_POST['mailchimp_woocommerce_newsletter']) {
+            $gdpr_fields = isset($_POST['mailchimp_woocommerce_gdpr']) ? 
+                $_POST['mailchimp_woocommerce_gdpr'] : false;
+        }
 
         // update the user meta with the 'is_subscribed' form element
         update_user_meta($user_id, 'mailchimp_woocommerce_is_subscribed', $subscribed);
 
         if ($subscribed) {
-            mailchimp_handle_or_queue(new MailChimp_WooCommerce_User_Submit($user_id, $subscribed, null));
+            $job = new MailChimp_WooCommerce_User_Submit($user_id, $subscribed, null, null, $gdpr_fields);
+            mailchimp_handle_or_queue($job);
         }
     }
 
@@ -492,8 +500,17 @@ class MailChimp_Service extends MailChimp_WooCommerce_Options
                 // cookie the current email
                 @setcookie('mailchimp_user_email', $this->user_email, $cookie_duration, '/' );
 
-                // set the cart data.
-                $this->setWooSession('cart', unserialize($cart->cart));
+                $cart_data = unserialize($cart->cart);
+
+                if (!empty($cart_data)) {
+                    // set the cart data.
+                    $this->setWooSession('cart', unserialize($cart->cart));
+
+                    mailchimp_debug('carts', "manually setting cart data for {$this->user_email}", array(
+                        'cart_id' => $_GET['mc_cart_id'],
+                        'cart' => $cart->cart,
+                    ));
+                }
             }
         }
 

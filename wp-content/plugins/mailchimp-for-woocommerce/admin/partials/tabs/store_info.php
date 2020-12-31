@@ -2,15 +2,21 @@
 
 $handler = MailChimp_WooCommerce_Admin::connect();
 
-// if we don't have valid campaign defaults we need to redirect back to the 'campaign_defaults' tab.
+// if we don't have a valid api key we need to redirect back to the 'api_key' tab.
 if (!$handler->hasValidApiKey()) {
     wp_redirect('admin.php?page=mailchimp-woocommerce&tab=api_key&error_notice=missing_api_key');
 }
 
 ?>
-<input type="hidden" name="mailchimp_active_settings_tab" value="store_info"/>
-
 <fieldset class="">  
+    <input type="hidden" name="mailchimp_active_settings_tab" value="store_info"/>
+    <?php 
+        $current_currency = isset($options['store_currency_code']) ? $options['store_currency_code'] : get_woocommerce_currency();
+        $current_currency_data = MailChimp_WooCommerce_CurrencyCodes::getCurrency($current_currency);
+    ?>
+    <input type="hidden" value="<?php echo isset($current_currency_data) ? $current_currency . ' | ' .  $current_currency_data['name']: $current_currency ?>" disabled/>
+    <input type="hidden" value="<?php echo mailchimp_get_timezone(true)?>" disabled/>
+  
     <legend class="screen-reader-text">
         <span><?php esc_html_e('Store Settings', 'mailchimp-for-woocommerce');?></span>
     </legend>
@@ -98,64 +104,58 @@ if (!$handler->hasValidApiKey()) {
     </div>
 
     <div class="box fieldset-header" >
-        <h3 style="padding-top: 1em;"><?= __('Locale Settings', 'mailchimp-for-woocommerce');?></h3>
-        <br/>
-        <p><?= __('Please apply your locale settings. If you\'re unsure about these, use the defaults.', 'mailchimp-for-woocommerce');?></p>
+        <h3 style="padding-top: 1em;"><?= __('Locale Settings', 'mailchimp-for-woocommerce');?></h3>   
+    </div>
+
+    <div class="box" >
+        <p>
+            <?php
+
+                echo sprintf(
+                    /* translators: %1$s - The Currency name and format (ex: USD | US Dollar) %2$s - Timezone name or offset (ex: America/New_York or UTC-4:00) %3$s and %5$s- <a> tag open %4$s - </a> tag close*/
+                    __('We\'ve detected that your WooCommerce store\'s currency is <b>%1$s</b> (%3$schange%4$s), and the WordPress timezone is <b>%2$s</b> (%5$schange%4$s).', 'mailchimp-for-woocommerce'),
+                    isset($current_currency_data) ? $current_currency . ' | ' .  $current_currency_data['name']: $current_currency,
+                    mailchimp_get_timezone(true),
+                    '<a href="' . admin_url( 'admin.php?page=wc-settings#woocommerce_currency') .'" title="'.__( 'General Settings' ).'">',
+                    '</a>',
+                    '<a href="' . admin_url( 'options-general.php#timezone_string') .'" title="'.__( 'WooCommerce Settings' ).'">'
+                );
+            ?>
+        </p>
     </div>
 
     <div class="box box-half" >
+        
         <label for="<?php echo $this->plugin_name; ?>-store-locale-label">
             <span><?php esc_html_e('Locale', 'mailchimp-for-woocommerce'); ?></span>
             <span class="required-field-mark">*</span>
+            <p><?= __('Please apply your locale settings. If you\'re unsure about these, use the defaults.', 'mailchimp-for-woocommerce');?></p>
         </label>
+        
+    </div>
+    <div class="box box-half" >
         <div class="mailchimp-select-wrapper">
             <select name="<?php echo $this->plugin_name; ?>[store_locale]" required>
                 <option disabled selected value="<?= __('','mailchimp-for-woocommerce')?>"><?= __("Select store's locale",'mailchimp-for-woocommerce')?></option>
-                <?php $selected_locale = isset($options['store_locale']) && !empty($options['store_locale']) ? $options['store_locale'] : substr(get_locale(), 0, 2); ?>
-                <?php foreach(MailChimp_Api_Locales::simple() as $locale_key => $local_value) : ?>
+                <?php 
+                $selected_locale = isset($options['store_locale']) && !empty($options['store_locale']) ? $options['store_locale'] : get_locale(); ?>
+                <?php foreach(MailChimp_Api_Locales::all() as $locale_key => $local_value) : ?>
                     <option value="<?php echo esc_attr( $locale_key ) . '" ' . selected($locale_key === $selected_locale, true, false ); ?>"> <?php esc_html_e( $local_value ) ?> </option>;
                 <?php endforeach;?>
             </select>
         </div>
-    </div>
-
-    <div class="box box-half" >
-        <?php 
-            $current_currency = isset($options['store_currency_code']) ? $options['store_currency_code'] : get_woocommerce_currency();
-            $current_currency_data = MailChimp_WooCommerce_CurrencyCodes::getCurrency($current_currency);
-        ?>
-        <label for="<?php echo $this->plugin_name; ?>-store-currency-code-label">
-            <span><?php esc_html_e('Woocommerce Currency', 'mailchimp-for-woocommerce'); ?></span>
-        </label>
-        <input type="text" value="<?php echo isset($current_currency_data) ? $current_currency . ' | ' .  $current_currency_data['name']: $current_currency ?>" disabled/>
+        
     </div>
 
     <div class="box" >
-        <label for="<?php echo $this->plugin_name; ?>-store-timezone-label">
-            <span><?php esc_html_e('Timezone', 'mailchimp-for-woocommerce'); ?></span>
-            <span class="required-field-mark">*</span>
-        </label>
-        <div class="mailchimp-select-wrapper">
-            <select name="<?php echo $this->plugin_name; ?>[store_timezone]" required>
-                <option disabled selected value="<?= __('','mailchimp-for-woocommerce')?>"><?= __("Select store's timezone",'mailchimp-for-woocommerce')?></option>
-                <?php $selected_timezone = isset($options['store_timezone']) && !empty($options['store_timezone']) ? $options['store_timezone'] : get_option('timezone_string'); ?>
-                <?php
-                    foreach(mailchimp_get_timezone_list() as $t) {
-                    echo '<option value="' . esc_attr( $t['zone'] ) . '" ' . selected($t['zone'] === $selected_timezone, true, false ) . '>' . esc_html( $t['diff_from_GMT'] . ' - ' . $t['zone'] ) . '</option>';
-                    }
-                ?>
-            </select>
-        </div>
+        
     </div>
-
     <?php 
         // Only admins should see mailchimp_permission_cap radio buttons
         if (current_user_can('manage_options')) : ?>
-        
-        <div class="box optional-settings-label" >
-            <span><?php esc_html_e('Optional Store Settings', 'mailchimp-for-woocommerce');?></span>
+        <div class="box fieldset-header" >
+            <h3 style="padding-top: 1em;"><?= __('Permission Settings', 'mailchimp-for-woocommerce');?></h3>   
         </div>
-
         <div class="optional-settings-content">
             <div class="box box-half margin-large">
                 <label>
