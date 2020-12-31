@@ -70,9 +70,9 @@ function wpcf7_recaptcha_add_hidden_fields( $fields ) {
 	) );
 }
 
-add_filter( 'wpcf7_spam', 'wpcf7_recaptcha_verify_response', 9, 1 );
+add_filter( 'wpcf7_spam', 'wpcf7_recaptcha_verify_response', 9, 2 );
 
-function wpcf7_recaptcha_verify_response( $spam ) {
+function wpcf7_recaptcha_verify_response( $spam, $submission ) {
 	if ( $spam ) {
 		return $spam;
 	}
@@ -82,8 +82,6 @@ function wpcf7_recaptcha_verify_response( $spam ) {
 	if ( ! $service->is_active() ) {
 		return $spam;
 	}
-
-	$submission = WPCF7_Submission::get_instance();
 
 	$token = isset( $_POST['_wpcf7_recaptcha_response'] )
 		? trim( $_POST['_wpcf7_recaptcha_response'] ) : '';
@@ -416,13 +414,13 @@ class WPCF7_RECAPTCHA extends WPCF7_Service {
 	public function admin_notice( $message = '' ) {
 		if ( 'invalid' == $message ) {
 			echo sprintf(
-				'<div class="error notice notice-error is-dismissible"><p><strong>%1$s</strong>: %2$s</p></div>',
+				'<div class="notice notice-error is-dismissible"><p><strong>%1$s</strong>: %2$s</p></div>',
 				esc_html( __( "Error", 'contact-form-7' ) ),
 				esc_html( __( "Invalid key values.", 'contact-form-7' ) ) );
 		}
 
 		if ( 'success' == $message ) {
-			echo sprintf( '<div class="updated notice notice-success is-dismissible"><p>%s</p></div>',
+			echo sprintf( '<div class="notice notice-success is-dismissible"><p>%s</p></div>',
 				esc_html( __( 'Settings saved.', 'contact-form-7' ) ) );
 		}
 	}

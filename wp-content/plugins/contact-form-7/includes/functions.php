@@ -40,33 +40,6 @@ function wpcf7_create_nonce( $action = 'wp_rest' ) {
 	return wp_create_nonce( $action );
 }
 
-function wpcf7_blacklist_check( $target ) {
-	$mod_keys = trim( get_option( 'blacklist_keys' ) );
-
-	if ( empty( $mod_keys ) ) {
-		return false;
-	}
-
-	$words = explode( "\n", $mod_keys );
-
-	foreach ( (array) $words as $word ) {
-		$word = trim( $word );
-
-		if ( empty( $word )
-		or 256 < strlen( $word ) ) {
-			continue;
-		}
-
-		$pattern = sprintf( '#%s#i', preg_quote( $word, '#' ) );
-
-		if ( preg_match( $pattern, $target ) ) {
-			return true;
-		}
-	}
-
-	return false;
-}
-
 function wpcf7_array_flatten( $input ) {
 	if ( ! is_array( $input ) ) {
 		return array( $input );
@@ -367,23 +340,23 @@ function wpcf7_is_localhost() {
 }
 
 function wpcf7_deprecated_function( $function, $version, $replacement ) {
-	$trigger_error = apply_filters( 'deprecated_function_trigger_error', true );
-
-	if ( WP_DEBUG and $trigger_error ) {
+	if ( WP_DEBUG ) {
 		if ( function_exists( '__' ) ) {
 			trigger_error(
 				sprintf(
 					/* translators: 1: PHP function name, 2: version number, 3: alternative function name */
 					__( '%1$s is <strong>deprecated</strong> since Contact Form 7 version %2$s! Use %3$s instead.', 'contact-form-7' ),
 					$function, $version, $replacement
-				)
+				),
+				E_USER_DEPRECATED
 			);
 		} else {
 			trigger_error(
 				sprintf(
 					'%1$s is <strong>deprecated</strong> since Contact Form 7 version %2$s! Use %3$s instead.',
 					$function, $version, $replacement
-				)
+				),
+				E_USER_DEPRECATED
 			);
 		}
 	}
@@ -394,17 +367,60 @@ function wpcf7_apply_filters_deprecated( $tag, $args, $version, $replacement ) {
 		return $args[0];
 	}
 
-	if ( WP_DEBUG and apply_filters( 'deprecated_hook_trigger_error', true ) ) {
+	if ( WP_DEBUG ) {
 		trigger_error(
 			sprintf(
 				/* translators: 1: WordPress hook name, 2: version number, 3: alternative hook name */
 				__( '%1$s is <strong>deprecated</strong> since Contact Form 7 version %2$s! Use %3$s instead.', 'contact-form-7' ),
 				$tag, $version, $replacement
-			)
+			),
+			E_USER_DEPRECATED
 		);
 	}
 
 	return apply_filters_ref_array( $tag, $args );
+}
+
+function wpcf7_doing_it_wrong( $function, $message, $version ) {
+	if ( WP_DEBUG ) {
+		if ( function_exists( '__' ) ) {
+			if ( $version ) {
+				$version = sprintf(
+					/* translators: %s: Contact Form 7 version number. */
+					__( '(This message was added in Contact Form 7 version %s.)', 'contact-form-7' ),
+					$version
+				);
+			}
+
+			trigger_error(
+				sprintf(
+					/* translators: Developer debugging message. 1: PHP function name, 2: Explanatory message, 3: Contact Form 7 version number. */
+					__( '%1$s was called incorrectly. %2$s %3$s', 'contact-form-7' ),
+					$function,
+					$message,
+					$version
+				),
+				E_USER_NOTICE
+			);
+		} else {
+			if ( $version ) {
+				$version = sprintf(
+					'(This message was added in Contact Form 7 version %s.)',
+					$version
+				);
+			}
+
+			trigger_error(
+				sprintf(
+					'%1$s was called incorrectly. %2$s %3$s',
+					$function,
+					$message,
+					$version
+				),
+				E_USER_NOTICE
+			);
+		}
+	}
 }
 
 function wpcf7_log_remote_request( $url, $request, $response ) {

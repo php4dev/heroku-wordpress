@@ -49,7 +49,14 @@ function wpcf7_date_form_tag_handler( $tag ) {
 		$atts['aria-required'] = 'true';
 	}
 
-	$atts['aria-invalid'] = $validation_error ? 'true' : 'false';
+	if ( $validation_error ) {
+		$atts['aria-invalid'] = 'true';
+		$atts['aria-describedby'] = wpcf7_get_validation_error_reference(
+			$tag->name
+		);
+	} else {
+		$atts['aria-invalid'] = 'false';
+	}
 
 	$value = (string) reset( $tag->values );
 
@@ -60,6 +67,17 @@ function wpcf7_date_form_tag_handler( $tag ) {
 	}
 
 	$value = $tag->get_default_option( $value );
+
+	if ( $value ) {
+		$datetime_obj = date_create_immutable(
+			preg_replace( '/[_]+/', ' ', $value ),
+			wp_timezone()
+		);
+
+		if ( $datetime_obj ) {
+			$value = $datetime_obj->format( 'Y-m-d' );
+		}
+	}
 
 	$value = wpcf7_get_hangover( $tag->name, $value );
 

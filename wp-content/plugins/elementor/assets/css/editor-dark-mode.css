@@ -1,4 +1,4 @@
-/*! elementor - v2.9.14 - 21-07-2020 */
+/*! elementor - v3.0.15 - 21-12-2020 */
 body {
   color: #E0E1E3; }
   body .pcr-app {
@@ -23,6 +23,42 @@ body {
     background-color: #64666A; }
     body .pcr-swatch.pcr-active ~ .elementor-color-picker__add-swatch i {
       color: #E0E1E3; }
+
+.pickr {
+  background-color: #34383C;
+  border-color: #64666A; }
+
+.e-control-color--no-value .pcr-button {
+  border-color: #64666A; }
+
+.e-global__popover-toggle {
+  border-color: #64666A;
+  background-color: #34383C; }
+
+.e-global__popover-container {
+  background-color: #4C4F56;
+  color: #E0E1E3; }
+
+.e-global__popover-title {
+  border-bottom-color: #404349; }
+
+.e-global__color-title, .e-global__manage-button, .e-global__popover-title {
+  color: #E0E1E3; }
+
+.e-global__manage-button {
+  border-top-color: #404349; }
+
+.e-global__preview-item:hover {
+  background-color: #404349; }
+
+.elementor-control-type-global-style-repeater .elementor-button-wrapper {
+  border-top-color: #34383C; }
+
+.e-control-tool {
+  background-color: #34383C;
+  border-color: #E0E1E3; }
+  .e-control-tool i {
+    color: #E0E1E3; }
 
 #elementor-loading {
   background-color: #34383C; }
@@ -67,7 +103,8 @@ select {
 
 .elementor-control-dynamic-switcher {
   background-color: #34383C;
-  border-color: #64666A; }
+  border-color: #64666A;
+  color: #E0E1E3; }
 
 .elementor-tags-list {
   background-color: #4C4F56;
@@ -108,12 +145,6 @@ select {
       color: #E0E1E3; }
       .elementor-panel #elementor-panel-elements-search-input:focus + i {
         color: #E0E1E3; }
-    .elementor-panel #elementor-panel-elements-search-input::-webkit-search-cancel-button {
-      -webkit-appearance: none;
-      height: 8px;
-      width: 8px;
-      background: -webkit-linear-gradient(45deg, transparent 45%, #B4B5B7 45%, #B4B5B7 55%, transparent 55%), -webkit-linear-gradient(315deg, transparent 45%, #B4B5B7 45%, #B4B5B7 55%, transparent 55%);
-      background: linear-gradient(45deg, transparent 45%, #B4B5B7 45%, #B4B5B7 55%, transparent 55%), linear-gradient(135deg, transparent 45%, #B4B5B7 45%, #B4B5B7 55%, transparent 55%); }
   .elementor-panel .elementor-element {
     background-color: #404349; }
     .elementor-panel .elementor-element .title,
@@ -160,14 +191,14 @@ select {
   .elementor-panel .elementor-panel-scheme-color-system-items {
     background-color: #34383C;
     border-color: #64666A; }
-  .elementor-panel .elementor-panel-menu-item:not(.elementor-panel-menu-item-exit-to-dashboard) {
+  .elementor-panel .elementor-panel-menu-item {
     background-color: #404349; }
-    .elementor-panel .elementor-panel-menu-item:not(.elementor-panel-menu-item-exit-to-dashboard):hover {
+    .elementor-panel .elementor-panel-menu-item:hover {
       background-color: #4C4F56; }
-    .elementor-panel .elementor-panel-menu-item:not(.elementor-panel-menu-item-exit-to-dashboard) a {
+    .elementor-panel .elementor-panel-menu-item a {
       color: #E0E1E3; }
-  .elementor-panel .elementor-panel-menu-item-icon {
-    color: #B4B5B7; }
+    .elementor-panel .elementor-panel-menu-item-icon {
+      color: #B4B5B7; }
 
 .elementor-control {
   background-color: #404349; }
@@ -205,8 +236,12 @@ a.elementor-responsive-switcher {
 .elementor-control-type-popover_toggle .elementor-control-responsive-switchers__holder {
   background-color: #4C4F56; }
 
+.elementor-control-media-upload-button {
+  background-color: #34383C; }
+
 .elementor-control-media__remove {
-  border-color: #64666A; }
+  background-color: #64666A;
+  color: #B4B5B7; }
 
 .elementor-control-media .elementor-control-input-wrapper {
   border-color: #64666A; }
@@ -218,13 +253,15 @@ a.elementor-responsive-switcher {
   background-color: #7D7E82; }
 
 .elementor-control-media__file, .elementor-control-media__file__controls {
-  background-color: #34383C;
   border-color: #64666A; }
 
 .elementor-control-media-area, .pcr-app[data-theme=monolith] .pcr-color-palette, .pcr-button {
-  background-image: -webkit-linear-gradient(45deg, #34383C 25%, transparent 25%, transparent 75%, #34383C 75%, #34383C), -webkit-linear-gradient(45deg, #34383C 25%, transparent 25%, transparent 75%, #34383C 75%, #34383C);
-  background-image: -o-linear-gradient(45deg, #34383C 25%, transparent 25%, transparent 75%, #34383C 75%, #34383C), -o-linear-gradient(45deg, #34383C 25%, transparent 25%, transparent 75%, #34383C 75%, #34383C);
-  background-image: linear-gradient(45deg, #34383C 25%, transparent 25%, transparent 75%, #34383C 75%, #34383C), linear-gradient(45deg, #34383C 25%, transparent 25%, transparent 75%, #34383C 75%, #34383C);
+  background-image: -webkit-linear-gradient(45deg, #34383C 25%, transparent 0, transparent 75%, #34383C 0, #34383C), -webkit-linear-gradient(45deg, #34383C 25%, transparent 0, transparent 75%, #34383C 0, #34383C);
+  background-image: -o-linear-gradient(45deg, #34383C 25%, transparent 0, transparent 75%, #34383C 0, #34383C), -o-linear-gradient(45deg, #34383C 25%, transparent 0, transparent 75%, #34383C 0, #34383C);
+  background-image: linear-gradient(45deg, #34383C 25%, transparent 0, transparent 75%, #34383C 0, #34383C), linear-gradient(45deg, #34383C 25%, transparent 0, transparent 75%, #34383C 0, #34383C);
+  -webkit-background-size: 12px 12px;
+          background-size: 12px 12px;
+  background-position: 0 0, 6px 6px;
   background-color: #64666A; }
 
 .elementor-control-type-icons .elementor-control-media__preview i {
@@ -241,6 +278,19 @@ a.elementor-responsive-switcher {
 .elementor-control-type-gallery .elementor-control-gallery-status,
 .elementor-control-type-gallery .elementor-control-media__content {
   border-color: #64666A; }
+
+.elementor-control-type-gallery.elementor-control-dynamic .elementor-control-gallery-clear {
+  border-color: #64666A; }
+
+.elementor-control-type-gallery .elementor-control-dynamic-switcher {
+  border-bottom: 1px solid #64666A;
+  border-left: 1px solid #64666A;
+  -webkit-border-radius: 0 3px 0 0;
+          border-radius: 0 3px 0 0; }
+
+body.rtl .elementor-control-type-gallery .elementor-control-dynamic-switcher {
+  border-right: 1px solid #64666A;
+  border-left: none; }
 
 .elementor-control-type-url .elementor-control-url-more {
   background-color: #34383C;
@@ -385,18 +435,6 @@ a.elementor-responsive-switcher {
 
 .elementor-control-type-switcher .elementor-switch-handle {
   background-color: #E0E1E3; }
-
-.pickr {
-  background-color: #34383C;
-  border-color: #64666A; }
-
-.elementor-color-picker__dropping-area {
-  border: 1px dashed #7D7E82;
-  color: #B4B5B7; }
-  .elementor-color-picker__dropping-area.elementor-active {
-    border-color: #B4B5B7; }
-    .elementor-color-picker__dropping-area.elementor-active i {
-      color: #F84343; }
 
 .elementor-control-type-structure .elementor-control-structure-preset path {
   fill: #34383C; }
@@ -584,8 +622,14 @@ label.elementor-template-library-order-label:hover,
     background-color: #404349;
     color: #E0E1E3; }
 
+#elementor-publish #elementor-theme-builder-conditions .elementor-control-type-select .elementor-control-input-wrapper:after {
+  color: inherit; }
+
 #elementor-publish #elementor-theme-builder-conditions .elementor-theme-builder-conditions-repeater-row-controls .select2-dropdown,
 #elementor-publish #elementor-theme-builder-conditions .elementor-theme-builder-conditions-repeater-row-controls .select2-container--default .select2-selection--single {
+  background-color: #4C4F56; }
+
+#elementor-toast .e-toast-button {
   background-color: #4C4F56; }
 
 #elementor-icons-manager__search input {
@@ -722,9 +766,9 @@ label.elementor-template-library-order-label:hover,
 .ui-autocomplete {
   color: #6d7882; }
 
-.elementor-color-picker__swatch-tool {
+.elementor-color-picker__tool {
   background-color: #E0E1E3; }
-  .elementor-color-picker__swatch-tool i {
+  .elementor-color-picker__tool i {
     color: #64666A; }
 
 .elementor-nerd-box-icon {

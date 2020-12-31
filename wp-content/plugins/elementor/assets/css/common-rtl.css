@@ -1,4 +1,4 @@
-/*! elementor - v2.9.14 - 21-07-2020 */
+/*! elementor - v3.0.15 - 21-12-2020 */
 .dialog-widget-content {
   background-color: #fff;
   position: absolute;
@@ -221,11 +221,10 @@
             -ms-flex-align: center;
                 align-items: center; }
     .elementor-templates-modal__header__logo__icon-wrapper {
-      margin-left: 10px; }
+      margin-left: 10px;
+      font-size: 12px; }
     .elementor-templates-modal__header__logo__title {
       padding-top: 2px; }
-    .elementor-templates-modal__header__logo i {
-      font-size: 10px; }
   .elementor-templates-modal__header__items-area {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -256,7 +255,7 @@
       .elementor-templates-modal__header__item > i:not(:hover) {
         color: #a4afb7; }
   .elementor-templates-modal__header__close--normal {
-    width: 45px;
+    width: 47px;
     border-right: 1px solid #e6e9ec; }
     .elementor-templates-modal__header__close--normal i {
       font-size: 18px; }
@@ -294,6 +293,13 @@
   -webkit-box-shadow: 0 0 13px inset rgba(0, 0, 0, 0.05);
           box-shadow: 0 0 13px inset rgba(0, 0, 0, 0.05); }
 
+#wpadminbar #wp-admin-bar-elementor_app_site_editor a.ab-item:before {
+  content: "\e91d";
+  font-family: eicons;
+  top: 4px;
+  font-size: 13px;
+  color: inherit; }
+
 .elementor-hidden {
   display: none; }
 
@@ -318,20 +324,20 @@
   width: 0;
   height: 0; }
 
-.elementor-gradient-logo {
-  background-image: -webkit-linear-gradient(225deg, #f2295b, #434363);
-  background-image: -o-linear-gradient(225deg, #f2295b, #434363);
-  background-image: linear-gradient(-135deg, #f2295b, #434363);
+.e-logo-wrapper {
+  background: #93003c;
   display: inline-block;
-  padding: 0.6em;
-  -webkit-border-radius: 0.2em;
-          border-radius: 0.2em; }
-  .elementor-gradient-logo i {
+  padding: 0.75em;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  line-height: 1; }
+  .e-logo-wrapper i {
     color: #fff;
-    display: block; }
+    font-size: 1em; }
 
 #elementor-finder__modal {
-  background: none; }
+  background: none;
+  z-index: 99999; }
   #elementor-finder__modal .dialog-widget-content {
     width: 650px;
     max-width: 98%;

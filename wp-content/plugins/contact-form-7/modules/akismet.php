@@ -4,9 +4,9 @@
 ** Akismet API: http://akismet.com/development/api/
 **/
 
-add_filter( 'wpcf7_spam', 'wpcf7_akismet', 10, 1 );
+add_filter( 'wpcf7_spam', 'wpcf7_akismet', 10, 2 );
 
-function wpcf7_akismet( $spam ) {
+function wpcf7_akismet( $spam, $submission ) {
 	if ( $spam ) {
 		return $spam;
 	}
@@ -15,9 +15,7 @@ function wpcf7_akismet( $spam ) {
 		return false;
 	}
 
-	$submission = WPCF7_Submission::get_instance();
-
-	if ( ! $submission or ! $params = wpcf7_akismet_submitted_params() ) {
+	if ( ! $params = wpcf7_akismet_submitted_params() ) {
 		return false;
 	}
 
@@ -35,7 +33,14 @@ function wpcf7_akismet( $spam ) {
 	$c['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
 	$c['referrer'] = $_SERVER['HTTP_REFERER'];
 	$c['comment_type'] = 'contact-form';
-	$c['comment_date_gmt'] = $submission->get_meta( 'timestamp' );
+
+	$datetime = date_create_immutable(
+		'@' . $submission->get_meta( 'timestamp' )
+	);
+
+	if ( $datetime ) {
+		$c['comment_date_gmt'] = $datetime->format( DATE_ATOM );
+	}
 
 	if ( $permalink = get_permalink() ) {
 		$c['permalink'] = $permalink;

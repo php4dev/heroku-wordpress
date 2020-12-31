@@ -338,6 +338,11 @@ function wpcf7_rest_create_feedback( WP_REST_Request $request ) {
 					. sanitize_html_class( $name ),
 				'message' => $field['reason'],
 				'idref' => $field['idref'],
+				'error_id' => sprintf(
+					'%1$s-ve-%2$s',
+					$unit_tag,
+					$name
+				),
 			);
 		}
 
@@ -394,7 +399,9 @@ function wpcf7_get_properties_for_api( WPCF7_ContactForm $contact_form ) {
 					'raw_values' => $form_tag->raw_values,
 					'labels' => $form_tag->labels,
 					'values' => $form_tag->values,
-					'pipes' => $form_tag->pipes->to_array(),
+					'pipes' => $form_tag->pipes instanceof WPCF7_Pipes
+						? $form_tag->pipes->to_array()
+						: $form_tag->pipes,
 					'content' => $form_tag->content,
 				);
 			},

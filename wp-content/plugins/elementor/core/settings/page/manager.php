@@ -31,24 +31,6 @@ class Manager extends CSS_Manager {
 	const META_KEY = '_elementor_page_settings';
 
 	/**
-	 * Is CPT supports custom templates.
-	 *
-	 * Whether the Custom Post Type supports templates.
-	 *
-	 * @since 1.6.0
-	 * @deprecated 2.0.0 Use `Utils::is_cpt_custom_templates_supported()` method instead.
-	 * @access public
-	 * @static
-	 *
-	 * @return bool True is templates are supported, False otherwise.
-	 */
-	public static function is_cpt_custom_templates_supported() {
-		_deprecated_function( __METHOD__, '2.0.0', 'Utils::is_cpt_custom_templates_supported()' );
-
-		return Utils::is_cpt_custom_templates_supported();
-	}
-
-	/**
 	 * Get manager name.
 	 *
 	 * Retrieve page settings manager name.
@@ -119,7 +101,7 @@ class Manager extends CSS_Manager {
 			throw new \Exception( 'Invalid post.', Exceptions::NOT_FOUND );
 		}
 
-		if ( ! current_user_can( 'edit_post', $id ) ) {
+		if ( ! Utils::is_wp_cli() && ! current_user_can( 'edit_post', $id ) ) {
 			throw new \Exception( 'Access denied.', Exceptions::FORBIDDEN );
 		}
 
@@ -183,7 +165,8 @@ class Manager extends CSS_Manager {
 
 		if ( Object.values( tabs ).length > 1 ) { #>
 		<div class="elementor-panel-navigation">
-			<# _.each( tabs, function( tabTitle, tabSlug ) { #>
+			<# _.each( tabs, function( tabTitle, tabSlug ) {
+			$e.bc.ensureTab( 'panel/page-settings', tabSlug ); #>
 			<div class="elementor-component-tab elementor-panel-navigation-tab elementor-tab-control-{{ tabSlug }}" data-tab="{{ tabSlug }}">
 				<a href="#">{{{ tabTitle }}}</a>
 			</div>

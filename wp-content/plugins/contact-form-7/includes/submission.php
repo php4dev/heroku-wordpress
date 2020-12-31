@@ -49,10 +49,12 @@ class WPCF7_Submission {
 	}
 
 	private function proceed() {
+		$contact_form = $this->contact_form;
+
+		switch_to_locale( $contact_form->locale() );
+
 		$this->setup_meta_data();
 		$this->setup_posted_data();
-
-		$contact_form = $this->contact_form;
 
 		if ( $this->is( 'init' ) and ! $this->validate() ) {
 			$this->set_status( 'validation_failed' );
@@ -94,6 +96,8 @@ class WPCF7_Submission {
 				do_action( 'wpcf7_mail_failed', $contact_form );
 			}
 		}
+
+		restore_previous_locale();
 
 		$this->remove_uploaded_files();
 	}
@@ -412,16 +416,7 @@ class WPCF7_Submission {
 			) );
 		}
 
-		if ( $this->is_blacklisted() ) {
-			$spam = true;
-
-			$this->add_spam_log( array(
-				'agent' => 'wpcf7',
-				'reason' => __( "Blacklisted words are used.", 'contact-form-7' ),
-			) );
-		}
-
-		return apply_filters( 'wpcf7_spam', $spam );
+		return apply_filters( 'wpcf7_spam', $spam, $this );
 	}
 
 	public function add_spam_log( $args = '' ) {
@@ -443,16 +438,6 @@ class WPCF7_Submission {
 		}
 
 		return wpcf7_verify_nonce( $_POST['_wpnonce'] );
-	}
-
-	private function is_blacklisted() {
-		$target = wpcf7_array_flatten( $this->posted_data );
-		$target[] = $this->get_meta( 'remote_ip' );
-		$target[] = $this->get_meta( 'user_agent' );
-		$target = implode( "\n", $target );
-
-		return (bool) apply_filters( 'wpcf7_submission_is_blacklisted',
-			wpcf7_blacklist_check( $target ), $this );
 	}
 
 	/* Mail */
