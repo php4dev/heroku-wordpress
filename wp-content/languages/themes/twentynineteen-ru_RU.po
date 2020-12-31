@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Themes - Twenty Nineteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-03-31 20:45:48+0000\n"
+"PO-Revision-Date: 2020-12-10 15:15:50+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: GlotPress/2.4.0-alpha\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
 "Language: ru\n"
 "Project-Id-Version: Themes - Twenty Nineteen\n"
 
@@ -16,18 +16,142 @@ msgid "Our 2019 default theme is designed to show off the power of the block edi
 msgstr "Наша тема для 2019 года создана демонстрировать мощь редактора блоков. Она предоставляет пользовательские стили для всех блоков по умолчанию и сделана так, что на сайте вы увидите то же самое, что и в редакторе блоков. Twenty Nineteen создана для совместимости с широким кругом сайтов, неважно что у вас, фото блог, новый сайт для бизнеса или некоммерческий сайт. С просторными интервалами, современными шрифтами без засечек для заголовков и классическими шрифтами с засечками для текста, она просто создана выглядеть красиво при любом размере экрана."
 
 #. Theme Name of the theme
+#: inc/block-patterns.php:20
 msgid "Twenty Nineteen"
 msgstr "Twenty Nineteen"
 
-#: classes/class-twentynineteen-walker-comment.php:96
-msgid "Your comment is awaiting moderation. This is a preview, your comment will be visible after it has been approved."
+#: inc/block-patterns.php:195
+msgid "We help companies communicate with their customers."
+msgstr "Мы помогаем компаниям общаться со своими клиентами онлайн."
+
+#: inc/block-patterns.php:195
+msgid "Spark interest on social media"
+msgstr "Привлечение интереса к бренду в социальных сетях"
+
+#: inc/block-patterns.php:192
+msgid "We help businesses grow."
+msgstr "Мы помогаем бизнесу расти."
+
+#: inc/block-patterns.php:192
+msgid "Activate new customers"
+msgstr "Привлечение новых клиентов"
+
+#: inc/block-patterns.php:189
+msgid "We help startups define (or refine) a clear brand identity."
+msgstr "Мы помогаем стартапам определить (или усовершенствовать) идентичность бренда."
+
+#: inc/block-patterns.php:189
+msgid "Redefine brands"
+msgstr "Ребрендинг"
+
+#: inc/block-patterns.php:179 inc/block-patterns.php:186
+msgid "What We Do"
+msgstr "Наша специализация"
+
+#: inc/block-patterns.php:167
+msgid "Oddly enough, Doug Watson also grew up working alongside his parents at a family-owned restaurant in Queens, NY. He &nbsp;worked on digital campaigns for Fortune 500 Companies before joining Eva Green Consulting."
+msgstr "Как ни странно, Алексей Попов также вырос, работая вместе со своими родителями в семейном ресторане в Москве. До прихода в консалтинговое агентство «Ева» он участвовал в реализации стратегией онлайн продвижения ведущих продуктовых холдингов России."
+
+#: inc/block-patterns.php:164
+msgid "Doug Watson"
+msgstr "Алексей Попов"
+
+#: inc/block-patterns.php:159
+msgid "Eva Young grew up working alongside her parents at their restaurant in Queens, NY. She opened Eva Young Consulting in 2014 to help small businesses like her parents’ restaurant adapt to the digital age."
+msgstr "Основатель агентства Ева Романова выросла, работая вместе со своими родителями в их ресторане в Москве. Она открыла консалтинговое агентство «Ева» в 2014 году, чтобы помочь малым предприятиям, таким как ресторан ее родителей, успешно использовать цифровые технологии в бизнесе."
+
+#: inc/block-patterns.php:156
+msgid "Eva Young"
+msgstr "Ева"
+
+#: inc/block-patterns.php:145 inc/block-patterns.php:152
+msgid "Team"
+msgstr "Команда"
+
+#: inc/block-patterns.php:131
+msgid "Content Strategy"
+msgstr "Контентная стратегия"
+
+#: inc/block-patterns.php:126
+msgid "Copywriting"
+msgstr "Копирайтинг"
+
+#: inc/block-patterns.php:121
+msgid "Marketing"
+msgstr "Маркетинг"
+
+#: inc/block-patterns.php:114
+msgid "Social Media"
+msgstr "Социальные сети"
+
+#: inc/block-patterns.php:109
+msgid "Mobile"
+msgstr "Приложения"
+
+#: inc/block-patterns.php:104
+msgid "Website Design"
+msgstr "Веб-дизайн"
+
+#: inc/block-patterns.php:103 inc/block-patterns.php:108
+#: inc/block-patterns.php:113 inc/block-patterns.php:120
+#: inc/block-patterns.php:125 inc/block-patterns.php:130
+#: inc/block-patterns.php:155 inc/block-patterns.php:163
+msgid "Gradient"
+msgstr "Градиент"
+
+#: inc/block-patterns.php:92 inc/block-patterns.php:98
+msgid "Services"
+msgstr "Услуги"
+
+#: inc/block-patterns.php:80
+msgid "Contact Us"
+msgstr "Обратная связь"
+
+#: inc/block-patterns.php:74
+msgid "example@example.com"
+msgstr "example@example.com"
+
+#: inc/block-patterns.php:74
+msgid "(555) 555-5555"
+msgstr "+7 (495) 777-77-77"
+
+#: inc/block-patterns.php:69
+msgid "New York, New York 10023"
+msgstr "101000, Москва"
+
+#: inc/block-patterns.php:69
+msgid "20 Cooper Avenue"
+msgstr "Каменноостровский просп., 29Б"
+
+#: inc/block-patterns.php:58 inc/block-patterns.php:64
+msgid "Get In Touch"
+msgstr "Связаться с нами"
+
+#: inc/block-patterns.php:46
+msgid "Learn More"
+msgstr "Подробнее"
+
+#: inc/block-patterns.php:42
+msgid "Eva Young Consulting was founded in 2014 to meet the needs of small businesses in the San Francisco Bay Area. We help startups define a clear brand identity and digital strategy that will carry them through their financing rounds and scale as their business grows. Discover how we can boost your brand with a unique and powerful digital marketing strategy."
+msgstr "Консалтинговое агентство «Ева» было основано в 2014 году для удовлетворения потребностей малого бизнеса в Центральном федеральном округе. Мы помогаем стартапам определить четкую идентичность бренда и онлайн стратегию, которые позволят им пройти через стадии привлечения капитала и масштабироваться по мере роста их бизнеса. Узнайте, как мы можем продвинуть ваш бренд с помощью уникальной и мощной стратегии интернет-маркетинга."
+
+#: inc/block-patterns.php:39
+msgid "Advocating for Businesses and Entrepreneurs since 2014"
+msgstr "Консалтинговые услуги для бизнеса и предпринимателей с 2014 г."
+
+#: inc/block-patterns.php:33
+msgid "About"
+msgstr "О нас"
+
+#: classes/class-twentynineteen-walker-comment.php:98
+msgid "Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved."
 msgstr "Ваш комментарий ожидает одобрения. Это его предварительный просмотр, комментарий станет видимым для всех после одобрения."
 
-#: functions.php:153
+#: functions.php:154
 msgid "Dark Blue"
 msgstr "Темно-синяя"
 
-#: functions.php:148
+#: functions.php:149
 msgid "Blue"
 msgstr "Синяя"
 
@@ -41,8 +165,8 @@ msgctxt "Parent post link"
 msgid "<span class=\"meta-nav\">Published in</span><br><span class=\"post-title\">%title</span>"
 msgstr "<span class=\"meta-nav\">Опубликовано в</span><br><span class=\"post-title\">%title</span>"
 
-#: template-parts/content/content-excerpt.php:18
 #: template-parts/content/content.php:18
+#: template-parts/content/content-excerpt.php:18
 msgctxt "post"
 msgid "Featured"
 msgstr "Продвигаемая"
@@ -78,51 +202,51 @@ msgctxt "primary color"
 msgid "Default"
 msgstr "По умолчанию"
 
-#: functions.php:168
+#: functions.php:169
 msgid "White"
 msgstr "Белая"
 
-#: functions.php:163
+#: functions.php:164
 msgid "Light Gray"
 msgstr "Светло-серая"
 
-#: functions.php:158
+#: functions.php:159
 msgid "Dark Gray"
 msgstr "Тёмно-серая"
 
-#: functions.php:136
+#: functions.php:137
 msgid "XL"
 msgstr "XL"
 
-#: functions.php:135
+#: functions.php:136
 msgid "Huge"
 msgstr "Огромный"
 
-#: functions.php:130
+#: functions.php:131
 msgid "L"
 msgstr "L"
 
-#: functions.php:129
+#: functions.php:130
 msgid "Large"
 msgstr "Большой"
 
-#: functions.php:124
+#: functions.php:125
 msgid "M"
 msgstr "M"
 
-#: functions.php:123
+#: functions.php:124
 msgid "Normal"
 msgstr "Обычный"
 
-#: functions.php:117
-msgid "Small"
-msgstr "Маленький"
-
-#: functions.php:118
+#: functions.php:119
 msgid "S"
 msgstr "S"
 
-#: footer.php:37 functions.php:60
+#: functions.php:118
+msgid "Small"
+msgstr "Маленький"
+
+#: functions.php:60 footer.php:37
 msgid "Footer Menu"
 msgstr "Меню подвала"
 
@@ -135,11 +259,11 @@ msgstr "Полный размер"
 msgid "Page"
 msgstr "Страница"
 
-#: functions.php:192
+#: functions.php:196
 msgid "Add widgets here to appear in your footer."
 msgstr "Добавьте виджеты сюда, для помещения их в подвал сайта."
 
-#: template-parts/footer/footer-widgets.php:12 functions.php:190
+#: functions.php:194 template-parts/footer/footer-widgets.php:12
 msgid "Footer"
 msgstr "Подвал"
 
@@ -173,14 +297,14 @@ msgid "Top Menu"
 msgstr "Верхнее меню"
 
 #. translators: %s: Post title. Only visible to screen readers.
-#: template-parts/content/content-single.php:27
 #: template-parts/content/content.php:36
+#: template-parts/content/content-single.php:27
 msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr "Читать далее<span class=\"screen-reader-text\"> «%s»</span>"
 
-#: template-parts/content/content-single.php:40
+#: image.php:52 template-parts/content/content-page.php:27
 #: template-parts/content/content.php:49
-#: template-parts/content/content-page.php:27 image.php:52
+#: template-parts/content/content-single.php:40
 msgid "Pages:"
 msgstr "Страницы:"
 
@@ -299,8 +423,8 @@ msgid "Category Archives: "
 msgstr "Архивы рубрик:"
 
 #. translators: %s: Post title. Only visible to screen readers.
-#: template-parts/header/entry-header.php:32
-#: template-parts/content/content-page.php:41 inc/template-tags.php:120
+#: template-parts/content/content-page.php:41
+#: template-parts/header/entry-header.php:32 inc/template-tags.php:120
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr "Редактировать <span class=\"screen-reader-text\">%s</span>"
 
@@ -308,7 +432,7 @@ msgstr "Редактировать <span class=\"screen-reader-text\">%s</span>"
 msgid "Skip to content"
 msgstr "Перейти к содержимому"
 
-#: template-parts/header/site-branding.php:46 functions.php:61
+#: functions.php:61 template-parts/header/site-branding.php:46
 msgid "Social Links Menu"
 msgstr "Меню социальных ссылок"
 
@@ -360,16 +484,16 @@ msgstr "Оставьте комментарий"
 msgid "Join the Conversation"
 msgstr "Вливайтесь в общение"
 
-#: classes/class-twentynineteen-walker-comment.php:94
+#: classes/class-twentynineteen-walker-comment.php:96
 msgid "Your comment is awaiting moderation."
 msgstr "Ваш комментарий ожидает одобрения."
 
-#: classes/class-twentynineteen-walker-comment.php:87
+#: classes/class-twentynineteen-walker-comment.php:89
 msgid "Edit"
 msgstr "Редактировать"
 
 #. translators: 1: Comment date, 2: Comment time.
-#: classes/class-twentynineteen-walker-comment.php:79
+#: classes/class-twentynineteen-walker-comment.php:78
 msgid "%1$s at %2$s"
 msgstr "%1$s в %2$s"
 
