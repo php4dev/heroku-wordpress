@@ -6,6 +6,7 @@ import { __ } from '@wordpress/i18n';
 import PropTypes from 'prop-types';
 import QuantitySelector from '@woocommerce/base-components/quantity-selector';
 import ProductPrice from '@woocommerce/base-components/product-price';
+import ProductName from '@woocommerce/base-components/product-name';
 import { getCurrency } from '@woocommerce/base-utils';
 import { useStoreCartItemQuantity } from '@woocommerce/base-hooks';
 import { Icon, trash } from '@woocommerce/icons';
@@ -14,7 +15,6 @@ import {
 	ProductImage,
 	ProductLowStockBadge,
 	ProductMetadata,
-	ProductName,
 	ProductSaleBadge,
 } from '@woocommerce/base-components/cart-checkout';
 import Dinero from 'dinero.js';
@@ -43,6 +43,7 @@ const getAmountFromRawPrice = ( priceObject, currency ) => {
 const CartLineItemRow = ( { lineItem = {} } ) => {
 	const {
 		name = '',
+		catalog_visibility: catalogVisibility = '',
 		short_description: shortDescription = '',
 		description: fullDescription = '',
 		low_stock_remaining: lowStockRemaining = null,
@@ -90,6 +91,8 @@ const CartLineItemRow = ( { lineItem = {} } ) => {
 	} ).multiply( quantity );
 	const saleAmount = regularAmount.subtract( purchaseAmount );
 	const firstImage = images.length ? images[ 0 ] : {};
+	const isProductHiddenFromCatalog =
+		catalogVisibility === 'hidden' || catalogVisibility === 'search';
 
 	return (
 		<tr
@@ -103,15 +106,19 @@ const CartLineItemRow = ( { lineItem = {} } ) => {
 				aria-hidden={ ! firstImage.alt }
 			>
 				{ /* We don't need to make it focusable, because product name has the same link. */ }
-				<a href={ permalink } tabIndex={ -1 }>
+				{ isProductHiddenFromCatalog ? (
 					<ProductImage image={ firstImage } />
-				</a>
+				) : (
+					<a href={ permalink } tabIndex={ -1 }>
+						<ProductImage image={ firstImage } />
+					</a>
+				) }
 			</td>
 			<td className="wc-block-cart-item__product">
 				<ProductName
-					permalink={ permalink }
+					disabled={ isPendingDelete || isProductHiddenFromCatalog }
 					name={ name }
-					disabled={ isPendingDelete }
+					permalink={ permalink }
 				/>
 				{ showBackorderBadge ? (
 					<ProductBackorderBadge />

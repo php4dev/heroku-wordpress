@@ -94,6 +94,14 @@ class Controller extends \WC_REST_Reports_Controller {
 				'description' => __( 'Stats about products.', 'woocommerce' ),
 			),
 			array(
+				'slug'        => 'variations',
+				'description' => __( 'Variations detailed reports.', 'woocommerce' ),
+			),
+			array(
+				'slug'        => 'variations/stats',
+				'description' => __( 'Stats about variations.', 'woocommerce' ),
+			),
+			array(
 				'slug'        => 'categories',
 				'description' => __( 'Product categories detailed reports.', 'woocommerce' ),
 			),

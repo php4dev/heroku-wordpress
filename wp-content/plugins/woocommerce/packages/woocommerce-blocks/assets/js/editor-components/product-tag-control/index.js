@@ -74,9 +74,10 @@ class ProductTagControl extends Component {
 				{ ...args }
 				showCount
 				aria-label={ sprintf(
+					// Translators: %1$d is the count of products, %2$s is the name of the tag.
 					_n(
-						'%d product tagged as %s',
-						'%d products tagged as %s',
+						'%1$d product tagged as %2$s',
+						'%1$d products tagged as %2$s',
 						item.count,
 						'woocommerce'
 					),
@@ -107,6 +108,7 @@ class ProductTagControl extends Component {
 			),
 			selected: ( n ) =>
 				sprintf(
+					// Translators: %d is the count of selected tags.
 					_n(
 						'%d tag selected',
 						'%d tags selected',

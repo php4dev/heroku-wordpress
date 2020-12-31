@@ -3,6 +3,8 @@ namespace Automattic\WooCommerce\Blocks;
 
 use Automattic\WooCommerce\Blocks\StoreApi\RoutesController;
 use Automattic\WooCommerce\Blocks\StoreApi\SchemaController;
+use Automattic\WooCommerce\Blocks\Domain\Services\ExtendRestApi;
+
 
 /**
  * RestApi class.
@@ -12,9 +14,19 @@ use Automattic\WooCommerce\Blocks\StoreApi\SchemaController;
  */
 class RestApi {
 	/**
-	 * Constructor
+	 * Stores Rest Extending instance
+	 *
+	 * @var ExtendRestApi
 	 */
-	public function __construct() {
+	private $extend;
+
+	/**
+	 * Constructor
+	 *
+	 * @param ExtendRestApi $extend Rest Extending instance.
+	 */
+	public function __construct( ExtendRestApi $extend ) {
+		$this->extend = $extend;
 		$this->init();
 	}
 
@@ -24,13 +36,14 @@ class RestApi {
 	protected function init() {
 		add_action( 'rest_api_init', array( $this, 'register_rest_routes' ), 10 );
 		add_filter( 'rest_authentication_errors', array( $this, 'store_api_authentication' ) );
+		add_action( 'set_logged_in_cookie', array( $this, 'store_api_logged_in_cookie' ) );
 	}
 
 	/**
 	 * Register REST API routes.
 	 */
 	public function register_rest_routes() {
-		$schemas = new SchemaController();
+		$schemas = new SchemaController( $this->extend );
 		$routes  = new RoutesController( $schemas );
 		$routes->register_routes();
 	}
@@ -67,6 +80,19 @@ class RestApi {
 			return $result;
 		}
 		return true;
+	}
+
+	/**
+	 * When the login cookies are set, they are not available until the next page reload. For the Store API, specifically
+	 * for returning updated nonces, we need this to be available immediately.
+	 *
+	 * @param string $logged_in_cookie The value for the logged in cookie.
+	 */
+	public function store_api_logged_in_cookie( $logged_in_cookie ) {
+		if ( ! defined( 'LOGGED_IN_COOKIE' ) || ! self::is_request_to_store_api() ) {
+			return;
+		}
+		$_COOKIE[ LOGGED_IN_COOKIE ] = $logged_in_cookie;
 	}
 
 	/**

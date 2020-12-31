@@ -72,6 +72,7 @@ class AssetDataRegistry {
 		$currency = get_woocommerce_currency();
 		return [
 			'wpVersion'     => get_bloginfo( 'version' ),
+			'wcVersion'     => defined( 'WC_VERSION' ) ? WC_VERSION : '',
 			'adminUrl'      => admin_url(),
 			'countries'     => WC()->countries->get_countries(),
 			'currency'      => [
@@ -257,7 +258,7 @@ class AssetDataRegistry {
 			}
 			return;
 		}
-		if ( \method_exists( $data, '__invoke' ) ) {
+		if ( \is_callable( $data ) ) {
 			$this->lazy_data[ $key ] = $data;
 			return;
 		}

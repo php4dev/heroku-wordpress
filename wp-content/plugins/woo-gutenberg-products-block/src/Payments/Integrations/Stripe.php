@@ -84,6 +84,7 @@ final class Stripe extends AbstractPaymentMethodType {
 			'stripeTotalLabel'    => $this->get_total_label(),
 			'publicKey'           => $this->get_publishable_key(),
 			'allowPrepaidCard'    => $this->get_allow_prepaid_card(),
+			'title'               => $this->get_title(),
 			'button'              => [
 				'type'   => $this->get_button_type(),
 				'theme'  => $this->get_button_theme(),
@@ -138,6 +139,15 @@ final class Stripe extends AbstractPaymentMethodType {
 	 */
 	private function get_allow_prepaid_card() {
 		return apply_filters( 'wc_stripe_allow_prepaid_card', true );
+	}
+
+	/**
+	 * Returns the title string to use in the UI (customisable via admin settings screen).
+	 *
+	 * @return string Title / label string
+	 */
+	private function get_title() {
+		return isset( $this->settings['title'] ) ? $this->settings['title'] : __( 'Credit / Debit Card', 'woo-gutenberg-products-block' );
 	}
 
 	/**
@@ -246,7 +256,7 @@ final class Stripe extends AbstractPaymentMethodType {
 			// phpcs:ignore WordPress.Security.NonceVerification
 			$post_data = $_POST;
 			$_POST     = $context->payment_data;
-			WC_Stripe_Payment_Request::add_order_meta( $context->order->id, $context->payment_data );
+			$this->add_order_meta( $context->order, $data['payment_request_type'] );
 			$_POST = $post_data;
 		}
 
@@ -258,7 +268,7 @@ final class Stripe extends AbstractPaymentMethodType {
 				'wc_gateway_stripe_process_payment_error',
 				function( $error ) use ( &$result ) {
 					$payment_details                 = $result->payment_details;
-					$payment_details['errorMessage'] = $error->getLocalizedMessage();
+					$payment_details['errorMessage'] = wp_strip_all_tags( $error->getLocalizedMessage() );
 					$result->set_payment_details( $payment_details );
 				}
 			);
@@ -293,6 +303,24 @@ final class Stripe extends AbstractPaymentMethodType {
 			);
 			$result->set_payment_details( $payment_details );
 			$result->set_status( 'success' );
+		}
+	}
+
+	/**
+	 * Handles adding information about the payment request type used to the order meta.
+	 *
+	 * @param \WC_Order $order The order being processed.
+	 * @param string    $payment_request_type The payment request type used for payment.
+	 */
+	private function add_order_meta( \WC_Order $order, string $payment_request_type ) {
+		if ( 'apple_pay' === $payment_request_type ) {
+			$order->set_payment_method_title( 'Apple Pay (Stripe)' );
+			$order->save();
+		}
+
+		if ( 'payment_request_api' === $payment_request_type ) {
+			$order->set_payment_method_title( 'Chrome Payment Request (Stripe)' );
+			$order->save();
 		}
 	}
 }

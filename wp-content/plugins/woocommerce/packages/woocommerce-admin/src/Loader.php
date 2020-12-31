@@ -10,6 +10,7 @@ use \_WP_Dependency;
 use Automattic\WooCommerce\Admin\Features\Onboarding;
 use Automattic\WooCommerce\Admin\API\Reports\Orders\DataStore as OrdersDataStore;
 use Automattic\WooCommerce\Admin\API\Plugins;
+use Automattic\WooCommerce\Admin\Features\Navigation\Screen;
 use WC_Marketplace_Suggestions;
 
 /**
@@ -60,6 +61,8 @@ class Loader {
 		add_action( 'init', array( __CLASS__, 'define_tables' ) );
 		// Load feature before WooCommerce update hooks.
 		add_action( 'init', array( __CLASS__, 'load_features' ), 4 );
+		add_filter( 'woocommerce_get_sections_advanced', array( __CLASS__, 'add_features_section' ) );
+		add_filter( 'woocommerce_get_settings_advanced', array( __CLASS__, 'add_features_settings' ), 10, 2 );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'register_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'inject_wc_settings_dependencies' ), 14 );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'load_scripts' ), 15 );
@@ -111,16 +114,6 @@ class Loader {
 			$wpdb->$name    = $wpdb->prefix . $table;
 			$wpdb->tables[] = $table;
 		}
-	}
-
-	/**
-	 * Returns true if WooCommerce Admin is currently running in a development environment.
-	 */
-	public static function is_dev() {
-		if ( self::is_feature_enabled( 'devdocs' ) && defined( 'WP_DEBUG' ) && WP_DEBUG && defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			return true;
-		}
-		return false;
 	}
 
 	/**
@@ -233,13 +226,64 @@ class Loader {
 	public static function load_features() {
 		$features = self::get_features();
 		foreach ( $features as $feature ) {
-			$feature = str_replace( '-', '', ucwords( strtolower( $feature ), '-' ) );
-			$feature = 'Automattic\\WooCommerce\\Admin\\Features\\' . $feature;
+			$feature       = str_replace( '-', '', ucwords( strtolower( $feature ), '-' ) );
+			$feature_class = 'Automattic\\WooCommerce\\Admin\\Features\\' . $feature;
 
-			if ( class_exists( $feature ) ) {
-				new $feature();
+			// Handle features contained in subdirectory.
+			if ( ! class_exists( $feature_class ) && class_exists( $feature_class . '\\Init' ) ) {
+				$feature_class = $feature_class . '\\Init';
+			}
+
+			if ( class_exists( $feature_class ) ) {
+				new $feature_class();
 			}
 		}
+	}
+
+	/**
+	 * Adds the Features section to the advanced tab of WooCommerce Settings
+	 *
+	 * @param array $sections Sections.
+	 * @return array
+	 */
+	public static function add_features_section( $sections ) {
+		$sections['features'] = __( 'Features', 'woocommerce' );
+		return $sections;
+	}
+
+	/**
+	 * Adds the Features settings.
+	 *
+	 * @param array  $settings Settings.
+	 * @param string $current_section Current section slug.
+	 * @return array
+	 */
+	public static function add_features_settings( $settings, $current_section ) {
+		if ( 'features' !== $current_section ) {
+			return $settings;
+		}
+
+		return apply_filters(
+			'woocommerce_settings_features',
+			array(
+				array(
+					'title' => __( 'Features', 'woocommerce' ),
+					'type'  => 'title',
+					'desc'  => __( 'Start using new features that are being progressively rolled out to improve the store management experience.', 'woocommerce' ),
+					'id'    => 'features_options',
+				),
+				array(
+					'title' => __( 'Navigation', 'woocommerce' ),
+					'desc'  => __( 'Adds the new WooCommerce navigation experience to the dashboard', 'woocommerce' ),
+					'id'    => 'woocommerce_navigation_enabled',
+					'type'  => 'checkbox',
+				),
+				array(
+					'type' => 'sectionend',
+					'id'   => 'features_options',
+				),
+			)
+		);
 	}
 
 	/**
@@ -321,9 +365,17 @@ class Loader {
 		wp_set_script_translations( 'wc-currency', 'woocommerce' );
 
 		wp_register_script(
+			'wc-customer-effort-score',
+			self::get_url( 'customer-effort-score/index', 'js' ),
+			array(),
+			$js_file_version,
+			true
+		);
+
+		wp_register_script(
 			'wc-navigation',
 			self::get_url( 'navigation/index', 'js' ),
-			array(),
+			array( 'wp-url', 'wp-hooks' ),
 			$js_file_version,
 			true
 		);
@@ -377,6 +429,7 @@ class Loader {
 				'wp-keycodes',
 				'wc-csv',
 				'wc-currency',
+				'wc-customer-effort-score',
 				'wc-date',
 				'wc-navigation',
 				'wc-number',
@@ -404,6 +457,14 @@ class Loader {
 		);
 		wp_style_add_data( 'wc-components-ie', 'rtl', 'replace' );
 
+		wp_register_style(
+			'wc-customer-effort-score',
+			self::get_url( 'customer-effort-score/style', 'css' ),
+			array(),
+			$css_file_version
+		);
+		wp_style_add_data( 'wc-customer-effort-score', 'rtl', 'replace' );
+
 		wp_register_script(
 			WC_ADMIN_APP,
 			self::get_url( 'app/index', 'js' ),
@@ -411,7 +472,9 @@ class Loader {
 				'wp-core-data',
 				'wc-components',
 				'wp-date',
+				'wp-plugins',
 				'wc-tracks',
+				'wc-navigation',
 			),
 			$js_file_version,
 			true
@@ -420,7 +483,8 @@ class Loader {
 			WC_ADMIN_APP,
 			'wcAdminAssets',
 			array(
-				'path' => plugins_url( self::get_path( 'js' ), WC_ADMIN_PLUGIN_FILE ),
+				'path'    => plugins_url( self::get_path( 'js' ), WC_ADMIN_PLUGIN_FILE ),
+				'version' => $js_file_version,
 			)
 		);
 
@@ -432,7 +496,7 @@ class Loader {
 		wp_register_style(
 			WC_ADMIN_APP,
 			self::get_url( "app/style{$rtl}", 'css' ),
-			array( 'wc-components' ),
+			array( 'wc-components', 'wc-customer-effort-score' ),
 			$css_file_version
 		);
 
@@ -759,7 +823,7 @@ class Loader {
 	 * TODO: See usage in `admin.php`. This needs refactored and implemented properly in core.
 	 */
 	public static function is_embed_page() {
-		return wc_admin_is_connected_page();
+		return wc_admin_is_connected_page() || ( ! self::is_admin_page() && Screen::is_woocommerce_page() );
 	}
 
 	/**
@@ -774,19 +838,12 @@ class Loader {
 	 *
 	 * @param array $section Section to create breadcrumb from.
 	 */
-	private static function output_breadcrumbs( $section ) {
+	private static function output_heading( $section ) {
 		if ( ! static::user_can_analytics() ) {
 			return;
 		}
-		?>
-		<span>
-		<?php if ( is_array( $section ) ) : ?>
-			<a href="<?php echo esc_url( admin_url( $section[0] ) ); ?>"><?php echo esc_html( $section[1] ); ?></a>
-		<?php else : ?>
-			<?php echo esc_html( $section ); ?>
-		<?php endif; ?>
-		</span>
-		<?php
+
+		echo esc_html( $section );
 	}
 
 	/**
@@ -812,10 +869,8 @@ class Loader {
 		<div id="woocommerce-embedded-root" class="is-embed-loading">
 			<div class="woocommerce-layout">
 				<div class="woocommerce-layout__header is-embed-loading">
-					<h1 class="woocommerce-layout__header-breadcrumbs">
-						<?php foreach ( $sections as $section ) : ?>
-							<?php self::output_breadcrumbs( $section ); ?>
-						<?php endforeach; ?>
+					<h1 class="woocommerce-layout__header-heading">
+						<?php self::output_heading( end( $sections ) ); ?>
 					</h1>
 				</div>
 			</div>
@@ -1048,6 +1103,8 @@ class Loader {
 		// We may have synced orders with a now-unregistered status.
 		// E.g An extension that added statuses is now inactive or removed.
 		$settings['unregisteredOrderStatuses'] = self::get_unregistered_order_statuses();
+		// The separator used for attributes found in Variation titles.
+		$settings['variationTitleAttributesSeparator'] = apply_filters( 'woocommerce_product_variation_title_attributes_separator', ' - ', new \WC_Product() );
 
 		if ( ! empty( $preload_data_endpoints ) ) {
 			$settings['dataEndpoints'] = isset( $settings['dataEndpoints'] )
@@ -1314,6 +1371,7 @@ class Loader {
 			$handles_for_injection = [
 				'wc-csv',
 				'wc-currency',
+				'wc-customer-effort-score',
 				'wc-navigation',
 				'wc-number',
 				'wc-date',

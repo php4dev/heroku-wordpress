@@ -7,20 +7,20 @@ namespace Automattic\WooCommerce\Admin;
 
 defined( 'ABSPATH' ) || exit;
 
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Historical_Data;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Order_Milestones;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Woo_Subscriptions_Notes;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Tracking_Opt_In;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_WooCommerce_Payments;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Install_JP_And_WCS_Plugins;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Draw_Attention;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Coupon_Page_Moved;
+use \Automattic\WooCommerce\Admin\Notes\Notes;
+use \Automattic\WooCommerce\Admin\Notes\HistoricalData;
+use \Automattic\WooCommerce\Admin\Notes\OrderMilestones;
+use \Automattic\WooCommerce\Admin\Notes\WooSubscriptionsNotes;
+use \Automattic\WooCommerce\Admin\Notes\TrackingOptIn;
+use \Automattic\WooCommerce\Admin\Notes\WooCommercePayments;
+use \Automattic\WooCommerce\Admin\Notes\InstallJPAndWCSPlugins;
+use \Automattic\WooCommerce\Admin\Notes\DrawAttention;
+use \Automattic\WooCommerce\Admin\Notes\CouponPageMoved;
 use \Automattic\WooCommerce\Admin\RemoteInboxNotifications\RemoteInboxNotificationsEngine;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Home_Screen_Feedback;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Set_Up_Additional_Payment_Types;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Test_Checkout;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Selling_Online_Courses;
+use \Automattic\WooCommerce\Admin\Notes\HomeScreenFeedback;
+use \Automattic\WooCommerce\Admin\Notes\SetUpAdditionalPaymentTypes;
+use \Automattic\WooCommerce\Admin\Notes\TestCheckout;
+use \Automattic\WooCommerce\Admin\Notes\SellingOnlineCourses;
 
 /**
  * Feature plugin main class.
@@ -70,6 +70,7 @@ class FeaturePlugin {
 
 		$this->define_constants();
 
+		require_once WC_ADMIN_ABSPATH . '/src/Notes/DeprecatedNotes.php';
 		require_once WC_ADMIN_ABSPATH . '/includes/core-functions.php';
 		require_once WC_ADMIN_ABSPATH . '/includes/feature-config.php';
 		require_once WC_ADMIN_ABSPATH . '/includes/page-controller-functions.php';
@@ -118,7 +119,7 @@ class FeaturePlugin {
 
 		$this->includes();
 		ReportsSync::clear_queued_actions();
-		WC_Admin_Notes::clear_queued_actions();
+		Notes::clear_queued_actions();
 		wp_clear_scheduled_hook( 'wc_admin_daily' );
 		wp_clear_scheduled_hook( 'generate_category_lookup_table' );
 	}
@@ -152,7 +153,7 @@ class FeaturePlugin {
 		$this->define( 'WC_ADMIN_PLUGIN_FILE', WC_ADMIN_ABSPATH . 'woocommerce-admin.php' );
 		// WARNING: Do not directly edit this version number constant.
 		// It is updated as part of the prebuild process from the package.json value.
-		$this->define( 'WC_ADMIN_VERSION_NUMBER', '1.6.2' );
+		$this->define( 'WC_ADMIN_VERSION_NUMBER', '1.7.3' );
 	}
 
 	/**
@@ -174,24 +175,24 @@ class FeaturePlugin {
 		ReportExporter::init();
 
 		// CRUD classes.
-		WC_Admin_Notes::init();
+		Notes::init();
 
 		// Initialize category lookup.
 		CategoryLookup::instance()->init();
 
 		// Admin note providers.
 		// @todo These should be bundled in the features/ folder, but loading them from there currently has a load order issue.
-		new WC_Admin_Notes_Woo_Subscriptions_Notes();
-		new WC_Admin_Notes_Historical_Data();
-		new WC_Admin_Notes_Order_Milestones();
-		new WC_Admin_Notes_Tracking_Opt_In();
-		new WC_Admin_Notes_WooCommerce_Payments();
-		new WC_Admin_Notes_Install_JP_And_WCS_Plugins();
-		new WC_Admin_Notes_Draw_Attention();
-		new WC_Admin_Notes_Home_Screen_Feedback();
-		new WC_Admin_Notes_Set_Up_Additional_Payment_Types();
-		new WC_Admin_Notes_Test_Checkout();
-		new WC_Admin_Notes_Selling_Online_Courses();
+		new WooSubscriptionsNotes();
+		new HistoricalData();
+		new OrderMilestones();
+		new TrackingOptIn();
+		new WooCommercePayments();
+		new InstallJPAndWCSPlugins();
+		new DrawAttention();
+		new HomeScreenFeedback();
+		new SetUpAdditionalPaymentTypes();
+		new TestCheckout();
+		new SellingOnlineCourses();
 
 		// Initialize RemoteInboxNotificationsEngine.
 		RemoteInboxNotificationsEngine::init();
@@ -202,7 +203,6 @@ class FeaturePlugin {
 	 */
 	protected function hooks() {
 		add_filter( 'woocommerce_admin_features', array( $this, 'replace_supported_features' ), 0 );
-		add_action( 'admin_menu', array( $this, 'register_devdocs_page' ) );
 
 		Loader::get_instance();
 	}
@@ -279,21 +279,6 @@ class FeaturePlugin {
 	}
 
 	/**
-	 * Adds a menu item for the wc-admin devdocs.
-	 */
-	public function register_devdocs_page() {
-		if ( Loader::is_dev() ) {
-			wc_admin_register_page(
-				array(
-					'title'  => 'DevDocs',
-					'parent' => 'woocommerce',
-					'path'   => '/devdocs',
-				)
-			);
-		}
-	}
-
-	/**
 	 * Define constant if not already set.
 	 *
 	 * @param string      $name  Constant name.
@@ -313,5 +298,7 @@ class FeaturePlugin {
 	/**
 	 * Prevent unserializing.
 	 */
-	private function __wakeup() {}
+	public function __wakeup() {
+		die();
+	}
 }

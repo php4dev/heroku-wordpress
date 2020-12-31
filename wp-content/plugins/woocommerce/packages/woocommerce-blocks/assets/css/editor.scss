@@ -19,6 +19,7 @@
 		.wc-block-grid__products {
 			list-style: none;
 			margin: 0 (-$gap/2) $gap;
+			padding: 0;
 
 			.wc-block-grid__product {
 				margin: 0 0 $gap-large 0;
@@ -49,7 +50,7 @@
 
 // Adds border to placeholder lists, so they can be distinguished from the white background.
 .components-placeholder .woocommerce-search-list__list {
-	border: 1px solid $core-grey-light-500;
+	border: 1px solid $gray-200;
 }
 
 // Work-around to make the SearchList component work fine with the last versions of @wordpress/components.

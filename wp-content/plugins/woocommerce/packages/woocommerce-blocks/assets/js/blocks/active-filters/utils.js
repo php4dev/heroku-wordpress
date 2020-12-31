@@ -14,8 +14,8 @@ import { RemovableChip } from '@woocommerce/base-components/chip';
 export const formatPriceRange = ( minPrice, maxPrice ) => {
 	if ( Number.isFinite( minPrice ) && Number.isFinite( maxPrice ) ) {
 		return sprintf(
-			/* translators: %s min price, %s max price */
-			__( 'Between %s and %s', 'woocommerce' ),
+			/* translators: %1$s min price, %2$s max price */
+			__( 'Between %1$s and %2$s', 'woocommerce' ),
 			formatPrice( minPrice ),
 			formatPrice( maxPrice )
 		);

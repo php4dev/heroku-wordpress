@@ -12,6 +12,7 @@ import ErrorMessage from '@woocommerce/editor-components/error-placeholder/error
  * products.
  *
  * @param {Object} props Component props.
+ * @param {string} props.error
  * @param {Function} props.onChange  Callback fired when the selected item changes
  * @param {Function} props.onSearch  Callback fired when a search is triggered
  * @param {Array}    props.selected  An array of selected products.
@@ -41,6 +42,7 @@ const ProductsControl = ( {
 		),
 		selected: ( n ) =>
 			sprintf(
+				// Translators: %d is the number of selected products.
 				_n(
 					'%d product selected',
 					'%d products selected',

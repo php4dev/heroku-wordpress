@@ -6,7 +6,7 @@ import triggerFetch from '@wordpress/api-fetch';
 import {
 	useCheckoutContext,
 	useShippingDataContext,
-	useBillingDataContext,
+	useCustomerDataContext,
 	usePaymentMethodDataContext,
 	useValidationContext,
 } from '@woocommerce/base-context';
@@ -18,33 +18,12 @@ import {
 	useMemo,
 } from '@wordpress/element';
 import { useStoreCart, useStoreNotices } from '@woocommerce/base-hooks';
+import { formatStoreApiErrorMessage } from '@woocommerce/base-utils';
 
 /**
- * @typedef {import('@woocommerce/type-defs/payments').PaymentDataItem} PaymentDataItem
+ * Internal dependencies
  */
-
-/**
- * Utility function for preparing payment data for the request.
- *
- * @param {Object}  paymentData          Arbitrary payment data provided by the payment method.
- * @param {boolean} shouldSave           Whether to save the payment method info to user account.
- * @param {Object}  activePaymentMethod  The current active payment method.
- *
- * @return {PaymentDataItem[]} Returns the payment data as an array of
- *                             PaymentDataItem objects.
- */
-const preparePaymentData = ( paymentData, shouldSave, activePaymentMethod ) => {
-	const apiData = Object.keys( paymentData ).map( ( property ) => {
-		const value = paymentData[ property ];
-		return { key: property, value };
-	}, [] );
-	const savePaymentMethodKey = `wc-${ activePaymentMethod }-new-payment-method`;
-	apiData.push( {
-		key: savePaymentMethodKey,
-		value: shouldSave,
-	} );
-	return apiData;
-};
+import { preparePaymentData } from './utils';
 
 /**
  * CheckoutProcessor component.
@@ -66,8 +45,8 @@ const CheckoutProcessor = () => {
 		shouldCreateAccount,
 	} = useCheckoutContext();
 	const { hasValidationErrors } = useValidationContext();
-	const { shippingAddress, shippingErrorStatus } = useShippingDataContext();
-	const { billingData } = useBillingDataContext();
+	const { shippingErrorStatus } = useShippingDataContext();
+	const { billingData, shippingAddress } = useCustomerDataContext();
 	const { cartNeedsPayment, receiveCart } = useStoreCart();
 	const {
 		activePaymentMethod,
@@ -213,37 +192,46 @@ const CheckoutProcessor = () => {
 				// Update nonce.
 				triggerFetch.setNonce( fetchResponse.headers );
 
+				// Update user using headers.
+				dispatchActions.setCustomerId(
+					fetchResponse.headers.get( 'X-WC-Store-API-User' )
+				);
+
 				// Handle response.
 				fetchResponse.json().then( function ( response ) {
 					if ( ! fetchResponse.ok ) {
 						// We received an error response.
-						if ( response.body && response.body.message ) {
-							addErrorNotice( response.body.message, {
+						addErrorNotice(
+							formatStoreApiErrorMessage( response ),
+							{
 								id: 'checkout',
-							} );
-						} else {
-							addErrorNotice(
-								__(
-									'Something went wrong. Please contact us to get assistance.',
-									'woo-gutenberg-products-block'
-								),
-								{
-									id: 'checkout',
-								}
-							);
-						}
+							}
+						);
 						dispatchActions.setHasError();
 					}
 					dispatchActions.setAfterProcessing( response );
 					setIsProcessingOrder( false );
 				} );
 			} )
-			.catch( ( error ) => {
-				error.json().then( function ( response ) {
-					// If updated cart state was returned, also update that.
+			.catch( ( errorResponse ) => {
+				// Update nonce.
+				triggerFetch.setNonce( errorResponse.headers );
+
+				// If new customer ID returned, update the store.
+				if ( errorResponse.headers?.get( 'X-WC-Store-API-User' ) ) {
+					dispatchActions.setCustomerId(
+						errorResponse.headers.get( 'X-WC-Store-API-User' )
+					);
+				}
+
+				errorResponse.json().then( function ( response ) {
+					// If updated cart state was returned, update the store.
 					if ( response.data?.cart ) {
 						receiveCart( response.data.cart );
 					}
+					addErrorNotice( formatStoreApiErrorMessage( response ), {
+						id: 'checkout',
+					} );
 					dispatchActions.setHasError();
 					dispatchActions.setAfterProcessing( response );
 					setIsProcessingOrder( false );

@@ -102,7 +102,7 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 		}
 
 		$table_name = self::get_db_table_name();
-		$join       = "JOIN {$wpdb->postmeta} AS postmeta ON {$table_name}.variation_id = postmeta.post_id AND postmeta.meta_key = '_sku'";
+		$join       = "LEFT JOIN {$wpdb->postmeta} AS postmeta ON {$table_name}.variation_id = postmeta.post_id AND postmeta.meta_key = '_sku'";
 
 		if ( 'inner' === $arg_name ) {
 			$this->subquery->add_sql_clause( 'join', $join );
@@ -119,12 +119,15 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 	protected function add_sql_query_params( $query_args ) {
 		global $wpdb;
 		$order_product_lookup_table = self::get_db_table_name();
+		$order_stats_lookup_table   = $wpdb->prefix . 'wc_order_stats';
+		$where_subquery             = array();
 
 		$this->add_time_period_sql_params( $query_args, $order_product_lookup_table );
 		$this->get_limit_sql_params( $query_args );
 		$this->add_order_by_sql_params( $query_args );
 
-		if ( count( $query_args['variations'] ) > 0 ) {
+		$included_variations = $this->get_included_variations( $query_args );
+		if ( $included_variations > 0 ) {
 			$this->add_from_sql_params( $query_args, 'outer' );
 		} else {
 			$this->add_from_sql_params( $query_args, 'inner' );
@@ -135,15 +138,40 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 			$this->subquery->add_sql_clause( 'where', "AND {$order_product_lookup_table}.product_id IN ({$included_products})" );
 		}
 
-		if ( count( $query_args['variations'] ) > 0 ) {
-			$allowed_variations_str = self::get_filtered_ids( $query_args, 'variations' );
-			$this->subquery->add_sql_clause( 'where', "AND {$order_product_lookup_table}.variation_id IN ({$allowed_variations_str})" );
+		$excluded_products = $this->get_excluded_products( $query_args );
+		if ( $excluded_products ) {
+			$this->subquery->add_sql_clause( 'where', "AND {$order_product_lookup_table}.product_id NOT IN ({$excluded_products})" );
+		}
+
+		if ( $included_variations ) {
+			$this->subquery->add_sql_clause( 'where', "AND {$order_product_lookup_table}.variation_id IN ({$included_variations})" );
+		} elseif ( ! $included_products ) {
+			$this->subquery->add_sql_clause( 'where', "AND {$order_product_lookup_table}.variation_id != 0" );
 		}
 
 		$order_status_filter = $this->get_status_subquery( $query_args );
 		if ( $order_status_filter ) {
-			$this->subquery->add_sql_clause( 'join', "JOIN {$wpdb->prefix}wc_order_stats ON {$order_product_lookup_table}.order_id = {$wpdb->prefix}wc_order_stats.order_id" );
+			$this->subquery->add_sql_clause( 'join', "JOIN {$order_stats_lookup_table} ON {$order_product_lookup_table}.order_id = {$order_stats_lookup_table}.order_id" );
 			$this->subquery->add_sql_clause( 'where', "AND ( {$order_status_filter} )" );
+		}
+
+		$attribute_subqueries = $this->get_attribute_subqueries( $query_args );
+		if ( $attribute_subqueries['join'] && $attribute_subqueries['where'] ) {
+			// JOIN on product lookup if we haven't already.
+			if ( ! $order_status_filter ) {
+				$this->subquery->add_sql_clause( 'join', "JOIN {$order_product_lookup_table} ON {$order_stats_lookup_table}.order_id = {$order_product_lookup_table}.order_id" );
+			}
+			// Add JOINs for matching attributes.
+			foreach ( $attribute_subqueries['join'] as $attribute_join ) {
+				$this->subquery->add_sql_clause( 'join', $attribute_join );
+			}
+			// Add WHEREs for matching attributes.
+			$where_subquery = array_merge( $where_subquery, $attribute_subqueries['where'] );
+		}
+
+		if ( 0 < count( $where_subquery ) ) {
+			$operator = $this->get_match_operator( $query_args );
+			$this->subquery->add_sql_clause( 'where', 'AND (' . implode( " {$operator} ", $where_subquery ) . ')' );
 		}
 	}
 
@@ -241,16 +269,16 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 
 		// These defaults are only partially applied when used via REST API, as that has its own defaults.
 		$defaults   = array(
-			'per_page'      => get_option( 'posts_per_page' ),
-			'page'          => 1,
-			'order'         => 'DESC',
-			'orderby'       => 'date',
-			'before'        => TimeInterval::default_before(),
-			'after'         => TimeInterval::default_after(),
-			'fields'        => '*',
-			'products'      => array(),
-			'variations'    => array(),
-			'extended_info' => false,
+			'per_page'           => get_option( 'posts_per_page' ),
+			'page'               => 1,
+			'order'              => 'DESC',
+			'orderby'            => 'date',
+			'before'             => TimeInterval::default_before(),
+			'after'              => TimeInterval::default_after(),
+			'fields'             => '*',
+			'product_includes'   => array(),
+			'variation_includes' => array(),
+			'extended_info'      => false,
 		);
 		$query_args = wp_parse_args( $query_args, $defaults );
 		$this->normalize_timezones( $query_args, $defaults );
@@ -272,22 +300,28 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 				'page_no' => 0,
 			);
 
-			$included_products = $this->get_included_products_array( $query_args );
-
+			$selections          = $this->selected_columns( $query_args );
+			$included_variations =
+				( isset( $query_args['variation_includes'] ) && is_array( $query_args['variation_includes'] ) )
+					? $query_args['variation_includes']
+					: array();
+			$params              = $this->get_limit_params( $query_args );
 			$this->add_sql_query_params( $query_args );
-			$params = $this->get_limit_params( $query_args );
-			if ( count( $included_products ) > 0 && count( $query_args['variations'] ) > 0 ) {
-				$this->subquery->add_sql_clause( 'select', $this->selected_columns( $query_args ) );
+
+			if ( count( $included_variations ) > 0 ) {
+				$total_results = count( $included_variations );
+				$total_pages   = (int) ceil( $total_results / $params['per_page'] );
+
+				$this->subquery->clear_sql_clause( 'select' );
+				$this->subquery->add_sql_clause( 'select', $selections );
+
 				if ( 'date' === $query_args['orderby'] ) {
 					$this->subquery->add_sql_clause( 'select', ", {$table_name}.date_created" );
 				}
 
-				$total_results = count( $query_args['variations'] );
-				$total_pages   = (int) ceil( $total_results / $params['per_page'] );
-
 				$fields          = $this->get_fields( $query_args );
-				$join_selections = $this->format_join_selections( $fields, array( 'product_id', 'variation_id' ) );
-				$ids_table       = $this->get_ids_table( $query_args['variations'], 'variation_id', array( 'product_id' => $included_products[0] ) );
+				$join_selections = $this->format_join_selections( $fields, array( 'variation_id' ) );
+				$ids_table       = $this->get_ids_table( $included_variations, 'variation_id' );
 
 				$this->add_sql_clause( 'select', $join_selections );
 				$this->add_sql_clause( 'from', '(' );
@@ -315,8 +349,9 @@ class DataStore extends ReportsDataStore implements DataStoreInterface {
 				}
 
 				$this->subquery->clear_sql_clause( 'select' );
-				$this->subquery->add_sql_clause( 'select', $this->selected_columns( $query_args ) );
+				$this->subquery->add_sql_clause( 'select', $selections );
 				$this->subquery->add_sql_clause( 'order_by', $this->get_sql_clause( 'order_by' ) );
+				$this->subquery->add_sql_clause( 'limit', $this->get_sql_clause( 'limit' ) );
 				$variations_query = $this->subquery->get_query_statement();
 			}
 

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit2f206e2514fd055d2fb3656775183bbe
+class ComposerStaticInit08a6ad0ed5b58cf461fde712d9bcae99
 {
     public static $prefixLengthsPsr4 = array (
         'S' => 
@@ -20,12 +20,17 @@ class ComposerStaticInit2f206e2514fd055d2fb3656775183bbe
         array (
             'MaxMind\\Db\\' => 11,
         ),
+        'L' => 
+        array (
+            'League\\Container\\' => 17,
+        ),
         'C' => 
         array (
             'Composer\\Installers\\' => 20,
         ),
         'A' => 
         array (
+            'Automattic\\WooCommerce\\Vendor\\League\\Container\\' => 47,
             'Automattic\\WooCommerce\\Tests\\' => 29,
             'Automattic\\WooCommerce\\Testing\\Tools\\' => 37,
             'Automattic\\WooCommerce\\Blocks\\' => 30,
@@ -52,9 +57,17 @@ class ComposerStaticInit2f206e2514fd055d2fb3656775183bbe
         array (
             0 => __DIR__ . '/..' . '/maxmind-db/reader/src/MaxMind/Db',
         ),
+        'League\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/container/src',
+        ),
         'Composer\\Installers\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
+        ),
+        'Automattic\\WooCommerce\\Vendor\\League\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/container',
         ),
         'Automattic\\WooCommerce\\Tests\\' => 
         array (
@@ -96,6 +109,7 @@ class ComposerStaticInit2f206e2514fd055d2fb3656775183bbe
         'Automattic\\WooCommerce\\RestApi\\UnitTests\\Helpers\\ShippingHelper' => __DIR__ . '/../..' . '/tests/legacy/unit-tests/rest-api/Helpers/ShippingHelper.php',
         'Automattic\\WooCommerce\\RestApi\\Utilities\\ImageAttachment' => __DIR__ . '/../..' . '/includes/rest-api/Utilities/ImageAttachment.php',
         'Automattic\\WooCommerce\\RestApi\\Utilities\\SingletonTrait' => __DIR__ . '/../..' . '/includes/rest-api/Utilities/SingletonTrait.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'WC_REST_CRUD_Controller' => __DIR__ . '/../..' . '/includes/rest-api/Controllers/Version3/class-wc-rest-crud-controller.php',
         'WC_REST_Controller' => __DIR__ . '/../..' . '/includes/rest-api/Controllers/Version3/class-wc-rest-controller.php',
         'WC_REST_Coupons_Controller' => __DIR__ . '/../..' . '/includes/rest-api/Controllers/Version3/class-wc-rest-coupons-controller.php',
@@ -196,9 +210,9 @@ class ComposerStaticInit2f206e2514fd055d2fb3656775183bbe
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit2f206e2514fd055d2fb3656775183bbe::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit2f206e2514fd055d2fb3656775183bbe::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit2f206e2514fd055d2fb3656775183bbe::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit08a6ad0ed5b58cf461fde712d9bcae99::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit08a6ad0ed5b58cf461fde712d9bcae99::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit08a6ad0ed5b58cf461fde712d9bcae99::$classMap;
 
         }, null, ClassLoader::class);
     }

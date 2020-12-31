@@ -2,22 +2,10 @@
  * Colors
  */
 /**
- * Deprecated colors.
- * Please avoid using these.
- */
-/**
  * Colors
  */
 /**
- * Deprecated colors.
- * Please avoid using these.
- */
-/**
  * Colors
- */
-/**
- * Deprecated colors.
- * Please avoid using these.
  */
 /**
  * Fonts & basic variables.
@@ -40,6 +28,9 @@
  */
 /**
  * Border radii.
+ */
+/**
+ * Block paddings.
  */
 /**
  * Breakpoint mixins
@@ -69,14 +60,14 @@
 /**
  * Reset the WP Admin page styles for Gutenberg-like pages.
  */
+/**
+ * Breakpoints & Media Queries
+ */
 :root {
   --wp-admin-theme-color: #007cba;
   --wp-admin-theme-color-darker-10: #006ba1;
   --wp-admin-theme-color-darker-20: #005a87; }
 
-/**
- * Breakpoints & Media Queries
- */
 body.admin-color-light {
   --wp-admin-theme-color: #0085ba;
   --wp-admin-theme-color-darker-10: #0073a1;

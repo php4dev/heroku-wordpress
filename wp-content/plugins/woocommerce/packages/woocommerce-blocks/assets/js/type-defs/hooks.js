@@ -1,6 +1,7 @@
 /**
  * @typedef {import('./cart').CartData} CartData
  * @typedef {import('./cart').CartShippingAddress} CartShippingAddress
+ * @typedef {import('./contexts').StoreNoticeObject} StoreNoticeObject
  */
 
 /**
@@ -34,7 +35,7 @@
  *                                                      being loaded.
  * @property {boolean}             hasShippingAddress   Whether or not the cart
  *                                                      has a shipping address yet.
- * @property {function}            receiveCart          Dispatcher to receive
+ * @property {function(Object):any} receiveCart         Dispatcher to receive
  *                                                      updated cart.
  */
 
@@ -76,6 +77,17 @@
  */
 
 /**
+ * @typedef {Object} CheckoutNotices
+ *
+ * @property {StoreNoticeObject[]} checkoutNotices       Array of notices in the
+ *                                                       checkout context.
+ * @property {StoreNoticeObject[]} expressPaymentNotices Array of notices in the
+ *                                                       express payment context.
+ * @property {StoreNoticeObject[]} paymentNotices        Array of notices in the
+ *                                                       payment context.
+ */
+
+/**
  * @typedef {Object} EmitResponseTypes
  *
  * @property {string} SUCCESS To indicate a success response.
@@ -90,6 +102,8 @@
  * @property {string} EXPRESS_PAYMENTS Notices for the express payments step.
  */
 
+/* eslint-disable jsdoc/valid-types */
+// Enum format below triggers the above rule even though VSCode interprets it fine.
 /**
  * @typedef {NoticeContexts['PAYMENTS']|NoticeContexts['EXPRESS_PAYMENTS']} NoticeContextsEnum
  */
@@ -137,6 +151,7 @@
  *                                                           response. This varies between context
  *                                                           emitters.
  */
+/* eslint-enable jsdoc/valid-types */
 
 /**
  * @typedef {Object} EmitResponseApi
@@ -145,6 +160,8 @@
  *                                                        be used in returned response objects.
  * @property {NoticeContexts}           noticeContexts    An object of various notice contexts that can
  *                                                        be used for targeting where a notice appears.
+ * @property {function(Object):boolean} shouldRetry       Returns whether the user is allowed to retry
+ *                                                        the payment after a failed one.
  * @property {function(Object):boolean} isSuccessResponse Returns whether the given response is of a
  *                                                        success response type.
  * @property {function(Object):boolean} isErrorResponse   Returns whether the given response is of an

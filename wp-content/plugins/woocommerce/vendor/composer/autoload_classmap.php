@@ -19,6 +19,7 @@ return array(
     'Automattic\\WooCommerce\\RestApi\\UnitTests\\Helpers\\ShippingHelper' => $baseDir . '/tests/legacy/unit-tests/rest-api/Helpers/ShippingHelper.php',
     'Automattic\\WooCommerce\\RestApi\\Utilities\\ImageAttachment' => $baseDir . '/includes/rest-api/Utilities/ImageAttachment.php',
     'Automattic\\WooCommerce\\RestApi\\Utilities\\SingletonTrait' => $baseDir . '/includes/rest-api/Utilities/SingletonTrait.php',
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'WC_REST_CRUD_Controller' => $baseDir . '/includes/rest-api/Controllers/Version3/class-wc-rest-crud-controller.php',
     'WC_REST_Controller' => $baseDir . '/includes/rest-api/Controllers/Version3/class-wc-rest-controller.php',
     'WC_REST_Coupons_Controller' => $baseDir . '/includes/rest-api/Controllers/Version3/class-wc-rest-coupons-controller.php',

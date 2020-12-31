@@ -18,6 +18,10 @@ import ActiveAttributeFilters from './active-attribute-filters';
 
 /**
  * Component displaying active filters.
+ *
+ * @param {Object} props Incoming props for the component.
+ * @param {Object} props.attributes Incoming attributes for the block.
+ * @param {boolean} props.isEditor Whether or not in the editor context.
  */
 const ActiveFiltersBlock = ( {
 	attributes: blockAttributes,
@@ -43,7 +47,13 @@ const ActiveFiltersBlock = ( {
 			},
 			displayStyle: blockAttributes.displayStyle,
 		} );
-	}, [ minPrice, maxPrice, formatPriceRange ] );
+	}, [
+		minPrice,
+		maxPrice,
+		blockAttributes.displayStyle,
+		setMinPrice,
+		setMaxPrice,
+	] );
 
 	const activeAttributeFilters = useMemo( () => {
 		return productAttributes.map( ( attribute ) => {
@@ -60,7 +70,7 @@ const ActiveFiltersBlock = ( {
 				/>
 			);
 		} );
-	}, [ productAttributes ] );
+	}, [ productAttributes, blockAttributes.displayStyle ] );
 
 	const hasFilters = () => {
 		return (

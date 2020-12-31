@@ -8,7 +8,7 @@
 namespace Automattic\WooCommerce\Admin\Features;
 
 use \Automattic\WooCommerce\Admin\PluginsHelper;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Review_Shipping_Settings;
+use \Automattic\WooCommerce\Admin\Notes\ReviewShippingSettings;
 
 /**
  * This contains logic for setting up shipping when the profiler completes.
@@ -73,7 +73,7 @@ class OnboardingSetUpShipping {
 		}
 
 		self::set_up_free_local_shipping();
-		WC_Admin_Notes_Review_Shipping_Settings::possibly_add_note();
+		ReviewShippingSettings::possibly_add_note();
 		wc_admin_record_tracks_event( 'shipping_automatically_set_up' );
 	}
 
@@ -111,13 +111,18 @@ class OnboardingSetUpShipping {
 	 * Set up free local shipping.
 	 */
 	public static function set_up_free_local_shipping() {
-		$country_code = WC()->countries->get_base_country();
+		$default_country = apply_filters(
+			'woocommerce_get_base_location',
+			get_option( 'woocommerce_default_country' )
+		);
 
-		if ( ! $country_code ) {
+		if ( ! $default_country ) {
 			return;
 		}
 
-		$zone = new \WC_Shipping_Zone();
+		$country_code = explode( ':', $default_country )[0];
+		$zone         = new \WC_Shipping_Zone();
+
 		$zone->add_location( $country_code, 'country' );
 
 		$countries_service = new \WC_Countries();

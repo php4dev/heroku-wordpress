@@ -1,17 +1,16 @@
 /**
- * Internal dependencies
- */
-import { allSettings } from './settings-init';
-
-/**
  * External dependencies
  */
 import deprecated from '@wordpress/deprecated';
 
 /**
+ * Internal dependencies
+ */
+import { allSettings } from './settings-init';
+
+/**
  * Sets a value to a property on the settings state.
  *
- * @export
  * @param {string}   name                        The setting property key for the
  *                                               setting being mutated.
  * @param {*}        value                       The value to set.

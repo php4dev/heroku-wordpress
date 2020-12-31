@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * ConfirmTaxSettings.
  */
-class Confirm_Tax_Settings {
+class ConfirmTaxSettings {
 	/**
 	 * Note traits.
 	 */
@@ -30,7 +30,7 @@ class Confirm_Tax_Settings {
 	 * @return Note
 	 */
 	public static function get_note() {
-		$note = new WC_Admin_Note();
+		$note = new Note();
 
 		$note->set_title( __( 'Confirm tax settings', 'woocommerce' ) );
 		$note->set_content( __( 'Automated tax calculations are enabled on your store through WooCommerce Shipping & Tax. Learn more about automated taxes <a href="https://docs.woocommerce.com/document/woocommerce-services/#section-12">here</a>.', 'woocommerce' ) );
@@ -39,7 +39,7 @@ class Confirm_Tax_Settings {
 			'confirm-tax-settings_edit-tax-settings',
 			__( 'Edit tax settings', 'woocommerce' ),
 			admin_url( 'admin.php?page=wc-settings&tab=tax' ),
-			WC_Admin_Note::E_WC_ADMIN_NOTE_UNACTIONED,
+			Note::E_WC_ADMIN_NOTE_UNACTIONED,
 			true
 		);
 

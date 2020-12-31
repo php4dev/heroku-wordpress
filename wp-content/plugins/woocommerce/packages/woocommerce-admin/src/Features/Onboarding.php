@@ -7,7 +7,6 @@
 namespace Automattic\WooCommerce\Admin\Features;
 
 use \Automattic\WooCommerce\Admin\Loader;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Onboarding_Profiler;
 use \Automattic\WooCommerce\Admin\PluginsHelper;
 use \Automattic\WooCommerce\Admin\Features\OnboardingSetUpShipping;
 use \Automattic\WooCommerce\Admin\Features\OnboardingAutomateTaxes;
@@ -62,9 +61,6 @@ class Onboarding {
 		if ( self::should_show_tasks() ) {
 			OnboardingTasks::get_instance();
 		}
-
-		// Add onboarding notes.
-		new WC_Admin_Notes_Onboarding_Profiler();
 
 		// Add actions and filters.
 		$this->add_actions();
@@ -743,6 +739,7 @@ class Onboarding {
 			array(
 				'facebook-for-woocommerce'            => 'facebook-for-woocommerce/facebook-for-woocommerce.php',
 				'mailchimp-for-woocommerce'           => 'mailchimp-for-woocommerce/mailchimp-woocommerce.php',
+				'creative-mail-by-constant-contact'   => 'creative-mail-by-constant-contact/creative-mail-plugin.php',
 				'kliken-marketing-for-google'         => 'kliken-marketing-for-google/kliken-marketing-for-google.php',
 				'jetpack'                             => 'jetpack/jetpack.php',
 				'woocommerce-services'                => 'woocommerce-services/woocommerce-services.php',
@@ -937,7 +934,7 @@ class Onboarding {
 			: '<p><a href="' . wc_admin_url( '&reset_task_list=0' ) . '" class="button button-primary">' . __( 'Disable', 'woocommerce' ) . '</a></p>'
 		);
 
-		if ( Loader::is_feature_enabled( 'devdocs' ) && defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			$help_tab['content'] .= '<h3>' . __( 'Calypso / WordPress.com', 'woocommerce' ) . '</h3>';
 			if ( class_exists( 'Jetpack' ) ) {
 				$help_tab['content'] .= '<p>' . __( 'Quickly access the Jetpack connection flow in Calypso.', 'woocommerce' ) . '</p>';

@@ -8,8 +8,8 @@ namespace Automattic\WooCommerce\Admin;
 defined( 'ABSPATH' ) || exit;
 
 use Automattic\WooCommerce\Admin\API\Reports\Cache;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Historical_Data;
+use \Automattic\WooCommerce\Admin\Notes\Notes;
+use \Automattic\WooCommerce\Admin\Notes\HistoricalData;
 
 /**
  * Install Class.
@@ -53,6 +53,10 @@ class Install {
 		'1.6.0'  => array(
 			'wc_admin_update_160_remove_facebook_note',
 			'wc_admin_update_160_db_version',
+		),
+		'1.7.0'  => array(
+			'wc_admin_update_170_homescreen_layout',
+			'wc_admin_update_170_db_version',
 		),
 	);
 
@@ -472,6 +476,7 @@ class Install {
 			'wc-admin-store-notice-setting-moved',
 			'wc-admin-store-notice-giving-feedback',
 			'wc-admin-learn-more-about-product-settings',
+			'wc-admin-onboarding-profiler-reminder',
 		);
 
 		$additional_obsolete_notes_names = apply_filters(
@@ -486,14 +491,14 @@ class Install {
 			);
 		}
 
-		WC_Admin_Notes::delete_notes_with_name( $obsolete_notes_names );
+		Notes::delete_notes_with_name( $obsolete_notes_names );
 	}
 
 	/**
 	 * Create notes.
 	 */
 	protected static function create_notes() {
-		WC_Admin_Notes_Historical_Data::possibly_add_note();
+		HistoricalData::possibly_add_note();
 	}
 
 	/**

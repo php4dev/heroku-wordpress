@@ -21,6 +21,7 @@ const CheckoutForm = ( {
 	showCompanyField,
 	showOrderNotes,
 	showPhoneField,
+	allowCreateAccount,
 } ) => {
 	const { onSubmit } = useCheckoutContext();
 
@@ -32,10 +33,11 @@ const CheckoutForm = ( {
 				showApartmentField={ showApartmentField }
 				showCompanyField={ showCompanyField }
 				showPhoneField={ showPhoneField }
+				allowCreateAccount={ allowCreateAccount }
 			/>
 			<ShippingOptionsStep />
 			<PaymentMethodStep />
-			<OrderNotesStep showOrderNotes={ showOrderNotes } />
+			{ showOrderNotes && <OrderNotesStep /> }
 		</Form>
 	);
 };
@@ -47,6 +49,7 @@ CheckoutForm.propTypes = {
 	showCompanyField: PropTypes.bool.isRequired,
 	showOrderNotes: PropTypes.bool.isRequired,
 	showPhoneField: PropTypes.bool.isRequired,
+	allowCreateAccount: PropTypes.bool.isRequired,
 };
 
 export default CheckoutForm;

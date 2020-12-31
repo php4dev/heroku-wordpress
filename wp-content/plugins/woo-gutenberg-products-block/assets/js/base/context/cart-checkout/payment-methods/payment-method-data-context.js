@@ -37,7 +37,7 @@ import {
 	usePaymentMethods,
 	useExpressPaymentMethods,
 } from './use-payment-method-registration';
-import { useBillingDataContext } from '../billing';
+import { useCustomerDataContext } from '../customer';
 import { useCheckoutContext } from '../checkout-state';
 import { useShippingDataContext } from '../shipping';
 import {
@@ -81,25 +81,27 @@ export const usePaymentMethodDataContext = () => {
  * Gets the payment methods saved for the current user after filtering out
  * disabled ones.
  *
- * @param {Object[]} availablePaymentMethods List of available payment methods.
+ * @param {Object} availablePaymentMethods List of available payment methods.
  * @return {Object} Object containing the payment methods saved for a specific
  *                  user which are available.
  */
-const getCustomerPaymentMethods = ( availablePaymentMethods = [] ) => {
+const getCustomerPaymentMethods = ( availablePaymentMethods = {} ) => {
 	const customerPaymentMethods = getSetting( 'customerPaymentMethods', {} );
 	const paymentMethodKeys = Object.keys( customerPaymentMethods );
-	if ( paymentMethodKeys.length === 0 ) {
-		return {};
-	}
 	const enabledCustomerPaymentMethods = {};
 	paymentMethodKeys.forEach( ( type ) => {
-		enabledCustomerPaymentMethods[ type ] = customerPaymentMethods[
-			type
-		].filter( ( paymentMethod ) => {
-			return Object.keys( availablePaymentMethods ).includes(
-				paymentMethod.method.gateway
-			);
-		} );
+		const methods = customerPaymentMethods[ type ].filter(
+			( { method: { gateway } } ) => {
+				const isAvailable = gateway in availablePaymentMethods;
+				return (
+					isAvailable &&
+					availablePaymentMethods[ gateway ].supports?.savePaymentInfo
+				);
+			}
+		);
+		if ( methods.length ) {
+			enabledCustomerPaymentMethods[ type ] = methods;
+		}
 	} );
 	return enabledCustomerPaymentMethods;
 };
@@ -116,7 +118,7 @@ const getCustomerPaymentMethods = ( availablePaymentMethods = [] ) => {
  *                                           provider.
  */
 export const PaymentMethodDataProvider = ( { children } ) => {
-	const { setBillingData } = useBillingDataContext();
+	const { setBillingData } = useCustomerDataContext();
 	const {
 		isProcessing: checkoutIsProcessing,
 		isIdle: checkoutIsIdle,
@@ -179,7 +181,7 @@ export const PaymentMethodDataProvider = ( { children } ) => {
 		}
 		if (
 			! paymentMethodsInitialized ||
-			paymentData.paymentMethods.length === 0
+			Object.keys( paymentData.paymentMethods ).length === 0
 		) {
 			return {};
 		}
@@ -195,8 +197,8 @@ export const PaymentMethodDataProvider = ( { children } ) => {
 		( message ) => {
 			if ( message ) {
 				addErrorNotice( message, {
-					context: noticeContexts.EXPRESS_PAYMENTS,
 					id: 'wc-express-payment-error',
+					context: noticeContexts.EXPRESS_PAYMENTS,
 				} );
 			} else {
 				removeNotice(

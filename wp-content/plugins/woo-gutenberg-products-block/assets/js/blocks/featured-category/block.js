@@ -7,8 +7,7 @@ import {
 	BlockControls,
 	InnerBlocks,
 	InspectorControls,
-	MediaUpload,
-	MediaUploadCheck,
+	MediaReplaceFlow,
 	PanelColorSettings,
 	withColors,
 	RichText,
@@ -16,18 +15,15 @@ import {
 import {
 	Button,
 	FocalPointPicker,
-	IconButton,
 	PanelBody,
 	Placeholder,
 	RangeControl,
 	ResizableBox,
 	Spinner,
 	ToggleControl,
-	Toolbar,
 	withSpokenMessages,
 } from '@wordpress/components';
 import classnames from 'classnames';
-import { Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import PropTypes from 'prop-types';
 import { MIN_HEIGHT } from '@woocommerce/block-settings';
@@ -83,7 +79,7 @@ const FeaturedCategory = ( {
 	);
 
 	const getBlockControls = () => {
-		const { contentAlign } = attributes;
+		const { contentAlign, mediaSrc } = attributes;
 		const mediaId = attributes.mediaId || getCategoryImageId( category );
 
 		return (
@@ -94,29 +90,18 @@ const FeaturedCategory = ( {
 						setAttributes( { contentAlign: nextAlign } );
 					} }
 				/>
-				<MediaUploadCheck>
-					<Toolbar>
-						<MediaUpload
-							onSelect={ ( media ) => {
-								setAttributes( {
-									mediaId: media.id,
-									mediaSrc: media.url,
-								} );
-							} }
-							allowedTypes={ [ 'image' ] }
-							value={ mediaId }
-							render={ ( { open } ) => (
-								<IconButton
-									className="components-toolbar__control"
-									label={ __( 'Edit media' ) }
-									icon="format-image"
-									onClick={ open }
-									disabled={ ! category }
-								/>
-							) }
-						/>
-					</Toolbar>
-				</MediaUploadCheck>
+				<MediaReplaceFlow
+					mediaId={ mediaId }
+					mediaURL={ mediaSrc }
+					accept="image/*"
+					onSelect={ ( media ) => {
+						setAttributes( {
+							mediaId: media.id,
+							mediaSrc: media.url,
+						} );
+					} }
+					allowedTypes={ [ 'image' ] }
+				/>
 			</BlockControls>
 		);
 	};
@@ -158,7 +143,7 @@ const FeaturedCategory = ( {
 					] }
 				>
 					{ !! url && (
-						<Fragment>
+						<>
 							<RangeControl
 								label={ __(
 									'Background Opacity',
@@ -182,7 +167,7 @@ const FeaturedCategory = ( {
 									}
 								/>
 							) }
-						</Fragment>
+						</>
 					) }
 				</PanelColorSettings>
 			</InspectorControls>
@@ -374,11 +359,11 @@ const FeaturedCategory = ( {
 	}
 
 	return (
-		<Fragment>
+		<>
 			{ getBlockControls() }
 			{ getInspectorControls() }
 			{ category ? renderCategory() : renderNoCategory() }
-		</Fragment>
+		</>
 	);
 };
 

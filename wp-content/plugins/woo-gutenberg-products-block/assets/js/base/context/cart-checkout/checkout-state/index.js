@@ -61,11 +61,14 @@ const CheckoutContext = createContext( {
 		setAfterProcessing: ( response ) => void response,
 		incrementCalculating: () => void null,
 		decrementCalculating: () => void null,
+		setCustomerId: ( id ) => void id,
 		setOrderId: ( id ) => void id,
 		setOrderNotes: ( orderNotes ) => void orderNotes,
 	},
 	hasOrder: false,
 	isCart: false,
+	shouldCreateAccount: false,
+	setShouldCreateAccount: ( value ) => void value,
 } );
 
 /**
@@ -82,11 +85,8 @@ export const useCheckoutContext = () => {
  *
  * @param {Object}  props                     Incoming props for the provider.
  * @param {Object}  props.children            The children being wrapped.
- * @param {string}  props.redirectUrl         Initialize what the checkout will
- *                                            redirect to after successful
- *                                            submit.
- * @param {boolean} props.isCart              If context provider is being used
- *                                            in cart context.
+ * @param {string}  props.redirectUrl         Initialize what the checkout will redirect to after successful submit.
+ * @param {boolean} props.isCart              If context provider is being used in cart context.
  */
 export const CheckoutStateProvider = ( {
 	children,
@@ -148,6 +148,8 @@ export const CheckoutStateProvider = ( {
 				void dispatch( actions.incrementCalculating() ),
 			decrementCalculating: () =>
 				void dispatch( actions.decrementCalculating() ),
+			setCustomerId: ( id ) =>
+				void dispatch( actions.setCustomerId( id ) ),
 			setOrderId: ( orderId ) =>
 				void dispatch( actions.setOrderId( orderId ) ),
 			setOrderNotes: ( orderNotes ) =>
@@ -251,9 +253,10 @@ export const CheckoutStateProvider = ( {
 						isFailResponse( response )
 					) {
 						if ( response.message ) {
-							const errorOptions = response.messageContext
-								? { context: response.messageContext }
-								: undefined;
+							const errorOptions = {
+								id: response?.messageContext,
+								context: response?.messageContext,
+							};
 							addErrorNotice( response.message, errorOptions );
 						}
 						// irrecoverable error so set complete

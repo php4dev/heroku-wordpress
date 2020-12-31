@@ -5,6 +5,7 @@ import { useMemo } from '@wordpress/element';
 import PropTypes from 'prop-types';
 import { useCheckoutAddress } from '@woocommerce/base-hooks';
 import { useShippingDataContext } from '@woocommerce/base-context';
+import { AddressForm } from '@woocommerce/base-components/cart-checkout';
 
 /**
  * Internal dependencies
@@ -12,6 +13,7 @@ import { useShippingDataContext } from '@woocommerce/base-context';
 import BillingFieldsStep from './billing-fields-step';
 import ContactFieldsStep from './contact-fields-step';
 import ShippingFieldsStep from './shipping-fields-step';
+import PhoneNumber from './phone-number';
 import './style.scss';
 
 const AddressStep = ( {
@@ -20,6 +22,7 @@ const AddressStep = ( {
 	showApartmentField,
 	showCompanyField,
 	showPhoneField,
+	allowCreateAccount,
 } ) => {
 	const {
 		defaultAddressFields,
@@ -34,6 +37,7 @@ const AddressStep = ( {
 		showBillingFields,
 	} = useCheckoutAddress();
 	const { needsShipping } = useShippingDataContext();
+
 	const addressFieldsConfig = useMemo( () => {
 		return {
 			company: {
@@ -58,28 +62,48 @@ const AddressStep = ( {
 			<ContactFieldsStep
 				emailValue={ billingFields.email }
 				onChangeEmail={ setEmail }
+				allowCreateAccount={ allowCreateAccount }
 			/>
 			{ needsShipping && (
 				<ShippingFieldsStep
-					addressFieldsConfig={ addressFieldsConfig }
-					billingFields={ billingFields }
-					defaultAddressFields={ defaultAddressFields }
-					requirePhoneField={ requirePhoneField }
-					setPhone={ setPhone }
-					setShippingAsBilling={ setShippingAsBilling }
-					setShippingFields={ setShippingFields }
 					shippingAsBilling={ shippingAsBilling }
-					shippingFields={ shippingFields }
-					showPhoneField={ showPhoneField }
-				/>
+					setShippingAsBilling={ setShippingAsBilling }
+				>
+					<AddressForm
+						id="shipping"
+						type="shipping"
+						onChange={ setShippingFields }
+						values={ shippingFields }
+						fields={ Object.keys( defaultAddressFields ) }
+						fieldConfig={ addressFieldsConfig }
+					/>
+					{ showPhoneField && (
+						<PhoneNumber
+							isRequired={ requirePhoneField }
+							value={ billingFields.phone }
+							onChange={ setPhone }
+						/>
+					) }
+				</ShippingFieldsStep>
 			) }
 			{ showBillingFields && (
-				<BillingFieldsStep
-					addressFieldsConfig={ addressFieldsConfig }
-					billingFields={ billingFields }
-					defaultAddressFields={ defaultAddressFields }
-					setBillingFields={ setBillingFields }
-				/>
+				<BillingFieldsStep>
+					<AddressForm
+						id="billing"
+						type="billing"
+						onChange={ setBillingFields }
+						values={ billingFields }
+						fields={ Object.keys( defaultAddressFields ) }
+						fieldConfig={ addressFieldsConfig }
+					/>
+					{ showPhoneField && ! needsShipping && (
+						<PhoneNumber
+							isRequired={ requirePhoneField }
+							value={ billingFields.phone }
+							onChange={ setPhone }
+						/>
+					) }
+				</BillingFieldsStep>
 			) }
 		</>
 	);
@@ -91,6 +115,7 @@ AddressStep.propTypes = {
 	showApartmentField: PropTypes.bool.isRequired,
 	showCompanyField: PropTypes.bool.isRequired,
 	showPhoneField: PropTypes.bool.isRequired,
+	allowCreateAccount: PropTypes.bool.isRequired,
 };
 
 export default AddressStep;

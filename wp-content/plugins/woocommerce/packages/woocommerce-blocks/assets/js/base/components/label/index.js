@@ -9,12 +9,18 @@ import classNames from 'classnames';
  * Component used to render an accessible text given a label and/or a
  * screenReaderLabel. The wrapper element and wrapper props can also be
  * specified via props.
+ *
+ * @param {Object} props Incoming props for the component.
+ * @param {string} [props.label] Label content.
+ * @param {string} [props.screenReaderLabel] Content for screen readers.
+ * @param {string} [props.wrapperElement] What element is used to wrap the label.
+ * @param {Object} [props.wrapperProps] Props passed into wrapper element.
  */
 const Label = ( {
 	label,
 	screenReaderLabel,
 	wrapperElement,
-	wrapperProps,
+	wrapperProps = {},
 } ) => {
 	let Wrapper;
 
@@ -56,10 +62,6 @@ Label.propTypes = {
 	screenReaderLabel: PropTypes.node,
 	wrapperElement: PropTypes.elementType,
 	wrapperProps: PropTypes.object,
-};
-
-Label.defaultProps = {
-	wrapperProps: {},
 };
 
 export default Label;

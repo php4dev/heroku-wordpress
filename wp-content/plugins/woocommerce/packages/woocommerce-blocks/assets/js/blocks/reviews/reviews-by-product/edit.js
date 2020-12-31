@@ -28,6 +28,11 @@ import {
 
 /**
  * Component to handle edit mode of "Reviews by Product".
+ *
+ * @param {Object} props Incoming props for the component.
+ * @param {Object} props.attributes Incoming block attributes.
+ * @param {function(any):any} props.debouncedSpeak
+ * @param {function(any):any} props.setAttributes Setter for block attributes.
  */
 const ReviewsByProductEditor = ( {
 	attributes,
@@ -43,6 +48,7 @@ const ReviewsByProductEditor = ( {
 			<SearchListItem
 				{ ...args }
 				countLabel={ sprintf(
+					// Translators: %d is the review count.
 					_n(
 						'%d Review',
 						'%d Reviews',
@@ -53,9 +59,10 @@ const ReviewsByProductEditor = ( {
 				) }
 				showCount
 				aria-label={ sprintf(
+					// Translators: %1$s is the item name, and %2$d is the number of reviews for the item.
 					_n(
-						'%s, has %d review',
-						'%s, has %d reviews',
+						'%1$s, has %2$d review',
+						'%1$s, has %2$d reviews',
 						item.review_count,
 						'woocommerce'
 					),
