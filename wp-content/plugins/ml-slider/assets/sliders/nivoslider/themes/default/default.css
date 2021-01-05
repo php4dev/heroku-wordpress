@@ -1,0 +1,86 @@
+/*
+Skin Name: Nivo Slider Default Theme
+Skin URI: http://nivo.dev7studios.com
+Description: The default skin for the Nivo Slider.
+Version: 1.3
+Author: Gilbert Pellegrom
+Author URI: http://dev7studios.com
+Supports Thumbs: true
+*/
+
+.metaslider .theme-default .nivoSlider {
+	position:relative;
+	box-shadow: 0px 1px 5px 0px #4a4a4a;
+}
+.metaslider .theme-default .nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+.metaslider .theme-default .nivoSlider a {
+	border:0;
+	display:block;
+}
+
+.metaslider .theme-default .nivo-controlNav {
+	text-align: center;
+	padding: 20px 0;
+}
+.metaslider .theme-default .nivo-controlNav a {
+	display:inline-block;
+	width:22px;
+	height:22px;
+	background:url(bullets.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	margin: 0 2px;
+}
+.metaslider .theme-default .nivo-controlNav a.active {
+	background-position:0 -22px;
+}
+
+.metaslider .theme-default .nivo-directionNav a {
+	display:block;
+	width:30px;
+	height:30px;
+	background:url(arrows.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	opacity: 0;
+	transition: all 200ms ease-in-out;
+}
+.metaslider .theme-default:hover .nivo-directionNav a { opacity: 1; }
+.metaslider .theme-default a.nivo-nextNav {
+	background-position:-30px 0;
+	right:15px;
+}
+.metaslider .theme-default a.nivo-prevNav {
+	left:15px;
+}
+
+.metaslider .theme-default .nivo-caption {
+	font-family: Helvetica, Arial, sans-serif;
+}
+.metaslider .theme-default .nivo-caption a {
+	color:#fff;
+	border-bottom:1px dotted #fff;
+}
+.metaslider .theme-default .nivo-caption a:hover {
+	color:#fff;
+}
+
+.metaslider .theme-default .nivo-controlNav.nivo-thumbs-enabled {
+	width: 100%;
+}
+.metaslider .theme-default .nivo-controlNav.nivo-thumbs-enabled a {
+	width: auto;
+	height: auto;
+	background: none;
+	margin-bottom: 5px;
+}
+.metaslider .theme-default .nivo-controlNav.nivo-thumbs-enabled img {
+	display: block;
+	width: 120px;
+	height: auto;
+}

@@ -1,0 +1,27 @@
+{
+	"blackfriday": {
+		"discount_code": "blackfridaysale2020",
+		"valid_from": "2020-11-20 00:00:00",
+		"valid_to": "2020-11-30 23:59:59"
+	},
+	"christmas": {
+		"discount_code": "christmassale2020",
+		"valid_from": "2020-12-01 00:00:00",
+		"valid_to": "2020-12-25 23:59:59"
+	},
+	"newyear": {
+		"discount_code": "newyearsale2021",
+		"valid_from": "2020-12-26 00:00:00",
+		"valid_to": "2021-01-14 23:59:59"
+	},
+	"spring": {
+		"discount_code": "springsale2021",
+		"valid_from": "2021-04-01 00:00:00",
+		"valid_to": "2021-04-30 23:59:59"
+	},
+	"summer": {
+		"discount_code": "summersale2021",
+		"valid_from": "2021-07-01 00:00:00",
+		"valid_to": "2021-07-31 23:59:59"
+	}
+}

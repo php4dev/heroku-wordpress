@@ -1,0 +1,6 @@
+.metaslider_page_metaslider-settings #ms-toolbar {
+	@apply sticky;
+}
+.metaslider_page_metaslider-settings #wpfooter {
+	@apply hidden;
+}

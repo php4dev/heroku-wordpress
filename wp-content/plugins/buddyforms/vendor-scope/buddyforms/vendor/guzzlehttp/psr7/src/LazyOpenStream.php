@@ -1,0 +1,2 @@
+<?php
+ namespace tk\GuzzleHttp\Psr7; use tk\Psr\Http\Message\StreamInterface; class LazyOpenStream implements \tk\Psr\Http\Message\StreamInterface { use StreamDecoratorTrait; private $filename; private $mode; public function __construct($filename, $mode) { $this->filename = $filename; $this->mode = $mode; } protected function createStream() { return \tk\GuzzleHttp\Psr7\Utils::streamFor(\tk\GuzzleHttp\Psr7\Utils::tryFopen($this->filename, $this->mode)); } } 

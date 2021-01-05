@@ -1,0 +1,179 @@
+/**
+ * Variables
+ */
+
+$theme_name: starter;
+
+/* Dots */
+$dots_color: #CCC;
+$dots_color_active: #000;
+$dots_size: 14px;
+$dots_alignment: center; /* Use flex justify-content */
+
+/* Arrows */
+$arrows_link_width: 80px;
+$arrows_link_height: 80px;
+$arrows_icon_width: 60px;
+$arrows_icon_height: 80px;
+
+$arrows_link_background: transparent;
+$arrows_color: rgba(255,255,255,0.5);
+$arrows_color_hover: #FFF;
+
+/* Caption background */
+$caption_background: rgba(0, 0, 0, 0.7);
+$caption_color: #FFF;
+
+
+
+.metaslider.ms-theme-$(theme_name) {
+	/** 
+	* Containers 
+	* This includes the main wrapper for all sliders, then each slider,
+	* which is one level above the individual slides. 
+	* Don't be afraid to use !important as needed.
+	*/
+
+	margin-bottom: 4rem !important;
+
+	* {
+		box-sizing: border-box;
+	}
+
+	.flexslider {
+		margin-bottom: 0;
+	}
+	body & .coin-slider {
+		max-width: 100%;
+	}
+
+	/** 
+	* Dots
+	* You should inspect the sliders to see more specific rules
+	*/
+	@mixin dotsContainer {
+		display: flex;
+		justify-content: $(dots_alignment);
+		position: absolute;
+		line-height: 15px;
+		background: transparent;
+		margin: 0;
+		padding: 0.5rem 0 0.5rem 0 !important;
+		top: 100%;
+	}
+	
+	@mixin dotsLink {
+		box-shadow: none !important;
+		transition: background 0.2s ease-in-out;
+		border: 0;
+		cursor: pointer;
+		text-indent: -9999px;
+		display: inline-block;
+		line-height: 15px;
+		width: $(dots_size);
+		height: $(dots_size);
+		padding: 0;
+		background: $(dots_color);
+		border-radius: 10px;
+		margin: 0 5px 0 0;
+	}
+
+	@mixin dotsLinkLastItem {
+		margin-right: 0;
+	}
+
+	@mixin dotsLinkActive {
+		background: $(dots_color_active);
+	}
+
+	/*
+		carousel-mode - dots
+	*/
+	&.has-carousel-mode {
+		@mixin dotsContainer flex { 
+			top: calc(100% + 20px);
+		}
+	}
+
+	/**
+	* Arrows
+	* 
+	*/
+	@mixin arrowsLink {
+		background: none;
+		box-shadow: none;
+		width: $(arrows_link_width);
+		height: $(arrows_link_height);
+		text-indent: 0!important;
+		color: $(arrows_color);
+		opacity: 0;
+		overflow: hidden;
+		transition: all .2s;
+		top: 50%;
+		margin-top: calc(-$arrows_link_height / 2);
+		svg {
+			display: block;
+			width: $(arrows_icon_width);
+			height: $(arrows_icon_height);
+			margin: 0 auto;	
+			fill: $(arrows_color);
+			transition: all .2s;
+		}
+
+	}
+
+	@mixin arrowsLink rslides, coin {
+		padding: 0;
+	}
+
+	@mixin arrowsLink coin {
+		margin-top: calc(-$arrows_link_height / 2 + 15px);
+	}
+	
+	@mixin arrowsLink__prev flex, nivo {
+		left: 0;
+	}
+
+	@mixin arrowsLink__next flex, nivo {
+		right: 0;
+	}
+	.coin-slider .coin-slider div {
+		display: block !important;
+	}
+
+	@mixin sliderHover__arrowsLinks {
+		opacity: 1 !important;
+		background: $(arrows_link_background);
+		svg {
+			transform: scale(1);
+		}
+		&:hover {
+			color: $(arrows_color_hover);
+			opacity: 1 !important;
+			svg {
+				fill: $(arrows_color_hover);
+			}
+		}
+	}
+
+	/**
+	* Caption
+	*/
+	@mixin caption {
+		padding: 0;
+		background: $(caption_background);
+		opacity: 1;
+		margin: 0;
+		a {
+			color: inherit;
+			border: 0;
+		}
+	}
+
+	@mixin caption__text {
+		font-size: 1em;
+		padding: 0.7rem 1rem;
+		color: $(caption_color);		
+	}
+
+}

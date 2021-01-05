@@ -1,0 +1,1026 @@
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+@import "./components/toolbar.css";
+@import "./components/tour.css";
+
+@import "tailwindcss/utilities";
+
+@import "./parts/_fonts.css";
+@import "./parts/ie11.css";
+
+@import "./settings.css";
+@import "./components/wordpress.css";
+@import "./components/forms.css";
+@import "./components/notifications.css";
+@import "./components/animations.css";
+
+
+
+/* TODO: Add responsive styles, for now min-width */
+#metaslider-ui,
+.container {
+	min-width: theme('screens.lg');
+	@apply mx-auto px-2;
+}
+.container {
+	max-width: theme('screens.lg');
+}
+
+pre#shortcode::selection,
+pre#shortcode *::selection {
+	@apply bg-blue-highlight text-gray-darker;
+}
+
+/* Consider everything after this a legacy style with the intent to
+eventually be removed/refactored */
+
+.metaslider.wrap div.updated,
+.metaslider.wrap div.error {
+    clear: both
+}
+
+.metaslider .left input[type=text],
+.metaslider .left textarea {
+    border: 1px solid #ccc;
+    border-radius: 0;
+    resize: none;
+    box-shadow: inherit;
+}
+
+.media-frame-menu .separator {
+    display: none
+}
+
+.msTipsy .tipsy-arrow-s {
+    border-top-color: #555
+}
+
+.msTipsy .tipsy-arrow-w {
+    border-right-color: #555
+}
+
+.msTipsy .tipsy-arrow-n {
+    border-bottom-color: #555
+}
+
+.msTipsy .tipsy-inner {
+    color: white;
+    background-color: #555;
+}
+
+.msTipsy .tipsy-arrow-e {
+    border-left-color: #555
+}
+
+#cboxLoadedContent {
+    overflow: hidden !important
+}
+
+#cboxLoadedContent iframe {
+    border: 0 none;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.metaslider .ms-settings {
+	border-collapse: separate;
+  	border-spacing: 0 0.75rem;
+}
+.metaslider .ms-settings a {
+	color: #0073aa;
+	text-decoration: underline;
+}
+.metaslider .ms-settings a:active,
+.metaslider .ms-settings a:hover {
+	color: #00a0d2;
+}
+
+.metaslider .right input[type=submit] {
+    margin: 0 3px;
+}
+
+.metaslider #poststuff .right .configuration {
+    padding: 7px 7px 7px 12px;
+    line-height: 27px;
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.metaslider .left table tr.slide input.url {
+    width: 100%;
+    margin: 0;
+    padding: 4px;
+}
+
+.metaslider .section {
+    cursor: pointer
+}
+
+.metaslider .tipsy-tooltip {
+    cursor: default
+}
+
+.metaslider .ui-sortable-helper {
+    box-shadow: 3px 3px 5px #cccccc
+}
+
+.metaslider .left table tr.slide textarea {
+    width: 100%;
+    height: 60px;
+    margin: 0 0 5px 0;
+    padding: 2px 5px;
+}
+
+.branch-3-5 .metaslider .left table tr.slide .tabs-content .new_window,
+.branch-3-6 .metaslider .left table tr.slide .tabs-content .new_window,
+.branch-3-7 .metaslider .left table tr.slide .tabs-content .new_window {
+     right: 6px;
+     bottom: 20px;
+}
+
+.branch-3-5 .metaslider .left table tr.slide .tabs-content .new_window label,
+.branch-3-6 .metaslider .left table tr.slide .tabs-content .new_window label,
+.branch-3-7 .metaslider .left table tr.slide .tabs-content .new_window label {
+     line-height: 18px;
+     vertical-align: top;
+}
+
+.branch-3-5 .metaslider .left table tr.slide .tabs-content .new_window input,
+.branch-3-6 .metaslider .left table tr.slide .tabs-content .new_window input,
+.branch-3-7 .metaslider .left table tr.slide .tabs-content .new_window input {
+     margin: -2px 0 0 4px;
+}
+
+.metaslider .left table tr.slide .tabs-content .new_window {
+    position: relative;
+    float: right;
+    padding: 0px;
+    padding-left: 5px;
+    margin-right: 0;
+    color: #a9a9a9;
+    line-height: 20px;
+    right: 0;
+    width: 155px;
+    text-align: right;
+}
+.rtl .metaslider .left table tr.slide .tabs-content .new_window {
+    position: relative;
+    float: left;
+}
+
+.metaslider .left table tr.slide .tabs-content .new_window input {
+    margin-left: 3px
+}
+.rtl .metaslider .left table tr.slide .tabs-content .new_window input {
+    margin-right: 0px
+}
+.metaslider .left table tr.slide .tabs-content .new_window label {
+    text-align: right;
+    font-size: 11px;
+}
+
+/* small label */
+.metaslider .input-label.right {
+    float: right;
+    color: #a9a9a9;
+    font-size: 11px;
+}
+.metaslider .tabs-content .input-label.right input{
+    margin-right: 0;
+}
+
+/* Caption */
+.metaslider .tabs-content .caption {
+	position: relative;
+}
+
+.metaslider .tabs-content .can-inherit {
+    position: relative;
+}
+.metaslider .tabs-content .can-inherit input[type=text] {
+	display: block;
+	position: absolute;
+    bottom: 0;
+}
+
+.metaslider .tabs-content .default {
+    width: 100%;
+    overflow: hidden;
+    padding: 2px 5px;
+    border: 1px solid #cccccc;
+    background: #eeeeee;
+    line-height: 16px;
+    font-size: 11px;
+}
+.metaslider .tabs-content .caption .default {
+    height: 60px;
+    overflow: auto;
+    margin: 0 0 5px 0;
+    font-size: 12px;
+}
+.metaslider .tabs-content .caption.inherit-from-image textarea {
+	display: none;
+}
+.metaslider .tabs-content .inherit-from-image input[type=text] {
+	display: none;
+}
+.metaslider .tabs-content .inherit-from-image .default {
+	display: block;
+}
+.metaslider .tabs-content .default .no-content {
+    opacity: 0.3;
+    font-style: italic;
+}
+
+.metaslider tr.radio {
+    display: table-row;
+}
+
+.metaslider .right .highlight {
+    background: transparent;
+    border: 0;
+    font-weight: bold;
+}
+
+/* *
+*  Change background color for label next to checked radio button
+*  to make it look like highlighted button
+   ================================================== */
+
+.metaslider .right .slider-lib-row input[type=radio]:checked + label {
+    background-image: none;
+    background-color: #d0d0d0;
+}
+
+.metaslider .right .slider-lib-row input[type=radio] {
+    display: none;
+}
+
+.metaslider .right .slider-lib-row input[type=radio] + label {
+    display: inline-block;
+    margin: -2px;
+    padding: 4px 0;
+    margin-bottom: 0;
+    font-size: 11px;
+    line-height: 20px;
+    color: #333;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #f5f5f5;
+    background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+    background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+    background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+    background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+    background-repeat: repeat-x;
+    border: 1px solid #ddd;
+    border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+    border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+    border-bottom-color: #b3b3b3;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+    width: 25%;
+}
+
+.metaslider .right .slider-lib-row input[type=radio]:checked + label {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+    -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+    background-color: #e0e0e0;
+}
+
+.metaslider .right #nivo + label:hover,
+.metaslider .right #nivo:checked + label {
+    color: white;
+    background: #b6e026;
+    background: -moz-linear-gradient(top, #b6e026 0%, #abdc28 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b6e026), color-stop(100%, #abdc28));
+    background: -webkit-linear-gradient(top, #b6e026 0%, #abdc28 100%);
+    background: -o-linear-gradient(top, #b6e026 0%, #abdc28 100%);
+    background: -ms-linear-gradient(top, #b6e026 0%, #abdc28 100%);
+    background: linear-gradient(to bottom, #b6e026 0%, #abdc28 100%);
+}
+
+.metaslider .right #responsive + label:hover,
+.metaslider .right #responsive:checked + label,
+.metaslider .right #responsive:checked {
+    color: white;
+    background: #ff5db1; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ff5db1 0%, #ef017c 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff5db1), color-stop(100%,#ef017c)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ff5db1 0%,#ef017c 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ff5db1 0%,#ef017c 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ff5db1 0%,#ef017c 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ff5db1 0%,#ef017c 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5db1', endColorstr='#ef017c',GradientType=0 ); /* IE6-9 */
+}
+
+.metaslider .right #coin + label:hover,
+.metaslider .right #coin:checked + label {
+    color: white;
+    background: #ffd65e;
+    background: -moz-linear-gradient(top, #ffd65e 0%, #febf04 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffd65e), color-stop(100%, #febf04));
+    background: -webkit-linear-gradient(top, #ffd65e 0%, #febf04 100%);
+    background: -o-linear-gradient(top, #ffd65e 0%, #febf04 100%);
+    background: -ms-linear-gradient(top, #ffd65e 0%, #febf04 100%);
+    background: linear-gradient(to bottom, #ffd65e 0%, #febf04 100%);
+}
+
+.metaslider .right #flex + label:hover,
+.metaslider .right #flex:checked + label {
+    color: white;
+    background: #00b7ea;
+    background: -moz-linear-gradient(top, #00b7ea 0%, #009ec3 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #00b7ea), color-stop(100%, #009ec3));
+    background: -webkit-linear-gradient(top, #00b7ea 0%, #009ec3 100%);
+    background: -o-linear-gradient(top, #00b7ea 0%, #009ec3 100%);
+    background: -ms-linear-gradient(top, #00b7ea 0%, #009ec3 100%);
+    background: linear-gradient(to bottom, #00b7ea 0%, #009ec3 100%);
+}
+.metaslider .right .slider-lib-row label:focus,
+.metaslider .right .slider-lib-row label:active {
+    background: #acd7fd !important;
+    box-shadow: none !important;
+    outline: none;
+}
+.metaslider .right .slider-lib-row {
+    padding: 0 0 9px 0;
+    text-align: center;
+}
+
+.metaslider .right .radio ul {
+    margin: 0;
+}
+.metaslider .right .radio li {
+    margin: 0 0 2px 0;
+    clear: both;
+}
+.metaslider .right .radio input[type="radio"] {
+    margin-top: 0;
+}
+.rtl .metaslider .right .radio input[type="radio"] {
+    float: right;
+}
+
+.metaslider #poststuff .right .ms-postbox .inside {
+    padding: 1rem;
+	margin: 0;
+    background: white;
+}
+
+.ms-postbox .handlediv {
+    float: right;
+    width: 27px;
+    height: 30px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.ms-postbox .handlediv:before {
+    right: 12px;
+    font: 400 20px/1 dashicons;
+    speak: none;
+    display: inline-block;
+    padding: 8px 10px;
+    top: 0;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-decoration: none !important;
+    content: '\f142';
+}
+
+.ms-postbox.closed .handlediv:before {
+    content: '\f140';
+}
+
+.metaslider .social .inside {
+    padding: 10px;
+}
+
+.metaslider .social .inside ul.info {
+    width: 100%;
+    margin: 0;
+    height: 20px;
+}
+
+.metaslider .right .ms-postbox table {
+    border: 0;
+    width: 100%;
+}
+
+.metaslider .right .ms-postbox table textarea {
+    width: 100%;
+    height: 100px;
+    font-family: monospace;
+    background: #272822;
+    color: #a6e22e;
+}
+
+.metaslider .right .ms-postbox h3 {
+    cursor: inherit;
+}
+
+.metaslider .right .ms-postbox.ms-toggle h3 {
+    cursor: pointer;
+}
+
+.metaslider .right table {
+    margin: 0 0 5px 0;
+}
+
+.metaslider select {
+    height: auto;
+}
+
+.metaslider .warning {
+    background-color: #ffebe8;
+    border: 1px solid #c00;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+
+.attachment-display-settings {
+    display: none;
+}
+
+.metaslider .tabs-content,
+.metaslider .tabs-content ul,
+.metaslider .tabs-content li,
+.metaslider .tabs-content textarea {
+    font-size: 12px;
+}
+
+.metaslider .tabs-content input,
+.metaslider .tabs-content select {
+    font-size: 11px;
+}
+.metaslider .tabs-content input:focus,
+.metaslider .tabs-content textarea:focus,
+.metaslider .tabs-content select:focus {
+    color: #444;
+    border-color: #acd7fd;
+    /* background: rgba(172, 215, 253, 0.2); */
+}
+
+.metaslider .left .tabs-content {
+    clear: both;
+}
+
+.metaslider .tabs-content .row {
+    float: left;
+    clear: both;
+    width: 100%;
+    vertical-align: middle;
+    margin-bottom: 6px;
+}
+
+.metaslider .tabs-content .row.last {
+    margin-bottom: 0;
+}
+
+.metaslider .tabs-content .row label {
+    display: inline-block;
+	text-indent: 3px;
+	margin-bottom: 3px;
+}
+
+.metaslider .tabs-content .row input {
+    margin-right: 5px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+
+.metaslider .tabs-content .row input[type=text] {
+    width: 100%;
+}
+.metaslider .tabs-content .row.has-right-checkbox > input[type=text] {
+	width: calc( 100% - 155px );
+}
+
+
+.metaslider .tabs-content ul {
+    margin: 0;
+}
+
+.metaslider .tabs-content li {
+    margin: 0 0 3px 0;
+}
+
+.metaslider .tabs-content select {
+    font-size: 11px;
+}
+
+.metaslider .tabs-content p {
+    font-style: italic;
+    color: #999999;
+}
+
+.metaslider ul.tabs {
+    float: left;
+    width: 100%;
+    margin: 0 0 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.metaslider ul.tabs li {
+    margin: 0 0 0 5px;
+    cursor: pointer;
+    padding: 3px 5px;
+    display: inline-block;
+    line-height: 14px;
+    color: #ccc;
+    position: relative;
+    top: 1px;
+    border: 1px solid transparent;
+}
+.metaslider ul.tabs li a {
+    color: #aaaaaa;
+    outline: 0;
+    box-shadow: none;
+}
+.metaslider ul.tabs li a:hover,
+.metaslider ul.tabs li.selected a {
+    color: #e1642e;
+}
+
+.metaslider ul.tabs li:hover {
+    color: #333;
+}
+
+.metaslider ul.tabs li.selected {
+    color: #666;
+    border: 1px solid #ccc;
+    border-bottom: 1px solid white;
+}
+
+.metaslider .left table tr.slide:nth-child(odd) ul.tabs li.selected {
+    border-bottom: 1px solid #ffffff;
+}
+
+.metaslider .tabs-content .schedule_placeholder {
+	text-align: center;
+	padding-top: 10px;
+}
+
+.metaslider .tabs-content .schedule_placeholder h4 {
+	font-weight: normal;
+}
+
+.metaslider .dropdown_container {
+    margin: 40px 0 10px 0;
+}
+
+#adminmenu .toplevel_page_metaslider .wp-menu-image img {
+    opacity: 1;
+}
+
+.metaslider-ui, .metaslider-ui * {
+    box-sizing: border-box;
+}
+
+/* Slide Title */
+.metaslider-ui .slider-title {
+    padding: 10px 0 13px;
+    position: relative;
+    padding-right: 100px;
+    border-bottom: none;
+}
+.metaslider-ui .slider-title h3 {
+    font-weight: normal;
+    margin: 0 0.5rem 0 0;
+}
+
+/* Slide Listing */
+.metaslider-ui .metaslider-slides-container * {
+    box-sizing: border-box;
+}
+.metaslider-ui .metaslider-slides-container {
+    border-collapse: separate;
+    background: none;
+    border: 0;
+    box-shadow: none;
+}
+.metaslider-ui .metaslider-slides-container .slide {
+    background: white;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: block;
+    margin-bottom: 22px;
+    padding-top: 31px;
+}
+.metaslider-ui .metaslider-slides-container .slide.post_feed  .scroll{
+    overflow: auto;
+    height: 100px;
+}
+.metaslider-ui .metaslider-slides-container .slide > td {
+    padding: 0;
+    transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -webkit-transition: all .25s ease-in-out;
+}
+.metaslider-ui .metaslider-slides-container .slide .slide-details {
+    margin: 0;
+    font-size: 0.8em;
+    display: inline-block;
+    margin-top: 6px;
+    color: #666666;
+    font-weight: 400;
+}
+.metaslider-ui .metaslider-slides-container .slide .metaslider-ui-controls {
+    padding-left: 0.5rem;
+    height: 30px;
+    font-size: 1.2em;
+    cursor: move;
+    background-color: #f7f7f7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.metaslider-ui .metaslider-slides-container .metaslider-ui-inner {
+    padding: 1rem;
+}
+.metaslider-ui .metaslider-slides-container .slide .col-2 {
+    width: 100%;
+}
+.metaslider-ui .metaslider-slides-container .slide .thumb {
+    border: 1px solid #eee;
+    position: relative;
+    height: 150px;
+    width: 150px;
+    background-size: auto 150px;
+    background-position: center;
+}
+.metaslider-ui .metaslider-slides-container .toolbar-button,
+.metaslider-ui .metaslider-slides-container .update-image,
+.metaslider-ui .metaslider-slides-container .delete-slide,
+.metaslider-ui .metaslider-slides-container .undo-delete-slide {
+    color: #aaa;
+    outline: 0;
+    cursor: pointer;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    width: 30px;
+    height: 30px;
+}
+.metaslider-ui .metaslider-slides-container .update-image {
+    padding: 0px 0 0 6px;
+}
+.metaslider-ui .metaslider-slides-container .update-image svg {
+    width: 18px;
+}
+.metaslider-ui .metaslider-slides-container .update-image.image-button {
+    padding: 0;
+    margin: 0;
+    display: block;
+    width: auto;
+    height: auto;
+}
+.metaslider-ui .metaslider-slides-container .toolbar-button:hover,
+.metaslider-ui .metaslider-slides-container .toolbar-button:active {
+	background: #ededed;
+	color: #1d8abf;
+}
+.metaslider-ui .metaslider-slides-container .toolbar-button:focus {
+	background-color: #acd7fd !important;
+	color: #444 !important;
+}
+
+.metaslider-ui .metaslider-slides-container .toolbar-button:active {
+	box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.metaslider-ui .metaslider-slides-container .update-image.image-button:active,
+.metaslider-ui .metaslider-slides-container .update-image.image-button:focus {
+    box-shadow: 0 0 3px 3px #acd7fd;
+}
+.metaslider-ui .metaslider-slides-container .update-image.image-button:focus .thumb {
+    background-color: #acd7fd;
+}
+.metaslider-ui .metaslider-slides-container .delete-slide {
+    padding: 0 0 0 5px;
+}
+
+.metaslider-ui .metaslider-slides-container .delete-slide:hover,
+.metaslider-ui .metaslider-slides-container .delete-slide:active {
+    color: #e82323;
+}
+
+.metaslider-ui .metaslider-slides-container .update-image svg,
+.metaslider-ui .metaslider-slides-container .delete-slide svg {
+    display: block;
+}
+
+/* Hide slide button */
+.metaslider-ui button.hide-slide.toolbar-button {
+	position: relative;
+}
+.metaslider-ui button.hide-slide.toolbar-button input {
+	position: absolute;
+	top: 0;
+    visibility: hidden;
+    opacity: 0;
+}
+.metaslider-ui button.hide-slide.toolbar-button input ~ svg {
+	position: absolute;
+	top: 6px;
+	left: 6px;
+	width: 18px;
+	height: 18px;
+
+}
+.metaslider-ui button.hide-slide.toolbar-button input ~ svg.feather-eye-off {
+	display: none;
+}
+.metaslider-ui button.hide-slide.toolbar-button input:checked ~ svg.feather-eye-off {
+	display: block;
+}
+.metaslider-ui button.hide-slide.toolbar-button input:checked ~ svg.feather-eye-off line {
+    color: rgba(193, 63, 63, 1);
+	stroke: rgba(193, 63, 63, 1);
+}
+.metaslider-ui button.hide-slide.toolbar-button input:checked ~ svg.feather-eye {
+	display: none;
+}
+
+/* Sorting */
+.metaslider-ui .metaslider-slides-container .ui-sortable-helper {
+    transition: none;
+    -moz-transition: none;
+    -webkit-transition: none;
+    -webkit-transform: translate3d(0, 0, 0) rotate(2deg);
+        -ms-transform: translate3d(0, 0, 0) rotate(2deg);
+            transform: translate3d(0, 0, 0) rotate(2deg);
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2) !important;
+}
+.metaslider-ui .metaslider-slides-container .ui-sortable-placeholder {
+    background: rgba(204, 204, 204, 0.33);
+    padding: 4rem;
+    visibility: visible !important;
+    border: 3px dashed #e0e0e0;
+    box-shadow: none;
+}
+
+.metaslider .ms-postbox {
+    position: relative;
+    min-width: 255px;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    background: #ffffff;
+    margin-bottom: 20px;
+    padding: 0;
+    line-height: 1;
+}
+
+input[type="radio"] {
+    margin-right: 4px;
+}
+
+.metaslider-ui .ms-settings .disabled {
+    color:#bbb;
+    font-style: italic;
+}
+
+.metaslider-ui .ms-settings .disabled input {
+    border-color: #bbb;
+}
+
+.wp-clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+ /* Spin an svg */
+ .ms-spin {
+    -webkit-animation: ms-spin 2s infinite linear;
+    animation: ms-spin 2s infinite linear;
+ }
+ @-webkit-keyframes ms-spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg);
+    }
+  }
+  @keyframes ms-spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg);
+    }
+  }
+
+/* Deleting a slide */
+.ms-deleting > td div {
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+}
+.ms-deleting button {
+    background: none !important;
+    color: #aaa!important;
+}
+.ms-deleted {
+    max-height: 0 !important;
+    margin-bottom: 0 !important;
+    overflow: hidden;
+    background-color: transparent!important;
+    border: 0!important;
+    box-shadow: none!important;
+    padding: 0!important;
+}
+.slide.hide-status .ms-delete-status {
+    display:none;
+}
+.slide:not(.hide-status) .ms-delete-status.is-error {
+    font-size: 0.8em;
+    line-height: 31px;
+    color: #e82323;
+}
+.slide:not(.hide-status) .ms-delete-status.is-success {
+    font-size: 0.8em;
+    margin-left: 5px;
+    float: right;
+    padding: 0.5em;
+    color: #46b450;
+}
+.ms-deleted .slide-details,
+.ms-deleted .metaslider-ui-controls button {
+    display: none !important;
+}
+.ms-deleted .metaslider-ui-inner {
+    max-height: 0 !important;
+    overflow: hidden;
+    transition: all .75s ease-in-out;
+    -moz-transition: all .75s ease-in-out;
+    -webkit-transition: all .75s ease-in-out;
+}
+.ms-deleted .metaslider-ui-controls {
+    cursor: default !important;
+    background-color: #f1f1f1 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+.ms-deleted .metaslider-ui-controls button.undo-delete-slide {
+    display: inline-block;
+    font-size: 0.7em;
+    width: auto;
+    text-transform: lowercase;
+}
+.ms-deleted .metaslider-ui-controls button.undo-delete-slide i {
+    top: 1px;
+    position: relative;
+    margin-right: 0px;
+}
+.ms-deleted .metaslider-ui-controls button.undo-delete-slide:focus {
+    text-decoration: underline;
+}
+.ms-deleted .metaslider-ui-controls button.undo-delete-slide:hover {
+    color: #de6826;
+}
+.ms-deleted .metaslider-ui-controls .countdown {
+    display: inline-block;
+    margin-left: 5px;
+    color: #ccc;
+    text-shadow: 1px 1px 1px #fff;
+}
+.ms-delete-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    color: #666;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.metaslider-ui .restore-slide-link {
+    text-decoration: none;
+    display: block;
+    float: right;
+}
+.metaslider-ui .trashed-header {
+    padding: 0 0 0.5rem;
+}
+.metaslider-ui .trashed-header h3 {
+    color: #de6826;
+    font-weight: normal;
+    display: inline-block;
+    margin: 0;
+}
+.metaslider-ui .trashed-header small {
+    color: #ccc;
+}
+.metaslider-ui .trashed-header a {
+    color: #666;
+    text-decoration: underline;
+}
+.metaslider-ui .trashed-header a:hover {
+    color: #de6826;
+}
+.metaslider-ui .trash-btns {
+    float: right;
+    position: static;
+    padding: 0;
+}
+.metaslider-ui .trash-btns a {
+    padding: 0.37rem;
+    display: block;
+}
+.metaslider-ui .trashed-notice {
+    line-height: 1.4;
+    margin-top: 31px;
+}
+.metaslider-ui .trashed-notice .notice-info {
+    padding: 1rem;
+    background: #fff;
+    border-left: 4px solid #00a0d2;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for edge cases */
+
+/* Removes styling for LastPass autofill */
+input.no_last_pass {
+    background-image: none !important;
+    background-attachment: none !important;
+}
+#__lpform_title {
+    display: none;
+}
+
+/* Start Page */
+.ms-panel-container {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+.ms-panel-container > * {
+	flex-grow: 1;
+	flex-basis: 0;
+	padding-right: 1.5rem;
+}
+
+/* Save/ Delete area */
+.ms-delete-save {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	position: relative;
+}
+.ms-delete-save .ms-delete-slideshow {
+    color: #aaa;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+}
+.ms-delete-save .ms-delete-slideshow:hover {
+	text-decoration: underline;
+}
+
+#image-api-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999999;
+    background: white;
+}

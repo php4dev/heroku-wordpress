@@ -1,0 +1,41 @@
+/*
+ +=====================================================================+
+ |      __        ______ _____                                         |
+ |      \ \      / /  _ \_   _|__ _ __ _ __ ___                        |
+ |       \ \ /\ / /| |_) || |/ _ \ '__| '_ ` _ \                       |
+ |        \ V  V / |  __/ | |  __/ |  | | | | | |                      |
+ |         \_/\_/  |_|    |_|\___|_|  |_| |_| |_|                      |
+ |                                                                     |
+ | (c) Jerome Bruandet ~ https://nintechnet.com/                       |
+ +=====================================================================+
+*/
+.terminal {
+	width: 100%;
+	height: 360px;
+	line-height: 1.4;
+	padding: 4px 6px 1px;
+	resize:vertical;
+}
+#terminal.error, #visual-bell.error {
+  -moz-animation: flash 0.1s ease-out; -moz-animation-iteration-count: 2;
+  -webkit-animation: flash 0.1s ease-out; -webkit-animation-iteration-count: 2;
+  -ms-animation: flash 0.1s ease-out; -ms-animation-iteration-count: 2;
+
+}
+@-webkit-keyframes flash {
+	0% { border-color: none; }
+	50% {	outline: none; border-color: red; box-shadow: 0 0 10px red; }
+	100% { border-color: none; }
+}
+@-moz-keyframes flash {
+	0% { border-color: none; }
+	50% {	outline: none; border-color: red; box-shadow: 0 0 10px red; }
+	100% { border-color: none; }
+}
+@-ms-keyframes flash {
+	0% { border-color: none; }
+	50% {	outline: none; border-color: red; box-shadow: 0 0 10px red; }
+	100% { border-color: none; }
+}
+/* ================================================================== */
+/* EOF */

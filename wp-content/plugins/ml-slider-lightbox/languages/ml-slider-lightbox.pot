@@ -1,0 +1,41 @@
+# Copyright (C) 2019 MetaSlider Lightbox
+# This file is distributed under the same license as the MetaSlider Lightbox package.
+msgid ""
+msgstr ""
+"Project-Id-Version: MetaSlider Lightbox\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: Team Updraft\n"
+"Report-Msgid-Bugs-To: https://www.metaslider.com/contact/\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/class-ml-slider-lightbox.php:352
+msgid "MetaSlider Lightbox requires MetaSlider and at least one other supported lightbox plugin to be installed and activated."
+msgstr ""
+
+#: src/class-ml-slider-lightbox.php:352, src/class-ml-slider-lightbox.php:396
+msgid "More info"
+msgstr ""
+
+#: src/class-ml-slider-lightbox.php:363
+msgid "There is more than one lightbox plugin activated. This may cause conflicts with MetaSlider Lightbox"
+msgstr ""
+
+#: src/class-ml-slider-lightbox.php:404
+msgid "Edit settings"
+msgstr ""
+
+#: src/class-ml-slider-lightbox.php:410
+msgid "Open in lightbox?"
+msgstr ""
+
+#: src/class-ml-slider-lightbox.php:413
+msgctxt "Name of a plugin"
+msgid "All slides will open in a lightbox, using %s"
+msgstr ""

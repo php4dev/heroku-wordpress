@@ -1,0 +1,208 @@
+@charset "UTF-8";
+
+.editormd-dialog {
+    color: $color;
+    position: fixed;
+    z-index: 99999;
+    display: none;
+    @include border-radius(3px);
+    @include box-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+    //@include user-select(none); 
+    background: #fff;
+    font-size: 14px;
+}
+
+.editormd-dialog-container {
+    position: relative;
+    padding: 20px;
+    line-height: 1.4;
+    overflow: hidden;
+    display: block;
+
+    .editormd-html-entity-btn {
+        color: #222;
+        font-size: 13px;
+    }
+
+    .markdown-body {
+        width: 100% !important;
+        table, thead, tr {
+            width: 100% !important;
+        }
+        th {
+            background-color: #333333;
+            color: #ffffff;
+            font-weight: normal;
+            font-style: italic;
+            font-size: 12px;
+        }
+        td {
+            font-size: 12px;
+        }
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+
+        .fa {
+            color: #2C7EEA;
+            padding-right: 5px;
+        }
+
+        small {
+            padding-left: 5px;
+            font-weight: normal;
+            font-size:  12px;
+            color: #999;
+        }
+    } 
+    
+    select {
+        color: #999;
+        padding: 3px 8px;
+        border: 1px solid $borderColor;
+    }
+}
+
+.editormd-dialog-close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 18px;
+    color: #ccc;
+    @include transition(color 300ms ease-out);
+
+    &:hover {
+        color: #999;
+    }
+} 
+            
+.editormd-dialog-header {
+    padding: 11px 20px;    
+    border-bottom: 1px solid #eee;
+    @include transition(background 300ms ease-out);
+
+    &:hover {
+        background: #f6f6f6;
+    }
+}
+
+.editormd-dialog-title {
+    font-size: 14px;             
+}
+            
+.editormd-dialog-footer {
+    padding: 10px 0 0 0;
+    text-align: right;
+}
+
+.editormd-dialog-info {
+    width: 420px;
+    
+    h1 {
+        font-weight: normal;
+    }
+
+    .editormd-dialog-container {
+        padding: 20px 25px 25px;
+    }
+
+    .editormd-dialog-close {
+        top: 10px;
+        right: 10px;
+    } 
+    
+    p > a, .hover-link:hover {   
+        color: #2196F3;
+    }
+    
+    .hover-link {
+        color: #666;
+    }
+    
+    a {
+        .fa-external-link {
+            display: none;
+        }
+
+        &:hover {    
+            color: #2196F3;
+            
+            .fa-external-link {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.editormd-mask,
+.editormd-container-mask,
+.editormd-dialog-mask {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.editormd-mask,
+.editormd-dialog-mask-bg {
+    background: #fff;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+.editormd-mask {
+    position: fixed;
+    background: #000;
+    @include opacity(0.2); 
+    z-index: 99998;  
+}
+
+.editormd-container-mask, 
+.editormd-dialog-mask-con {
+    background: url(../images/loading.gif) no-repeat center center;
+    @include background-size(32px 32px);
+}
+
+.editormd-container-mask {
+    z-index: 20;  
+    display: block;
+    background-color: #fff;    
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+    .editormd-container-mask, 
+    .editormd-dialog-mask-con {
+        background-image: url(../images/loading@2x.gif);
+    }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3), only screen and (min-device-pixel-ratio: 3) {
+    .editormd-container-mask,
+    .editormd-dialog-mask-con {
+        background-image: url(../images/loading@3x.gif);
+    }
+}
+
+.editormd-code-block-dialog, 
+.editormd-preformatted-text-dialog {
+    textarea {
+        width: 100%;
+        height: 400px;
+        margin-bottom: 6px;
+        overflow: auto;
+        border: 1px solid #eee;
+        background: #fff;
+        padding: 15px;
+        resize: none;
+    }
+}
+
+.editormd-code-toolbar {
+    color: #999;
+    font-size: 14px;
+    margin: -5px 0 10px;
+}

@@ -1,0 +1,6435 @@
+# Copyright (C) 2020 The bbPress Contributors
+# This file is distributed under the GPLv2 or later (license.txt).
+msgid ""
+msgstr ""
+"Project-Id-Version: bbPress 2.6.6\n"
+"Report-Msgid-Bugs-To: https://bbpress.trac.wordpress.org\n"
+"POT-Creation-Date: 2020-11-06 01:22:02+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
+"Last-Translator: JOHN JAMES JACOBY <jjj@bbpress.org>\n"
+"Language-Team: ENGLISH <jjj@bbpress.org>\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#: bbpress.php:146 bbpress.php:153
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: bbpress.php:515
+msgid "bbPress Forums"
+msgstr ""
+
+#: bbpress.php:541
+msgid "bbPress Topics"
+msgstr ""
+
+#: bbpress.php:567
+msgid "bbPress Replies"
+msgstr ""
+
+#: bbpress.php:711
+msgid "Most popular topics"
+msgstr ""
+
+#: bbpress.php:724
+msgid "Topics with no replies"
+msgstr ""
+
+#: bbpress.php:761
+msgid "bbPress Item Count"
+msgstr ""
+
+#: bbpress.php:798
+msgid "bbPress User Activity"
+msgstr ""
+
+#: includes/admin/actions.php:180 includes/admin/forums.php:538
+#: includes/admin/settings.php:281 includes/admin/settings.php:302
+#: includes/admin/tools/common.php:437 includes/admin/topics.php:854
+#: includes/extend/buddypress/activity.php:197
+#: includes/extend/buddypress/activity.php:391
+#: includes/forums/template.php:2660 includes/topics/template.php:47
+#: includes/topics/template.php:48
+#: templates/default/bbpress/content-statistics.php:30
+#: templates/default/bbpress/loop-forums.php:21
+msgid "Topics"
+msgstr ""
+
+#: includes/admin/actions.php:185 includes/admin/actions.php:197
+#: includes/admin/forums.php:539 includes/admin/settings.php:289
+#: includes/admin/settings.php:310 includes/admin/tools/common.php:440
+#: includes/admin/topics.php:390 includes/admin/topics.php:856
+#: includes/core/theme-compat.php:704
+#: includes/extend/buddypress/activity.php:207
+#: includes/extend/buddypress/activity.php:392
+#: includes/forums/template.php:2714 includes/replies/template.php:49
+#: includes/replies/template.php:50
+#: templates/default/bbpress/content-statistics.php:35
+#: templates/default/bbpress/loop-forums.php:23
+#: templates/default/bbpress/loop-replies.php:20
+#: templates/default/bbpress/loop-replies.php:46
+#: templates/default/bbpress/loop-topics.php:21
+msgid "Replies"
+msgstr ""
+
+#: includes/admin/actions.php:192 includes/admin/actions.php:204
+#: includes/admin/forums.php:537 includes/admin/metaboxes.php:113
+#: includes/admin/metaboxes.php:432 includes/admin/metaboxes.php:496
+#: includes/admin/replies.php:665 includes/admin/settings.php:352
+#: includes/admin/topics.php:855 includes/extend/buddypress/groups.php:51
+#: includes/extend/buddypress/groups.php:52 includes/forums/template.php:50
+#: templates/default/bbpress/loop-forums.php:20
+msgid "Forum"
+msgstr ""
+
+#: includes/admin/actions.php:209 includes/admin/metaboxes.php:130
+#: includes/admin/metaboxes.php:523 includes/admin/replies.php:666
+#: includes/admin/settings.php:360 includes/topics/template.php:49
+#: templates/default/bbpress/content-single-topic-lead.php:23
+#: templates/default/bbpress/content-single-topic-lead.php:91
+#: templates/default/bbpress/loop-topics.php:18
+msgid "Topic"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:234
+msgid "Learn More"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:235
+msgid "Hide For Now"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:238
+msgid "bbPress requires a manual database upgrade. %s or %s."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:467
+#: includes/admin/classes/class-bbp-admin.php:468
+#: includes/admin/classes/class-bbp-admin.php:477
+#: includes/admin/classes/class-bbp-admin.php:478
+#: includes/admin/tools/common.php:434 includes/admin/tools.php:30
+#: includes/admin/users.php:93 includes/common/widgets.php:626
+#: includes/extend/buddypress/loader.php:42
+#: includes/extend/buddypress/loader.php:189
+#: includes/extend/buddypress/loader.php:311
+#: includes/extend/buddypress/loader.php:376 includes/forums/template.php:48
+#: includes/forums/template.php:49 includes/forums/template.php:67
+#: templates/default/bbpress/content-statistics.php:25
+#: templates/default/bbpress/user-profile.php:34
+msgid "Forums"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:490
+#: includes/admin/classes/class-bbp-admin.php:491
+#: includes/admin/classes/class-bbp-admin.php:499
+#: includes/admin/classes/class-bbp-admin.php:500
+msgid "Welcome to bbPress"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:514
+#: includes/admin/classes/class-bbp-admin.php:515
+#: includes/admin/classes/class-bbp-admin.php:536
+#: includes/admin/classes/class-bbp-admin.php:537
+#: includes/admin/classes/class-bbp-admin.php:1319
+#: includes/admin/classes/class-bbp-admin.php:1417
+msgid "Update Forums"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:727
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:732
+msgid "About"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:938
+#: includes/admin/classes/class-bbp-admin.php:1018
+#: includes/common/classes.php:493 includes/replies/template.php:2565
+msgid "%1$s - %2$s"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1036
+msgid "Welcome to bbPress %s"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1038
+msgid ""
+"bbPress is fun to use, contains no artificial colors or preservatives, and "
+"is absolutely wonderful in every environment. Your community is going to "
+"love using it."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1064
+#: includes/admin/classes/class-bbp-admin.php:1138
+msgid "What&#8217;s New"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1066
+#: includes/admin/classes/class-bbp-admin.php:1140
+msgid "Credits"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1071
+msgid "Forum Subscriptions"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1075
+msgid "Subscribe to Forums"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1076
+msgid "Now your users can subscribe to new topics in specific forums."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1080
+msgid "Manage Subscriptions"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1081
+msgid "Your users can manage all of their subscriptions in one convenient location."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1087
+msgid "Converters"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1091
+msgid ""
+"We&#8217;re all abuzz about the hive of new importers, AEF, Drupal, FluxBB, "
+"Kunena Forums for Joomla, MyBB, Phorum, PHPFox, PHPWind, PunBB, SMF, "
+"Xenforo and XMB. Existing importers are now sweeter than honey with "
+"improved importing stickies, topic tags, forum categories and the sting is "
+"now gone if you need to remove imported users."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1097
+msgid "Theme Compatibility"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1098
+msgid "Better handling of styles and scripts in the template stack."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1102
+msgid "Polyglot support"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1103
+msgid "bbPress fully supports automatic translation updates."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1107
+msgid "User capabilities"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1108
+msgid "Roles and capabilities have been swept through, cleaned up, and simplified."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1114
+#: includes/admin/classes/class-bbp-admin.php:1254
+msgid "Go to Forum Settings"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1144
+msgid "bbPress is created by a worldwide swarm of busy, busy bees."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1146
+msgid "Project Leaders"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1150
+msgid "Founding Developer"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1154
+msgid "Lead Developer"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1158
+msgid "Feature Virtuoso"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1162
+msgid "Tool Maven"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1166
+msgid "Contributing Developers"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1170
+#: includes/admin/classes/class-bbp-admin.php:1174
+msgid "Core Developer"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1178
+msgid "Project Emeriti"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1182
+msgid "Feature Developer"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1186
+msgid "Integration Testing"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1190
+msgid "Contributors to bbPress 2.6"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1275
+#: includes/admin/classes/class-bbp-admin.php:1298
+msgid "Update Forum"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1287
+#: includes/admin/classes/class-bbp-admin.php:1337
+msgid "All done!"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1288
+#: includes/admin/classes/class-bbp-admin.php:1338
+msgid "Go Back"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1297
+msgid "You can update your forum through this page. Hit the link below to update."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1372
+msgid ""
+"Warning! Problem updating %1$s. Your server may not be able to connect to "
+"sites running on it. Error message: %2$s"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1397
+msgid ""
+"If your browser doesn&#8217;t start loading the next page automatically, "
+"click this link:"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1398
+msgid "Next Forums"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:1416
+msgid ""
+"You can update all the forums on your network through this page. It works "
+"by calling the update script of each site automatically. Hit the link below "
+"to update."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter-base.php:154
+msgid "Database connection failed."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:162
+#: includes/admin/settings.php:1794
+msgid "Start"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:163
+msgid "Continue"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:166
+msgid "Starting Import..."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:167
+msgid "Continuing Import..."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:170
+msgid "Import Finished."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:171
+msgid "Import Stopped (by User.)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:172
+msgid "Import Halted (Error.)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:173
+msgid "Database Connection Failed."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:176
+msgid "Finished"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:177
+msgid "Stopped"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:178
+msgid "Starting"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:179
+msgid "Doing step %s..."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:180
+msgid "Next in %s seconds..."
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:513
+msgid "Readying sync-table"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:514
+msgid "Sync-table ready"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:517
+msgid "Deleting previously converted data (%1$s through %2$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:524
+msgid "Skipping sync-table clean-up"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:539
+msgid "No users to import"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:540
+msgid "All users imported"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:543
+msgid "Converting users (%1$s through %2$s of %3$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:547
+msgid "Skipping user clean-up"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:562
+msgid "No passwords to clear"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:563
+msgid "All passwords cleared"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:566
+msgid "Delete default WordPress user passwords (%1$s through %2$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:570
+msgid "Skipping password clean-up"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:584
+msgid "No forums to import"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:585
+msgid "All forums imported"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:588
+msgid "Converting forums (%1$s through %2$s of %3$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:602
+msgid "No forum parents to import"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:603
+msgid "All forum parents imported"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:606
+msgid "Calculating forum hierarchy (%1$s through %2$s of %3$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:620
+msgid "No forum subscriptions to import"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:621
+msgid "All forum subscriptions imported"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:624
+msgid "Converting forum subscriptions (%1$s through %2$s of %3$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:638
+msgid "No topics to import"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:639
+msgid "All topics imported"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:642
+msgid "Converting topics (%1$s through %2$s of %3$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:656
+msgid "No anonymous topic authors to import"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:657
+msgid "All anonymous topic authors imported"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:660
+msgid "Converting anonymous topic authors (%1$s through %2$s of %3$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:674
+msgid "No stickies to import"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:675
+msgid "All stickies imported"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:678
+msgid "Calculating topic stickies (%1$s through %2$s of %3$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:692
+msgid "No super stickies to import"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:693
+msgid "All super stickies imported"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:696
+msgid "Calculating topic super stickies (%1$s through %2$s of %3$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:710
+msgid "No closed topics to import"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:711
+msgid "All closed topics imported"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:714
+msgid "Calculating closed topics (%1$s through %2$s of %3$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:728
+msgid "No topic tags to import"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:729
+msgid "All topic tags imported"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:732
+msgid "Converting topic tags (%1$s through %2$s of %3$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:746
+msgid "No topic subscriptions to import"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:747
+msgid "All topic subscriptions imported"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:750
+msgid "Converting topic subscriptions (%1$s through %2$s of %3$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:764
+msgid "No favorites to import"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:765
+msgid "All favorites imported"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:768
+msgid "Converting favorites (%1$s through %2$s of %3$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:782
+msgid "No replies to import"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:783
+msgid "All replies imported"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:786
+msgid "Converting replies (%1$s through %2$s of %3$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:800
+msgid "No anonymous reply authors to import"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:801
+msgid "All anonymous reply authors imported"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:804
+msgid "Converting anonymous reply authors (%1$s through %2$s of %3$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:818
+msgid "No threaded replies to import"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:819
+msgid "All threaded replies imported"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:822
+msgid "Calculating threaded replies parents (%1$s through %2$s of %3$s)"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-converter.php:833
+msgid "Import Finished"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-topic-replies-list-table.php:59
+#: includes/admin/replies.php:667 includes/admin/topics.php:858
+#: templates/default/bbpress/loop-replies.php:18
+#: templates/default/bbpress/loop-replies.php:44
+#: templates/default/bbpress/loop-search.php:19
+#: templates/default/bbpress/loop-search.php:41
+msgid "Author"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-topic-replies-list-table.php:60
+msgid "Content"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-topic-replies-list-table.php:61
+msgid "Replied"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-topic-replies-list-table.php:90
+msgid "Unapprove"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-topic-replies-list-table.php:91
+#: includes/admin/replies.php:235 includes/admin/replies.php:818
+#: includes/admin/topics.php:240 includes/admin/topics.php:1023
+#: includes/replies/template.php:2029 includes/topics/template.php:2807
+msgid "Spam"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-topic-replies-list-table.php:92
+#: includes/admin/replies.php:833 includes/admin/topics.php:1037
+#: includes/replies/template.php:1961 includes/topics/template.php:2515
+msgid "Trash"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-topic-replies-list-table.php:144
+#: includes/admin/replies.php:796 includes/admin/topics.php:975
+#: includes/admin/topics.php:994 includes/admin/users.php:260
+msgid "View"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-topic-replies-list-table.php:149
+#: includes/admin/settings.php:392 includes/common/template.php:2331
+#: includes/forums/template.php:54 includes/replies/template.php:55
+#: includes/replies/template.php:1849 includes/topics/template.php:53
+#: includes/topics/template.php:2403
+#: templates/default/bbpress/user-details.php:74
+msgid "Edit"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-topic-replies-list-table.php:249
+msgid "No replies to this topic."
+msgstr ""
+
+#: includes/admin/forums.php:101 includes/admin/replies.php:115
+#: includes/admin/settings.php:1871 includes/admin/tools/help.php:95
+#: includes/admin/topics.php:119
+msgid "Overview"
+msgstr ""
+
+#: includes/admin/forums.php:103
+msgid ""
+"This screen displays the individual forums on your site. You can customize "
+"the display of this screen to suit your workflow."
+msgstr ""
+
+#: includes/admin/forums.php:109 includes/admin/replies.php:123
+#: includes/admin/topics.php:127
+msgid "Screen Content"
+msgstr ""
+
+#: includes/admin/forums.php:111 includes/admin/replies.php:125
+#: includes/admin/topics.php:129
+msgid ""
+"You can customize the display of this screen&#8217;s contents in a number "
+"of ways:"
+msgstr ""
+
+#: includes/admin/forums.php:113
+msgid ""
+"You can hide/display columns based on your needs and decide how many forums "
+"to list per screen using the Screen Options tab."
+msgstr ""
+
+#: includes/admin/forums.php:114
+msgid ""
+"You can filter the list of forums by forum status using the text links in "
+"the upper left to show All, Published, or Trashed forums. The default view "
+"is to show all forums."
+msgstr ""
+
+#: includes/admin/forums.php:115
+msgid ""
+"You can refine the list to show only forums from a specific month by using "
+"the dropdown menus above the forums list. Click the Filter button after "
+"making your selection. You also can refine the list by clicking on the "
+"forum creator in the forums list."
+msgstr ""
+
+#: includes/admin/forums.php:122 includes/admin/replies.php:137
+#: includes/admin/topics.php:141
+msgid "Available Actions"
+msgstr ""
+
+#: includes/admin/forums.php:124
+msgid ""
+"Hovering over a row in the forums list will display action links that allow "
+"you to manage your forum. You can perform the following actions:"
+msgstr ""
+
+#: includes/admin/forums.php:126
+msgid ""
+"<strong>Edit</strong> takes you to the editing screen for that forum. You "
+"can also reach that screen by clicking on the forum title."
+msgstr ""
+
+#: includes/admin/forums.php:127
+msgid ""
+"<strong>Close</strong> will mark the selected forum as &#8217;closed&#8217; "
+"and disable the ability to post new topics and replies in it."
+msgstr ""
+
+#: includes/admin/forums.php:128
+msgid ""
+"<strong>Trash</strong> removes your forum from this list and places it in "
+"the trash, from which you can permanently delete it."
+msgstr ""
+
+#: includes/admin/forums.php:129
+msgid ""
+"<strong>View</strong> will either show you what your draft forum will look "
+"like if you publish it, or take you to your live site to view it. Which "
+"link depends on your forum&#8217;s status."
+msgstr ""
+
+#: includes/admin/forums.php:136 includes/admin/replies.php:153
+#: includes/admin/tools/repair.php:63 includes/admin/tools/repair.php:180
+#: includes/admin/tools/upgrade.php:60 includes/admin/tools/upgrade.php:192
+#: includes/admin/topics.php:159
+msgid "Bulk Actions"
+msgstr ""
+
+#: includes/admin/forums.php:138
+msgid ""
+"You can also edit or move multiple forums to the trash at once. Select the "
+"forums you want to act on using the checkboxes, then select the action you "
+"want to take from the Bulk Actions menu and click Apply."
+msgstr ""
+
+#: includes/admin/forums.php:139
+msgid ""
+"When using Bulk Edit, you can change the metadata (categories, author, "
+"etc.) for all selected forums at once. To remove a forum from the grouping, "
+"just click the x next to its name in the Bulk Edit area that appears."
+msgstr ""
+
+#: includes/admin/forums.php:144 includes/admin/forums.php:200
+#: includes/admin/replies.php:161 includes/admin/replies.php:215
+#: includes/admin/settings.php:1937 includes/admin/tools/help.php:43
+#: includes/admin/tools/help.php:72 includes/admin/tools/help.php:130
+#: includes/admin/topics.php:167 includes/admin/topics.php:220
+msgid "For more information:"
+msgstr ""
+
+#: includes/admin/forums.php:145 includes/admin/forums.php:201
+#: includes/admin/replies.php:162 includes/admin/replies.php:216
+#: includes/admin/settings.php:1938 includes/admin/tools/help.php:44
+#: includes/admin/tools/help.php:73 includes/admin/tools/help.php:131
+#: includes/admin/topics.php:168 includes/admin/topics.php:221
+msgid ""
+"<a href=\"https://codex.bbpress.org\" target=\"_blank\">bbPress "
+"Documentation</a>"
+msgstr ""
+
+#: includes/admin/forums.php:146 includes/admin/forums.php:202
+#: includes/admin/replies.php:163 includes/admin/replies.php:217
+#: includes/admin/settings.php:1939 includes/admin/tools/help.php:45
+#: includes/admin/tools/help.php:74 includes/admin/tools/help.php:132
+#: includes/admin/topics.php:169 includes/admin/topics.php:222
+msgid ""
+"<a href=\"https://bbpress.org/forums/\" target=\"_blank\">bbPress Support "
+"Forums</a>"
+msgstr ""
+
+#: includes/admin/forums.php:157
+msgid ""
+"The title field and the big forum editing Area are fixed in place, but you "
+"can reposition all the other boxes using drag and drop, and can minimize or "
+"expand them by clicking the title bar of each box. Use the Screen Options "
+"tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, "
+"Discussion, Slug, Author) or to choose a 1- or 2-column layout for this "
+"screen."
+msgstr ""
+
+#: includes/admin/forums.php:161 includes/admin/replies.php:178
+#: includes/admin/topics.php:184
+msgid "Customizing This Display"
+msgstr ""
+
+#: includes/admin/forums.php:167
+msgid "Title and Forum Editor"
+msgstr ""
+
+#: includes/admin/forums.php:169
+msgid ""
+"<strong>Title</strong> - Enter a title for your forum. After you enter a "
+"title, you&#8217;ll see the permalink below, which you can edit."
+msgstr ""
+
+#: includes/admin/forums.php:170
+msgid ""
+"<strong>Forum Editor</strong> - Enter the text for your forum. There are "
+"two modes of editing: Visual and HTML. Choose the mode by clicking on the "
+"appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last "
+"icon in the row to get a second row of controls. The HTML mode allows you "
+"to enter raw HTML along with your forum text. You can insert media files by "
+"clicking the icons above the forum editor and following the directions. You "
+"can go to the distraction-free writing screen via the Fullscreen icon in "
+"Visual mode (second to last in the top row) or the Fullscreen button in "
+"HTML mode (last in the row). Once there, you can make buttons visible by "
+"hovering over the top area. Exit Fullscreen back to the regular forum "
+"editor."
+msgstr ""
+
+#: includes/admin/forums.php:173
+msgid ""
+"<strong>Publish</strong> - You can set the terms of publishing your forum "
+"in the Publish box. For Status, Visibility, and Publish (immediately), "
+"click on the Edit link to reveal more options. Visibility includes options "
+"for password-protecting a forum or making it stay at the top of your blog "
+"indefinitely (sticky). Publish (immediately) allows you to set a future or "
+"past date and time, so you can schedule a forum to be published in the "
+"future or backdate a forum."
+msgstr ""
+
+#: includes/admin/forums.php:176
+msgid ""
+"<strong>Featured Image</strong> - This allows you to associate an image "
+"with your forum without inserting it. This is usually useful only if your "
+"theme makes use of the featured image as a forum thumbnail on the home "
+"page, a custom header, etc."
+msgstr ""
+
+#: includes/admin/forums.php:181 includes/admin/forums.php:214
+#: includes/forums/template.php:68
+msgid "Forum Attributes"
+msgstr ""
+
+#: includes/admin/forums.php:183
+msgid "Select the attributes that your forum should have:"
+msgstr ""
+
+#: includes/admin/forums.php:185
+msgid ""
+"<strong>Type</strong> indicates if the forum is a category or forum. "
+"Categories generally contain other forums."
+msgstr ""
+
+#: includes/admin/forums.php:186
+msgid ""
+"<strong>Status</strong> allows you to close a forum to new topics and "
+"forums."
+msgstr ""
+
+#: includes/admin/forums.php:187
+msgid ""
+"<strong>Visibility</strong> lets you pick the scope of each forum and what "
+"users are allowed to access it."
+msgstr ""
+
+#: includes/admin/forums.php:188
+msgid ""
+"<strong>Parent</strong> dropdown determines the parent forum. Select the "
+"forum or category from the dropdown, or leave the default \"No parent\" to "
+"create the forum at the root of your forums."
+msgstr ""
+
+#: includes/admin/forums.php:189
+msgid "<strong>Order</strong> allows you to order your forums numerically."
+msgstr ""
+
+#: includes/admin/forums.php:195 includes/admin/replies.php:210
+#: includes/admin/topics.php:215
+msgid "Publish Box"
+msgstr ""
+
+#: includes/admin/forums.php:237 includes/admin/settings.php:246
+#: includes/admin/tools/reset.php:42
+msgid "Forum Moderators"
+msgstr ""
+
+#: includes/admin/forums.php:267 includes/admin/settings.php:206
+#: includes/admin/settings.php:445 includes/admin/tools/common.php:452
+#: includes/admin/topics.php:480 includes/extend/buddypress/loader.php:260
+#: templates/default/bbpress/user-details.php:67
+msgid "Subscriptions"
+msgstr ""
+
+#: includes/admin/forums.php:361
+msgid "The forum was not found."
+msgstr ""
+
+#: includes/admin/forums.php:366 includes/admin/replies.php:464
+#: includes/admin/topics.php:582
+msgid "You do not have permission to do that."
+msgstr ""
+
+#: includes/admin/forums.php:451
+msgid "There was a problem opening the forum \"%1$s\"."
+msgstr ""
+
+#: includes/admin/forums.php:452
+msgid "Forum \"%1$s\" successfully opened."
+msgstr ""
+
+#: includes/admin/forums.php:457
+msgid "There was a problem closing the forum \"%1$s\"."
+msgstr ""
+
+#: includes/admin/forums.php:458
+msgid "Forum \"%1$s\" successfully closed."
+msgstr ""
+
+#: includes/admin/forums.php:540 includes/admin/metaboxes.php:659
+msgid "Moderators"
+msgstr ""
+
+#: includes/admin/forums.php:541
+#: templates/default/bbpress/content-single-topic-lead.php:19
+#: templates/default/bbpress/content-single-topic-lead.php:87
+msgid "Creator"
+msgstr ""
+
+#: includes/admin/forums.php:542 includes/admin/replies.php:668
+#: includes/admin/topics.php:859
+msgid "Created"
+msgstr ""
+
+#: includes/admin/forums.php:543 includes/admin/topics.php:860
+#: templates/default/bbpress/loop-forums.php:26
+#: templates/default/bbpress/loop-topics.php:24
+msgid "Last Post"
+msgstr ""
+
+#: includes/admin/forums.php:578
+msgid "&mdash;"
+msgstr ""
+
+#: includes/admin/forums.php:595 includes/forums/template.php:581
+msgid "No Topics"
+msgstr ""
+
+#: includes/admin/forums.php:631
+msgid "Close this forum"
+msgstr ""
+
+#: includes/admin/forums.php:633
+msgid "Open this forum"
+msgstr ""
+
+#: includes/admin/forums.php:710 includes/admin/forums.php:722
+#: includes/forums/template.php:79
+msgid "Forum updated."
+msgstr ""
+
+#: includes/admin/forums.php:712 includes/admin/forums.php:735
+msgid "View forum"
+msgstr ""
+
+#: includes/admin/forums.php:716 includes/admin/replies.php:977
+#: includes/admin/topics.php:1181
+msgid "Custom field updated."
+msgstr ""
+
+#: includes/admin/forums.php:719 includes/admin/replies.php:980
+#: includes/admin/topics.php:1184
+msgid "Custom field deleted."
+msgstr ""
+
+#: includes/admin/forums.php:727
+#. translators: %s: date and time of the revision
+msgid "Forum restored to revision from %s"
+msgstr ""
+
+#: includes/admin/forums.php:733
+msgid "Forum created."
+msgstr ""
+
+#: includes/admin/forums.php:739
+msgid "Forum saved."
+msgstr ""
+
+#: includes/admin/forums.php:744
+msgid "Forum submitted."
+msgstr ""
+
+#: includes/admin/forums.php:746 includes/admin/forums.php:758
+#: includes/admin/forums.php:766
+msgid "Preview forum"
+msgstr ""
+
+#: includes/admin/forums.php:753
+msgid "Forum scheduled for: %s."
+msgstr ""
+
+#: includes/admin/forums.php:755 includes/admin/replies.php:1016
+#: includes/admin/topics.php:1220
+#. translators: Publish box date format, see http:php.net/date
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: includes/admin/forums.php:764
+msgid "Forum draft updated."
+msgstr ""
+
+#: includes/admin/metaboxes.php:43
+msgid "%s User"
+msgid_plural "%s Users"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/metaboxes.php:52
+msgid "%s Forum"
+msgid_plural "%s Forums"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/metaboxes.php:61
+msgid "%s Topic"
+msgid_plural "%s Topics"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/metaboxes.php:70
+msgid "%s Reply"
+msgid_plural "%s Replies"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/metaboxes.php:79
+msgid "%s Topic Tag"
+msgid_plural "%s Topic Tags"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/metaboxes.php:105
+msgid "Discussion"
+msgstr ""
+
+#: includes/admin/metaboxes.php:147
+msgid "Reply"
+msgid_plural "Replies"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/metaboxes.php:166 includes/admin/settings.php:368
+#: includes/topics/template.php:3387
+msgid "Topic Tag"
+msgid_plural "Topic Tags"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/metaboxes.php:190
+msgid "Users &amp; Moderation"
+msgstr ""
+
+#: includes/admin/metaboxes.php:198
+msgid "User"
+msgid_plural "Users"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/metaboxes.php:217
+msgid "Hidden Topic"
+msgid_plural "Hidden Topics"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/metaboxes.php:239
+msgid "Hidden Reply"
+msgid_plural "Hidden Replies"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/metaboxes.php:261
+msgid "Empty Topic Tag"
+msgid_plural "Empty Topic Tags"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/metaboxes.php:285
+msgid "You are using <span class=\"b\">bbPress %s</span>."
+msgstr ""
+
+#: includes/admin/metaboxes.php:317 includes/admin/metaboxes.php:318
+#: includes/admin/metaboxes.php:404
+msgid "Type:"
+msgstr ""
+
+#: includes/admin/metaboxes.php:329 includes/admin/metaboxes.php:330
+#: includes/admin/metaboxes.php:416 includes/admin/metaboxes.php:479
+#: templates/default/bbpress/form-forum.php:121
+msgid "Status:"
+msgstr ""
+
+#: includes/admin/metaboxes.php:341 includes/admin/metaboxes.php:342
+#: templates/default/bbpress/form-forum.php:130
+msgid "Visibility:"
+msgstr ""
+
+#: includes/admin/metaboxes.php:355
+msgid "Parent:"
+msgstr ""
+
+#: includes/admin/metaboxes.php:356
+msgid "Forum Parent"
+msgstr ""
+
+#: includes/admin/metaboxes.php:369 includes/admin/settings.php:1447
+#: templates/default/bbpress/form-forum.php:144
+msgid "&mdash; No parent &mdash;"
+msgstr ""
+
+#: includes/admin/metaboxes.php:376
+msgid "Order:"
+msgstr ""
+
+#: includes/admin/metaboxes.php:377
+msgid "Forum Order"
+msgstr ""
+
+#: includes/admin/metaboxes.php:405
+msgid "Topic Type"
+msgstr ""
+
+#: includes/admin/metaboxes.php:418
+msgid "Select whether to open or close the topic."
+msgstr ""
+
+#: includes/admin/metaboxes.php:431 includes/admin/metaboxes.php:495
+#: includes/extend/buddypress/groups.php:1347 includes/topics/template.php:65
+#: templates/default/bbpress/form-topic.php:124
+#: templates/default/bbpress/loop-search-forum.php:25
+msgid "Forum:"
+msgstr ""
+
+#: includes/admin/metaboxes.php:445 includes/extend/buddypress/groups.php:487
+#: templates/default/bbpress/form-topic.php:127
+msgid "&mdash; No forum &mdash;"
+msgstr ""
+
+#: includes/admin/metaboxes.php:481
+msgid "Select what status to give the reply."
+msgstr ""
+
+#: includes/admin/metaboxes.php:509
+msgid "&mdash; No reply &mdash;"
+msgstr ""
+
+#: includes/admin/metaboxes.php:522
+#: templates/default/bbpress/loop-search-topic.php:25
+msgid "Topic:"
+msgstr ""
+
+#: includes/admin/metaboxes.php:535
+#: templates/default/bbpress/form-reply.php:129
+msgid "Reply To:"
+msgstr ""
+
+#: includes/admin/metaboxes.php:536
+msgid "Reply To"
+msgstr ""
+
+#: includes/admin/metaboxes.php:607
+#: templates/default/bbpress/form-topic-tag.php:40
+msgid "Name:"
+msgstr ""
+
+#: includes/admin/metaboxes.php:608
+#: templates/default/bbpress/form-user-edit.php:17
+#: templates/default/bbpress/form-user-edit.php:22
+msgid "Name"
+msgstr ""
+
+#: includes/admin/metaboxes.php:613
+msgid "Email:"
+msgstr ""
+
+#: includes/admin/metaboxes.php:614
+#: templates/default/bbpress/form-user-edit.php:112
+#: templates/default/bbpress/form-user-register.php:34
+msgid "Email"
+msgstr ""
+
+#: includes/admin/metaboxes.php:619
+#: templates/default/bbpress/form-anonymous.php:33
+msgid "Website:"
+msgstr ""
+
+#: includes/admin/metaboxes.php:620
+#: templates/default/bbpress/form-user-edit.php:60
+msgid "Website"
+msgstr ""
+
+#: includes/admin/metaboxes.php:627
+msgid "ID:"
+msgstr ""
+
+#: includes/admin/metaboxes.php:628
+msgid "ID"
+msgstr ""
+
+#: includes/admin/metaboxes.php:635
+msgid "IP:"
+msgstr ""
+
+#: includes/admin/metaboxes.php:636
+msgid "IP Address"
+msgstr ""
+
+#: includes/admin/metaboxes.php:661
+msgid "Separate user-names with commas"
+msgstr ""
+
+#: includes/admin/metaboxes.php:692
+msgid "No users have engaged to this topic."
+msgstr ""
+
+#: includes/admin/metaboxes.php:725
+msgid "No users have favorited this topic."
+msgstr ""
+
+#: includes/admin/metaboxes.php:765
+msgid "No users have subscribed to this topic."
+msgstr ""
+
+#: includes/admin/metaboxes.php:798
+msgid "No users have subscribed to this forum."
+msgstr ""
+
+#: includes/admin/replies.php:117
+msgid ""
+"This screen provides access to all of your replies. You can customize the "
+"display of this screen to suit your workflow."
+msgstr ""
+
+#: includes/admin/replies.php:127
+msgid ""
+"You can hide/display columns based on your needs and decide how many "
+"replies to list per screen using the Screen Options tab."
+msgstr ""
+
+#: includes/admin/replies.php:128
+msgid ""
+"You can filter the list of replies by reply status using the text links in "
+"the upper left to show All, Published, Draft, Pending, Trashed, or Spam "
+"replies. The default view is to show all replies."
+msgstr ""
+
+#: includes/admin/replies.php:129
+msgid ""
+"You can view replies in a simple title list or with an excerpt. Choose the "
+"view you prefer by clicking on the icons at the top of the list on the "
+"right."
+msgstr ""
+
+#: includes/admin/replies.php:130
+msgid ""
+"You can refine the list to show only replies in a specific forum or from a "
+"specific month by using the dropdown menus above the replies list. Click "
+"the Filter button after making your selection."
+msgstr ""
+
+#: includes/admin/replies.php:139
+msgid ""
+"Hovering over a row in the replies list will display action links that "
+"allow you to manage your reply. You can perform the following actions:"
+msgstr ""
+
+#: includes/admin/replies.php:141
+msgid ""
+"<strong>Edit</strong> takes you to the editing screen for that reply. You "
+"can also reach that screen by clicking on the reply title."
+msgstr ""
+
+#: includes/admin/replies.php:143
+msgid ""
+"<strong>Trash</strong> removes your reply from this list and places it in "
+"the trash, from which you can permanently delete it."
+msgstr ""
+
+#: includes/admin/replies.php:144
+msgid ""
+"<strong>Spam</strong> removes your reply from this list and places it in "
+"the spam queue, from which you can permanently delete it."
+msgstr ""
+
+#: includes/admin/replies.php:145
+msgid "<strong>View</strong> will take you to your live site to view the reply."
+msgstr ""
+
+#: includes/admin/replies.php:146 includes/admin/topics.php:148
+msgid "<strong>Approve</strong> will change the status from pending to publish."
+msgstr ""
+
+#: includes/admin/replies.php:155
+msgid ""
+"You can also edit, spam, or move multiple replies to the trash at once. "
+"Select the replies you want to act on using the checkboxes, then select the "
+"action you want to take from the Bulk Actions menu and click Apply."
+msgstr ""
+
+#: includes/admin/replies.php:156
+msgid ""
+"When using Bulk Edit, you can change the metadata (categories, author, "
+"etc.) for all selected replies at once. To remove a reply from the "
+"grouping, just click the x next to its name in the Bulk Edit area that "
+"appears."
+msgstr ""
+
+#: includes/admin/replies.php:174
+msgid ""
+"The title field and the big reply editing Area are fixed in place, but you "
+"can reposition all the other boxes using drag and drop, and can minimize or "
+"expand them by clicking the title bar of each box. Use the Screen Options "
+"tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, "
+"Discussion, Slug, Author) or to choose a 1- or 2-column layout for this "
+"screen."
+msgstr ""
+
+#: includes/admin/replies.php:184
+msgid "Title and Reply Editor"
+msgstr ""
+
+#: includes/admin/replies.php:186
+msgid ""
+"<strong>Title</strong> - Enter a title for your reply. After you enter a "
+"title, you&#8217;ll see the permalink below, which you can edit."
+msgstr ""
+
+#: includes/admin/replies.php:187
+msgid ""
+"<strong>Reply Editor</strong> - Enter the text for your reply. There are "
+"two modes of editing: Visual and HTML. Choose the mode by clicking on the "
+"appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last "
+"icon in the row to get a second row of controls. The HTML mode allows you "
+"to enter raw HTML along with your reply text. You can insert media files by "
+"clicking the icons above the reply editor and following the directions. You "
+"can go to the distraction-free writing screen via the Fullscreen icon in "
+"Visual mode (second to last in the top row) or the Fullscreen button in "
+"HTML mode (last in the row). Once there, you can make buttons visible by "
+"hovering over the top area. Exit Fullscreen back to the regular reply "
+"editor."
+msgstr ""
+
+#: includes/admin/replies.php:190
+msgid ""
+"<strong>Publish</strong> - You can set the terms of publishing your reply "
+"in the Publish box. For Status, Visibility, and Publish (immediately), "
+"click on the Edit link to reveal more options. Visibility includes options "
+"for password-protecting a reply or making it stay at the top of your blog "
+"indefinitely (sticky). Publish (immediately) allows you to set a future or "
+"past date and time, so you can schedule a reply to be published in the "
+"future or backdate a reply."
+msgstr ""
+
+#: includes/admin/replies.php:193
+msgid ""
+"<strong>Featured Image</strong> - This allows you to associate an image "
+"with your reply without inserting it. This is usually useful only if your "
+"theme makes use of the featured image as a reply thumbnail on the home "
+"page, a custom header, etc."
+msgstr ""
+
+#: includes/admin/replies.php:198 includes/admin/replies.php:336
+#: includes/replies/template.php:69
+msgid "Reply Attributes"
+msgstr ""
+
+#: includes/admin/replies.php:200
+msgid "Select the attributes that your reply should have:"
+msgstr ""
+
+#: includes/admin/replies.php:202
+msgid ""
+"<strong>Forum</strong> dropdown determines the parent forum that the reply "
+"belongs to. Select the forum, or leave the default (Use Forum of Topic) to "
+"post the reply in forum of the topic."
+msgstr ""
+
+#: includes/admin/replies.php:203
+msgid ""
+"<strong>Topic</strong> determines the parent topic that the reply belongs "
+"to."
+msgstr ""
+
+#: includes/admin/replies.php:204
+msgid "<strong>Reply To</strong> determines the threading of the reply."
+msgstr ""
+
+#: includes/admin/replies.php:233 includes/admin/topics.php:238
+#: includes/replies/template.php:2030 includes/topics/template.php:2808
+msgid "Unspam"
+msgstr ""
+
+#: includes/admin/replies.php:251
+msgid "%s reply updated."
+msgid_plural "%s replies updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/replies.php:253
+msgid "1 reply not updated, somebody is editing it."
+msgstr ""
+
+#: includes/admin/replies.php:254
+msgid "%s reply not updated, somebody is editing it."
+msgid_plural "%s replies not updated, somebody is editing them."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/replies.php:278 includes/admin/topics.php:283
+msgid "Sorry, you are not allowed to spam this item."
+msgstr ""
+
+#: includes/admin/replies.php:287
+msgid "Error in spamming reply."
+msgstr ""
+
+#: includes/admin/replies.php:303
+msgid "Sorry, you are not allowed to unspam this reply."
+msgstr ""
+
+#: includes/admin/replies.php:312
+msgid "Error in unspamming reply."
+msgstr ""
+
+#: includes/admin/replies.php:361 includes/admin/topics.php:364
+#: templates/default/bbpress/form-anonymous.php:18
+msgid "Author Information"
+msgstr ""
+
+#: includes/admin/replies.php:459
+msgid "The reply was not found."
+msgstr ""
+
+#: includes/admin/replies.php:562
+msgid "There was a problem marking the reply \"%1$s\" as spam."
+msgstr ""
+
+#: includes/admin/replies.php:563
+msgid "Reply \"%1$s\" successfully marked as spam."
+msgstr ""
+
+#: includes/admin/replies.php:568
+msgid "There was a problem unmarking the reply \"%1$s\" as spam."
+msgstr ""
+
+#: includes/admin/replies.php:569
+msgid "Reply \"%1$s\" successfully unmarked as spam."
+msgstr ""
+
+#: includes/admin/replies.php:574
+msgid "There was a problem approving the reply \"%1$s\"."
+msgstr ""
+
+#: includes/admin/replies.php:575
+msgid "Reply \"%1$s\" successfully approved."
+msgstr ""
+
+#: includes/admin/replies.php:580
+msgid "There was a problem unapproving the reply \"%1$s\"."
+msgstr ""
+
+#: includes/admin/replies.php:581
+msgid "Reply \"%1$s\" successfully unapproved."
+msgstr ""
+
+#: includes/admin/replies.php:664
+msgid "Title"
+msgstr ""
+
+#: includes/admin/replies.php:707
+msgid "No topic"
+msgstr ""
+
+#: includes/admin/replies.php:728
+msgid "(Mismatch)"
+msgstr ""
+
+#: includes/admin/replies.php:740 includes/admin/topics.php:899
+msgid "No forum"
+msgstr ""
+
+#: includes/admin/replies.php:796 includes/admin/topics.php:975
+#: includes/admin/topics.php:994
+msgid "View &#8220;%s&#8221;"
+msgstr ""
+
+#: includes/admin/replies.php:809
+msgid "Unapprove this reply"
+msgstr ""
+
+#: includes/admin/replies.php:811
+msgid "Approve this reply"
+msgstr ""
+
+#: includes/admin/replies.php:818
+msgid "Mark this reply as spam"
+msgstr ""
+
+#: includes/admin/replies.php:820
+msgid "Mark the reply as not spam"
+msgstr ""
+
+#: includes/admin/replies.php:820 includes/admin/topics.php:1025
+msgid "Not Spam"
+msgstr ""
+
+#: includes/admin/replies.php:831 includes/admin/topics.php:1035
+#: includes/replies/template.php:1979 includes/topics/template.php:2532
+msgid "Restore this item from the Trash"
+msgstr ""
+
+#: includes/admin/replies.php:831 includes/admin/topics.php:1035
+#: includes/replies/template.php:1962 includes/topics/template.php:2516
+msgid "Restore"
+msgstr ""
+
+#: includes/admin/replies.php:833 includes/admin/topics.php:1037
+#: includes/replies/template.php:1983 includes/topics/template.php:2534
+msgid "Move this item to the Trash"
+msgstr ""
+
+#: includes/admin/replies.php:837 includes/admin/topics.php:1041
+#: includes/replies/template.php:1988 includes/topics/template.php:2538
+msgid "Delete this item permanently"
+msgstr ""
+
+#: includes/admin/replies.php:837 includes/admin/topics.php:1041
+msgid "Delete Permanently"
+msgstr ""
+
+#: includes/admin/replies.php:891 includes/admin/topics.php:1095
+msgid "In all forums"
+msgstr ""
+
+#: includes/admin/replies.php:914 includes/admin/topics.php:1118
+msgid "Empty Spam"
+msgstr ""
+
+#: includes/admin/replies.php:971 includes/admin/replies.php:983
+#: includes/replies/template.php:80
+msgid "Reply updated."
+msgstr ""
+
+#: includes/admin/replies.php:973 includes/admin/replies.php:996
+#: includes/admin/topics.php:1177 includes/admin/topics.php:1200
+msgid "View topic"
+msgstr ""
+
+#: includes/admin/replies.php:988
+#. translators: %s: date and time of the revision
+msgid "Reply restored to revision from %s"
+msgstr ""
+
+#: includes/admin/replies.php:994
+msgid "Reply created."
+msgstr ""
+
+#: includes/admin/replies.php:1000
+msgid "Reply saved."
+msgstr ""
+
+#: includes/admin/replies.php:1005
+msgid "Reply submitted."
+msgstr ""
+
+#: includes/admin/replies.php:1007 includes/admin/replies.php:1019
+#: includes/admin/replies.php:1027 includes/admin/topics.php:1211
+#: includes/admin/topics.php:1223 includes/admin/topics.php:1231
+msgid "Preview topic"
+msgstr ""
+
+#: includes/admin/replies.php:1014
+msgid "Reply scheduled for: %s."
+msgstr ""
+
+#: includes/admin/replies.php:1025
+msgid "Reply draft updated."
+msgstr ""
+
+#: includes/admin/settings.php:29
+msgid "Forum User Settings"
+msgstr ""
+
+#: includes/admin/settings.php:34
+msgid "Forum Features"
+msgstr ""
+
+#: includes/admin/settings.php:39
+msgid "Forum Theme Packages"
+msgstr ""
+
+#: includes/admin/settings.php:44
+msgid "Topics and Replies Per Page"
+msgstr ""
+
+#: includes/admin/settings.php:49
+msgid "Topics and Replies Per RSS Page"
+msgstr ""
+
+#: includes/admin/settings.php:54
+msgid "Forum Root Slug"
+msgstr ""
+
+#: includes/admin/settings.php:59
+msgid "Forum Single Slugs"
+msgstr ""
+
+#: includes/admin/settings.php:64
+msgid "Forum User Slugs"
+msgstr ""
+
+#: includes/admin/settings.php:71
+msgid "Forum Integration for BuddyPress"
+msgstr ""
+
+#: includes/admin/settings.php:76
+msgid "Forum Integration for Akismet"
+msgstr ""
+
+#: includes/admin/settings.php:83 includes/admin/tools/help.php:104
+msgid "Database Settings"
+msgstr ""
+
+#: includes/admin/settings.php:88
+msgid "Options"
+msgstr ""
+
+#: includes/admin/settings.php:119
+msgid "Roles"
+msgstr ""
+
+#: includes/admin/settings.php:133
+msgid "Flooding"
+msgstr ""
+
+#: includes/admin/settings.php:147
+msgid "Editing"
+msgstr ""
+
+#: includes/admin/settings.php:155 includes/users/template.php:806
+msgid "Anonymous"
+msgstr ""
+
+#: includes/admin/settings.php:168
+msgid "Auto-embed links"
+msgstr ""
+
+#: includes/admin/settings.php:176
+msgid "Reply Threading"
+msgstr ""
+
+#: includes/admin/settings.php:190 includes/admin/settings.php:2026
+msgid "Revisions"
+msgstr ""
+
+#: includes/admin/settings.php:198 includes/admin/tools/common.php:449
+#: includes/admin/topics.php:450 includes/extend/buddypress/loader.php:247
+#: templates/default/bbpress/user-details.php:57
+msgid "Favorites"
+msgstr ""
+
+#: includes/admin/settings.php:214 includes/admin/settings.php:453
+#: includes/admin/tools/common.php:455 includes/admin/topics.php:420
+#: includes/extend/buddypress/loader.php:234
+#: includes/extend/buddypress/loader.php:336
+#: templates/default/bbpress/user-details.php:49
+msgid "Engagements"
+msgstr ""
+
+#: includes/admin/settings.php:222
+msgid "Topic tags"
+msgstr ""
+
+#: includes/admin/settings.php:230 includes/admin/settings.php:400
+#: includes/common/template.php:2446 includes/search/template.php:175
+#: templates/default/bbpress/form-reply-search.php:20
+#: templates/default/bbpress/form-search.php:21
+#: templates/default/bbpress/form-topic-search.php:20
+msgid "Search"
+msgstr ""
+
+#: includes/admin/settings.php:238
+msgid "Post Formatting"
+msgstr ""
+
+#: includes/admin/settings.php:254
+msgid "Super Moderators"
+msgstr ""
+
+#: includes/admin/settings.php:268
+msgid "Current Package"
+msgstr ""
+
+#: includes/admin/settings.php:323
+msgid "Forum Root"
+msgstr ""
+
+#: includes/admin/settings.php:331
+msgid "Forum Prefix"
+msgstr ""
+
+#: includes/admin/settings.php:339
+msgid "Forum root should show"
+msgstr ""
+
+#: includes/admin/settings.php:376
+msgid "Topic View"
+msgstr ""
+
+#: includes/admin/settings.php:413
+msgid "User Base"
+msgstr ""
+
+#: includes/admin/settings.php:421 includes/extend/buddypress/loader.php:211
+#: includes/extend/buddypress/loader.php:319
+#: templates/default/bbpress/user-details.php:36
+msgid "Topics Started"
+msgstr ""
+
+#: includes/admin/settings.php:429 includes/extend/buddypress/loader.php:222
+#: includes/extend/buddypress/loader.php:327
+#: templates/default/bbpress/user-details.php:42
+msgid "Replies Created"
+msgstr ""
+
+#: includes/admin/settings.php:437 includes/extend/buddypress/loader.php:346
+msgid "Favorite Topics"
+msgstr ""
+
+#: includes/admin/settings.php:466 includes/admin/tools/upgrade.php:371
+#: includes/extend/buddypress/functions.php:341
+msgid "Group Forums"
+msgstr ""
+
+#: includes/admin/settings.php:474
+msgid "Primary Forum"
+msgstr ""
+
+#: includes/admin/settings.php:487
+msgid "Use Akismet"
+msgstr ""
+
+#: includes/admin/settings.php:501
+msgid "Select Platform"
+msgstr ""
+
+#: includes/admin/settings.php:509
+msgid "Database Server"
+msgstr ""
+
+#: includes/admin/settings.php:517
+msgid "Database Port"
+msgstr ""
+
+#: includes/admin/settings.php:525
+msgid "Database Name"
+msgstr ""
+
+#: includes/admin/settings.php:533
+msgid "Database User"
+msgstr ""
+
+#: includes/admin/settings.php:541
+msgid "Database Password"
+msgstr ""
+
+#: includes/admin/settings.php:549
+msgid "Table Prefix"
+msgstr ""
+
+#: includes/admin/settings.php:561
+msgid "Rows Limit"
+msgstr ""
+
+#: includes/admin/settings.php:569
+msgid "Delay Time"
+msgstr ""
+
+#: includes/admin/settings.php:577
+msgid "Convert Users"
+msgstr ""
+
+#: includes/admin/settings.php:585
+msgid "Stop on Error"
+msgstr ""
+
+#: includes/admin/settings.php:593
+msgid "Start Over"
+msgstr ""
+
+#: includes/admin/settings.php:601
+msgid "Helper Data"
+msgstr ""
+
+#: includes/admin/settings.php:654
+msgid "Setting time limits and other user posting capabilities"
+msgstr ""
+
+#: includes/admin/settings.php:678
+msgid "Allow users to edit their content for %s minutes after posting"
+msgstr ""
+
+#: includes/admin/settings.php:680
+msgid "If checked, setting to \"0 minutes\" allows editing forever."
+msgstr ""
+
+#: includes/admin/settings.php:703
+msgid "Allow flood protection by throttling users for %s seconds after posting"
+msgstr ""
+
+#: includes/admin/settings.php:705
+msgid "Use this to discourage users from spamming your forums."
+msgstr ""
+
+#: includes/admin/settings.php:719
+msgid "Allow guest users without accounts to create topics and replies"
+msgstr ""
+
+#: includes/admin/settings.php:720
+msgid "Works best on intranets or paired with antispam measures like Akismet."
+msgstr ""
+
+#: includes/admin/settings.php:753
+msgid "Automatically give registered visitors the %s forum role"
+msgstr ""
+
+#: includes/admin/settings.php:755
+msgid "Uncheck this to manually assign all user access to your forums."
+msgstr ""
+
+#: includes/admin/settings.php:770
+msgid "Forum features that can be toggled on and off"
+msgstr ""
+
+#: includes/admin/settings.php:784
+msgid "Allow users to mark topics as favorites"
+msgstr ""
+
+#: includes/admin/settings.php:798
+msgid "Allow users to subscribe to forums and topics"
+msgstr ""
+
+#: includes/admin/settings.php:812
+msgid "Allow tracking of topics each user engages in"
+msgstr ""
+
+#: includes/admin/settings.php:826
+msgid "Allow topics to have tags"
+msgstr ""
+
+#: includes/admin/settings.php:840
+msgid "Allow forums to have dedicated moderators"
+msgstr ""
+
+#: includes/admin/settings.php:841
+msgid "This does not include the ability to edit users."
+msgstr ""
+
+#: includes/admin/settings.php:855
+msgid "Allow Moderators and Keymasters to edit users"
+msgstr ""
+
+#: includes/admin/settings.php:856
+msgid "This includes roles, passwords, and email addresses."
+msgstr ""
+
+#: includes/admin/settings.php:870
+msgid "Allow forum wide search"
+msgstr ""
+
+#: includes/admin/settings.php:905
+msgid "Enable threaded (nested) replies %s levels deep"
+msgstr ""
+
+#: includes/admin/settings.php:920
+msgid "Allow topic and reply revision logging"
+msgstr ""
+
+#: includes/admin/settings.php:934
+msgid "Add toolbar & buttons to textareas to help with HTML formatting"
+msgstr ""
+
+#: includes/admin/settings.php:947
+msgid "How your forum content is displayed within your existing theme."
+msgstr ""
+
+#: includes/admin/settings.php:975
+msgid "will serve all bbPress templates"
+msgstr ""
+
+#: includes/admin/settings.php:979
+msgid "No template packages available."
+msgstr ""
+
+#: includes/admin/settings.php:993
+msgid ""
+"Embed media (YouTube, Twitter, Flickr, etc...) directly into topics and "
+"replies"
+msgstr ""
+
+#: includes/admin/settings.php:1008
+msgid "How many topics and replies to show per page"
+msgstr ""
+
+#: includes/admin/settings.php:1022 includes/admin/settings.php:1036
+#: includes/admin/settings.php:1065 includes/admin/settings.php:1079
+msgid "per page"
+msgstr ""
+
+#: includes/admin/settings.php:1051
+msgid "How many topics and replies to show per RSS page"
+msgstr ""
+
+#: includes/admin/settings.php:1098
+msgid ""
+"Customize your Forums root. Partner with a WordPress Page and use "
+"Shortcodes for more flexibility."
+msgstr ""
+
+#: includes/admin/settings.php:1127
+msgid "Prefix all forum content with the Forum Root slug (Recommended)"
+msgstr ""
+
+#: includes/admin/settings.php:1145
+msgid "Forum Index"
+msgstr ""
+
+#: includes/admin/settings.php:1148
+msgid "Topics by Last Post"
+msgstr ""
+
+#: includes/admin/settings.php:1170
+msgid "This setting will be ignored because %s was found in your theme."
+msgstr ""
+
+#: includes/admin/settings.php:1185
+msgid "Customize your user profile slugs."
+msgstr ""
+
+#: includes/admin/settings.php:1290
+msgid ""
+"Custom slugs for single forums, topics, replies, tags, views, edit, and "
+"search."
+msgstr ""
+
+#: includes/admin/settings.php:1411
+msgid "Forum settings for BuddyPress"
+msgstr ""
+
+#: includes/admin/settings.php:1425
+msgid "Allow BuddyPress Groups to have their own forums"
+msgstr ""
+
+#: includes/admin/settings.php:1469
+msgid "create a new one"
+msgstr ""
+
+#: includes/admin/settings.php:1470
+msgid "Use %s to contain your group forums, or %s"
+msgstr ""
+
+#: includes/admin/settings.php:1472
+msgid "Use %s to contain your group forums"
+msgstr ""
+
+#: includes/admin/settings.php:1477
+msgid "Changing this will not move existing forums."
+msgstr ""
+
+#: includes/admin/settings.php:1492
+msgid "Forum settings for Akismet"
+msgstr ""
+
+#: includes/admin/settings.php:1507
+msgid "Allow Akismet to actively prevent forum spam."
+msgstr ""
+
+#: includes/admin/settings.php:1523
+msgid "Forums Settings"
+msgstr ""
+
+#: includes/admin/settings.php:1533
+#: templates/default/bbpress/form-user-edit.php:161
+msgid "Save Changes"
+msgstr ""
+
+#: includes/admin/settings.php:1551
+msgid ""
+"Information about the database for your previous forums so they can be "
+"converted."
+msgstr ""
+
+#: includes/admin/settings.php:1574
+msgid "The previous forum software"
+msgstr ""
+
+#: includes/admin/settings.php:1588
+msgid "Use default %s if same server, or IP or hostname"
+msgstr ""
+
+#: includes/admin/settings.php:1602
+msgid "Use default %s if unsure"
+msgstr ""
+
+#: includes/admin/settings.php:1616
+msgid "User to access the database"
+msgstr ""
+
+#: includes/admin/settings.php:1632
+msgid "Toggle"
+msgstr ""
+
+#: includes/admin/settings.php:1636
+msgid "Password for the above database user"
+msgstr ""
+
+#: includes/admin/settings.php:1650
+msgid "Name of the database with your old forum data"
+msgstr ""
+
+#: includes/admin/settings.php:1663
+msgid "Some optional parameters to help tune the conversion process."
+msgstr ""
+
+#: includes/admin/settings.php:1677
+msgid "Use %s if converting from BuddyPress Legacy"
+msgstr ""
+
+#: includes/admin/settings.php:1691
+msgid "entry maximum when querying for data to convert"
+msgstr ""
+
+#: includes/admin/settings.php:1692
+msgid "Keep this low if you experience out-of-memory issues."
+msgstr ""
+
+#: includes/admin/settings.php:1706
+msgid "second delay between each query of rows above"
+msgstr ""
+
+#: includes/admin/settings.php:1707
+msgid "Keep this high to prevent too-many-connection issues."
+msgstr ""
+
+#: includes/admin/settings.php:1721
+msgid "Halt the conversion if an error occurs"
+msgstr ""
+
+#: includes/admin/settings.php:1722
+msgid "This is helpful if you want to debug problems."
+msgstr ""
+
+#: includes/admin/settings.php:1737
+msgid "Restart the converter from the beginning"
+msgstr ""
+
+#: includes/admin/settings.php:1738
+msgid ""
+"This forces all steps back to 0. Avoid duplicate data by purging or "
+"resetting first."
+msgstr ""
+
+#: includes/admin/settings.php:1752
+msgid "Purge all meta-data from a previous import"
+msgstr ""
+
+#: includes/admin/settings.php:1753
+msgid ""
+"Use this if an import failed, or you just want to remove the relationship "
+"data."
+msgstr ""
+
+#: includes/admin/settings.php:1767
+msgid "Import user accounts from previous forums"
+msgstr ""
+
+#: includes/admin/settings.php:1768
+msgid "Passwords remain encrypted, and are converted as individual users log in."
+msgstr ""
+
+#: includes/admin/settings.php:1788
+msgid "Up next: step %s"
+msgstr ""
+
+#: includes/admin/settings.php:1789
+msgid "Ready"
+msgstr ""
+
+#: includes/admin/settings.php:1793
+msgid "Resume"
+msgstr ""
+
+#: includes/admin/settings.php:1798
+msgid "Previously stopped at step %1$d of %2$d"
+msgstr ""
+
+#: includes/admin/settings.php:1799
+msgid "Ready to go."
+msgstr ""
+
+#: includes/admin/settings.php:1802 includes/admin/tools/repair.php:43
+#: includes/admin/tools/reset.php:23 includes/admin/tools/upgrade.php:40
+msgid "Forum Tools"
+msgstr ""
+
+#: includes/admin/settings.php:1813
+msgid "Toggle panel: Import Status"
+msgstr ""
+
+#: includes/admin/settings.php:1817
+msgid "Import Monitor"
+msgstr ""
+
+#: includes/admin/settings.php:1829
+msgid "Pause"
+msgstr ""
+
+#: includes/admin/settings.php:1872
+msgid "This screen provides access to all of the Forums settings."
+msgstr ""
+
+#: includes/admin/settings.php:1873 includes/admin/tools/help.php:97
+msgid ""
+"Please see the additional help tabs for more information on each individual "
+"section."
+msgstr ""
+
+#: includes/admin/settings.php:1879
+msgid "Main Settings"
+msgstr ""
+
+#: includes/admin/settings.php:1880
+msgid "The \"Main Settings\" section includes a number of options:"
+msgstr ""
+
+#: includes/admin/settings.php:1883
+msgid ""
+"You can choose to lock a post after a certain number of minutes. \"Locking "
+"post editing\" will prevent the author from editing some amount of time "
+"after saving a post."
+msgstr ""
+
+#: includes/admin/settings.php:1884
+msgid ""
+"\"Throttle time\" is the amount of time required between posts from a "
+"single author. The higher the throttle time, the longer a user will need to "
+"wait between posting to the forum."
+msgstr ""
+
+#: includes/admin/settings.php:1885
+msgid ""
+"Favorites are a way for users to save and later return to topics they "
+"favor. This is enabled by default."
+msgstr ""
+
+#: includes/admin/settings.php:1886
+msgid ""
+"Subscriptions allow users to subscribe for notifications to topics that "
+"interest them. This is enabled by default."
+msgstr ""
+
+#: includes/admin/settings.php:1887
+msgid ""
+"Topic-Tags allow users to filter topics between forums. This is enabled by "
+"default."
+msgstr ""
+
+#: includes/admin/settings.php:1888
+msgid ""
+"\"Anonymous Posting\" allows guest users who do not have accounts on your "
+"site to both create topics as well as replies."
+msgstr ""
+
+#: includes/admin/settings.php:1889
+msgid ""
+"The Fancy Editor brings the luxury of the Visual editor and HTML editor "
+"from the traditional WordPress dashboard into your theme."
+msgstr ""
+
+#: includes/admin/settings.php:1890
+msgid ""
+"Auto-embed will embed the media content from a URL directly into the "
+"replies. For example: links to Flickr and YouTube."
+msgstr ""
+
+#: includes/admin/settings.php:1893
+msgid ""
+"You must click the Save Changes button at the bottom of the screen for new "
+"settings to take effect."
+msgstr ""
+
+#: includes/admin/settings.php:1899
+msgid "Theme Packages"
+msgstr ""
+
+#: includes/admin/settings.php:1900
+msgid ""
+"The \"Theme Packages\" section allows you to choose which theme package "
+"should be used."
+msgstr ""
+
+#: includes/admin/settings.php:1903
+msgid "The \"bbPress Default\" package is installed by default."
+msgstr ""
+
+#: includes/admin/settings.php:1904
+msgid "Some themes may choose to ignore this setting entirely."
+msgstr ""
+
+#: includes/admin/settings.php:1905
+msgid "Packages can be stacked to allow for intelligent fallbacks."
+msgstr ""
+
+#: includes/admin/settings.php:1913
+msgid "Per Page"
+msgstr ""
+
+#: includes/admin/settings.php:1914
+msgid ""
+"The \"Per Page\" section allows you to control the number of topics and "
+"replies appear on each page."
+msgstr ""
+
+#: includes/admin/settings.php:1916
+msgid ""
+"This is comparable to the WordPress \"Reading Settings\" page, where you "
+"can set the number of posts that should show on blog pages and in feeds."
+msgstr ""
+
+#: includes/admin/settings.php:1917
+msgid ""
+"These are broken up into two separate groups: one for what appears in your "
+"theme, another for RSS feeds."
+msgstr ""
+
+#: includes/admin/settings.php:1925
+msgid "Slugs"
+msgstr ""
+
+#: includes/admin/settings.php:1926
+msgid ""
+"The \"Slugs\" section allows you to control the permalink structure for "
+"your forums."
+msgstr ""
+
+#: includes/admin/settings.php:1928
+msgid ""
+"\"Archive Slugs\" are used as the \"root\" for your forums and topics. If "
+"you combine these values with existing page slugs, bbPress will attempt to "
+"output the most correct title and content."
+msgstr ""
+
+#: includes/admin/settings.php:1929
+msgid ""
+"\"Single Slugs\" are used as a prefix when viewing an individual forum, "
+"topic, reply, user, or view."
+msgstr ""
+
+#: includes/admin/settings.php:1930
+msgid ""
+"In the event of a slug collision with WordPress or BuddyPress, a warning "
+"will appear next to the problem slug(s)."
+msgstr ""
+
+#: includes/admin/settings.php:2024
+#: templates/default/bbpress/loop-forums.php:24
+#: templates/default/bbpress/loop-replies.php:21
+#: templates/default/bbpress/loop-replies.php:47
+#: templates/default/bbpress/loop-topics.php:22
+msgid "Posts"
+msgstr ""
+
+#: includes/admin/settings.php:2025
+msgid "Pages"
+msgstr ""
+
+#: includes/admin/settings.php:2027
+msgid "Attachments"
+msgstr ""
+
+#: includes/admin/settings.php:2028
+msgid "Menus"
+msgstr ""
+
+#: includes/admin/settings.php:2031
+msgid "Tag base"
+msgstr ""
+
+#: includes/admin/settings.php:2034
+msgid "Category base"
+msgstr ""
+
+#: includes/admin/settings.php:2039
+msgid "Forums base"
+msgstr ""
+
+#: includes/admin/settings.php:2042
+msgid "Topics base"
+msgstr ""
+
+#: includes/admin/settings.php:2045
+msgid "Forum slug"
+msgstr ""
+
+#: includes/admin/settings.php:2048
+msgid "Topic slug"
+msgstr ""
+
+#: includes/admin/settings.php:2051
+msgid "Reply slug"
+msgstr ""
+
+#: includes/admin/settings.php:2054
+msgid "Edit slug"
+msgstr ""
+
+#: includes/admin/settings.php:2057
+msgid "User base"
+msgstr ""
+
+#: includes/admin/settings.php:2060
+msgid "View base"
+msgstr ""
+
+#: includes/admin/settings.php:2063
+msgid "Topic tag slug"
+msgstr ""
+
+#: includes/admin/settings.php:2075
+msgid "%s page"
+msgstr ""
+
+#: includes/admin/settings.php:2098
+msgid "Possible %1$s conflict: %2$s"
+msgstr ""
+
+#: includes/admin/tools/common.php:258
+msgid "Search Tools:"
+msgstr ""
+
+#: includes/admin/tools/common.php:260
+msgid "Search Tools"
+msgstr ""
+
+#: includes/admin/tools/common.php:286
+msgid "Filter by Component"
+msgstr ""
+
+#: includes/admin/tools/common.php:288
+msgid "All Components"
+msgstr ""
+
+#: includes/admin/tools/common.php:372
+msgid "Filter by Version"
+msgstr ""
+
+#: includes/admin/tools/common.php:374
+msgid "All Versions"
+msgstr ""
+
+#: includes/admin/tools/common.php:402
+msgid "Low"
+msgstr ""
+
+#: includes/admin/tools/common.php:405
+msgid "Medium"
+msgstr ""
+
+#: includes/admin/tools/common.php:408
+msgid "High"
+msgstr ""
+
+#: includes/admin/tools/common.php:431 includes/admin/tools/common.php:446
+msgid "Users"
+msgstr ""
+
+#: includes/admin/tools/common.php:443 includes/topics/template.php:3385
+#: includes/topics/template.php:3386
+#: templates/default/bbpress/content-statistics.php:40
+msgid "Topic Tags"
+msgstr ""
+
+#: includes/admin/tools/common.php:479
+msgid "2.5.0"
+msgstr ""
+
+#: includes/admin/tools/common.php:483
+msgid "2.6.0"
+msgstr ""
+
+#: includes/admin/tools/common.php:800 includes/admin/tools/common.php:924
+msgid "All %s"
+msgstr ""
+
+#: includes/admin/tools/common.php:925
+msgid "Pending %s"
+msgstr ""
+
+#: includes/admin/tools/help.php:30 includes/admin/tools.php:523
+msgid "Repair Forums"
+msgstr ""
+
+#: includes/admin/tools/help.php:31
+msgid ""
+"There is more detailed information available on the bbPress and BuddyPress "
+"codex for the following:"
+msgstr ""
+
+#: includes/admin/tools/help.php:34
+msgid ""
+"BuddyPress Group Forums: <a "
+"href=\"https://codex.buddypress.org/getting-started/installing-group-and-"
+"sitewide-forums/\">Installing Group and Sitewide Forums</a> and <a "
+"href=\"https://codex.buddypress.org/getting-started/guides/migrating-from-"
+"old-forums-to-bbpress-2/\">Migrating from old forums to bbPress 2.2+</a>."
+msgstr ""
+
+#: includes/admin/tools/help.php:35
+msgid ""
+"bbPress roles: <a "
+"href=\"https://codex.bbpress.org/bbpress-user-roles-and-capabilities/\" "
+"target=\"_blank\">bbPress User Roles and Capabilities</a>"
+msgstr ""
+
+#: includes/admin/tools/help.php:38
+msgid ""
+"Also see <a href=\"https://codex.bbpress.org/repair-forums/\">bbPress: "
+"Repair Forums</a>."
+msgstr ""
+
+#: includes/admin/tools/help.php:66 includes/admin/tools.php:550
+msgid "Reset Forums"
+msgstr ""
+
+#: includes/admin/tools/help.php:67
+msgid ""
+"Also see <a href=\"https://codex.bbpress.org/reset-forums/\">bbPress: Reset "
+"Forums</a>."
+msgstr ""
+
+#: includes/admin/tools/help.php:96
+msgid ""
+"This screen provides access to all of the bbPress Import Forums settings "
+"and resources."
+msgstr ""
+
+#: includes/admin/tools/help.php:98
+msgid ""
+"Also see the main article on the bbPress codex <a "
+"href=\"https://codex.bbpress.org/import-forums/\">bbPress: Import "
+"Forums</a>."
+msgstr ""
+
+#: includes/admin/tools/help.php:105
+msgid "In the Database Settings you have a number of options:"
+msgstr ""
+
+#: includes/admin/tools/help.php:108
+msgid ""
+"The settings in this section refer to the database connection strings used "
+"by your old forum software. The best way to determine the exact settings "
+"you need is to copy them from your legacy forums configuration file or "
+"contact your web hosting provider."
+msgstr ""
+
+#: includes/admin/tools/help.php:116
+msgid "Importer Options"
+msgstr ""
+
+#: includes/admin/tools/help.php:117
+msgid "In the Options you have a number of options:"
+msgstr ""
+
+#: includes/admin/tools/help.php:120
+msgid ""
+"Depending on your MySQL configuration you can tweak the \"Rows Limit\" and "
+"\"Delay Time\" that may help to improve the overall time it takes to "
+"perform a complete forum import."
+msgstr ""
+
+#: includes/admin/tools/help.php:121
+msgid "\"Convert Users\" will import your legacy forum members as WordPress Users."
+msgstr ""
+
+#: includes/admin/tools/help.php:122
+msgid ""
+"\"Start Over\" will start the importer fresh, if your import failed for any "
+"reason leaving this setting unchecked the importer will begin from where it "
+"left off."
+msgstr ""
+
+#: includes/admin/tools/help.php:123
+msgid ""
+"\"Purge Previous Import\" will remove data imported from a failed import "
+"without removing your existing forum data."
+msgstr ""
+
+#: includes/admin/tools/repair.php:47
+msgid ""
+"bbPress keeps track of relationships between forums, topics, replies, "
+"topic-tags, favorites, subscriptions, and users. Occasionally these "
+"relationships become out of sync, most often after an import or migration. "
+"Use the tools below to manually recalculate these relationships."
+msgstr ""
+
+#: includes/admin/tools/repair.php:48
+msgid ""
+"Some of these tools create substantial database overhead. Use caution when "
+"running more than 1 repair at a time."
+msgstr ""
+
+#: includes/admin/tools/repair.php:61 includes/admin/tools/repair.php:178
+#: includes/admin/tools/upgrade.php:58 includes/admin/tools/upgrade.php:190
+msgid "Select bulk action"
+msgstr ""
+
+#: includes/admin/tools/repair.php:64 includes/admin/tools/repair.php:126
+#: includes/admin/tools/repair.php:181 includes/admin/tools/upgrade.php:61
+#: includes/admin/tools/upgrade.php:130 includes/admin/tools/upgrade.php:193
+msgid "Run"
+msgstr ""
+
+#: includes/admin/tools/repair.php:66 includes/admin/tools/repair.php:183
+#: includes/admin/tools/upgrade.php:63 includes/admin/tools/upgrade.php:195
+msgid "Apply"
+msgstr ""
+
+#: includes/admin/tools/repair.php:72 includes/admin/tools/upgrade.php:71
+msgid "Filter"
+msgstr ""
+
+#: includes/admin/tools/repair.php:81 includes/admin/tools/repair.php:166
+#: includes/admin/tools/upgrade.php:80 includes/admin/tools/upgrade.php:177
+msgid "Select All"
+msgstr ""
+
+#: includes/admin/tools/repair.php:89 includes/admin/tools/repair.php:116
+#: includes/admin/tools/repair.php:170 includes/admin/tools/upgrade.php:88
+#: includes/admin/tools/upgrade.php:120 includes/admin/tools/upgrade.php:181
+msgid "Description"
+msgstr ""
+
+#: includes/admin/tools/repair.php:93 includes/admin/tools/repair.php:133
+#: includes/admin/tools/repair.php:171 includes/admin/tools/upgrade.php:98
+#: includes/admin/tools/upgrade.php:144 includes/admin/tools/upgrade.php:183
+msgid "Components"
+msgstr ""
+
+#: includes/admin/tools/repair.php:99 includes/admin/tools/repair.php:140
+#: includes/admin/tools/repair.php:172 includes/admin/tools/upgrade.php:103
+#: includes/admin/tools/upgrade.php:151 includes/admin/tools/upgrade.php:184
+msgid "Overhead"
+msgstr ""
+
+#: includes/admin/tools/repair.php:126 includes/admin/tools/upgrade.php:130
+msgid "Run %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:130 includes/admin/tools/upgrade.php:134
+msgid "Show more details"
+msgstr ""
+
+#: includes/admin/tools/repair.php:155 includes/admin/tools/upgrade.php:166
+msgid "No repair tools match this criteria."
+msgstr ""
+
+#: includes/admin/tools/repair.php:203
+msgid "Counting the number of replies in each topic&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:204 includes/admin/tools/repair.php:253
+#: includes/admin/tools/repair.php:305 includes/admin/tools/repair.php:339
+#: includes/admin/tools/repair.php:370 includes/admin/tools/repair.php:415
+#: includes/admin/tools/repair.php:457 includes/admin/tools/repair.php:498
+#: includes/admin/tools/repair.php:546 includes/admin/tools/repair.php:594
+#: includes/admin/tools/repair.php:661 includes/admin/tools/repair.php:726
+#: includes/admin/tools/repair.php:795 includes/admin/tools/repair.php:903
+#: includes/admin/tools/repair.php:1024 includes/admin/tools/repair.php:1136
+#: includes/admin/tools/repair.php:1156 includes/admin/tools/repair.php:1218
+#: includes/admin/tools/reset.php:122 includes/admin/tools/upgrade.php:288
+msgid "Failed!"
+msgstr ""
+
+#: includes/admin/tools/repair.php:238 includes/admin/tools/repair.php:290
+#: includes/admin/tools/repair.php:324 includes/admin/tools/repair.php:356
+#: includes/admin/tools/repair.php:400 includes/admin/tools/repair.php:441
+#: includes/admin/tools/repair.php:483 includes/admin/tools/repair.php:531
+#: includes/admin/tools/repair.php:579 includes/admin/tools/repair.php:646
+#: includes/admin/tools/repair.php:711 includes/admin/tools/repair.php:776
+#: includes/admin/tools/repair.php:1009 includes/admin/tools/repair.php:1069
+#: includes/admin/tools/repair.php:1140 includes/admin/tools/repair.php:1203
+#: includes/admin/tools/repair.php:1254 includes/admin/tools/repair.php:1305
+msgid "Complete!"
+msgstr ""
+
+#: includes/admin/tools/repair.php:252
+msgid "Counting the number of voices in each topic&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:304
+msgid ""
+"Counting the number of pending, spammed, and trashed replies in each "
+"topic&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:338
+msgid "Counting the number of topics in each forum&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:369
+msgid "Counting the number of topics in each topic-tag&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:414
+msgid "Counting the number of replies in each forum&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:456
+msgid ""
+"Counting the number of pending, spammed, and trashed replies in each "
+"forum&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:497
+msgid "Counting the number of topics each user has created&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:545
+msgid "Counting the number of topics to which each user has replied&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:593
+msgid "Removing unpublished topics from user favorites&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:629 includes/admin/tools/repair.php:694
+#: includes/admin/tools/repair.php:759
+msgid "Nothing to remove!"
+msgstr ""
+
+#: includes/admin/tools/repair.php:660
+msgid "Removing trashed topics from user subscriptions&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:725
+msgid "Removing trashed forums from user subscriptions&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:788
+msgid "Remapping forum role for each user on this site&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:886
+msgid "Complete! %s users updated."
+msgstr ""
+
+#: includes/admin/tools/repair.php:902
+msgid "Recomputing latest post in every topic and forum&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:1023
+msgid "Repairing the sticky topic to the parent forum relationships&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:1088
+msgid "Repairing closed topics&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:1089
+msgid "No closed topics to repair."
+msgstr ""
+
+#: includes/admin/tools/repair.php:1119
+msgid "Complete! %d closed topic repaired."
+msgid_plural "Complete! %d closed topics repaired."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/tools/repair.php:1132
+msgid "Recalculating forum visibility&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:1155
+msgid "Recalculating the forum for each post&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:1217
+msgid "Recalculating the topic for each post&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:1268
+msgid "Recalculating reply menu order&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/repair.php:1269
+msgid "No reply positions to recalculate."
+msgstr ""
+
+#: includes/admin/tools/reset.php:26
+msgid ""
+"Revert your forums back to a brand new installation, as if bbPress were "
+"never installed. This process cannot be undone."
+msgstr ""
+
+#: includes/admin/tools/reset.php:32
+msgid "The following data will be removed:"
+msgstr ""
+
+#: includes/admin/tools/reset.php:34 includes/forums/template.php:51
+msgid "All Forums"
+msgstr ""
+
+#: includes/admin/tools/reset.php:35 includes/topics/functions.php:3756
+#: includes/topics/template.php:50
+msgid "All Topics"
+msgstr ""
+
+#: includes/admin/tools/reset.php:36 includes/replies/functions.php:2136
+#: includes/replies/template.php:52
+msgid "All Replies"
+msgstr ""
+
+#: includes/admin/tools/reset.php:37
+msgid "All Topic Tags"
+msgstr ""
+
+#: includes/admin/tools/reset.php:38
+msgid "All Meta Data"
+msgstr ""
+
+#: includes/admin/tools/reset.php:39
+msgid "Forum Settings"
+msgstr ""
+
+#: includes/admin/tools/reset.php:40
+msgid "Forum Activity"
+msgstr ""
+
+#: includes/admin/tools/reset.php:41
+msgid "Forum User Roles"
+msgstr ""
+
+#: includes/admin/tools/reset.php:43
+msgid "Importer Helper Data"
+msgstr ""
+
+#: includes/admin/tools/reset.php:47
+msgid "Delete imported users?"
+msgstr ""
+
+#: includes/admin/tools/reset.php:50 includes/admin/tools/reset.php:60
+msgid "Say it ain't so!"
+msgstr ""
+
+#: includes/admin/tools/reset.php:51
+msgid "This option will delete all previously imported users, and cannot be undone."
+msgstr ""
+
+#: includes/admin/tools/reset.php:52
+msgid ""
+"Proceeding without this checked removes the meta-data necessary to delete "
+"these users later."
+msgstr ""
+
+#: includes/admin/tools/reset.php:57
+msgid "Do you really want to do this?"
+msgstr ""
+
+#: includes/admin/tools/reset.php:61
+#: templates/default/bbpress/form-reply-move.php:76
+#: templates/default/bbpress/form-topic-merge.php:98
+#: templates/default/bbpress/form-topic-split.php:102
+msgid "This process cannot be undone."
+msgstr ""
+
+#: includes/admin/tools/reset.php:62
+msgid "Backup your database before proceeding."
+msgstr ""
+
+#: includes/admin/tools/reset.php:70
+msgid "Reset bbPress"
+msgstr ""
+
+#: includes/admin/tools/reset.php:119
+msgid "Resetting&hellip;"
+msgstr ""
+
+#: includes/admin/tools/reset.php:121
+msgid "Success!"
+msgstr ""
+
+#: includes/admin/tools/reset.php:123
+msgid "Skipped."
+msgstr ""
+
+#: includes/admin/tools/reset.php:182
+msgid "Removing Forums, Topics, and Replies&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/reset.php:190
+msgid "Removing Forum, Topic, and Reply Meta Data&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/reset.php:199
+msgid "Removing Revision Data&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/reset.php:208
+msgid "Deleting Topic Tags&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/reset.php:227
+msgid "Deleting Imported Users&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/reset.php:233
+msgid "Deleting Imported User Meta&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/reset.php:241
+msgid "Deleting bbPress Specific User Meta&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/reset.php:250
+msgid "Dropping Conversion Table&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/reset.php:257
+msgid "Deleting Settings&hellip; Success!"
+msgstr ""
+
+#: includes/admin/tools/reset.php:263
+msgid "Removing Roles and Capabilities&hellip; Success!"
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:44
+msgid ""
+"As bbPress improves, occasionally database upgrades are required but some "
+"forums are too large to upgrade automatically. Use the tools below to "
+"manually run upgrade routines."
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:45
+msgid ""
+"Some of these tools create substantial database overhead. Use caution when "
+"running more than 1 upgrade at a time."
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:95 includes/admin/tools/upgrade.php:137
+#: includes/admin/tools/upgrade.php:182
+msgid "Version"
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:215
+msgid "Upgrading user engagements&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:216
+msgid "No engagements to upgrade."
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:249
+msgid "Complete! %d engagement upgraded."
+msgid_plural "Complete! %d engagements upgraded."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/tools/upgrade.php:267
+msgid "Upgrading BuddyPress group-forum relationships&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:372
+msgid "group-forums"
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:388
+msgid "Complete! %s groups updated; %s forums updated; %s forum statuses synced."
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:403
+msgid "Upgrading user favorites&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:404
+msgid "No favorites to upgrade."
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:447
+msgid "Complete! %d favorite upgraded."
+msgid_plural "Complete! %d favorites upgraded."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/tools/upgrade.php:463
+msgid "Upgrading user topic subscriptions&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:464
+msgid "No topic subscriptions to upgrade."
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:507
+msgid "Complete! %d topic subscription upgraded."
+msgid_plural "Complete! %d topic subscriptions upgraded."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/tools/upgrade.php:523
+msgid "Upgrading user forum subscriptions&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:524
+msgid "No forum subscriptions to upgrade."
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:567
+msgid "Complete! %d forum subscription upgraded."
+msgid_plural "Complete! %d forum subscriptions upgraded."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/tools/upgrade.php:583
+msgid "Remove favorites from usermeta&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:584
+msgid "No favorites to remove."
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:603
+msgid "Complete! %d favorite deleted."
+msgid_plural "Complete! %d favorites deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/tools/upgrade.php:619
+msgid "Remove topic subscriptions from usermeta&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:620
+msgid "No topic subscriptions to remove."
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:639
+msgid "Complete! %d topic subscription deleted."
+msgid_plural "Complete! %d topic subscriptions deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/tools/upgrade.php:655
+msgid "Remove forum subscriptions from usermeta&hellip; %s"
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:656
+msgid "No forum subscriptions to remove."
+msgstr ""
+
+#: includes/admin/tools/upgrade.php:675
+msgid "Complete! %d forum subscription deleted."
+msgid_plural "Complete! %d forum subscriptions deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/tools.php:31
+msgid "bbPress provides the following tools to help you manage your forums:"
+msgstr ""
+
+#: includes/admin/tools.php:78
+msgid "The repair was completed successfully"
+msgstr ""
+
+#: includes/admin/tools.php:79
+msgid "The repair was not successful"
+msgstr ""
+
+#: includes/admin/tools.php:115
+msgid "Recalculate parent topic for each reply"
+msgstr ""
+
+#: includes/admin/tools.php:116
+msgid "Run this if replies appear in the wrong topics."
+msgstr ""
+
+#: includes/admin/tools.php:127
+msgid "Recalculate parent forum for each topic and reply"
+msgstr ""
+
+#: includes/admin/tools.php:128
+msgid "Run this if topics or replies appear in the wrong forums."
+msgstr ""
+
+#: includes/admin/tools.php:139
+msgid "Recalculate private and hidden forums"
+msgstr ""
+
+#: includes/admin/tools.php:140
+msgid "Run this if non-public forums are publicly visible."
+msgstr ""
+
+#: includes/admin/tools.php:151
+msgid "Recalculate last activity in each topic and forum"
+msgstr ""
+
+#: includes/admin/tools.php:152
+msgid "Run this if freshness appears incorrectly."
+msgstr ""
+
+#: includes/admin/tools.php:163
+msgid "Recalculate sticky relationship of each topic"
+msgstr ""
+
+#: includes/admin/tools.php:164
+msgid "Run this if sticky topics appear incorrectly."
+msgstr ""
+
+#: includes/admin/tools.php:175
+msgid "Recalculate position of each reply in each topic"
+msgstr ""
+
+#: includes/admin/tools.php:176
+msgid "Run this if replies appear in the wrong order."
+msgstr ""
+
+#: includes/admin/tools.php:187
+msgid "Recalculate engagements in each topic for each user"
+msgstr ""
+
+#: includes/admin/tools.php:188
+msgid "Run this if voices appear incorrectly."
+msgstr ""
+
+#: includes/admin/tools.php:199
+msgid "Repair closed topic statuses"
+msgstr ""
+
+#: includes/admin/tools.php:200
+msgid "Run this if closed topics appear incorrectly."
+msgstr ""
+
+#: includes/admin/tools.php:211
+msgid "Recount topics in each forum"
+msgstr ""
+
+#: includes/admin/tools.php:212
+msgid "Run this if the number of topics in any forums are incorrect."
+msgstr ""
+
+#: includes/admin/tools.php:223
+msgid "Recount topics in each topic-tag"
+msgstr ""
+
+#: includes/admin/tools.php:224
+msgid "Run this if the number of topics in any topic-tags are incorrect."
+msgstr ""
+
+#: includes/admin/tools.php:235
+msgid "Recount replies in each forum"
+msgstr ""
+
+#: includes/admin/tools.php:236
+msgid "Run this if the number of replies in any forums are incorrect."
+msgstr ""
+
+#: includes/admin/tools.php:247
+msgid "Recount pending, spammed, and trashed replies in each forum"
+msgstr ""
+
+#: includes/admin/tools.php:248
+msgid "Run this if non-public replies display incorrectly in forums."
+msgstr ""
+
+#: includes/admin/tools.php:259
+msgid "Recount replies in each topic"
+msgstr ""
+
+#: includes/admin/tools.php:260
+msgid "Run this if the number of replies in any topics are incorrect."
+msgstr ""
+
+#: includes/admin/tools.php:271
+msgid "Recount pending, spammed, and trashed replies in each topic"
+msgstr ""
+
+#: includes/admin/tools.php:272
+msgid "Run this if non-public replies display incorrectly in topics."
+msgstr ""
+
+#: includes/admin/tools.php:283
+msgid "Recount topics for each user"
+msgstr ""
+
+#: includes/admin/tools.php:284
+msgid "Run this to get fresh topic counts for all users."
+msgstr ""
+
+#: includes/admin/tools.php:295
+msgid "Recount replies for each user"
+msgstr ""
+
+#: includes/admin/tools.php:296
+msgid "Run this to get fresh reply counts for all users."
+msgstr ""
+
+#: includes/admin/tools.php:307
+msgid "Remove unpublished topics from user favorites"
+msgstr ""
+
+#: includes/admin/tools.php:308
+msgid "Run this to remove trashed or deleted topics from all user favorites."
+msgstr ""
+
+#: includes/admin/tools.php:319
+msgid "Remove unpublished topics from user subscriptions"
+msgstr ""
+
+#: includes/admin/tools.php:320
+msgid "Run this to remove trashed or deleted topics from all user subscriptions."
+msgstr ""
+
+#: includes/admin/tools.php:331
+msgid "Remove unpublished forums from user subscriptions"
+msgstr ""
+
+#: includes/admin/tools.php:332
+msgid "Run this to remove trashed or deleted forums from all user subscriptions."
+msgstr ""
+
+#: includes/admin/tools.php:343
+msgid "Remap all users to default forum roles"
+msgstr ""
+
+#: includes/admin/tools.php:344
+msgid "Run this if users have issues accessing the forums."
+msgstr ""
+
+#: includes/admin/tools.php:355
+msgid "Upgrade user topic engagements"
+msgstr ""
+
+#: includes/admin/tools.php:356
+msgid "Copies engagements from user meta to topic meta."
+msgstr ""
+
+#: includes/admin/tools.php:368
+msgid "Upgrade user topic favorites"
+msgstr ""
+
+#: includes/admin/tools.php:369
+msgid "Copies favorites from user meta to topic meta."
+msgstr ""
+
+#: includes/admin/tools.php:381
+msgid "Upgrade user topic subscriptions"
+msgstr ""
+
+#: includes/admin/tools.php:382
+msgid "Copies topic subscriptions from user meta to topic meta."
+msgstr ""
+
+#: includes/admin/tools.php:394
+msgid "Upgrade user forum subscriptions"
+msgstr ""
+
+#: includes/admin/tools.php:395
+msgid "Copies forum subscriptions from user meta to forum meta."
+msgstr ""
+
+#: includes/admin/tools.php:407
+msgid "Remove favorites from user-meta"
+msgstr ""
+
+#: includes/admin/tools.php:408
+msgid "Run this to delete old data (after confirming successful favorites upgrade)"
+msgstr ""
+
+#: includes/admin/tools.php:420
+msgid "Remove topic subscriptions from user-meta"
+msgstr ""
+
+#: includes/admin/tools.php:421
+msgid ""
+"Run this to delete old data (after confirming successful topic "
+"subscriptions upgrade)"
+msgstr ""
+
+#: includes/admin/tools.php:433
+msgid "Remove forum subscriptions from user-meta"
+msgstr ""
+
+#: includes/admin/tools.php:434
+msgid ""
+"Run this to delete old data (after confirming successful forum "
+"subscriptions upgrade)"
+msgstr ""
+
+#: includes/admin/tools.php:446
+msgid "Upgrade BuddyPress Group Forum relationships"
+msgstr ""
+
+#: includes/admin/tools.php:447
+msgid "Run this if you just upgraded BuddyPress Forums from Legacy."
+msgstr ""
+
+#: includes/admin/tools.php:450
+msgid "Any"
+msgstr ""
+
+#: includes/admin/tools.php:532
+msgid "Upgrade Forums"
+msgstr ""
+
+#: includes/admin/tools.php:541
+msgid "Import Forums"
+msgstr ""
+
+#: includes/admin/topics.php:121
+msgid ""
+"This screen displays the individual topics on your site. You can customize "
+"the display of this screen to suit your workflow."
+msgstr ""
+
+#: includes/admin/topics.php:131
+msgid ""
+"You can hide/display columns based on your needs and decide how many topics "
+"to list per screen using the Screen Options tab."
+msgstr ""
+
+#: includes/admin/topics.php:132
+msgid ""
+"You can filter the list of topics by topic status using the text links in "
+"the upper left to show All, Published, Draft, Pending, Trashed, Closed, or "
+"Spam  topics. The default view is to show all topics."
+msgstr ""
+
+#: includes/admin/topics.php:133
+msgid ""
+"You can view topics in a simple title list or with an excerpt. Choose the "
+"view you prefer by clicking on the icons at the top of the list on the "
+"right."
+msgstr ""
+
+#: includes/admin/topics.php:134
+msgid ""
+"You can refine the list to show only topics in a specific forum or from a "
+"specific month by using the dropdown menus above the topics list. Click the "
+"Filter button after making your selection."
+msgstr ""
+
+#: includes/admin/topics.php:143
+msgid ""
+"Hovering over a row in the topics list will display action links that allow "
+"you to manage your topic. You can perform the following actions:"
+msgstr ""
+
+#: includes/admin/topics.php:145
+msgid ""
+"<strong>Edit</strong> takes you to the editing screen for that topic. You "
+"can also reach that screen by clicking on the topic title."
+msgstr ""
+
+#: includes/admin/topics.php:146
+msgid ""
+"<strong>Stick</strong> will keep the selected topic &#8217;pinned&#8217; to "
+"the top the parent forum topic list."
+msgstr ""
+
+#: includes/admin/topics.php:147
+msgid ""
+"<strong>Stick <em>(to front)</em></strong> will keep the selected topic "
+"&#8217;pinned&#8217; to the top of ALL forums and be visable in any forums "
+"topics list."
+msgstr ""
+
+#: includes/admin/topics.php:149
+msgid ""
+"<strong>Close</strong> will mark the selected topic as &#8217;closed&#8217; "
+"and disable the ability to post new replies to it."
+msgstr ""
+
+#: includes/admin/topics.php:150
+msgid ""
+"<strong>Spam</strong> removes your topic from this list and places it in "
+"the spam queue, from which you can permanently delete it."
+msgstr ""
+
+#: includes/admin/topics.php:151
+msgid ""
+"<strong>Trash</strong> removes your topic from this list and places it in "
+"the trash, from which you can permanently delete it."
+msgstr ""
+
+#: includes/admin/topics.php:152
+msgid "<strong>View</strong> will take you to your live site to view the topic."
+msgstr ""
+
+#: includes/admin/topics.php:161
+msgid ""
+"You can also edit, spam, or move multiple topics to the trash at once. "
+"Select the topics you want to act on using the checkboxes, then select the "
+"action you want to take from the Bulk Actions menu and click Apply."
+msgstr ""
+
+#: includes/admin/topics.php:162
+msgid ""
+"When using Bulk Edit, you can change the metadata (categories, author, "
+"etc.) for all selected topics at once. To remove a topic from the grouping, "
+"just click the x next to its name in the Bulk Edit area that appears."
+msgstr ""
+
+#: includes/admin/topics.php:180
+msgid ""
+"The title field and the big topic editing Area are fixed in place, but you "
+"can reposition all the other boxes using drag and drop, and can minimize or "
+"expand them by clicking the title bar of each box. Use the Screen Options "
+"tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, "
+"Discussion, Slug, Author) or to choose a 1- or 2-column layout for this "
+"screen."
+msgstr ""
+
+#: includes/admin/topics.php:190
+msgid "Title and Topic Editor"
+msgstr ""
+
+#: includes/admin/topics.php:192
+msgid ""
+"<strong>Title</strong> - Enter a title for your topic. After you enter a "
+"title, you&#8217;ll see the permalink below, which you can edit."
+msgstr ""
+
+#: includes/admin/topics.php:193
+msgid ""
+"<strong>Topic Editor</strong> - Enter the text for your topic. There are "
+"two modes of editing: Visual and HTML. Choose the mode by clicking on the "
+"appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last "
+"icon in the row to get a second row of controls. The HTML mode allows you "
+"to enter raw HTML along with your topic text. You can insert media files by "
+"clicking the icons above the topic editor and following the directions. You "
+"can go to the distraction-free writing screen via the Fullscreen icon in "
+"Visual mode (second to last in the top row) or the Fullscreen button in "
+"HTML mode (last in the row). Once there, you can make buttons visible by "
+"hovering over the top area. Exit Fullscreen back to the regular topic "
+"editor."
+msgstr ""
+
+#: includes/admin/topics.php:196
+msgid ""
+"<strong>Publish</strong> - You can set the terms of publishing your topic "
+"in the Publish box. For Status, Visibility, and Publish (immediately), "
+"click on the Edit link to reveal more options. Visibility includes options "
+"for password-protecting a topic or making it stay at the top of your blog "
+"indefinitely (sticky). Publish (immediately) allows you to set a future or "
+"past date and time, so you can schedule a topic to be published in the "
+"future or backdate a topic."
+msgstr ""
+
+#: includes/admin/topics.php:199
+msgid ""
+"<strong>Featured Image</strong> - This allows you to associate an image "
+"with your topic without inserting it. This is usually useful only if your "
+"theme makes use of the featured image as a topic thumbnail on the home "
+"page, a custom header, etc."
+msgstr ""
+
+#: includes/admin/topics.php:204 includes/admin/topics.php:341
+#: includes/topics/template.php:67
+msgid "Topic Attributes"
+msgstr ""
+
+#: includes/admin/topics.php:206
+msgid "Select the attributes that your topic should have:"
+msgstr ""
+
+#: includes/admin/topics.php:208
+msgid ""
+"<strong>Forum</strong> dropdown determines the parent forum that the topic "
+"belongs to. Select the forum or category from the dropdown, or leave the "
+"default \"No forum\" to post the topic without an assigned forum."
+msgstr ""
+
+#: includes/admin/topics.php:209
+msgid ""
+"<strong>Topic Type</strong> dropdown indicates the sticky status of the "
+"topic. Selecting the super sticky option would stick the topic to the front "
+"of your forums, i.e. the topic index, sticky option would stick the topic "
+"to its respective forum. Selecting normal would not stick the topic "
+"anywhere."
+msgstr ""
+
+#: includes/admin/topics.php:256
+msgid "%s topic updated."
+msgid_plural "%s topics updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/topics.php:258
+msgid "1 topic not updated, somebody is editing it."
+msgstr ""
+
+#: includes/admin/topics.php:259
+msgid "%s topic not updated, somebody is editing it."
+msgid_plural "%s topics not updated, somebody is editing them."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/topics.php:292
+msgid "Error in spamming topic."
+msgstr ""
+
+#: includes/admin/topics.php:308
+msgid "Sorry, you are not allowed to unspam this topic."
+msgstr ""
+
+#: includes/admin/topics.php:317
+msgid "Error in unspamming topic."
+msgstr ""
+
+#: includes/admin/topics.php:577
+msgid "The topic was not found."
+msgstr ""
+
+#: includes/admin/topics.php:713
+msgid "There was a problem opening the topic \"%1$s\"."
+msgstr ""
+
+#: includes/admin/topics.php:714
+msgid "Topic \"%1$s\" successfully opened."
+msgstr ""
+
+#: includes/admin/topics.php:719
+msgid "There was a problem closing the topic \"%1$s\"."
+msgstr ""
+
+#: includes/admin/topics.php:720
+msgid "Topic \"%1$s\" successfully closed."
+msgstr ""
+
+#: includes/admin/topics.php:725
+msgid "There was a problem sticking the topic \"%1$s\" to front."
+msgstr ""
+
+#: includes/admin/topics.php:726
+msgid "Topic \"%1$s\" successfully stuck to front."
+msgstr ""
+
+#: includes/admin/topics.php:731
+msgid "There was a problem sticking the topic \"%1$s\"."
+msgstr ""
+
+#: includes/admin/topics.php:732
+msgid "Topic \"%1$s\" successfully stuck."
+msgstr ""
+
+#: includes/admin/topics.php:737
+msgid "There was a problem unsticking the topic \"%1$s\"."
+msgstr ""
+
+#: includes/admin/topics.php:738
+msgid "Topic \"%1$s\" successfully unstuck."
+msgstr ""
+
+#: includes/admin/topics.php:743
+msgid "There was a problem marking the topic \"%1$s\" as spam."
+msgstr ""
+
+#: includes/admin/topics.php:744
+msgid "Topic \"%1$s\" successfully marked as spam."
+msgstr ""
+
+#: includes/admin/topics.php:749
+msgid "There was a problem unmarking the topic \"%1$s\" as spam."
+msgstr ""
+
+#: includes/admin/topics.php:750
+msgid "Topic \"%1$s\" successfully unmarked as spam."
+msgstr ""
+
+#: includes/admin/topics.php:755
+msgid "There was a problem approving the topic \"%1$s\"."
+msgstr ""
+
+#: includes/admin/topics.php:756
+msgid "Topic \"%1$s\" successfully approved."
+msgstr ""
+
+#: includes/admin/topics.php:761
+msgid "There was a problem unapproving the topic \"%1$s\"."
+msgstr ""
+
+#: includes/admin/topics.php:762
+msgid "Topic \"%1$s\" successfully unapproved."
+msgstr ""
+
+#: includes/admin/topics.php:857 templates/default/bbpress/loop-topics.php:19
+msgid "Voices"
+msgstr ""
+
+#: includes/admin/topics.php:935 includes/topics/template.php:1988
+msgid "No Replies"
+msgstr ""
+
+#: includes/admin/topics.php:985
+msgid "Unapprove this topic"
+msgstr ""
+
+#: includes/admin/topics.php:990
+msgid "Approve this topic"
+msgstr ""
+
+#: includes/admin/topics.php:1002
+msgid "Close this topic"
+msgstr ""
+
+#: includes/admin/topics.php:1004
+msgid "Open this topic"
+msgstr ""
+
+#: includes/admin/topics.php:1013
+msgid "Unstick this topic"
+msgstr ""
+
+#: includes/admin/topics.php:1013 includes/topics/template.php:2689
+msgid "Unstick"
+msgstr ""
+
+#: includes/admin/topics.php:1016
+msgid "Stick this topic to its forum"
+msgstr ""
+
+#: includes/admin/topics.php:1016 includes/topics/template.php:2688
+msgid "Stick"
+msgstr ""
+
+#: includes/admin/topics.php:1016
+msgid "Stick this topic to front"
+msgstr ""
+
+#: includes/admin/topics.php:1016 includes/topics/template.php:2690
+msgid "(to front)"
+msgstr ""
+
+#: includes/admin/topics.php:1023
+msgid "Mark this topic as spam"
+msgstr ""
+
+#: includes/admin/topics.php:1025
+msgid "Mark the topic as not spam"
+msgstr ""
+
+#: includes/admin/topics.php:1175 includes/admin/topics.php:1187
+#: includes/topics/template.php:78
+msgid "Topic updated."
+msgstr ""
+
+#: includes/admin/topics.php:1192
+#. translators: %s: date and time of the revision
+msgid "Topic restored to revision from %s"
+msgstr ""
+
+#: includes/admin/topics.php:1198
+msgid "Topic created."
+msgstr ""
+
+#: includes/admin/topics.php:1204
+msgid "Topic saved."
+msgstr ""
+
+#: includes/admin/topics.php:1209
+msgid "Topic submitted."
+msgstr ""
+
+#: includes/admin/topics.php:1218
+msgid "Topic scheduled for: %s."
+msgstr ""
+
+#: includes/admin/topics.php:1229
+msgid "Topic draft updated."
+msgstr ""
+
+#: includes/admin/users.php:98 includes/admin/users.php:282
+#: includes/users/signups.php:30
+#: templates/default/bbpress/form-user-roles.php:23
+msgid "Forum Role"
+msgstr ""
+
+#: includes/admin/users.php:107 includes/admin/users.php:111
+#: includes/users/template.php:1547
+msgid "&mdash; No role for these forums &mdash;"
+msgstr ""
+
+#: includes/admin/users.php:164 includes/admin/users.php:166
+msgid "Change forum role to&hellip;"
+msgstr ""
+
+#: includes/admin/users.php:170
+msgid "Change"
+msgstr ""
+
+#: includes/admin/users.php:278
+msgid "Site Role"
+msgstr ""
+
+#: includes/common/formatting.php:646
+msgid "sometime"
+msgstr ""
+
+#: includes/common/formatting.php:647
+msgid "right now"
+msgstr ""
+
+#: includes/common/formatting.php:648
+msgid "%s ago"
+msgstr ""
+
+#: includes/common/formatting.php:652
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/common/formatting.php:653
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/common/formatting.php:654
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/common/formatting.php:655
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/common/formatting.php:656
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/common/formatting.php:657
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/common/formatting.php:658
+msgid "%s second"
+msgid_plural "%s seconds"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/common/functions.php:402 includes/common/functions.php:460
+msgid "Pending: %s"
+msgstr ""
+
+#: includes/common/functions.php:410 includes/common/functions.php:468
+msgid "Spammed: %s"
+msgstr ""
+
+#: includes/common/functions.php:414 includes/common/functions.php:472
+msgid "Trashed: %s"
+msgstr ""
+
+#: includes/common/functions.php:464
+msgid "Private: %s"
+msgstr ""
+
+#: includes/common/functions.php:556
+msgid "<strong>Error</strong>: Invalid author name."
+msgstr ""
+
+#: includes/common/functions.php:562
+msgid "<strong>Error</strong>: Invalid email address."
+msgstr ""
+
+#: includes/common/functions.php:1101
+msgid ""
+"%1$s wrote:\n"
+"\n"
+"%2$s\n"
+"\n"
+"Post Link: %3$s\n"
+"\n"
+"-----------\n"
+"\n"
+"You are receiving this email because you subscribed to a forum topic.\n"
+"\n"
+"Login and visit the topic to unsubscribe from these emails."
+msgstr ""
+
+#: includes/common/functions.php:1268
+msgid ""
+"%1$s wrote:\n"
+"\n"
+"%2$s\n"
+"\n"
+"Topic Link: %3$s\n"
+"\n"
+"-----------\n"
+"\n"
+"You are receiving this email because you subscribed to a forum.\n"
+"\n"
+"Login and visit the topic to unsubscribe from these emails."
+msgstr ""
+
+#: includes/common/template.php:1157
+msgid ""
+"Conditional query tags do not work before the query is run. Before then, "
+"they always return false."
+msgstr ""
+
+#: includes/common/template.php:1629
+msgid "No topics available"
+msgstr ""
+
+#: includes/common/template.php:1634
+msgid "No forums available"
+msgstr ""
+
+#: includes/common/template.php:1639
+msgid "None available"
+msgstr ""
+
+#: includes/common/template.php:2253
+msgid "Home"
+msgstr ""
+
+#: includes/common/template.php:2323
+msgid "(Edit)"
+msgstr ""
+
+#: includes/common/template.php:2327 includes/common/template.php:2442
+#: includes/common/template.php:2687 includes/core/theme-compat.php:804
+#: templates/default/extras/taxonomy-topic-tag-edit.php:17
+#: templates/default/extras/taxonomy-topic-tag.php:17
+msgid "Topic Tag: %s"
+msgstr ""
+
+#: includes/common/template.php:2348
+msgid "&lsaquo;"
+msgstr ""
+
+#: includes/common/template.php:2348
+msgid "&rsaquo;"
+msgstr ""
+
+#: includes/common/template.php:2611
+msgid "Log Out"
+msgstr ""
+
+#: includes/common/template.php:2651
+msgid "Forum Edit: %s"
+msgstr ""
+
+#: includes/common/template.php:2656
+msgid "Topic Edit: %s"
+msgstr ""
+
+#: includes/common/template.php:2661
+msgid "Reply Edit: %s"
+msgstr ""
+
+#: includes/common/template.php:2666
+msgid "Topic Tag Edit: %s"
+msgstr ""
+
+#: includes/common/template.php:2673
+msgid "Forum: %s"
+msgstr ""
+
+#: includes/common/template.php:2678
+msgid "Topic: %s"
+msgstr ""
+
+#: includes/common/template.php:2700
+msgid "Your Topics"
+msgstr ""
+
+#: includes/common/template.php:2704
+#. translators: user's display name
+msgid "%s's Topics"
+msgstr ""
+
+#: includes/common/template.php:2710
+msgid "Your Replies"
+msgstr ""
+
+#: includes/common/template.php:2714
+#. translators: user's display name
+msgid "%s's Replies"
+msgstr ""
+
+#: includes/common/template.php:2720
+msgid "Your Favorites"
+msgstr ""
+
+#: includes/common/template.php:2724
+#: templates/default/bbpress/user-details.php:57
+#. translators: user's display name
+msgid "%s's Favorites"
+msgstr ""
+
+#: includes/common/template.php:2730
+msgid "Your Subscriptions"
+msgstr ""
+
+#: includes/common/template.php:2734
+#: templates/default/bbpress/user-details.php:67
+#. translators: user's display name
+msgid "%s's Subscriptions"
+msgstr ""
+
+#: includes/common/template.php:2740
+msgid "Your Profile"
+msgstr ""
+
+#: includes/common/template.php:2744
+#: templates/default/bbpress/user-details.php:30
+#. translators: user's display name
+msgid "%s's Profile"
+msgstr ""
+
+#: includes/common/template.php:2753
+msgid "Edit Your Profile"
+msgstr ""
+
+#: includes/common/template.php:2758
+#: templates/default/bbpress/user-details.php:74
+msgid "Edit %s's Profile"
+msgstr ""
+
+#: includes/common/template.php:2766
+msgid "View: %s"
+msgstr ""
+
+#: includes/common/widgets.php:34
+msgid "A simple login form with optional links to sign-up and lost password pages."
+msgstr ""
+
+#: includes/common/widgets.php:38
+msgid "(bbPress) Login Widget"
+msgstr ""
+
+#: includes/common/widgets.php:81 includes/common/widgets.php:102
+#: templates/default/bbpress/form-user-login.php:17
+#: templates/default/bbpress/form-user-login.php:38
+msgid "Log In"
+msgstr ""
+
+#: includes/common/widgets.php:84
+#: templates/default/bbpress/form-user-edit.php:107
+#: templates/default/bbpress/form-user-login.php:20
+#: templates/default/bbpress/form-user-register.php:29
+msgid "Username"
+msgstr ""
+
+#: includes/common/widgets.php:89
+#: templates/default/bbpress/form-user-login.php:25
+#: templates/default/bbpress/form-user-passwords.php:17
+msgid "Password"
+msgstr ""
+
+#: includes/common/widgets.php:95
+#: templates/default/bbpress/form-user-login.php:31
+msgid "Keep me signed in"
+msgstr ""
+
+#: includes/common/widgets.php:114
+#: templates/default/bbpress/form-user-register.php:42
+msgid "Register"
+msgstr ""
+
+#: includes/common/widgets.php:120
+#: templates/default/bbpress/form-user-lost-pass.php:17
+msgid "Lost Password"
+msgstr ""
+
+#: includes/common/widgets.php:175 includes/common/widgets.php:320
+#: includes/common/widgets.php:437 includes/common/widgets.php:599
+#: includes/common/widgets.php:871 includes/common/widgets.php:1015
+#: includes/common/widgets.php:1218
+msgid "Title:"
+msgstr ""
+
+#: includes/common/widgets.php:180
+msgid "Register URI:"
+msgstr ""
+
+#: includes/common/widgets.php:185
+msgid "Lost Password URI:"
+msgstr ""
+
+#: includes/common/widgets.php:227
+msgid "A list of registered optional topic views."
+msgstr ""
+
+#: includes/common/widgets.php:231
+msgid "(bbPress) Topic Views List"
+msgstr ""
+
+#: includes/common/widgets.php:361
+msgid "The bbPress forum search form."
+msgstr ""
+
+#: includes/common/widgets.php:365
+msgid "(bbPress) Forum Search Form"
+msgstr ""
+
+#: includes/common/widgets.php:454 includes/forums/template.php:60
+msgid "Search Forums"
+msgstr ""
+
+#: includes/common/widgets.php:478
+msgid "A list of forums with an option to set the parent."
+msgstr ""
+
+#: includes/common/widgets.php:482
+msgid "(bbPress) Forums List"
+msgstr ""
+
+#: includes/common/widgets.php:605 includes/common/widgets.php:875
+msgid "Parent Forum ID:"
+msgstr ""
+
+#: includes/common/widgets.php:611 includes/common/widgets.php:881
+msgid "\"0\" to show only root - \"any\" to show all"
+msgstr ""
+
+#: includes/common/widgets.php:651
+msgid "A list of recent topics, sorted by: newness, popularity, or recent replies."
+msgstr ""
+
+#: includes/common/widgets.php:655
+msgid "(bbPress) Recent Topics"
+msgstr ""
+
+#: includes/common/widgets.php:872
+msgid "Maximum topics to show:"
+msgstr ""
+
+#: includes/common/widgets.php:884 includes/common/widgets.php:1220
+msgid "Show post date:"
+msgstr ""
+
+#: includes/common/widgets.php:885
+msgid "Show topic author:"
+msgstr ""
+
+#: includes/common/widgets.php:888
+msgid "Order By:"
+msgstr ""
+
+#: includes/common/widgets.php:890
+msgid "Newest Topics"
+msgstr ""
+
+#: includes/common/widgets.php:891
+#: templates/default/extras/page-forum-statistics.php:34
+msgid "Popular Topics"
+msgstr ""
+
+#: includes/common/widgets.php:892
+msgid "Topics With Recent Replies"
+msgstr ""
+
+#: includes/common/widgets.php:908
+msgid "Recent Topics"
+msgstr ""
+
+#: includes/common/widgets.php:937
+msgid "Some statistics from your forum."
+msgstr ""
+
+#: includes/common/widgets.php:941
+msgid "(bbPress) Statistics"
+msgstr ""
+
+#: includes/common/widgets.php:1032
+msgid "Forum Statistics"
+msgstr ""
+
+#: includes/common/widgets.php:1056
+msgid "A list of the most recent replies."
+msgstr ""
+
+#: includes/common/widgets.php:1060
+msgid "(bbPress) Recent Replies"
+msgstr ""
+
+#: includes/common/widgets.php:1219
+msgid "Maximum replies to show:"
+msgstr ""
+
+#: includes/common/widgets.php:1221
+msgid "Show reply author:"
+msgstr ""
+
+#: includes/common/widgets.php:1235
+msgid "Recent Replies"
+msgstr ""
+
+#: includes/core/capabilities.php:501
+msgid "Editable forum roles no longer exist."
+msgstr ""
+
+#: includes/core/update.php:207
+msgid "General"
+msgstr ""
+
+#: includes/core/update.php:208
+msgid "General Discussion"
+msgstr ""
+
+#: includes/core/update.php:211
+msgid "Hello World!"
+msgstr ""
+
+#: includes/core/update.php:212
+msgid "This is the very first topic in these forums."
+msgstr ""
+
+#: includes/core/update.php:215
+msgid "And this is the very first reply."
+msgstr ""
+
+#: includes/extend/akismet.php:171 includes/extend/akismet.php:176
+#: includes/extend/akismet.php:492 includes/extend/akismet.php:497
+msgid "No response"
+msgstr ""
+
+#: includes/extend/akismet.php:353
+#. translators: %s: reporter name
+msgid "%s reported this topic as spam"
+msgstr ""
+
+#: includes/extend/akismet.php:358
+#. translators: %s: reporter name
+msgid "%s reported this reply as spam"
+msgstr ""
+
+#: includes/extend/akismet.php:363
+#. translators: 1: reporter name, 2: comment type
+msgid "%1$s reported this %2$s as spam"
+msgstr ""
+
+#: includes/extend/akismet.php:378
+#. translators: %s: reporter name
+msgid "%s reported this topic as not spam"
+msgstr ""
+
+#: includes/extend/akismet.php:383
+#. translators: %s: reporter name
+msgid "%s reported this reply as not spam"
+msgstr ""
+
+#: includes/extend/akismet.php:388
+#. translators: 1: reporter name, 2: comment type
+msgid "%1$s reported this %2$s as not spam"
+msgstr ""
+
+#: includes/extend/akismet.php:573
+msgid "Akismet caught this post as spam"
+msgstr ""
+
+#: includes/extend/akismet.php:582 includes/extend/akismet.php:605
+msgid "Post status was changed to %s"
+msgstr ""
+
+#: includes/extend/akismet.php:596
+msgid "Akismet cleared this post as not spam"
+msgstr ""
+
+#: includes/extend/akismet.php:619
+msgid ""
+"Akismet was unable to check this post (response: %s), will automatically "
+"retry again later."
+msgstr ""
+
+#: includes/extend/akismet.php:829 includes/extend/akismet.php:839
+msgid "Akismet History"
+msgstr ""
+
+#: includes/extend/akismet.php:883
+msgid "No recorded history. Akismet has not checked this post."
+msgstr ""
+
+#: includes/extend/buddypress/activity.php:195
+msgid "New forum topic"
+msgstr ""
+
+#: includes/extend/buddypress/activity.php:205
+msgid "New forum reply"
+msgstr ""
+
+#: includes/extend/buddypress/activity.php:452
+#: includes/extend/buddypress/functions.php:779
+msgid "%1$s started the topic %2$s in the forum %3$s"
+msgstr ""
+
+#: includes/extend/buddypress/activity.php:590
+#: includes/extend/buddypress/functions.php:780
+msgid "%1$s replied to the topic %2$s in the forum %3$s"
+msgstr ""
+
+#: includes/extend/buddypress/groups.php:379
+msgid "<strong>Error</strong>: Forum ID is invalid."
+msgstr ""
+
+#: includes/extend/buddypress/groups.php:442
+msgid "<strong>Error</strong>: Reply To is invalid."
+msgstr ""
+
+#: includes/extend/buddypress/groups.php:467
+#: includes/extend/buddypress/groups.php:470
+msgid "Group Forum Settings"
+msgstr ""
+
+#: includes/extend/buddypress/groups.php:471
+#: includes/extend/buddypress/groups.php:670
+msgid ""
+"Create a discussion forum to allow members of this group to communicate in "
+"a structured, bulletin-board style fashion."
+msgstr ""
+
+#: includes/extend/buddypress/groups.php:475
+#: includes/extend/buddypress/groups.php:673
+msgid "Yes. I want this group to have a forum."
+msgstr ""
+
+#: includes/extend/buddypress/groups.php:478
+msgid "Saying no will not delete existing forum content."
+msgstr ""
+
+#: includes/extend/buddypress/groups.php:483
+msgid "Group Forum:"
+msgstr ""
+
+#: includes/extend/buddypress/groups.php:491
+msgid "Network administrators can reconfigure which forum belongs to this group."
+msgstr ""
+
+#: includes/extend/buddypress/groups.php:496
+msgid "Save Settings"
+msgstr ""
+
+#: includes/extend/buddypress/groups.php:531
+#: includes/extend/buddypress/groups.php:688
+#: includes/extend/buddypress/notifications.php:199
+#: includes/forums/functions.php:126 includes/forums/functions.php:393
+#: includes/replies/functions.php:134 includes/replies/functions.php:527
+#: includes/replies/functions.php:1246 includes/topics/functions.php:105
+#: includes/topics/functions.php:468 includes/topics/functions.php:1091
+#: includes/topics/functions.php:1366 includes/topics/functions.php:1702
+#: includes/topics/functions.php:1746 includes/topics/functions.php:1807
+#: includes/users/engagements.php:612 includes/users/engagements.php:853
+#: includes/users/functions.php:196 includes/users/functions.php:202
+#: includes/users/functions.php:380
+msgid "<strong>Error</strong>: Are you sure you wanted to do that?"
+msgstr ""
+
+#: includes/extend/buddypress/groups.php:668
+msgid "Group Forum"
+msgstr ""
+
+#: includes/extend/buddypress/groups.php:1017
+msgid "This group does not currently have a forum."
+msgstr ""
+
+#: includes/extend/buddypress/loader.php:119
+msgid "Search Forums..."
+msgstr ""
+
+#: includes/extend/buddypress/loader.php:356
+#: templates/default/bbpress/user-subscriptions.php:38
+msgid "Subscribed Topics"
+msgstr ""
+
+#: includes/extend/buddypress/notifications.php:89
+msgid "You have %d new replies"
+msgstr ""
+
+#: includes/extend/buddypress/notifications.php:95
+msgid "You have %1$d new reply to %2$s from %3$s"
+msgstr ""
+
+#: includes/extend/buddypress/notifications.php:96
+msgid "You have %1$d new reply to %2$s"
+msgstr ""
+
+#: includes/extend/buddypress/notifications.php:101
+msgid "Topic Replies"
+msgstr ""
+
+#: includes/extend/buddypress/notifications.php:203
+msgid ""
+"<strong>Error</strong>: You do not have permission to mark notifications "
+"for that user."
+msgstr ""
+
+#: includes/forums/functions.php:140
+msgid "<strong>Error</strong>: You do not have permission to create new forums."
+msgstr ""
+
+#: includes/forums/functions.php:165 includes/forums/functions.php:454
+msgid "<strong>Error</strong>: Your forum needs a title."
+msgstr ""
+
+#: includes/forums/functions.php:170 includes/forums/functions.php:459
+#: includes/replies/functions.php:284 includes/replies/functions.php:611
+#: includes/topics/functions.php:163 includes/topics/functions.php:535
+msgid "<strong>Error</strong>: Your title is too long."
+msgstr ""
+
+#: includes/forums/functions.php:184 includes/forums/functions.php:473
+msgid "<strong>Error</strong>: Your forum description cannot be empty."
+msgstr ""
+
+#: includes/forums/functions.php:199
+msgid "<strong>Error</strong>: Your forum must have a parent."
+msgstr ""
+
+#: includes/forums/functions.php:206
+msgid ""
+"<strong>Error</strong>: This forum is a category. No forums can be created "
+"in this forum."
+msgstr ""
+
+#: includes/forums/functions.php:211 includes/forums/functions.php:429
+msgid "<strong>Error</strong>: This forum has been closed to new forums."
+msgstr ""
+
+#: includes/forums/functions.php:216 includes/forums/functions.php:434
+msgid ""
+"<strong>Error</strong>: This forum is private and you do not have the "
+"capability to read or create new forums in it."
+msgstr ""
+
+#: includes/forums/functions.php:221 includes/forums/functions.php:439
+msgid ""
+"<strong>Error</strong>: This forum is hidden and you do not have the "
+"capability to read or create new forums in it."
+msgstr ""
+
+#: includes/forums/functions.php:228 includes/replies/functions.php:304
+#: includes/topics/functions.php:247
+msgid "<strong>Error</strong>: Slow down; you move too fast."
+msgstr ""
+
+#: includes/forums/functions.php:234
+msgid "<strong>Error</strong>: This forum already exists."
+msgstr ""
+
+#: includes/forums/functions.php:240
+msgid "<strong>Error</strong>: Your forum cannot be created at this time."
+msgstr ""
+
+#: includes/forums/functions.php:353 includes/replies/functions.php:484
+#: includes/topics/functions.php:400
+msgid "<strong>Error</strong>: The following problem(s) occurred: %s"
+msgstr ""
+
+#: includes/forums/functions.php:357
+msgid "<strong>Error</strong>: The forum was not created."
+msgstr ""
+
+#: includes/forums/functions.php:382
+msgid "<strong>Error</strong>: Forum ID not found."
+msgstr ""
+
+#: includes/forums/functions.php:398
+msgid "<strong>Error</strong>: The forum you want to edit was not found."
+msgstr ""
+
+#: includes/forums/functions.php:403
+msgid "<strong>Error</strong>: You do not have permission to edit that forum."
+msgstr ""
+
+#: includes/forums/functions.php:479
+msgid "<strong>Error</strong>: Your forum cannot be edited at this time."
+msgstr ""
+
+#: includes/forums/template.php:52 includes/replies/template.php:53
+#: includes/topics/template.php:51
+msgid "Add New"
+msgstr ""
+
+#: includes/forums/template.php:53 templates/default/bbpress/form-forum.php:40
+msgid "Create New Forum"
+msgstr ""
+
+#: includes/forums/template.php:55
+msgid "Edit Forum"
+msgstr ""
+
+#: includes/forums/template.php:56
+msgid "New Forum"
+msgstr ""
+
+#: includes/forums/template.php:57 includes/forums/template.php:58
+msgid "View Forum"
+msgstr ""
+
+#: includes/forums/template.php:59
+msgid "View Forums"
+msgstr ""
+
+#: includes/forums/template.php:61
+msgid "No forums found"
+msgstr ""
+
+#: includes/forums/template.php:62
+msgid "No forums found in Trash"
+msgstr ""
+
+#: includes/forums/template.php:63
+msgid "Filter forums list"
+msgstr ""
+
+#: includes/forums/template.php:64
+msgid "Forums list"
+msgstr ""
+
+#: includes/forums/template.php:65
+msgid "Forums list navigation"
+msgstr ""
+
+#: includes/forums/template.php:66 templates/default/bbpress/form-forum.php:139
+msgid "Parent Forum:"
+msgstr ""
+
+#: includes/forums/template.php:69
+msgid "Insert into forum"
+msgstr ""
+
+#: includes/forums/template.php:70
+msgid "Uploaded to this forum"
+msgstr ""
+
+#: includes/forums/template.php:71
+msgid "Forum Image"
+msgstr ""
+
+#: includes/forums/template.php:72
+msgid "Set forum image"
+msgstr ""
+
+#: includes/forums/template.php:73
+msgid "Remove forum image"
+msgstr ""
+
+#: includes/forums/template.php:74
+msgid "Use as forum image"
+msgstr ""
+
+#: includes/forums/template.php:75
+msgid "Forum published."
+msgstr ""
+
+#: includes/forums/template.php:76
+msgid "Forum published privately."
+msgstr ""
+
+#: includes/forums/template.php:77
+msgid "Forum reverted to draft."
+msgstr ""
+
+#: includes/forums/template.php:78
+msgid "Forum scheduled."
+msgstr ""
+
+#: includes/forums/template.php:833 includes/topics/template.php:1781
+#: includes/users/template.php:1279
+msgid "Subscribe"
+msgstr ""
+
+#: includes/forums/template.php:834 includes/topics/template.php:1782
+#: includes/users/template.php:1280
+msgid "Unsubscribe"
+msgstr ""
+
+#: includes/forums/template.php:1170 includes/forums/template.php:2012
+msgid "%s topic"
+msgid_plural "%s topics"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/forums/template.php:1185 includes/topics/template.php:2031
+msgid "(+%s hidden)"
+msgid_plural "(+%s hidden)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/forums/template.php:2001 includes/topics/template.php:2016
+msgid "%s reply"
+msgid_plural "%s replies"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/forums/template.php:2021
+msgid "This category has %1$s, %2$s, and was last updated %3$s by %4$s."
+msgstr ""
+
+#: includes/forums/template.php:2022
+msgid "This forum has %1$s, %2$s, and was last updated %3$s by %4$s."
+msgstr ""
+
+#: includes/forums/template.php:2027
+msgid "This category has %1$s, and was last updated %2$s by %3$s."
+msgstr ""
+
+#: includes/forums/template.php:2028
+msgid "This forum has %1$s, and was last updated %2$s by %3$s."
+msgstr ""
+
+#: includes/forums/template.php:2034
+msgid "This category has %1$s and %2$s."
+msgstr ""
+
+#: includes/forums/template.php:2035
+msgid "This forum has %1$s and %2$s."
+msgstr ""
+
+#: includes/forums/template.php:2040
+msgid "This category has %1$s."
+msgstr ""
+
+#: includes/forums/template.php:2041
+msgid "This forum has %1$s."
+msgstr ""
+
+#: includes/forums/template.php:2045
+msgid "This forum is empty."
+msgstr ""
+
+#: includes/replies/functions.php:159
+msgid "<strong>Error</strong>: You do not have permission to reply."
+msgstr ""
+
+#: includes/replies/functions.php:170
+msgid "<strong>Error</strong>: Topic ID is missing."
+msgstr ""
+
+#: includes/replies/functions.php:174
+msgid "<strong>Error</strong>: Topic ID must be a number."
+msgstr ""
+
+#: includes/replies/functions.php:184
+msgid "<strong>Error</strong>: Topic ID cannot be a negative number."
+msgstr ""
+
+#: includes/replies/functions.php:188
+msgid "<strong>Error</strong>: Topic does not exist."
+msgstr ""
+
+#: includes/replies/functions.php:207 includes/replies/functions.php:221
+#: includes/topics/functions.php:187 includes/topics/functions.php:201
+#: includes/topics/functions.php:483
+msgid "<strong>Error</strong>: Forum ID is missing."
+msgstr ""
+
+#: includes/replies/functions.php:211 includes/topics/functions.php:191
+msgid "<strong>Error</strong>: Forum ID must be a number."
+msgstr ""
+
+#: includes/replies/functions.php:225 includes/topics/functions.php:205
+msgid "<strong>Error</strong>: Forum ID cannot be a negative number."
+msgstr ""
+
+#: includes/replies/functions.php:229 includes/topics/functions.php:209
+msgid "<strong>Error</strong>: Forum does not exist."
+msgstr ""
+
+#: includes/replies/functions.php:243 includes/replies/functions.php:579
+msgid ""
+"<strong>Error</strong>: This forum is a category. No replies can be created "
+"in this forum."
+msgstr ""
+
+#: includes/replies/functions.php:250 includes/replies/functions.php:586
+msgid "<strong>Error</strong>: This forum has been closed to new replies."
+msgstr ""
+
+#: includes/replies/functions.php:255 includes/replies/functions.php:591
+msgid ""
+"<strong>Error</strong>: This forum is private and you do not have the "
+"capability to read or create new replies in it."
+msgstr ""
+
+#: includes/replies/functions.php:259 includes/replies/functions.php:595
+msgid ""
+"<strong>Error</strong>: This forum is hidden and you do not have the "
+"capability to read or create new replies in it."
+msgstr ""
+
+#: includes/replies/functions.php:298 includes/replies/functions.php:625
+msgid "<strong>Error</strong>: Your reply cannot be empty."
+msgstr ""
+
+#: includes/replies/functions.php:310
+msgid ""
+"<strong>Error</strong>: Duplicate reply detected; it looks as though "
+"you&#8217;ve already said that."
+msgstr ""
+
+#: includes/replies/functions.php:316
+msgid "<strong>Error</strong>: Your reply cannot be created at this time."
+msgstr ""
+
+#: includes/replies/functions.php:341
+msgid "<strong>Error</strong>: Topic is closed."
+msgstr ""
+
+#: includes/replies/functions.php:401 includes/replies/functions.php:721
+msgid "<strong>Error</strong>: There was a problem adding the tags to the topic."
+msgstr ""
+
+#: includes/replies/functions.php:488
+msgid "<strong>Error</strong>: The reply was not created."
+msgstr ""
+
+#: includes/replies/functions.php:516
+msgid "<strong>Error</strong>: Reply ID not found."
+msgstr ""
+
+#: includes/replies/functions.php:533
+msgid "<strong>Error</strong>: The reply you want to edit was not found."
+msgstr ""
+
+#: includes/replies/functions.php:544
+msgid "<strong>Error</strong>: You do not have permission to edit that reply."
+msgstr ""
+
+#: includes/replies/functions.php:631
+msgid "<strong>Error</strong>: Your reply cannot be edited at this time."
+msgstr ""
+
+#: includes/replies/functions.php:1222
+msgid "<strong>Error</strong>: A reply ID is required"
+msgstr ""
+
+#: includes/replies/functions.php:1231
+msgid "<strong>Error</strong>: The reply you want to move was not found."
+msgstr ""
+
+#: includes/replies/functions.php:1241
+msgid "<strong>Error</strong>: The topic you want to move from was not found."
+msgstr ""
+
+#: includes/replies/functions.php:1252 includes/topics/functions.php:1102
+#: includes/topics/functions.php:1372
+msgid "<strong>Error</strong>: You do not have permission to edit the source topic."
+msgstr ""
+
+#: includes/replies/functions.php:1262
+msgid "<strong>Error</strong>: You need to choose a valid move option."
+msgstr ""
+
+#: includes/replies/functions.php:1275 includes/topics/functions.php:1395
+msgid "<strong>Error</strong>: A topic ID is required."
+msgstr ""
+
+#: includes/replies/functions.php:1285
+msgid "<strong>Error</strong>: The topic you want to move to was not found."
+msgstr ""
+
+#: includes/replies/functions.php:1290 includes/topics/functions.php:1122
+#: includes/topics/functions.php:1410
+msgid ""
+"<strong>Error</strong>: You do not have permission to edit the destination "
+"topic."
+msgstr ""
+
+#: includes/replies/functions.php:1344 includes/topics/functions.php:1448
+msgid ""
+"<strong>Error</strong>: There was a problem converting the reply into the "
+"topic. Please try again."
+msgstr ""
+
+#: includes/replies/functions.php:1349 includes/topics/functions.php:1453
+msgid ""
+"<strong>Error</strong>: You do not have permission to create new topics. "
+"The reply could not be converted into a topic."
+msgstr ""
+
+#: includes/replies/functions.php:1497
+msgid "<strong>Error</strong>: This reply could not be found or no longer exists."
+msgstr ""
+
+#: includes/replies/functions.php:1503 includes/topics/functions.php:2024
+msgid "<strong>Error</strong>: You do not have permission to do that."
+msgstr ""
+
+#: includes/replies/functions.php:1579
+msgid "<strong>Error</strong>: There was a problem approving the reply."
+msgstr ""
+
+#: includes/replies/functions.php:1579
+msgid "<strong>Error</strong>: There was a problem unapproving the reply."
+msgstr ""
+
+#: includes/replies/functions.php:1590
+msgid "<strong>Error</strong>: There was a problem unmarking the reply as spam."
+msgstr ""
+
+#: includes/replies/functions.php:1590
+msgid "<strong>Error</strong>: There was a problem marking the reply as spam."
+msgstr ""
+
+#: includes/replies/functions.php:1605
+msgid "<strong>Error</strong>: There was a problem trashing the reply."
+msgstr ""
+
+#: includes/replies/functions.php:1613
+msgid "<strong>Error</strong>: There was a problem untrashing the reply."
+msgstr ""
+
+#: includes/replies/functions.php:1621
+msgid "<strong>Error</strong>: There was a problem deleting the reply."
+msgstr ""
+
+#: includes/replies/functions.php:2134
+msgid "All Posts"
+msgstr ""
+
+#: includes/replies/functions.php:2180 includes/topics/functions.php:3800
+msgid "Replies: %s"
+msgstr ""
+
+#: includes/replies/template.php:54
+msgid "Create New Reply"
+msgstr ""
+
+#: includes/replies/template.php:56
+msgid "Edit Reply"
+msgstr ""
+
+#: includes/replies/template.php:57
+msgid "New Reply"
+msgstr ""
+
+#: includes/replies/template.php:58 includes/replies/template.php:59
+msgid "View Reply"
+msgstr ""
+
+#: includes/replies/template.php:60
+msgid "View Replies"
+msgstr ""
+
+#: includes/replies/template.php:61
+msgid "Search Replies"
+msgstr ""
+
+#: includes/replies/template.php:62
+msgid "No replies found"
+msgstr ""
+
+#: includes/replies/template.php:63
+msgid "No replies found in Trash"
+msgstr ""
+
+#: includes/replies/template.php:64
+msgid "Filter replies list"
+msgstr ""
+
+#: includes/replies/template.php:65
+msgid "Replies list"
+msgstr ""
+
+#: includes/replies/template.php:66
+msgid "Replies list navigation"
+msgstr ""
+
+#: includes/replies/template.php:67
+msgid "Parent Topic:"
+msgstr ""
+
+#: includes/replies/template.php:68
+msgid "Forum Replies"
+msgstr ""
+
+#: includes/replies/template.php:70
+msgid "Insert into reply"
+msgstr ""
+
+#: includes/replies/template.php:71
+msgid "Uploaded to this reply"
+msgstr ""
+
+#: includes/replies/template.php:72
+msgid "Reply Image"
+msgstr ""
+
+#: includes/replies/template.php:73
+msgid "Set reply image"
+msgstr ""
+
+#: includes/replies/template.php:74
+msgid "Remove reply image"
+msgstr ""
+
+#: includes/replies/template.php:75
+msgid "Use as reply image"
+msgstr ""
+
+#: includes/replies/template.php:76
+msgid "Reply published."
+msgstr ""
+
+#: includes/replies/template.php:77
+msgid "Reply published privately."
+msgstr ""
+
+#: includes/replies/template.php:78
+msgid "Reply reverted to draft."
+msgstr ""
+
+#: includes/replies/template.php:79
+msgid "Reply scheduled."
+msgstr ""
+
+#: includes/replies/template.php:552
+#: templates/default/bbpress/form-reply.php:30
+msgid "Reply To: %s"
+msgstr ""
+
+#: includes/replies/template.php:764
+msgid "This reply was modified %1$s by %2$s. Reason: %3$s"
+msgstr ""
+
+#: includes/replies/template.php:766
+msgid "This reply was modified %1$s by %2$s."
+msgstr ""
+
+#: includes/replies/template.php:1196 includes/topics/template.php:1429
+#: includes/users/template.php:2005
+msgid "View %s's profile"
+msgstr ""
+
+#: includes/replies/template.php:1197 includes/topics/template.php:1430
+#: includes/users/template.php:2006
+msgid "Visit %s's website"
+msgstr ""
+
+#: includes/replies/template.php:1653
+#: templates/default/bbpress/form-user-passwords.php:31
+msgid "Cancel"
+msgstr ""
+
+#: includes/replies/template.php:1963 includes/topics/template.php:2517
+#: templates/default/bbpress/form-topic-tag.php:100
+#: templates/default/bbpress/form-topic-tag.php:117
+msgid "Delete"
+msgstr ""
+
+#: includes/replies/template.php:1988 includes/topics/template.php:2538
+msgid "Are you sure you want to delete that permanently?"
+msgstr ""
+
+#: includes/replies/template.php:2085
+msgid "Move"
+msgstr ""
+
+#: includes/replies/template.php:2086
+msgid "Move this reply"
+msgstr ""
+
+#: includes/replies/template.php:2144
+msgid "Split"
+msgstr ""
+
+#: includes/replies/template.php:2145
+msgid "Split the topic from this reply"
+msgstr ""
+
+#: includes/replies/template.php:2379
+msgid "Viewing %1$s reply thread"
+msgid_plural "Viewing %1$s reply threads"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/replies/template.php:2386
+msgid "Viewing %1$s reply"
+msgid_plural "Viewing %1$s replies"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/replies/template.php:2390
+msgid "Viewing %2$s replies (of %4$s total)"
+msgid_plural "Viewing %1$s replies - %2$s through %3$s (of %4$s total)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/replies/template.php:2398
+msgid "Viewing %1$s post"
+msgid_plural "Viewing %1$s posts"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/replies/template.php:2402
+msgid "Viewing %2$s post (of %4$s total)"
+msgid_plural "Viewing %1$s posts - %2$s through %3$s (of %4$s total)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/search/template.php:179
+msgid "Search Results for '%s'"
+msgstr ""
+
+#: includes/search/template.php:414
+msgid "Viewing %1$s result"
+msgid_plural "Viewing %1$s results"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/search/template.php:418
+msgid "Viewing %2$s results (of %4$s total)"
+msgid_plural "Viewing %1$s results - %2$s through %3$s (of %4$s total)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/topics/functions.php:132
+msgid "<strong>Error</strong>: You do not have permission to create new topics."
+msgstr ""
+
+#: includes/topics/functions.php:158 includes/topics/functions.php:530
+msgid "<strong>Error</strong>: Your topic needs a title."
+msgstr ""
+
+#: includes/topics/functions.php:177 includes/topics/functions.php:549
+msgid "<strong>Error</strong>: Your topic cannot be empty."
+msgstr ""
+
+#: includes/topics/functions.php:223
+msgid ""
+"<strong>Error</strong>: This forum is a category. No topics can be created "
+"in this forum."
+msgstr ""
+
+#: includes/topics/functions.php:230 includes/topics/functions.php:505
+msgid "<strong>Error</strong>: This forum has been closed to new topics."
+msgstr ""
+
+#: includes/topics/functions.php:235 includes/topics/functions.php:510
+msgid ""
+"<strong>Error</strong>: This forum is private and you do not have the "
+"capability to read or create new topics in it."
+msgstr ""
+
+#: includes/topics/functions.php:239 includes/topics/functions.php:514
+msgid ""
+"<strong>Error</strong>: This forum is hidden and you do not have the "
+"capability to read or create new topics in it."
+msgstr ""
+
+#: includes/topics/functions.php:253
+msgid ""
+"<strong>Error</strong>: Duplicate topic detected; it looks as though "
+"you&#8217;ve already said that."
+msgstr ""
+
+#: includes/topics/functions.php:259
+msgid "<strong>Error</strong>: Your topic cannot be created at this time."
+msgstr ""
+
+#: includes/topics/functions.php:404
+msgid "<strong>Error</strong>: The topic was not created."
+msgstr ""
+
+#: includes/topics/functions.php:430 includes/topics/functions.php:1084
+msgid "<strong>Error</strong>: Topic ID not found."
+msgstr ""
+
+#: includes/topics/functions.php:441
+msgid "<strong>Error</strong>: The topic you want to edit was not found."
+msgstr ""
+
+#: includes/topics/functions.php:452
+msgid "<strong>Error</strong>: You do not have permission to edit that topic."
+msgstr ""
+
+#: includes/topics/functions.php:498
+msgid ""
+"<strong>Error</strong>: This forum is a category. No topics can be created "
+"in it."
+msgstr ""
+
+#: includes/topics/functions.php:555
+msgid "<strong>Error</strong>: Your topic cannot be edited at this time."
+msgstr ""
+
+#: includes/topics/functions.php:1096
+msgid "<strong>Error</strong>: The topic you want to merge was not found."
+msgstr ""
+
+#: includes/topics/functions.php:1110
+msgid "<strong>Error</strong>: Destination topic ID not found."
+msgstr ""
+
+#: includes/topics/functions.php:1117
+msgid "<strong>Error</strong>: The topic you want to merge to was not found."
+msgstr ""
+
+#: includes/topics/functions.php:1342
+msgid "<strong>Error</strong>: A reply ID is required."
+msgstr ""
+
+#: includes/topics/functions.php:1351
+msgid "<strong>Error</strong>: The reply you want to split from was not found."
+msgstr ""
+
+#: includes/topics/functions.php:1361
+msgid "<strong>Error</strong>: The topic you want to split was not found."
+msgstr ""
+
+#: includes/topics/functions.php:1382
+msgid "<strong>Error</strong>: You need to choose a valid split option."
+msgstr ""
+
+#: includes/topics/functions.php:1405
+msgid "<strong>Error</strong>: The topic you want to split to was not found."
+msgstr ""
+
+#: includes/topics/functions.php:1690
+msgid ""
+"<strong>Error</strong>: The following problem(s) have been found while "
+"getting the tag: %s"
+msgstr ""
+
+#: includes/topics/functions.php:1708 includes/topics/functions.php:1752
+msgid "<strong>Error</strong>: You do not have permission to edit the topic tags."
+msgstr ""
+
+#: includes/topics/functions.php:1714 includes/topics/functions.php:1758
+msgid "<strong>Error</strong>: You need to enter a tag name."
+msgstr ""
+
+#: includes/topics/functions.php:1729
+msgid ""
+"<strong>Error</strong>: The following problem(s) have been found while "
+"updating the tag: %s"
+msgstr ""
+
+#: includes/topics/functions.php:1769 includes/topics/functions.php:1790
+msgid ""
+"<strong>Error</strong>: The following problem(s) have been found while "
+"merging the tags: %s"
+msgstr ""
+
+#: includes/topics/functions.php:1778
+msgid "<strong>Error</strong>: The tags which are being merged can not be the same."
+msgstr ""
+
+#: includes/topics/functions.php:1813
+msgid "<strong>Error</strong>: You do not have permission to delete the topic tags."
+msgstr ""
+
+#: includes/topics/functions.php:1822
+msgid ""
+"<strong>Error</strong>: The following problem(s) have been found while "
+"deleting the tag: %s"
+msgstr ""
+
+#: includes/topics/functions.php:2018
+msgid "<strong>Error</strong>: This topic could not be found or no longer exists."
+msgstr ""
+
+#: includes/topics/functions.php:2108
+msgid "<strong>Error</strong>: There was a problem approving the topic."
+msgstr ""
+
+#: includes/topics/functions.php:2109
+msgid "<strong>Error</strong>: There was a problem unapproving the topic."
+msgstr ""
+
+#: includes/topics/functions.php:2126
+msgid "<strong>Error</strong>: There was a problem closing the topic."
+msgstr ""
+
+#: includes/topics/functions.php:2127
+msgid "<strong>Error</strong>: There was a problem opening the topic."
+msgstr ""
+
+#: includes/topics/functions.php:2145
+msgid "<strong>Error</strong>: There was a problem unsticking the topic."
+msgstr ""
+
+#: includes/topics/functions.php:2146
+msgid "<strong>Error</strong>: There was a problem sticking the topic."
+msgstr ""
+
+#: includes/topics/functions.php:2164
+msgid "<strong>Error</strong>: There was a problem unmarking the topic as spam."
+msgstr ""
+
+#: includes/topics/functions.php:2165
+msgid "<strong>Error</strong>: There was a problem marking the topic as spam."
+msgstr ""
+
+#: includes/topics/functions.php:2178
+msgid "<strong>Error</strong>: There was a problem trashing the topic."
+msgstr ""
+
+#: includes/topics/functions.php:2189
+msgid "<strong>Error</strong>: There was a problem untrashing the topic."
+msgstr ""
+
+#: includes/topics/functions.php:2198
+msgid "<strong>Error</strong>: There was a problem deleting the topic."
+msgstr ""
+
+#: includes/topics/template.php:52 templates/default/bbpress/form-topic.php:48
+msgid "Create New Topic"
+msgstr ""
+
+#: includes/topics/template.php:54
+msgid "Edit Topic"
+msgstr ""
+
+#: includes/topics/template.php:55
+msgid "New Topic"
+msgstr ""
+
+#: includes/topics/template.php:56 includes/topics/template.php:57
+msgid "View Topic"
+msgstr ""
+
+#: includes/topics/template.php:58
+msgid "View Topics"
+msgstr ""
+
+#: includes/topics/template.php:59
+msgid "Search Topics"
+msgstr ""
+
+#: includes/topics/template.php:60
+msgid "No topics found"
+msgstr ""
+
+#: includes/topics/template.php:61
+msgid "No topics found in Trash"
+msgstr ""
+
+#: includes/topics/template.php:62
+msgid "Filter topics list"
+msgstr ""
+
+#: includes/topics/template.php:63
+msgid "Topics list"
+msgstr ""
+
+#: includes/topics/template.php:64
+msgid "Topics list navigation"
+msgstr ""
+
+#: includes/topics/template.php:66
+msgid "Forum Topics"
+msgstr ""
+
+#: includes/topics/template.php:68
+msgid "Insert into topic"
+msgstr ""
+
+#: includes/topics/template.php:69
+msgid "Uploaded to this topic"
+msgstr ""
+
+#: includes/topics/template.php:70
+msgid "Topic Image"
+msgstr ""
+
+#: includes/topics/template.php:71
+msgid "Set topic image"
+msgstr ""
+
+#: includes/topics/template.php:72
+msgid "Remove topic image"
+msgstr ""
+
+#: includes/topics/template.php:73
+msgid "Use as topic image"
+msgstr ""
+
+#: includes/topics/template.php:74
+msgid "Topic published."
+msgstr ""
+
+#: includes/topics/template.php:75
+msgid "Topic published privately."
+msgstr ""
+
+#: includes/topics/template.php:76
+msgid "Topic reverted to draft."
+msgstr ""
+
+#: includes/topics/template.php:77
+msgid "Topic scheduled."
+msgstr ""
+
+#: includes/topics/template.php:928
+msgid "This topic was modified %1$s by %2$s. Reason: %3$s"
+msgstr ""
+
+#: includes/topics/template.php:930
+msgid "This topic was modified %1$s by %2$s."
+msgstr ""
+
+#: includes/topics/template.php:1829 includes/users/template.php:1081
+msgid "Favorite"
+msgstr ""
+
+#: includes/topics/template.php:1830 includes/users/template.php:1082
+msgid "Unfavorite"
+msgstr ""
+
+#: includes/topics/template.php:2195
+msgid "Tagged:"
+msgstr ""
+
+#: includes/topics/template.php:2756
+#: templates/default/bbpress/form-topic-tag.php:69
+#: templates/default/bbpress/form-topic-tag.php:85
+msgid "Merge"
+msgstr ""
+
+#: includes/topics/template.php:2995
+msgid "Viewing %1$s topic"
+msgid_plural "Viewing %1$s topics"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/topics/template.php:2999
+msgid "Viewing topic %2$s (of %4$s total)"
+msgid_plural "Viewing %1$s topics - %2$s through %3$s (of %4$s total)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/topics/template.php:3056
+msgid "This topic is marked as spam."
+msgstr ""
+
+#: includes/topics/template.php:3061
+msgid "This topic is in the trash."
+msgstr ""
+
+#: includes/topics/template.php:3066 includes/topics/template.php:3334
+msgid "This topic is pending moderation."
+msgstr ""
+
+#: includes/topics/template.php:3316
+msgid "%s voice"
+msgid_plural "%s voices"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/topics/template.php:3322
+msgid "This topic has %1$s, %2$s, and was last updated %3$s by %4$s."
+msgstr ""
+
+#: includes/topics/template.php:3326
+msgid "This topic has %1$s and %2$s."
+msgstr ""
+
+#: includes/topics/template.php:3330
+msgid "This topic has no replies."
+msgstr ""
+
+#: includes/topics/template.php:3338
+msgid "This topic is empty."
+msgstr ""
+
+#: includes/topics/template.php:3388
+msgid "Search Tags"
+msgstr ""
+
+#: includes/topics/template.php:3389
+msgid "Popular Tags"
+msgstr ""
+
+#: includes/topics/template.php:3390
+msgid "All Tags"
+msgstr ""
+
+#: includes/topics/template.php:3391
+msgid "Parent Tag"
+msgstr ""
+
+#: includes/topics/template.php:3392
+msgid "Parent Tag:"
+msgstr ""
+
+#: includes/topics/template.php:3393
+msgid "Edit Tag"
+msgstr ""
+
+#: includes/topics/template.php:3394
+msgid "View Topic Tag"
+msgstr ""
+
+#: includes/topics/template.php:3395
+msgid "Update Tag"
+msgstr ""
+
+#: includes/topics/template.php:3396
+msgid "Add New Tag"
+msgstr ""
+
+#: includes/topics/template.php:3397
+msgid "New Tag Name"
+msgstr ""
+
+#: includes/topics/template.php:3398
+msgid "Separate topic tags with commas"
+msgstr ""
+
+#: includes/topics/template.php:3399
+msgid "Add or remove tags"
+msgstr ""
+
+#: includes/topics/template.php:3400
+msgid "Choose from the most used tags"
+msgstr ""
+
+#: includes/topics/template.php:3401
+msgid "No topic tags found."
+msgstr ""
+
+#: includes/topics/template.php:3402
+msgid "No topic tags"
+msgstr ""
+
+#: includes/topics/template.php:3403
+msgid "Topic tags list navigation"
+msgstr ""
+
+#: includes/topics/template.php:3404
+msgid "Topic tags list"
+msgstr ""
+
+#: includes/topics/template.php:3405
+msgid "Most used topic tags"
+msgstr ""
+
+#: includes/topics/template.php:3406
+msgid "&larr; Back to Tags"
+msgstr ""
+
+#: includes/topics/template.php:4021
+msgid "Nobody"
+msgstr ""
+
+#: includes/topics/template.php:4025
+msgid "%1$s is currently editing this topic."
+msgstr ""
+
+#: includes/users/engagements.php:608
+msgid ""
+"<strong>Error</strong>: No topic was found. Which topic are you "
+"marking/unmarking as favorite?"
+msgstr ""
+
+#: includes/users/engagements.php:616
+msgid ""
+"<strong>Error</strong>: You do not have permission to edit favorites for "
+"that user."
+msgstr ""
+
+#: includes/users/engagements.php:657
+msgid ""
+"<strong>Error</strong>: There was a problem removing that topic from "
+"favorites."
+msgstr ""
+
+#: includes/users/engagements.php:659
+msgid "<strong>Error</strong>: There was a problem favoriting that topic."
+msgstr ""
+
+#: includes/users/engagements.php:849
+msgid ""
+"<strong>Error</strong>: Not found. What are you subscribing/unsubscribing "
+"to?"
+msgstr ""
+
+#: includes/users/engagements.php:857
+msgid ""
+"<strong>Error</strong>: You do not have permission to edit subscriptions of "
+"that user."
+msgstr ""
+
+#: includes/users/engagements.php:900
+msgid "<strong>Error</strong>: There was a problem unsubscribing."
+msgstr ""
+
+#: includes/users/engagements.php:902
+msgid "<strong>Error</strong>: There was a problem subscribing."
+msgstr ""
+
+#: includes/users/functions.php:208 includes/users/functions.php:220
+msgid "<strong>Error</strong>: That is not a valid email address."
+msgstr ""
+
+#: includes/users/functions.php:226 includes/users/functions.php:343
+msgid "<strong>Error</strong>: That email address is already in use."
+msgstr ""
+
+#: includes/users/functions.php:406
+msgid "<strong>Error</strong>: An error occurred while updating your email address."
+msgstr ""
+
+#: includes/users/functions.php:418
+msgid ""
+"%1$s\n"
+"\n"
+"Someone requested a change to the email address on your account.\n"
+"\n"
+"Please click the following link to confirm this change:\n"
+"%2$s\n"
+"\n"
+"If you did not request this, you can safely ignore and delete this "
+"notification.\n"
+"\n"
+"This email was sent to: %3$s\n"
+"\n"
+"Regards,\n"
+"The %4$s Team\n"
+"%5$s"
+msgstr ""
+
+#: includes/users/functions.php:453
+msgid "[%s] New Email Address"
+msgstr ""
+
+#: includes/users/signups.php:209
+msgid "<strong>Error</strong>: Empty role."
+msgstr ""
+
+#: includes/users/signups.php:214
+msgid "<strong>Error</strong>: Invalid role."
+msgstr ""
+
+#: includes/users/template.php:683
+msgid "Guest"
+msgstr ""
+
+#: includes/users/template.php:687
+msgid "Inactive"
+msgstr ""
+
+#: includes/users/template.php:697
+msgid "Member"
+msgstr ""
+
+#: includes/users/template.php:738
+msgid "Admin"
+msgstr ""
+
+#: includes/users/template.php:1375
+msgid "User updated."
+msgstr ""
+
+#: includes/users/template.php:1419
+msgid "There is a pending email address change to %1$s. %2$s"
+msgstr ""
+
+#: includes/users/template.php:1436
+msgid "You have super admin privileges."
+msgstr ""
+
+#: includes/users/template.php:1436
+msgid "This user has super admin privileges."
+msgstr ""
+
+#: includes/users/template.php:1510
+msgid "&mdash; No role for this site &mdash;"
+msgstr ""
+
+#: includes/users/template.php:1830
+msgid "You are now logged out."
+msgstr ""
+
+#: includes/users/template.php:1834
+msgid "New user registration is currently not allowed."
+msgstr ""
+
+#: includes/users/template.php:1843
+msgid "Check your e-mail for the confirmation link."
+msgstr ""
+
+#: includes/users/template.php:1848
+msgid "Check your e-mail for your new password."
+msgstr ""
+
+#: includes/users/template.php:1853
+msgid "Registration complete. Please check your e-mail."
+msgstr ""
+
+#: includes/users/template.php:2375
+msgid "Moderators:"
+msgstr ""
+
+#: templates/default/bbpress/alert-topic-lock.php:21
+msgid "Leave"
+msgstr ""
+
+#: templates/default/bbpress/alert-topic-lock.php:22
+msgid "Stay"
+msgstr ""
+
+#: templates/default/bbpress/content-statistics.php:20
+msgid "Registered Users"
+msgstr ""
+
+#: templates/default/bbpress/content-statistics.php:47
+msgid "Empty Topic Tags"
+msgstr ""
+
+#: templates/default/bbpress/content-statistics.php:56
+msgid "Hidden Topics"
+msgstr ""
+
+#: templates/default/bbpress/content-statistics.php:67
+msgid "Hidden Replies"
+msgstr ""
+
+#: templates/default/bbpress/feedback-logged-in.php:17
+msgid "You are already logged in."
+msgstr ""
+
+#: templates/default/bbpress/feedback-no-access.php:16
+msgid "Private"
+msgstr ""
+
+#: templates/default/bbpress/feedback-no-access.php:20
+msgid "You do not have permission to view this forum."
+msgstr ""
+
+#: templates/default/bbpress/feedback-no-forums.php:17
+msgid "Oh, bother! No forums were found here."
+msgstr ""
+
+#: templates/default/bbpress/feedback-no-replies.php:17
+msgid "Oh, bother! No replies were found here."
+msgstr ""
+
+#: templates/default/bbpress/feedback-no-search.php:17
+msgid "Oh, bother! No search results were found here."
+msgstr ""
+
+#: templates/default/bbpress/feedback-no-topics.php:17
+msgid "Oh, bother! No topics were found here."
+msgstr ""
+
+#: templates/default/bbpress/form-anonymous.php:18
+msgid "Your information:"
+msgstr ""
+
+#: templates/default/bbpress/form-anonymous.php:23
+msgid "Name (required):"
+msgstr ""
+
+#: templates/default/bbpress/form-anonymous.php:28
+msgid "Mail (will not be published) (required):"
+msgstr ""
+
+#: templates/default/bbpress/form-forum.php:36
+#: templates/default/bbpress/form-topic.php:44
+msgid "Now Editing &ldquo;%s&rdquo;"
+msgstr ""
+
+#: templates/default/bbpress/form-forum.php:39
+msgid "Create New Forum in &ldquo;%s&rdquo;"
+msgstr ""
+
+#: templates/default/bbpress/form-forum.php:52
+#: templates/default/bbpress/form-reply.php:48
+msgid ""
+"This forum is closed to new content, however your posting capabilities "
+"still allow you to post."
+msgstr ""
+
+#: templates/default/bbpress/form-forum.php:62
+#: templates/default/bbpress/form-reply.php:58
+#: templates/default/bbpress/form-topic.php:70
+msgid "Your account has the ability to post unrestricted HTML content."
+msgstr ""
+
+#: templates/default/bbpress/form-forum.php:75
+msgid "Forum Name (Maximum Length: %d):"
+msgstr ""
+
+#: templates/default/bbpress/form-forum.php:90
+#: templates/default/bbpress/form-reply.php:79
+msgid ""
+"You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> "
+"tags and attributes:"
+msgstr ""
+
+#: templates/default/bbpress/form-forum.php:101
+msgid "Forum Moderators:"
+msgstr ""
+
+#: templates/default/bbpress/form-forum.php:112
+msgid "Forum Type:"
+msgstr ""
+
+#: templates/default/bbpress/form-forum.php:159
+#: templates/default/bbpress/form-reply-move.php:81
+#: templates/default/bbpress/form-reply.php:176
+#: templates/default/bbpress/form-topic-merge.php:103
+#: templates/default/bbpress/form-topic-split.php:107
+#: templates/default/bbpress/form-topic.php:213
+msgid "Submit"
+msgstr ""
+
+#: templates/default/bbpress/form-forum.php:183
+msgid "The forum &#8216;%s&#8217; is closed to new content."
+msgstr ""
+
+#: templates/default/bbpress/form-forum.php:194
+msgid "You cannot create new forums."
+msgstr ""
+
+#: templates/default/bbpress/form-forum.php:195
+msgid "You must be logged in to create new forums."
+msgstr ""
+
+#: templates/default/bbpress/form-protected.php:17
+msgid "Protected"
+msgstr ""
+
+#: templates/default/bbpress/form-reply-move.php:27
+msgid "Move reply \"%s\""
+msgstr ""
+
+#: templates/default/bbpress/form-reply-move.php:33
+msgid ""
+"You can either make this reply a new topic with a new title, or merge it "
+"into an existing topic."
+msgstr ""
+
+#: templates/default/bbpress/form-reply-move.php:39
+msgid ""
+"If you choose an existing topic, replies will be ordered by the time and "
+"date they were created."
+msgstr ""
+
+#: templates/default/bbpress/form-reply-move.php:44
+msgid "Move Method"
+msgstr ""
+
+#: templates/default/bbpress/form-reply-move.php:48
+#: templates/default/bbpress/form-topic-split.php:48
+msgid "New topic in %s titled:"
+msgstr ""
+
+#: templates/default/bbpress/form-reply-move.php:49
+msgid "Moved: %s"
+msgstr ""
+
+#: templates/default/bbpress/form-reply-move.php:56
+#: templates/default/bbpress/form-topic-split.php:56
+msgid "Use an existing topic in this forum:"
+msgstr ""
+
+#: templates/default/bbpress/form-reply-move.php:95
+msgid "You do not have permission to edit this reply."
+msgstr ""
+
+#: templates/default/bbpress/form-reply-move.php:96
+msgid "You cannot edit this reply."
+msgstr ""
+
+#: templates/default/bbpress/form-reply-search.php:18
+msgid "Search replies:"
+msgstr ""
+
+#: templates/default/bbpress/form-reply.php:30
+msgid "Reply #%1$s in %2$s"
+msgstr ""
+
+#: templates/default/bbpress/form-reply.php:38
+msgid ""
+"This topic is marked as closed to new replies, however your posting "
+"capabilities still allow you to reply."
+msgstr ""
+
+#: templates/default/bbpress/form-reply.php:90
+msgid "Tags:"
+msgstr ""
+
+#: templates/default/bbpress/form-reply.php:108
+#: templates/default/bbpress/form-topic.php:174
+msgid "Notify the author of follow-up replies via email"
+msgstr ""
+
+#: templates/default/bbpress/form-reply.php:112
+#: templates/default/bbpress/form-topic.php:178
+msgid "Notify me of follow-up replies via email"
+msgstr ""
+
+#: templates/default/bbpress/form-reply.php:138
+msgid "Reply Status:"
+msgstr ""
+
+#: templates/default/bbpress/form-reply.php:153
+#: templates/default/bbpress/form-topic.php:194
+msgid "Keep a log of this edit:"
+msgstr ""
+
+#: templates/default/bbpress/form-reply.php:157
+#: templates/default/bbpress/form-topic.php:198
+msgid "Optional reason for editing:"
+msgstr ""
+
+#: templates/default/bbpress/form-reply.php:200
+msgid "The topic &#8216;%s&#8217; is closed to new replies."
+msgstr ""
+
+#: templates/default/bbpress/form-reply.php:210
+#: templates/default/bbpress/form-topic.php:237
+msgid "The forum &#8216;%s&#8217; is closed to new topics and replies."
+msgstr ""
+
+#: templates/default/bbpress/form-reply.php:221
+msgid "You cannot reply to this topic."
+msgstr ""
+
+#: templates/default/bbpress/form-reply.php:222
+msgid "You must be logged in to reply to this topic."
+msgstr ""
+
+#: templates/default/bbpress/form-search.php:18
+msgid "Search for:"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-merge.php:27
+msgid "Merge topic \"%s\""
+msgstr ""
+
+#: templates/default/bbpress/form-topic-merge.php:33
+msgid ""
+"Select the topic to merge this one into. The destination topic will remain "
+"the lead topic, and this one will change into a reply."
+msgstr ""
+
+#: templates/default/bbpress/form-topic-merge.php:34
+msgid ""
+"To keep this topic as the lead, go to the other topic and use the merge "
+"tool from there instead."
+msgstr ""
+
+#: templates/default/bbpress/form-topic-merge.php:40
+msgid ""
+"Replies to both topics are merged chronologically, ordered by the time and "
+"date they were published. Topics may be updated to a 1 second difference to "
+"maintain chronological order based on the merge direction."
+msgstr ""
+
+#: templates/default/bbpress/form-topic-merge.php:45
+msgid "Destination"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-merge.php:49
+msgid "Merge with this topic:"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-merge.php:64
+msgid "There are no other topics in this forum to merge with."
+msgstr ""
+
+#: templates/default/bbpress/form-topic-merge.php:72
+#: templates/default/bbpress/form-topic-split.php:76
+msgid "Topic Extras"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-merge.php:79
+msgid "Merge topic subscribers"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-merge.php:84
+msgid "Merge topic favoriters"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-merge.php:89
+msgid "Merge topic tags"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-merge.php:117
+#: templates/default/bbpress/form-topic-split.php:121
+msgid "You do not have permission to edit this topic."
+msgstr ""
+
+#: templates/default/bbpress/form-topic-merge.php:118
+#: templates/default/bbpress/form-topic-split.php:122
+msgid "You cannot edit this topic."
+msgstr ""
+
+#: templates/default/bbpress/form-topic-search.php:18
+msgid "Search topics:"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-split.php:27
+msgid "Split topic \"%s\""
+msgstr ""
+
+#: templates/default/bbpress/form-topic-split.php:33
+msgid ""
+"When you split a topic, you are slicing it in half starting with the reply "
+"you just selected. Choose to use that reply as a new topic with a new "
+"title, or merge those replies into an existing topic."
+msgstr ""
+
+#: templates/default/bbpress/form-topic-split.php:39
+msgid ""
+"If you use the existing topic option, replies within both topics will be "
+"merged chronologically. The order of the merged replies is based on the "
+"time and date they were posted."
+msgstr ""
+
+#: templates/default/bbpress/form-topic-split.php:44
+msgid "Split Method"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-split.php:49
+msgid "Split: %s"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-split.php:83
+msgid "Copy subscribers to the new topic"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-split.php:88
+msgid "Copy favoriters to the new topic"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-split.php:93
+msgid "Copy topic tags to the new topic"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-tag.php:19
+msgid "Manage Tag: \"%s\""
+msgstr ""
+
+#: templates/default/bbpress/form-topic-tag.php:23
+msgid "Rename"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-tag.php:27
+msgid "Leave the slug empty to have one automatically generated."
+msgstr ""
+
+#: templates/default/bbpress/form-topic-tag.php:33
+msgid ""
+"Changing the slug affects its permalink. Any links to the old slug will "
+"stop working."
+msgstr ""
+
+#: templates/default/bbpress/form-topic-tag.php:45
+msgid "Slug:"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-tag.php:50
+msgid "Description:"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-tag.php:55
+msgid "Update"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-tag.php:73
+msgid "Merging tags together cannot be undone."
+msgstr ""
+
+#: templates/default/bbpress/form-topic-tag.php:80
+msgid "Existing tag:"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-tag.php:85
+msgid "Are you sure you want to merge the \"%s\" tag into the tag you specified?"
+msgstr ""
+
+#: templates/default/bbpress/form-topic-tag.php:104
+msgid "This does not delete your topics. Only the tag itself is deleted."
+msgstr ""
+
+#: templates/default/bbpress/form-topic-tag.php:109
+msgid "Deleting a tag cannot be undone."
+msgstr ""
+
+#: templates/default/bbpress/form-topic-tag.php:110
+msgid "Any links to this tag will no longer function."
+msgstr ""
+
+#: templates/default/bbpress/form-topic-tag.php:117
+msgid ""
+"Are you sure you want to delete the \"%s\" tag? This is permanent and "
+"cannot be undone."
+msgstr ""
+
+#: templates/default/bbpress/form-topic.php:47
+msgid "Create New Topic in &ldquo;%s&rdquo;"
+msgstr ""
+
+#: templates/default/bbpress/form-topic.php:60
+msgid ""
+"This forum is marked as closed to new topics, however your posting "
+"capabilities still allow you to create a topic."
+msgstr ""
+
+#: templates/default/bbpress/form-topic.php:85
+msgid "Topic Title (Maximum Length: %d):"
+msgstr ""
+
+#: templates/default/bbpress/form-topic.php:100
+msgid "You may use these %s tags and attributes:"
+msgstr ""
+
+#: templates/default/bbpress/form-topic.php:111
+msgid "Topic Tags:"
+msgstr ""
+
+#: templates/default/bbpress/form-topic.php:143
+msgid "Topic Type:"
+msgstr ""
+
+#: templates/default/bbpress/form-topic.php:155
+msgid "Topic Status:"
+msgstr ""
+
+#: templates/default/bbpress/form-topic.php:248
+msgid "You cannot create new topics."
+msgstr ""
+
+#: templates/default/bbpress/form-topic.php:249
+msgid "You must be logged in to create new topics."
+msgstr ""
+
+#: templates/default/bbpress/form-user-edit.php:27
+msgid "First Name"
+msgstr ""
+
+#: templates/default/bbpress/form-user-edit.php:32
+msgid "Last Name"
+msgstr ""
+
+#: templates/default/bbpress/form-user-edit.php:37
+msgid "Nickname"
+msgstr ""
+
+#: templates/default/bbpress/form-user-edit.php:42
+msgid "Display Name"
+msgstr ""
+
+#: templates/default/bbpress/form-user-edit.php:52
+#: templates/default/bbpress/form-user-edit.php:55
+msgid "Contact Info"
+msgstr ""
+
+#: templates/default/bbpress/form-user-edit.php:78
+#: templates/default/bbpress/form-user-edit.php:84
+msgid "About Yourself"
+msgstr ""
+
+#: templates/default/bbpress/form-user-edit.php:79
+#: templates/default/bbpress/form-user-edit.php:85
+msgid "About the user"
+msgstr ""
+
+#: templates/default/bbpress/form-user-edit.php:91
+msgid "Biographical Info"
+msgstr ""
+
+#: templates/default/bbpress/form-user-edit.php:99
+#: templates/default/bbpress/form-user-edit.php:102
+msgid "Account"
+msgstr ""
+
+#: templates/default/bbpress/form-user-edit.php:119
+msgid "Language"
+msgstr ""
+
+#: templates/default/bbpress/form-user-edit.php:131
+#: templates/default/bbpress/form-user-edit.php:134
+msgid "User Role"
+msgstr ""
+
+#: templates/default/bbpress/form-user-edit.php:141
+msgid "Network Role"
+msgstr ""
+
+#: templates/default/bbpress/form-user-edit.php:144
+msgid "Grant this user super admin privileges for the Network."
+msgstr ""
+
+#: templates/default/bbpress/form-user-edit.php:167
+msgid "Update Profile"
+msgstr ""
+
+#: templates/default/bbpress/form-user-edit.php:168
+msgid "Update User"
+msgstr ""
+
+#: templates/default/bbpress/form-user-lost-pass.php:21
+msgid "Username or Email"
+msgstr ""
+
+#: templates/default/bbpress/form-user-lost-pass.php:30
+msgid "Reset My Password"
+msgstr ""
+
+#: templates/default/bbpress/form-user-passwords.php:18
+msgid "Generate Password"
+msgstr ""
+
+#: templates/default/bbpress/form-user-passwords.php:26
+msgid "Hide password"
+msgstr ""
+
+#: templates/default/bbpress/form-user-passwords.php:28
+msgid "Hide"
+msgstr ""
+
+#: templates/default/bbpress/form-user-passwords.php:29
+msgid "Cancel password change"
+msgstr ""
+
+#: templates/default/bbpress/form-user-passwords.php:40
+msgid "Repeat New Password"
+msgstr ""
+
+#: templates/default/bbpress/form-user-passwords.php:42
+msgid "Type your new password again."
+msgstr ""
+
+#: templates/default/bbpress/form-user-passwords.php:46
+msgid "Confirm"
+msgstr ""
+
+#: templates/default/bbpress/form-user-register.php:17
+msgid "Create an Account"
+msgstr ""
+
+#: templates/default/bbpress/form-user-register.php:23
+msgid "Your username must be unique, and cannot be changed later."
+msgstr ""
+
+#: templates/default/bbpress/form-user-register.php:24
+msgid ""
+"We use your email address to email you a secure password and verify your "
+"account."
+msgstr ""
+
+#: templates/default/bbpress/form-user-roles.php:16
+msgid "Blog Role"
+msgstr ""
+
+#: templates/default/bbpress/loop-search-forum.php:17
+msgid "Last updated %s"
+msgstr ""
+
+#: templates/default/bbpress/loop-search-reply.php:22
+msgid "In reply to: "
+msgstr ""
+
+#: templates/default/bbpress/loop-search-topic.php:32
+msgid "in group forum "
+msgstr ""
+
+#: templates/default/bbpress/loop-search-topic.php:36
+msgid "in forum "
+msgstr ""
+
+#: templates/default/bbpress/loop-search.php:23
+#: templates/default/bbpress/loop-search.php:45
+msgid "Search Results"
+msgstr ""
+
+#: templates/default/bbpress/loop-single-reply.php:22
+msgid "in reply to: "
+msgstr ""
+
+#: templates/default/bbpress/loop-single-topic.php:62
+msgid "Started by: %1$s"
+msgstr ""
+
+#: templates/default/bbpress/loop-single-topic.php:70
+msgid "in: %1$s"
+msgstr ""
+
+#: templates/default/bbpress/user-details.php:30
+#: templates/default/bbpress/user-profile.php:18
+msgid "Profile"
+msgstr ""
+
+#: templates/default/bbpress/user-details.php:36
+msgid "%s's Topics Started"
+msgstr ""
+
+#: templates/default/bbpress/user-details.php:42
+msgid "%s's Replies Created"
+msgstr ""
+
+#: templates/default/bbpress/user-details.php:49
+msgid "%s's Engagements"
+msgstr ""
+
+#: templates/default/bbpress/user-engagements.php:19
+msgid "Topics Engaged In"
+msgstr ""
+
+#: templates/default/bbpress/user-favorites.php:19
+msgid "Favorite Forum Topics"
+msgstr ""
+
+#: templates/default/bbpress/user-profile.php:19
+msgid "Registered: %s"
+msgstr ""
+
+#: templates/default/bbpress/user-profile.php:29
+msgid "Website: %s"
+msgstr ""
+
+#: templates/default/bbpress/user-profile.php:38
+msgid "Last Activity: %s"
+msgstr ""
+
+#: templates/default/bbpress/user-profile.php:42
+msgid "Topics Started: %s"
+msgstr ""
+
+#: templates/default/bbpress/user-profile.php:43
+msgid "Replies Created: %s"
+msgstr ""
+
+#: templates/default/bbpress/user-profile.php:44
+msgid "Forum Role: %s"
+msgstr ""
+
+#: templates/default/bbpress/user-replies-created.php:19
+msgid "Forum Replies Created"
+msgstr ""
+
+#: templates/default/bbpress/user-subscriptions.php:23
+msgid "Subscribed Forums"
+msgstr ""
+
+#: templates/default/bbpress/user-topics-created.php:19
+msgid "Forum Topics Started"
+msgstr ""
+
+#: templates/default/bbpress-functions.php:219
+msgid "Something went wrong. Refresh your browser and try again."
+msgstr ""
+
+#: templates/default/bbpress-functions.php:233
+msgid "Favorites are no longer active."
+msgstr ""
+
+#: templates/default/bbpress-functions.php:238
+msgid "Please login to favorite."
+msgstr ""
+
+#: templates/default/bbpress-functions.php:248
+#: templates/default/bbpress-functions.php:311
+msgid "You do not have permission to do this."
+msgstr ""
+
+#: templates/default/bbpress-functions.php:258
+msgid "Favorite failed."
+msgstr ""
+
+#: templates/default/bbpress-functions.php:263
+#: templates/default/bbpress-functions.php:326
+msgid "Are you sure you meant to do that?"
+msgstr ""
+
+#: templates/default/bbpress-functions.php:273
+#: templates/default/bbpress-functions.php:336
+msgid "The request was unsuccessful. Please try again."
+msgstr ""
+
+#: templates/default/bbpress-functions.php:296
+msgid "Subscriptions are no longer active."
+msgstr ""
+
+#: templates/default/bbpress-functions.php:301
+msgid "Please login to subscribe."
+msgstr ""
+
+#: templates/default/bbpress-functions.php:321
+msgid "Subscription failed."
+msgstr ""
+
+#: templates/default/extras/page-forum-statistics.php:22
+msgid "Here are the statistics and popular topics of our forums."
+msgstr ""
+
+#: templates/default/extras/page-topic-tags.php:22
+msgid "This is a collection of tags that are currently popular on our forums."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "bbPress"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://bbpress.org"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "bbPress is forum software with a twist from the creators of WordPress."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "The bbPress Contributors"
+msgstr ""
+
+#: bbpress.php:599
+msgctxt "post"
+msgid "Closed"
+msgstr ""
+
+#: bbpress.php:600
+msgctxt "post"
+msgid "Closed <span class=\"count\">(%s)</span>"
+msgid_plural "Closed <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: bbpress.php:612
+msgctxt "post"
+msgid "Spam"
+msgstr ""
+
+#: bbpress.php:613
+msgctxt "post"
+msgid "Spam <span class=\"count\">(%s)</span>"
+msgid_plural "Spam <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: bbpress.php:626
+msgctxt "post"
+msgid "Orphan"
+msgstr ""
+
+#: bbpress.php:627
+msgctxt "post"
+msgid "Orphan <span class=\"count\">(%s)</span>"
+msgid_plural "Orphans <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: bbpress.php:640
+msgctxt "post"
+msgid "Hidden"
+msgstr ""
+
+#: bbpress.php:641
+msgctxt "post"
+msgid "Hidden <span class=\"count\">(%s)</span>"
+msgid_plural "Hidden <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/classes/class-bbp-admin.php:834
+msgctxt "admin color scheme"
+msgid "Mint"
+msgstr ""
+
+#: includes/admin/classes/class-bbp-admin.php:843
+msgctxt "admin color scheme"
+msgid "Evergreen"
+msgstr ""
+
+#: includes/admin/forums.php:631
+msgctxt "Close a Forum"
+msgid "Close"
+msgstr ""
+
+#: includes/admin/forums.php:633
+msgctxt "Open a Forum"
+msgid "Open"
+msgstr ""
+
+#: includes/admin/replies.php:809
+msgctxt "Unapprove reply"
+msgid "Unapprove"
+msgstr ""
+
+#: includes/admin/replies.php:811
+msgctxt "Approve reply"
+msgid "Approve"
+msgstr ""
+
+#: includes/admin/settings.php:384 includes/replies/template.php:51
+msgctxt "noun"
+msgid "Reply"
+msgstr ""
+
+#: includes/admin/topics.php:985
+msgctxt "Unapprove Topic"
+msgid "Unapprove"
+msgstr ""
+
+#: includes/admin/topics.php:990
+msgctxt "Approve Topic"
+msgid "Approve"
+msgstr ""
+
+#: includes/admin/topics.php:1002
+msgctxt "Close a Topic"
+msgid "Close"
+msgstr ""
+
+#: includes/admin/topics.php:1004
+msgctxt "Open a Topic"
+msgid "Open"
+msgstr ""
+
+#: includes/common/formatting.php:728
+msgctxt "Separator in time since"
+msgid ","
+msgstr ""
+
+#: includes/common/locale.php:44
+#. translators: user role
+msgctxt "User role"
+msgid "Keymaster"
+msgstr ""
+
+#: includes/common/locale.php:47
+#. translators: user role
+msgctxt "User role"
+msgid "Moderator"
+msgstr ""
+
+#: includes/common/locale.php:50
+#. translators: user role
+msgctxt "User role"
+msgid "Participant"
+msgstr ""
+
+#: includes/common/locale.php:53
+#. translators: user role
+msgctxt "User role"
+msgid "Spectator"
+msgstr ""
+
+#: includes/common/locale.php:56
+#. translators: user role
+msgctxt "User role"
+msgid "Blocked"
+msgstr ""
+
+#: includes/common/widgets.php:801
+msgctxt "widgets"
+msgid "by %1$s"
+msgstr ""
+
+#: includes/common/widgets.php:1146
+#. translators: 1: reply author, 2: reply link, 3: reply timestamp
+msgctxt "widgets"
+msgid "%1$s on %2$s %3$s"
+msgstr ""
+
+#: includes/common/widgets.php:1156
+#. translators: 1: reply author, 2: reply link
+msgctxt "widgets"
+msgid "%1$s on %2$s"
+msgstr ""
+
+#: includes/extend/buddypress/groups.php:628
+msgctxt "group admin edit screen"
+msgid "Discussion Forum"
+msgstr ""
+
+#: includes/forums/functions.php:2067
+msgctxt "Open the forum"
+msgid "Open"
+msgstr ""
+
+#: includes/forums/functions.php:2068
+msgctxt "Close the forum"
+msgid "Closed"
+msgstr ""
+
+#: includes/forums/functions.php:2085
+msgctxt "Forum accepts new topics"
+msgid "Forum"
+msgstr ""
+
+#: includes/forums/functions.php:2086
+msgctxt "Forum is a category"
+msgid "Category"
+msgstr ""
+
+#: includes/forums/functions.php:2106
+msgctxt "Make forum public"
+msgid "Public"
+msgstr ""
+
+#: includes/forums/functions.php:2107
+msgctxt "Make forum private"
+msgid "Private"
+msgstr ""
+
+#: includes/forums/functions.php:2108
+msgctxt "Make forum hidden"
+msgid "Hidden"
+msgstr ""
+
+#: includes/replies/functions.php:1653
+msgctxt "Publish the reply"
+msgid "Publish"
+msgstr ""
+
+#: includes/replies/functions.php:1654
+msgctxt "Spam the reply"
+msgid "Spam"
+msgstr ""
+
+#: includes/replies/functions.php:1655
+msgctxt "Trash the reply"
+msgid "Trash"
+msgstr ""
+
+#: includes/replies/functions.php:1656
+msgctxt "Mark reply as pending"
+msgid "Pending"
+msgstr ""
+
+#: includes/replies/template.php:674 includes/topics/template.php:765
+msgctxt "date at time"
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: includes/replies/template.php:1580 includes/topics/template.php:2853
+msgctxt "verb"
+msgid "Reply"
+msgstr ""
+
+#: includes/replies/template.php:2201
+msgctxt "Pending Status"
+msgid "Approve"
+msgstr ""
+
+#: includes/replies/template.php:2202
+msgctxt "Pending Status"
+msgid "Unapprove"
+msgstr ""
+
+#: includes/replies/template.php:2564
+msgctxt "Default reply to dropdown text"
+msgid "None"
+msgstr ""
+
+#: includes/topics/functions.php:1857 includes/topics/template.php:2581
+msgctxt "Open the topic"
+msgid "Open"
+msgstr ""
+
+#: includes/topics/functions.php:1858
+msgctxt "Close the topic"
+msgid "Closed"
+msgstr ""
+
+#: includes/topics/template.php:2580
+msgctxt "Close the topic"
+msgid "Close"
+msgstr ""
+
+#: includes/topics/functions.php:1859
+msgctxt "Spam the topic"
+msgid "Spam"
+msgstr ""
+
+#: includes/topics/functions.php:1860
+msgctxt "Trash the topic"
+msgid "Trash"
+msgstr ""
+
+#: includes/topics/functions.php:1861
+msgctxt "Unapprove the topic"
+msgid "Pending"
+msgstr ""
+
+#: includes/topics/template.php:2635
+msgctxt "Unapprove the topic"
+msgid "Unapprove"
+msgstr ""
+
+#: includes/topics/functions.php:1878
+msgctxt "Unstick a topic"
+msgid "Normal"
+msgstr ""
+
+#: includes/topics/functions.php:1879
+msgctxt "Make topic sticky"
+msgid "Sticky"
+msgstr ""
+
+#: includes/topics/functions.php:1880
+msgctxt "Make topic super sticky"
+msgid "Super Sticky"
+msgstr ""
+
+#: includes/topics/template.php:2634
+msgctxt "Approve the topic"
+msgid "Approve"
+msgstr ""
+
+#: includes/users/template.php:1414
+msgctxt "Dismiss pending user email address change"
+msgid "Cancel"
+msgstr ""

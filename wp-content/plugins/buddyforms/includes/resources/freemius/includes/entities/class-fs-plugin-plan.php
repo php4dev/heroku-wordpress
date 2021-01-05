@@ -1,0 +1,5 @@
+<?php
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
+ if ( ! defined( 'ABSPATH' ) ) { exit; } class FS_Plugin_Plan extends FS_Entity { public $plugin_id; public $name; public $title; public $description; public $is_free_localhost; public $is_block_features; public $license_type; public $is_https_support; public $trial_period; public $is_require_subscription; public $support_kb; public $support_forum; public $support_email; public $support_phone; public $support_skype; public $is_success_manager; public $is_featured; function __construct( $plan = false ) { parent::__construct( $plan ); if ( is_object( $plan ) ) { $this->name = strtolower( $plan->name ); } } static function get_type() { return 'plan'; } function is_free() { return ( 'free' === $this->name ); } function has_technical_support() { return ( ! empty( $this->support_email ) || ! empty( $this->support_skype ) || ! empty( $this->support_phone ) || ! empty( $this->is_success_manager ) ); } function has_trial() { return ! $this->is_free() && is_numeric( $this->trial_period ) && ( $this->trial_period > 0 ); } }

@@ -1,0 +1,658 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-11 23:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: prismatic.php:179
+msgid "Settings"
+msgstr ""
+
+#: prismatic.php:193
+msgid "Plugin Homepage"
+msgstr ""
+
+#: prismatic.php:194
+msgid "Homepage"
+msgstr ""
+
+#: prismatic.php:199
+msgid "Click here to rate and review this plugin on WordPress.org"
+msgstr ""
+
+#: prismatic.php:200
+msgid "Rate this plugin"
+msgstr ""
+
+#: prismatic.php:205
+msgid "Get Prismatic Pro!"
+msgstr ""
+
+#: prismatic.php:206
+msgid "Go&nbsp;Pro"
+msgstr ""
+
+#: prismatic.php:225
+msgid "Warning:"
+msgstr ""
+
+#: prismatic.php:226
+msgid ""
+"Pro version of Prismatic currently active. Free and Pro versions cannot be "
+"activated at the same time. "
+msgstr ""
+
+#: prismatic.php:227 prismatic.php:252
+msgid "Please return to the"
+msgstr ""
+
+#: prismatic.php:227 prismatic.php:253
+msgid "WP Admin Area"
+msgstr ""
+
+#: prismatic.php:228
+msgid "and try again."
+msgstr ""
+
+#: prismatic.php:250
+msgid "requires WordPress "
+msgstr ""
+
+#: prismatic.php:251
+msgid " or higher, and has been deactivated! "
+msgstr ""
+
+#: prismatic.php:253
+msgid "to upgrade WordPress and try again."
+msgstr ""
+
+#: prismatic.php:273 prismatic.php:279
+msgid "Cheatin&rsquo; huh?"
+msgstr ""
+
+#: inc/settings-register.php:16
+msgid "Disable the Prismatic block stylesheet on the frontend"
+msgstr ""
+
+#: inc/settings-register.php:17
+msgid "Restore default options"
+msgstr ""
+
+#: inc/settings-register.php:18 inc/settings-callbacks.php:271
+msgid "Show support with a 5-star rating &raquo;"
+msgstr ""
+
+#: inc/settings-register.php:26
+msgid "Prism theme"
+msgstr ""
+
+#: inc/settings-register.php:27 inc/settings-register.php:28 
+#: inc/settings-register.php:29 inc/settings-register.php:30
+msgid "Enable"
+msgstr ""
+
+#: inc/settings-register.php:27
+msgid "Line Highlight"
+msgstr ""
+
+#: inc/settings-register.php:28
+msgid "Line Numbers"
+msgstr ""
+
+#: inc/settings-register.php:29
+msgid "Show Language"
+msgstr ""
+
+#: inc/settings-register.php:30
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: inc/settings-register.php:31 inc/settings-register.php:48
+msgid "Limit to Posts and Pages"
+msgstr ""
+
+#: inc/settings-register.php:35 inc/settings-register.php:52 
+#: inc/settings-register.php:62
+msgid "Code escaping for content"
+msgstr ""
+
+#: inc/settings-register.php:36 inc/settings-register.php:53 
+#: inc/settings-register.php:63
+msgid "Code escaping for excerpts"
+msgstr ""
+
+#: inc/settings-register.php:37 inc/settings-register.php:54 
+#: inc/settings-register.php:64
+msgid "Code escaping for comments"
+msgstr ""
+
+#: inc/settings-register.php:45
+msgid "Highlight theme"
+msgstr ""
+
+#: inc/settings-register.php:46
+msgid "Init script for Highlight.js (required)"
+msgstr ""
+
+#: inc/settings-register.php:47
+msgid "Support no-prefix class names"
+msgstr ""
+
+#: inc/settings-display.php:15
+msgid "General"
+msgstr ""
+
+#: inc/settings-display.php:16 inc/settings-callbacks.php:13 
+#: inc/settings-callbacks.php:47
+msgid "Prism.js"
+msgstr ""
+
+#: inc/settings-display.php:17 inc/settings-callbacks.php:25 
+#: inc/settings-callbacks.php:51
+msgid "Highlight.js"
+msgstr ""
+
+#: inc/settings-display.php:18 inc/settings-callbacks.php:55
+msgid "Plain Flavor"
+msgstr ""
+
+#: inc/settings-callbacks.php:7
+msgid "Thank you for using the free version of"
+msgstr ""
+
+#. Name of the plugin
+#: inc/settings-callbacks.php:7
+msgid "Prismatic"
+msgstr ""
+
+#: inc/settings-callbacks.php:13 inc/settings-callbacks.php:25
+msgid "Settings for syntax highlighting via"
+msgstr ""
+
+#: inc/settings-callbacks.php:19
+msgid "Settings for code escaping when Prism.js is enabled."
+msgstr ""
+
+#: inc/settings-callbacks.php:31
+msgid "Settings for code escaping when Highlight.js is enabled."
+msgstr ""
+
+#: inc/settings-callbacks.php:37
+msgid "Settings for code escaping without syntax highlighting."
+msgstr ""
+
+#: inc/settings-callbacks.php:59 inc/settings-callbacks.php:85
+msgid "None (Disable)"
+msgstr ""
+
+#: inc/settings-callbacks.php:73
+msgid "Frontend only"
+msgstr ""
+
+#: inc/settings-callbacks.php:77
+msgid "Admin Area only"
+msgstr ""
+
+#: inc/settings-callbacks.php:81
+msgid "Frontend &amp; Admin Area"
+msgstr ""
+
+#: inc/settings-callbacks.php:99
+msgid "Coy"
+msgstr ""
+
+#: inc/settings-callbacks.php:103 lib/highlight/themes.php:153
+msgid "Dark"
+msgstr ""
+
+#: inc/settings-callbacks.php:107 lib/highlight/themes.php:157
+msgid "Default"
+msgstr ""
+
+#: inc/settings-callbacks.php:111
+msgid "Funky"
+msgstr ""
+
+#: inc/settings-callbacks.php:115
+msgid "Okaidia"
+msgstr ""
+
+#: inc/settings-callbacks.php:119
+msgid "Solarized"
+msgstr ""
+
+#: inc/settings-callbacks.php:123 lib/highlight/themes.php:361
+msgid "Tomorrow Night"
+msgstr ""
+
+#: inc/settings-callbacks.php:127
+msgid "Twilight"
+msgstr ""
+
+#: inc/settings-callbacks.php:263
+msgid "Restore default plugin options"
+msgstr ""
+
+#: inc/settings-callbacks.php:270
+msgid "Help keep Prismatic going strong! A huge THANK YOU for your support!"
+msgstr ""
+
+#: inc/settings-reset.php:15
+msgid "Default options restored."
+msgstr ""
+
+#: inc/settings-reset.php:19
+msgid "No changes made to options."
+msgstr ""
+
+#: inc/resources-enqueue.php:91
+msgid "Confirm Reset"
+msgstr ""
+
+#: inc/resources-enqueue.php:92
+msgid "Restore default options?"
+msgstr ""
+
+#: inc/resources-enqueue.php:93
+msgid "Yes, make it so."
+msgstr ""
+
+#: inc/resources-enqueue.php:94
+msgid "No, abort mission."
+msgstr ""
+
+#: lib/highlight/themes.php:9
+msgid "a11y dark"
+msgstr ""
+
+#: lib/highlight/themes.php:13
+msgid "a11y light"
+msgstr ""
+
+#: lib/highlight/themes.php:17
+msgid "Agate"
+msgstr ""
+
+#: lib/highlight/themes.php:21
+msgid "An Old Hope"
+msgstr ""
+
+#: lib/highlight/themes.php:25
+msgid "Androidstudio"
+msgstr ""
+
+#: lib/highlight/themes.php:29
+msgid "Arduino Light"
+msgstr ""
+
+#: lib/highlight/themes.php:33
+msgid "Arta"
+msgstr ""
+
+#: lib/highlight/themes.php:37
+msgid "Ascetic"
+msgstr ""
+
+#: lib/highlight/themes.php:41
+msgid "Atelier Cave Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:45
+msgid "Atelier Cave Light"
+msgstr ""
+
+#: lib/highlight/themes.php:49
+msgid "Atelier Dune Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:53
+msgid "Atelier Dune Light"
+msgstr ""
+
+#: lib/highlight/themes.php:57
+msgid "Atelier Estuary Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:61
+msgid "Atelier Estuary Light"
+msgstr ""
+
+#: lib/highlight/themes.php:65
+msgid "Atelier Forest Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:69
+msgid "Atelier Forest Light"
+msgstr ""
+
+#: lib/highlight/themes.php:73
+msgid "Atelier Heath Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:77
+msgid "Atelier Heath Light"
+msgstr ""
+
+#: lib/highlight/themes.php:81
+msgid "Atelier Lakeside Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:85
+msgid "Atelier Lakeside Light"
+msgstr ""
+
+#: lib/highlight/themes.php:89
+msgid "Atelier Plateau Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:93
+msgid "Atelier Plateau Light"
+msgstr ""
+
+#: lib/highlight/themes.php:97
+msgid "Atelier Savanna Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:101
+msgid "Atelier Savanna Light"
+msgstr ""
+
+#: lib/highlight/themes.php:105
+msgid "Atelier Seaside Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:109
+msgid "Atelier Seaside Light"
+msgstr ""
+
+#: lib/highlight/themes.php:113
+msgid "Atelier Sulphurpool Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:117
+msgid "Atelier Sulphurpool Light"
+msgstr ""
+
+#: lib/highlight/themes.php:121
+msgid "Atom One Dark Reasonable"
+msgstr ""
+
+#: lib/highlight/themes.php:125
+msgid "Atom One Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:129
+msgid "Atom One Light"
+msgstr ""
+
+#: lib/highlight/themes.php:133
+msgid "Brown Paper"
+msgstr ""
+
+#: lib/highlight/themes.php:137
+msgid "Brown Paper SQ"
+msgstr ""
+
+#: lib/highlight/themes.php:141
+msgid "Codepen Embed"
+msgstr ""
+
+#: lib/highlight/themes.php:145
+msgid "Color Brewer"
+msgstr ""
+
+#: lib/highlight/themes.php:149
+msgid "Darcula"
+msgstr ""
+
+#: lib/highlight/themes.php:161
+msgid "Docco"
+msgstr ""
+
+#: lib/highlight/themes.php:165
+msgid "Dracula"
+msgstr ""
+
+#: lib/highlight/themes.php:169
+msgid "Far"
+msgstr ""
+
+#: lib/highlight/themes.php:173
+msgid "Foundation"
+msgstr ""
+
+#: lib/highlight/themes.php:177
+msgid "Github Gist"
+msgstr ""
+
+#: lib/highlight/themes.php:181
+msgid "Github"
+msgstr ""
+
+#: lib/highlight/themes.php:185
+msgid "GML"
+msgstr ""
+
+#: lib/highlight/themes.php:189
+msgid "Googlecode"
+msgstr ""
+
+#: lib/highlight/themes.php:193
+msgid "Gradient Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:197
+msgid "Grayscale"
+msgstr ""
+
+#: lib/highlight/themes.php:201
+msgid "Gruvbox Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:205
+msgid "Gruvbox Light"
+msgstr ""
+
+#: lib/highlight/themes.php:209
+msgid "Hopscotch"
+msgstr ""
+
+#: lib/highlight/themes.php:213
+msgid "Hybrid"
+msgstr ""
+
+#: lib/highlight/themes.php:217
+msgid "Idea"
+msgstr ""
+
+#: lib/highlight/themes.php:221
+msgid "IR Black"
+msgstr ""
+
+#: lib/highlight/themes.php:225
+msgid "ISBL Editor Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:229
+msgid "ISBL Editor Light"
+msgstr ""
+
+#: lib/highlight/themes.php:233
+msgid "Kimbie Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:237
+msgid "Kimbie Light"
+msgstr ""
+
+#: lib/highlight/themes.php:241
+msgid "Lightfair"
+msgstr ""
+
+#: lib/highlight/themes.php:245
+msgid "Lioshi"
+msgstr ""
+
+#: lib/highlight/themes.php:249
+msgid "Magula"
+msgstr ""
+
+#: lib/highlight/themes.php:253
+msgid "Mono Blue"
+msgstr ""
+
+#: lib/highlight/themes.php:257
+msgid "Monokai Sublime"
+msgstr ""
+
+#: lib/highlight/themes.php:261
+msgid "Monokai"
+msgstr ""
+
+#: lib/highlight/themes.php:265
+msgid "Night Owl"
+msgstr ""
+
+#: lib/highlight/themes.php:269
+msgid "NNFX Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:273
+msgid "NNFX"
+msgstr ""
+
+#: lib/highlight/themes.php:277
+msgid "Nord"
+msgstr ""
+
+#: lib/highlight/themes.php:281
+msgid "Obsidian"
+msgstr ""
+
+#: lib/highlight/themes.php:285
+msgid "Ocean"
+msgstr ""
+
+#: lib/highlight/themes.php:289
+msgid "Paraiso Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:293
+msgid "Paraiso Light"
+msgstr ""
+
+#: lib/highlight/themes.php:297
+msgid "Pojoaque"
+msgstr ""
+
+#: lib/highlight/themes.php:301
+msgid "Purebasic"
+msgstr ""
+
+#: lib/highlight/themes.php:305
+msgid "Qtcreator Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:309
+msgid "Qtcreator Light"
+msgstr ""
+
+#: lib/highlight/themes.php:313
+msgid "Railscasts"
+msgstr ""
+
+#: lib/highlight/themes.php:317
+msgid "Rainbow"
+msgstr ""
+
+#: lib/highlight/themes.php:321
+msgid "Routeros"
+msgstr ""
+
+#: lib/highlight/themes.php:325
+msgid "School Book"
+msgstr ""
+
+#: lib/highlight/themes.php:329
+msgid "Shades of Purple"
+msgstr ""
+
+#: lib/highlight/themes.php:333
+msgid "Solarized Dark"
+msgstr ""
+
+#: lib/highlight/themes.php:337
+msgid "Solarized Light"
+msgstr ""
+
+#: lib/highlight/themes.php:341
+msgid "Srcery"
+msgstr ""
+
+#: lib/highlight/themes.php:345
+msgid "Sunburst"
+msgstr ""
+
+#: lib/highlight/themes.php:349
+msgid "Tomorrow Night Blue"
+msgstr ""
+
+#: lib/highlight/themes.php:353
+msgid "Tomorrow Night Bright"
+msgstr ""
+
+#: lib/highlight/themes.php:357
+msgid "Tomorrow Night Eighties"
+msgstr ""
+
+#: lib/highlight/themes.php:365
+msgid "Tomorrow"
+msgstr ""
+
+#: lib/highlight/themes.php:369
+msgid "Vs"
+msgstr ""
+
+#: lib/highlight/themes.php:373
+msgid "Vs 2015"
+msgstr ""
+
+#: lib/highlight/themes.php:377
+msgid "Xcode"
+msgstr ""
+
+#: lib/highlight/themes.php:381
+msgid "Xt256"
+msgstr ""
+
+#: lib/highlight/themes.php:385
+msgid "Zenburn"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Display beautiful syntax-highlighted code snippets with Prism.js or "
+"Highlight.js"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://perishablepress.com/prismatic/"
+msgstr ""
+
+#. Author of the plugin
+msgid "Jeff Starr"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://plugin-planet.com/"
+msgstr ""

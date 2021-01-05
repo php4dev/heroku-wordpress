@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="47px" height="47px" viewBox="0 0 47 47" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Theme 1/Arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Theme-1/Arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(23.500000, 23.500000) scale(-1, 1) rotate(-45.000000) translate(-23.500000, -23.500000) translate(7.000000, 7.000000)" fill="#FFFFFF" fill-rule="nonzero" id="Rectangle-path">
+            <rect x="0" y="28" width="33" height="5"></rect>
+            <rect x="28" y="0" width="5" height="33"></rect>
+        </g>
+    </g>
+</svg>

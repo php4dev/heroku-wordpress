@@ -1,0 +1,178 @@
+/**
+ * Variables
+ */
+$theme_name: simply-dark;
+$theme_prefix: .metaslider.ms-theme-$(theme_name);
+
+$(theme_prefix) {
+	/** 
+	* Containers 
+	* This includes the main wrapper for all sliders, then each slider,
+	* which is one level above the individual slides. 
+	* Don't be afraid to use !important as needed.
+	*/
+
+	&.has-dots-nav {
+		margin-bottom: 3rem;
+	}
+	overflow: visible;
+	* {
+		box-sizing: border-box;
+	}
+
+	.flexslider {
+		margin-bottom: 0;
+	}
+
+	.flexslider .slides,
+	.rslides,
+	.nivoSlider,
+	.coin-slider .coin-slider {
+		/* max-width: 100%; */
+	}
+
+	/** 
+	* Dots
+	* You should inspect the sliders to see more specific rules
+	*/
+	@mixin dotsContainer {
+		display: flex;
+		justify-content: flex-end;
+		flex-wrap: wrap;
+		position: absolute;
+		line-height: 15px;
+		overflow: visible;
+		background: transparent;
+		margin: 0;
+		padding: 0.5rem 0 0 !important;
+		top: 100%;
+	}
+	&.has-thumb-nav {
+		@mixin dotsContainer nivo, flex {
+			position: relative;
+			top: auto;
+			bottom: auto;
+			justify-content: flex-start;
+			padding-top: 5px !important;
+			margin-left: -5px;
+		}
+		@mixin dotsContainer flex {
+			padding-top: 0 !important;
+		}
+	}
+
+	@mixin dotsLink {
+		box-shadow: none !important;
+		transition: background 0.2s ease-in-out;
+		border: 0;
+		cursor: pointer;
+		text-indent: -9999px;
+		display: inline-block;
+		line-height: 15px;
+		width: 15px;
+		height: 15px;
+		padding: 0;
+		background: rgba(0, 0, 0, .5);
+		border-radius: 10px;
+		margin: 0 0 5px 5px;
+	}
+
+	&.has-thumb-nav {
+		@mixin dotsLink nivo {
+			width: auto; 
+			height: auto;
+			border-radius: 0;
+		}
+	}
+
+	@mixin dotsLinkLastItem {
+		margin-right: 0;
+	}
+
+	@mixin dotsLinkActive {
+		background: rgba(0, 0, 0, 1);
+	}
+
+	/**
+	* Arrows
+	* 
+	*/
+	@mixin arrowsLink {
+		background: none;
+		box-shadow: none;
+		width: 0;
+		height: 40px;
+		text-indent: 0!important;
+		color: black;
+		opacity: 0;
+		overflow: hidden;
+		transition: all .2s ease-in-out;
+		svg {
+			display: block;
+			height: 40px;
+			width: 30px;
+			margin: 0 auto;	
+			
+			transform: scale(.2);
+			transition: all .2s ease-in-out;
+			transition-delay: .1s;
+		}
+
+	}
+
+	@mixin arrowsLink rslides, coin {
+		padding: 0;
+	}
+	
+	@mixin arrowsLink__prev flex, nivo {
+		left: 0;
+	}
+
+	@mixin arrowsLink__next flex, nivo {
+		right: 0;
+	}
+	.coin-slider .coin-slider div {
+		display: block !important;
+	}
+
+	@mixin sliderHover__arrowsLinks {
+		opacity: 1 !important;
+		background: rgba(255, 255, 255, 0.43);
+		width: 50px;
+		svg {
+			transform: scale(1);
+		}
+		&:hover {
+			color: black;
+			opacity: 1 !important;
+			width: 70px;
+		}
+	}
+
+	/**
+	* Caption
+	*/
+	@mixin caption {
+		padding: 0;
+		background: rgba(0, 0, 0, 0.7);
+		opacity: 1;
+		margin: 0 0.5rem 0.5rem;
+		width: auto;
+	}
+
+	@mixin caption__text {
+		font-size: 1em;
+		text-align: left;
+		padding: 0.7rem 1rem;
+		font-family: Arial, Helvetica, sans-serif;
+		color: #FFF;
+		* {
+			color: #FFF;
+		}
+		& > *:first-child{
+			margin-top: 0;
+    		padding-top: 0;
+		}
+	}
+
+}

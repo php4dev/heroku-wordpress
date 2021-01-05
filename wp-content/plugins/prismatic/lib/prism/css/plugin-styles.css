@@ -1,0 +1,10 @@
+div.code-toolbar > div.toolbar { top: 5px; right: 5px; }
+
+div.toolbar:before, div.toolbar:after { content: ''; display: table; clear: both; }
+
+div.code-toolbar > div.toolbar div.toolbar-item { float: left; margin: 0 0 0 3px; }
+
+div.code-toolbar > div.toolbar a, 
+div.code-toolbar > div.toolbar button, 
+div.code-toolbar > div.toolbar span { display: block; padding: 3px 5px; line-height: 11px; font-size: 11px; cursor: default; }
+div.code-toolbar > div.toolbar button { cursor: pointer; }

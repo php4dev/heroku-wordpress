@@ -1,0 +1,2 @@
+<?php
+ namespace tk\Psr\Http\Message; interface RequestInterface extends \tk\Psr\Http\Message\MessageInterface { public function getRequestTarget(); public function withRequestTarget($requestTarget); public function getMethod(); public function withMethod($method); public function getUri(); public function withUri(\tk\Psr\Http\Message\UriInterface $uri, $preserveHost = \false); } 

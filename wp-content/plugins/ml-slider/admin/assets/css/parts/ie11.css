@@ -1,0 +1,6 @@
+.respect-ie11 .tabs-content {
+	@apply max-w-2xl;
+}
+::-ms-clear {
+    display: none;
+}

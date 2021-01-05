@@ -1,0 +1,2 @@
+<?php
+ namespace tk\GuzzleHttp\Handler; use tk\Psr\Http\Message\RequestInterface; interface CurlFactoryInterface { public function create(\tk\Psr\Http\Message\RequestInterface $request, array $options) : \tk\GuzzleHttp\Handler\EasyHandle; public function release(\tk\GuzzleHttp\Handler\EasyHandle $easy) : void; } 

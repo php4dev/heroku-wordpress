@@ -1,0 +1,692 @@
+# Copyright (C) 2015 NinjaFirewall (WP edition)
+# This file is distributed under the same license as the NinjaFirewall (WP edition) package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Stable (latest release)\n"
+"Report-Msgid-Bugs-To: none\n"
+"POT-Creation-Date: 2017-07-01 13:44+0100\n"
+"PO-Revision-Date: 2017-07-01 13:45+0100\n"
+"Last-Translator: NinTechNet <contact@nintechnet.com>\n"
+"Language-Team:  <none@none>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: wpterm-help.php:24
+msgid "Terminal settings"
+msgstr "Réglages du terminal"
+
+#: wpterm-help.php:26 wpterm.php:435
+msgid "Fonts and Colors"
+msgstr "Polices et Couleurs"
+
+#: wpterm-help.php:27
+msgid ""
+"You can select the terminal fonts and background colors as well as the font "
+"size and weight. Use hexadecimal values (e.g., <code>FFFFFF</code>) or CSS "
+"color names (e.g., <code>red</code>) for colors."
+msgstr ""
+"Vous pouvez sélectionner les polices et couleurs ainsi que la police de "
+"caracteres. Pour les couleurs, entrez les valeur hexadécimales ou le nom de "
+"couleur CSS. "
+
+#: wpterm-help.php:28 wpterm.php:87 wpterm.php:368 wpterm.php:425
+#: wpterm.php:507 wpterm.php:870 wpterm.php:905 wpterm.php:1117
+msgid "Terminal"
+msgstr "Terminal "
+
+#: wpterm-help.php:29
+msgid "Use the following PHP function for program execution"
+msgstr "Utilisez la fonction PHP suivante pour l'exécution des commandes"
+
+#: wpterm-help.php:30
+msgid ""
+"You can select which PHP function WPTerm will use to run the terminal "
+"commands."
+msgstr ""
+"Vous pouvez sélectionner la fonction PHP qui sera utilisée pour exécuter les "
+"commandes entrées dans le terminal."
+
+#: wpterm-help.php:31
+msgid "<code>exec</code> is the default one."
+msgstr "La commande par défaut est <code>exec</code>."
+
+#: wpterm-help.php:31
+msgid ""
+"Note that <code>`backticks`</code> is identical to <code>shell_exec()</code>."
+msgstr ""
+"Notez que <code>`backticks`</code> et <code>shell_exec()</code> sont "
+"identiques."
+
+#: wpterm-help.php:32 wpterm.php:544
+msgid "Emulate pseudo-Tab completion?"
+msgstr "Émuler la fonctionnalité d'achèvement [Tab]"
+
+#: wpterm-help.php:33
+msgid ""
+"Because it is not a real shell, WPTerm cannot reproduce the TAB completion "
+"feature of a regular terminal. It can, however, emulate its own one which is "
+"linked to your history, i.e., it applies only to the commands that you have "
+"typed during the current session. Those commands can be seen by entering "
+"<code>history</code> or by pressing the <code>UP</code> and <code>DOWN</"
+"code> arrows."
+msgstr ""
+"Étant donné qu'il n'est pas un véritable terminal, WPTerm ne peut pas "
+"reproduire la fonctionnalité d'achèvement [Tab] d'un terminal régulier. Il "
+"peut toutefois en émuler une, quelque peu différente : elle est liée à votre "
+"historique, c'est-à-dire aux commandes que vous avez tapées pendant la "
+"session en cours. Ces commandes peuvent être vues en entrant <code>history</"
+"code> ou en appuyant sur les flèches <code>HAUT</code> et <code>BAS</code> "
+"de votre clavier."
+
+#: wpterm-help.php:34 wpterm.php:564
+msgid "Default working directory"
+msgstr "Répertoire de travail par défaut"
+
+#: wpterm-help.php:35
+msgid ""
+"You can select to start the terminal in the WordPress root folder (a.k.a. "
+"<code>ABSPATH</code>) or in your user home directory (<code>~</code>)."
+msgstr ""
+"Vous pouvez choisir de démarrer le terminal dans le dossier racine WordPress "
+"(a.k.a. <code>ABSPATH</code>) ou dans votre répertoire personnel utilisateur "
+"(<code>~</code>)."
+
+#: wpterm-help.php:37
+msgid ""
+"Note that WPTerm adds a specific variable named <code>$ABSPATH</code> to "
+"your environment. You can use it just like any other environment variables "
+"for instance:"
+msgstr ""
+"Notez que WPTerm ajoute une variable spécifique nommée <code>$ABSPATH</code> "
+"à votre environnement. Vous pouvez l'utiliser comme n'importe quelle autre "
+"variable d'environnement par exemple :"
+
+#: wpterm-help.php:39
+#, php-format
+msgid "Go back to the ABSPATH: %s"
+msgstr "Revenir au répertoire ABSPATH : %s"
+
+#: wpterm-help.php:40
+#, php-format
+msgid "Display the ABSPATH: %s"
+msgstr "Afficher le répertoire  ABSPATH : %s"
+
+#: wpterm-help.php:41
+#, php-format
+msgid "Find all files in the ABSPATH that were changed the last 10 days: %s"
+msgstr ""
+"Rechercher tous les fichiers dans l'ABSPATH qui ont été modifiés depuis 10 "
+"jours : %s"
+
+#: wpterm-help.php:43 wpterm.php:582
+msgid "Scrollback"
+msgstr "Défilement vers le haut"
+
+#: wpterm-help.php:44
+msgid ""
+"The scrollback buffer can keep up to 3,000 lines. Default value is set to "
+"512 lines."
+msgstr ""
+"Le tampon de défilement peut contenir jusqu'à 3 000 lignes. La valeur par "
+"défaut est définie sur 512 lignes."
+
+#: wpterm-help.php:45 wpterm.php:593
+msgid "Welcome message"
+msgstr "Message de bienvenue"
+
+#: wpterm-help.php:46
+msgid "Select your welcome message."
+msgstr "Sélectionnez votre message de bienvenue."
+
+#: wpterm-help.php:47 wpterm.php:622
+msgid "Terminal bell"
+msgstr "Sonnerie du terminal"
+
+#: wpterm-help.php:48
+msgid ""
+"You can enable the visual or/and audible bell. Note that the audible bell is "
+"not compatible with some older browsers (e.g., IE 11 or earlier versions)."
+msgstr ""
+"Vous pouvez activer l'alerte visuelle et / ou sonore du terminal. Notez que "
+"la sonnerie n'est pas compatible avec certains navigateurs anciens (par "
+"exemple, IE 11 ou versions antérieures)."
+
+#: wpterm-help.php:54 wpterm-help.php:56
+msgid "Password protection"
+msgstr "Protection par mot de passe"
+
+#: wpterm-help.php:57
+msgid ""
+"You can password protect the access to WPTerm. To do so, follow these steps:"
+msgstr ""
+"Vous pouvez protéger l'accès à WPTerm avec mot de passe. Pour ce faire, "
+"procédez comme suit :"
+
+#: wpterm-help.php:59
+msgid "Choose a password!"
+msgstr "Choisissez un mot de passe !"
+
+#: wpterm-help.php:60
+msgid ""
+"Generate a SHA1 hash of your password; from WPTerm terminal, enter the "
+"following command (replace <b>PASSWORD</b> with your chosen password):"
+msgstr ""
+"Générez un hachage SHA1 de votre mot de passe ; à partir du terminal de "
+"WPTerm, entrez la commande suivante (remplacez <b>PASSWORD</b> par le mot de "
+"passe choisi) :"
+
+#: wpterm-help.php:62
+msgid "Copy the 40-character hash returned by the above command."
+msgstr "Copiez le hachage de 40 caractères renvoyé par la commande ci-dessus."
+
+#: wpterm-help.php:63
+msgid ""
+"Download your WordPress <code>wp-config.php</code> file. It is located "
+"inside your WordPress root folder. If you cannot find it, search it with the "
+"following command from WPTerm terminal:"
+msgstr ""
+"Téléchargez votre fichier WordPress <code>wp-config.php</code>. Il se trouve "
+"dans le dossier racine WordPress. Si vous ne pouvez pas le trouver, "
+"recherchez-le avec la commande suivante à partir du terminal de WPTerm :"
+
+#: wpterm-help.php:65
+msgid ""
+"Open that file and add the following line of code below your database "
+"credentials (replace <b>HASH</b> with your 32-character hash):"
+msgstr ""
+"Ouvrez ce fichier et ajoutez la ligne de code suivante en dessous de vos "
+"références de base de données (remplacez <b>HASH</b> par votre hachage de 32 "
+"caractères) :"
+
+#: wpterm-help.php:68
+msgid ""
+"Next time you will access WPTerm, it will ask you to enter your password."
+msgstr ""
+"La prochaine fois que vous accéderez à WPTerm, il vous demandera d'entrer "
+"votre mot de passe."
+
+#: wpterm-help.php:69
+msgid "Change or remove the password protection"
+msgstr "Changer ou supprimer la protection par mot de passe"
+
+#: wpterm-help.php:70
+msgid ""
+"To change your password protection, simply generate a new SHA1 hash and edit "
+"<code>wp-config.php</code>."
+msgstr ""
+"Pour modifier votre protection par mot de passe, créez un nouveau hachage "
+"SHA1 et éditez le fichier <code>wp-config.php</code>."
+
+#: wpterm-help.php:71
+msgid ""
+"You disable the password protection, remove the line from <code>wp-config."
+"php</code>."
+msgstr ""
+"Pour désactiver le mot de passe, supprimez la ligne de code de votre fichier "
+"<code>wp-config.php</code>."
+
+#: wpterm-help.php:72
+msgid "Password expiration"
+msgstr "Expiration de mot de passe"
+
+#: wpterm-help.php:73
+msgid ""
+"WPTerm relies on PHP sessions for the authentication process. In case of "
+"inactivity, the session will expire and you will be asked again for the "
+"password. That session timeout depends on your PHP configuration, not WPTerm."
+msgstr ""
+"WPTerm s'appuie sur des sessions PHP pour le processus d'authentification. "
+"En cas d'inactivité prolongée, la session expirera et le mot de passe vous "
+"sera demandé à nouveau. Ce délai de session dépend de votre configuration "
+"PHP, et non pas de WPTerm."
+
+#: wpterm-help.php:79
+msgid "Built-in commands"
+msgstr "Commandes intégrées"
+
+#: wpterm-help.php:81
+msgid "WPTerm has the following built-in commands:"
+msgstr "WPTerm dispose des commandes intégrées suivantes :"
+
+#: wpterm-help.php:83
+msgid ""
+"Clear the terminal screen. Alternatively, you can press the <code>CTRL+L</"
+"code> keyboard shortcut."
+msgstr ""
+"Effacer l'écran du terminal. Vous pouvez également appuyer sur le raccourci "
+"clavier <code>CTRL+L</code>."
+
+#: wpterm-help.php:84
+msgid "Log out of WordPress."
+msgstr "Se déconnecter de WordPress."
+
+#: wpterm-help.php:85
+msgid "Show WPTerm version."
+msgstr "Afficher la version de WPTerm."
+
+#: wpterm-help.php:86
+msgid "Display the one-time warning notice."
+msgstr "Afficher la notice d'avertissement."
+
+#: wpterm-help.php:87
+msgid "Open this contextual help menu."
+msgstr "Ouvrir ce menu d'aide."
+
+#: wpterm-help.php:88
+msgid ""
+"Display the history buffer. You can also use the <code>UP</code> and "
+"<code>DOWN</code> arrows to display each element from the buffer."
+msgstr ""
+"Afficher l'historique des commandes. Vous pouvez également utiliser les "
+"flèches <code>UP</code> et <code>DOWN</code> pour afficher chaque élément du "
+"tampon."
+
+#: wpterm-help.php:89
+msgid "Clear the history buffer."
+msgstr "Effacer l'historique des commandes."
+
+#: wpterm-help.php:90
+msgid "Don't even try!"
+msgstr "N'essayez surtout pas !"
+
+#: wpterm.php:31
+msgid "An xterm-like plugin to run non-interactive shell commands."
+msgstr ""
+"Un simulateur de terminal xterm pour exécuter des commandes shell non-"
+"interactives."
+
+#: wpterm.php:64
+msgid "WPTerm is not compatible with Microsoft Windows."
+msgstr "WPTerm n'est pas compatible avec Microsoft Windows."
+
+#: wpterm.php:69
+#, php-format
+msgid ""
+"WPTerm requires WordPress 3.3 or greater but your current version is %s."
+msgstr ""
+"WPTerm nécessite au moins WordPress 3.3 mais votre version de \"\"WordPress "
+"est %s."
+
+#: wpterm.php:73
+#, php-format
+msgid "WPTerm requires PHP 5.3 or greater but your current version is %s."
+msgstr " WPTerm nécessite au moins PHP 5.3 mais votre version de PHP est %s."
+
+#: wpterm.php:234
+#, php-format
+msgid "Last login: %s, %s from %s"
+msgstr "Dernière connexion : %s, %s de %s"
+
+#: wpterm.php:251
+msgid "Sorry, but I refuse to run as the <code>root</code> user."
+msgstr ""
+"Désolé, mais je refuse de m'exécuter en tant qu'utilisateur <code>root</"
+"code>."
+
+#: wpterm.php:260
+msgid "Thanks for using WPTerm!"
+msgstr "Merci d'utiliser WPTerm !"
+
+#: wpterm.php:261
+msgid "This is a one-time notice, please read it carefully:"
+msgstr ""
+"Maintenant que vous venez d'installer l'extension, veuillez lire "
+"attentivement ce qui suit :"
+
+#: wpterm.php:263
+msgid ""
+"Just like a terminal, WPTerm lets you do almost everything you want (e.g., "
+"changing file permissions, viewing network connections or current processes "
+"etc). That's great, but if you aren't familiar with Linux commands, you can "
+"also damage your blog."
+msgstr ""
+"Tout comme un terminal, WPTerm vous permet de faire presque tout ce que vous "
+"voulez (par exemple, modifier les autorisations des fichiers, consulter les "
+"connexions réseau ou les processus en cours, etc.). C'est super, mais si "
+"vous n'êtes pas familier avec les commandes Linux, vous pouvez également "
+"endommager votre blog."
+
+#: wpterm.php:263
+msgid ""
+"Therefore, each time you use WPTerm, please follow this rule of thumb: "
+"<strong>if you don't know what you're doing, don't do it!</strong>"
+msgstr ""
+"Par conséquent, chaque fois que vous utilisez à WPTerm, veuillez suivre "
+"cette règle : <strong>Si vous ne savez pas ce que vous faites, ne le faites "
+"pas !</strong>"
+
+#: wpterm.php:264
+msgid ""
+"Take the time to password protect the access to WPTerm. Click on the "
+"contextual \"Help\" menu tab located in the upper right corner to get more "
+"details about how to enable this feature."
+msgstr ""
+"Prenez le temps de protéger par mot de passe l'accès à WPTerm. Cliquez sur "
+"l'onglet \"Aide\" situé dans le coin supérieur droit de cette page pour "
+"obtenir plus de détails sur cette fonctionnalité."
+
+#: wpterm.php:265
+msgid ""
+"Do not try to run interactive commands, you can't (most would not run anyway "
+"because the TERM environment variable is not set). If you run one by mistake "
+"and are stuck at the prompt, press CTRL-C."
+msgstr ""
+"N'essayez pas d'exécuter des commandes interactives, ce n'est pas possible "
+"(la plupart ne fonctionneront pas de toute façon, parce que la variable "
+"d'environnement TERM n'est pas définie). Si vous en exécutez une par erreur "
+"et êtes bloqué, appuyez sur CTRL-C."
+
+#: wpterm.php:267
+msgid ""
+"If you want to read this notice again, type <code>notice</code> from WPTerm "
+"prompt."
+msgstr ""
+"Si vous voulez lire cette notice à nouveau, tapez <code>notice</code> dans "
+"la fenêtre de WPTerm."
+
+#: wpterm.php:275
+msgid "Click to hide"
+msgstr "Cliquez pour masquer"
+
+#: wpterm.php:317
+#, php-format
+msgid ""
+"I was unable to run a shell command. Make sure that you are allowed to run "
+"%sPHP program execution functions%s, otherwise WPTerm will not function."
+msgstr ""
+"Je n'ai pas pu exécuter une commande shell. Assurez-vous d'être autorisé à "
+"utiliser les %sfonctions PHP sur l'exécution de programmes externes%s, faute "
+"de quoi WPTerm ne fonctionnera pas."
+
+#: wpterm.php:346 wpterm.php:385
+msgid "Operations in progress, please wait."
+msgstr "Opérations en cours, veuillez patienter."
+
+#: wpterm.php:347
+msgid "If you want to cancel, press CTRL+C."
+msgstr "Si vous souhaitez annuler, appuyez sur CTRL+C."
+
+#: wpterm.php:348
+msgid "operation cancelled"
+msgstr "opération annulée"
+
+#: wpterm.php:349
+msgid "if you want a good firewall, install NinjaFirewall (WP Edition):"
+msgstr ""
+"Si vous cherchez un bon pare-feu, installez NinjaFirewall (WP Edition) :"
+
+#: wpterm.php:352
+msgid "Tab completion is disabled. You can enable it from the Settings page"
+msgstr ""
+"La fonctionnalité d'achèvement (Tab) est désactivée. Vous pouvez l'activer "
+"depuis la page des Réglages"
+
+#: wpterm.php:354
+msgid "Log out of WordPress?"
+msgstr "Se déconnecter de WordPress ?"
+
+#: wpterm.php:355
+msgid "WPTerm: error, no data received"
+msgstr "WPTerm : erreur, aucune donnée reçue"
+
+#: wpterm.php:360 wpterm.php:388
+msgid "Line wrapping is enabled"
+msgstr "Le renvoi à la ligne est activé"
+
+#: wpterm.php:361
+msgid "Line wrapping is disabled"
+msgstr "Le renvoi à la ligne est désactivé"
+
+#: wpterm.php:369 wpterm.php:426 wpterm.php:871 wpterm.php:906 wpterm.php:1118
+msgid "Settings"
+msgstr "Réglages"
+
+#: wpterm.php:370 wpterm.php:427 wpterm.php:872 wpterm.php:907 wpterm.php:1119
+msgid "About"
+msgstr "À Propos"
+
+#: wpterm.php:371 wpterm.php:428 wpterm.php:873 wpterm.php:902 wpterm.php:908
+#: wpterm.php:1120
+msgid "Donate"
+msgstr "Faire un don"
+
+#: wpterm.php:390
+msgid "Decrease font size"
+msgstr "Réduire la taille de la police"
+
+#: wpterm.php:392
+msgid "Increase font size"
+msgstr "Augmenter la taille de la police"
+
+#: wpterm.php:414
+msgid "Your changes have been saved."
+msgstr "Les modifications ont été enregistrées."
+
+#: wpterm.php:440
+msgid "Font color"
+msgstr "Couleur de la police"
+
+#: wpterm.php:445 wpterm.php:457
+#, php-format
+msgid ""
+"Hexadecimal value (e.g., %s) or CSS color name (e.g., <code>red</code>)."
+msgstr ""
+"Valeur hexadécimale (par exemple,%s) ou nom de couleur CSS (par exemple, "
+"<code>rouge</code>)."
+
+#: wpterm.php:452
+msgid "Background color"
+msgstr "Couleur de fond"
+
+#: wpterm.php:464
+msgid "Font size"
+msgstr "Taille de police"
+
+#: wpterm.php:468
+msgid "Bold fonts"
+msgstr "Caractères gras"
+
+#: wpterm.php:471
+msgid "From 9 to 20px."
+msgstr "De 9 à 20px"
+
+#: wpterm.php:478
+msgid "Font family"
+msgstr "Famille de polices"
+
+#: wpterm.php:483
+msgid ""
+"Multiple values must be comma separated (e.g., <code>Consolas,Monaco,"
+"monospace</code>)"
+msgstr ""
+"Plusieurs valeurs doivent être séparées par des virgules (par ex. "
+"<code>Consolas,Monaco,monospace</code>)"
+
+#: wpterm.php:497
+msgid "Test"
+msgstr "Tester"
+
+#: wpterm.php:512
+msgid "Use the following PHP function for command execution"
+msgstr "Utilisez la fonction PHP suivante pour l'exécution des commandes"
+
+#: wpterm.php:548
+msgid "Yes"
+msgstr "Oui"
+
+#: wpterm.php:553
+msgid "No"
+msgstr "Non"
+
+#: wpterm.php:568
+#, php-format
+msgid "WordPress ABSPATH (%s)"
+msgstr "ABSPATH de WordPress (%s)"
+
+#: wpterm.php:571
+#, php-format
+msgid "Tip: to go back to that directory, type %s."
+msgstr "Astuce : pour revenir à ce répertoire, tapez %s."
+
+#: wpterm.php:575
+#, php-format
+msgid "User home directory (%s)"
+msgstr "Répertoire personnel de l'utilisateur (%s)"
+
+#: wpterm.php:584
+#, php-format
+msgid "Limit scrollback to %s lines"
+msgstr "Conserver les %s dernières lignes du défilement"
+
+#: wpterm.php:587
+msgid "Max 3,000 lines."
+msgstr "3 000 lignes max."
+
+#: wpterm.php:625
+msgid "Visual bell"
+msgstr "Alerte visuelle"
+
+#: wpterm.php:628
+msgid "Audible bell"
+msgstr "Alerte sonore"
+
+#: wpterm.php:638
+msgid "Save Settings"
+msgstr "Sauvegarder"
+
+#: wpterm.php:863
+msgid "Error: cannot open LICENSE.TXT!"
+msgstr "Erreur : impossible de trouver le fichier LICENSE.TXT !"
+
+#: wpterm.php:879
+msgid "From the same author:"
+msgstr "Du même auteur :"
+
+#: wpterm.php:881
+msgid "A true Web Application Firewall to protect and secure WordPress."
+msgstr "Un véritable pare-feu applicatif pour sécuriser et protéger WordPress."
+
+#: wpterm.php:882
+msgid ""
+"Reclaim your admin dashboard: Get rid of annoying banners, unwanted ads and "
+"other nuisances."
+msgstr ""
+"Nettoyez votre Tableau de Bord : Débarrassez-vous des bannières, pubs "
+"indésirables et autres nuisances."
+
+#: wpterm.php:887
+msgid "View license"
+msgstr "Voir la licence"
+
+#: wpterm.php:912
+msgid ""
+"<strong>WPTerm</strong> is open-source and free. If you like it and want to "
+"support it, you can either donate or rate it on wordpress.org."
+msgstr ""
+"<strong>WPTerm</strong> est open-source et gratuit. Si vous l'aimez et que "
+"vous souhaitez le soutenir, vous pouvez faire un don ou le noter sur "
+"wordpress.org."
+
+#: wpterm.php:914
+msgid "PayPal donation"
+msgstr "Dons PayPal"
+
+#: wpterm.php:921
+msgid "Amount: USD"
+msgstr "Montant : USD"
+
+#: wpterm.php:926
+msgid "Bitcoin donation"
+msgstr "Don en Bitcoins"
+
+#: wpterm.php:931 wpterm.php:932
+msgid "Rate it"
+msgstr "Notez-le"
+
+#: wpterm.php:932
+msgid "Rate it on WordPress.org"
+msgstr "Notez-le sur WordPress.org"
+
+#: wpterm.php:935
+msgid "Thanks!"
+msgstr "Merci !"
+
+#: wpterm.php:960
+msgid "WPTerm: error, your password has expired. Reload this page to renew it."
+msgstr ""
+"WPTerm : erreur, les nonces de sécurité ne correspondent pas. Essayer de "
+"recharger cette page pour les renouveler."
+
+#: wpterm.php:965
+msgid "WPTerm error: missing command, path, function or abspath"
+msgstr "WPTerm : erreur : commande, répertoire, fonction or abspath manquant"
+
+#: wpterm.php:997
+#, php-format
+msgid "WPTerm: error %s"
+msgstr "WPTerm : erreur %s"
+
+#: wpterm.php:999
+msgid ""
+"WPTerm: unknown error. Are you allowed to run PHP program execution "
+"functions?"
+msgstr ""
+"WPTerm : Erreur inconnue. Êtes-vous autorisé à utiliser les fonctions PHP "
+"sur l'exécution de programmes externes ?"
+
+#: wpterm.php:1003
+msgid ""
+"WPTerm: error, security nonces do not match. Try to reload this page to "
+"renew them."
+msgstr ""
+"WPTerm : erreur, les nonces de sécurité ne correspondent pas. Essayer de "
+"recharger cette page pour les renouveler."
+
+#: wpterm.php:1104
+msgid "Wrong password, please try again."
+msgstr "Le mot de passe n'est pas correct, veuillez ré-essayer."
+
+#: wpterm.php:1108
+#, php-format
+msgid "A password is required to access WPTerm (#%s)."
+msgstr "Un mot de passe est nécessaire pour accéder à WPTerm (#%s)."
+
+#: wpterm.php:1126
+msgid "Enter your WPTerm password:"
+msgstr "Entrez votre mot de passe WPTerm :"
+
+#~ msgid "You are not allowed to perform this task."
+#~ msgstr "Vous n'êtes pas autorisé à effectuer cette tâche."
+
+#~ msgid "Online documentation:"
+#~ msgstr "Documentation en ligne :"
+
+#~ msgid "WPTerm: unknown error"
+#~ msgstr "WPTerm: erreur inconnue"
+
+#~ msgid "Overview"
+#~ msgstr "Présentation"
+
+#~ msgid "Wrap ON"
+#~ msgstr "Wrap ON"
+
+#~ msgid "Wrap OFF"
+#~ msgstr "Wrap OFF"
+
+#~ msgid "Wrap/Unwrap text"
+#~ msgstr "Activer/Désactiver le renvoi à la ligne"
+
+#~ msgid "Restore default font size"
+#~ msgstr "Restaurer la taille de police par défaut :"
+
+#~ msgid "Security"
+#~ msgstr "Sécurité"
+
+#~ msgid ""
+#~ "Tip: to change the current working directory to the ABSPATH, type %s."
+#~ msgstr "Astuce : pour revenir à ce répertoire, tapez %s."
