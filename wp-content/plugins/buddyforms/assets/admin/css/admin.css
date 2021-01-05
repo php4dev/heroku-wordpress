@@ -1,0 +1,1947 @@
+#TB_window {
+    left: 5% !important;;
+    margin-left: 0 !important;
+    width: 90% !important;
+    height: auto !important;
+}
+
+#TB_ajaxContent {
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#TB_ajaxContent .bf-tile-desc {
+    font-size: 14px;
+}
+
+#TB_ajaxContent .bf-tile-desc-wrap {
+    width: calc(100% - 30px);
+    padding: 30px 15px 15px;
+    margin: 0;
+    display: block;
+    clear: both;
+    float: none;
+    max-width: 100%;
+    background: #f4f4f4;
+    border-bottom: 1px solid #ddd;
+}
+
+#TB_ajaxContent fieldset {
+    border: none;
+}
+
+.bf-frame {
+    /*-ms-zoom: 0.75;
+    -moz-transform: scale(0.75);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.75);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.75);
+    -webkit-transform-origin: 0 0;*/
+}
+
+#TB_window .button-primary {
+    position: absolute;
+    top: 56px;
+    right: 20px;
+}
+
+.bf-hidden {
+    display: none;
+}
+
+.addon-image {
+    float: left;
+    padding: 10px;
+}
+
+.addon-content {
+    padding: 10px;
+}
+
+.bf-edid-form {
+    display: none;
+}
+
+.showme {
+    display: none;
+}
+
+.showhim:hover .showme {
+    display: block;
+}
+
+.center {
+    text-align: center;
+}
+
+#wpbody .bf_admin_wrap h1 {
+    float: none;
+}
+
+.bf_admin_wrap h1 span.version {
+    font-size: 14px;
+    font-style: italic;
+    padding-left: 5px;
+}
+
+@media screen and (max-width: 1140px) {
+    .bf_admin_wrap .credits {
+        display: none;
+    }
+}
+
+.bf_admin_wrap .credits {
+    position: relative;
+    float: right;
+    padding: 5px 10px;
+}
+
+.bf_admin_wrap .credits a img {
+    border-bottom: 1px solid transparent;
+    margin: -4px 5px 0 5px;
+}
+
+.bf_admin_wrap .credits a img:hover {
+    border-bottom: 1px solid #aaa;
+}
+
+.bf_admin_wrap .credits p {
+    color: #aaa;
+    padding: 4px 0;
+}
+
+.bf_admin_wrap .button-nav {
+    margin: 20px 0 10px 0;
+    clear: both;
+    padding: 20px 0 0 0;
+}
+
+.bf_admin_wrap .button-nav a.btn {
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.bf_admin_wrap #bf_support_nav .btn-small [class^="icon-"] {
+    margin-top: 1px;
+}
+
+.bf_admin_wrap hr {
+    margin: 20px 0 10px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #fafafa;
+}
+
+.bf_admin_wrap a.btn {
+    text-decoration: none;
+}
+
+/** the tab menu **/
+.bf_admin_wrap #bf_side_nav a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #aaa;
+    padding: 4px 6px;
+    border: 1px solid #dfdfdf;
+    border-right: none;
+    border-radius: 6px 0 0 6px;
+}
+
+.bf_admin_wrap #bf_side_nav a:hover {
+    color: red;
+}
+
+.bf_admin_wrap #bf_side_nav .active a {
+    color: #464646;
+    background: #fff;
+}
+
+.bf_admin_wrap #bf_side_nav .active a:hover {
+    color: #464646;
+}
+
+/* import export tab menu */
+#bf_import_export_tabs li a {
+    border: 1px solid #dfdfdf;
+    border-bottom: none;
+    text-decoration: none;
+    background: #e4e4e4;
+}
+
+#bf_import_export_tabs li.active a {
+    background: #f1f1f1;
+}
+
+#bf_import_export_tabs li a:hover {
+    background: #e4e4e4;
+    color: red;
+}
+
+#bf_import_export_tabs li.active a:hover {
+    background: #f1f1f1;
+    color: #464646;
+}
+
+/** the content area **/
+.bf_admin_wrap .tab-content .hero-unit {
+    background-color: #fff;
+    border: 1px solid #dfdfdf;
+    margin-right: 31%;
+}
+
+.bf_admin_wrap .accordion-group .accordion-heading {
+    text-shadow: #fff 0 1px 0;
+    -webkit-box-shadow: 0 1px 0 #fff;
+}
+
+.sortable .accordion-group:hover {
+    padding-bottom: 0px;
+    border: 1px solid #aaa;
+    cursor: move;
+}
+
+.sortable .accordion-heading :hover {
+    cursor: move;
+}
+
+.sortable .accordion-group {
+    margin-bottom: 0px !important;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+}
+
+.bf_admin_wrap .create-form-box label[for=create_new_form_name],
+.bf_admin_wrap .create-form-box label[for=create_new_form_singular_name] {
+    width: 20%;
+    float: left;
+}
+
+.bf_admin_wrap .create-form-box label[for=create_new_form_singular_name] {
+    clear: both;
+}
+
+.bf_admin_wrap .create-form-box input[name=create_new_form_name],
+.bf_admin_wrap .create-form-box input[name=create_new_form_singular_name] {
+    width: 50%;
+    float: left;
+    clear: right;
+}
+
+.bf_admin_wrap .accordion-body .accordion-inner {
+    padding: 30px 15px;
+}
+
+.bf_admin_wrap .hero-unit p.accordion-toggle {
+    padding-top: 18px !important;
+}
+
+.bf_admin_wrap .accordion-inner .innerblock {
+    overflow: hidden;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.bf_admin_wrap .accordion-inner .innerblock .radio {
+    padding-right: 15px;
+}
+
+.bf_admin_wrap .accordion-inner .innerblock .radio input[type=radio] {
+    margin-right: 5px;
+    margin-left: 1px;
+}
+
+.bf_admin_wrap .buddyforms_accordion_left select {
+    margin-bottom: 15px;
+}
+
+.bf_admin_wrap .buddyforms_accordion_right .checkbox {
+    margin-bottom: 15px;
+}
+
+.bf_admin_wrap i.small {
+    font-size: 15px;
+}
+
+.bf_admin_wrap .form_type_settings input[type="text"] {
+    margin-bottom: 20px;
+}
+
+.bf_admin_wrap .btn {
+    margin-right: 5px;
+}
+
+/** form elements **/
+.bf_admin_wrap .element_field {
+    margin: 10px 0;
+}
+
+.bf_admin_wrap .element_field li input[type="text"] {
+    margin: 0 5px;
+}
+
+.bf_admin_wrap .buddyforms_form_field {
+    margin: 10px 0 15px;
+}
+
+.bf-texteditor {
+    width: 100%;
+    margin: 10px 0;
+}
+
+/** sidebar **/
+.bf_admin_wrap .accordion_sidebar .accordion-heading p {
+    font-size: 15px;
+    text-shadow: #fff 0 1px 0;
+    padding: 7px 10px;
+    margin: 0;
+}
+
+.bf_admin_wrap .accordion_sidebar .accordion-inner {
+    background: #fcfcfc;
+    border-color: #dfdfdf;
+    padding: 15px;
+}
+
+.bf_admin_wrap .accordion_sidebar .accordion-group {
+    margin-bottom: 20px;
+}
+
+.bf_admin_wrap .accordion_sidebar input[type="text"] {
+    width: 188px;
+    margin-bottom: 20px;
+}
+
+/** the beginning **/
+.bf_admin_wrap .loading-animation-new, .loading-animation-order {
+    display: none;
+}
+
+.bf_admin_wrap .bf_list_item {
+    background-color: #fcfcfc;
+}
+
+.bf_admin_wrap .buddyforms_accordion_right {
+    float: right;
+    margin-top: 10px;
+    margin-right: 15px;
+}
+
+.bf_admin_wrap .accordion-heading-options {
+    float: right;
+    margin-top: 23px;
+    margin-right: 15px;
+}
+
+.bf_admin_wrap .accordion-heading-options, .bf_admin_wrap .accordion-heading-options b, .bf_admin_wrap .accordion-heading-options i {
+    cursor: pointer;
+}
+
+.bf_admin_wrap .accordion_sidebar {
+    float: right;
+    width: 30%;
+}
+
+.bf_admin_wrap .accordion_title {
+    font-size: 14px;
+}
+
+.bf_admin_wrap .radio {
+    padding: 5px;
+}
+
+.bf_admin_wrap .form_type_settings {
+    clear: both;
+}
+
+.bf_admin_wrap .bs-sidebar {
+    min-width: 150px;
+    float: left;
+    width: 20%;
+}
+
+.bf_admin_wrap .wp-list-table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.bf_admin_wrap .wp-list-table tr td {
+    height: 40px;
+}
+
+.bf-main-settings input[type="text"] {
+    width: 100%;
+    margin: 5px 0 10px;
+    height: 2em;
+    line-height: 2em;
+}
+
+.bf_admin_wrap .buddyforms_forms_builder .hero-unit p {
+    font-size: 18px;
+}
+
+.delete .icon-remove-sign {
+    margin-right: 5px;
+    margin-top: 6px !important;
+}
+
+/* Create New Form View */
+#create_new_form_singular_name {
+    padding: 3px 8px;
+    font-size: 1em;
+    line-height: 120%;
+    height: 2em;
+    width: 100%;
+    outline: 0;
+    margin: 10px 0 10px 0;
+}
+
+.bf-half-col {
+    float: left;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.bf-addon-half-col {
+    float: left;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+@media screen and (min-width: 1600px) {
+    .bf-half-col {
+        width: 49%;
+    }
+
+    .bf-half-col.bf-left {
+        margin-right: 1%;
+    }
+
+    .bf-half-col.bf-right {
+        margin-left: 1%;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .bf-addon-half-col {
+        width: 49%;
+    }
+
+    .bf-addon-half-col.bf-left {
+        margin-right: 1%;
+    }
+
+    .bf-addon-half-col.bf-right {
+        margin-left: 1%;
+    }
+}
+
+.bf-col-content {
+    min-height: 180px;
+    padding: 10px 20px;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+}
+
+.bf-addon-col-content {
+    min-height: 300px;
+    padding: 10px 20px;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+}
+
+.bf-roles-main-desc {
+    margin: 0px 12px 10px 0px;
+}
+
+.bf-main-desc {
+    margin: 20px 0;
+}
+
+.postbox-container .accordion-inner {
+    padding: 20px 15px;
+}
+
+.postbox-container .accordion-inner label {
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+.postbox-container .accordion-inner label.checkbox {
+    line-height: 190%;
+}
+
+.bf-error {
+    border: 2px solid #d02a21 !important;
+    border: 2px solid #d02a21;
+}
+
+.bf-error-text p {
+    color: #d02a21 !important;
+}
+
+.bf-ok {
+    border: 2px solid #7ad03a !important;
+    border: 2px solid #7ad03a;
+}
+
+.bf-mail-field {
+    width: 100%;
+}
+
+.buddyforms_forms_builder .circle {
+    background: transparent;
+    cursor: move;
+    margin: 2px 0 0;
+    border: 1px solid #BBBBBB;
+    border-radius: 12px;
+    display: block;
+    font-size: 12px;
+    height: 22px;
+    line-height: 22px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 22px;
+    line-height: 23px;
+    text-indent: 0;
+    margin-left: 6px;
+}
+
+.postbox-container input[type="text"], input[type="number"], input[type="email"], input[type="url"], select {
+    width: 100% !important;
+    height: 30px !important;
+}
+
+.post-type-buddyforms .postbox label {
+    font-size: 14px;
+    line-height: 26px;
+}
+
+a.button.button-large.bf_button_action {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.bf-select2 {
+    width: auto;
+}
+
+/* custom inclusion of right, left and below tabs */
+.tabs-below > .buddyform-nav-tabs,
+.tabs-right > .buddyform-nav-tabs,
+.buddyform-tabs-left > .buddyform-nav-tabs {
+    border-bottom: 0;
+}
+
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+    display: none;
+}
+
+.tab-content > .ui-tabs-active,
+.pill-content > .active {
+    display: block;
+}
+
+.tabs-below > .buddyform-nav-tabs {
+    border-top: 1px solid #ddd;
+}
+
+.tabs-below > .buddyform-nav-tabs > li {
+    margin-top: -1px;
+    margin-bottom: 0;
+}
+
+.tabs-below > .buddyform-nav-tabs > li > a {
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+}
+
+.tabs-below > .buddyform-nav-tabs > li > a:hover,
+.tabs-below > .buddyform-nav-tabs > li > a:focus {
+    border-top-color: #ddd;
+    border-bottom-color: transparent;
+}
+
+.tabs-below > .buddyform-nav-tabs > .ui-tabs-active > a,
+.tabs-below > .buddyform-nav-tabs > .ui-tabs-active > a:hover,
+.tabs-below > .buddyform-nav-tabs > .ui-tabs-active > a:focus {
+    border-color: transparent #ddd #ddd #ddd;
+}
+
+.buddyform-tabs-left > .buddyform-nav-tabs > li,
+.tabs-right > .buddyform-nav-tabs > li {
+    float: none;
+}
+
+.buddyform-tabs-left > .buddyform-nav-tabs > li > a,
+.tabs-right > .buddyform-nav-tabs > li > a {
+    min-width: 74px;
+    margin-right: 0;
+    margin-bottom: 3px;
+}
+
+.buddyform-tabs-left > .buddyform-nav-tabs {
+    float: left;
+    margin-right: 19px;
+    border-right: 1px solid #ddd;
+}
+
+.buddyform-tabs-left > .buddyform-nav-tabs > li > a {
+    margin-right: -1px;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+}
+
+.buddyform-tabs-left > .buddyform-nav-tabs > li > a:hover,
+.buddyform-tabs-left > .buddyform-nav-tabs > li > a:focus {
+    border-color: transparent;
+    background: transparent;
+}
+
+.buddyform-tabs-left > .buddyform-nav-tabs .ui-tabs-active > a,
+.buddyform-tabs-left > .buddyform-nav-tabs .ui-tabs-active > a:hover,
+.buddyform-tabs-left > .buddyform-nav-tabs .ui-tabs-active > a:focus {
+    border-color: #ddd;
+    color: inherit;
+    background-color: #f9f9f9;
+}
+
+.tabs-right > .buddyform-nav-tabs {
+    float: right;
+    margin-left: 19px;
+    border-left: 1px solid #ddd;
+}
+
+.tabs-right > .buddyform-nav-tabs > li > a {
+    margin-left: -1px;
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.tabs-right > .buddyform-nav-tabs > li > a:hover,
+.tabs-right > .buddyform-nav-tabs > li > a:focus {
+    border-color: #ddd;
+}
+
+.tabs-right > .buddyform-nav-tabs .ui-tabs-active > a,
+.tabs-right > .buddyform-nav-tabs .ui-tabs-active > a:hover,
+.tabs-right > .buddyform-nav-tabs .ui-tabs-active > a:focus {
+    border-color: #ddd;
+}
+
+/*.checkbox .bf_sent_mail_to_multi_checkbox {*/
+/*margin:4px;*/
+/*background-color:#888888;*/
+/*border-radius:4px;*/
+/*border:1px solid #888888;*/
+/*overflow:hidden;*/
+/*!*float:left;*!*/
+/*}*/
+
+/*.checkbox .bf_sent_mail_to_multi_checkbox:hover {*/
+/*margin:4px;*/
+/*background-color:#EFEFEF;*/
+/*border-radius:4px;*/
+/*border:1px solid red;*/
+/*overflow:hidden;*/
+/*!*float:left;*!*/
+/*color:red;*/
+/*}*/
+
+/*.checkbox .bf_sent_mail_to_multi_checkbox {*/
+/*float:left;*/
+/*width:4.0em;*/
+/*}*/
+
+/*.checkbox .bf_sent_mail_to_multi_checkbox input + span{*/
+/*text-align:center;*/
+/*padding:3px 0px;*/
+/*display:block;*/
+/*}*/
+
+/*.checkbox .bf_sent_mail_to_multi_checkbox input {*/
+/*position:absolute;*/
+/*top:-20px;*/
+/*}*/
+
+/*.checkbox .bf_sent_mail_to_multi_checkbox  input:checked + span {*/
+/*background-color:#911;*/
+/*color:#fff;*/
+
+/*text-align:center;*/
+/*padding:3px 0px;*/
+/*display:block;*/
+/*}*/
+/*.radio, .checkbox{*/
+/*min-height: 0px;*/
+/*}*/
+
+/*Form Builder Footer Actions*/
+#formbuilder-actions-wrap {
+    padding: 10px;
+    clear: both;
+    border-top: 1px solid #ddd;
+    background: #f5f5f5;
+    margin-left: -12px;
+    margin-right: -12px;
+    margin-bottom: -12px;
+}
+
+.formbuilder-actions-select-wrap {
+    overflow: auto;
+}
+
+#formbuilder-action-select {
+    line-height: 28px;
+    vertical-align: middle;
+    text-align: left;
+    float: right;
+}
+
+#formbuilder-action-add {
+    text-align: right;
+    float: right;
+    line-height: 23px;
+    margin-left: 10px;
+
+}
+
+#buddyforms-actions {
+    margin-top: -12px;
+}
+
+/* The Form Builder */
+.buddyforms_forms_builder .bf-input textarea {
+    width: 98%;
+}
+
+.buddyforms_forms_builder table {
+    width: 100%;
+}
+
+.buddyforms_forms_builder table.widefat {
+    border: none;
+}
+
+.buddyforms-metabox .inside .tab-content table.widefat {
+    border: none;
+}
+
+.buddyforms-metabox .inside .tab-content table.widefat > tbody > tr:hover {
+    background: rgba(0, 0, 0, .03);
+}
+
+.buddyforms-metabox .inside .tab-content table.widefat > tbody > tr:not(:first-child) > * {
+    border-top: 1px solid rgba(0, 0, 0, .15);
+}
+
+.buddyforms-metabox .inside .tab-content table.widefat > tbody > tr > * > p:empty {
+    display: none;
+}
+
+.buddyforms_forms_builder .accordion-inner .ui-widget-content .ui-state-active > * {
+    color: #000000;
+}
+
+.buddyforms_forms_builder .fields_header {
+    border-bottom: 1px solid #e5e5e5;
+    background: #f9f9f9;
+    margin-top: -6px;
+    margin-right: -12px;
+    margin-left: -12px;
+    padding: 0 10px;
+    margin-bottom: 6px;
+}
+
+.buddyforms_forms_builder .fields_header thead th {
+    border: none;
+    background: #f9f9f9;
+    /*color: #888;*/
+    font-size: 13px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Form Setup Choose A Form Type Box */
+.bf-3-tile {
+    width: 95%;
+    background: #fafafa;
+    border: 1px solid #e3e3e3;
+    display: block;
+    overflow: auto;
+    padding: 20px 10px;
+    vertical-align: top;
+    margin-bottom: 10px;
+}
+
+.bf-3-tile button,
+.bf-3-tile .btn {
+    display: inline-block;
+    width: 100%;
+    padding: 8px 0;
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 14px;
+    color: #fff;
+    text-align: center;
+    text-shadow: none;
+    vertical-align: middle;
+    cursor: pointer;
+    background: #0085ba;
+    text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;
+    border-color: #0073aa #006799 #006799;
+    -webkit-box-shadow: 0 1px 0 #006799;
+    box-shadow: 0 1px 0 #006799;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.bf-3-tile button.bf_form_template.btn:disabled,
+.bf-3-tile button.bf_form_template.btn[disabled],
+.bf-3-tile button.bf_form_template.btn[disabled]:hover,
+.bf-3-tile button.bf_form_template.btn[disabled]:hover {
+    background: #CCCCCC;
+    color: #333;
+    text-shadow: none;
+    border-color: buttonface;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+.buddyforms_template .btn:hover,
+.buddyforms_template .btn:focus {
+    background: #008ec2;
+    border-color: #006799;
+}
+
+.bf-tile .bf-preview {
+    font-size: 11px;
+    float: right;
+}
+
+.bf-3-tile .dashicons {
+    font-size: inherit;
+    height: auto;
+    line-height: inherit;
+}
+
+.bf-tile-title {
+    margin-bottom: 15px;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.bf-tile-desc-wrap {
+    overflow: auto;
+    margin-bottom: 20px;
+    width: calc(100% - 100px);
+    display: inline-block;
+    float: left;
+}
+
+.bf-tile-desc {
+    /*display: none;*/
+    height: 42px;
+    min-height: 42px;
+    overflow: hidden;
+    margin: 0;
+    font-size: 10px;
+    line-height: 14px;
+}
+
+/* Dependencies */
+
+.bf-tile.disabled {
+    color: #aaa;
+}
+
+.bf-tile-dependencies {
+    margin: 0 0 10px;
+    font-size: 11px;
+    color: #444;
+    clear: both;
+}
+
+.buddyforms_wizard_types {
+    padding: 0 0 10px;
+    overflow: auto;
+}
+
+#poststuff .buddyforms_wizard_types h2 {
+    clear: both;
+    padding: 30px 0 15px;
+
+}
+
+.bf-col-50 {
+    width: 50%;
+    float: left;
+    display: inline-block;
+}
+
+@media (min-width: 1200px) {
+    .bf-3-tile {
+        width: 29%;
+        display: inline-block;
+        padding: 10px 15px 5px;
+        min-height: 182px;
+    }
+
+    .bf-3-tile.disabled {
+        /*min-height: 180px;*/
+    }
+}
+
+input[readonly] {
+    cursor: pointer;
+}
+
+#buddyforms_form_setup .hndle {
+    padding: 10px;
+}
+
+#buddyforms_form_setup .hndle span span {
+    display: inline;
+    line-height: inherit;
+    vertical-align: baseline;
+}
+
+#buddyforms_form_setup .hndle label {
+    padding-right: 1em;
+    font-size: 12px;
+    vertical-align: baseline;
+}
+
+#buddyforms_form_setup .hndle input, #buddyforms-form-setup .hndle select {
+    margin: -3px 0 0 .5em;
+    vertical-align: middle;
+}
+
+#bf-form-type-select {
+    margin: -3px 0 0 .5em !important;
+    width: 200px !important;
+    height: 21px !important;
+    line-height: 12px !important;
+    vertical-align: top !important;
+    font-size: 12px !important;
+    margin-bottom: 2px !important;
+    margin-top: 1px !important;
+}
+
+div#buddyforms_metabox_sidebar p {
+    float: left;
+    padding-left: 5px;
+}
+
+label.error {
+    color: red;
+    font-weight: bold;
+}
+
+/* Admin MetaBox Shortcodes  -  admin meta box that displays all shortcodes for the form */
+
+#bf-shortcode {
+    overflow: auto;
+    display: block;
+    clear: both;
+}
+
+.bf-row {
+    overflow: auto;
+    display: block;
+    clear: both;
+}
+
+.bf-tile {
+    overflow: auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    width: 206px;
+    margin: 0 10px 10px 0;
+    padding: 15px 10px 0;
+    float: left;
+}
+
+.bf-tile.actions {
+    padding: 5px 10px 0;
+    width: 91%;
+}
+
+.bf-tile.alt {
+    /*background: #f5f4f1;*/
+}
+
+.post-type-buddyforms .postbox .bf-tile label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.bf-tile p.description {
+    margin: 10px -10px 0;
+    padding: 10px 10px 10px;
+    background: #eee;
+    border-top: 1px solid #ddd;
+    min-height: 38px;
+}
+
+.bf_button_action .dashicons {
+    line-height: 1.4;
+    padding-right: 3px;
+}
+
+#screen-meta-links {
+    /*display: none;*/
+}
+
+/* --- Submission Single View --- */
+
+.postbox-submissions .settings-input {
+    display: block;
+}
+
+.postbox-submissions .bf-input {
+    margin-bottom: 20px;
+}
+
+.postbox-submissions textarea,
+.postbox-submissions .standard-form input[type=url],
+.postbox-submissions .standard-form input[type=link],
+.postbox-submissions .standard-form input[type=text],
+.postbox-submissions .standard-form input[type=email],
+.postbox-submissions .standard-form input[type=date],
+.postbox-submissions .standard-form input[type=password] {
+    width: 100%;
+    min-height: 38px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #f1f1f1;
+    color: #999;
+    font: inherit;
+}
+
+.postbox-submissions .standard-form input[type=date] {
+    width: auto;
+}
+
+.postbox-submissions .bf-input .radio {
+    display: block;
+}
+
+.postbox-submissions .bf-input textarea,
+.postbox-submissions .bf-input .form-control {
+    display: block;
+    width: 100%;
+    background: #f1f1f1;
+}
+
+.buddyforms-metabox textarea {
+    width: 100%;
+}
+
+#fs_promo_tab {
+    display: none !important;
+}
+
+#piframe {
+    display: none;
+}
+
+/*#bf-gopro-sidebar {
+    background: #fff;
+    padding: 20px 10px 30px;
+    border: 1px solid #ddd;
+}*/
+
+tr.bf-disabled {
+    opacity: 0.5;
+}
+
+tr.bf-disabled th label b::after {
+    width: 72px;
+    height: 18px;
+    padding: 0;
+    clear: both;
+    display: block;
+    float: none;
+    content: "Pro Feature";
+    text-align: center;
+    font-size: 9px;
+    line-height: 2;
+    background: #b90638;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.bf-color-hidden {
+    display: none;
+}
+
+input[type="color"] {
+    padding: 0;
+    margin: -25px 0 0 0;
+    height: 60px;
+    width: 90px;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.wp-picker-open + .wp-picker-input-wrap {
+    display: block;
+    vertical-align: top;
+    /*width: 117px;*/
+}
+
+.wp-picker-container input[type="text"].wp-color-picker {
+    width: 65px !important;
+    height: 25px !important;
+    display: inline-block;
+}
+
+.wp-picker-container input[type="button"].wp-picker-clear {
+    display: inline-block;
+    height: 25px !important;
+}
+
+.bf-image {
+    list-style-type: none;
+}
+
+tr.upload_accepted_fields_container > td > div.bf-input {
+    min-height: 42px;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.buddyforms_forms_builder .accordion {
+    margin-bottom: 20px;
+}
+
+.buddyforms_forms_builder .accordion-group {
+    margin-bottom: 2px;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.buddyforms_forms_builder .accordion-heading {
+    border-bottom: 0;
+}
+
+.buddyforms_forms_builder .accordion-heading .accordion-toggle {
+    display: block;
+    padding: 8px 15px;
+}
+
+.buddyforms_forms_builder .accordion-toggle {
+    cursor: pointer;
+}
+
+.buddyforms_forms_builder .accordion-inner {
+    padding: 9px 15px;
+    border-top: 1px solid #e5e5e5;
+}
+
+nav {
+    display: block;
+}
+
+.navbar-static-top .container,
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+    width: 940px;
+}
+
+.icon-white,
+.buddyform-nav-tabs > .ui-tabs-active > a > [class^="icon-"],
+.buddyform-nav-tabs > .ui-tabs-active > a > [class*=" icon-"],
+.buddyform-nav-pills > .ui-tabs-active > a > [class^="icon-"],
+.buddyform-nav-pills > .ui-tabs-active > a > [class*=" icon-"],
+.nav-list > .ui-tabs-active > a > [class^="icon-"],
+.nav-list > .ui-tabs-active > a > [class*=" icon-"],
+.navbar-inverse .nav > .ui-tabs-active > a > [class^="icon-"],
+.navbar-inverse .nav > .ui-tabs-active > a > [class*=" icon-"],
+.dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:hover > [class*=" icon-"],
+.dropdown-menu > .ui-tabs-active > a > [class^="icon-"],
+.dropdown-menu > .ui-tabs-active > a > [class*=" icon-"] {
+    background-image: url("../img/glyphicons-halflings-white.png");
+}
+
+.dropup .caret,
+.navbar-fixed-bottom .dropdown .caret {
+    border-top: 0;
+    border-bottom: 4px solid #000000;
+    content: "";
+}
+
+.dropup .dropdown-menu,
+.navbar-fixed-bottom .dropdown .dropdown-menu {
+    top: auto;
+    bottom: 100%;
+    margin-bottom: 1px;
+}
+
+.dropdown .dropdown-menu .nav-header {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.nav {
+    margin-bottom: 20px;
+    margin-left: 0;
+    list-style: none;
+}
+
+.nav > li > a {
+    display: block;
+}
+
+.nav > li > a:hover {
+    text-decoration: none;
+    background-color: #eeeeee;
+}
+
+.nav > .pull-right {
+    float: right;
+}
+
+.nav-header {
+    display: block;
+    padding: 3px 15px;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #999999;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+}
+
+.nav li + .nav-header {
+    margin-top: 9px;
+}
+
+.nav-list {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 0;
+}
+
+.nav-list > li > a,
+.nav-list .nav-header {
+    margin-right: -15px;
+    margin-left: -15px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.nav-list > li > a {
+    padding: 3px 15px;
+}
+
+.nav-list > .ui-tabs-active > a,
+.nav-list > .ui-tabs-active > a:hover {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    background-color: #0088cc;
+}
+
+.nav-list [class^="icon-"] {
+    margin-right: 2px;
+}
+
+.nav-list .divider {
+    *width: 100%;
+    height: 1px;
+    margin: 9px 1px;
+    *margin: -5px 0 5px;
+    overflow: hidden;
+    background-color: #e5e5e5;
+    border-bottom: 1px solid #ffffff;
+}
+
+.buddyform-nav-tabs,
+.buddyform-nav-pills {
+    *zoom: 1;
+}
+
+.buddyform-nav-tabs:before,
+.buddyform-nav-pills:before,
+.buddyform-nav-tabs:after,
+.buddyform-nav-pills:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.buddyform-nav-tabs:after,
+.buddyform-nav-pills:after {
+    clear: both;
+}
+
+.buddyform-nav-tabs > li,
+.buddyform-nav-pills > li {
+    float: left;
+}
+
+.buddyform-nav-tabs > li > a,
+.buddyform-nav-pills > li > a {
+    padding-right: 12px;
+    padding-left: 12px;
+    margin-right: 2px;
+    line-height: 14px;
+}
+
+.buddyform-nav-tabs {
+    border-bottom: 1px solid #ddd;
+}
+
+.buddyform-nav-tabs > li {
+    margin-bottom: -1px;
+}
+
+.buddyform-nav-tabs > li > a {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    line-height: 20px;
+    border: 1px solid transparent;
+    -webkit-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+}
+
+.buddyform-nav-tabs > li > a:hover {
+    border-color: #eeeeee #eeeeee #dddddd;
+}
+
+.buddyform-nav-tabs > .ui-tabs-active > a,
+.buddyform-nav-tabs > .ui-tabs-active > a:hover {
+    color: #555555;
+    cursor: default;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+
+.buddyform-nav-pills > li > a {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.buddyform-nav-pills > .ui-tabs-active > a,
+.buddyform-nav-pills > .ui-tabs-active > a:hover {
+    color: #ffffff;
+    background-color: #0088cc;
+}
+
+.nav-stacked > li {
+    float: none;
+}
+
+.nav-stacked > li > a {
+    margin-right: 0;
+}
+
+.buddyform-nav-tabs.nav-stacked {
+    border-bottom: 0;
+}
+
+.buddyform-nav-tabs.nav-stacked > li > a {
+    border: 1px solid #ddd;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.buddyform-nav-tabs.nav-stacked > li:first-child > a {
+    -webkit-border-top-right-radius: 4px;
+    border-top-right-radius: 4px;
+    -webkit-border-top-left-radius: 4px;
+    border-top-left-radius: 4px;
+    -moz-border-radius-topright: 4px;
+    -moz-border-radius-topleft: 4px;
+}
+
+.buddyform-nav-tabs.nav-stacked > li:last-child > a {
+    -webkit-border-bottom-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    -moz-border-radius-bottomright: 4px;
+    -moz-border-radius-bottomleft: 4px;
+}
+
+.buddyform-nav-tabs.nav-stacked > li > a:hover {
+    z-index: 2;
+    border-color: #ddd;
+}
+
+.buddyform-nav-pills.nav-stacked > li > a {
+    margin-bottom: 3px;
+}
+
+.buddyform-nav-pills.nav-stacked > li:last-child > a {
+    margin-bottom: 1px;
+}
+
+.buddyform-nav-tabs .dropdown-menu {
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+}
+
+.buddyform-nav-pills .dropdown-menu {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.nav .dropdown-toggle .caret {
+    margin-top: 6px;
+    border-top-color: #0088cc;
+    border-bottom-color: #0088cc;
+}
+
+.nav .dropdown-toggle:hover .caret {
+    border-top-color: #005580;
+    border-bottom-color: #005580;
+}
+
+/* move down carets for tabs */
+
+.buddyform-nav-tabs .dropdown-toggle .caret {
+    margin-top: 8px;
+}
+
+.nav .ui-tabs-active .dropdown-toggle .caret {
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+}
+
+.buddyform-nav-tabs .ui-tabs-active .dropdown-toggle .caret {
+    border-top-color: #555555;
+    border-bottom-color: #555555;
+}
+
+.nav > .dropdown.ui-tabs-active > a:hover {
+    cursor: pointer;
+}
+
+.buddyform-nav-tabs .open .dropdown-toggle,
+.buddyform-nav-pills .open .dropdown-toggle,
+.nav > li.dropdown.open.ui-tabs-active > a:hover {
+    color: #ffffff;
+    background-color: #999999;
+    border-color: #999999;
+}
+
+.nav li.dropdown.open .caret,
+.nav li.dropdown.open.ui-tabs-active .caret,
+.nav li.dropdown.open a:hover .caret {
+    border-top-color: #ffffff;
+    border-bottom-color: #ffffff;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.tabs-stacked .open > a:hover {
+    border-color: #999999;
+}
+
+.tabbable {
+    *zoom: 1;
+}
+
+.tabbable:before,
+.tabbable:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.tabbable:after {
+    clear: both;
+}
+
+.tab-content {
+    overflow: auto;
+}
+
+.tabs-below > .buddyform-nav-tabs,
+.tabs-right > .buddyform-nav-tabs,
+.buddyform-tabs-left > .buddyform-nav-tabs {
+    border-bottom: 0;
+}
+
+.tab-content > .ui-tabs-active,
+.pill-content > .ui-tabs-active {
+    display: block;
+}
+
+.tabs-below > .buddyform-nav-tabs {
+    border-top: 1px solid #ddd;
+}
+
+.tabs-below > .buddyform-nav-tabs > li {
+    margin-top: -1px;
+    margin-bottom: 0;
+}
+
+.tabs-below > .buddyform-nav-tabs > li > a {
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+}
+
+.tabs-below > .buddyform-nav-tabs > li > a:hover {
+    border-top-color: #ddd;
+    border-bottom-color: transparent;
+}
+
+.tabs-below > .buddyform-nav-tabs > .ui-tabs-active > a,
+.tabs-below > .buddyform-nav-tabs > .ui-tabs-active > a:hover {
+    border-color: transparent #ddd #ddd #ddd;
+}
+
+.buddyform-tabs-left > .buddyform-nav-tabs > li,
+.tabs-right > .buddyform-nav-tabs > li {
+    float: none;
+}
+
+.buddyform-tabs-left > .buddyform-nav-tabs > li > a,
+.tabs-right > .buddyform-nav-tabs > li > a {
+    min-width: 74px;
+    margin-right: 0;
+    margin-bottom: 3px;
+}
+
+.buddyform-tabs-left > .buddyform-nav-tabs {
+    float: left;
+    margin-right: 19px;
+    border-right: 1px solid #ddd;
+}
+
+.buddyform-tabs-left > .buddyform-nav-tabs > li > a {
+    margin-right: -1px;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+}
+
+.buddyform-tabs-left > .buddyform-nav-tabs > li > a:hover {
+    border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+}
+
+.buddyform-tabs-left > .buddyform-nav-tabs .ui-tabs-active > a,
+.buddyform-tabs-left > .buddyform-nav-tabs .ui-tabs-active > a:hover {
+    border-color: #ddd transparent #ddd #ddd;
+    *border-right-color: #ffffff;
+}
+
+.tabs-right > .buddyform-nav-tabs {
+    float: right;
+    margin-left: 19px;
+    border-left: 1px solid #ddd;
+}
+
+.tabs-right > .buddyform-nav-tabs > li > a {
+    margin-left: -1px;
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.tabs-right > .buddyform-nav-tabs > li > a:hover {
+    border-color: #eeeeee #eeeeee #eeeeee #dddddd;
+}
+
+.tabs-right > .buddyform-nav-tabs .ui-tabs-active > a,
+.tabs-right > .buddyform-nav-tabs .ui-tabs-active > a:hover {
+    border-color: #ddd #ddd #ddd transparent;
+    border-left-color: #ffffff;
+}
+
+div.checkbox > label > input[type='checkbox'][value='enable_all'],
+div.checkbox > p > input[type='checkbox'][value='enable_all'] {
+    display: none;
+}
+
+div.checkbox > label.checkbox-inline > input[type=“checkbox”] {
+    float: left;
+}
+
+input.screen-per-page {
+    width: 4em !important;
+}
+
+.buddyforms_accordion_permission label.checkbox-inline.draft > input {
+    margin-left: 3% !important;
+    float: left;
+}
+
+.buddyforms_accordion_permission label.checkbox-inline.admin-submission > input {
+    margin-left: 3% !important;
+    float: left;
+}
+
+.buddyforms_accordion_permission label.checkbox-inline.all > input {
+    margin-left: 3% !important;
+    float: left;
+}
+
+.buddyforms_accordion_permission label.checkbox-inline.delete > input {
+    margin-left: 3% !important;
+    float: left;
+}
+
+.buddyforms_accordion_permission label.checkbox-inline.edit > input {
+    margin-left: 3% !important;
+    float: left;
+}
+
+.buddyforms_accordion_permission label.checkbox-inline.create > input {
+    margin-left: 3% !important;
+    float: left;
+}
+
+.bf_permissions thead tr th.field_label {
+    width: 30%;
+}
+
+.bf_permissions thead tr th.field_name span {
+    display: inline-block;
+    bottom: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    transform: rotate(-90deg);
+    transform-origin: left;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.bf_permissions thead tr {
+    height: 150px;
+    vertical-align: bottom;
+    overflow: hidden;
+}
+
+.bf_hide_if_not_ajax_ready {
+    display: none;
+}
+
+table .element_field_table_sortable tbody {
+    cursor: ns-resize;
+}
+
+#buddyforms_form_shortcodes .bf-shortcode div.tooltip > span.dashicons.dashicons-admin-page,
+#buddyforms_forms_builder .field_name > div.tooltip > span.dashicons.dashicons-admin-page {
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+    line-height: unset;
+    position: relative;
+    display: none;
+    cursor: pointer;
+}
+
+#buddyforms_form_shortcodes .bf-shortcode div.tooltip > span.field_name_text,
+#buddyforms_forms_builder .field_name > div.tooltip > span.field_name_text {
+    cursor: pointer;
+    position: absolute;
+}
+
+/*
+ *  Adding tooltip css to improve user experience.
+ *  For now this only work inside the editor
+ */
+
+#buddyforms_form_shortcodes .bf-shortcode div.tooltip > .tooltip-container,
+#buddyforms_forms_builder .field_name .tooltip-container {
+    display: none;
+    width: 150px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    margin-top: 21px;
+    margin-left: 5px;
+    z-index: 99;
+}
+
+#buddyforms_form_shortcodes .bf-shortcode div.tooltip:hover .tooltip-container,
+#buddyforms_forms_builder .tooltip:hover .tooltip-container {
+    display: block;
+}
+
+#buddyforms_template_header_container h3 > a {
+    color: initial;
+    text-decoration-style: solid;
+    text-decoration-color: gray;
+}
+
+img.buddyforms_template_arrow {
+    width: 100px;
+    height: 100px;
+    margin-top: 80px;
+    margin-left: 35px;
+    margin-right: 170px;
+}
+
+#buddyforms_template_header_container {
+    text-align: center;
+    align-items: center;
+    display: none;
+    justify-content: center;
+}
+
+#buddyforms_template_arrow_container {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    width: 40%;
+}
+
+#buddyforms_template_header_container_h3 {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    justify-content: flex-end;
+}
+
+div#formbuilder-action-templates {
+    width: 30%;
+    float: left;
+    display: none;
+}
+
+/*
+ * Marketing styles
+ */
+
+.bf-marketing-action-container {
+    display: flex;
+    padding: 5px;
+}
+
+.bf-marketing-btn {
+    margin: 3px;
+}
+
+/*
+    Shortcode container
+ */
+
+.buddyforms-shortcodes-container {
+    height: 50px;
+    overflow-y: scroll;
+}
+
+.buddyforms-shortcodes-container::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+.buddyforms-shortcodes-container::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+#buddyforms_form_setup table.wp-list-table.widefat.fixed.posts.notification-container {
+    cursor: pointer;
+}
+
+.buddyforms_forms_builder table td.field_layout.tk-editor-field-item-layout,
+.buddyforms_forms_builder .fields_header thead th.field_layout {
+    width: 17%;
+}
+
+.buddyforms_forms_builder table td.field_type.tk-editor-field-item-type,
+.buddyforms_forms_builder .fields_header thead th.field_type {
+    width: 20%;
+}
+
+.buddyforms_forms_builder .fields_header thead th.field_order,
+.buddyforms_forms_builder table td.field_order.tk-editor-field-item-order,
+#buddyforms_form_setup table.wp-list-table.widefat.fixed.posts.notification-container td.field_order {
+    width: 10%;
+}
+
+#buddyforms_form_setup table.wp-list-table.widefat.fixed.posts.notification-container td.field_delete {
+    width: 30%;
+}
+
+#buddyforms_form_setup table.wp-list-table .bf_test_trigger {
+    width: 30%;
+    text-align: center;
+}
+
+.bf_list_item.bf_html div[id^='general-html-'] table tbody th {
+    width: 15%;
+}
+
+.upload_accepted_fields_container td {
+    max-height: 100px;
+    overflow-x: scroll;
+    display: inline-grid;
+    border: 1px solid #7e8993;
+    width: 85%;
+    margin-left: 10px;
+    box-shadow: 0 0 0 transparent;
+    border-radius: 4px;
+    overflow-y: scroll;
+}
+
+.bf_hide_captcha_v2_options {
+    display: none;
+}
+
+.buddyforms_forms_builder table.wp-list-table.widefat.posts.fixed [id^="table_row_"] th[scope="row"],.buddyforms_forms_builder table.wp-list-table.widefat.posts tr th[scope="row"] {
+    height: 100%;
+    vertical-align: text-top;
+}
+
+.buddyforms_forms_builder table.wp-list-table.widefat.posts.fixed [id^="table_row_"][id$="_data_types"] td {
+    display: block;
+    overflow: auto;
+    max-height: 240px;
+}
+
+.buddyform-tabs-left.ui-widget.ui-widget-content {
+    border: unset;
+}
+
+
+.buddyforms_forms_builder .ui-accordion .ui-accordion-header {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    margin: unset;
+    padding: unset;
+}
+
+.buddyforms_forms_builder .ui-state-active, .buddyforms_forms_builder .ui-widget-content .ui-state-active, .buddyforms_forms_builder .ui-widget-header .ui-state-active {
+    border: unset;
+    background: unset;
+    font-weight: initial;
+    color: unset;
+}
+
+.buddyforms_forms_builder .ui-icon {
+    display: none;
+}
+
+.buddyforms_forms_builder .ui-state-default a,
+.buddyforms_forms_builder .ui-state-default a:link,
+.buddyforms_forms_builder .ui-state-default a:visited,
+.buddyforms_forms_builder a.ui-button,
+.buddyforms_forms_builder a:link.ui-button,
+.buddyforms_forms_builder a:visited.ui-button,
+.buddyforms_forms_builder .ui-button {
+    color: #0073aa;
+}
+
+.buddyforms_forms_builder .ui-state-default,
+.buddyforms_forms_builder .ui-widget-content .ui-state-default,
+.buddyforms_forms_builder .ui-widget-header .ui-state-default,
+.buddyforms_forms_builder .ui-button,
+html .buddyforms_forms_builder .ui-button.ui-state-disabled:hover,
+html .buddyforms_forms_builder .ui-button.ui-state-disabled:active {
+    border-bottom: 1px solid #c5c5c5;
+    font-weight: normal;
+    color: #454545;
+}
+
+.buddyforms_forms_builder .ui-accordion .ui-accordion-content {
+    padding: unset;
+    border-top: 0;
+    overflow: auto;
+}
+
+.postbox-container .accordion-inner {
+    padding: 20px 15px;
+}
+
+.buddyforms-metabox .ui-tabs .ui-tabs-panel,
+.buddyforms_forms_builder .ui-tabs .ui-tabs-panel {
+    padding: unset;
+}
+
+.buddyforms-metabox .ui-widget-header,
+.buddyforms_forms_builder .ui-widget-header {
+    background: unset;
+}
+
+.buddyforms_forms_builder .buddyform-tabs-left > .buddyform-nav-tabs > li, .buddyforms_forms_builder .tabs-right > .buddyform-nav-tabs > li {
+    border: unset;
+}
+
+.buddyforms-metabox .ui-state-active, .buddyforms-metabox .ui-widget-content .ui-state-active, .buddyforms-metabox .ui-widget-header .ui-state-active {
+    border: unset;
+    background: unset;
+    font-weight: normal;
+    color: initial;
+}
+
+.buddyforms-metabox .ui-state-active,
+.buddyforms-metabox .ui-state-active > *,
+.buddyforms-metabox .ui-widget-content .ui-state-active,
+.buddyforms-metabox .ui-widget-content .ui-state-active > *,
+.buddyforms-metabox .ui-widget-header .ui-state-active,
+.buddyforms-metabox .ui-widget-header .ui-state-active > * {
+    text-decoration: none;
+    border-right-color: transparent !important;
+}
+
+.buddyforms-metabox .ui-state-default, .buddyforms-metabox .ui-widget-content .ui-state-default, .buddyforms-metabox .ui-widget-header .ui-state-default {
+    border: unset;
+}
+
+.buddyforms-metabox .ui-state-default,
+.buddyforms-metabox .ui-state-default *,
+.buddyforms-metabox .ui-widget-content .ui-state-default,
+.buddyforms-metabox .ui-widget-content .ui-state-default *,
+.buddyforms-metabox .ui-widget-header .ui-state-default,
+.buddyforms-metabox .ui-widget-header .ui-state-default *
+{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.post-type-buddyforms .postbox-header .handle-actions {
+    display: none;
+}
+
+.post-type-buddyforms #submitdiv.postbox .postbox-header {
+    display: block;
+}
+
+.post-type-buddyforms #submitdiv.postbox .postbox-header .notice-error {
+    margin: 8px 12px;
+    margin-top: 0;
+    padding: 8px 12px;
+}
+
+.post-type-buddyforms #submitdiv.postbox .postbox-header .notice-error :last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}

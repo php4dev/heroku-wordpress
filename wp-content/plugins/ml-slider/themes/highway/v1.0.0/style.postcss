@@ -1,0 +1,377 @@
+/**
+ * Containers
+ * This includes the main wrapper for all sliders, then each slider,
+ * which is one level above the individual slides.
+ * Don't be afraid to use !important as needed.
+ */
+
+$theme_name: highway;
+$theme_prefix: .metaslider.ms-theme-$(theme_name);
+
+.ms-theme-highway {
+	padding-bottom: 40px;
+	opacity: 0;
+	transition: opacity 0.3s;
+	&.ms-loaded {
+		opacity: 1;
+	}
+}
+
+$(theme_prefix) {
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+	.flexslider {
+		margin-bottom: 0;
+	}
+	.flexslider:not(.filmstrip) .slides,
+	.rslides,
+	.nivoSlider,
+	.coin-slider .coin-slider {
+	}
+
+	.rslides img,
+	.nivoSlider {
+	}
+
+	/**
+	* Dots
+	* You should inspect the sliders to see more specific rules
+	* mixin use: @mixin mixinName ...supported_libraries
+	*/
+	@mixin dotsContainer flex, rslides, nivo {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		position: absolute;
+		bottom: 45px;
+      right: 30px;
+      width: auto;
+		background: transparent;
+		justify-content: center;
+		line-height: 1.2;
+		margin: 0;
+		padding: 0 !important;
+		z-index: 8;
+		transition: top .2s;
+
+      .ms-is-small& {
+         width: 100%;
+         left: 0;
+         right: 0;
+         bottom: 20px;
+      }
+
+      .has-carousel-mode& {
+         bottom: 25px;
+      }
+	}
+
+	@mixin dotsContainer coin {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		position: absolute;
+		bottom: 30px;
+		background: transparent;
+		justify-content: center;
+		line-height: 15px;
+		margin: 0;
+		padding: 0 !important;
+		z-index: 8;
+		transition: top .2s;
+	}
+
+	@mixin dotsLink {
+		display: flex;
+		box-shadow: none !important;
+		transition: background 0.2s ease-in-out;
+		border: 0;
+		cursor: pointer;
+		line-height: 1.2;
+		width: 30px;
+		height: 16px;
+		border-radius: 10px;
+		background: rgba(91, 92, 97, .8);
+		margin: 5px 5px 0 5px;
+		padding: 2px 3px 5px 3px;
+		font-size: 14px;
+		color: #ffffff;
+		text-indent: -9999px;
+		border: 2px solid transparent;
+	}
+
+	@mixin dotsLinkLastItem {
+		margin-right: 0;
+	}
+
+	@mixin dotsLinkActive {
+      	background: #ffffff;
+      	border: 2px solid rgba(91, 92, 97, .8);
+		&::after {
+			opacity: 1;
+		}
+	}
+
+	/**
+	* Arrows
+	*
+	*/
+   @mixin arrowsContainer flex, nivo {
+		position: absolute;
+		bottom: 80px;
+		width: 100px;
+		left: 50%;
+		transform: translateX(-50%);
+		transition: top .2s;
+		z-index: 1020;
+
+		.ms-is-small& {
+			width: 100%;
+			left: auto;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		.has-carousel-mode& {
+			bottom: 60px;
+		}
+	}
+
+	@mixin arrowsLink {
+		background: none;
+		box-shadow: none;
+		width: 64px;
+		height: 44px;
+		color: black;
+		opacity: 0;
+		overflow: hidden;
+		transition: all .2s ease-in-out;
+		margin-top: 0;
+		top: 50%;
+		background: rgba(91, 92, 97, .8);
+		padding: 0;
+		border-radius: 30px;
+		border: 2px solid #ffffff;
+
+		&::before {
+			content: '' !important;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			display: block;
+			background-size: 100%;
+		}
+	}
+
+   @mixin arrowsLink__prev {
+		left: -25px;
+
+		.ms-is-small& {
+			left: 18px;
+			top: 3px;
+		}
+
+		&:before {
+			background: url("images/arrow-left.png") no-repeat center center;
+		}
+	}
+
+   @mixin arrowsLink__next {
+		right: -25px;
+
+		.ms-is-small& {
+			right: 18px;
+			top: 3px;
+		}
+
+		&:before {
+			background: url("images/arrow-right.png") no-repeat center center;
+		}
+	}
+
+	@mixin arrowsLink__prev coin {
+		margin-left: 20px;
+	}
+
+	@mixin arrowsLink__next coin {
+		margin-right: 20px;
+	}
+
+   	@mixin sliderHover__arrowsLinks {
+		opacity: 1 !important;
+
+		&:hover {
+			background-color: black;
+			opacity: 1 !important;
+		}
+	}
+	&.metaslider-nivo:hover div.nivo-directionNav a {
+		opacity: 1 !important;
+	}
+
+   	@mixin arrowsLink rslides {
+
+		.ms-is-small& {
+		}
+
+		&.prev {
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 40px;
+			top: auto;
+			margin-left: -40px;
+
+			.ms-is-small& {
+				top: 50%;
+				transform: translateY(-50%);
+				margin-left: 0px;
+			}
+		}
+
+		&.next {
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 40px;
+			top: auto;
+			margin-left: 40px;
+
+			.ms-is-small& {
+				top: 50%;
+				transform: translateY(-50%);
+				margin-left: 0px;
+				left: auto;
+				right: 18px;
+			}
+		}
+	}
+
+   .coin-slider .coin-slider div {
+		display: block !important;
+	}
+
+   .coin-slider .coin-slider .cs-prev,
+   .coin-slider .coin-slider .cs-next {
+   }
+
+	/**
+	* Caption
+	*/
+	@mixin caption flex, rslides, nivo {
+		width: 38%;
+		max-width: 450px;
+		height: auto;
+		max-height: 170px;
+		top: 50%;
+		left: 0;
+		transform: translateY(-50%);
+		background: rgba(255, 255, 255, 0.8);
+		color: inherit;
+		margin: 0;
+		padding: 0;
+		transition: 0.5s all;
+		color: #000000;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		flex-direction: column;
+		.ms-is-small& {
+			width: 65%;
+			max-height: 120px;
+			top: 30%;
+			left: 50%;
+			transform: translate(-50%, -30%);
+		}
+	}
+
+	@mixin caption rslides {
+
+	}
+
+	@mixin caption nivo {
+		a {
+			color: inherit;
+		}
+	}
+
+	@mixin caption coin {
+		padding: 20px;
+		margin: 10px;
+		width: calc(100% - 20px);
+	}
+
+	.flexslider ul.slides .flex-active-slide .caption-wrap,
+	.rslides li[class*=rslides] .caption-wrap {
+	}
+
+	.flexslider ul.slides .caption-wrap .caption,
+	.rslides .caption-wrap .caption,
+	.nivoSlider .nivo-caption {
+
+	}
+
+   	.nivoSlider .nivo-caption {
+		bottom: 0;
+		font-size: 1rem;
+		padding-top: 65px;
+
+		.ms-is-small& {
+			bottom: 0;
+			padding-top: 45px;
+		}
+	}
+
+   /**
+	* Filmstrip
+	*/
+	.filmstrip {
+		position: absolute;
+		z-index: 4;
+		width: 100%;
+		border-radius: 0;
+		margin-top: 10px;
+		ul.flex-direction-nav li a {
+
+			&::after {
+				width: 10px;
+			}
+
+			&.flex-prev,
+			&.flex-next  {
+				top: 50%;
+				transform: translateY(-50%);
+			}
+
+			&.flex-prev {
+				left: 10px;
+			}
+
+			&.flex-next {
+				right: 10px;
+			}
+		}
+	}
+
+	&.has-filmstrip {
+
+		@mixin arrowsContainer flex {
+
+		}
+
+		@mixin caption flex {
+			margin-right: 110px;
+		}
+
+	}
+
+   /**
+   * Thumbnail
+   */
+	.slider-wrapper .nivo-controlNav.nivo-thumbs-enabled a:hover,
+	.slider-wrapper .nivo-controlNav.nivo-thumbs-enabled a.active {
+		border: 0 none;
+	}
+}

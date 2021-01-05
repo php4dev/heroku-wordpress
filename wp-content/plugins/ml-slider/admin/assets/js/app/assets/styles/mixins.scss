@@ -1,0 +1,10 @@
+@mixin from($breakboint) {
+	@media screen and (min-width: $breakboint) {
+		@content;
+	}
+}
+@mixin until($breakboint) {
+	@media screen and (max-width: $breakboint - 1px) {
+		@content;
+	}
+}

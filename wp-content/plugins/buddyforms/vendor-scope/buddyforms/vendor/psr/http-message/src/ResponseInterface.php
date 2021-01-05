@@ -1,0 +1,2 @@
+<?php
+ namespace tk\Psr\Http\Message; interface ResponseInterface extends \tk\Psr\Http\Message\MessageInterface { public function getStatusCode(); public function withStatus($code, $reasonPhrase = ''); public function getReasonPhrase(); } 

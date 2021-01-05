@@ -1,0 +1,5 @@
+<?php
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
+ if ( ! defined( 'ABSPATH' ) ) { exit; } class FS_AffiliateTerms extends FS_Scope_Entity { public $is_active; public $type; public $reward_type; public $referral_attribution; public $cookie_days; public $commission; public $commission_type; public $commission_renewals_days; public $install_commission; public $default_url; public $reward_customer_type; public $future_payments_days; public $is_social_allowed; public $is_app_allowed; public $is_any_site_allowed; function get_formatted_commission() { return ( 'dollar' === $this->commission_type ) ? ( '$' . $this->commission ) : ( $this->commission . '%' ); } function has_lifetime_commission() { return ( 0 !== $this->future_payments_days ); } function is_session_cookie() { return ( 0 == $this->cookie_days ); } function has_renewals_commission() { return ( is_null( $this->commission_renewals_days ) || $this->commission_renewals_days > 0 ); } }

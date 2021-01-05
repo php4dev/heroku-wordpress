@@ -1,0 +1,471 @@
+/** 
+ * Containers 
+ * This includes the main wrapper for all sliders, then each slider,
+ * which is one level above the individual slides. 
+ * Don't be afraid to use !important as needed.
+ */
+
+$theme_name: architekt;
+$theme_prefix: .metaslider.ms-theme-$(theme_name);
+
+.ms-theme-architekt {
+	overflow: hidden;
+	padding-bottom: 40px;
+	opacity: 0;
+	transition: opacity 0.3s;
+	&.ms-loaded {
+		opacity: 1;
+	}
+	&.metaslider-flex {
+		padding-bottom: 60px;
+	}
+}
+
+$(theme_prefix) {
+	*,
+	*::before, 
+	*::after {
+		box-sizing: border-box;
+	}
+	.flexslider {
+		margin-bottom: 0;
+	}
+	.flexslider:not(.filmstrip) .slides,
+	.rslides,
+	.nivoSlider,
+	.coin-slider .coin-slider {
+		/* max-width: 100%; */
+	}
+
+	.rslides img,
+	.nivoSlider {
+		float: none;
+		padding-bottom: 80px;
+		overflow: visible;
+	}
+
+	/** 
+	* Dots
+	* You should inspect the sliders to see more specific rules
+	* mixin use: @mixin mixinName ...supported_libraries
+	*/
+	@mixin dotsContainer flex, rslides, nivo {
+		display: flex;
+		position: absolute;
+		top: 100%;
+		right: 40px;
+		width: 220px;
+		background: transparent;
+		justify-content: center;
+		line-height: 15px;
+		margin: 0;
+		padding: 5px 0 0 !important;
+		z-index: 8;
+		transition: top .2s;
+		flex-wrap: wrap;
+	}
+
+	@mixin dotsContainer coin {
+		display: flex;
+		position: absolute;
+		top: 100%;
+		right: 0;
+		left: 0;
+		width: 100%;
+		background: transparent;
+		justify-content: center;
+		line-height: 15px;
+		margin: 0;
+		padding: 5px 0 0 !important;
+		z-index: 8;
+		transition: top .2s;
+		flex-wrap: wrap;
+	}
+
+	@mixin dotsLink {
+		box-shadow: none !important;
+		transition: background 0.2s ease-in-out;
+		border: 0;
+		cursor: pointer;
+		display: inline-block;
+		line-height: 15px;
+		margin: 0 5px 0 0;
+		background: transparent;
+		text-indent: 0;
+		color: inherit;
+		text-decoration: none;
+		font-size: 11px;
+		width: auto;
+		border-radius: 0;
+		height: auto;
+		padding: 0px 0;
+		padding-bottom: 3px;
+		position: relative;
+
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 1px;
+			border-bottom: 2px solid;
+			transform: translateY(5px);
+			opacity: 0;
+			transition: 0.3s all;
+		}
+
+	}
+
+	@mixin dotsLinkLastItem {
+		margin-right: 0;		
+	}
+
+	@mixin dotsLinkActive {
+		background: transparent;
+
+		&::after {
+			transform: translateY(0);
+			opacity: 1;
+		}
+
+	}
+
+	/**
+	* Arrows
+	* 
+	*/
+	@mixin arrowsContainer flex, nivo {
+		position: absolute;
+		top: 100%;
+		width: 300px;
+		right: 0;
+		transition: top .2s;
+	}
+
+	@mixin arrowsLink {
+		background: transparent;
+		text-indent: -9999px;
+		box-shadow: none;
+		width: 34px;
+		height: 20px;
+		color: black;
+		opacity: 1;
+		overflow: visible;
+		transform: none;
+		top: 30px;
+
+		&::before {
+			content: '' !important;
+			position: absolute;
+			top: 0;
+			left: 3px;
+			display: block;
+			width: 8px;
+			height: 8px;
+			border-left: 2px solid;
+			border-bottom: 2px solid;
+			transform: rotate(45deg);
+		}
+
+		&::after {
+			content: '' !important;
+			position: absolute;
+			top: 8px;
+			left: 3px;		
+			display: block; 
+			width: 30px;
+			height: 2px;
+			border-bottom: 2px solid;
+			transform: translateY(-5px);
+		}
+
+		&:hover {
+			color: black;
+			opacity: 1 !important;			
+		}		
+
+	}
+
+	@mixin arrowsLink nivo {
+		top: 13px;
+		transition: top .2s;
+	}
+
+	@mixin arrowsLink rslides {
+		transition: top .2s;
+		margin-top: 11px;
+
+		&.prev {
+			left: auto;
+			right: 264px;
+		}
+
+	}
+
+	@mixin arrowsLink__prev flex, nivo {
+		left: 0;
+	}
+
+	&.ms-is-small {
+
+		@mixin arrowsLink__prev rslides {
+			left: 0;
+			right: auto;
+		}
+
+	}
+
+	@mixin arrowsLink__next {
+		right: 0;
+		transform: scaleX(-1);
+	}
+
+	.coin-slider .coin-slider div {
+		display: block !important;
+	}
+
+	/**
+	* Caption
+	*/
+	@mixin caption flex, rslides, nivo {
+		position: relative;
+		background: transparent;
+		color: inherit;
+		margin: 0;
+		margin-right: 300px;
+		opacity: 1;
+		padding: 0;
+		width: auto;
+		transition: 0.5s all;
+	}
+	&:not(.has-filmstrip-nav) {
+		@mixin caption flex, rslides, nivo {
+			transform: translateY(20px);
+		}
+	}
+	
+
+	@mixin caption rslides {
+		margin-top: -80px;
+	}
+
+	@mixin caption nivo {
+		margin-bottom: -80px;
+		transform: translateY(0);
+		a {
+			color: inherit;
+		}
+	}
+
+	@mixin caption coin {
+		padding: 20px;
+		margin: 10px;
+		width: calc(100% - 20px);
+	}
+
+	@mixin caption flex {
+		height: auto;
+	}
+
+	@mixin caption__text {
+		text-align: left;
+		& > *:first-child{
+			margin-top: 0;
+			padding-top: 0;
+		}
+	}
+
+	&:not(.has-thumb-nav) .flexslider ul.slides li:not(.flex-active-slide) .caption-wrap {
+		height: 0;
+	}
+	.flexslider ul.slides .flex-active-slide .caption-wrap,
+	.rslides li[class*=rslides] .caption-wrap {
+		transform: translateY(0);
+	}
+
+
+	&:not(.has-thumb-nav) .flexslider ul.slides .caption-wrap .caption,
+	.rslides .caption-wrap .caption,
+	.nivoSlider .nivo-caption {
+		font-size: 1em;
+		padding: 20px 30px 20px 0;
+
+		.ms-is-small& {
+			padding-top: 60px;
+		}
+
+	}
+
+	.filmstrip {
+		z-index: 4;
+		width: 100%;
+		border-radius: 0;
+		margin-top: 5px;
+		ul.flex-direction-nav li a {
+
+			top: calc(50% + 17px);
+
+			&::after {
+				width: 10px;
+			}
+
+			&.flex-prev {
+				left: 5px;
+			}
+
+			&.flex-next {
+				right: 5px;
+			}
+		}
+	}
+
+	&.ms-has-caption .filmstrip {
+		position: absolute;
+		margin-top: 0px;
+	}
+
+	&.has-filmstrip-nav {
+
+		@mixin arrowsContainer flex {
+			width: 90px;
+		}
+
+		@mixin caption flex {
+			margin-right: 110px;
+		}
+
+	}
+
+	/* Thumbnails */
+	&.has-thumb-nav {
+		div.slider-wrapper .nivo-controlNav.nivo-thumbs-enabled {
+			text-align: left;
+		}
+		/* @mixin arrowsContainer flex, nivo {
+			width: 100%;
+			left: 0;
+			right: 0;
+		}
+		@mixin dotsContainer nivo {
+			position: relative;
+			width: 100%;
+			right: 0;
+			left: 0;
+		}
+		@mixin dotsContainer flex {
+			position: absolute;
+			width: 100%;
+			right: 0;
+			left: 0;
+			padding-top: 0;
+			margin-top: 0;
+		}
+		@mixin arrowsLink__prev nivo {
+			left: 0;
+		} */
+		@mixin caption nivo {
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			margin: 0;
+			padding: 15px;
+			background: rgba(255, 255, 255, 0.85);
+			overflow: visible;
+			transform: none;
+		}
+		@mixin caption flex {
+			width: 100%;
+			padding: 15px;
+			background: rgba(255, 255, 255, 0.85);
+			position: absolute;
+			bottom: 0;
+		}		
+		.nivoSlider {
+			padding-bottom: 0px;
+			overflow: visible;
+		}
+	}
+
+	&.fullwidth {
+
+		@mixin caption {
+			margin-right: 320px;
+		}
+
+		@mixin caption__text {
+			padding-left: 20px;
+		}
+
+		@mixin dotsContainer flex, rslides, nivo {
+			right: 60px;
+		}
+
+		@mixin arrowsContainer flex, nivo {
+			right: 20px;
+		}
+
+		@mixin arrowsLink rslides {
+
+			&.prev {
+				right: 284px;
+			}
+
+			&.next {
+				right: 20px;
+			}
+		}
+		&.has-thumb-nav {
+			@mixin arrowsContainer flex, nivo {
+				width: calc(100% - 40px);
+				right: 20px;
+				left: 20px;
+			}
+		}
+	}
+
+	/**
+	* When slider is small (< 600px)
+	*/
+	&.ms-is-small {
+		padding-bottom: 50px;
+	}
+
+	&.ms-is-small .flexslider ul.slides .caption-wrap, 
+	&.ms-is-small .rslides .caption-wrap, 
+	&.ms-is-small .nivoSlider .nivo-caption {
+		margin-right: 0;
+	}
+
+	&.ms-is-small .flexslider ol.flex-control-nav, 
+	&.ms-is-small ul.rslides_tabs, 
+	&.ms-is-small .slider-wrapper .nivo-controlNav, 
+	&.ms-is-small .coin-slider .cs-buttons {
+		/* bottom: -35px; */
+		width: 100%;
+		left: 0;
+		right: 0;
+	}
+
+	&.ms-is-small .flexslider:not(.filmstrip) ul.flex-direction-nav,
+	&.ms-is-small .nivo-directionNav {
+		width: 100%;
+	}
+
+	&.ms-is-small.fullwidth:not(.has-thumb-nav) {
+
+		@mixin arrowsContainer flex, nivo {
+			right: 0;
+		}
+
+		@mixin arrowsLink__prev {
+			left: 20px;
+		}
+
+		@mixin arrowsLink__next {
+			right: 20px;
+		}
+
+	}
+
+}

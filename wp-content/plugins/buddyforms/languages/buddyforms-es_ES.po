@@ -1,0 +1,4017 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: BuddyForms\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-06 06:34-0300\n"
+"PO-Revision-Date: 2020-03-10 21:00-0300\n"
+"Last-Translator: admin <test3344444@test2.com>\n"
+"Language-Team: Español\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: BuddyForms.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Loco-Version: 2.3.1; wp-5.3.2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: BuddyForms.php:161
+msgid "The following"
+msgstr "El siguiente"
+
+#: BuddyForms.php:162
+#, fuzzy
+msgid "error was"
+msgstr "error fue"
+
+#: BuddyForms.php:163
+#, fuzzy
+msgid "errors were"
+msgstr "los errores fueron"
+
+#: BuddyForms.php:164
+msgid "found: "
+msgstr "encontrado: "
+
+#: BuddyForms.php:369
+msgid "BuddyForms Preview Page"
+msgstr "Página de vista previa de BuddyForms"
+
+#: BuddyForms.php:375
+msgid "This is a preview of how this form will appear on your website"
+msgstr "Esta es una vista previa de cómo aparecerá este formulario en su sitio web"
+
+#: BuddyForms.php:463
+msgid "PHP Version Update Required!"
+msgstr "Se requiere actualizar la versión de PHP!"
+
+#: BuddyForms.php:464
+msgid "You are using PHP Version "
+msgstr "Usted está usando la versión PHP "
+
+#: BuddyForms.php:465
+msgid "Please make sure you have at least php version 5.3 installed."
+msgstr "Por favor, asegúrese de tener al menos la versión 5.3 de php instalada."
+
+#: includes/admin/admin-ajax.php:42
+msgid "First you need to select a Taxonomy to select the Taxonomy defaults"
+msgstr "Primero necesita seleccionar una Taxonomía para seleccionar la Taxonomía por defecto"
+
+#: includes/admin/admin-ajax.php:81 includes/admin/form-builder/meta-boxes/metabox-layout.php:91
+msgid "Please enter a name"
+msgstr "Por favor, ingrese su nombre"
+
+#: includes/admin/admin-header.php:17 includes/admin/mce-editor-button.php:115 includes/admin/register-post-types.php:316 includes/admin/register-post-types.php:556 includes/shortcodes.php:299 includes/shortcodes.php:309 includes/shortcodes.php:351
+msgid "Add New"
+msgstr "Añadir nuevo"
+
+#: includes/admin/admin-header.php:19 includes/admin/register-post-types.php:556
+msgid "Documentation"
+msgstr "Documentación"
+
+#: includes/admin/admin-header.php:21 includes/admin/register-post-types.php:556
+msgid "Contact Us"
+msgstr "Contáctenos"
+
+#: includes/admin/class-bf-admin-notices.php:63
+msgid "Registration is disabled on your site. Please enable registration if you like to use this form for registration purpose. You can still use it to update existing Users. <a href=\"/wp-admin/options-general.php\">Set</a> registration to Anyone can register."
+msgstr "El registro está desactivado en su sitio. Por favor, habilite el registro si desea utilizar este formulario con fines de registro. Todavía puede utilizarlo para actualizar usuarios existentes. <una href=\"/wp-admin/options-general.php\">Cambiar</a> opciones de registro a Cualquiera puede registrarse."
+
+#: includes/admin/class-bf-admin-notices.php:74
+msgid "No Post Type Selected. Please select a post type"
+msgstr "No se ha seleccionado ningún tipo de Post. Por favor, seleccione un tipo de Post"
+
+#: includes/admin/class-bf-admin-notices.php:81
+msgid "BuddyForms Professional is required to use this Form. You need to upgrade to the Professional Plan. The Free and Starter Versions does not support Custom Post Types <a href=\"edit.php?post_type=buddyforms&page=buddyforms-pricing\">Go Pro Now</a>"
+msgstr "BuddyForms Professional es necesario para utilizar este formulario. Necesita actualizarse al Plan Profesional. Las versiones Free y Starter no soportan Custom Post Types <a href=\"edit.php?post_type=buddyforms&page=buddyforms-pricing\">Ir a Pro Ahora</a>>"
+
+#: includes/admin/class-bf-admin-notices.php:86
+msgid "The Selected Post Type does not exist"
+msgstr "El tipo de Post seleccionado no existe"
+
+#: includes/admin/class-bf-admin-notices.php:96
+msgid "BuddyForms Professional is required to use this Form. You need to upgrade to the Professional Plan. The Free and Starter Versions does not support the required Form Elements <a href=\"edit.php?post_type=buddyforms&page=buddyforms-pricing\">Go Pro Now</a>"
+msgstr "BuddyForms Professional es necesario para utilizar este formulario. Necesita actualizarse al Plan Profesional. Las versiones Free y Starter no soportan los elementos de formulario necesarios <a href=\"edit.php?post_type=buddyforms&page=buddyforms-pricing\">Ir a Pro Ahora</a>>"
+
+#: includes/admin/class-bf-admin-notices.php:128
+#, fuzzy
+msgid "BuddyForms Submissions Page Missing!"
+msgstr "Falta la página de presentación de BuddyForms!"
+
+#: includes/admin/class-bf-admin-notices.php:129
+#, fuzzy
+msgid "Please select a default page for your submissions in the BuddyForms general settings "
+msgstr "Por favor, selecciona una página predeterminada para tus envíos en la configuración general de los BuddyForms"
+
+#: includes/admin/class-bf-admin-notices.php:129
+msgid "Select the Page Now!"
+msgstr "Selecciona una página ahora!"
+
+#: includes/admin/form-builder/form-builder-elements.php:55
+msgid "Required"
+msgstr "Requerido"
+
+#: includes/admin/form-builder/form-builder-elements.php:55
+msgid "Make this field a required field"
+msgstr "Haga de este campo obligatorio"
+
+#: includes/admin/form-builder/form-builder-elements.php:62
+msgid "Add as admin post meta box to the edit screen"
+msgstr "Agregar como meta-box en la pantalla de edición"
+
+#: includes/admin/form-builder/form-builder-elements.php:62
+msgid "Add this field to the MetaBox"
+msgstr "Añadir este campo al MetaBox"
+
+#: includes/admin/form-builder/form-builder-elements.php:71 includes/admin/form-builder/form-builder-elements.php:125 includes/admin/form-builder/form-builder-elements.php:146 includes/admin/form-builder/form-builder-elements.php:163 includes/admin/form-builder/form-builder-elements.php:194
+#: includes/admin/form-builder/form-builder-elements.php:225 includes/admin/form-builder/form-builder-elements.php:246 includes/admin/form-builder/form-builder-elements.php:271 includes/admin/form-builder/form-builder-elements.php:284 includes/admin/form-builder/form-builder-elements.php:297
+#: includes/admin/form-builder/form-builder-elements.php:332 includes/admin/form-builder/form-builder-elements.php:345 includes/admin/form-builder/form-builder-elements.php:359 includes/admin/form-builder/form-builder-elements.php:426 includes/admin/form-builder/form-builder-elements.php:435
+#: includes/admin/form-builder/form-builder-elements.php:484 includes/admin/form-builder/form-builder-elements.php:537 includes/admin/form-builder/form-builder-elements.php:555 includes/admin/form-builder/form-builder-elements.php:566 includes/admin/form-builder/form-builder-elements.php:592
+#: includes/admin/form-builder/form-builder-elements.php:612 includes/admin/form-builder/form-builder-elements.php:630 includes/admin/form-builder/form-builder-elements.php:648 includes/admin/form-builder/form-builder-elements.php:741 includes/admin/form-builder/form-builder-elements.php:778
+#: includes/admin/form-builder/form-builder-elements.php:806 includes/admin/form-builder/form-builder-elements.php:864 includes/admin/form-builder/form-builder-elements.php:1200 includes/admin/form-builder/form-builder-elements.php:1214 includes/admin/form-builder/form-builder-elements.php:1256
+#: includes/admin/form-builder/form-builder-elements.php:1312 includes/admin/form-builder/form-builder-elements.php:1338 includes/admin/form-builder/form-builder-elements.php:1372 includes/admin/form-builder/form-builder-elements.php:1398 includes/admin/form-builder/form-builder-elements.php:1434
+#: includes/admin/form-builder/form-builder-elements.php:1444 includes/admin/view/buddyforms-form-element-multiple.php:12
+msgid "Label"
+msgstr "Etiqueta"
+
+#: includes/admin/form-builder/form-builder-elements.php:79 includes/admin/form-builder/form-builder-elements.php:1185 includes/admin/form-builder/form-builder-elements.php:1357
+msgid "Slug"
+msgstr "Slug"
+
+#: includes/admin/form-builder/form-builder-elements.php:79
+msgid "optional"
+msgstr "opcional"
+
+#: includes/admin/form-builder/form-builder-elements.php:80 includes/admin/form-builder/form-builder-elements.php:1358
+msgid "Underscore before the slug like _name will create a hidden post meta field"
+msgstr "Subraye antes de que el slug como _nombre crea una entrada meta oculta"
+
+#: includes/admin/form-builder/form-builder-elements.php:88
+msgid "Description"
+msgstr "Descripción"
+
+#: includes/admin/form-builder/form-builder-elements.php:91 includes/form/form-validation.php:147 includes/form/form-validation.php:156
+msgid "This field is required."
+msgstr "Este campo es obligatorio."
+
+#: includes/admin/form-builder/form-builder-elements.php:92
+msgid "Required Error Message"
+msgstr "Mensaje de error para Requerido"
+
+#: includes/admin/form-builder/form-builder-elements.php:97 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:241
+msgid "Text"
+msgstr "Texto"
+
+#: includes/admin/form-builder/form-builder-elements.php:98 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:309 templates/buddyforms/the-table.php:29
+msgid "Name"
+msgstr "Nombre"
+
+#: includes/admin/form-builder/form-builder-elements.php:105 includes/admin/form-builder/form-builder-elements.php:173 includes/admin/form-builder/form-builder-elements.php:204 includes/admin/form-builder/form-builder-elements.php:450 includes/admin/form-builder/form-builder-elements.php:500
+#: includes/admin/form-builder/form-builder-elements.php:1222 includes/admin/form-builder/form-builder-elements.php:1276
+msgid "Validation Min Length"
+msgstr "Validación Longitud mínima"
+
+#: includes/admin/form-builder/form-builder-elements.php:108 includes/admin/form-builder/form-builder-elements.php:176 includes/admin/form-builder/form-builder-elements.php:207 includes/admin/form-builder/form-builder-elements.php:453 includes/admin/form-builder/form-builder-elements.php:503
+#: includes/admin/form-builder/form-builder-elements.php:1225 includes/admin/form-builder/form-builder-elements.php:1279
+msgid "Validation Max Length"
+msgstr "Validación Longitud máxima"
+
+#: includes/admin/form-builder/form-builder-elements.php:110 includes/admin/form-builder/form-builder-elements.php:178 includes/admin/form-builder/form-builder-elements.php:209 includes/admin/form-builder/form-builder-elements.php:455 includes/admin/form-builder/form-builder-elements.php:505
+#: includes/admin/form-builder/form-builder-elements.php:1227 includes/admin/form-builder/form-builder-elements.php:1281
+#, fuzzy, php-format
+msgid "The minimum character length is %s. Please check."
+msgstr "La longitud mínima de los caracteres es de %s. Por favor, compruébelo."
+
+#: includes/admin/form-builder/form-builder-elements.php:111 includes/admin/form-builder/form-builder-elements.php:179 includes/admin/form-builder/form-builder-elements.php:210 includes/admin/form-builder/form-builder-elements.php:456 includes/admin/form-builder/form-builder-elements.php:506
+#: includes/admin/form-builder/form-builder-elements.php:1228 includes/admin/form-builder/form-builder-elements.php:1282
+#, fuzzy
+msgid "Min Length Message"
+msgstr "Mensaje de nivel 1"
+
+#: includes/admin/form-builder/form-builder-elements.php:113 includes/admin/form-builder/form-builder-elements.php:181 includes/admin/form-builder/form-builder-elements.php:212 includes/admin/form-builder/form-builder-elements.php:458 includes/admin/form-builder/form-builder-elements.php:508
+#: includes/admin/form-builder/form-builder-elements.php:1230 includes/admin/form-builder/form-builder-elements.php:1284
+#, fuzzy, php-format
+msgid "You need to keep the %s in your new string to include the Min Length as part of the error message."
+msgstr "Necesitas mantener los %s en tu nueva cadena para incluir la longitud mínima como parte del mensaje de error."
+
+#: includes/admin/form-builder/form-builder-elements.php:116 includes/admin/form-builder/form-builder-elements.php:184 includes/admin/form-builder/form-builder-elements.php:215 includes/admin/form-builder/form-builder-elements.php:461 includes/admin/form-builder/form-builder-elements.php:511
+#: includes/admin/form-builder/form-builder-elements.php:1233 includes/admin/form-builder/form-builder-elements.php:1287
+#, fuzzy, php-format
+msgid "The maximum character length is %s. Please check."
+msgstr "La longitud máxima de los caracteres es de %s. Por favor, compruébelo."
+
+#: includes/admin/form-builder/form-builder-elements.php:117 includes/admin/form-builder/form-builder-elements.php:185 includes/admin/form-builder/form-builder-elements.php:216 includes/admin/form-builder/form-builder-elements.php:462 includes/admin/form-builder/form-builder-elements.php:512
+#: includes/admin/form-builder/form-builder-elements.php:1234 includes/admin/form-builder/form-builder-elements.php:1288
+#, fuzzy
+msgid "Max Length Message"
+msgstr "Mensaje de nivel 1"
+
+#: includes/admin/form-builder/form-builder-elements.php:119 includes/admin/form-builder/form-builder-elements.php:187 includes/admin/form-builder/form-builder-elements.php:218 includes/admin/form-builder/form-builder-elements.php:464 includes/admin/form-builder/form-builder-elements.php:514
+#: includes/admin/form-builder/form-builder-elements.php:1236 includes/admin/form-builder/form-builder-elements.php:1290
+#, fuzzy, php-format
+msgid "You need to keep the %s in your new string to include the Max Length as part of the error message."
+msgstr "Necesitas mantener los %s en tu nueva cadena para incluir la Longitud Máxima como parte del mensaje de error."
+
+#: includes/admin/form-builder/form-builder-elements.php:124 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:210
+msgid "Country"
+msgstr "País"
+
+#: includes/admin/form-builder/form-builder-elements.php:132
+#, fuzzy
+msgid "Country JSON:"
+msgstr "País"
+
+#: includes/admin/form-builder/form-builder-elements.php:135
+#, fuzzy
+msgid "This is the list of Countries with code and name. Consider the Code is used to match with the State element when they are link. Provide a valid JSON. Leave empty to reset the list. Read more in the documentation."
+msgstr "Esta es la lista de países con código y nombre. Considere que el Código se utiliza para coincidir con el elemento de Estado cuando están vinculados. Proporcione un JSON válido. Deje en blanco para reiniciar la lista. Lea más en la documentación."
+
+#: includes/admin/form-builder/form-builder-elements.php:138
+#, fuzzy
+msgid "Link with State"
+msgstr "Enlace con el Estado"
+
+#: includes/admin/form-builder/form-builder-elements.php:138
+#, fuzzy
+msgid "Show the State from the selected Country"
+msgstr "Mostrar el Estado del país seleccionado"
+
+#: includes/admin/form-builder/form-builder-elements.php:141
+#, fuzzy
+msgid "Select this option to show the State from the item selected in the Country list."
+msgstr "Seleccione esta opción para mostrar el Estado del elemento seleccionado en la lista de países."
+
+#: includes/admin/form-builder/form-builder-elements.php:145 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:213
+msgid "State"
+msgstr "Estado"
+
+#: includes/admin/form-builder/form-builder-elements.php:153
+msgid "State JSON:"
+msgstr "JSON Estado:"
+
+#: includes/admin/form-builder/form-builder-elements.php:156
+#, fuzzy
+msgid "This is the list of State with Country code, State code and name. Provide a valid JSON. Leave empty to reset the list. Read more in the documentation."
+msgstr "Esta es la lista del Estado con el código del país, el código del Estado y el nombre. Proporcione un JSON válido. Deje en blanco para reiniciar la lista. Lea más en la documentación."
+
+#: includes/admin/form-builder/form-builder-elements.php:162 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:168 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:192 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:333 templates/buddyforms/the-table.php:27
+msgid "Subject"
+msgstr "Asunto"
+
+#: includes/admin/form-builder/form-builder-elements.php:193 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:172
+msgid "Message"
+msgstr "Mensaje"
+
+#: includes/admin/form-builder/form-builder-elements.php:224 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:182 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:109
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: includes/admin/form-builder/form-builder-elements.php:233
+msgid "Hide Username Form Element for LoggedIn User"
+msgstr "Ocultar el elemento de formulario de nombre de usuario para el usuario que ha iniciado sesión"
+
+#: includes/admin/form-builder/form-builder-elements.php:233 includes/admin/form-builder/form-builder-elements.php:254 includes/admin/form-builder/form-builder-elements.php:320
+msgid "Hide for logged in user"
+msgstr "Ocultar para el usuario que ha iniciado sesión"
+
+#: includes/admin/form-builder/form-builder-elements.php:236 includes/admin/form-builder/form-builder-elements.php:257 includes/admin/form-builder/form-builder-elements.php:323
+msgid "If you want to use this form to allow your users to edit there profile you can hide the password for logged in users to prevent change the password with every update."
+msgstr "Si desea utilizar este formulario para permitir a sus usuarios editar su perfil, puede ocultar la contraseña de los usuarios que han iniciado sesión para evitar que la cambien con cada actualización."
+
+#: includes/admin/form-builder/form-builder-elements.php:245
+msgid "User eMail"
+msgstr "Correo del Usuario"
+
+#: includes/admin/form-builder/form-builder-elements.php:254
+msgid "Hide User eMail Form Element for LoggedIn User"
+msgstr "Ocultar el campo de correo electrónico del usuario cuando ha iniciado sesión"
+
+#: includes/admin/form-builder/form-builder-elements.php:260 includes/admin/form-builder/form-builder-elements.php:544
+msgid "Enter a valid email."
+msgstr "Introduce un email valido."
+
+#: includes/admin/form-builder/form-builder-elements.php:261 includes/admin/form-builder/form-builder-elements.php:545
+msgid "Invalid Email Message"
+msgstr "Mensaje de correo no válido"
+
+#: includes/admin/form-builder/form-builder-elements.php:270 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:110
+msgid "First Name"
+msgstr "Nombre"
+
+#: includes/admin/form-builder/form-builder-elements.php:283 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:111
+msgid "Last Name"
+msgstr "Apellido"
+
+#: includes/admin/form-builder/form-builder-elements.php:296 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:198 includes/functions.php:215 includes/gutenberg/shortcodes/shortcodes-to-blocks.php:196 includes/shortcodes.php:378
+msgid "Password"
+msgstr "Contraseña"
+
+#: includes/admin/form-builder/form-builder-elements.php:304
+msgid "New Password "
+msgstr "Nueva Contraseña "
+
+#: includes/admin/form-builder/form-builder-elements.php:305
+#, fuzzy
+msgid "New Password Placeholder"
+msgstr "Uso como marcador de posición"
+
+#: includes/admin/form-builder/form-builder-elements.php:311
+msgid "Confirm Password"
+msgstr "Confirmar contraseña"
+
+#: includes/admin/form-builder/form-builder-elements.php:312
+#, fuzzy
+msgid "Confirm Password Placeholder"
+msgstr "Taxonomía Marcador de posición"
+
+#: includes/admin/form-builder/form-builder-elements.php:320
+#, fuzzy
+msgid "Hide Password Form Element for LoggedIn User"
+msgstr "Ocultar el elemento del formulario de contraseña para el usuario que ha iniciado sesión"
+
+#: includes/admin/form-builder/form-builder-elements.php:331 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:202
+msgid "Website"
+msgstr "Sitio web"
+
+#: includes/admin/form-builder/form-builder-elements.php:344
+msgid "Bio"
+msgstr "Bio"
+
+#: includes/admin/form-builder/form-builder-elements.php:358 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:272
+msgid "Captcha"
+msgstr "Captcha"
+
+#: includes/admin/form-builder/form-builder-elements.php:367
+msgid "Sign up for a free"
+msgstr "Suscríbete gratis"
+
+#: includes/admin/form-builder/form-builder-elements.php:367
+#, fuzzy
+msgid "Keys."
+msgstr "Llaves."
+
+#: includes/admin/form-builder/form-builder-elements.php:368
+#, fuzzy
+msgid "Site Key."
+msgstr "Clave de centro."
+
+#: includes/admin/form-builder/form-builder-elements.php:375
+msgid "Private Key"
+msgstr "Clave Privada"
+
+#: includes/admin/form-builder/form-builder-elements.php:382
+msgid "Language"
+msgstr "Idioma"
+
+#: includes/admin/form-builder/form-builder-elements.php:386
+#, fuzzy
+msgid "Forces the element to render in a specific language, if empty will try to auto-detects the user's language, check the possibles"
+msgstr "Obliga al elemento a renderizar en un lenguaje específico, si está vacío intentará detectar automáticamente el lenguaje del usuario, comprueba los posibles"
+
+#: includes/admin/form-builder/form-builder-elements.php:389
+#, fuzzy
+msgid "The color theme of the widget"
+msgstr "El tema del color del widget"
+
+#: includes/admin/form-builder/form-builder-elements.php:391
+msgid "Dark"
+msgstr "Oscuro"
+
+#: includes/admin/form-builder/form-builder-elements.php:392
+msgid "Light"
+msgstr "Claro"
+
+#: includes/admin/form-builder/form-builder-elements.php:399
+#, fuzzy
+msgid "The type of CAPTCHA to serve"
+msgstr "El tipo de CAPTCHA a servir"
+
+#: includes/admin/form-builder/form-builder-elements.php:401
+msgid "Image"
+msgstr "Imagen"
+
+#: includes/admin/form-builder/form-builder-elements.php:402
+msgid "Audio"
+msgstr "Audio"
+
+#: includes/admin/form-builder/form-builder-elements.php:409
+#, fuzzy
+msgid "The size of the widget"
+msgstr "El tamaño del widget"
+
+#: includes/admin/form-builder/form-builder-elements.php:411 includes/admin/form-builder/meta-boxes/metabox-layout.php:153 includes/admin/form-builder/meta-boxes/metabox-layout.php:197
+msgid "Normal"
+msgstr "Normal"
+
+#: includes/admin/form-builder/form-builder-elements.php:412
+msgid "Compact"
+msgstr "Compacto"
+
+#: includes/admin/form-builder/form-builder-elements.php:419
+#, fuzzy
+msgid "reCaptcha is only visible to logged off users. Logged in users not need to get checked."
+msgstr "reCaptcha sólo es visible para los usuarios desconectados. Los usuarios que han iniciado sesión no necesitan ser revisados."
+
+#: includes/admin/form-builder/form-builder-elements.php:425 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:265
+msgid "Url"
+msgstr "Url"
+
+#: includes/admin/form-builder/form-builder-elements.php:434 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:247
+msgid "Textarea"
+msgstr "Área de texto"
+
+#: includes/admin/form-builder/form-builder-elements.php:447 includes/admin/form-builder/form-builder-elements.php:497
+#, fuzzy
+msgid "Turn on wp editor features"
+msgstr "Activar las funciones del editor wp"
+
+#: includes/admin/form-builder/form-builder-elements.php:468 includes/admin/form-builder/form-builder-elements.php:518 includes/admin/form-builder/form-builder-elements.php:1240 includes/admin/form-builder/form-builder-elements.php:1294
+msgid "Hidden?"
+msgstr "¿Oculto?"
+
+#: includes/admin/form-builder/form-builder-elements.php:468 includes/admin/form-builder/form-builder-elements.php:518 includes/admin/form-builder/form-builder-elements.php:832 includes/admin/form-builder/form-builder-elements.php:1115 includes/admin/form-builder/form-builder-elements.php:1240
+#: includes/admin/form-builder/form-builder-elements.php:1294
+#, fuzzy
+msgid "Make this field Hidden"
+msgstr "Haga que este campo sea Oculto"
+
+#: includes/admin/form-builder/form-builder-elements.php:471
+#, fuzzy
+msgid "Generate textarea"
+msgstr "Generar área de texto"
+
+#: includes/admin/form-builder/form-builder-elements.php:474 includes/admin/form-builder/form-builder-elements.php:523 includes/admin/form-builder/form-builder-elements.php:1249 includes/admin/form-builder/form-builder-elements.php:1302
+#, fuzzy
+msgid "You can use any other field value by using the shortcodes [field_slug]"
+msgstr "Puede utilizar cualquier otro valor de campo utilizando los atajos[field_slug]"
+
+#: includes/admin/form-builder/form-builder-elements.php:478 includes/admin/form-builder/form-builder-elements.php:527 includes/admin/form-builder/form-builder-elements.php:1297
+#, fuzzy
+msgid "Amount of rows"
+msgstr "Cantidad de filas"
+
+#: includes/admin/form-builder/form-builder-elements.php:483
+msgid "Post Excerpt"
+msgstr "Extracto de la publicación"
+
+#: includes/admin/form-builder/form-builder-elements.php:521
+#, fuzzy
+msgid "Generate Post Excerpt"
+msgstr "Generar el extracto del post"
+
+#: includes/admin/form-builder/form-builder-elements.php:536 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:244
+#, fuzzy
+msgid "eMail"
+msgstr "Email"
+
+#: includes/admin/form-builder/form-builder-elements.php:554
+msgid "Telephone Number"
+msgstr "Nº de Teléfono"
+
+#: includes/admin/form-builder/form-builder-elements.php:565 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:253
+msgid "Number"
+msgstr "Número"
+
+#: includes/admin/form-builder/form-builder-elements.php:573
+#, fuzzy
+msgid "Validation Min Value"
+msgstr "Validación Longitud mínima"
+
+#: includes/admin/form-builder/form-builder-elements.php:576
+#, fuzzy
+msgid "Validation Max Value"
+msgstr "Validación Longitud máxima"
+
+#: includes/admin/form-builder/form-builder-elements.php:578
+#, fuzzy, php-format
+msgid "The minimum value allowed is: %s. Please check."
+msgstr "El valor mínimo permitido es: %s. Por favor, compruébelo."
+
+#: includes/admin/form-builder/form-builder-elements.php:579
+#, fuzzy
+msgid "Min Value Message"
+msgstr "Mostrar mensaje"
+
+#: includes/admin/form-builder/form-builder-elements.php:581
+#, fuzzy, php-format
+msgid "You need to keep the %s in your new string to include the Min Value as part of the error message."
+msgstr "Necesitas mantener los %s en tu nueva cadena para incluir el Valor Mínimo como parte del mensaje de error."
+
+#: includes/admin/form-builder/form-builder-elements.php:584
+#, fuzzy, php-format
+msgid "The maximum value allowed is: %s. Please check."
+msgstr "El valor máximo permitido es: %s. Por favor, compruébelo."
+
+#: includes/admin/form-builder/form-builder-elements.php:585
+#, fuzzy
+msgid "Max Value Message"
+msgstr "Mensaje de valor máximo"
+
+#: includes/admin/form-builder/form-builder-elements.php:587
+#, fuzzy, php-format
+msgid "You need to keep the %s in your new string to include the Max Value as part of the error message."
+msgstr "Necesitas mantener los %s en tu nueva cadena para incluir el Valor Máximo como parte del mensaje de error."
+
+#: includes/admin/form-builder/form-builder-elements.php:591 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:256
+msgid "Dropdown"
+msgstr "Desplegable"
+
+#: includes/admin/form-builder/form-builder-elements.php:599 includes/admin/form-builder/form-builder-elements.php:623 includes/admin/form-builder/form-builder-elements.php:641 includes/admin/form-builder/meta-boxes/metabox-layout.php:447 includes/admin/view/buddyforms-form-element-multiple.php:50
+#: includes/resources/pfbc/Element/Checkbox.php:61
+msgid "Reset"
+msgstr "Reiniciar"
+
+#: includes/admin/form-builder/form-builder-elements.php:599 includes/admin/form-builder/form-builder-elements.php:623 includes/admin/form-builder/form-builder-elements.php:641
+#, fuzzy
+msgid "Enable Frontend Reset Option"
+msgstr "Habilitar la opción de reinicio de la interfaz"
+
+#: includes/admin/form-builder/form-builder-elements.php:603 includes/admin/form-builder/form-builder-elements.php:989
+msgid "Multiple Selection"
+msgstr "Selección múltiple"
+
+#: includes/admin/form-builder/form-builder-elements.php:603 includes/admin/form-builder/form-builder-elements.php:989
+msgid "Multiple"
+msgstr "Múltiple"
+
+#: includes/admin/form-builder/form-builder-elements.php:611
+msgid "Radio Button"
+msgstr "Boton de radio"
+
+#: includes/admin/form-builder/form-builder-elements.php:629 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:262
+msgid "Checkbox"
+msgstr "Checkbox"
+
+#: includes/admin/form-builder/form-builder-elements.php:647 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:339
+msgid "Upload"
+msgstr "Subir"
+
+#: includes/admin/form-builder/form-builder-elements.php:666 includes/admin/form-builder/form-builder-elements.php:1331
+#, fuzzy
+msgid "Max File Size in MB"
+msgstr "Tamaño máximo de archivo en MB"
+
+#: includes/admin/form-builder/form-builder-elements.php:700
+msgid "Allowed File Types"
+msgstr "Tipos de archivo permitidos"
+
+#: includes/admin/form-builder/form-builder-elements.php:706
+#, fuzzy
+msgid "Allowed File Types Resume"
+msgstr "Tipos de archivo permitidos Reanudar"
+
+#: includes/admin/form-builder/form-builder-elements.php:709
+#, fuzzy
+msgid "Ensure Amount"
+msgstr "Asegurar la cantidad"
+
+#: includes/admin/form-builder/form-builder-elements.php:709
+msgid "Files in the field should be equals to Max Number of Files. "
+msgstr "Los archivos en el campo deben ser iguales al número máximo de permitido. "
+
+#: includes/admin/form-builder/form-builder-elements.php:713
+#, fuzzy
+msgid "Max number of files that will be handled"
+msgstr "Número máximo de archivos que se manejarán"
+
+#: includes/admin/form-builder/form-builder-elements.php:720
+#, fuzzy
+msgid "The number of files is greater than allowed."
+msgstr "El número de archivos es mayor que el permitido."
+
+#: includes/admin/form-builder/form-builder-elements.php:721
+#, fuzzy
+msgid "Max files Validation Error Message"
+msgstr "Mensaje de Error de Validación de Archivos Max"
+
+#: includes/admin/form-builder/form-builder-elements.php:722 includes/admin/form-builder/form-builder-elements.php:1365
+#, fuzzy
+msgid "One or more files have errors, please check."
+msgstr "Uno o más archivos tienen errores, por favor, compruébelo."
+
+#: includes/admin/form-builder/form-builder-elements.php:723 includes/admin/form-builder/form-builder-elements.php:1366
+#, fuzzy
+msgid "Upload Error Validation Message"
+msgstr "Mensaje de validación de error de carga"
+
+#: includes/admin/form-builder/form-builder-elements.php:725
+msgid "Delete Files"
+msgstr "Eliminar Archivos"
+
+#: includes/admin/form-builder/form-builder-elements.php:725
+msgid "Remove Files when Entry is deleted. "
+msgstr "Eliminar archivos cuando se elimina la entrada. "
+
+#: includes/admin/form-builder/form-builder-elements.php:730
+#, fuzzy
+msgid "Upload Image From Url"
+msgstr "Subir la imagen desde el Url"
+
+#: includes/admin/form-builder/form-builder-elements.php:730
+#, fuzzy
+msgid "Upload Images From Url. "
+msgstr "Subir imágenes de Url"
+
+#: includes/admin/form-builder/form-builder-elements.php:740 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:276
+msgid "Date"
+msgstr "Fecha"
+
+#: includes/admin/form-builder/form-builder-elements.php:750
+msgid "Date Format"
+msgstr "Formato de fecha"
+
+#: includes/admin/form-builder/form-builder-elements.php:752
+#, fuzzy
+msgid "Read more about the format <a target=\"_blank\" href=\"https://api.jqueryui.com/datepicker/#utility-formatDate\">at.</a>"
+msgstr "Lea más sobre el formato <a target=\"_blank\" href=\"https://api.jqueryui.com/datepicker/#utility-formatDate\">en.</a>"
+
+#: includes/admin/form-builder/form-builder-elements.php:756
+msgid "Enable Time"
+msgstr "Activar fecha"
+
+#: includes/admin/form-builder/form-builder-elements.php:756
+#, fuzzy
+msgid "Include the Time Picker in the element"
+msgstr "Incluir el selector de tiempo en el elemento"
+
+#: includes/admin/form-builder/form-builder-elements.php:760 includes/admin/form-builder/form-builder-elements.php:787
+msgid "Time Format"
+msgstr "Formato de hora"
+
+#: includes/admin/form-builder/form-builder-elements.php:762 includes/admin/form-builder/form-builder-elements.php:789
+#, fuzzy
+msgid "Read more about the format <a target=\"_blank\" href=\"https://trentrichardson.com/examples/timepicker/#tp-formatting\">at.</a>"
+msgstr "Lea más sobre el formato <a target=\"_blank\" href=\"https://trentrichardson.com/examples/timepicker/#tp-formatting\">en.</a>"
+
+#: includes/admin/form-builder/form-builder-elements.php:766
+msgid "Time Step"
+msgstr "Paso de tiempo@option: check"
+
+#: includes/admin/form-builder/form-builder-elements.php:770
+#, fuzzy
+msgid "Invalid Format"
+msgstr "Formato inválido"
+
+#: includes/admin/form-builder/form-builder-elements.php:771
+#, fuzzy
+msgid "Invalid Format Message"
+msgstr "Mensaje de error de validación"
+
+#: includes/admin/form-builder/form-builder-elements.php:777 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:279
+msgid "Time"
+msgstr "Hora"
+
+#: includes/admin/form-builder/form-builder-elements.php:794
+#, fuzzy
+msgid "Hour Step"
+msgstr "Paso de la hora"
+
+#: includes/admin/form-builder/form-builder-elements.php:799
+#, fuzzy
+msgid "Minute Step"
+msgstr "Paso de un minuto"
+
+#: includes/admin/form-builder/form-builder-elements.php:805
+msgid "Post Format"
+msgstr "Post Formato"
+
+#: includes/admin/form-builder/form-builder-elements.php:824
+#, fuzzy
+msgid "Post Formats Default"
+msgstr "Formatos por defecto"
+
+#: includes/admin/form-builder/form-builder-elements.php:832 includes/admin/form-builder/form-builder-elements.php:1115 includes/admin/form-builder/form-builder-elements.php:1183 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:344
+msgid "Hidden"
+msgstr "Oculto"
+
+#: includes/admin/form-builder/form-builder-elements.php:850 includes/admin/form-builder/form-builder-elements.php:920 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:321
+msgid "Taxonomy"
+msgstr "Taxonomía"
+
+#: includes/admin/form-builder/form-builder-elements.php:851
+msgid "Taxonomies"
+msgstr "Taxonomías"
+
+#: includes/admin/form-builder/form-builder-elements.php:854 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:289
+msgid "Category"
+msgstr "Categoría"
+
+#: includes/admin/form-builder/form-builder-elements.php:855
+msgid "Categories"
+msgstr "Categorías"
+
+#: includes/admin/form-builder/form-builder-elements.php:858 includes/admin/form-builder/form-builder-elements.php:859 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:294
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: includes/admin/form-builder/form-builder-elements.php:875
+#, fuzzy
+msgid "BuddyForms Professional is required to use this form Element . You need to upgrade to the Professional Plan . The Free and Starter Versions does not support Categories tags nad Taxonomies."
+msgstr "BuddyForms Professional está obligado a utilizar este formulario. Necesita actualizarse al Plan Profesional. Las versiones Free y Starter no soportan tags de Categorías ni Taxonomías."
+
+#: includes/admin/form-builder/form-builder-elements.php:875
+msgid "Upgrade Now"
+msgstr "Actualizar ahora"
+
+#: includes/admin/form-builder/form-builder-elements.php:885
+#, fuzzy
+msgid "Please select a post type in the \"Form Setup\" tab \"Create Content\" to get the post type taxonomies."
+msgstr "Por favor, seleccione un tipo de mensaje en la pestaña \"Form Setup\" \"Create Content\" para obtener las taxonomías del tipo de mensaje."
+
+#: includes/admin/form-builder/form-builder-elements.php:901
+#, fuzzy
+msgid "This Post Type does not have any "
+msgstr "Este Tipo de Puesto no tiene ninguna Taxonomía."
+
+#: includes/admin/form-builder/form-builder-elements.php:968
+msgid "Default Terms"
+msgstr "Condiciones Previas"
+
+#: includes/admin/form-builder/form-builder-elements.php:969
+#, fuzzy
+msgid "You can select a default category"
+msgstr "Puede seleccionar una categoría por defecto"
+
+#: includes/admin/form-builder/form-builder-elements.php:974
+#, fuzzy
+msgid "Taxonomy Placeholder"
+msgstr "Taxonomía Marcador de posición"
+
+#: includes/admin/form-builder/form-builder-elements.php:977
+#, fuzzy
+msgid "You can change the placeholder to something meaningful like Select a Category or what make sense for your taxonomy."
+msgstr "Puede cambiar el marcador de posición a algo significativo como Seleccionar una categoría o lo que tenga sentido para su taxonomía."
+
+#: includes/admin/form-builder/form-builder-elements.php:980
+#, fuzzy
+msgid "Taxonomy Order"
+msgstr "Orden de Taxonomía"
+
+#: includes/admin/form-builder/form-builder-elements.php:995
+#, fuzzy
+msgid "Limit Selections"
+msgstr "Selecciones de límite"
+
+#: includes/admin/form-builder/form-builder-elements.php:998
+#, fuzzy
+msgid "Add a number to limit the Selection amount"
+msgstr "Añadir un número para limitar el importe de la selección"
+
+#: includes/admin/form-builder/form-builder-elements.php:1036
+#, fuzzy
+msgid "Include Items"
+msgstr "Incluir artículos"
+
+#: includes/admin/form-builder/form-builder-elements.php:1040 includes/admin/form-builder/form-builder-elements.php:1085
+#, fuzzy
+msgid "You can select multiple items"
+msgstr "Puede seleccionar varios elementos"
+
+#: includes/admin/form-builder/form-builder-elements.php:1081
+#, fuzzy
+msgid "Exclude Items"
+msgstr "Excluir artículos"
+
+#: includes/admin/form-builder/form-builder-elements.php:1094
+#, fuzzy
+msgid "New Taxonomy Item"
+msgstr "Nuevo elemento de la taxonomía"
+
+#: includes/admin/form-builder/form-builder-elements.php:1094
+#, fuzzy
+msgid "User can create new"
+msgstr "El usuario puede crear nuevos"
+
+#: includes/admin/form-builder/form-builder-elements.php:1100
+msgid "Ajax"
+msgstr "Ajax"
+
+#: includes/admin/form-builder/form-builder-elements.php:1100
+#, fuzzy
+msgid "Enabled Ajax"
+msgstr "Habilitó Ajax"
+
+#: includes/admin/form-builder/form-builder-elements.php:1107
+#, fuzzy
+msgid "Minimum characters "
+msgstr "Caracteres mínimos"
+
+#: includes/admin/form-builder/form-builder-elements.php:1110
+#, fuzzy
+msgid "Minimum number of characters required to start a search."
+msgstr "Número mínimo de caracteres necesarios para iniciar una búsqueda."
+
+#: includes/admin/form-builder/form-builder-elements.php:1193
+msgid "Value:"
+msgstr "Valor:"
+
+#: includes/admin/form-builder/form-builder-elements.php:1199 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:304
+msgid "Comments"
+msgstr "Comentarios"
+
+#: includes/admin/form-builder/form-builder-elements.php:1206
+#, fuzzy
+msgid "This Post Field allows users to override the global comments settings so they can open and close comments as they wish."
+msgstr "Este campo de publicación permite a los usuarios anular la configuración de los comentarios globales para que puedan abrir y cerrar los comentarios como deseen."
+
+#: includes/admin/form-builder/form-builder-elements.php:1213 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:222 includes/admin/personal-data-exporter.php:26 templates/buddyforms/the-table.php:31
+msgid "Title"
+msgstr "Título"
+
+#: includes/admin/form-builder/form-builder-elements.php:1243
+#, fuzzy
+msgid "If you want to generate the title you can set the title to hidden. If the title is visible and a title is entered the entered tiltle is stronger than the generated title. If you want to make sure the generated title is used hide the title field"
+msgstr "Si desea generar el título, puede establecer el título como oculto. Si el título es visible y se introduce un título, la inclinación introducida es más fuerte que el título generado. Si desea asegurarse de que el título generado se utiliza, oculte el campo de título"
+
+#: includes/admin/form-builder/form-builder-elements.php:1247
+msgid "Generate Title"
+msgstr "Generar título"
+
+#: includes/admin/form-builder/form-builder-elements.php:1255 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:226 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:351 includes/admin/personal-data-exporter.php:30
+msgid "Content"
+msgstr "Contenido"
+
+#: includes/admin/form-builder/form-builder-elements.php:1269
+#, fuzzy
+msgid "Turn off wp editor features"
+msgstr "Desactivar las funciones del editor wp"
+
+#: includes/admin/form-builder/form-builder-elements.php:1300
+#, fuzzy
+msgid "Generate Content"
+msgstr "Generar contenido"
+
+#: includes/admin/form-builder/form-builder-elements.php:1311 includes/admin/form-builder/meta-boxes/metabox-form-setup.php:202 templates/buddyforms/the-table.php:37 templates/buddyforms/the-table.php:100
+msgid "Status"
+msgstr "Estado"
+
+#: includes/admin/form-builder/form-builder-elements.php:1321
+#, fuzzy
+msgid "Select the post status you want to make available in the frontend form"
+msgstr "Seleccione el estado del mensaje que desea que esté disponible en el formulario del módulo de acceso"
+
+#: includes/admin/form-builder/form-builder-elements.php:1324
+#, fuzzy
+msgid "This Post Field allows users to override this form’s Status setting (find the setting above in the Form Settings bock)."
+msgstr "Este campo Post permite a los usuarios invalidar la configuración de estado de este formulario (consulte la configuración anterior en el bloque Parametrizaciones de formulario)."
+
+#: includes/admin/form-builder/form-builder-elements.php:1337 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:314
+msgid "Featured Image"
+msgstr "Imagen destacada"
+
+#: includes/admin/form-builder/form-builder-elements.php:1345
+msgid "Add Image"
+msgstr "Añadir Imagen"
+
+#: includes/admin/form-builder/form-builder-elements.php:1346
+msgid "Button Label"
+msgstr "Etiqueta del Botón"
+
+#: includes/admin/form-builder/form-builder-elements.php:1353 includes/admin/form-builder/form-builder-elements.php:1406
+msgid "Description:"
+msgstr "Descripción:"
+
+#: includes/admin/form-builder/form-builder-elements.php:1371 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:334
+msgid "File"
+msgstr "Archivo"
+
+#: includes/admin/form-builder/form-builder-elements.php:1379
+#, fuzzy
+msgid "Only one file or multiple?"
+msgstr "¿Sólo un archivo o varios?"
+
+#: includes/admin/form-builder/form-builder-elements.php:1379
+#, fuzzy
+msgid "Allow multiple file upload"
+msgstr "Permitir la carga de varios archivos"
+
+#: includes/admin/form-builder/form-builder-elements.php:1384
+#, fuzzy
+msgid "Select allowed file Types"
+msgstr "Seleccione los tipos de archivo permitidos"
+
+#: includes/admin/form-builder/form-builder-elements.php:1388 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:349
+msgid "HTML"
+msgstr "HTML"
+
+#: includes/admin/form-builder/form-builder-elements.php:1390
+msgid "HTML:"
+msgstr "HTML:"
+
+#: includes/admin/form-builder/form-builder-elements.php:1397 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:268
+msgid "GDPR Agreement"
+msgstr "Acuerdo del RGPD"
+
+#: includes/admin/form-builder/form-builder-elements.php:1405
+#, fuzzy
+msgid "Please agree to our privacy police"
+msgstr "Por favor, acepte nuestra política de privacidad"
+
+#: includes/admin/form-builder/form-builder-elements.php:1420 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:326
+msgid "Form Actions"
+msgstr "Acciones de Formulario"
+
+#: includes/admin/form-builder/form-builder-elements.php:1427
+#, fuzzy
+msgid "Publish Button"
+msgstr "Botón de enviar"
+
+#: includes/admin/form-builder/form-builder-elements.php:1427
+#, fuzzy
+msgid "Check to disabled"
+msgstr "Marque todas"
+
+#: includes/admin/form-builder/form-builder-elements.php:1433 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:359
+msgid "Price"
+msgstr "Precio"
+
+#: includes/admin/form-builder/form-builder-elements.php:1443 includes/admin/form-builder/meta-boxes/metabox-form-elements.php:354
+msgid "Range"
+msgstr "Rango"
+
+#: includes/admin/form-builder/form-builder-elements.php:1460
+msgid "Add custom class to the form element"
+msgstr "Añadir una clase personalizada al elemento de formulario"
+
+#: includes/admin/form-builder/form-builder-elements.php:1507 includes/admin/form-builder/meta-boxes/metabox-shortcodes.php:15 includes/admin/form-builder/meta-boxes/metabox-shortcodes.php:26 includes/admin/form-builder/meta-boxes/metabox-shortcodes.php:38
+#: includes/admin/form-builder/meta-boxes/metabox-shortcodes.php:47
+msgid "Copy to clipboard"
+msgstr "Copiar al portapapeles"
+
+#: includes/admin/form-builder/form-builder-elements.php:1515
+msgid "Edit this Field"
+msgstr "Editar este campo"
+
+#: includes/admin/form-builder/form-builder-elements.php:1515 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:243 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:376 includes/admin/form-builder/meta-boxes/metabox-permissions.php:194 includes/admin/submissions.php:227
+#: includes/functions.php:384 includes/functions.php:490 includes/functions.php:492
+msgid "Edit"
+msgstr "Editar"
+
+#: includes/admin/form-builder/form-builder-elements.php:1516
+msgid "Delete this Field"
+msgstr "Eliminar este campo"
+
+#: includes/admin/form-builder/form-builder-elements.php:1517 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:245 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:378 includes/admin/form-builder/meta-boxes/metabox-permissions.php:195 includes/admin/submissions.php:228
+#: includes/admin/view/buddyforms-form-element-multiple.php:37 includes/admin/view/buddyforms-form-gdpr-element-multiple.php:41 includes/form/form-elements.php:837 includes/form/form-elements.php:885 includes/functions.php:501
+msgid "Delete"
+msgstr "Borrar"
+
+#: includes/admin/form-builder/form-builder-elements.php:1524
+msgid "Full Width"
+msgstr "Ancho completo"
+
+#: includes/admin/form-builder/form-builder-elements.php:1588
+#, fuzzy
+msgid "Please Save the form once for the form element to work."
+msgstr "Por favor, guarde el formulario una vez para que el elemento del formulario funcione."
+
+#: includes/admin/form-builder/form-templates.php:62 includes/admin/form-builder/form-templates.php:145 includes/admin/form-builder/meta-boxes/metabox-permissions.php:26 includes/admin/form-builder/meta-boxes/metabox-select-form.php:62 includes/admin/settings.php:214
+msgid "None"
+msgstr "Ninguno"
+
+#: includes/admin/form-builder/form-templates.php:66 includes/admin/form-builder/form-templates.php:72
+#, fuzzy
+msgid "BuddyForms Professional"
+msgstr "Página de vista previa de BuddyForms"
+
+#: includes/admin/form-builder/form-templates.php:164
+#, fuzzy
+msgid "Choose a pre-configured form template or start a new fields from the bottom."
+msgstr "Elija una plantilla de formulario preconfigurada o inicie un nuevo campo desde abajo."
+
+#: includes/admin/form-builder/form-templates.php:185
+msgid "Dependencies: "
+msgstr "Dependencias:"
+
+#: includes/admin/form-builder/form-templates.php:192 includes/admin/form-builder/form-templates.php:204
+msgid "Use This Template"
+msgstr "Usar esta plantilla"
+
+#: includes/admin/form-builder/form-wizard.php:174
+#, fuzzy
+msgid "BuddyForms Wizard"
+msgstr "Asistente de BuddyForms"
+
+#: includes/admin/form-builder/form-wizard.php:175
+msgid "Form Wizard"
+msgstr "Asistente para formularios"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:36
+msgid "Field Order"
+msgstr "Orden de campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:37
+msgid "Field Label"
+msgstr "Etiqueta de campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:38
+#, fuzzy
+msgid "Field Slug"
+msgstr "Bala de campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:39
+msgid "Field Type"
+msgstr "Tipo de campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:40 includes/admin/view/buddyforms-form-element-multiple.php:15 includes/admin/view/buddyforms-form-gdpr-element-multiple.php:14
+msgid "Action"
+msgstr "Acción"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:41
+msgid "Layout"
+msgstr "Diseño"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:90
+msgid "Select a Template"
+msgstr "Seleccione una plantilla"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:100
+msgid "+ Add Field"
+msgstr "+ Añadir campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:132
+msgid "Select Field Type"
+msgstr "Seleccionar tipo de campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:164
+msgid "Contact Fields"
+msgstr "Lista de Contactos"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:178
+msgid "User Fields"
+msgstr "Campos de Usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:186
+#, fuzzy
+msgid "User eEmail"
+msgstr "Usuario eEmail"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:190
+msgid "User First Name"
+msgstr "Nombre del usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:194
+msgid "User Last Name"
+msgstr "Apellidos del usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:206
+msgid "About / Bio"
+msgstr "Acerca de mí / Biografia"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:218
+msgid "Post Fields"
+msgstr "Campos de la publicación"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:230
+msgid "Excerpt"
+msgstr "Extracto"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:236
+msgid "Basic Fields"
+msgstr "Campos básicos"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:250
+msgid "Phone"
+msgstr "Teléfono"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:259
+msgid "Radiobutton"
+msgstr "Botón de opción"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:299
+msgid "Post Formats"
+msgstr "Formato de la publicación"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:309
+msgid "Post Status"
+msgstr "Estados de la publicación"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-elements.php:330
+msgid "Extra Fields"
+msgstr "Campos Adicionales"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:31
+#, fuzzy
+msgid "The [form_singular_name] [post_title] has been successfully Submitted!<br>1. [post_link]<br>2. [edit_link]"
+msgstr "El[form_singular_name][post_title] ha sido enviado correctamente!<br>1. [post_link]<br>2.[edit_link]"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:67
+#, fuzzy
+msgid "From Slug"
+msgstr "Bala de campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:69
+#, fuzzy
+msgid "The Form Slug is used in shortcodes and other places, please take care changing this option."
+msgstr "La forma de la babosa se usa en los atajos y otros lugares, por favor tenga cuidado al cambiar esta opción."
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:78
+msgid "After Submission"
+msgstr "Después del envío"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:79
+msgid "Display Message"
+msgstr "Mostrar mensaje"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:80
+#, fuzzy
+msgid "Display the Form and Message"
+msgstr "Visualizar el formulario y el mensaje"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:81
+#, fuzzy
+msgid "Display Page Contents"
+msgstr "Mostrar el contenido de la página"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:82
+#, fuzzy
+msgid "Display the Post"
+msgstr "Visualizar el mensaje"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:83
+#, fuzzy
+msgid "Display the User's Post List"
+msgstr "Visualizar la lista de mensajes del usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:84
+#, fuzzy
+msgid "Redirect to url"
+msgstr "Redireccionar a url"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:95
+#, fuzzy
+msgid "After Submission Page"
+msgstr "Después de la página de envío"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:97
+#, fuzzy
+msgid "Select the Page from where the content gets displayed. Will redirected to the page if ajax is disabled, otherwise display the content."
+msgstr "Seleccione la Página desde la que se muestra el contenido. Se redirigirá a la página si ajax está desactivado, de lo contrario se mostrará el contenido."
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:102
+msgid "Redirect URL"
+msgstr "Redireccionar URL"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:104
+#, fuzzy
+msgid "Enter a valid URL"
+msgstr "Introduzca una URL válida"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:108
+#, fuzzy
+msgid "After Create Submission Message Text"
+msgstr "Después de crear el texto del mensaje de envío"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:119
+#, fuzzy
+msgid "After Update Submission Message Text"
+msgstr "Después de la actualización Texto del mensaje de envío"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:127
+#, fuzzy
+msgid "Empty Submission List Message Text"
+msgstr "Vaciar el texto del mensaje de la lista de envíos"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:132
+msgid "This message is used when you have setup the option <b>Enable your site members to view their submissions</b>"
+msgstr "Este mensaje se utiliza cuando ha configurado la opción <b>Permitir a los miembros de su sitio ver sus entradas </b>"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:135
+msgid "AJAX"
+msgstr "AJAX"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:135 includes/functions.php:708
+#, fuzzy
+msgid "Disable ajax form submission"
+msgstr "Desactivar el envío de formularios ajax"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:145 includes/functions.php:709
+msgid "Local Storage"
+msgstr "Almacenamiento local"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:145
+#, fuzzy
+msgid "Disable Local Storage"
+msgstr "Desactivar el almacenamiento local"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:146
+msgid "The form elements content is stored in the browser so it not gets lost if the tab gets closed by accident"
+msgstr "El contenido de los elementos del formulario se almacena en el navegador para que no se pierda si la pestaña se cierra por accidente"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:154
+#, fuzzy
+msgid "Javascript Validations"
+msgstr "Validaciones de Javascript"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:154
+#, fuzzy
+msgid "Disable JavaScript Validation"
+msgstr "Desactivar la validación de JavaScript"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:155
+#, fuzzy
+msgid "By default the Javascript validations are enabled. Check to disable it."
+msgstr "Por defecto, las validaciones de Javascript están habilitadas. Compruebe para desactivarlo."
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:163
+msgid "User Data"
+msgstr "Datos del usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:164
+#, fuzzy
+msgid "Disable IP Address"
+msgstr "Desactivar dirección IP"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:165
+#, fuzzy
+msgid "Disable Referer"
+msgstr "Desactivar Referente"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:166
+#, fuzzy
+msgid "Disable Browser"
+msgstr "Desactivar navegador"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:167
+#, fuzzy
+msgid "Disable Browser Version"
+msgstr "Desactivar la versión del navegador"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:168
+#, fuzzy
+msgid "Disable Platform"
+msgstr "Desactivar plataforma"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:169
+#, fuzzy
+msgid "Disable Reports"
+msgstr "Desactivar informes"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:170
+#, fuzzy
+msgid "Disable User Agent"
+msgstr "Desactivar el agente de usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:173
+msgid "By default all above user data will not be stored. In some country's for example in the EU you are not allowed to save the ip. Please make sure you not against the low in your country and adjust if needed"
+msgstr "Por defecto, no se almacenan todos los datos de usuario anteriores. En algunos países, por ejemplo en la UE, no está permitido guardar la IP. Por favor, asegúrese de que no está en contra de la ley de su país y ajústelo si es necesario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:183
+#, fuzzy
+msgid "Use any POST TYPE with the PRO Version!"
+msgstr "Utilice cualquier POST TIPO con la versión PRO!"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:184 includes/admin/form-builder/meta-boxes/metabox-form-setup.php:189
+msgid "Select a post type if you want to create posts from form submissions. "
+msgstr "Si quiere crear Post a partir de las entradas seleccione el tipo de Post "
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:185 includes/admin/form-builder/meta-boxes/metabox-form-setup.php:189 includes/admin/form-builder/meta-boxes/metabox-form-setup.php:292
+msgid "Read the Documentation"
+msgstr "Leer la documentación"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:195
+msgid "Post Type"
+msgstr "Tipo de publicación"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:215 includes/functions.php:721
+msgid "Comment Status"
+msgstr "Comentario de Estatus"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:227 includes/revisions.php:40
+msgid "Revision"
+msgstr "Revisión"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:227
+#, fuzzy
+msgid "Enable frontend revision control"
+msgstr "Habilitar el control de revisión del front end"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:238
+msgid "Singular Name"
+msgstr "Nombre Singular"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:240
+#, fuzzy
+msgid "The Single Name is used by other plugins and Navigation ( Display Books, Add Book )"
+msgstr "El Single Name es usado por otros plugins y Navegación ( Display Books, Add Book)"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:288
+#, fuzzy
+msgid "Enable your site members to view their submissions"
+msgstr "Permita que los miembros de su sitio vean sus presentaciones"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:289
+#, fuzzy
+msgid "Select a page or create a new on if you like to turn on submission management for your logged in users."
+msgstr "Seleccione una página o cree una nueva si desea activar la administración de envíos para los usuarios que han iniciado sesión."
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:291
+msgid "Important!"
+msgstr "¡Importante!"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:291
+#, fuzzy
+msgid "The original page content does not get changed. You are free to use any kind of content on the page itself. View a form or list the users submissions with Shortcodes. For the submissions management new endpoints get create for you. You can combine forms under the same page. Its a powerful option."
+msgstr ""
+"El contenido de la página original no cambia. Usted es libre de usar cualquier tipo de contenido en la página misma. Ver un formulario o una lista de los envíos de los usuarios con códigos abreviados. Para la gestión de los envíos se crean nuevos endpoints para usted. Puede combinar formularios en la misma "
+"página. Es una opción poderosa."
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:293
+msgid "Form URL"
+msgstr "URL del formulario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:294
+#, fuzzy
+msgid "User Submissions URL"
+msgstr "URL de Envío de Usuarios"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:297
+#, fuzzy
+msgid "Enable site members to manage their submissions"
+msgstr "Permitir a los miembros del sitio gestionar sus envíos"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:299 includes/admin/settings.php:264
+#, fuzzy
+msgid "Create a new Page"
+msgstr "Crear una nueva Página"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:299 includes/admin/settings.php:264
+msgid "The page is used to create the endpoints for the create - list and edit submissions views. "
+msgstr "La página se utiliza para crear el acceso para las vistas crear, listar y editar entradas. "
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:304
+msgid "Admin Bar"
+msgstr "Barra de herramientas"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:304
+#, fuzzy
+msgid "Add to Admin Bar"
+msgstr "Añadir a la barra de administración"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:314
+#, fuzzy
+msgid "Overwrite Frontend 'Edit Post' Link"
+msgstr "Sobreescribir Frontend 'Editar Post' Enlace"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:316
+#, fuzzy
+msgid "All Edit Links"
+msgstr "Todos Editar Enlaces"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:317
+#, fuzzy
+msgid "Only in My Posts List"
+msgstr "Sólo en Mi Lista de Mensajes"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:321
+#, fuzzy
+msgid "The link to the backend will be changed to use the frontend editing."
+msgstr "El enlace al módulo de servicio se cambiará para utilizar la edición del módulo de acceso."
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:329
+#, fuzzy
+msgid "List Posts Options"
+msgstr "Opciones de entradas de la lista"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:330
+#, fuzzy
+msgid "List all Author Posts created with this Form"
+msgstr "Enumerar todos los mensajes del autor creados con este formulario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:331
+#, fuzzy
+msgid "List all Author Posts of the PostType"
+msgstr "Enumerar todos los mensajes del autor del post tipo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:342
+msgid "List Style"
+msgstr "Estilo de lista"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:347
+msgid "Do you want to list post in a ul li list or as table."
+msgstr "¿Desea listar las entradas en una lista ul, li o como tabla?"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:372
+msgid "Select a Blog"
+msgstr "Seleccionar un blog"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:374
+#, fuzzy
+msgid "You can post with BuddyForms from one Blog to the other. If you use BuddyPress you can have a centralised Profile on the main Blog and let the user submit to the multisite network from a centralised place."
+msgstr "Puedes publicar con BuddyForms de un Blog a otro. Si utilizas BuddyPress puedes tener un perfil centralizado en el Blog principal y permitir que el usuario se someta a la red multisitio desde un lugar centralizado."
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:384
+msgid "Form Submission"
+msgstr "Formulario de Envío"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:385
+msgid "Create Content"
+msgstr "Crear Contenido"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:386
+#, fuzzy
+msgid "Edit Submissions"
+msgstr "Editar envíos"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:396 includes/admin/register-post-types.php:465 includes/admin/register-post-types.php:467 includes/admin/settings.php:381 includes/admin/view/buddyforms-form-gdpr-element-multiple.php:57 includes/admin/welcome-screen.php:270
+msgid "Contact Form"
+msgstr "Formulario de contacto"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:397 includes/admin/register-post-types.php:471 includes/admin/settings.php:159 includes/admin/settings.php:373 includes/admin/welcome-screen.php:273
+msgid "Registration Form"
+msgstr "Formulario de Registro"
+
+#: includes/admin/form-builder/meta-boxes/metabox-form-setup.php:398 includes/admin/welcome-screen.php:276
+msgid "Post Form"
+msgstr "Formulario de Post por defecto"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:36 includes/functions.php:58 includes/functions.php:1693
+msgid "Publish"
+msgstr "Publicar"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:36 includes/functions.php:1695 includes/resources/pfbc/Element/Button.php:47
+msgid "Submit"
+msgstr "Enviar"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:38 includes/functions.php:1670
+msgid "Save as draft"
+msgstr "Guardar como borrador"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:120
+msgid "Labels"
+msgstr "Etiquetas"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:123
+msgid "Disable CSS"
+msgstr "Desactivar CSS"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:124
+#, fuzzy
+msgid "Disable CSS for labels on this form?"
+msgstr "¿Desactivar CSS para etiquetas en este formulario?"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:131
+#, fuzzy
+msgid "Use labels as placeholders?"
+msgstr "¿Usar etiquetas como marcadores de posición?"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:132 includes/admin/form-builder/meta-boxes/metabox-layout.php:136
+msgid "Show labels"
+msgstr "Mostrar etiquetas"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:133 includes/admin/form-builder/meta-boxes/metabox-layout.php:136
+#, fuzzy
+msgid "Use as placeholder"
+msgstr "Uso como marcador de posición"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:136
+#, fuzzy
+msgid "display the labels above the text fields."
+msgstr "mostrar las etiquetas encima de los campos de texto."
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:136
+#, fuzzy
+msgid "hide labels and display as placeholder text inside text fields ."
+msgstr "ocultar etiquetas y mostrar como texto de marcador de posición dentro de los campos de texto."
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:140
+msgid "Label Font Size"
+msgstr "Tamaño de fuente de etiqueta"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:142
+#, fuzzy
+msgid "Just enter a number. Leave empty = auto"
+msgstr "Sólo tienes que introducir un número. Dejar en blanco = auto"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:146
+msgid "Label Font Color"
+msgstr "Label color de fuente"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:148 includes/admin/form-builder/meta-boxes/metabox-layout.php:192 includes/admin/form-builder/meta-boxes/metabox-layout.php:255 includes/admin/form-builder/meta-boxes/metabox-layout.php:261 includes/admin/form-builder/meta-boxes/metabox-layout.php:285
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:291 includes/admin/form-builder/meta-boxes/metabox-layout.php:297 includes/admin/form-builder/meta-boxes/metabox-layout.php:303 includes/admin/form-builder/meta-boxes/metabox-layout.php:309 includes/admin/form-builder/meta-boxes/metabox-layout.php:381
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:387 includes/admin/form-builder/meta-boxes/metabox-layout.php:393 includes/admin/form-builder/meta-boxes/metabox-layout.php:399 includes/admin/form-builder/meta-boxes/metabox-layout.php:405 includes/admin/form-builder/meta-boxes/metabox-layout.php:411
+#, fuzzy
+msgid "Default is auto"
+msgstr "Por defecto es auto"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:152
+msgid "Label Font Style"
+msgstr "Etiqueta de Estilo de Fuente"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:154 includes/admin/form-builder/meta-boxes/metabox-layout.php:198
+msgid "Italic"
+msgstr "Cursiva"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:155
+msgid "Bold"
+msgstr "Negrita"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:156
+msgid "Bold Italic"
+msgstr "Bold Italic"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:164
+msgid "Descriptions"
+msgstr "Descripciones"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:168
+#, fuzzy
+msgid "Disable CSS for descriptions on this form?"
+msgstr "¿Desactivar CSS para las descripciones en este formulario?"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:175
+msgid "Description Position"
+msgstr "Posición de Descripción"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:176
+#, fuzzy
+msgid "Above form field"
+msgstr "Campo del formulario anterior"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:177
+#, fuzzy
+msgid "Below form field"
+msgstr "Campo del formulario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:184
+msgid "Description Font Size"
+msgstr "Tamaño de fuente de la descripción"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:186
+#, fuzzy
+msgid "in px, just enter a number. Leave empty = auto"
+msgstr "en px, introduzca un número. Dejar en blanco = auto"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:190
+msgid "Description Font Color"
+msgstr "Color de la fuente de la descripcion"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:196
+msgid "Description Font Style"
+msgstr "Estilo de fuente de la descripción"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:206
+msgid "Other Elements"
+msgstr "Otros elementos"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:210
+#, fuzzy
+msgid "Disable CSS for these form elements, on this form?"
+msgstr "¿Desactivar CSS para estos elementos del formulario, en este formulario?"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:217
+#, fuzzy
+msgid "Radio Button Alignment"
+msgstr "Alineación de botones de radio"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:218 includes/admin/form-builder/meta-boxes/metabox-layout.php:227
+msgid "Inline"
+msgstr "En línea"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:219 includes/admin/form-builder/meta-boxes/metabox-layout.php:228
+msgid "List"
+msgstr "Lista"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:222
+#, fuzzy
+msgid "Want to display your radio buttons in a row (inline) or in a vertical list?"
+msgstr "¿Desea mostrar sus botones de opción en una fila (en línea) o en una lista vertical?"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:226
+#, fuzzy
+msgid "Checkbox Option Alignment"
+msgstr "Casilla de verificación Alineación de opciones"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:231
+#, fuzzy
+msgid "Want to display your checkbox options in a row (inline) or in a vertical list?"
+msgstr "¿Desea mostrar sus opciones de casillas de verificación en una fila (en línea) o en una lista vertical?"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:236
+msgid "Text Fields"
+msgstr "Campos de Texto"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:240
+#, fuzzy
+msgid "Disable CSS for text fields on this form?"
+msgstr "¿Desactivar CSS para campos de texto en este formulario?"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:247
+#, fuzzy
+msgid "Field Padding"
+msgstr "Acolchado de campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:249
+#, fuzzy
+msgid "Just enter a number. Default is 15 (px)"
+msgstr "Sólo tienes que introducir un número. Por defecto es 15 (px)"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:253
+msgid "Field Background Color "
+msgstr "Color de fondo del campo "
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:259
+msgid "Field Border Color"
+msgstr "Color del borde del campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:265
+#, fuzzy
+msgid "Field Border Width"
+msgstr "Ancho del borde del campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:267 includes/admin/form-builder/meta-boxes/metabox-layout.php:279
+#, fuzzy
+msgid "Just enter a number, in px. Leave empty = auto"
+msgstr "Sólo tiene que introducir un número, en px. Dejar en blanco = auto"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:271
+#, fuzzy
+msgid "Field Corner Radius"
+msgstr "Radio de la esquina del campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:273 includes/admin/form-builder/meta-boxes/metabox-layout.php:369
+#, fuzzy
+msgid "Rounded corners. Just enter a number. Leave empty = auto"
+msgstr "Esquinas redondeadas. Sólo tienes que introducir un número. Dejar en blanco = auto"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:277
+#, fuzzy
+msgid "Field Font Size"
+msgstr "Tamaño de fuente de campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:283
+msgid "Field Font Color"
+msgstr "Color de fuente de campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:289
+#, fuzzy
+msgid "Field Placeholder Font Color"
+msgstr "Marcador de posición de campo Color de fuente"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:295
+#, fuzzy
+msgid "Field Active Background Color"
+msgstr "Color de fondo activo del campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:301
+#, fuzzy
+msgid "Field Active Border Color"
+msgstr "Color del borde activo de campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:307
+#, fuzzy
+msgid "Field Active Font Color"
+msgstr "Color de fuente activa de campo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:314
+msgid "Submit Button"
+msgstr "Botón de enviar"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:318
+#, fuzzy
+msgid "Disable CSS for buttons on this form?"
+msgstr "¿Desactivar CSS para botones en este formulario?"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:325
+msgid "Button Submit Text"
+msgstr "Texto Botón Búsqueda"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:327
+#, fuzzy
+msgid "Default text for the submit button . Default is \"Submit\" ."
+msgstr "Texto por defecto para el botón de enviar. Por defecto es \"Submit\" ."
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:327
+#, fuzzy
+msgid "HTML is allowed, so you can embed icons ."
+msgstr "HTML está permitido, por lo que puede incrustar iconos ."
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:331
+msgid "Button Width"
+msgstr "Ancho del Botón"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:332
+#, fuzzy
+msgid "Full width button on mobile only"
+msgstr "Botón de ancho completo sólo en móviles"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:333
+#, fuzzy
+msgid "Always full width button"
+msgstr "Botón siempre a todo lo ancho"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:334
+#, fuzzy
+msgid "Always normal width button"
+msgstr "Botón de anchura siempre normal"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:337
+#, fuzzy
+msgid "We recommend full width buttons on mobile, looks neater."
+msgstr "Recomendamos botones de ancho completo en móviles, se ve más limpio."
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:341
+msgid "Button Alignment"
+msgstr "Alineación del botón"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:342
+msgid "Left"
+msgstr "Izquierda"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:343
+msgid "Center"
+msgstr "Centro"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:344
+msgid "Right"
+msgstr "Derecha"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:347
+#, fuzzy
+msgid "How to align your submit button?"
+msgstr "¿Cómo alinear el botón de envío?"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:351
+msgid "Button Size"
+msgstr "Tamaño del botón"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:352
+msgid "Auto"
+msgstr "Automático"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:353
+msgid "Large"
+msgstr "Grande"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:354
+msgid "Extra Large"
+msgstr "Extra grande"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:361
+#, fuzzy
+msgid "Add custom CSS classes to button"
+msgstr "Agregar clases CSS personalizadas al botón"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:363
+msgid "For example:"
+msgstr "Por ejemplo:"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:367
+#, fuzzy
+msgid "Button Corner Radius"
+msgstr "Radio de la esquina del botón"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:373
+msgid "Button Border Width"
+msgstr "Ancho del Borde del Botón"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:375
+#, fuzzy
+msgid "Border width in pixels. Just enter a number. Leave empty = auto"
+msgstr "Ancho del borde en píxeles. Sólo tienes que introducir un número. Dejar en blanco = auto"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:379
+msgid "Button Background Color"
+msgstr "Color de fondo del botón"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:385
+msgid "Button Font Color"
+msgstr "Color fuente botón"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:391
+msgid "Button Border Color"
+msgstr "Color de borde para el botón"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:397
+msgid "Button Background Color Hover"
+msgstr "Color de fondo del botón al poner encima"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:403
+msgid "Button Font Color Hover"
+msgstr "Color de fuente del botón al pasar"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:409
+msgid "Button Border Color Hover"
+msgstr "Color del Borde del Botón en Posición estacionaria"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:417
+msgid "Custom CSS"
+msgstr "CSS personalizado"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:423
+#, fuzzy
+msgid "Add custom styles to the form"
+msgstr "Agregar estilos personalizados al formulario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:429
+#, fuzzy
+msgid "Disable all BuddyForms CSS on this form"
+msgstr "Desactivar todos los CSS de BuddyForms en este formulario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:436
+#, fuzzy
+msgid "Copy layout settings from"
+msgstr "Copiar los ajustes de diseño de"
+
+#: includes/admin/form-builder/meta-boxes/metabox-layout.php:446
+#, fuzzy
+msgid "Load Layout Settings"
+msgstr "Cargar ajustes de diseño"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:12
+#, fuzzy
+msgid "Mail Notifications"
+msgstr "Avisos de correo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:13
+#, fuzzy
+msgid "By default no notification is sent out. Any submission get stored under Submissions. This makes sure you never lose any submission. Of course you can create individual mail notification for the submitter, inform your moderators or sent out a notification to any email address."
+msgstr ""
+"Por defecto no se envía ninguna notificación. Cualquier envío se almacena en el apartado de Envíos. Esto asegura que nunca pierdas ningún envío. Por supuesto, puede crear una notificación de correo individual para el remitente, informar a sus moderadores o enviar una notificación a cualquier dirección de "
+"correo electrónico."
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:14 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:40
+#, fuzzy
+msgid "Create New Mail Notification"
+msgstr "Creación de un nuevo aviso de correo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:24
+#, fuzzy
+msgid "No Mail Notification Trigger so far."
+msgstr "Hasta el momento no se ha producido ningún disparo de notificación de correo."
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:42
+#, fuzzy
+msgid "Get the Pro version to add Post Status Change Mail Notification"
+msgstr "Obtenga la versión Pro para añadir la Notificación de correo de cambio de estado del envío"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:45
+#, fuzzy
+msgid "Post Status Change Mail Notifications"
+msgstr "Notificaciones de correo de cambio de estado de contabilización"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:45
+msgid "Forms can send different email notifications triggered by post status changes. For example, automatically notify post authors when their post is published! "
+msgstr "Los formularios pueden enviar diferentes notificaciones por correo electrónico desencadenadas por cambios en el estado de las entradas. Por ejemplo, ¡notificar automáticamente a los autores de los mensajes cuando éstos se publiquen! "
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:60
+#, fuzzy
+msgid "No Post Status Mail Notification Trigger so far."
+msgstr "Hasta ahora no se ha activado la notificación de correo de estado de publicación."
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:98
+#, fuzzy
+msgid "Click on one of the available shortcodes to insert on the above element at caret position:"
+msgstr "Haga clic en uno de los atajos disponibles para insertar en el elemento anterior en posición de caret:"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:103 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:305
+#, fuzzy
+msgid "Test this Notification"
+msgstr "Avisos de correo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:103 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:305
+msgid "Test"
+msgstr "Prueba"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:104 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:306
+#, fuzzy
+msgid "This test Email will be sent using the Site Admin Email and the exiting Subject and Body."
+msgstr "Este correo electrónico de prueba será enviado usando el correo electrónico del administrador del sitio y el asunto y cuerpo salientes."
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:108
+msgid "From Name"
+msgstr "De Nombre"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:112
+msgid "First and Last Name"
+msgstr "Nombres y apellidos"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:113
+msgid "Blog Title"
+msgstr "Titulo de Blog"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:114 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:133 includes/admin/settings.php:385
+msgid "Custom"
+msgstr "Personalizado"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:122
+#, fuzzy
+msgid "Custom Mail From Name"
+msgstr "Nombre de Mail From Custom"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:125 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:312
+#, fuzzy
+msgid "The senders name e.g. John Doe or use any form element slug as shortcode [field_slug]"
+msgstr "El nombre del remitente, por ejemplo, John Doe. Puede utilizar cualquier elemento de formulario como código abreviado [SLUG DE CAMPO]. "
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:130
+#, fuzzy
+msgid "From eMail"
+msgstr "Desde eMail"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:131 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:150
+#, fuzzy
+msgid "Submitter - User eMail Field"
+msgstr "Remitente - Campo de correo electrónico de usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:132 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:151
+#, fuzzy
+msgid "Admin - eMail from WP General Settings"
+msgstr "Admin - eMail de WP General Settings"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:141
+#, fuzzy
+msgid "Custom Mail From Address"
+msgstr "Dirección de correo personalizada"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:144
+#, fuzzy
+msgid "You can use any form element slug as shortcode [field_slug]"
+msgstr "Puede utilizar cualquier elemento de formulario slug como código abreviado[SLUG DE CAMPO]."
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:149 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:320
+#, fuzzy
+msgid "Sent mail to"
+msgstr "Envío de correo a"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:152 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:170
+msgid "CC"
+msgstr "CC"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:153 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:181
+msgid "BCC"
+msgstr "BCC"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:165 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:176 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:187 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:330
+#, fuzzy
+msgid "Separate addresses by \",\" and/or use any form element slug as shortcode [field_slug]"
+msgstr "Puede utilizar cualquier elemento de formulario slug como código abreviado[SLUG DE CAMPO]."
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:184
+#, fuzzy
+msgid "Custom sent mail to"
+msgstr "Envío de correo personalizado a"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:191
+#, fuzzy
+msgid "Form Submission Notification"
+msgstr "Notificación de presentación de formularios"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:196 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:336
+#, fuzzy
+msgid "Add a default Subject. If you use the \"subject\" form element the element value will be used, or use a [field_slug]"
+msgstr "Añada un asunto predeterminado. Si utiliza el elemento de formulario \"asunto\", se utilizará el valor del elemento de formulario."
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:212
+msgid "eMail Message Content"
+msgstr "contenido del correo electrónico"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:214
+msgid "Important: "
+msgstr "Importante: "
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:214
+#, fuzzy
+msgid "If you use the \"Message\" form element you can leave this field empty and the \"Message\" form element value will be used . If you enter content in here, this content will overwrite the \"Message\" form element ."
+msgstr "Si utiliza el elemento de formulario \"Message\" puede dejar este campo vacío y se utilizará el valor del elemento de formulario \"Message\". Si introduce el contenido aquí, este contenido sobrescribirá el elemento de formulario \"Mensaje\"."
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:215
+#, fuzzy
+msgid "You can add any form element with tags [] e . g . [ message ] will be replaced with the form element \"Message\" [ form_elements_table ] will add a table of all form elements ."
+msgstr "Puede añadir cualquier elemento de formulario con etiquetas [] e. g. . mensaje ] será sustituido por el elemento \"Message\" [ form_elements_table ] añadirá una tabla con todos los elementos del formulario ."
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:216
+#, fuzzy
+msgid "If no \"Message\" form element is uses and \"no content\" is added a table with all form elements will get auto generated ."
+msgstr "Si no se utiliza ningún elemento de formulario \"Message\" y se añade \"no content\", se generará automáticamente una tabla con todos los elementos del formulario."
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:243 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:376
+#, fuzzy
+msgid "Edit this Notification"
+msgstr "Avisos de correo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:244 includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:377
+#, fuzzy
+msgid "Delete this Notification"
+msgstr "Creación de un nuevo aviso de correo"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:280
+#, fuzzy
+msgid "User Shortcodes"
+msgstr "Códigos abreviados de usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:283
+#, fuzzy
+msgid "user_nicename is a url - sanitized version of user_login . For example, if a user’s login is user@example . com, their user_nicename will be userexample - com ."
+msgstr "user_nicename es una url - versión desinfectada de user_login . Por ejemplo, si el inicio de sesión de un usuario es user@example . com, su nombre_de_usuario será userexample - com ."
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:284
+msgid "user email"
+msgstr "correo electrónico del usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:285
+#, fuzzy
+msgid "user first name"
+msgstr "Nombre del usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:286
+#, fuzzy
+msgid "user last name"
+msgstr "Apellidos del usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:288
+#, fuzzy
+msgid "Published Post Shortcodes"
+msgstr "Códigos postales abreviados publicados"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:290
+#, fuzzy
+msgid "the published post link in html"
+msgstr "el enlace publicado en html"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:291
+#, fuzzy
+msgid "the published post link in plain"
+msgstr "el enlace de post publicado en plain"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:292
+#, fuzzy
+msgid "the published post title"
+msgstr "el título del puesto publicado"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:294
+#, fuzzy
+msgid "Site Shortcodes"
+msgstr "Códigos de acceso directo al sitio"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:296
+#, fuzzy
+msgid "the site name"
+msgstr "el nombre del sitio"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:297
+#, fuzzy
+msgid "the site url"
+msgstr "la url del sitio"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:298
+#, fuzzy
+msgid "the site url in html"
+msgstr "la url del sitio en html"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:314
+msgid "Email"
+msgstr "Email"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:317
+#, fuzzy
+msgid "The senders email e.g. user@domain.com or use any form element slug as shortcode [field_slug]"
+msgstr "El nombre del remitente, por ejemplo, John Doe. Puede utilizar cualquier elemento de formulario como código abreviado [SLUG DE CAMPO]. "
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:321
+#, fuzzy
+msgid "The Post Author"
+msgstr "El Post Autor"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:322
+#, fuzzy
+msgid "Admin E-mail Address from Settings/General"
+msgstr "Dirección de correo electrónico del administrador desde Configuración/General"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:327
+#, fuzzy
+msgid "Send Mail To"
+msgstr "Envío de correo a"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:452
+#, fuzzy
+msgid "BuddyForms Test Email"
+msgstr "Configuración de BuddyForms"
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:453
+#, fuzzy
+msgid "You body was empty, please try when you have something in place."
+msgstr "Tu cuerpo estaba vacío, por favor, inténtalo cuando tengas algo en su lugar."
+
+#: includes/admin/form-builder/meta-boxes/metabox-mail-notification.php:531
+msgid "Notifications"
+msgstr "Notificaciones"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:11
+msgid "Unregistered User"
+msgstr "Usuario no registrado"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:14
+#, fuzzy
+msgid "Public Submittable"
+msgstr "Público Presentable"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:16
+#, fuzzy
+msgid "Access for unregistered users."
+msgstr "Acceso para usuarios no registrados."
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:17
+#, fuzzy
+msgid "Logged in users only ."
+msgstr "Sólo usuarios registrados."
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:17
+#, fuzzy
+msgid "Display Login Form For Unregistered Users with optional Link to a Registration Form"
+msgstr "Mostrar el formulario de inicio de sesión para usuarios no registrados con un enlace opcional a un formulario de registro"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:25 includes/functions.php:722
+#, fuzzy
+msgid "Enable Login on the form"
+msgstr "Habilitar Login en el formulario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:27
+#, fuzzy
+msgid "Above the Form"
+msgstr "Por encima de la forma"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:28
+#, fuzzy
+msgid "Under the Form"
+msgstr "Bajo el formulario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:31 includes/admin/form-builder/meta-boxes/metabox-permissions.php:65
+#, fuzzy
+msgid "Give your existing customers the choice to login. Just place a login form above or under the form. The Login Form is only visible for logged of user."
+msgstr "Ofrezca a sus clientes actuales la opción de iniciar sesión. Simplemente coloque un formulario de inicio de sesión encima o debajo del formulario. El formulario de inicio de sesión sólo es visible para los usuarios registrados."
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:36
+msgid "Create an account?"
+msgstr "¿Crear una cuenta?"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:36
+#, fuzzy
+msgid "Create account during submission"
+msgstr "Crear una cuenta durante el envío"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:39
+#, fuzzy
+msgid "Create a new user during form submission"
+msgstr "Crear un nuevo usuario durante el envío del formulario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:51
+msgid "No Registration"
+msgstr "Sin registro"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:61
+#, fuzzy
+msgid "Enable Registration on the login form"
+msgstr "Habilitar registro en el formulario de inicio de sesión"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:85 includes/admin/form-builder/meta-boxes/metabox-permissions.php:95
+#, fuzzy
+msgid "Logged in User"
+msgstr "Ocultar para el usuario que ha iniciado sesión"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:86
+#, fuzzy
+msgid "Get full control with the pro version"
+msgstr "Obtenga el control total con la versión pro"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:87
+#, fuzzy
+msgid "Control who can create, edit and delete content that is created from this form for each user role with the pro version."
+msgstr "Controle quién puede crear, editar y eliminar el contenido que se crea desde este formulario para cada rol de usuario con la versión pro."
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:88
+#, fuzzy
+msgid "In the free version all roles can create and edit / delete there own posts"
+msgstr "En la versión gratuita todos los roles pueden crear y editar / borrar sus propios mensajes"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:96
+#, fuzzy
+msgid "Control who can create, edit and delete content that is created with this form for each user role. If you want to create additional custom user roles, we recommend the Members plugin."
+msgstr "Controle quién puede crear, editar y eliminar el contenido que se crea con este formulario para cada rol de usuario. Si desea crear roles de usuario personalizados adicionales, le recomendamos el plugin Members."
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:97
+#, fuzzy
+msgid "If you check the All Submission the user role will get all users submission in the frontend."
+msgstr "Si marca la casilla All Submission (Todos los envíos), el rol de usuario obtendrá los envíos de todos los usuarios en el módulo de acceso."
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:98
+#, fuzzy
+msgid "The Admin Submission capability give the ability to the user to access to submission from the administration, take in count it need the minimum permission to access to WordPress administration."
+msgstr "La capacidad de Admin Submission da la posibilidad al usuario de acceder a la sumisión desde la administración, teniendo en cuenta que necesita el mínimo permiso para acceder a la administración de WordPress."
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:177
+#, fuzzy
+msgid "Admin rights can not get changed"
+msgstr "Los derechos de administración no pueden ser cambiados"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:191
+msgid "Role"
+msgstr "Rol"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:193 includes/gutenberg/shortcodes/shortcodes-to-blocks.php:81
+msgid "Create"
+msgstr "Crear"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:196 includes/form/form-elements.php:466 includes/functions.php:60 includes/functions.php:560
+msgid "Draft"
+msgstr "Borrador"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:197
+#, fuzzy
+msgid "All Submissions"
+msgstr "Todos los envíos"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:198
+#, fuzzy
+msgid "Admin Submission"
+msgstr "Envío de Admin"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:200 includes/form/form-assets.php:293
+msgid "Check all"
+msgstr "Marque todas"
+
+#: includes/admin/form-builder/meta-boxes/metabox-permissions.php:246
+msgid "Permission"
+msgstr "Permiso"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:29
+msgid "User Register"
+msgstr "Registro de usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:30
+#, fuzzy
+msgid "User Update"
+msgstr "Actualización de usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:74
+#, fuzzy
+msgid "On User Registration Options"
+msgstr "Sobre las opciones de registro del usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:77
+msgid "Generate Password"
+msgstr "Generar contraseña"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:77
+#, fuzzy
+msgid "Auto generate the password."
+msgstr "Generación automática de la contraseña."
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:79
+#, fuzzy
+msgid "If generate password is enabled the password field is not required and can be removed from the form. How ever if the password field exist and a passowrd was entered the password from the password field is used instad of the auto generated password."
+msgstr "Si la opción de generar contraseña está activada, el campo de contraseña no es necesario y se puede eliminar del formulario. Sin embargo, si el campo de contraseña existe y se ha introducido un passowrd, la contraseña del campo de contraseña se utiliza instad de la contraseña generada automáticamente."
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:88
+#, fuzzy
+msgid "Automatically generate username from eMail"
+msgstr "Generar automáticamente el nombre de usuario desde el eMail"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:88
+#, fuzzy
+msgid "Generate Username from eMail"
+msgstr "Generar nombre de usuario desde eMail"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:90
+#, fuzzy
+msgid "This option only works with the eMail Form Element added to the Form. Please make sure you have the User eMail form element added to the form."
+msgstr "Esta opción sólo funciona con el elemento de formulario de eMail añadido al formulario. Por favor, asegúrese de que el elemento del formulario de correo electrónico del usuario se agregue al formulario."
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:103 includes/admin/form-builder/meta-boxes/metabox-registration.php:242
+msgid "Activation Page"
+msgstr "Página de activación"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:105 includes/admin/form-builder/meta-boxes/metabox-registration.php:244
+#, fuzzy
+msgid "Select the page the user should land on if he clicks the activation link in the activation email."
+msgstr "Seleccione la página en la que el usuario debe aterrizar si hace clic en el enlace de activación en el correo electrónico de activación."
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:111 includes/admin/form-builder/meta-boxes/metabox-registration.php:250
+#, fuzzy
+msgid "Activation Message Subject"
+msgstr "Mensaje de activación Asunto"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:119 includes/admin/form-builder/meta-boxes/metabox-registration.php:258
+#, fuzzy
+msgid "Hi [user_login], Great to see you come on board! Just one small step left to make your registration complete.<br><b>Click the link below to activate your account.</b><br>[activation_link]<br><br>[blog_title]"
+msgstr "Hola[user_login], Me alegro de verte subir a bordo! Sólo queda un pequeño paso para completar el registro. <br><b>Haga clic en el siguiente enlace para activar su cuenta. </b><br>[activation_link]<br><br>[blog_title]."
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:120 includes/admin/form-builder/meta-boxes/metabox-registration.php:259
+#, fuzzy
+msgid "Activation Message Text"
+msgstr "Texto del mensaje de activación"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:128 includes/admin/form-builder/meta-boxes/metabox-registration.php:267
+#, fuzzy
+msgid "Activation From Name"
+msgstr "Activación del nombre"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:135 includes/admin/form-builder/meta-boxes/metabox-registration.php:274
+#, fuzzy
+msgid "Activation From eMail"
+msgstr "Activación desde eMail"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:137 includes/admin/form-builder/meta-boxes/metabox-registration.php:276
+msgid "You can set the \"From Email Address\" to [admin_email] to use the admin Email from the general WordPress settings"
+msgstr "Puede configurar el campo “Correo desde” con [admin_email] para utilizar el correo electrónico del administrador desde la configuración general de Wordpress"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:144 includes/admin/form-builder/meta-boxes/metabox-registration.php:219
+msgid "New User Role"
+msgstr "Rol de Nuevo Usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:146
+msgid "Select the User Role the user should have after successful registration"
+msgstr "Seleccione el rol de usuario que debe tener después de registrarse correctamente"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:171 includes/functions.php:1079
+msgid "Select a Page"
+msgstr "Selecciona una página"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:172
+msgid "Homepage"
+msgstr "Página de inicio"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:191
+#, fuzzy
+msgid "Keep the current Role"
+msgstr "Mantenga el rol actual"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:210
+#, fuzzy
+msgid "On User Update Options"
+msgstr "Sobre las opciones de actualización del usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:221
+#, fuzzy
+msgid "Select the User Role the user should have after successful Update the Form."
+msgstr "Seleccione el rol de usuario que el usuario debe tener después de Actualizar el formulario con éxito."
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:224
+#, fuzzy
+msgid "Moderate User Update"
+msgstr "Actualización de usuario moderada"
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:224
+#, fuzzy
+msgid "Moderate User on Update."
+msgstr "Usuario moderado en la actualización."
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:226
+#, fuzzy
+msgid "To moderate when the user is Updated check this option. When the User change, it will be Deactivate and Activation Email will be Send. Note the User WILL BE INACTIVE until the Email Activation is clicked or the Admin Activate the user on the WP list of Users."
+msgstr ""
+"Para moderar cuando el usuario está Actualizado marque esta opción. Cuando el Usuario cambie, será Desactivado y el Correo Electrónico de Activación será Enviado. Tenga en cuenta que el usuario ESTARÁ INACTIVO hasta que se haga clic en la Activación de correo electrónico o en la Activación de administración "
+"del usuario en la lista de usuarios del paquete de trabajo."
+
+#: includes/admin/form-builder/meta-boxes/metabox-registration.php:234
+msgid "To select the page where the user should land on Update the User Profile use te Form Submission options "
+msgstr "Seleccione la página donde el usuario debe aterrizar cuando se actualice el perfil del usuario, utilice la opciones de envío del formulario "
+
+#: includes/admin/form-builder/meta-boxes/metabox-select-form.php:23
+#, fuzzy
+msgid "Attach a BuddyForm"
+msgstr "Adjuntar un BuddyForm"
+
+#: includes/admin/form-builder/meta-boxes/metabox-select-form.php:58
+msgid "Select the form"
+msgstr "Elige un formulario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-shortcodes.php:12
+msgid "Display Form"
+msgstr "Mostrar formulario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-shortcodes.php:17
+#, fuzzy
+msgid "Display the form."
+msgstr "Visualizar el formulario."
+
+#: includes/admin/form-builder/meta-boxes/metabox-shortcodes.php:23
+#, fuzzy
+msgid "User Posts List"
+msgstr "Lista de Mensajes de Usuario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-shortcodes.php:28
+#, fuzzy
+msgid "Display the logged in users posts or a login form."
+msgstr "Mostrar los mensajes de los usuarios registrados o un formulario de inicio de sesión."
+
+#: includes/admin/form-builder/meta-boxes/metabox-shortcodes.php:35
+#, fuzzy
+msgid "Link to Form"
+msgstr "Enlace al formulario"
+
+#: includes/admin/form-builder/meta-boxes/metabox-shortcodes.php:40
+#, fuzzy
+msgid "Display a link to the form."
+msgstr "Visualizar un enlace al formulario."
+
+#: includes/admin/form-builder/meta-boxes/metabox-shortcodes.php:44
+#, fuzzy
+msgid "Link to Users Posts"
+msgstr "Enlace a los mensajes de los usuarios"
+
+#: includes/admin/form-builder/meta-boxes/metabox-shortcodes.php:49
+#, fuzzy
+msgid "Display a link to the logged in users post."
+msgstr "Mostrar un enlace a la entrada de los usuarios registrados."
+
+#: includes/admin/form-builder/meta-boxes/metabox-shortcodes.php:60
+#, fuzzy
+msgid "List of all Available Shortcodes"
+msgstr "Lista de todos los códigos abreviados disponibles"
+
+#: includes/admin/functions.php:38
+msgid "Upgrade Now!"
+msgstr "¡ Suscríbase Ahora!"
+
+#: includes/admin/functions.php:60
+msgid "Starter"
+msgstr "Plan Inicial"
+
+#: includes/admin/functions.php:62
+msgid "Professional"
+msgstr "Profesional"
+
+#: includes/admin/functions.php:64
+msgid "Business"
+msgstr "Empresa"
+
+#: includes/admin/functions.php:68
+msgid "Free"
+msgstr "Gratis"
+
+#: includes/admin/functions.php:123
+#, fuzzy
+msgid "Generated Title"
+msgstr "Título generado"
+
+#: includes/admin/mce-editor-button.php:28
+#, fuzzy
+msgid "BuddyForms Shortcode Generator!"
+msgstr "Generador de código abreviado de BuddyForms!"
+
+#: includes/admin/mce-editor-button.php:77
+msgid "Insert Form"
+msgstr "Insertar Formulario"
+
+#: includes/admin/mce-editor-button.php:78 includes/admin/mce-editor-button.php:97 includes/admin/mce-editor-button.php:120
+msgid "Insert into Post"
+msgstr "Insertar en el mensaje"
+
+#: includes/admin/mce-editor-button.php:91
+msgid "Filter Posts"
+msgstr "Filtrar Entradas"
+
+#: includes/admin/mce-editor-button.php:92
+msgid "All User"
+msgstr "Colaboradores"
+
+#: includes/admin/mce-editor-button.php:93
+#, fuzzy
+msgid "Displayed User"
+msgstr "Usuario visualizado"
+
+#: includes/admin/mce-editor-button.php:95
+msgid "List Posts"
+msgstr "Lista de Publicaciones"
+
+#: includes/admin/mce-editor-button.php:95
+#, fuzzy
+msgid "List post submissions here."
+msgstr "Haga una lista de los envíos aquí."
+
+#: includes/admin/mce-editor-button.php:112
+#, fuzzy
+msgid "Insert Navigation"
+msgstr "Insertar navegación"
+
+#: includes/admin/mce-editor-button.php:113
+#, fuzzy
+msgid "View - Add New"
+msgstr "Ver - Añadir nuevo"
+
+#: includes/admin/mce-editor-button.php:114
+msgid "View Posts"
+msgstr "Ver publicaciones"
+
+#: includes/admin/mce-editor-button.php:118
+#, fuzzy
+msgid "Add Links"
+msgstr "Agregar Enlaces"
+
+#: includes/admin/mce-editor-button.php:118
+#, fuzzy
+msgid "Add links to your form or form submissions."
+msgstr "Agregue enlaces a su formulario o a los envíos de formularios."
+
+#: includes/admin/mce-editor-button.php:148
+#, fuzzy
+msgid "Please select a Button Type"
+msgstr "Seleccione un tipo de botón"
+
+#: includes/admin/mce-editor-button.php:152 includes/admin/mce-editor-button.php:168
+#, fuzzy
+msgid "Please select a Form"
+msgstr "Por favor, seleccione un formulario"
+
+#: includes/admin/mce-editor-button.php:164
+#, fuzzy
+msgid "Please select a List Type"
+msgstr "Seleccione un tipo de lista"
+
+#: includes/admin/password-strengh-settings.php:34
+#, fuzzy
+msgid "Strength Requirement"
+msgstr "Requisito de resistencia"
+
+#: includes/admin/password-strengh-settings.php:39
+#, fuzzy
+msgid "Level 0 - Anything"
+msgstr "Nivel 0 - Cualquier cosa"
+
+#: includes/admin/password-strengh-settings.php:40
+#, fuzzy
+msgid "Level 1 - Weakest"
+msgstr "Nivel 1 - El más débil"
+
+#: includes/admin/password-strengh-settings.php:41
+#, fuzzy
+msgid "Level 2 - Weak"
+msgstr "Nivel 2 - Débil"
+
+#: includes/admin/password-strengh-settings.php:42
+#, fuzzy
+msgid "Level 3 - Medium (Default)"
+msgstr "Nivel 3 - Medio (Predeterminado)"
+
+#: includes/admin/password-strengh-settings.php:43
+#, fuzzy
+msgid "Level 4 - Strong"
+msgstr "Nivel 4 - Fuerte"
+
+#: includes/admin/password-strengh-settings.php:49
+#, fuzzy
+msgid "Level 1 Message"
+msgstr "Mensaje de nivel 1"
+
+#: includes/admin/password-strengh-settings.php:53 includes/form/form-assets.php:129
+msgid "Short: Your password is too short."
+msgstr "Corto: Su contraseña es demasiado corta."
+
+#: includes/admin/password-strengh-settings.php:58
+#, fuzzy
+msgid "Level 2 Message"
+msgstr "Mensaje de nivel 2"
+
+#: includes/admin/password-strengh-settings.php:62 includes/form/form-assets.php:130
+msgid "Password Strength: Weak"
+msgstr "Fuerza de la contraseña: Débil"
+
+#: includes/admin/password-strengh-settings.php:67
+#, fuzzy
+msgid "Level 3 Message"
+msgstr "Mensaje de nivel 3"
+
+#: includes/admin/password-strengh-settings.php:71
+msgid "Password Strength: OK"
+msgstr "Fuerza de la contraseña: OK"
+
+#: includes/admin/password-strengh-settings.php:76
+#, fuzzy
+msgid "Level 4 Message"
+msgstr "Mensaje de nivel 4"
+
+#: includes/admin/password-strengh-settings.php:80 includes/form/form-assets.php:132
+msgid "Password Strength: Strong"
+msgstr "Fuerza de la contraseña: Fuerte"
+
+#: includes/admin/password-strengh-settings.php:85 includes/admin/password-strengh-settings.php:88 includes/form/form-assets.php:133
+msgid "Mismatch"
+msgstr "No coinciden"
+
+#: includes/admin/password-strengh-settings.php:92
+#, fuzzy
+msgid "Password Hint Text"
+msgstr "Texto de Sugerencia de Contraseña"
+
+#: includes/admin/password-strengh-settings.php:95
+#, fuzzy
+msgid "Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like !  ? $ % ^ &amp; )."
+msgstr "Sugerencia: La contraseña debe tener al menos doce caracteres. Para hacerlo más fuerte, use letras mayúsculas y minúsculas, números y símbolos como! \\\" ? $ % ^ &amp; )."
+
+#. Plugin Name of the plugin/theme
+#: includes/admin/personal-data-exporter.php:70 includes/admin/register-post-types.php:314 includes/gutenberg/gutenberg.php:19
+#, fuzzy
+msgid "BuddyForms"
+msgstr "Formularios de amigos"
+
+#: includes/admin/register-post-types.php:19 includes/admin/settings.php:443
+#, fuzzy
+msgid "Awesome Premium Features"
+msgstr "Increíbles características Premium"
+
+#: includes/admin/register-post-types.php:23
+msgid "Shortcodes"
+msgstr "Shortcodes"
+
+#: includes/admin/register-post-types.php:27
+msgid "Form Builder"
+msgstr "Constructor de Formularios"
+
+#: includes/admin/register-post-types.php:28
+msgid "Form Setup"
+msgstr "Configuración del formulario"
+
+#: includes/admin/register-post-types.php:29
+msgid "Form Designer"
+msgstr "Diseñador de formularios"
+
+#: includes/admin/register-post-types.php:315
+#, fuzzy
+msgid "BuddyForm"
+msgstr "BuddyForm"
+
+#: includes/admin/register-post-types.php:317
+msgid "Add New Form"
+msgstr "Agregar Nuevo Formulario"
+
+#: includes/admin/register-post-types.php:318
+msgid "Edit Form"
+msgstr "Editar formulario"
+
+#: includes/admin/register-post-types.php:319
+msgid "New Form"
+msgstr "Nuevo formulario"
+
+#: includes/admin/register-post-types.php:320 includes/admin/register-post-types.php:491
+msgid "View Form"
+msgstr "Ver formulario"
+
+#: includes/admin/register-post-types.php:321
+#, fuzzy
+msgid "Search BuddyForms"
+msgstr "Buscar BuddyForms"
+
+#: includes/admin/register-post-types.php:322
+#, fuzzy
+msgid "No BuddyForm found"
+msgstr "No se ha encontrado BuddyForm"
+
+#: includes/admin/register-post-types.php:323
+#, fuzzy
+msgid "No Forms found in Trash"
+msgstr "No hay formularios en la Papelera"
+
+#: includes/admin/register-post-types.php:345 includes/admin/register-post-types.php:346 includes/admin/register-post-types.php:627 includes/admin/submissions.php:21
+msgid "Submissions"
+msgstr "Envíos"
+
+#: includes/admin/register-post-types.php:410 includes/admin/register-post-types.php:413
+msgid "Form updated."
+msgstr "Formulario actualizado."
+
+#: includes/admin/register-post-types.php:411
+msgid "Custom field updated."
+msgstr "Campo personalizado actualizado."
+
+#: includes/admin/register-post-types.php:412
+msgid "Custom field deleted."
+msgstr "Campo personalizado eliminado."
+
+#. translators: %s: date and time of the revision
+#: includes/admin/register-post-types.php:415
+#, php-format
+msgid "Form restored to revision from %s"
+msgstr "Formulario restaurado a la revisión %s"
+
+#: includes/admin/register-post-types.php:416
+msgid "Form published."
+msgstr "Formulario publicado."
+
+#: includes/admin/register-post-types.php:417
+msgid "Form saved."
+msgstr "Formulario guardado."
+
+#: includes/admin/register-post-types.php:418
+msgid "Form submitted."
+msgstr "Formulario enviado."
+
+#: includes/admin/register-post-types.php:419
+#, php-format
+msgid "Form scheduled for: <strong>%1$s</strong>."
+msgstr "Formulario programado para: <strong>%1$s</strong>."
+
+#: includes/admin/register-post-types.php:419
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"
+
+#: includes/admin/register-post-types.php:420
+msgid "Form draft updated."
+msgstr "Borrador del formulario actualizado."
+
+#: includes/admin/register-post-types.php:438
+msgid "Form Type"
+msgstr "Tipo de formulario"
+
+#: includes/admin/register-post-types.php:439
+#, fuzzy
+msgid "Logged In User Access"
+msgstr "Acceso a usuarios registrados"
+
+#: includes/admin/register-post-types.php:440
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: includes/admin/register-post-types.php:469
+msgid "Post Submissions"
+msgstr "Publicar envíos"
+
+#: includes/admin/register-post-types.php:469
+msgid "Post Type: "
+msgstr "Tipo de Post: "
+
+#: includes/admin/register-post-types.php:478
+#, fuzzy
+msgid "No Page Attached"
+msgstr "No hay página adjunta"
+
+#: includes/admin/register-post-types.php:480
+msgid "On"
+msgstr "Encendido"
+
+#: includes/admin/register-post-types.php:494
+msgid "View Entries"
+msgstr "Ver entradas"
+
+#: includes/admin/register-post-types.php:563
+msgid "Version"
+msgstr "Versión"
+
+#: includes/admin/register-post-types.php:610 includes/admin/register-post-types.php:679
+msgid "Preview Form"
+msgstr "Previsualizar formulario"
+
+#: includes/admin/register-post-types.php:617
+msgid "Frontend"
+msgstr "Frontend"
+
+#: includes/admin/register-post-types.php:618
+#, fuzzy
+msgid "Your Submissions"
+msgstr "Sus Presentaciones"
+
+#: includes/admin/register-post-types.php:619
+#, fuzzy
+msgid "The Form"
+msgstr "URL del formulario"
+
+#: includes/admin/register-post-types.php:626
+msgid "Admin"
+msgstr "Administrador"
+
+#: includes/admin/register-post-types.php:677
+msgid "Export"
+msgstr "Exportar"
+
+#: includes/admin/register-post-types.php:678
+msgid "View Submissions"
+msgstr "Ver formularios recibidos"
+
+#: includes/admin/settings.php:7
+#, fuzzy
+msgid "BuddyForms Settings"
+msgstr "Configuración de BuddyForms"
+
+#: includes/admin/settings.php:7
+msgid "Settings"
+msgstr "Ajustes"
+
+#: includes/admin/settings.php:49 includes/admin/settings.php:283
+msgid "Import Forms"
+msgstr "Importar formularios"
+
+#: includes/admin/settings.php:139
+msgid "Registration Settings"
+msgstr "Configuración de Registro"
+
+#: includes/admin/settings.php:141
+#, fuzzy
+msgid "Select the Registration Page and Form to overwrite the WordPress default Registration."
+msgstr "Seleccione la página de registro y el formulario para sobrescribir el registro predeterminado de WordPress."
+
+#: includes/admin/settings.php:146
+msgid "Registration Page"
+msgstr "Página de registro"
+
+#: includes/admin/settings.php:165 includes/functions.php:1023
+msgid "WordPress Default"
+msgstr "WordPress Predeterminado"
+
+#: includes/admin/settings.php:166
+msgid "No Form"
+msgstr "Sin forma"
+
+#: includes/admin/settings.php:194
+#, fuzzy
+msgid "Posts - Pages and Custom Post Types"
+msgstr "Mensajes - Páginas y tipos de mensajes personalizados"
+
+#: includes/admin/settings.php:197
+#, fuzzy
+msgid "Select a default form for every post type."
+msgstr "Seleccione un formulario predeterminado para cada tipo de mensaje."
+
+#: includes/admin/settings.php:198
+msgid "This will make sure that posts created before BuddyForms will have a form associated. If you select none the post edit link will point to the admin for posts not create with BuddyForms"
+msgstr "Esto asegurará que la entrada creada con BuddyForms tengan un formulario asociado. Si no seleccionas ninguno, el enlace de edición apuntará al administrador de las entradas que no se hayan creado con BuddyForms"
+
+#: includes/admin/settings.php:230
+#, fuzzy
+msgid "You need to create at least one form to select a post type default."
+msgstr "Necesita crear al menos un formulario para seleccionar un tipo de mensaje predeterminado."
+
+#: includes/admin/settings.php:235
+#, fuzzy
+msgid "Frontend Submissions Management"
+msgstr "Gestión de permisos"
+
+#: includes/admin/settings.php:237
+#, fuzzy
+msgid "Select the Page to use for the frontend submissions management."
+msgstr "Selecciona la página a utilizar para la gestión de las presentaciones de frontales."
+
+#: includes/admin/settings.php:238
+#, fuzzy
+msgid ""
+" The original page content does not get changed. You are free to use any kind of content on the page itself. Link to different form or list the users submissions.\n"
+"                                                 For the submissions management new endpoints get create for you. You can combine forms under the same page"
+msgstr ""
+"El contenido de la página original no cambia. Usted es libre de usar cualquier tipo de contenido en la página misma. Ver un formulario o una lista de los envíos de los usuarios con códigos abreviados. Para la gestión de los envíos se crean nuevos endpoints para usted. Puede combinar formularios en la misma "
+"página. Es una opción poderosa."
+
+#: includes/admin/settings.php:241
+msgid "Example:"
+msgstr "Ejemplo:"
+
+#: includes/admin/settings.php:242
+#, fuzzy
+msgid "http://domain.com/PAGE/create/FORM_SLUG"
+msgstr "http://domain.com/PAGE/create/FORM_SLUG"
+
+#: includes/admin/settings.php:243
+#, fuzzy
+msgid "http://domain.com/PAGE/view/FORM_SLUG"
+msgstr "http://domain.com/PAGE/view/FORM_SLUG"
+
+#: includes/admin/settings.php:245
+#, fuzzy
+msgid "This settings can be overwritten on a form basis. Every form can have there individual page if needed. This url will alwaysw be redirected to the corect place. If you use BuddyPress or Ultimate Member as example this link will redirect to the user profile edit or create."
+msgstr ""
+"Esta configuración puede ser sobrescrita en base a un formulario. Cada formulario puede tener su página individual si es necesario. Esta url siempre será redirigida al lugar correcto. Si utilizas BuddyPress o Ultimate Member como ejemplo, este enlace te redirigirá a la edición o creación del perfil de usuario."
+
+#: includes/admin/settings.php:252
+#, fuzzy
+msgid "Default Page for your Submissions Management in the Frontend"
+msgstr "Página por defecto para la gestión de sus presentaciones en el frontend"
+
+#: includes/admin/settings.php:285
+#, fuzzy
+msgid "Import the form from a .json file. This file can be obtained by exporting the form from the list view."
+msgstr "Importe el formulario desde un archivo.json. Este archivo se puede obtener exportando el formulario desde la vista de lista."
+
+#: includes/admin/settings.php:301
+msgid "Import"
+msgstr "Importar"
+
+#: includes/admin/settings.php:313
+msgid "Form Layout"
+msgstr "Diseño de Formularios"
+
+#: includes/admin/settings.php:315
+msgid "Define the form layout for all forms. The global form settings can be overwritten in the Form Builder Stetting "
+msgstr "Defina la disposición para todos los formularios. Las parámetros globales del formulario se pueden sobrescribir en las opciones del Formulario "
+
+#: includes/admin/settings.php:320
+msgid "Save"
+msgstr "Guardar"
+
+#: includes/admin/settings.php:333
+msgid "By signing up on our site you agree to our terms and conditions [link].  We'll create a new user account for you based on your submissions.  All data you submit will be stored on our servers.  After your registration we'll instantly send you an email with an activation link to verify your mail address.   "
+msgstr ""
+"Al registrarse en nuestro sitio usted acepta nuestros términos y condiciones[link]. \n"
+"Se creará una nueva cuenta de usuario para ti basada en los datos que enviaste. \n"
+"Los datos que nos envíe serán almacenados en nuestros servidores. \n"
+"\n"
+"Después de su registro le enviaremos instantáneamente un correo electrónico con un enlace de activación para verificar su dirección de correo."
+
+#: includes/admin/settings.php:334
+msgid "By submitting this form you grant us the rights <br> • to store your submitted contents in our database  <br>• to generate a post on our site based on your data  <br>• to make this post publicly accessible  "
+msgstr "Al enviar este formulario, usted nos concede los derechos <br> - para almacenar los contenidos enviados en nuestra base de datos  <br>- para generar una entrada en nuestro sitio basado en su datos  <br>- para que esta entrada sea accesible públicamente "
+
+#: includes/admin/settings.php:335
+#, fuzzy
+msgid "By submitting these data you agree that we store all the data from the form our server. We may answer you via mail."
+msgstr "Al enviar estos datos, usted acepta que almacenemos todos los datos del formulario de nuestro servidor. Podemos responderle por correo."
+
+#: includes/admin/settings.php:355
+#, fuzzy
+msgid "General Data Protection Regulation - Settings"
+msgstr "Reglamento General de Protección de Datos - Ajustes"
+
+#: includes/admin/settings.php:361
+#, fuzzy
+msgid "GDPR Agreement Templates"
+msgstr "Plantillas de Acuerdo GDPR"
+
+#: includes/admin/settings.php:363
+#, fuzzy
+msgid ""
+"These templates are available in our new „GDPR Agreement form element“.  \n"
+"                                                To give it a start, we inserted some adequate default text.\n"
+"                                                <br><br>\n"
+"                                                !! Please note that you should buy into professional legal advice for to be safe regarding reliable legal texts. !! \n"
+"                                                <br><br>\n"
+"                                                Please edit these texts according to your needs here."
+msgstr ""
+"Estas plantillas están disponibles en nuestro nuevo \"elemento de formulario del Acuerdo GDPR\".\n"
+"                                                Para darle un comienzo, insertamos un texto adecuado por defecto.\n"
+"                                                <br><br>>br>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+"                                                !! Por favor, tenga en cuenta que debe recurrir a un asesoramiento jurídico profesional para estar seguro con respecto a textos jurídicos fiables. !!\n"
+"                                                <br><br>>br>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+"                                                Por favor, edite estos textos de acuerdo a sus necesidades aquí."
+
+#: includes/admin/settings.php:377 includes/admin/view/buddyforms-form-gdpr-element-multiple.php:58
+#, fuzzy
+msgid "Post Submission"
+msgstr "Post Envío"
+
+#: includes/admin/settings.php:392
+#, fuzzy
+msgid "Form Footer Links"
+msgstr "Formulario de enlaces de pie de página"
+
+#: includes/admin/settings.php:394
+#, fuzzy
+msgid "Please select your Terms and Conditions and and your Privacy Policy page. These will be displayed below the form and remain visible after pressing „submit“ - when the form disappears."
+msgstr "Por favor, seleccione sus Términos y Condiciones y su página de Política de Privacidad. Éstos se mostrarán debajo del formulario y permanecerán visibles después de pulsar \"Enviar\" - cuando el formulario desaparezca."
+
+#: includes/admin/settings.php:399
+#, fuzzy
+msgid "Terms Label ( Will be displayed under the form )"
+msgstr "Etiqueta de términos ( Se mostrará bajo el formulario)"
+
+#: includes/admin/settings.php:405
+#, fuzzy
+msgid "Terms Page ( Will be displayed as link after the terms label)"
+msgstr "Página de términos (se mostrará como enlace después de la etiqueta de términos)"
+
+#: includes/admin/settings.php:444 includes/functions.php:700
+msgid "Priority Support"
+msgstr "Soporte prioritario"
+
+#: includes/admin/settings.php:445
+#, fuzzy
+msgid "More Post Types"
+msgstr "Más Tipos de Postes"
+
+#: includes/admin/settings.php:446 includes/functions.php:701
+#, fuzzy
+msgid "More Form Elements"
+msgstr "Más elementos de formulario"
+
+#: includes/admin/settings.php:447
+#, fuzzy
+msgid "Admin Metabox Support"
+msgstr "Soporte de Admin Metabox"
+
+#: includes/admin/settings.php:469
+msgid "Please upload a valid .json file"
+msgstr "Por favor sube un archivo .json válido"
+
+#: includes/admin/settings.php:474
+msgid "Please upload a file to import"
+msgstr "Por favor sube un archivo para importar"
+
+#: includes/admin/submission-single.php:13
+msgid "Entry"
+msgstr "Entrada"
+
+#: includes/admin/submission-single.php:57 templates/buddyforms/submission-single.php:74
+msgid "Entry Actions"
+msgstr "Acciones de entrada"
+
+#: includes/admin/submission-single.php:73 templates/buddyforms/submission-single.php:79
+msgid "Print"
+msgstr "Imprimir"
+
+#: includes/admin/submission-single.php:79 templates/buddyforms/submission-single.php:27
+msgid "Back"
+msgstr "Volver"
+
+#: includes/admin/submission-single.php:88 templates/buddyforms/submission-single.php:85
+#, fuzzy
+msgid "Entry Details"
+msgstr "Detalles de la entrada"
+
+#: includes/admin/submission-single.php:93
+msgid "Entry ID"
+msgstr "ID Entrada"
+
+#: includes/admin/submission-single.php:107
+msgid "WordPress User"
+msgstr "Usuario del sitio"
+
+#: includes/admin/submission-single.php:110
+msgid "User ID:"
+msgstr "ID de Usuario:"
+
+#: includes/admin/submission-single.php:113
+msgid "Edit User"
+msgstr "Editar Usuario"
+
+#: includes/admin/submission-single.php:129
+msgid "User Information"
+msgstr "Información del usuario"
+
+#: includes/admin/submission-single.php:147
+#, fuzzy
+msgid "Get all insights about your user"
+msgstr "Obtenga todos los detalles sobre su usuario"
+
+#: includes/admin/submission-single.php:151 includes/functions.php:727
+msgid "IP Address"
+msgstr "Dirección IP"
+
+#: includes/admin/submission-single.php:152 includes/functions.php:728
+msgid "Referer"
+msgstr "Referente"
+
+#: includes/admin/submission-single.php:153 includes/functions.php:729
+msgid "Browser"
+msgstr "Navegador"
+
+#: includes/admin/submission-single.php:154 includes/functions.php:730
+msgid "Platform"
+msgstr "Plataforma"
+
+#: includes/admin/submission-single.php:155 includes/functions.php:731
+msgid "Reports"
+msgstr "Informes"
+
+#: includes/admin/submission-single.php:156 includes/functions.php:732
+msgid "User Agent"
+msgstr "Agente de usuario"
+
+#: includes/admin/submissions.php:28
+msgid "Entries"
+msgstr "Entradas"
+
+#: includes/admin/submissions.php:42 includes/admin/submissions.php:108
+msgid "You do not have sufficient permissions to access this page."
+msgstr "No tienes suficientes permisos para acceder a esta página."
+
+#: includes/admin/submissions.php:64
+#, fuzzy
+msgid "Select a form to display the submissions"
+msgstr "Seleccione un formulario para mostrar los envíos"
+
+#: includes/admin/submissions.php:80
+msgid "Select Form"
+msgstr "Seleccionar formulario"
+
+#: includes/admin/submissions.php:228
+#, fuzzy
+msgid "Are you sure you want to delete that entry?"
+msgstr "¿Estás seguro de que quieres borrar esa entrada?"
+
+#: includes/admin/submissions.php:232
+msgid "View Submission"
+msgstr "Ver envío"
+
+#: includes/admin/submissions.php:260
+msgid "Anonymous"
+msgstr "Anónimo"
+
+#: includes/admin/submissions.php:318
+msgid "Author"
+msgstr "Autor"
+
+#: includes/admin/submissions.php:319
+msgid "Creation Date"
+msgstr "Fecha de Creación"
+
+#: includes/admin/view/admin-notices.php:2
+#, fuzzy
+msgid "This Form is Broken!"
+msgstr "Este formulario está roto!"
+
+#: includes/admin/view/buddyforms-form-element-multiple.php:13
+msgid "Value"
+msgstr "Valor"
+
+#: includes/admin/view/buddyforms-form-element-multiple.php:14
+msgid "Default"
+msgstr "Por defecto"
+
+#: includes/admin/view/buddyforms-form-gdpr-element-multiple.php:12
+msgid "Agreement"
+msgstr "Acuerdo"
+
+#: includes/admin/view/buddyforms-form-gdpr-element-multiple.php:13
+msgid "Options"
+msgstr "Opciones"
+
+#: includes/admin/view/buddyforms-form-gdpr-element-multiple.php:23
+msgid "Agreement Text"
+msgstr "Agregar Texto"
+
+#: includes/admin/view/buddyforms-form-gdpr-element-multiple.php:26
+msgid "Error Message"
+msgstr "Mensaje de error"
+
+#: includes/admin/view/buddyforms-form-gdpr-element-multiple.php:27
+msgid "This field is Required"
+msgstr "Este campo es obligatorio"
+
+#: includes/admin/view/buddyforms-form-gdpr-element-multiple.php:55
+msgid "Select a template"
+msgstr "Selecciona una plantilla"
+
+#: includes/admin/view/buddyforms-form-gdpr-element-multiple.php:56
+msgid "Registration"
+msgstr "Registro"
+
+#: includes/admin/view/buddyforms-form-gdpr-element-multiple.php:59
+msgid "Other"
+msgstr "Otro"
+
+#: includes/admin/welcome-screen.php:6
+msgid "Info"
+msgstr "Información"
+
+#: includes/admin/welcome-screen.php:104
+#, fuzzy
+msgid "Welcome to BuddyForms"
+msgstr "Bienvenido a BuddyForms"
+
+#: includes/admin/welcome-screen.php:106
+#, fuzzy
+msgid "Enjoy Groundbreaking New Features and Add-ons!"
+msgstr "Disfrute de las nuevas e innovadoras funciones!"
+
+#: includes/admin/welcome-screen.php:109
+msgid "What’s New"
+msgstr "Qué hay de nuevo"
+
+#: includes/admin/welcome-screen.php:111 includes/admin/welcome-screen.php:118
+#, fuzzy
+msgid "Gutenberg Support"
+msgstr "Soporte técnico de Gutenberg"
+
+#: includes/admin/welcome-screen.php:112
+msgid "Add Ons"
+msgstr "Complementos"
+
+#: includes/admin/welcome-screen.php:120
+#, fuzzy
+msgid "BuddyForms support now Gutenberg out of the box and comes with 5 different Gutenberg Blocks "
+msgstr "BuddyForms apoya ahora a Gutenberg fuera de la caja y viene con 5 diferentes bloques de Gutenberg"
+
+#: includes/admin/welcome-screen.php:129
+msgid "Gutenberg"
+msgstr "Gutenberg"
+
+#: includes/admin/welcome-screen.php:140 includes/admin/welcome-screen.php:151 includes/admin/welcome-screen.php:172 includes/admin/welcome-screen.php:193 includes/admin/welcome-screen.php:214 includes/admin/welcome-screen.php:235
+msgid "Embed Forms"
+msgstr "Incrustar Formularios"
+
+#: includes/admin/welcome-screen.php:142
+#, fuzzy
+msgid "Embed any BuddyForms Form as Gutenberg Block. Just select the form you like to embed in the block sidebar"
+msgstr "Incrustar cualquier formulario de BuddyForms como bloque de Gutenberg. Sólo tienes que seleccionar la forma que te gusta para incrustar en la barra lateral del bloque"
+
+#: includes/admin/welcome-screen.php:161
+#, fuzzy
+msgid "List Submissions"
+msgstr "Envíos posteriores"
+
+#: includes/admin/welcome-screen.php:163
+#, fuzzy
+msgid "You can list form submissions form any form and post type. Filter post lists by author or only display posts from the logged in user. Use the options in the Block sidebar."
+msgstr "Puede listar las presentaciones de formularios de cualquier forma y tipo de correo. Filtrar las listas de mensajes por autor o mostrar sólo los mensajes del usuario conectado. Use las opciones de la barra lateral de Bloque."
+
+#: includes/admin/welcome-screen.php:182
+#, fuzzy
+msgid "Embed Navigation"
+msgstr "Insertar navegación"
+
+#: includes/admin/welcome-screen.php:184
+#, fuzzy
+msgid "Link to form endpoints or user posts lists for every post form with an attached page to create and edit submissions. You can select the attached page under the \"Edit Submissions\" tab in the Form Builder"
+msgstr "Enlace a los puntos finales de los formularios o a las listas de usuarios de cada formulario de envío con una página adjunta para crear y editar los envíos. Puede seleccionar la página adjunta en la pestaña \"Editar presentaciones\" en el Constructor de formularios"
+
+#: includes/admin/welcome-screen.php:203
+#, fuzzy
+msgid "Login/ Logout Form"
+msgstr "Enlace al formulario"
+
+#: includes/admin/welcome-screen.php:205
+#, fuzzy
+msgid "Display a login form or a logout button if the user is logged in."
+msgstr "Mostrar un formulario de inicio de sesión o un botón de cierre de sesión si el usuario está conectado."
+
+#: includes/admin/welcome-screen.php:224
+msgid " Password Reset"
+msgstr " Restablecer contraseña"
+
+#: includes/admin/welcome-screen.php:226
+#, fuzzy
+msgid ""
+"Display a password reset form. This can be helpful if you want to create a registration form and ask the user to create a password first after he clicks on the activation link. Select the page with the password reset block as a redirect link in the registration form settings if you like to create this kind of "
+"funnel."
+msgstr ""
+"Mostrar un formulario de restablecimiento de contraseña. Esto puede ser útil si desea crear un formulario de registro y pedir al usuario que cree una contraseña primero después de que haga clic en el enlace de activación. Selecciona la página con el bloque de restablecimiento de contraseña como enlace de "
+"redireccionamiento en la configuración del formulario de registro si quieres crear este tipo de embudo."
+
+#: includes/admin/welcome-screen.php:244
+#, fuzzy
+msgid "Latest Blogpost"
+msgstr "Último Blogpost"
+
+#: includes/admin/welcome-screen.php:245
+#, fuzzy
+msgid "Read all about this new BuddyForms version Tips and Tricks:"
+msgstr "Lea todo sobre esta nueva versión de BuddyForms Consejos y trucos:"
+
+#: includes/admin/welcome-screen.php:246
+#, fuzzy
+msgid "Read Blogpost"
+msgstr "Leer Blogpost"
+
+#: includes/admin/welcome-screen.php:249
+msgid "Changelog"
+msgstr "Registro de cambios"
+
+#: includes/admin/welcome-screen.php:250
+#, fuzzy
+msgid "Check out the changelog for the version"
+msgstr "Consulte el registro de cambios de la versión"
+
+#: includes/admin/welcome-screen.php:251
+msgid "View Changelog"
+msgstr "Ver cambios"
+
+#: includes/admin/welcome-screen.php:261
+msgid "First Time Here?"
+msgstr "¿Es su primera vez aquí?"
+
+#: includes/admin/welcome-screen.php:262
+msgid "Getting Started"
+msgstr "Empezando"
+
+#: includes/admin/welcome-screen.php:267
+#, fuzzy
+msgid "How To Create New Forms"
+msgstr "Cómo crear nuevos formularios"
+
+#: includes/change-password.php:60 includes/wp-insert-user.php:73 includes/wp-insert-user.php:214
+msgid "Please enter a password, and confirm it"
+msgstr "Por favor introduzca una contraseña y confirmela"
+
+#: includes/change-password.php:64 includes/wp-insert-user.php:77 includes/wp-insert-user.php:220
+msgid "Passwords do not match"
+msgstr "Las contraseñas no coinciden"
+
+#: includes/form/form-ajax.php:219 includes/form/form-ajax.php:231
+#, fuzzy
+msgid "You are not allowed to delete this entry! What are you doing here?"
+msgstr "No se le permite borrar esta entrada! ¿Qué estás haciendo aquí?"
+
+#: includes/form/form-ajax.php:244 includes/form/form-control.php:310 includes/form/form-control.php:363 includes/form/form-render.php:74
+msgid "You do not have the required user role to use this form"
+msgstr "No tiene los permisos de usuario necesarios para utilizar este formulario"
+
+#: includes/form/form-ajax.php:283
+#, fuzzy
+msgid "Redirecting.."
+msgstr "Redirigiendo.."
+
+#: includes/form/form-assets.php:128
+msgid "Strength indicator"
+msgstr "Indicador de seguridad"
+
+#: includes/form/form-assets.php:131
+msgctxt "buddyforms"
+msgid "Password Strength: OK"
+msgstr "Fuerza de la contraseña: OK"
+
+#: includes/form/form-assets.php:134
+msgid "Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! \\\" ? $ % ^ &amp; )."
+msgstr "Sugerencia: La contraseña debe tener al menos doce caracteres. Para hacerlo más fuerte, use letras mayúsculas y minúsculas, números y símbolos como! \\\" ? $ % ^ &amp; )."
+
+#: includes/form/form-assets.php:154
+msgid "Your enquiry have been submitted. Check your email to validate your data request."
+msgstr "Su consulta ha sido enviada. Revise su correo electrónico para validar su solicitud de datos."
+
+#: includes/form/form-assets.php:155
+msgid "Some errors occurred:"
+msgstr "Se han producido algunos errores:"
+
+#: includes/form/form-assets.php:166
+msgid "Delete Permanently"
+msgstr "Borrar permanentemente"
+
+#: includes/form/form-assets.php:294
+msgid "Uncheck all"
+msgstr "Desmarcar todo"
+
+#: includes/form/form-assets.php:365
+#, php-format
+msgid "If you like <strong>BuddyForms</strong> please leave us a %s&#9733;&#9733;&#9733;&#9733;&#9733;%s rating. A huge thank you from BuddyForms in advance!"
+msgstr "Si te gusta <fuerte>BuddyForms</strong> por favor déjanos un %s&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;%s rating. Un enorme agradecimiento de BuddyForms de antemano!"
+
+#: includes/form/form-assets.php:365
+msgid "Thanks :)"
+msgstr "Gracias :)"
+
+#: includes/form/form-control.php:103
+#, fuzzy
+msgid "SPAM Detected!"
+msgstr "SPAM detectado!"
+
+#: includes/form/form-control.php:116
+#, fuzzy
+msgid "Form submit error. Please contact the site administrator."
+msgstr "No se puede iniciar la solicitud de confirmación. Por favor, póngase en contacto con el administrador."
+
+#: includes/form/form-control.php:170 includes/form/form-render.php:59
+#, fuzzy
+msgid "Sorry, but registration is disabled on this site at the moment."
+msgstr "Lo sentimos, pero el registro está desactivado en este sitio en este momento."
+
+#: includes/form/form-control.php:491 includes/form/form-control.php:495
+msgid "The "
+msgstr "El "
+
+#: includes/form/form-control.php:491
+msgid " has been successfully updated "
+msgstr " se ha actualizado con éxito "
+
+#: includes/form/form-control.php:495
+msgid " has been successfully created "
+msgstr " se ha creado con éxito "
+
+#: includes/form/form-control.php:552 includes/form/form-control.php:556 includes/form/form-control.php:559 includes/form/form-control.php:561 includes/functions.php:980
+msgid "none"
+msgstr "ninguno"
+
+#: includes/form/form-control.php:929
+#, fuzzy
+msgid "<p>Empty Agreement(s)</p>"
+msgstr "<p>Acuerdo(s) vacío(s)</p>"
+
+#: includes/form/form-control.php:933
+msgid "Checked"
+msgstr "Comprobado"
+
+#: includes/form/form-control.php:933
+msgid "Unchecked"
+msgstr "No marcado"
+
+#: includes/form/form-control.php:1195 includes/form/form-control.php:1206
+msgid "Sorry, you cannot upload this file type for this field."
+msgstr "Lo sentimos, no puedes subir este tipo de archivo para este campo."
+
+#: includes/form/form-elements.php:458 includes/functions.php:59 includes/functions.php:564
+msgid "Pending Review"
+msgstr "Pendiente de revisión"
+
+#: includes/form/form-elements.php:462 includes/functions.php:556
+msgid "Published"
+msgstr "Publicado"
+
+#: includes/form/form-elements.php:470 includes/functions.php:568
+msgid "Scheduled"
+msgstr "Programado"
+
+#: includes/form/form-elements.php:474
+msgid "Privately Published"
+msgstr "Publicat com a Privada"
+
+#: includes/form/form-elements.php:478 includes/functions.php:63
+msgid "Trash"
+msgstr "Papelera"
+
+#: includes/form/form-elements.php:496
+msgid "Schedule Time"
+msgstr "Tiempo programado"
+
+#: includes/form/form-elements.php:833
+msgid "Name: "
+msgstr "Nombre: "
+
+#: includes/form/form-elements.php:834
+msgid "Type: "
+msgstr "Tipo: "
+
+#: includes/form/form-elements.php:837
+msgid "Delete image"
+msgstr "Borrar imagen"
+
+#: includes/form/form-elements.php:838 includes/gutenberg/shortcodes/shortcodes-to-blocks.php:236 includes/shortcodes.php:300 includes/shortcodes.php:306 includes/shortcodes.php:327
+msgid "View"
+msgstr "Ver"
+
+#: includes/form/form-elements.php:876
+#, fuzzy
+msgid "Attache File"
+msgstr "Adjuntar archivo"
+
+#: includes/form/form-elements.php:885
+#, fuzzy
+msgid "Add into"
+msgstr "Añadir a"
+
+#: includes/form/form-elements.php:885
+msgid "Add "
+msgstr "Añadir "
+
+#: includes/form/form-elements.php:885
+msgid "Delete "
+msgstr "Borrar "
+
+#: includes/form/form-elements.php:921
+msgid "Select a Post Format"
+msgstr "Seleccionar formato del Post"
+
+#: includes/form/form-render.php:301
+#, fuzzy
+msgid "Proudly brought to you by"
+msgstr "Orgullosamente traído a usted por"
+
+#: includes/form/form-validation.php:43
+msgid "Please enter a value greater than or equal to "
+msgstr "Por favor, introduzca un valor mayor o igual a "
+
+#: includes/form/form-validation.php:51
+msgid "Please enter a value less than or equal to "
+msgstr "Por favor, introduzca un valor menor o igual a "
+
+#: includes/form/form-validation.php:59
+#, fuzzy, php-format
+msgid "Please enter at least %d characters."
+msgstr "Por favor, introduzca al menos %d caracteres."
+
+#: includes/form/form-validation.php:67
+#, fuzzy, php-format
+msgid "Please enter no more than %d characters."
+msgstr "Por favor, introduzca no más de %d caracteres."
+
+#: includes/form/form.php:137 includes/form/form.php:149 includes/form/form.php:180
+#, fuzzy
+msgid "You are not allowed to edit this post. What are you doing here?"
+msgstr "No está permitido editar este mensaje. ¿Qué estás haciendo aquí?"
+
+#: includes/form/form.php:225
+#, fuzzy
+msgid "This form has no fields yet. Nothing to fill out so far. Add fields to your form to make it useful."
+msgstr "Este formulario no tiene campos todavía. No hay nada que rellenar hasta ahora. Agregue campos a su formulario para que sea útil."
+
+#: includes/form/form.php:310
+msgid "Auto Draft"
+msgstr "Guardado Automático"
+
+#: includes/functions.php:35
+msgid "View my "
+msgstr "Ver mi "
+
+#: includes/functions.php:41
+msgid "New "
+msgstr "Nuevo "
+
+#: includes/functions.php:61
+msgid "Schedule"
+msgstr "Programar"
+
+#: includes/functions.php:62
+#, fuzzy
+msgid "Privately Publish"
+msgstr "Publicar en privado"
+
+#: includes/functions.php:167
+msgid "There were no posts found. Create your first post now! "
+msgstr "No se ha encontrado ningún mensaje. Crea tu primera entrada ahora! "
+
+#: includes/functions.php:214 includes/gutenberg/shortcodes/shortcodes-to-blocks.php:195 includes/shortcodes.php:377
+msgid "Username or Email Address"
+msgstr "Nombre de usuario o correo electrónico"
+
+#: includes/functions.php:216 includes/gutenberg/shortcodes/shortcodes-to-blocks.php:197 includes/shortcodes.php:379
+msgid "Remember Me"
+msgstr "Recuérdame"
+
+#: includes/functions.php:217 includes/gutenberg/shortcodes/shortcodes-to-blocks.php:198 includes/shortcodes.php:380
+msgid "Log In"
+msgstr "Iniciar sesión"
+
+#: includes/functions.php:221
+msgid "You need to be logged in to view this page"
+msgstr "Debes poseer una cuenta para tomar cursos"
+
+#: includes/functions.php:303
+msgid "Register"
+msgstr "Registrarse"
+
+#: includes/functions.php:312
+msgid "Lost Password?"
+msgstr "¿Olvidaste tu contraseña?"
+
+#: includes/functions.php:381
+msgid "Edit This"
+msgstr "Edita Esto"
+
+#: includes/functions.php:572
+#, fuzzy
+msgid "Awaiting Review"
+msgstr "En espera de revisión"
+
+#: includes/functions.php:576
+#, fuzzy
+msgid "Edit Draft"
+msgstr "Editar borrador"
+
+#: includes/functions.php:702
+msgid "More Options"
+msgstr "Más opciones"
+
+#: includes/functions.php:704
+msgid "Full Control"
+msgstr "Control total"
+
+#: includes/functions.php:705
+#, fuzzy
+msgid "Use your form in the backend admin edit screen like ACF"
+msgstr "Use su formulario en la pantalla de edición de administración de backend como ACF"
+
+#: includes/functions.php:706
+#, fuzzy
+msgid "Control who can create, edit and delete content"
+msgstr "Controlar quién puede crear, editar y eliminar contenido"
+
+#: includes/functions.php:707
+msgid "Registration Options"
+msgstr "Opciones de Registro"
+
+#: includes/functions.php:710
+#, fuzzy
+msgid "More Notification Options"
+msgstr "Más opciones de notificación"
+
+#: includes/functions.php:711
+#, fuzzy
+msgid "Import - Export Forms"
+msgstr "Formularios de Importación - Exportación"
+
+#: includes/functions.php:713
+msgid "Permissions Management"
+msgstr "Gestión de permisos"
+
+#: includes/functions.php:714
+#, fuzzy
+msgid "Manage User Roles"
+msgstr "Gestionar roles de usuario"
+
+#: includes/functions.php:715
+#, fuzzy
+msgid "Manage Capabilities"
+msgstr "Gestionar capacidades"
+
+#: includes/functions.php:716
+#, fuzzy
+msgid "More Validation Options"
+msgstr "Más opciones de validación"
+
+#: includes/functions.php:718
+#, fuzzy
+msgid "More Post Options"
+msgstr "Más opciones de publicación"
+
+#: includes/functions.php:719
+msgid "All Post Types"
+msgstr "Todos los tipos de entradas"
+
+#: includes/functions.php:720
+#, fuzzy
+msgid "Posts Revision"
+msgstr "Revisión de Puestos"
+
+#: includes/functions.php:723
+#, fuzzy
+msgid "Create an account during submission?"
+msgstr "¿Crear una cuenta durante el envío?"
+
+#: includes/functions.php:724
+#, fuzzy
+msgid "Featured Image Support"
+msgstr "Compatibilidad con imágenes destacadas"
+
+#: includes/functions.php:726
+#, fuzzy
+msgid "Know Your User"
+msgstr "Conozca a su usuario"
+
+#: includes/functions.php:726
+#, fuzzy
+msgid "Get deep Insights about your Submitter"
+msgstr "Obtenga información detallada sobre el remitente"
+
+#: includes/functions.php:981
+msgid "Post"
+msgstr "Entrada"
+
+#: includes/functions.php:982
+msgid "Page"
+msgstr "Página"
+
+#: includes/functions.php:1141
+#, fuzzy
+msgid "Edit BuddyForm"
+msgstr "Editar BuddyForm"
+
+#: includes/functions.php:1212
+msgid "Edit Post"
+msgstr "Editar Publicación"
+
+#: includes/functions.php:1212
+msgid "Continue Editing"
+msgstr "Continuar editando"
+
+#: includes/functions.php:1216
+msgid "Display Post"
+msgstr "Visualizar Entrada"
+
+#: includes/functions.php:1237
+msgid "Form Updated Successfully."
+msgstr "Actualizado correctamente."
+
+#: includes/functions.php:1241
+msgid "There were no posts found. Create your first post [bf_new_submission_link name=\"Now\"]!"
+msgstr "No se ha encontrado ningún mensaje. Crea tu primera entrada [bf_new_submission_link name=“Ahora”]!"
+
+#: includes/functions.php:1245
+#, fuzzy
+msgid "Form Submitted Successfully."
+msgstr "Formulario enviado con éxito."
+
+#: includes/functions.php:1733
+msgid "Error"
+msgstr "Error"
+
+#: includes/gdpr.php:48
+#, fuzzy
+msgid "Select your request:"
+msgstr "Seleccione su solicitud:"
+
+#: includes/gdpr.php:53
+msgid "Export Personal Data"
+msgstr "Exportar Datos Personales"
+
+#: includes/gdpr.php:58
+#, fuzzy
+msgid "Remove Personal Data"
+msgstr "Eliminar datos personales"
+
+#: includes/gdpr.php:64
+msgid "Your email address (required)"
+msgstr "Tu dirección de correo electrónico (obligatorio)"
+
+#: includes/gdpr.php:71
+#, fuzzy
+msgid "Human verification (required):"
+msgstr "Verificación humana (requerida):"
+
+#: includes/gdpr.php:78
+msgid "Send request"
+msgstr "Enviar solicitud"
+
+#: includes/gdpr.php:85
+#, fuzzy
+msgid "This plugin requires WordPress 4.9.6."
+msgstr "Este plugin requiere WordPress 4.9.6."
+
+#: includes/gdpr.php:102
+#, fuzzy
+msgid "The request can’t be processed on this website. This feature requires WordPress 4.9.6 at least."
+msgstr "La solicitud no puede ser procesada en este sitio web. Esta característica requiere WordPress 4.9.6 como mínimo."
+
+#: includes/gdpr.php:108
+#, fuzzy
+msgid "Security check failed, please refresh this page and try to submit the form again."
+msgstr "Error en la comprobación de seguridad, actualice esta página e intente enviar el formulario de nuevo."
+
+#: includes/gdpr.php:111
+msgid "This is not a valid email address."
+msgstr "Esta no es una dirección de correo electrónico válida."
+
+#: includes/gdpr.php:114
+#, fuzzy
+msgid "Security check failed, invalid human verification field."
+msgstr "Comprobación de seguridad fallida, campo de verificación humano inválido."
+
+#: includes/gdpr.php:117
+#, fuzzy
+msgid "Request type invalid, please refresh this page and try to submit the form again."
+msgstr "Tipo de solicitud inválido, por favor actualice esta página e intente enviar el formulario de nuevo."
+
+#: includes/gdpr.php:121
+msgid "All fields are required."
+msgstr "Todos los campos son requeridos."
+
+#: includes/gdpr.php:128
+#, fuzzy
+msgid "Unable to initiate confirmation request. Please contact the administrator."
+msgstr "No se puede iniciar la solicitud de confirmación. Por favor, póngase en contacto con el administrador."
+
+#: includes/gutenberg/shortcodes/shortcodes-to-blocks.php:85
+msgid "Display"
+msgstr "Mostrar"
+
+#: includes/gutenberg/shortcodes/shortcodes-to-blocks.php:177 includes/gutenberg/shortcodes/shortcodes-to-blocks.php:256 includes/gutenberg/shortcodes/shortcodes-to-blocks.php:314
+#, fuzzy
+msgid "Please select a form in the block settings sidebar!"
+msgstr "Por favor, seleccione un formulario en la barra lateral de configuración de bloques!"
+
+#: includes/gutenberg/shortcodes/shortcodes-to-blocks.php:194
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: includes/gutenberg/shortcodes/shortcodes-to-blocks.php:235
+msgid "Add"
+msgstr "Añadir"
+
+#: includes/resources/pfbc/Element/Country.php:37
+msgid "Select Country"
+msgstr "Seleccionar país"
+
+#: includes/resources/pfbc/Element/Password.php:18 templates/buddyforms/bf-change-password.php:10
+msgid "New Password"
+msgstr "Nueva contraseña"
+
+#: includes/resources/pfbc/Element/Password.php:19 templates/buddyforms/bf-change-password.php:14
+msgid "Password Confirm"
+msgstr "Confirmar Contraseña"
+
+#: includes/resources/pfbc/Element/Price.php:23
+msgid "Thousands Separator"
+msgstr "Separador de Miles"
+
+#: includes/resources/pfbc/Element/Price.php:24
+msgid "Prefix"
+msgstr "Prefijo"
+
+#: includes/resources/pfbc/Element/Price.php:25
+msgid "Suffix"
+msgstr "Sufijo"
+
+#: includes/resources/pfbc/Element/Price.php:26
+#, fuzzy
+msgid "Cents Separator"
+msgstr "Separador de centavos"
+
+#: includes/resources/pfbc/Element/State.php:42
+msgid "Select State"
+msgstr "Seleccionar Comunidad"
+
+#: includes/resources/pfbc/Element/State.php:43
+msgid "No State"
+msgstr "No hay estado"
+
+#: includes/resources/pfbc/Element/Upload.php:91
+msgid "Upload in progress"
+msgstr "Subida en Curso"
+
+#: includes/resources/pfbc/Element/Upload.php:92
+msgid "You can not upload any more files."
+msgstr "No puedes subir más archivos."
+
+#: includes/resources/pfbc/Element/Upload.php:93
+msgid "Remove file"
+msgstr "Eliminar fichero"
+
+#: includes/resources/pfbc/Element/Upload.php:94
+msgid "Are you sure you want to cancel this upload?"
+msgstr "¿Seguro que quieres cancelar esta carga?"
+
+#: includes/resources/pfbc/Element/Upload.php:95
+msgid "Cancel upload"
+msgstr "Cancelar la subida"
+
+#: includes/resources/pfbc/Element/Upload.php:96
+msgid "Server responded with {{statusCode}} code."
+msgstr "La respuesta del servidor es: {{statusCode}}"
+
+#: includes/resources/pfbc/Element/Upload.php:97
+msgid "You can't upload files of this type."
+msgstr "No puedes subir archivos de este tipo."
+
+#: includes/resources/pfbc/Element/Upload.php:98
+msgid "File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB."
+msgstr "Archivo demasiado grande ({{filesize}}MiB). Tamaño máximo del archivo: {{maxFilesize}}MiB."
+
+#: includes/resources/pfbc/Element/Upload.php:99
+msgid "Your browser does not support drag'n'drop file uploads."
+msgstr "El navegador no admite las cargas de archivos drag'n."
+
+#: includes/resources/pfbc/Element/Upload.php:100
+msgid "Drop files here to upload"
+msgstr "Arrastra los archivos aquí para subirlos"
+
+#. translators: revision date format, see http://php.net/date
+#: includes/revisions.php:49 includes/revisions.php:167
+#, fuzzy
+msgctxt "revision date format"
+msgid "j F, Y @ G:i:s"
+msgstr "j F, Y @ G:i:s"
+
+#. translators: restored revision details: 1: gravatar image, 2: author name, 3: time ago, 4: date
+#: includes/revisions.php:58
+#, fuzzy, php-format
+msgid "Previously restored by %1$s %2$s, %3$s ago (%4$s)"
+msgstr "Anteriormente restaurado en %1$s %2$s, %3$s ago (%4$s)"
+
+#. translators: post revision title: 1: author avatar, 2: author name, 3: time ago, 4: date
+#: includes/revisions.php:178
+#, php-format
+msgctxt "post revision title"
+msgid "%1$s %2$s, %3$s ago (%4$s)"
+msgstr "%1$s %2$s, hace %3$s (%4$s)"
+
+#: includes/revisions.php:185
+#, php-format
+msgid "%1$s [Autosave]"
+msgstr "%1$s [Autoguardado]"
+
+#: includes/revisions.php:186
+#, php-format
+msgid "%1$s [Current Revision]"
+msgstr "%1$s [Revisión actual]"
+
+#: includes/shortcodes.php:387
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: includes/shortcodes.php:419
+#, fuzzy
+msgid "You need to login to change your password."
+msgstr "Necesita iniciar sesión para cambiar su contraseña."
+
+#: includes/shortcodes.php:448
+msgid "Now"
+msgstr "Ahora"
+
+#: includes/wp-insert-user.php:52 includes/wp-insert-user.php:180
+msgid "Invalid email"
+msgstr "Email no válido"
+
+#: includes/wp-insert-user.php:57 includes/wp-insert-user.php:199
+msgid "Invalid username"
+msgstr "Nombre de usuario no válido"
+
+#: includes/wp-insert-user.php:62 includes/wp-insert-user.php:204
+msgid "Please enter a username"
+msgstr "Por favor, ingrese un nombre de usuario"
+
+#: includes/wp-insert-user.php:66
+msgid "Please enter a password"
+msgstr "Por favor, introduce tu contraseña"
+
+#: includes/wp-insert-user.php:121 includes/wp-insert-user.php:284
+msgid "Send Activation eMail failed "
+msgstr ""
+
+#: includes/wp-insert-user.php:185
+msgid "Email already registered"
+msgstr "Correo ha sido previamente registrado"
+
+#: includes/wp-insert-user.php:194
+msgid "Username already taken"
+msgstr "Ese nombre de usuario ya ha sido elegido"
+
+#: includes/wp-insert-user.php:228
+msgid "eMail Address is a required fields. You need to add the email address field to the form."
+msgstr ""
+
+#: includes/wp-insert-user.php:455
+msgid "<strong>ERROR</strong>: User is not activated."
+msgstr "<strong>ERROR</strong>: El usuario no está activado."
+
+#: includes/wp-insert-user.php:475
+msgid "Activate"
+msgstr "Activar"
+
+#: includes/wp-insert-user.php:476
+msgid "Resend Activation"
+msgstr "Reenviar activación"
+
+#: includes/wp-insert-user.php:580
+msgid "User Activation Send."
+msgstr "Enviar activación de usuario."
+
+#: includes/wp-insert-user.php:583
+msgid "User Activated."
+msgstr "Usuario activado."
+
+#: includes/wp-insert-user.php:604
+#, fuzzy
+msgid "Need Activation"
+msgstr "Necesita Activación"
+
+#: includes/wp-insert-user.php:606
+#, php-format
+msgid "%1$s <span class=\"count\">(%2$s)</span>"
+msgstr "<span class=“date”>%1$s %2$s</span>"
+
+#: templates/buddyforms/bf-change-password.php:3
+msgid "Password changed successfully"
+msgstr "Contraseña cambiada correctamente"
+
+#: templates/buddyforms/bf-change-password.php:23
+msgid "Change Password"
+msgstr "Cambiar Contraseña"
+
+#: templates/buddyforms/bf-error-container.php:7
+msgid "The following error was found:"
+msgid_plural "The following errors were found:"
+msgstr[0] "Se ha encontrado el siguiente error:"
+msgstr[1] "Se encontraron los siguientes errores:"
+
+#: templates/buddyforms/login-form.php:26
+msgid "Returning user?"
+msgstr "Ya tienes Cuenta de Usuario?"
+
+#: templates/buddyforms/login-form.php:27
+msgid "Click here to login"
+msgstr "Acceder"
+
+#: templates/buddyforms/submission-single.php:75
+msgid "Submitted on:"
+msgstr "Enviado:"
+
+#: templates/buddyforms/submission-single.php:87
+msgid "Entry ID:"
+msgstr "ID Entrada:"
+
+#: templates/buddyforms/submission-single.php:97
+msgid "Back To All Submissions"
+msgstr "Volver a todos las Entradas"
+
+#: templates/buddyforms/the-loop.php:78 templates/buddyforms/the-table.php:91
+msgid "Permanent Link to"
+msgstr "Enlace permanente a"
+
+#: templates/buddyforms/the-loop.php:99 templates/buddyforms/the-table.php:84
+msgid "Created "
+msgstr "Creado "
+
+#: templates/buddyforms/the-loop.php:122
+msgid "Previous Entries"
+msgstr "Entradas anteriores"
+
+#: templates/buddyforms/the-loop.php:123 templates/buddyforms/the-table.php:131
+msgid "Next Entries "
+msgstr "Entradas siguientes "
+
+#: templates/buddyforms/the-table.php:23
+msgid "Created"
+msgstr "Creado"
+
+#: templates/buddyforms/the-table.php:41 templates/buddyforms/the-table.php:107
+msgid "Actions"
+msgstr "Acciones"
+
+#: templates/buddyforms/the-table.php:130
+msgid " Previous Entries"
+msgstr "Entradas anteriores"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://themekraft.com/buddyforms/"
+msgstr "https://themekraft.com/buddyforms/"
+
+#. Description of the plugin/theme
+msgid "Contact Forms, Post Forms for User Generated Content and Registration Forms easily build in minutes. Step by step with an easy to use Form Wizard. Ideal for User Submitted Posts. Extendable with Addons!"
+msgstr "Los Formularios de Contacto, los Formularios de Envío de Contenido Generado por el Usuario y los Formularios de Registro se construyen fácilmente en minutos. Paso a paso con un asistente de formularios fácil de usar. Ideal para los mensajes enviados por el usuario. Ampliable con Addons!"
+
+#. Author of the plugin/theme
+msgid "ThemeKraft"
+msgstr "ThemeKraft"
+
+#, fuzzy
+#~ msgid "Drop the image here to upload"
+#~ msgstr "Deje caer la imagen aquí para subirla"

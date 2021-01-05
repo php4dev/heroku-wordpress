@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle name="BuddyForms">
+  <domain name="buddyforms">
+    <project name="BuddyForms" slug="buddyforms">
+      <source>
+        <directory>includes</directory>
+      </source>
+      <target>
+        <directory>languages</directory>
+      </target>
+      <template>
+        <file>languages/buddyforms.pot</file>
+      </template>
+    </project>
+  </domain>
+  <exclude>
+    <directory>includes/resources/freemius</directory>
+  </exclude>
+</bundle>

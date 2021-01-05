@@ -1,0 +1,5 @@
+<?php
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
+ if ( ! defined( 'ABSPATH' ) ) { exit; } class FS_Subscription extends FS_Entity { public $user_id; public $install_id; public $plan_id; public $license_id; public $total_gross; public $amount_per_cycle; public $billing_cycle; public $outstanding_balance; public $failed_payments; public $gateway; public $external_id; public $trial_ends; public $next_payment; public $canceled_at; public $vat_id; public $country_code; function __construct( $subscription = false ) { parent::__construct( $subscription ); } static function get_type() { return 'subscription'; } function is_active() { if ( $this->is_canceled() ) { return false; } return ( ! empty( $this->next_payment ) && strtotime( $this->next_payment ) > WP_FS__SCRIPT_START_TIME ); } function is_canceled() { return ! is_null( $this->canceled_at ); } function is_first_payment_pending() { return ( WP_FS__TIME_24_HOURS_IN_SEC >= strtotime( $this->next_payment ) - strtotime( $this->created ) ); } function has_trial() { return ! is_null( $this->trial_ends ); } }

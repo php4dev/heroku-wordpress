@@ -1,0 +1,134 @@
+/*
+Skin Name: Nivo Slider Bar Theme
+Skin URI: http://nivo.dev7studios.com
+Description: The bottom bar skin for the Nivo Slider.
+Version: 1.0
+Author: Gilbert Pellegrom
+Author URI: http://dev7studios.com
+Supports Thumbs: false
+*/
+
+.metaslider.ms-theme-nivo-bar .slider-wrapper {
+    position: relative;
+    border: 1px solid #333;
+    overflow: hidden;
+}
+.metaslider.ms-theme-nivo-bar .nivoSlider {
+	position:relative;
+	background:#fff url(loading.gif) no-repeat 50% 50%;
+}
+.metaslider.ms-theme-nivo-bar .nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+.metaslider.ms-theme-nivo-bar .nivoSlider a {
+	border:0;
+	display:block;
+}
+
+.metaslider.ms-theme-nivo-bar .nivo-controlNav {
+    position: absolute;
+    left: 0;
+    bottom: -41px;
+    z-index: 10;
+    width: 100%;
+    height: 30px;
+	text-align: center;
+	padding: 5px 0;
+	border-top: 1px solid #333;
+	background: #333;
+    background: linear-gradient(to bottom,  #565656 0%,#333333 100%);
+    opacity: 0.5;
+    transition: all 200ms ease-in-out;
+}
+.metaslider.ms-theme-nivo-bar:hover .nivo-controlNav {
+    bottom: 0;
+    opacity: 1;
+}
+.metaslider.ms-theme-nivo-bar .nivo-controlNav a {
+	display:inline-block;
+	width:22px;
+	height:22px;
+	background:url(bullets.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	margin: 5px 2px 0 2px;
+}
+.metaslider.ms-theme-nivo-bar .nivo-controlNav a.active {
+	background-position:0 -22px;
+}
+
+.metaslider.ms-theme-nivo-bar .nivo-directionNav a {
+	display:block;
+	border:0;
+	color: #fff;
+	text-transform: uppercase;
+	top: auto;
+	bottom: 10px;
+	z-index: 11;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	line-height: 20px;
+	opacity: 0.5;
+    transition: all 200ms ease-in-out;
+}
+.metaslider.ms-theme-nivo-bar a.nivo-nextNav { right: -125px; }
+.metaslider.ms-theme-nivo-bar a.nivo-prevNav { left: -125px; }
+.metaslider.ms-theme-nivo-bar:hover a.nivo-nextNav {
+    right: 15px;
+    opacity: 1;
+}
+.metaslider.ms-theme-nivo-bar.has-thumb-nav:hover a.nivo-nextNav {
+	right: 0;
+}
+.metaslider.ms-theme-nivo-bar .nivo-directionNav a {
+    background: linear-gradient(to bottom, #565656 0, #333 100%);
+    padding: 0.4rem 1rem 0.2rem;
+    bottom: 0;
+}
+.metaslider.ms-theme-nivo-bar:hover a.nivo-prevNav {
+    left: 15px;
+    opacity: 1;
+}
+.metaslider.ms-theme-nivo-bar.has-thumb-nav:hover a.nivo-prevNav {
+	left: 0;
+}
+.metaslider.ms-theme-nivo-bar .nivo-directionNav a:hover { color: #ddd; }
+
+.metaslider.ms-theme-nivo-bar .nivo-caption {
+    font-family: Helvetica, Arial, sans-serif;
+    transition: all 200ms ease-in-out;
+}
+.metaslider.ms-theme-nivo-bar:hover .nivo-caption {
+    bottom: 41px;
+}
+.metaslider.ms-theme-nivo-bar.has-thumb-nav:hover .nivo-caption {
+    bottom: 28px;
+}
+.metaslider.ms-theme-nivo-bar .nivo-caption a {
+    color:#fff;
+	text-decoration: none;
+    border-bottom:1px dotted #fff;
+}
+.metaslider.ms-theme-nivo-bar .nivo-caption a:hover {
+    color:#fff;
+}
+
+.metaslider.ms-theme-nivo-bar .nivo-controlNav.nivo-thumbs-enabled {
+	height: auto;
+    position: static;
+    padding: 2px 10px 10px!important;
+    bottom: 0;
+}
+.metaslider.ms-theme-nivo-bar .nivo-controlNav.nivo-thumbs-enabled a {
+	width: auto;
+	height: auto;
+	background: none;
+	margin-bottom: 5px;
+}
+.metaslider.ms-theme-nivo-bar .nivo-controlNav.nivo-thumbs-enabled img {
+	display: block;
+	height: auto;
+}

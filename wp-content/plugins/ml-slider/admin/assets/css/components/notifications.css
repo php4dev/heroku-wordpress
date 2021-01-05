@@ -1,0 +1,4 @@
+/* Put the notifications on the very top */
+.swal2-container {
+	z-index: 99999999 !important;
+}

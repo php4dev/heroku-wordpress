@@ -1,0 +1,153 @@
+/**
+ * Tutorials styles
+ *
+ * @since 3.7.1
+ */
+
+$thumb-width: 66px;
+$thumb-height: 54px;
+
+@include body-class(true) {
+
+	#smush-box-tutorials {
+
+		.sui-box-header {
+
+			.sui-actions-right {
+
+				p.sui-description {
+
+					a [class*="sui-icon-"] {
+
+						&:before {
+							color: inherit;
+						}
+					}
+				}
+			}
+		}
+
+		.sui-box-body {
+
+			.wp-smush-tutorials-section {
+				margin: 0 -#{$sui-gutter-md};
+				padding: $sui-gutter-md;
+				background-color: #FAFAFA;
+
+				.wp-smush-tutorial-item {
+					border: 1px solid #E6E6E6;
+					border-radius: $border-radius;
+					background-color: $white;
+					transition: $transition;
+
+					* {
+						pointer-events: none; // FIX: Prevents from getting inner elements when clicking on item / box.
+					}
+
+					&-header {
+						width: 100%;
+						height: 140px;
+						overflow: hidden;
+						position: relative;
+						border-top-left-radius: $border-radius;
+						border-top-right-radius: $border-radius;
+						background-position: top;
+						background-repeat: no-repeat;
+						background-size: cover;
+
+						img {
+							width: auto;
+							min-width: 100%;
+							height: 100%;
+							min-height: 100%;
+							display: block;
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+						}
+
+						@include media(min-width, md) {
+							flex: 0 0 auto;
+						}
+					}
+
+					&-body {
+						padding: $sui-gutter #{$sui-gutter / 2} #{$sui-gutter-md / 4};
+
+						.wp-smush-tutorial-item-title {
+							margin: 0;
+							padding: 0;
+							border: 0;
+							color: palette(gray, dark);
+							font: 500 13px/18px $font;
+							letter-spacing: -0.2px;
+						}
+
+						@include media(min-width, md) {
+							flex: 1;
+							padding-top: #{$sui-gutter / 2};
+						}
+					}
+
+					&-footer {
+						display: flex;
+						flex-flow: row nowrap;
+						align-items: center;
+						padding: #{$sui-gutter-md / 4} #{$sui-gutter / 2} $sui-gutter;
+
+						.wp-smush-read-more,
+						.wp-smush-reading-time {
+							margin: 0;
+							@extend .sui-description;
+						}
+
+						.wp-smush-read-more {
+							flex: 0 0 auto;
+							color: $blue;
+							font-weight: 500;
+
+							+ .wp-smush-reading-time {
+								margin-left: 10px;
+							}
+						}
+
+						.wp-smush-reading-time {
+							flex: 1;
+							text-align: right;
+						}
+
+						@include media(min-width, md) {
+							flex: 0 0 auto;
+						}
+					}
+
+					&[role="link"] {
+						cursor: pointer;
+					}
+
+					&:hover,
+					&:focus {
+						position: relative;
+						z-index: 1;
+						outline: none;
+						box-shadow: none;
+						transform: scale(1.04);
+						transform-origin: center;
+					}
+
+					@include media(min-width, md) {
+						min-height: 100%;
+						display: flex;
+						flex-direction: column;
+					}
+				}
+
+				@include media(min-width, md) {
+					margin: 0 -#{$sui-gutter};
+					padding: $sui-gutter;
+				}
+			}
+		}
+	}
+}

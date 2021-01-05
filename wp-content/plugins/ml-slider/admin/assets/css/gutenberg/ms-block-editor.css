@@ -1,0 +1,6 @@
+.wp-block-metaslider-slider.placeholder-loading + .wp-block-metaslider-slider {
+	display: none;
+}
+.wp-block-metaslider-slider {
+	transition: height 0.3s;
+}

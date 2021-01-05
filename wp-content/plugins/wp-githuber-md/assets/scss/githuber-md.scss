@@ -1,0 +1,160 @@
+/* GFM task list */
+
+.gfm-task-list {
+	border: 1px solid transparent;
+	list-style-type: none;
+
+	input {
+		margin-right: 10px !important;
+	}
+}
+
+.katex-container {
+	margin: 25px !important;
+	text-align: center;
+
+	&.katex-inline {
+		display: inline-block !important;
+		background: none !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+}
+
+.katex-inline {
+	background: none;
+}
+
+pre {
+	position: relative;
+
+	.katex-container {
+		font-size: 1.4em !important;
+	}
+}
+
+code {
+	&.kb-btn {
+		display: inline-block;
+		color: #666;
+		font: bold 9pt arial;
+		text-decoration: none;
+		text-align: center;
+		padding: 2px 5px;
+		margin: 0 5px;
+		background: #eff0f2;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		border-top: 1px solid #f5f5f5;
+		-webkit-box-shadow: inset 0 0 20px #e8e8e8, 0 1px 0 #c3c3c3, 0 1px 0 #c9c9c9, 0 1px 2px #333;
+		-moz-box-shadow: inset 0 0 20px #e8e8e8, 0 1px 0 #c3c3c3, 0 1px 0 #c9c9c9, 0 1px 2px #333;
+		box-shadow: inset 0 0 20px #e8e8e8, 0 1px 0 #c3c3c3, 0 1px 0 #c9c9c9, 0 1px 2px #333;
+		text-shadow: 0px 1px 0px #f5f5f5;
+	}
+}
+
+.md-widget-toc {
+	padding: 15px;
+
+	a {
+		color: #333333;
+	}
+}
+
+.post-toc-header {
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.md-post-toc {
+	font-size: 0.9em;
+}
+.post-toc-block {
+	margin: 0 10px 20px 10px;
+	overflow: hidden;
+
+	&.with-border {
+		border: 1px #dddddd solid;
+		padding: 10px;
+	}
+
+	&.float-right {
+		max-width: 320px;
+		float: right;
+	}
+
+	&.float-left {
+		max-width: 320px;
+		float: left;
+	}
+}
+
+.md-widget-toc, .md-post-toc {
+	ul, ol {
+		padding-left: 15px;
+		margin: 0;
+
+		ul, ol {
+			padding-left: 2em;
+		}
+	}
+
+	ul {
+	
+		ol {
+			list-style-type: lower-roman;
+		}
+		ul ol, ol ol {
+			list-style-type: lower-alpha;
+		}
+	}
+	ol {
+		ul, ol {
+			padding-left: 2em;
+		}
+
+		ol {
+			list-style-type: lower-roman;
+		}
+
+		ul ol, ol ol {
+			list-style-type: lower-alpha;
+		}
+	}
+}
+
+.copy-button {
+	cursor: pointer;
+	border: 0;
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: 500;
+	padding: 3px 6px 3px 6px;
+	background-color: rgba(255, 255, 255, 0.6);
+	position: absolute;
+	overflow: hidden;
+	top: 5px;
+	right: 5px;
+	border-radius: 3px;
+
+	&:before {
+		content: '';
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 3px;
+		background-size: contain;
+		background-image: url('copy.svg');
+		background-repeat: no-repeat;
+		position: relative;
+		top: 3px;
+	}
+}
+
+pre {
+	&:hover {
+		.copy-button {
+			background-color: rgba(255, 255, 255, 0.9);
+		}
+	}
+}

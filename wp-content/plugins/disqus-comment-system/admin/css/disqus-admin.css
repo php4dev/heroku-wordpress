@@ -1,0 +1,140 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+#wpadminbar #wp-admin-bar-disqus .ab-icon:before {
+    content: "\f101";
+    top: 3px;
+}
+
+.dsq-admin-header {
+    background: #494e58;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: -20px;
+    right: -20px;
+    color: white;
+}
+
+.dsq-admin-wrapper {
+    margin-top: 20px;
+}
+
+.button-hero .disqus-icon {
+    float: left;
+    margin-top: 7px;
+    margin-right: 7px;
+}
+
+.welcome-panel {
+    overflow: hidden;
+}
+
+.welcome-panel-column .button {
+    margin-bottom: 1.33em;
+}
+
+.button-large .dashicons {
+    margin-top: 4px;
+}
+
+.submit .button-link {
+    text-decoration: none;
+}
+
+/* Placeholder spinner */
+
+.dsq-loading-container {
+    height: 130px;
+    padding-top: 120px;
+}
+
+.dsq-spinner {
+    z-index: 500;
+
+    border: 3px solid transparent;
+    border-color: transparent #c2c9d4 transparent #c2c9d4;
+
+    animation: rotate-loading 1.2s linear 0s infinite normal;
+    transform-origin: 50% 50%;
+
+    margin: auto;
+    width: 25px;
+    height: 25px;
+
+    border-radius: 28px;
+}
+
+@keyframes rotate-loading {
+    0%  {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.dsq-installation__instruction-list {
+    padding-left: 0px;
+    counter-reset: li 0;
+    margin: 35px 0px 0px 70px;
+}
+
+.dsq-installation__instruction-list::before, .installation__instruction-list::after {
+    content: " ";
+    display: table;
+}
+
+.dsq-installation__instruction-list > li {
+    font-size: 16px;
+    line-height: 1.5em;
+    position: relative;
+    z-index: 200;
+    margin-bottom: 40px;
+    list-style: none;
+}
+
+.dsq-installation__instruction-list > li::before {
+    content: counter(li);
+    counter-increment: li 1;
+    position: absolute;
+    top: -8px;
+    left: -65px;
+    width: 40px;
+    height: 22px;
+    margin-right: 8px;
+    color: rgb(255, 255, 255);
+    font-size: 21px;
+    font-weight: 600;
+    text-align: center;
+    padding: 0.42em 0px;
+    background: rgb(255, 211, 79);
+    border-radius: 1em;
+}
+
+.dsq-icon-support {
+    font-size: 72px;
+    width: 72px;
+    height: 72px;
+    display: block;
+    margin: 0 auto 5px auto;
+}
+
+.dsq-support-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.dsq-support-list-item {
+    text-align: center;
+    padding: 10px 30px;
+}
+
+.dsq-support-list-item a {
+    text-decoration: none;
+    font-size: 14px;
+}

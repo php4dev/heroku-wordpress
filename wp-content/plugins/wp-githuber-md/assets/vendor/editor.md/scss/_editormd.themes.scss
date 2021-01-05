@@ -1,0 +1,28 @@
+/* Editor.md Dark theme */
+
+.editormd-theme-dark {
+    border-color: #1a1a17;
+
+    .editormd-toolbar {
+        background: #1A1A17;
+        border-color: #1a1a17;
+    }
+
+    .editormd-menu > li > a {
+        color: #777;
+        border-color: #1a1a17;
+
+        &:hover, &.active {
+            border-color: #333;
+            background: #333;
+        }
+    }
+
+    .editormd-menu > li.divider {
+        border-right: 1px solid #111;
+    }
+    
+    .CodeMirror {
+        border-right: 1px solid rgba(0,0,0,0.1);
+    }
+}

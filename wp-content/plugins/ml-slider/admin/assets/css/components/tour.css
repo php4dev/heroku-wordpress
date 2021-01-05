@@ -1,0 +1,71 @@
+.metaslider-tour {
+	@apply z-max max-w-xs !important;
+}
+.metaslider-tour .shepherd-content {
+	@apply rounded shadow-lg !important;
+}
+.metaslider-tour header {
+	@apply bg-orange rounded-t py-3 px-4 !important;
+}
+.metaslider-tour header h3 {
+	@apply text-white text-lg m-0 !important;
+}
+.metaslider-tour .shepherd-text {
+	@apply text-lg flex items-center p-4 bg-white text-black text-left !important;
+}
+.metaslider-tour .shepherd-text > * {
+	@apply text-lg m-0 !important;
+}
+
+.shepherd-element.shepherd-has-title .shepherd-content header a.shepherd-cancel-link {
+	@apply opacity-75 text-white text-sm border border-white h-6 w-6 p-0 text-center float-none absolute rounded-full;
+	line-height: 21px !important;
+	right: 11px !important;
+	top: 9px !important;
+}
+.shepherd-element.shepherd-has-title .shepherd-content header a.shepherd-cancel-link::after {
+	@apply absolute text-lg text-white;
+	content: '\f335';
+	-webkit-font-smoothing: antialiased !important;
+	-moz-osx-font-smoothing: grayscale !important;
+	font-family: dashicons !important;
+	left: 2px !important;
+	top: 1px !important;
+}
+
+.metaslider-tour.shepherd-element-attached-top .shepherd-content:before {
+	border-bottom-color: theme('colors.orange') !important;
+}
+.metaslider-tour.shepherd-element-attached-bottom.shepherd-element-attached-right .shepherd-content:before {
+	top: 100%;
+    left: 100%;
+    margin-left: -50px;
+    border-top-color: #fff;
+}
+.metaslider-tour.shepherd-element-attached-top.shepherd-element-attached-right .shepherd-content:before {
+	top: auto !important;
+	left: auto !important;
+	right: 26px !important;
+	border-left-color: transparent !important;
+	border-top-color: transparent !important;
+	border-right-color: transparent !important;
+    border-bottom-color: theme('colors.orange') !important;
+}
+
+.shepherd-element-attached-bottom.shepherd-element-attached-right.shepherd-target-attached-top.shepherd-target-attached-left .shepherd-content:before,
+.shepherd-element-attached-bottom.shepherd-element-attached-left.shepherd-target-attached-top.shepherd-target-attached-right .shepherd-content:before,
+.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-bottom.shepherd-target-attached-left .shepherd-content:before,
+.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-bottom.shepherd-target-attached-right .shepherd-content:before {
+  display: block;
+}
+
+body.shepherd-active[data-shepherd-step='preview'],
+body.shepherd-active[data-shepherd-step='add-slide'] {
+	position: fixed;
+	width: 100%;
+}
+body.shepherd-active[data-shepherd-step='preview'] #ms-form-settings > .container,
+body.shepherd-active[data-shepherd-step='add-slide'] #ms-form-settings > .container {
+	filter: blur(3px);
+	pointer-events: none;
+}

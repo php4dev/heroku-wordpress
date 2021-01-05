@@ -1,0 +1,13 @@
+/* ****************************************************************************
+ * MODULE: VARIABLES
+ */
+
+$font--path: "../fonts" !default;
+$img--path: "../images" !default;
+
+$summary-image: '#{$img--path}/smush-graphic-dashboard-summary.svg';
+
+// Promo banners for free footer
+$cross-sell-1:       'hummingbird';
+$cross-sell-2:       'defender';
+$cross-sell-3:       'smartcrawl';

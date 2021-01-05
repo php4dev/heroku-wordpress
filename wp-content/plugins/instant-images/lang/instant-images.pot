@@ -1,0 +1,331 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Instant Images\n"
+"POT-Creation-Date: 2020-08-10 08:14-0400\n"
+"PO-Revision-Date: 2017-09-21 10:40-0500\n"
+"Last-Translator: Darren Cooney <darren@connekthq.com>\n"
+"Language-Team: \n"
+"Language: en_CA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: dist\n"
+"X-Poedit-SearchPathExcluded-1: src\n"
+"X-Poedit-SearchPathExcluded-2: webpack\n"
+"X-Poedit-SearchPathExcluded-3: node_modules\n"
+
+#: admin/admin.php:107 admin/admin.php:123 instant-images.php:135
+msgid "Instant Images"
+msgstr ""
+
+#: admin/includes/cta/permissions.php:14
+msgid "Permissions Error"
+msgstr ""
+
+#: admin/includes/cta/permissions.php:15
+msgid "Instant Images is unable to download and process images on your server."
+msgstr ""
+
+#: admin/includes/cta/permissions.php:16
+msgid "Please enable read/write access to the following directory"
+msgstr ""
+
+#: admin/includes/settings.php:18 admin/includes/unsplash-settings.php:6
+msgid "Global Settings"
+msgstr ""
+
+#: admin/includes/settings.php:26
+msgid "Upload Image Width"
+msgstr ""
+
+#: admin/includes/settings.php:35
+msgid "Upload Image Height"
+msgstr ""
+
+#: admin/includes/settings.php:44
+msgid "Media Tab"
+msgstr ""
+
+#: admin/includes/settings.php:57
+msgid "Manage your media upload settings."
+msgstr ""
+
+#: admin/includes/settings.php:79
+msgid "Max Image Upload Width:"
+msgstr ""
+
+#: admin/includes/settings.php:93
+msgid "Max Image Upload Height:"
+msgstr ""
+
+#: admin/includes/settings.php:108
+msgid "Media Modal:"
+msgstr ""
+
+#: admin/includes/settings.php:112
+msgid "Hide the <b>Instant Images</b> tab in admin Media Modal windows."
+msgstr ""
+
+#: admin/includes/unsplash-settings.php:7
+msgid "Manage your media upload settings"
+msgstr ""
+
+#: admin/includes/unsplash-settings.php:16
+msgid "Save Settings"
+msgstr ""
+
+#: admin/includes/unsplash-settings.php:23
+msgid "What's New"
+msgstr ""
+
+#: admin/includes/unsplash-settings.php:24
+msgid "The latest Instant Images updates"
+msgstr ""
+
+#: admin/includes/unsplash-settings.php:54
+msgid "Our Plugins"
+msgstr ""
+
+#: admin/views/unsplash.php:11
+#, php-format
+msgid "One click photo uploads from %s"
+msgstr ""
+
+#: admin/views/unsplash.php:16
+msgid "Settings"
+msgstr ""
+
+#: api/download.php:64
+msgid "Image does not exist or there was an error accessing the remote file."
+msgstr ""
+
+#: api/download.php:76
+msgid "Image download failed, please try again. Errors:"
+msgstr ""
+
+#: api/download.php:82
+msgid "Image type could not be determined"
+msgstr ""
+
+#: api/download.php:118
+msgid "Image successfully uploaded to the media library!"
+msgstr ""
+
+#: api/download.php:135
+msgid ""
+"There was an error getting image details from the request, please try again."
+msgstr ""
+
+#: instant-images.php:145
+msgid "Error accessing Unsplash API"
+msgstr ""
+
+#: instant-images.php:146
+msgid "Please check your Application ID."
+msgstr ""
+
+#: instant-images.php:147
+msgid ""
+"There was no response while attempting to the download image to your server. "
+"Check your server permission and max file upload size or try again"
+msgstr ""
+
+#: instant-images.php:148
+msgid "There was an error accessing the WP REST API."
+msgstr ""
+
+#: instant-images.php:149
+msgid ""
+"Instant Images requires access to the WP REST API via <u>POST</u> request to "
+"fetch and upload images to your media library."
+msgstr ""
+
+#: instant-images.php:150
+msgid "Photo by"
+msgstr ""
+
+#: instant-images.php:151
+msgid "View All Photos by"
+msgstr ""
+
+#: instant-images.php:152
+msgid "Click Image to Upload"
+msgstr ""
+
+#: instant-images.php:153
+msgid "Click to Upload"
+msgstr ""
+
+#: instant-images.php:154
+msgid "View Full Size"
+msgstr ""
+
+#: instant-images.php:155
+msgid "Like"
+msgstr ""
+
+#: instant-images.php:156
+msgid "Likes"
+msgstr ""
+
+#: instant-images.php:157
+msgid "Downloading image..."
+msgstr ""
+
+#: instant-images.php:158
+msgid "Creating image sizes..."
+msgstr ""
+
+#: instant-images.php:159
+msgid "Still resizing..."
+msgstr ""
+
+#: instant-images.php:160
+msgid "Sorry, nothing matched your query"
+msgstr ""
+
+#: instant-images.php:161
+msgid "Please try adjusting your search criteria"
+msgstr ""
+
+#: instant-images.php:162
+msgid "New"
+msgstr ""
+
+#: instant-images.php:163
+msgid "Oldest"
+msgstr ""
+
+#: instant-images.php:164
+msgid "Popular"
+msgstr ""
+
+#: instant-images.php:165
+msgid "Load More Images"
+msgstr ""
+
+#: instant-images.php:166
+msgid "Search for Toronto + Coffee etc..."
+msgstr ""
+
+#: instant-images.php:167
+msgid "images found for"
+msgstr ""
+
+#: instant-images.php:168
+msgid "Clear Search Results"
+msgstr ""
+
+#: instant-images.php:169
+msgid "View on Unsplash"
+msgstr ""
+
+#: instant-images.php:170
+msgid "Set as Featured Image"
+msgstr ""
+
+#: instant-images.php:171
+msgid "Insert Into Post"
+msgstr ""
+
+#: instant-images.php:172
+msgid "Filename"
+msgstr ""
+
+#: instant-images.php:173
+msgid "Title"
+msgstr ""
+
+#: instant-images.php:174
+msgid "Alt Text"
+msgstr ""
+
+#: instant-images.php:175
+msgid "Caption"
+msgstr ""
+
+#: instant-images.php:176
+msgid "Edit Attachment Details"
+msgstr ""
+
+#: instant-images.php:177
+msgid "Edit Image Details"
+msgstr ""
+
+#: instant-images.php:178
+msgid "Update and save image details prior to uploading"
+msgstr ""
+
+#: instant-images.php:179
+msgid "Cancel"
+msgstr ""
+
+#: instant-images.php:180
+msgid "Save"
+msgstr ""
+
+#: instant-images.php:181
+msgid "Upload"
+msgstr ""
+
+#: instant-images.php:182
+msgid "Image Orientation"
+msgstr ""
+
+#: instant-images.php:183
+msgid "Landscape"
+msgstr ""
+
+#: instant-images.php:184
+msgid "Portrait"
+msgstr ""
+
+#: instant-images.php:185
+msgid "Squarish"
+msgstr ""
+
+#: vendor/connekt-plugin-installer/class-connekt-plugin-installer.php:52
+#: vendor/connekt-plugin-installer/class-connekt-plugin-installer.php:365
+msgid "Install Now"
+msgstr ""
+
+#: vendor/connekt-plugin-installer/class-connekt-plugin-installer.php:87
+#: vendor/connekt-plugin-installer/class-connekt-plugin-installer.php:367
+msgid "Activated"
+msgstr ""
+
+#: vendor/connekt-plugin-installer/class-connekt-plugin-installer.php:91
+#: vendor/connekt-plugin-installer/class-connekt-plugin-installer.php:366
+msgid "Activate"
+msgstr ""
+
+#: vendor/connekt-plugin-installer/class-connekt-plugin-installer.php:129
+msgid "By"
+msgstr ""
+
+#: vendor/connekt-plugin-installer/class-connekt-plugin-installer.php:142
+msgid "More Details"
+msgstr ""
+
+#: vendor/connekt-plugin-installer/class-connekt-plugin-installer.php:164
+msgid "Sorry, you are not allowed to install plugins on this site."
+msgstr ""
+
+#: vendor/connekt-plugin-installer/class-connekt-plugin-installer.php:171
+#: vendor/connekt-plugin-installer/class-connekt-plugin-installer.php:242
+msgid "Error - unable to verify nonce, please try again."
+msgstr ""
+
+#: vendor/connekt-plugin-installer/class-connekt-plugin-installer.php:235
+msgid "Sorry, you are not allowed to activate plugins on this site."
+msgstr ""
+
+#: vendor/connekt-plugin-installer/class-connekt-plugin-installer.php:364
+msgid "Are you sure you want to install this plugin?"
+msgstr ""

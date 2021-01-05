@@ -1,0 +1,27 @@
+.metaslider .callout-box {
+	background: $brand;
+	display: block !important;
+	p {
+		color: white;
+		margin: 0px;
+		text-align: center;
+	}
+	strong {
+		text-transform: uppercase;
+		font-size: 1.3em;
+		display: block;
+		margin-bottom: 0.5rem;
+	}
+	.ms-ghost-button {
+		display: inline-block;
+		color: white;
+		border: 1px solid;
+		margin-top: 0.5rem;
+		padding: 0.4rem 1rem;
+		text-decoration: none;
+		transition: all 0.3s ease-in-out;
+		&:hover, &:active, &:focus {
+			background: darken($brand, 10%);
+		}
+	}
+}

@@ -1,0 +1,14 @@
+a.gflag {font-size:16px;padding:1px 0;background-repeat:no-repeat;background-image:url(16.png);}
+a.gflag img {border:0;height:16px;display:inline;}
+a.gflag:hover {background-image:url(16a.png);}
+img.gstats {display:none;}
+a.alt_flag {background-image:url(alt_flags.png);}
+a.alt_flag:hover {background-image:url(alt_flagsa.png);}
+a.us_flag {background-position:-0px -0px;}
+a.br_flag {background-position:-100px -0px;}
+a.mx_flag {background-position:-200px -0px;}
+
+a.glink {text-decoration:none;}
+a.glink span {margin-right:3px;font-size:10px;vertical-align:middle;}
+a.glink img {vertical-align:middle;display:inline;border:0;padding:0;margin:0;opacity:0.8;}
+a.glink:hover img {opacity:1;}

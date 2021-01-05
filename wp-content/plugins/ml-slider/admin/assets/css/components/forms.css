@@ -1,0 +1,9 @@
+.placeholder-gray-darker::placeholder {
+    @apply text-gray-darker !important;
+}
+.metaslider-ui option:disabled {
+    @apply text-gray italic !important;
+}
+.metaslider-ui select {
+	@apply m-0 !important;
+}

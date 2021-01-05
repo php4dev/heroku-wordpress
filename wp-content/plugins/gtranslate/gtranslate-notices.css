@@ -1,0 +1,55 @@
+.gt-admin-notice {
+    background: #fff;
+    border-color: #ED494D;
+    border-top: 4px;
+    display: block;
+    min-height: 68px;
+    padding: 10px 40px 10px 145px;
+    position: relative;
+}
+.gt-admin-notice a {
+    color: #ED494D;
+}
+.gt-notice-logo {
+    clear: both;
+    content: "";
+    display: block;
+    background-image: url(gt_logo.svg);
+    background-size: 125px auto;
+    background-repeat: no-repeat;
+    background-position: 0 45%;
+    width: 125px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 5px;
+}
+.gt-admin-notice > .dashicons {
+    color: #424242;
+    position: absolute;
+    right: 20px;
+    top: 40%;
+}
+.gt-notice-title {
+    font-size: 24px;
+    margin: 0;
+}
+.gt-notice-body {
+    font-weight: normal;
+    margin: 5px 0;
+}
+.gt-notice-body:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+.gt-notice-body li {
+    float: left;
+    margin-right: 20px;
+}
+.gt-notice-body .dashicons {
+    font-size: 17px;
+}
+.gt-red {
+    color: #ED494D;
+}
