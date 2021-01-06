@@ -1,0 +1,631 @@
+# Translation of Themes - Twenty Twenty in Chinese (Taiwan)
+# This file is distributed under the same license as the Themes - Twenty Twenty package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-12-31 10:05:56+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: zh_TW\n"
+"Project-Id-Version: Themes - Twenty Twenty\n"
+
+#. Description of the theme
+msgid "Our default theme for 2020 is designed to take full advantage of the flexibility of the block editor. Organizations and businesses have the ability to create dynamic landing pages with endless layouts using the group and column blocks. The centered content column and fine-tuned typography also makes it perfect for traditional blogs. Complete editor styles give you a good idea of what your content will look like, even before you publish. You can give your site a personal touch by changing the background colors and the accent color in the Customizer. The colors of all elements on your site are automatically calculated based on the colors you pick, ensuring a high, accessible color contrast for your visitors."
+msgstr "Twenty Twenty 這個預設佈景主題的設計，主要在於充分利用區塊編輯器的彈性。組織及企業能使用 [群組] 及 [欄位] 區塊建立各種版面配置的動態到達網頁，置中的內容欄位及經過微調的排版也讓這個佈景主題相當適合部落格網站。完整的編輯器樣式讓內容創作者在發佈前對內容在網站前端的外觀更有概念，而網站設計人員在外觀自訂器中可以變更背景色彩及強調色彩，讓網站更加客製化。網站中全部元素的色彩會依據選取的色彩自動計算，確保網站訪客能以高對比色彩的方式檢視網站。"
+
+#. Theme Name of the theme
+#: inc/block-patterns.php:20
+msgid "Twenty Twenty"
+msgstr "Twenty Twenty"
+
+#: classes/class-twentytwenty-customize.php:126
+msgctxt "color"
+msgid "Custom"
+msgstr "自訂色彩"
+
+#: classes/class-twentytwenty-customize.php:125
+msgctxt "color"
+msgid "Default"
+msgstr "預設色彩"
+
+#: inc/block-patterns.php:197
+msgid "With seven floors of striking architecture, UMoMA shows exhibitions of international contemporary art, sometimes along with art historical retrospectives. Existential, political, and philosophical issues are intrinsic to our program. As visitor, you are invited to guided tours artist talks, lectures, film screenings, and other events with free admission."
+msgstr "UMoMA 有七層各具特色的樓層，可舉辦國際現代藝術展覽，也可以用於舉辦藝術史回顧展。存在主義、政治學及哲學相關議題是本館計劃的固定內容。作為訪客，你可以免費參加各種導遊行程，如藝術家演講、講座、電影放映會及其他活動。"
+
+#: inc/block-patterns.php:194
+msgid "The Premier Destination for Modern Art in Sweden"
+msgstr "瑞典現代藝術首選必遊地點"
+
+#: inc/block-patterns.php:187
+msgid "Introduction"
+msgstr "簡介"
+
+#: inc/block-patterns.php:157 inc/block-patterns.php:171
+msgid "August 1 — December 1"
+msgstr "8 月 1 日至 12 月 1 日"
+
+#: inc/block-patterns.php:151 inc/block-patterns.php:165
+msgid "Abstract Rectangles"
+msgstr "抽象矩形"
+
+#: inc/block-patterns.php:142
+msgid "Featured Content"
+msgstr "精選內容"
+
+#: inc/block-patterns.php:128
+msgid "<em>Price</em><br>Included"
+msgstr "<em>Price</em><br>Included"
+
+#: inc/block-patterns.php:123
+msgid "<em>Location</em><br>Exhibit Hall B"
+msgstr "<strong>展出地點</strong><br>展覽廳 B"
+
+#: inc/block-patterns.php:118
+msgid "<em>Dates</em><br>Aug 1 — Dec 1"
+msgstr "<strong>展出日期</strong><br>8 月 1 日至 12 月 1 日"
+
+#: inc/block-patterns.php:108
+msgid "Event Details"
+msgstr "活動詳細資訊"
+
+#: inc/block-patterns.php:93
+msgid "Shop Now"
+msgstr "立即選購"
+
+#: inc/block-patterns.php:89
+msgid "An awe-inspiring collection of books, prints, and gifts from our exhibitions."
+msgstr "販售各項展覽中令人嘆服的典藏版書籍、印刷品及禮品。"
+
+#: inc/block-patterns.php:86
+msgid "The Store"
+msgstr "展覽精品店"
+
+#: inc/block-patterns.php:74
+msgid "Award-winning exhibitions featuring internationally-renowned artists."
+msgstr "以國際知名藝術家為主要內容的獲獎展覽。"
+
+#: inc/block-patterns.php:71
+msgid "The Museum"
+msgstr "博物館"
+
+#: inc/block-patterns.php:61
+msgid "Double Call to Action"
+msgstr "雙重行動號召"
+
+#: inc/block-patterns.php:48
+msgid "Become a Member"
+msgstr "成為會員"
+
+#: inc/block-patterns.php:42
+msgid "Support the Museum and Get Exclusive Offers"
+msgstr "支持博物館運作並獲得獨家優惠"
+
+#: inc/block-patterns.php:33
+msgid "Call to Action"
+msgstr "行動號召"
+
+#: template-parts/modal-menu.php:73
+msgctxt "menu"
+msgid "Mobile"
+msgstr "行動版選單"
+
+#: template-parts/modal-menu.php:48
+msgctxt "menu"
+msgid "Expanded"
+msgstr "開闔式選單"
+
+#: header.php:88
+msgctxt "menu"
+msgid "Horizontal"
+msgstr "水平排列"
+
+#: header.php:53 header.php:157
+msgctxt "toggle text"
+msgid "Search"
+msgstr "搜尋"
+
+#: functions.php:498
+msgctxt "color"
+msgid "Secondary"
+msgstr "次要色彩"
+
+#: functions.php:493
+msgctxt "color"
+msgid "Primary"
+msgstr "主要色彩"
+
+#: index.php:51
+msgid "Nothing Found"
+msgstr "找不到符合條件的結果"
+
+#: classes/class-twentytwenty-customize.php:246
+msgid "Show author bio"
+msgstr "顯示作者簡歷"
+
+#: template-parts/entry-author-bio.php:29
+msgid "View Archive <span aria-hidden=\"true\">&rarr;</span>"
+msgstr "檢視彙整 <span aria-hidden=\"true\">&rarr;</span>"
+
+#: inc/starter-content.php:39
+msgctxt "Theme starter content"
+msgid "The New UMoMA Opens its Doors"
+msgstr "UMoMA 全新開幕"
+
+#: inc/template-tags.php:396
+msgctxt "A string that is output before one or more categories"
+msgid "In"
+msgstr "分類:"
+
+#: inc/starter-content.php:151
+msgid "Join the Club"
+msgstr "成為會員"
+
+#: inc/starter-content.php:148 inc/block-patterns.php:45
+msgid "Members get access to exclusive exhibits and sales. Our memberships cost $99.99 and are billed annually."
+msgstr "會員能參加獨家展覽及獲得專屬優惠，會員費為每年 99.99 美元。"
+
+#: inc/starter-content.php:145
+msgid "Become a Member and Get Exclusive Offers!"
+msgstr "成為會員並獲得獨家優惠！"
+
+#: inc/starter-content.php:137
+msgid "The exhibitions are produced by UMoMA in collaboration with artists and museums around the world and they often attract international attention. UMoMA has received a Special Commendation from the European Museum of the Year, and was among the top candidates for the Swedish Museum of the Year Award as well as for the Council of Europe Museum Prize."
+msgstr "這些展覽由 UMoMA 與世界各地的藝術家及博物館合作舉辦，並常常受到世界矚目。UMoMA 已獲得歐洲博物館年度特別獎，並且是瑞典年度博物館獎和歐洲理事會博物館獎的最佳入圍者之一。"
+
+#: inc/starter-content.php:134
+msgid "With seven floors of striking architecture, UMoMA shows exhibitions of international contemporary art, sometimes along with art historical retrospectives. Existential, political and philosophical issues are intrinsic to our programme. As visitor you are invited to guided tours artist talks, lectures, film screenings and other events with free admission"
+msgstr "UMoMA 有七層各具特色的樓層，可舉辦國際現代藝術展覽，也可以用於舉辦藝術史回顧展。存在主義、政治學及哲學相關議題是本館計劃的固定內容。作為訪客，你可以免費參加各種導遊行程，如藝術家演講、講座、電影放映會及其他活動。"
+
+#: inc/starter-content.php:130
+msgid "&#8220;Cyborgs, as the philosopher Donna Haraway established, are not reverent. They do not remember the cosmos.&#8221;"
+msgstr "&#8220;哲學家 Donna Haraway 曾表示，賽伯格不具備崇敬之心，因為他們不會緬懷宇宙。&#8221;"
+
+#: inc/starter-content.php:114
+msgid "From Signac to Matisse"
+msgstr "從保羅·希涅克到亨利·馬諦斯"
+
+#: inc/starter-content.php:99 inc/block-patterns.php:168
+msgid "The Life I Deserve"
+msgstr "應得的生活"
+
+#: inc/starter-content.php:85 inc/starter-content.php:117
+msgid "October 1 -- December 1"
+msgstr "10 月 1 日至 12 月 1 日"
+
+#: inc/starter-content.php:82
+msgid "Theatre of Operations"
+msgstr "戰區"
+
+#: inc/starter-content.php:73 inc/starter-content.php:88
+#: inc/starter-content.php:105 inc/starter-content.php:120
+#: inc/block-patterns.php:78 inc/block-patterns.php:160
+#: inc/block-patterns.php:174
+msgid "Read More"
+msgstr "進一步瞭解"
+
+#: inc/starter-content.php:70 inc/starter-content.php:102
+msgid "August 1 -- December 1"
+msgstr "8 月 1 日至 12 月 1 日"
+
+#: inc/starter-content.php:67 inc/block-patterns.php:154
+msgid "Works and Days"
+msgstr "工作及生活"
+
+#: inc/starter-content.php:56
+msgid "The premier destination for modern art in Northern Sweden. Open from 10 AM to 6 PM every day during the summer months."
+msgstr "瑞典北部現代藝術首選必遊地點。夏季每日開放時間為上午 10 點至下午 6 點。"
+
+#: inc/starter-content.php:48
+msgid "The New UMoMA Opens its Doors"
+msgstr "UMoMA 全新開幕"
+
+#: classes/class-twentytwenty-customize.php:395
+msgid "Overlay Opacity"
+msgstr "覆疊不透明度"
+
+#: classes/class-twentytwenty-customize.php:375
+msgid "The color used for the text in the overlay."
+msgstr "設定用於覆疊的文字色彩。"
+
+#: classes/class-twentytwenty-customize.php:374
+msgid "Overlay Text Color"
+msgstr "覆疊文字色彩"
+
+#: classes/class-twentytwenty-customize.php:353
+msgid "The color used for the overlay. Defaults to the accent color."
+msgstr "設定用於覆疊的色彩。預設值為強調色彩。"
+
+#: classes/class-twentytwenty-customize.php:352
+msgid "Overlay Background Color"
+msgstr "覆疊背景色彩"
+
+#: classes/class-twentytwenty-customize.php:283
+msgid "Settings for the \"Cover Template\" page template. Add a featured image to use as background."
+msgstr "使用 [封面範本] 的頁面設定。在這個範本中，精選圖片會成為背景圖片。"
+
+#: classes/class-twentytwenty-customize.php:183
+msgid "Apply a custom color for links, buttons, featured images."
+msgstr "將自訂色彩套用至按鈕、連結及精選圖片。"
+
+#: classes/class-twentytwenty-customize.php:123
+msgid "Primary Color"
+msgstr "主要色彩"
+
+#: searchform.php:24 template-parts/modal-search.php:20
+msgid "Search for:"
+msgstr "搜尋關鍵字:"
+
+#: index.php:101
+msgid "search again"
+msgstr "再次搜尋"
+
+#. translators: %s: Number of search results.
+#: index.php:39
+msgid "We found %s result for your search."
+msgid_plural "We found %s results for your search."
+msgstr[0] "目前找到 %s 項符合條件的搜尋結果。"
+
+#. translators: %s: HTML character for up arrow.
+#: footer.php:49
+msgid "Up %s"
+msgstr "返回頂端 %s"
+
+#. translators: %s: HTML character for up arrow.
+#: footer.php:43
+msgid "To the top %s"
+msgstr "返回頂端 %s"
+
+#. translators: Copyright date format, see
+#. https://www.php.net/manual/datetime.format.php
+#: footer.php:25
+msgctxt "copyright date format"
+msgid "Y"
+msgstr "Y 年"
+
+#: 404.php:24
+msgid "404 not found"
+msgstr "404 找不到"
+
+#. Template Name of the theme
+msgid "Full Width Template"
+msgstr "全螢幕寬度範本"
+
+#: template-parts/pagination.php:25
+msgid "Older <span class=\"nav-short\">Posts</span>"
+msgstr "較舊<span class=\"nav-short\">的文章</span>"
+
+#: template-parts/pagination.php:21
+msgid "Newer <span class=\"nav-short\">Posts</span>"
+msgstr "較新<span class=\"nav-short\">的文章</span>"
+
+#: template-parts/navigation.php:25
+msgid "Post"
+msgstr "文章"
+
+#: template-parts/modal-search.php:26
+msgid "Close search"
+msgstr "關閉搜尋"
+
+#: template-parts/modal-menu.php:117
+msgid "Expanded Social links"
+msgstr "開闔式社交網路服務連結"
+
+#: template-parts/modal-menu.php:21
+msgid "Close Menu"
+msgstr "關閉選單"
+
+#: template-parts/footer-menus-widgets.php:57
+msgid "Social links"
+msgstr "社交網路服務連結"
+
+#: template-parts/footer-menus-widgets.php:37
+msgid "Footer"
+msgstr "頁尾"
+
+#. translators: %s: Author name.
+#: inc/template-tags.php:357 template-parts/entry-author-bio.php:20
+msgid "By %s"
+msgstr "作者: %s"
+
+#: template-parts/content.php:48 template-parts/content-cover.php:138
+msgid "Pages:"
+msgstr "頁次:"
+
+#: template-parts/content.php:48 template-parts/content-cover.php:138
+msgid "Page"
+msgstr "頁次"
+
+#: template-parts/content-cover.php:88
+msgid "Scroll Down"
+msgstr "向下捲動"
+
+#: searchform.php:27
+msgctxt "submit button"
+msgid "Search"
+msgstr "搜尋"
+
+#: searchform.php:25
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "搜尋..."
+
+#: index.php:48
+msgid "We could not find any results for your search. You can give it another try through the search form below."
+msgstr "目前找不到任何符合條件的搜尋結果，請在下方改以其他關鍵字進行搜尋。"
+
+#: index.php:32
+msgid "Search:"
+msgstr "搜尋:"
+
+#. translators: %s: Post title. Only visible to screen readers.
+#: inc/template-tags.php:207
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr "編輯<span class=\"screen-reader-text\">〈%s〉</span>"
+
+#: inc/template-tags.php:448
+msgid "Sticky post"
+msgstr "置頂文章"
+
+#: inc/template-tags.php:410
+msgid "Tags"
+msgstr "標籤"
+
+#: inc/template-tags.php:392 template-parts/entry-header.php:36
+#: template-parts/content-cover.php:70
+msgid "Categories"
+msgstr "分類"
+
+#: inc/template-tags.php:374
+msgid "Post date"
+msgstr "文章發佈日期"
+
+#: inc/template-tags.php:350
+msgid "Post author"
+msgstr "文章作者"
+
+#: inc/starter-content.php:197
+msgid "Social Links Menu"
+msgstr "社交網路服務連結選單"
+
+#: inc/starter-content.php:177 inc/starter-content.php:187
+msgid "Primary"
+msgstr "主要"
+
+#: header.php:76 header.php:137
+msgid "Menu"
+msgstr "選單"
+
+#: template-parts/content.php:36
+msgid "Continue reading"
+msgstr "閱讀全文"
+
+#: functions.php:550
+msgctxt "Short name of the larger font size in the block editor."
+msgid "XL"
+msgstr "XL"
+
+#: functions.php:549
+msgctxt "Name of the larger font size in the block editor"
+msgid "Larger"
+msgstr "較大型"
+
+#: functions.php:544
+msgctxt "Short name of the large font size in the block editor."
+msgid "L"
+msgstr "L"
+
+#: functions.php:543
+msgctxt "Name of the large font size in the block editor"
+msgid "Large"
+msgstr "大型"
+
+#: functions.php:538
+msgctxt "Short name of the regular font size in the block editor."
+msgid "M"
+msgstr "M"
+
+#: functions.php:537
+msgctxt "Name of the regular font size in the block editor"
+msgid "Regular"
+msgstr "標準"
+
+#: functions.php:532
+msgctxt "Short name of the small font size in the block editor."
+msgid "S"
+msgstr "S"
+
+#: functions.php:531
+msgctxt "Name of the small font size in the block editor"
+msgid "Small"
+msgstr "小型"
+
+#: functions.php:516
+msgid "Background Color"
+msgstr "背景色彩"
+
+#: functions.php:503
+msgid "Subtle Background"
+msgstr "區別背景"
+
+#: functions.php:488
+msgid "Accent Color"
+msgstr "強調色彩"
+
+#: functions.php:383
+msgid "Widgets in this area will be displayed in the second column in the footer."
+msgstr "在這個區域設定的小工具會顯示於第二個頁尾區域。"
+
+#: functions.php:381
+msgid "Footer #2"
+msgstr "頁尾 2"
+
+#: functions.php:371
+msgid "Widgets in this area will be displayed in the first column in the footer."
+msgstr "在這個區域設定的小工具會顯示於第一個頁尾區域。"
+
+#: functions.php:369
+msgid "Footer #1"
+msgstr "頁尾 1"
+
+#: functions.php:344
+msgid "Skip to the content"
+msgstr "跳至主要內容"
+
+#: functions.php:266
+msgid "Social Menu"
+msgstr "社交網路服務選單"
+
+#: functions.php:265
+msgid "Footer Menu"
+msgstr "頁尾選單"
+
+#: functions.php:264
+msgid "Mobile Menu"
+msgstr "行動版選單"
+
+#: functions.php:263
+msgid "Desktop Expanded Menu"
+msgstr "桌面版開闔式選單"
+
+#: functions.php:262
+msgid "Desktop Horizontal Menu"
+msgstr "桌面版水平選單"
+
+#: footer.php:33
+msgid "Powered by WordPress"
+msgstr "本站採用 WordPress 建置"
+
+#: comments.php:127
+msgid "Comments are closed."
+msgstr "留言功能已關閉。"
+
+#: comments.php:88
+msgid "Comments"
+msgstr "留言"
+
+#: comments.php:75
+msgid "Older Comments"
+msgstr "較舊的留言"
+
+#: comments.php:74
+msgid "Newer Comments"
+msgstr "較新的留言"
+
+#. translators: 1: Number of comments, 2: Post title.
+#: comments.php:41
+msgctxt "comments title"
+msgid "%1$s reply on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s replies on &ldquo;%2$s&rdquo;"
+msgstr[0] "在〈%2$s〉中有 %1$s 則留言"
+
+#. translators: %s: Post title.
+#: comments.php:37
+msgctxt "comments title"
+msgid "One reply on &ldquo;%s&rdquo;"
+msgstr "在〈%s〉中有 1 則留言"
+
+#: comments.php:34
+msgid "Leave a comment"
+msgstr "發佈留言"
+
+#: classes/class-twentytwenty-walker-page.php:107 inc/template-tags.php:558
+msgid "Show sub menu"
+msgstr "顯示子選單"
+
+#. translators: %d: ID of a post.
+#: classes/class-twentytwenty-walker-page.php:70
+msgid "#%d (no title)"
+msgstr "#%d (無標題)"
+
+#: classes/class-twentytwenty-walker-comment.php:133
+msgid "By Post Author"
+msgstr "依文章作者"
+
+#: classes/class-twentytwenty-walker-comment.php:98
+msgid "Your comment is awaiting moderation."
+msgstr "你的留言正在等候審閱。"
+
+#: classes/class-twentytwenty-walker-comment.php:82
+msgid "Edit"
+msgstr "編輯"
+
+#. translators: 1: Comment date, 2: Comment time.
+#: classes/class-twentytwenty-walker-comment.php:68
+msgid "%1$s at %2$s"
+msgstr "%1$s%2$s"
+
+#: classes/class-twentytwenty-walker-comment.php:56
+msgid "says:"
+msgstr "表示:"
+
+#: classes/class-twentytwenty-customize.php:396
+msgid "Make sure that the contrast is high enough so that the text is readable."
+msgstr "請確認對比設定值夠高，才能使文字易於閱讀。"
+
+#: classes/class-twentytwenty-customize.php:306
+msgid "Creates a parallax effect when the visitor scrolls."
+msgstr "使用者捲動網頁時，為背景圖片套用視差滾動效果。"
+
+#: classes/class-twentytwenty-customize.php:305
+msgid "Fixed Background Image"
+msgstr "固定背景圖片"
+
+#. Template Name of the theme
+#: classes/class-twentytwenty-customize.php:281
+msgid "Cover Template"
+msgstr "封面範本"
+
+#: classes/class-twentytwenty-customize.php:270
+msgid "Summary"
+msgstr "內容摘要"
+
+#: classes/class-twentytwenty-customize.php:269
+msgid "Full text"
+msgstr "完整內容"
+
+#: classes/class-twentytwenty-customize.php:267
+msgid "On archive pages, posts show:"
+msgstr "彙整頁面的文章顯示方式:"
+
+#: classes/class-twentytwenty-customize.php:225
+msgid "Show search in header"
+msgstr "在頁首顯示搜尋功能"
+
+#: classes/class-twentytwenty-customize.php:202
+msgid "Theme Options"
+msgstr "佈景主題選項"
+
+#: classes/class-twentytwenty-customize.php:101
+msgid "Header &amp; Footer Background Color"
+msgstr "頁首及頁尾背景色彩"
+
+#: classes/class-twentytwenty-customize.php:82
+msgid "Scales the logo to half its uploaded size, making it sharp on high-res screens."
+msgstr "將標誌縮放至上傳時的一半尺寸，使其顯示在高解析度螢幕上時更加銳利。"
+
+#: classes/class-twentytwenty-customize.php:81
+msgid "Retina logo"
+msgstr "Retina 標誌"
+
+#: 404.php:19
+msgid "The page you were looking for could not be found. It might have been removed, renamed, or did not exist in the first place."
+msgstr "找不到符合條件的頁面。頁面可能已遭移除、重新命名或已不是原來的網址。"
+
+#: 404.php:17
+msgid "Page Not Found"
+msgstr "找不到符合條件的頁面"
+
+#. Author URI of the theme
+#: footer.php:32
+msgid "https://wordpress.org/"
+msgstr "https://tw.wordpress.org/"
+
+#. Author of the theme
+msgid "the WordPress team"
+msgstr "WordPress 團隊"
+
+#. Theme URI of the theme
+msgid "https://wordpress.org/themes/twentytwenty/"
+msgstr "https://tw.wordpress.org/themes/twentytwenty/"

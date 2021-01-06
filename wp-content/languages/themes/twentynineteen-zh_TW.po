@@ -1,0 +1,520 @@
+# Translation of Themes - Twenty Nineteen in Chinese (Taiwan)
+# This file is distributed under the same license as the Themes - Twenty Nineteen package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-12-10 08:23:11+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: zh_TW\n"
+"Project-Id-Version: Themes - Twenty Nineteen\n"
+
+#. Description of the theme
+msgid "Our 2019 default theme is designed to show off the power of the block editor. It features custom styles for all the default blocks, and is built so that what you see in the editor looks like what you'll see on your website. Twenty Nineteen is designed to be adaptable to a wide range of websites, whether you’re running a photo blog, launching a new business, or supporting a non-profit. Featuring ample whitespace and modern sans-serif headlines paired with classic serif body text, it's built to be beautiful on all screen sizes."
+msgstr "Twenty Nineteen 預設佈景主題旨在展示區塊編輯器的強大功能，它具備適用於全部預設區塊的自訂樣式，編輯器中所得到的所見即所得內容，會與網站前端呈現結果幾近一致。Twenty Nineteen 適用於各種類型的網站，無論是經營攝影部落格、開拓新業務或支援非盈利組織，都能有非常好的表現。足夠的留白及具備現代感的無襯線字型標題，搭配經典的襯線字型內容，在各式尺寸的螢幕上均相當美觀。"
+
+#. Theme Name of the theme
+#: inc/block-patterns.php:20
+msgid "Twenty Nineteen"
+msgstr "Twenty Nineteen"
+
+#: inc/block-patterns.php:195
+msgid "We help companies communicate with their customers."
+msgstr "我們協助公司與他們的客戶進行良好的溝通。"
+
+#: inc/block-patterns.php:195
+msgid "Spark interest on social media"
+msgstr "在社交媒體上引起人們的興趣"
+
+#: inc/block-patterns.php:192
+msgid "We help businesses grow."
+msgstr "透過我們的協助，讓貴單位業務成長。"
+
+#: inc/block-patterns.php:192
+msgid "Activate new customers"
+msgstr "開發新客戶"
+
+#: inc/block-patterns.php:189
+msgid "We help startups define (or refine) a clear brand identity."
+msgstr "我們協助新創公司訂立 (或重塑) 簡單明瞭的品牌識別。"
+
+#: inc/block-patterns.php:189
+msgid "Redefine brands"
+msgstr "重塑品牌"
+
+#: inc/block-patterns.php:179 inc/block-patterns.php:186
+msgid "What We Do"
+msgstr "執行項目"
+
+#: inc/block-patterns.php:167
+msgid "Oddly enough, Doug Watson also grew up working alongside his parents at a family-owned restaurant in Queens, NY. He &nbsp;worked on digital campaigns for Fortune 500 Companies before joining Eva Green Consulting."
+msgstr "巧合的是，華生道也是與他在高雄市旗津區經營家族餐廳的父母從小一起工作，在加入楊亦凡的顧問公司前，他曾任職財富 500 公司並從事數位行銷的工作。"
+
+#: inc/block-patterns.php:164
+msgid "Doug Watson"
+msgstr "華生道"
+
+#: inc/block-patterns.php:159
+msgid "Eva Young grew up working alongside her parents at their restaurant in Queens, NY. She opened Eva Young Consulting in 2014 to help small businesses like her parents’ restaurant adapt to the digital age."
+msgstr "楊亦凡從小與在台北市萬華區經營餐廳的父母一起工作，她在 2014 年開了一間顧問公司，專門協助像他父母的餐廳的中小企業在數位時代繼續成長。"
+
+#: inc/block-patterns.php:156
+msgid "Eva Young"
+msgstr "楊亦凡"
+
+#: inc/block-patterns.php:145 inc/block-patterns.php:152
+msgid "Team"
+msgstr "團隊"
+
+#: inc/block-patterns.php:131
+msgid "Content Strategy"
+msgstr "內容策略"
+
+#: inc/block-patterns.php:126
+msgid "Copywriting"
+msgstr "文案撰寫"
+
+#: inc/block-patterns.php:121
+msgid "Marketing"
+msgstr "行銷推廣"
+
+#: inc/block-patterns.php:114
+msgid "Social Media"
+msgstr "社交媒體"
+
+#: inc/block-patterns.php:109
+msgid "Mobile"
+msgstr "App 開發"
+
+#: inc/block-patterns.php:104
+msgid "Website Design"
+msgstr "網站設計"
+
+#: inc/block-patterns.php:103 inc/block-patterns.php:108
+#: inc/block-patterns.php:113 inc/block-patterns.php:120
+#: inc/block-patterns.php:125 inc/block-patterns.php:130
+#: inc/block-patterns.php:155 inc/block-patterns.php:163
+msgid "Gradient"
+msgstr "漸層"
+
+#: inc/block-patterns.php:92 inc/block-patterns.php:98
+msgid "Services"
+msgstr "服務項目"
+
+#: inc/block-patterns.php:80
+msgid "Contact Us"
+msgstr "聯絡我們"
+
+#: inc/block-patterns.php:74
+msgid "example@example.com"
+msgstr "example@example.com"
+
+#: inc/block-patterns.php:74
+msgid "(555) 555-5555"
+msgstr "(02) 6666-8888"
+
+#: inc/block-patterns.php:69
+msgid "New York, New York 10023"
+msgstr "信義路五段 7 號"
+
+#: inc/block-patterns.php:69
+msgid "20 Cooper Avenue"
+msgstr "11049 台北市信義區"
+
+#: inc/block-patterns.php:58 inc/block-patterns.php:64
+msgid "Get In Touch"
+msgstr "保持聯絡"
+
+#: inc/block-patterns.php:46
+msgid "Learn More"
+msgstr "進一步瞭解"
+
+#: inc/block-patterns.php:42
+msgid "Eva Young Consulting was founded in 2014 to meet the needs of small businesses in the San Francisco Bay Area. We help startups define a clear brand identity and digital strategy that will carry them through their financing rounds and scale as their business grows. Discover how we can boost your brand with a unique and powerful digital marketing strategy."
+msgstr "楊亦凡顧問公司成立於 2014 年，旨在滿足高雄港區中小企業的需求。我們協助新創公司確立明確的品牌形象及數位策略，藉以讓他們完成業務的融資輪次及規模增長。進一步瞭解我們如何透過獨特、強大的數位行銷策略提升品牌價值。"
+
+#: inc/block-patterns.php:39
+msgid "Advocating for Businesses and Entrepreneurs since 2014"
+msgstr "從 2014 年開始協助企業及創業家"
+
+#: inc/block-patterns.php:33
+msgid "About"
+msgstr "關於"
+
+#: classes/class-twentynineteen-walker-comment.php:98
+msgid "Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved."
+msgstr "你的留言正在等候審閱。目前顯示的是留言內容的預覽，留言核准後所有人都會看到這則留言。"
+
+#: functions.php:154
+msgid "Dark Blue"
+msgstr "深藍色"
+
+#: functions.php:149
+msgid "Blue"
+msgstr "藍色"
+
+#. translators: %s: Parent post link.
+#: single.php:31
+msgid "<span class=\"meta-nav\">Published in</span><span class=\"post-title\">%s</span>"
+msgstr "<span class=\"meta-nav\">上層內容:</span><span class=\"post-title\">%s</span>"
+
+#: image.php:87
+msgctxt "Parent post link"
+msgid "<span class=\"meta-nav\">Published in</span><br><span class=\"post-title\">%title</span>"
+msgstr "<span class=\"meta-nav\">上層內容:</span><br><span class=\"post-title\">%title</span>"
+
+#: template-parts/content/content.php:18
+#: template-parts/content/content-excerpt.php:18
+msgctxt "post"
+msgid "Featured"
+msgstr "精選內容"
+
+#. translators: %s: WordPress version.
+#: inc/back-compat.php:40 inc/back-compat.php:55 inc/back-compat.php:76
+msgid "Twenty Nineteen requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again."
+msgstr "Twenty Nineteen 最低需求為 WordPress 4.7，而這個網站執行的是 %s，請於網站完成升級後再試一次。"
+
+#: inc/template-functions.php:143
+msgid "Back"
+msgstr "返回"
+
+#: inc/template-functions.php:136
+msgid "More"
+msgstr "更多"
+
+#: inc/customizer.php:98
+msgid "Apply a filter to featured images using the primary color"
+msgstr "將主要色彩設定為精選圖片的色彩濾鏡"
+
+#: inc/customizer.php:78
+msgid "Apply a custom color for buttons, links, featured images, etc."
+msgstr "將自訂色彩套用至按鈕、連結及特色圖片等項目。"
+
+#: inc/customizer.php:56
+msgctxt "primary color"
+msgid "Custom"
+msgstr "自訂"
+
+#: inc/customizer.php:55
+msgctxt "primary color"
+msgid "Default"
+msgstr "預設"
+
+#: functions.php:169
+msgid "White"
+msgstr "白色"
+
+#: functions.php:164
+msgid "Light Gray"
+msgstr "淺灰色"
+
+#: functions.php:159
+msgid "Dark Gray"
+msgstr "深灰色"
+
+#: functions.php:137
+msgid "XL"
+msgstr "XL"
+
+#: functions.php:136
+msgid "Huge"
+msgstr "超大型"
+
+#: functions.php:131
+msgid "L"
+msgstr "L"
+
+#: functions.php:130
+msgid "Large"
+msgstr "大型"
+
+#: functions.php:125
+msgid "M"
+msgstr "M"
+
+#: functions.php:124
+msgid "Normal"
+msgstr "標準"
+
+#: functions.php:119
+msgid "S"
+msgstr "S"
+
+#: functions.php:118
+msgid "Small"
+msgstr "小型"
+
+#: functions.php:60 footer.php:37
+msgid "Footer Menu"
+msgstr "頁尾選單"
+
+#: image.php:70
+msgctxt "Used before full size attachment link."
+msgid "Full size"
+msgstr "完整尺寸"
+
+#: image.php:56
+msgid "Page"
+msgstr "頁次"
+
+#: functions.php:196
+msgid "Add widgets here to appear in your footer."
+msgstr "在這裡新增小工具便能顯示於網站頁尾。"
+
+#: functions.php:194 template-parts/footer/footer-widgets.php:12
+msgid "Footer"
+msgstr "頁尾"
+
+#: inc/customizer.php:53
+msgid "Primary Color"
+msgstr "主要色彩"
+
+#: template-parts/post/discussion-meta.php:18
+msgid "No comments"
+msgstr "尚無留言"
+
+#. translators: %d: Number of comments.
+#: template-parts/post/discussion-meta.php:16
+msgid "%d Comment"
+msgid_plural "%d Comments"
+msgstr[0] "%d 則留言"
+
+#: template-parts/post/author-bio.php:26
+msgid "View more posts"
+msgstr "檢視更多文章"
+
+#. translators: %s: Post author.
+#: template-parts/post/author-bio.php:17
+msgid "Published by %s"
+msgstr "作者: %s"
+
+#: template-parts/header/site-branding.php:33
+msgid "Top Menu"
+msgstr "頂端選單"
+
+#. translators: %s: Post title. Only visible to screen readers.
+#: template-parts/content/content.php:36
+#: template-parts/content/content-single.php:27
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "閱讀全文<span class=\"screen-reader-text\">〈%s〉</span>"
+
+#: image.php:52 template-parts/content/content-page.php:27
+#: template-parts/content/content.php:49
+#: template-parts/content/content-single.php:40
+msgid "Pages:"
+msgstr "頁次:"
+
+#: template-parts/content/content-none.php:46
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "找不到符合條件的內容。請使用搜尋功能，應會有所幫助。"
+
+#: template-parts/content/content-none.php:39
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "很抱歉，找不到符合搜尋條件的結果，請以不同的關鍵字重試。"
+
+#. translators: 1: Link to WP admin new post page.
+#: template-parts/content/content-none.php:26
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "準備發佈第一篇文章了嗎？請從<a href=\"%1$s\">這裡</a>開始。"
+
+#: template-parts/content/content-none.php:16
+msgid "Nothing Found"
+msgstr "找不到符合條件的結果"
+
+#: single.php:42
+msgid "Previous post:"
+msgstr "下一篇文章:"
+
+#: single.php:41
+msgid "Previous Post"
+msgstr "上一篇文章"
+
+#: single.php:39
+msgid "Next post:"
+msgstr "下一篇文章:"
+
+#: single.php:38
+msgid "Next Post"
+msgstr "下一篇文章"
+
+#: search.php:22
+msgid "Search results for: "
+msgstr "搜尋結果: "
+
+#: inc/template-tags.php:234
+msgid "Older posts"
+msgstr "較舊的文章"
+
+#: inc/template-tags.php:230
+msgid "Newer posts"
+msgstr "較新的文章"
+
+#: inc/template-tags.php:104
+msgid "Tags:"
+msgstr "標籤:"
+
+#: inc/template-tags.php:92
+msgid "Posted in"
+msgstr "分類:"
+
+#. translators: Used between list items, there is a space after the comma.
+#: inc/template-tags.php:86 inc/template-tags.php:98
+msgid ", "
+msgstr "、"
+
+#. translators: %s: Post title. Only visible to screen readers.
+#: inc/template-tags.php:63
+msgid "Leave a comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr "<span class=\"screen-reader-text\">在〈%s〉</span>發佈留言"
+
+#: inc/template-tags.php:46
+msgid "Posted by"
+msgstr "作者:"
+
+#: inc/template-functions.php:82
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "Y 年 n 月"
+
+#: inc/template-functions.php:80
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y 年"
+
+#: inc/template-functions.php:92
+msgid "Archives:"
+msgstr "彙整:"
+
+#. translators: %s: Taxonomy singular name.
+#: inc/template-functions.php:90
+msgid "%s Archives:"
+msgstr "「%s」彙整:"
+
+#: inc/template-functions.php:86
+msgid "Post Type Archives: "
+msgstr "內容類型彙整: "
+
+#: inc/template-functions.php:84
+msgid "Daily Archives: "
+msgstr "每日彙整: "
+
+#: inc/template-functions.php:82
+msgid "Monthly Archives: "
+msgstr "每月彙整: "
+
+#: inc/template-functions.php:80
+msgid "Yearly Archives: "
+msgstr "年份彙整: "
+
+#: inc/template-functions.php:78
+msgid "Author Archives: "
+msgstr "作者彙整: "
+
+#: inc/template-functions.php:76
+msgid "Tag Archives: "
+msgstr "標籤彙整: "
+
+#: inc/template-functions.php:74
+msgid "Category Archives: "
+msgstr "分類彙整: "
+
+#. translators: %s: Post title. Only visible to screen readers.
+#: template-parts/content/content-page.php:41
+#: template-parts/header/entry-header.php:32 inc/template-tags.php:120
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr "編輯<span class=\"screen-reader-text\">〈%s〉</span>"
+
+#: header.php:25
+msgid "Skip to content"
+msgstr "跳至主要內容"
+
+#: functions.php:61 template-parts/header/site-branding.php:46
+msgid "Social Links Menu"
+msgstr "社交網路服務連結選單"
+
+#: functions.php:59
+msgid "Primary"
+msgstr "主要"
+
+#. translators: %s: WordPress.
+#: footer.php:28
+msgid "Proudly powered by %s."
+msgstr "本站採用 %s 建置"
+
+#: comments.php:116
+msgid "Comments are closed."
+msgstr "留言功能已關閉。"
+
+#: comments.php:96
+msgid "Next"
+msgstr "下一篇"
+
+#: comments.php:95
+msgid "Previous"
+msgstr "上一篇"
+
+#: comments.php:92 comments.php:95 comments.php:96
+msgid "Comments"
+msgstr "留言"
+
+#. translators: 1: Number of comments, 2: Post title.
+#: comments.php:44
+msgctxt "comments title"
+msgid "%1$s reply on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s replies on &ldquo;%2$s&rdquo;"
+msgstr[0] "在〈%2$s〉中有 %1$s 則留言"
+
+#. translators: %s: Post title.
+#: comments.php:40
+msgctxt "comments title"
+msgid "One reply on &ldquo;%s&rdquo;"
+msgstr "在〈%s〉中有 1 則留言"
+
+#: comments.php:35 comments.php:105 comments.php:107
+msgid "Leave a comment"
+msgstr "發佈留言"
+
+#: comments.php:33
+msgid "Join the Conversation"
+msgstr "參與討論"
+
+#: classes/class-twentynineteen-walker-comment.php:96
+msgid "Your comment is awaiting moderation."
+msgstr "你的留言正在等候審閱。"
+
+#: classes/class-twentynineteen-walker-comment.php:89
+msgid "Edit"
+msgstr "編輯"
+
+#. translators: 1: Comment date, 2: Comment time.
+#: classes/class-twentynineteen-walker-comment.php:78
+msgid "%1$s at %2$s"
+msgstr "%1$s%2$s"
+
+#. translators: %s: Comment author link.
+#: classes/class-twentynineteen-walker-comment.php:59
+msgid "%s <span class=\"screen-reader-text says\">says:</span>"
+msgstr "%s<span class=\"screen-reader-text says\">表示:</span>"
+
+#: 404.php:24
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "在這裡找不到符合條件的項目，請使用搜尋功能進行查詢。"
+
+#: 404.php:20
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "很抱歉，找不到符合條件的頁面。"
+
+#. Theme URI of the theme
+msgid "https://wordpress.org/themes/twentynineteen/"
+msgstr "https://tw.wordpress.org/themes/twentynineteen/"
+
+#. Author of the theme
+msgid "the WordPress team"
+msgstr "WordPress 團隊"
+
+#. Author URI of the theme
+#: footer.php:25
+msgid "https://wordpress.org/"
+msgstr "https://tw.wordpress.org/"

@@ -1,0 +1,656 @@
+# Translation of Plugins - Google XML Sitemaps - Stable (latest release) in Chinese (Taiwan)
+# This file is distributed under the same license as the Plugins - Google XML Sitemaps - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-12-16 17:15:47+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: zh_TW\n"
+"Project-Id-Version: Plugins - Google XML Sitemaps - Stable (latest release)\n"
+
+#: sitemap.php:95
+msgid "Unfortunately this release of Google XML Sitemaps requires at least PHP %4$s. You are using PHP %2$s, which is out-dated and insecure. Please ask your web host to update your PHP installation or go to <a href=\"%1$s\">active plugins</a> and deactivate the Google XML Sitemaps plugin to hide this message. You can download an older version of this plugin from the <a href=\"%3$s\">plugin website</a>."
+msgstr "很抱歉，這個版本的 Google XML Sitemaps 外掛需要的 PHP 最低版本為 %4$s，而這個網站執行的是老舊且不安全的 PHP %2$s。請要求主機託管服務提供商更新主機的 PHP 執行環境，或前往 [<a href=\"%1$s\">已啟用</a>] 外掛頁面並停用 Google XML Sitemaps 外掛以隱藏這項訊息。網站管理員可以前往<a href=\"%3$s\" target=\"_blank\">外掛官方網站</a>下載較舊版本的外掛安裝套件。"
+
+#: sitemap.php:95
+msgid "Your PHP version is too old for XML Sitemaps."
+msgstr "Google XML Sitemaps 無法執行於過舊的 PHP 執行環境。"
+
+#: sitemap.php:85
+msgid "Unfortunately this release of Google XML Sitemaps requires at least WordPress %4$s. You are using Wordpress %2$s, which is out-dated and insecure. Please upgrade or go to <a href=\"%1$s\">active plugins</a> and deactivate the Google XML Sitemaps plugin to hide this message. You can download an older version of this plugin from the <a href=\"%3$s\">plugin website</a>."
+msgstr "很抱歉，這個版本的 Google XML Sitemaps 外掛需要的 WordPress 最低版本為 %4$s，而這個網站執行的是老舊且不安全的 WordPress %2$s。請更新 WordPress 核心程式，或前往 [<a href=\"%1$s\">已啟用</a>] 外掛頁面並停用 Google XML Sitemaps 外掛以隱藏這項訊息。網站管理員可以前往<a href=\"%3$s\" target=\"_blank\">外掛官方網站</a>下載較舊版本的外掛安裝套件。"
+
+#: sitemap.php:85
+msgid "Your WordPress version is too old for XML Sitemaps."
+msgstr "Google XML Sitemaps 無法執行於過舊的 WordPress 版本。"
+
+#: sitemap-ui.php:1269
+msgid "Reset options"
+msgstr "重設設定"
+
+#: sitemap-ui.php:1268
+msgid "Update options"
+msgstr "更新設定"
+
+#: sitemap-ui.php:1243
+msgid "Archives"
+msgstr "彙整頁面"
+
+#: sitemap-ui.php:1225
+msgid "Minimum post priority (Even if auto calculation is enabled)"
+msgstr "文章優先順序最小值 (即使 [優先順序自動計算] 已啟用，也一樣套用)"
+
+#: sitemap-ui.php:1219
+msgid "Posts (If auto calculation is disabled)"
+msgstr "文章 (使用 [停用優先順序自動計算] 功能便會套用這項設定)"
+
+#: sitemap-ui.php:1208
+msgid "Priorities"
+msgstr "優先順序"
+
+#: sitemap-ui.php:1200 sitemap-ui.php:1257
+msgid "Author pages"
+msgstr "作者彙整頁面"
+
+#: sitemap-ui.php:1193 sitemap-ui.php:1250
+msgid "Tag pages"
+msgstr "標籤彙整頁面"
+
+#: sitemap-ui.php:1186
+msgid "Older archives (Changes only if you edit an old post)"
+msgstr "較舊的彙整頁面 (僅在編輯舊文章後才會變更)"
+
+#: sitemap-ui.php:1180
+msgid "The current archive of this month (Should be the same like your homepage)"
+msgstr "當月彙整頁面 (應該與這個網站的首頁相同)"
+
+#: sitemap-ui.php:1174 sitemap-ui.php:1237
+msgid "Categories"
+msgstr "分類彙整頁面"
+
+#: sitemap-ui.php:1168 sitemap-ui.php:1231
+msgid "Static pages"
+msgstr "靜態頁面"
+
+#: sitemap-ui.php:1162
+msgid "Posts"
+msgstr "文章"
+
+#: sitemap-ui.php:1156 sitemap-ui.php:1213
+msgid "Homepage"
+msgstr "首頁"
+
+#: sitemap-ui.php:1150
+msgid "Please note that the value of this tag is considered a hint and not a command. Even though search engine crawlers consider this information when making decisions, they may crawl pages marked \"hourly\" less frequently than that, and they may crawl pages marked \"yearly\" more frequently than that. It is also likely that crawlers will periodically crawl pages marked \"never\" so that they can handle unexpected changes to those pages."
+msgstr "請注意，這個標籤的值僅為提示性質而不具強制性。即使搜尋引擎檢索器會將這個標籤的資訊納入考量，但它們可能會對標記為 [每小時] 的頁面以更低的檢索頻率進行檢索，而對標記為 [每年] 的頁面以更高的檢索頻率進行檢索。檢索器也會定期檢索標記為 [永不變更] 的頁面，以便處理這些頁面未預期的變更。"
+
+#: sitemap-ui.php:1146
+msgid "Change frequencies"
+msgstr "變更頻率"
+
+#: sitemap-ui.php:1140
+msgid "Child posts won't be excluded automatically!"
+msgstr "這項設定<strong>不會</strong>自動排除子文章。"
+
+#: sitemap-ui.php:1138
+msgid "List of IDs, separated by comma"
+msgstr "請輸入相關 ID，並以逗號分隔 ID"
+
+#: sitemap-ui.php:1138
+msgid "Exclude the following posts or pages:"
+msgstr "排除下列文章或頁面:"
+
+#: sitemap-ui.php:1136
+msgid "Exclude posts"
+msgstr "排除文章"
+
+#: sitemap-ui.php:1128
+msgid "Excluded categories"
+msgstr "排除分類"
+
+#: sitemap-ui.php:1126
+msgid "Excluded items"
+msgstr "排除的項目"
+
+#: sitemap-ui.php:1119
+msgid "This is highly recommended and helps the search engines to know when your content has changed. This option affects <i>all</i> sitemap entries."
+msgstr "強烈建議啟用這項設定，以便讓搜尋引擎瞭解這個網站的內容變更狀態。這項設定會影響<strong>全部</strong> SItemap 項目。"
+
+#: sitemap-ui.php:1117
+msgid "Include the last modification time."
+msgstr "包含最後修改時間"
+
+#: sitemap-ui.php:1112
+msgid "Further options"
+msgstr "進階設定"
+
+#: sitemap-ui.php:1100
+msgid "Include custom post type %s"
+msgstr "包含 [%s] 自訂內容類型"
+
+#: sitemap-ui.php:1089
+msgid "Custom post types"
+msgstr "自訂內容類型"
+
+#: sitemap-ui.php:1071
+msgid "Include taxonomy pages for %s"
+msgstr "包含 [%s] 的分類法彙整頁面"
+
+#: sitemap-ui.php:1060
+msgid "Custom taxonomies"
+msgstr "自訂分類法"
+
+#: sitemap-ui.php:1046
+msgid "Include tag pages"
+msgstr "包含標籤彙整頁面"
+
+#: sitemap-ui.php:1039
+msgid "Include author pages"
+msgstr "包含作者彙整頁面"
+
+#: sitemap-ui.php:1033
+msgid "Include archives"
+msgstr "包含彙整頁面"
+
+#: sitemap-ui.php:1027
+msgid "Include categories"
+msgstr "包含分類彙整頁面"
+
+#: sitemap-ui.php:1021
+msgid "Include static pages"
+msgstr "包含靜態頁面"
+
+#: sitemap-ui.php:1015
+msgid "Include posts"
+msgstr "包含文章"
+
+#: sitemap-ui.php:1009
+msgid "Include homepage"
+msgstr "包含首頁"
+
+#: sitemap-ui.php:1004
+msgid "WordPress standard content"
+msgstr "WordPress 標準內容"
+
+#: sitemap-ui.php:1003
+msgid "Sitemap Content"
+msgstr "Sitemap 內容"
+
+#: sitemap-ui.php:992
+msgid "All posts will have the same priority which is defined in &quot;Priorities&quot;"
+msgstr "全部文章均使用於 [優先順序] 中設定的相同優先順序設定值。"
+
+#: sitemap-ui.php:992
+msgid "Do not use automatic priority calculation"
+msgstr "停用優先順序自動計算"
+
+#: sitemap-ui.php:990
+msgid "Please select how the priority of each post should be calculated:"
+msgstr "請選取文章優先順序計算方式:"
+
+#: sitemap-ui.php:988
+msgid "Post Priority"
+msgstr "文章優先順序"
+
+#: sitemap-ui.php:982
+msgid "Add new page"
+msgstr "新增頁面"
+
+#: sitemap-ui.php:977
+msgid "No pages defined."
+msgstr "找不到附加的頁面。"
+
+#: sitemap-ui.php:972
+msgid "#"
+msgstr "#"
+
+#: sitemap-ui.php:970
+msgid "Change Frequency"
+msgstr "變更頻率"
+
+#: sitemap-ui.php:936
+msgid "Enter the date of the last change as YYYY-MM-DD (2005-12-31 for example) (optional)."
+msgstr "輸入附加頁面的最後變更時間，日期格式為 YYYY-MM-DD，例如 2019-06-16 (選填)。"
+
+#: sitemap-ui.php:935 sitemap-ui.php:971
+msgid "Last Changed"
+msgstr "最後變更時間"
+
+#: sitemap-ui.php:933
+msgid "Choose the priority of the page relative to the other pages. For example, your homepage might have a higher priority than your imprint."
+msgstr "選取附加頁面相對於其他頁面的優先順序。舉例來說，網站首頁的優先順序應該高於資訊說明頁面。"
+
+#: sitemap-ui.php:932 sitemap-ui.php:969
+msgid "Priority"
+msgstr "優先順序"
+
+#: sitemap-ui.php:930
+msgid "Enter the URL to the page. Examples: http://www.foo.com/index.html or www.foo.com/home "
+msgstr "輸入附加頁面的網址，例如 https://www.foo.com/index.html 或 www.foo.com/home。"
+
+#: sitemap-ui.php:929 sitemap-ui.php:968
+msgid "URL to the page"
+msgstr "頁面網址"
+
+#: sitemap-ui.php:927
+msgid "If your blog is in a subdirectory and you want to add pages which are NOT in the blog directory or beneath, you MUST place your sitemap file in the root directory (Look at the &quot;Location of your sitemap file&quot; section on this page)!"
+msgstr "如果這個網站架設於子目錄，而需要新增的頁面不在網站目錄或其子目錄中，網站管理員便<strong>必須將 Sitemap 檔案儲存於網站根目錄</strong>。請參閱這個頁面的〈這個網站的 Sitemap 位置〉以進一步瞭解。"
+
+#: sitemap-ui.php:926 sitemap-ui.php:1140 sitemap-ui.php:1149
+msgid "Note"
+msgstr "注意事項"
+
+#: sitemap-ui.php:924
+msgid "Here you can specify files or URLs which should be included in the sitemap, but do not belong to your Blog/WordPress.<br />For example, if your domain is www.foo.com and your blog is located on www.foo.com/blog you might want to include your homepage at www.foo.com"
+msgstr "網站管理員可以在這裡指定要納入 Sitemap、但不屬於這個網站/WordPress 的檔案或網址。<br />舉例來說，如果網域名稱為 www.foo.com，而網站的網址為 www.foo.com/site，網站管理員或許會想將首頁納入 www.foo.com。"
+
+#: sitemap-ui.php:921
+msgid "Additional pages"
+msgstr "附加的頁面"
+
+#: sitemap-ui.php:912
+msgid "Allow anonymous statistics (no personal information)"
+msgstr "允許傳送匿名統計資料 (不會包含個人資訊)"
+
+#: sitemap-ui.php:906
+msgid "(The required PHP XSL Module is not installed)"
+msgstr "(必要的 PHP XSL 模組並未安裝)"
+
+#: sitemap-ui.php:906
+msgid "Include sitemap in HTML format"
+msgstr "包含 HTML 格式的 Sitemap"
+
+#: sitemap-ui.php:901
+msgid "Use this if your blog is in a sub-directory, but you want the sitemap be located in the root. Requires .htaccess modification."
+msgstr "如果這個網站位於子目錄，但需要將 Sitemap 儲存於根目錄，請啟用這項設定。需要配合修改 <code>.htaccess</code> 檔案。"
+
+#: sitemap-ui.php:900
+msgid "Override the base URL of the sitemap:"
+msgstr "覆寫 Sitemap 的目錄起點網址:"
+
+#: sitemap-ui.php:897
+msgid "Use default"
+msgstr "使用預設值"
+
+#: sitemap-ui.php:897
+msgid "Full or relative URL to your .xsl file"
+msgstr "<code>.xsl</code> 檔案的完整網址或相對網址"
+
+#: sitemap-ui.php:896
+msgid "Include a XSLT stylesheet:"
+msgstr "包含 XSLT 樣式表:"
+
+#: sitemap-ui.php:892
+msgid "Disable this option if you get garbled content or encoding errors in your sitemap."
+msgstr "當網站的 Sitemap 中發生亂碼內容或編碼錯誤時，請停用這項設定。"
+
+#: sitemap-ui.php:890
+msgid "Try to automatically compress the sitemap if the requesting client supports it."
+msgstr "如果傳送要求的用戶端支援，則自動壓縮 Sitemap"
+
+#: sitemap-ui.php:885
+msgid "in seconds, e.g. \"60\" or \"0\" for unlimited"
+msgstr "範例: 60 (單位為秒)，或輸入 0 代表不設限"
+
+#: sitemap-ui.php:885
+msgid "Try to increase the execution time limit to:"
+msgstr "調升程式執行時間上限:"
+
+#: sitemap-ui.php:882
+msgid "e.g. \"4M\", \"16M\""
+msgstr "範例: 4M 或 16M"
+
+#: sitemap-ui.php:882
+msgid "Try to increase the memory limit to:"
+msgstr "調升可存取記憶體上限:"
+
+#: sitemap-ui.php:879
+msgid "Advanced options:"
+msgstr "進階設定:"
+
+#: sitemap-ui.php:875
+msgid "The virtual robots.txt generated by WordPress is used. A real robots.txt file must NOT exist in the blog directory!"
+msgstr "目前使用的是 WordPress 產生的虛擬 robots.txt 檔案。網站目錄中不會存在實際的 robots.txt 檔案。"
+
+#: sitemap-ui.php:871
+msgid "Add sitemap URL to the virtual robots.txt file."
+msgstr "將 Sitemap 網址新增至虛擬 robots.txt 檔案中"
+
+#: sitemap-ui.php:866
+msgid "No registration required, but you can join the <a href=\"%s\">Bing Webmaster Tools</a> to check crawling statistics."
+msgstr "不須註冊，但這個網站必須納入 <a href=\"%s\">Bing 網站管理員工具</a>管理以查看檢索統計資料。"
+
+#: sitemap-ui.php:865
+msgid "Notify Bing (formerly MSN Live Search) about updates of your Blog"
+msgstr "向 Bing (之前稱為 MSN Live Search) 通知這個網站的更新"
+
+#: sitemap-ui.php:861
+msgid "No registration required, but you can join the <a href=\"%s\">Google Webmaster Tools</a> to check crawling statistics."
+msgstr "不須註冊，但這個網站必須納入 <a href=\"%s\">Google Search Console</a>管理以查看檢索統計資料。"
+
+#: sitemap-ui.php:860
+msgid "Notify Google about updates of your Blog"
+msgstr "向 Google 通知這個網站的更新"
+
+#: sitemap-ui.php:856 sitemap-ui.php:879 sitemap-ui.php:901 sitemap-ui.php:913
+msgid "Learn more"
+msgstr "進一步瞭解"
+
+#: sitemap-ui.php:856
+msgid "Update notification:"
+msgstr "更新通知:"
+
+#: sitemap-ui.php:854
+msgid "Basic Options"
+msgstr "基本設定"
+
+#: sitemap-ui.php:838
+msgid "Since you are using Nginx as your web-server, please configure the following rewrite rules in case you get 404 Not Found errors for your sitemap:"
+msgstr "由於這個網站使用 Nginx 網頁伺服器，請使用以下重寫規則進行組態，以防這個網站的 Sitemap 出現 404 找不到錯誤。"
+
+#: sitemap-ui.php:837
+msgid "Webserver Configuration"
+msgstr "網頁伺服器組態"
+
+#: sitemap-ui.php:829
+msgid "If you like the plugin, please <a target=\"_blank\" href=\"%s\">rate it 5 stars</a> or <a href=\"%s\">donate</a> via PayPal! I'm supporting this plugin since over 9 years! Thanks a lot! :)"
+msgstr "如果這個外掛對網站有幫助，請<a target=\"_blank\" href=\"%s\">給予 5 星評分</a>或透過 PayPal <a target=\"_blank\" href=\"%s\">贊助</a>這項已超過 9 年的開發工作。非常感謝。"
+
+#: sitemap-ui.php:825
+msgid "If you encounter any problems with your sitemap you can use the <a href=\"%d\">debug function</a> to get more information."
+msgstr "如果發生任何與網站 Sitemap 相關的問題，請使用<a href=\"%d\">偵錯功能</a>以取得詳細資訊。"
+
+#: sitemap-ui.php:813
+msgid "There was a problem while notifying %name%. <a href=\"%s\" target=\"_blank\">View result</a>"
+msgstr "自動通知 %name% 時發生問題。<a href=\"%s\" target=\"_blank\">檢視結果</a>"
+
+#: sitemap-ui.php:810
+msgid "It took %time% seconds to notify %name%, maybe you want to disable this feature to reduce the building time."
+msgstr "通知 %name% 需要 %time% 秒，如有需要可以停用這項功能以減少建置時間。"
+
+#: sitemap-ui.php:807
+msgid "%s was <b>successfully notified</b> about changes."
+msgstr "這項變更<strong>已成功通知</strong> %s 搜尋引擎。"
+
+#: sitemap-ui.php:798
+msgid "Search engines haven't been notified yet. Write a post to let them know about your sitemap."
+msgstr "尚未通知搜尋引擎。請開始撰寫文章，讓搜尋引擎開始擷取這個網站的 Sitemap。"
+
+#: sitemap-ui.php:795
+msgid "The URL to your sitemap index file is: <a href=\"%s\">%s</a>."
+msgstr "這個網站的 Sitemap 索引檔案: <a href=\"%s\" target=\"_blank\">%s</a>"
+
+#: sitemap-ui.php:792
+msgid "There is still a sitemap.xml or sitemap.xml.gz file in your blog directory. Please delete them as no static files are used anymore or <a href=\"%s\">try to delete them automatically</a>."
+msgstr "這個網站的目錄中仍有 sitemap.xml 或 sitemap.xml.gz 檔案。由於不再使用靜態檔案，請刪除這些檔案或<a href=\"%s\">嘗試使用自動刪除</a>。"
+
+#: sitemap-ui.php:781
+msgid "Enable"
+msgstr "啟用"
+
+#: sitemap-ui.php:781
+msgid "Support Topics have been disabled. Enable them to see useful information regarding this plugin. No Ads or Spam!"
+msgstr "技術支援主題已停用。啟用這項功能便能隨時查看與這個外掛相關的實用資訊。啟用後不會顯示廣告，也不會顯示垃圾訊息。"
+
+#: sitemap-ui.php:778
+msgid "No support topics available or an error occurred while fetching them."
+msgstr "暫無技術支援主題或擷取資訊時發生錯誤。"
+
+#: sitemap-ui.php:760
+msgid "Disable"
+msgstr "停用"
+
+#: sitemap-ui.php:756
+msgid "Recent Support Topics / News"
+msgstr "最近的技術支援主題/新聞"
+
+#: sitemap-ui.php:749
+msgid "Result of the last ping, started on %date%."
+msgstr "最新自動通知結果 (開始時間: %date%)"
+
+#: sitemap-ui.php:745
+msgid "Search engines haven't been notified yet"
+msgstr "尚未通知搜尋引擎"
+
+#: sitemap-ui.php:725
+msgid "Thanks for your support!"
+msgstr "感謝各位對開發工作的支持！"
+
+#: sitemap-ui.php:722
+msgid "Hide this list"
+msgstr "隱藏這份清單"
+
+#: sitemap-ui.php:720
+msgid "List of the donors"
+msgstr "贊助者清單"
+
+#: sitemap-ui.php:717
+msgid "Recent Donations:"
+msgstr "近期贊助:"
+
+#: sitemap-ui.php:714
+msgid "My Sitemaps FAQ"
+msgstr "自有網站 Sitemap 常見問題集"
+
+#: sitemap-ui.php:713
+msgid "Official Sitemaps FAQ"
+msgstr "Sitemap 官方常見問題集"
+
+#: sitemap-ui.php:712
+msgid "Sitemaps Protocol"
+msgstr "Sitemap 通訊協定"
+
+#: sitemap-ui.php:710
+msgid "Webmaster Center Blog"
+msgstr "網站管理員工具官方網站"
+
+#: sitemap-ui.php:707
+msgid "Search Blog"
+msgstr "Yahoo Search 官方網站"
+
+#: sitemap-ui.php:705
+msgid "Webmaster Blog"
+msgstr "網站管理員工具官方網站"
+
+#: sitemap-ui.php:704 sitemap-ui.php:709
+msgid "Webmaster Tools"
+msgstr "網站管理員工具"
+
+#: sitemap-ui.php:703
+msgid "Sitemap Resources:"
+msgstr "Sitemap 相關資源:"
+
+#: sitemap-ui.php:700
+msgid "translator_url"
+msgstr "translator_url"
+
+#: sitemap-ui.php:700
+msgid "translator_name"
+msgstr "translator_name"
+
+#: sitemap-ui.php:699
+msgid "My Amazon Wish List"
+msgstr "我的 Amazon 願望清單"
+
+#: sitemap-ui.php:698
+msgid "Donate with PayPal"
+msgstr "使用 PayPal 贊助"
+
+#: sitemap-ui.php:696
+msgid "Report a Bug"
+msgstr "回報程式碼錯誤"
+
+#: sitemap-ui.php:695
+msgid "Support Forum"
+msgstr "技術支援論壇"
+
+#: sitemap-ui.php:694
+msgid "Notify List"
+msgstr "通知清單"
+
+#: sitemap-ui.php:693
+msgid "Help / FAQ"
+msgstr "線上說明/常見問題集"
+
+#: sitemap-ui.php:692
+msgid "Suggest a Feature"
+msgstr "提出功能建議"
+
+#: sitemap-ui.php:691
+msgid "Plugin Homepage"
+msgstr "外掛首頁"
+
+#: sitemap-ui.php:690
+msgid "About this Plugin:"
+msgstr "關於這個外掛:"
+
+#: sitemap-ui.php:675
+msgid "Your blog is currently blocking search engines! Visit the <a href=\"%s\">Reading Settings</a> to change this."
+msgstr "這個網站目前封鎖搜尋引擎進行檢索。請前往 [<a href=\"%s\">閱讀</a>] 設定頁面變更這項設定。"
+
+#: sitemap-ui.php:526
+msgid "Don't show this anymore"
+msgstr "不再顯示"
+
+#: sitemap-ui.php:526
+msgid "Thanks for using this plugin! You've installed this plugin some time ago. If it works and your are satisfied, why not <a href=\"%s\">rate it</a> and <a href=\"%s\">recommend it</a> to others? :-)"
+msgstr "感謝使用這個外掛。這個網站使用這個外掛已有一段時間，如果這個外掛對網站有所幫助，請為它<a href=\"%s\" target=\"_blank\">進行評分</a>，並將它<a href=\"%s\" target=\"_blank\">分享給其他使用者</a>。"
+
+#: sitemap-ui.php:519
+msgid "No thanks, please don't bug me anymore!"
+msgstr "不，謝謝，請別再提醒我！"
+
+#: sitemap-ui.php:519
+msgid "Sure, but I already did!"
+msgstr "已撰寫過外掛評分。"
+
+#: sitemap-ui.php:519
+msgid "Thanks for using this plugin! You've installed this plugin over a month ago. If it works and you are satisfied with the results, isn't it worth at least a few dollar? <a href=\"%s\">Donations</a> help me to continue support and development of this <i>free</i> software! <a href=\"%s\">Sure, no problem!</a>"
+msgstr "感謝使用這個外掛。這個網站使用這個外掛已有一段時間，如果這個外掛對網站有所幫助，便值得使用者進行贊助。<a href=\"%s\" target=\"_blank\">贊助</a>這個<strong>免費</strong>外掛的技術支援及開發工作。<a href=\"%s\" target=\"_blank\">好的，沒問題！</a>"
+
+#: sitemap-ui.php:513
+msgid "Hide this notice"
+msgstr "隱藏這項通知"
+
+#: sitemap-ui.php:513
+msgid "Thank you very much for your donation. You help me to continue support and development of this plugin and other free software!"
+msgstr "感謝提供贊助。這能協助我繼續支援及開發這個外掛及其他免費軟體。"
+
+#: sitemap-ui.php:470
+msgid "Ping was executed, please see below for the result."
+msgstr "已執行 Ping，請在下方查看結果。"
+
+#: sitemap-ui.php:453
+msgid "All done!"
+msgstr "全部完成！"
+
+#: sitemap-ui.php:431
+msgid "The plugin is notifying the selected search engines about your main sitemap and all sub-sitemaps. This might take a minute or two."
+msgstr "這個外掛正在通知搜尋引擎擷取這個網站的主要 Sitemap 及全部次一集 Sitemap。這項程序會需要一點時間。"
+
+#: sitemap-ui.php:430
+msgid "Notify Search Engines about all sitemaps"
+msgstr "通知搜尋引擎擷取全部 Sitemap"
+
+#: sitemap-ui.php:393
+msgid "The old files were successfully deleted."
+msgstr "舊檔案已成功刪除。"
+
+#: sitemap-ui.php:391
+msgid "The old files could NOT be deleted. Please use an FTP program and delete them by yourself."
+msgstr "舊檔案無法刪除。請使用 FTP 應用程式進行手動刪除。"
+
+#: sitemap-ui.php:381
+msgid "The default configuration was restored."
+msgstr "預設設定已還原。"
+
+#: sitemap-ui.php:373
+msgid "Error while saving pages"
+msgstr "儲存頁面時發生錯誤。"
+
+#: sitemap-ui.php:372
+msgid "Pages saved"
+msgstr "頁面已儲存。"
+
+#: sitemap-ui.php:369
+msgid "Error while saving options"
+msgstr "儲存設定時發生錯誤。"
+
+#: sitemap-ui.php:368
+msgid "Configuration updated"
+msgstr "設定已更新。"
+
+#: sitemap-ui.php:181 sitemap-ui.php:671
+msgid "XML Sitemap Generator for WordPress"
+msgstr "XML Sitemap Generator for WordPress"
+
+#: sitemap-loader.php:236
+msgid "Donate"
+msgstr "贊助"
+
+#: sitemap-loader.php:235
+msgid "Support"
+msgstr "技術支援"
+
+#: sitemap-loader.php:234
+msgid "FAQ"
+msgstr "常見問題集"
+
+#: sitemap-loader.php:233
+msgid "Settings"
+msgstr "設定"
+
+#: sitemap-loader.php:206
+msgid "XML-Sitemap"
+msgstr "XML Sitemap"
+
+#: sitemap-loader.php:206
+msgid "XML-Sitemap Generator"
+msgstr "XML Sitemap 產生器"
+
+#: sitemap-core.php:784
+msgid "Never"
+msgstr "永不變更"
+
+#: sitemap-core.php:783
+msgid "Yearly"
+msgstr "每年"
+
+#: sitemap-core.php:782
+msgid "Monthly"
+msgstr "每月"
+
+#: sitemap-core.php:781
+msgid "Weekly"
+msgstr "每週"
+
+#: sitemap-core.php:780
+msgid "Daily"
+msgstr "每日"
+
+#: sitemap-core.php:779
+msgid "Hourly"
+msgstr "每小時"
+
+#: sitemap-core.php:778
+msgid "Always"
+msgstr "持續變更"
+
+#: sitemap-core.php:618
+msgid "Uses the average comment count to calculate the priority"
+msgstr "使用文章內的留言數量平均值計算優先順序。"
+
+#: sitemap-core.php:608
+msgid "Comment Average"
+msgstr "留言數量平均值"
+
+#: sitemap-core.php:557
+msgid "Uses the number of comments of the post to calculate the priority"
+msgstr "使用文章內的留言數量計算優先順序。"
+
+#: sitemap-core.php:547
+msgid "Comment Count"
+msgstr "留言數量"

@@ -1,0 +1,162 @@
+# Translation of Plugins - Insert Headers and Footers - Stable (latest release) in Chinese (Taiwan)
+# This file is distributed under the same license as the Plugins - Insert Headers and Footers - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-02-28 14:26:05+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: zh_TW\n"
+"Project-Id-Version: Plugins - Insert Headers and Footers - Stable (latest release)\n"
+
+#. translators: %s: The `</body>` tag
+#: views/settings.php:57
+msgid "These scripts will be printed above the closing %s tag."
+msgstr "請輸入要插入 %s 結尾標籤前並執行的指令碼。"
+
+#. translators: %s: The `<head>` tag
+#: views/settings.php:45
+msgid "These scripts will be printed just below the opening %s tag."
+msgstr "請輸入要插入 %s 開頭標籤後並執行的指令碼。"
+
+#: views/settings.php:40
+msgid "Scripts in Body"
+msgstr "插入內容的指令碼"
+
+#. translators: %s: The `<head>` tag
+#: views/settings.php:33
+msgid "These scripts will be printed in the %s section."
+msgstr "請輸入要插入 %s 開頭標籤及結尾標籤中並執行的指令碼。"
+
+#: views/sidebar.php:96
+msgid "Get the best WordPress Coming Soon Page plugin"
+msgstr "最佳 WordPress「即將推出」頁面外掛"
+
+#: views/sidebar.php:95
+msgid "SeedProd"
+msgstr "SeedProd"
+
+#: views/sidebar.php:86
+msgid "Best WordPress Lead Generation Plugin"
+msgstr "最佳 WordPress 潛在客戶開發外掛"
+
+#: views/sidebar.php:85
+msgid "OptinMonster"
+msgstr "OptinMonster"
+
+#: views/sidebar.php:76
+msgid "Google Analytics Made Easy for WordPress"
+msgstr "讓 WordPress 網站與 Google Analytics 的整合變簡單"
+
+#: views/sidebar.php:75
+msgid "MonsterInsights"
+msgstr "MonsterInsights"
+
+#: views/sidebar.php:66
+msgid "Drag & Drop WordPress Form Builder"
+msgstr "WordPress 拖放式表單輔助設計工具"
+
+#: views/sidebar.php:65
+msgid "WPForms"
+msgstr "WPForms"
+
+#: views/sidebar.php:58
+msgid "Like this plugin? Check out our other WordPress plugins:"
+msgstr "如果這個外掛對網站有幫助，不妨參考我們開發的其他外掛:"
+
+#: views/sidebar.php:54
+msgid "Our WordPress Plugins"
+msgstr "我們的 WordPress 外掛"
+
+#: views/sidebar.php:43
+msgid "Boost Your WordPress SEO"
+msgstr "提升 WordPress 網站的 SEO"
+
+#: views/sidebar.php:38
+msgid "Improve WordPress Security"
+msgstr "改進 WordPress 安全性"
+
+#: views/sidebar.php:33
+msgid "Speed Up WordPress"
+msgstr "為 WordPress 網站提升速度"
+
+#: views/sidebar.php:27
+msgid "Some of our popular guides:"
+msgstr "熱門網站技巧指南:"
+
+#: views/sidebar.php:20
+msgid "WPBeginner blog"
+msgstr "WPBeginner 官方網站"
+
+#. translators: %s: Link to WPBeginner blog
+#: views/sidebar.php:17
+msgid "Want to take your site to the next level? Check out our daily free WordPress tutorials on %s."
+msgstr "想將這個網站提升到新的層次？請參考我們在 %s 提供的每日免費 WordPress 教學。"
+
+#: views/sidebar.php:9
+msgid "Improve Your Site"
+msgstr "網站改進資訊"
+
+#: views/settings.php:64
+msgid "Save"
+msgstr "儲存"
+
+#: views/settings.php:52
+msgid "Scripts in Footer"
+msgstr "插入頁尾的指令碼"
+
+#: views/settings.php:28
+msgid "Scripts in Header"
+msgstr "插入頁首的指令碼"
+
+#: views/settings.php:2 views/settings.php:23
+msgid "Settings"
+msgstr "設定"
+
+#: views/dashboard-notices.php:15
+msgid "to configure the plugin."
+msgstr "以設定外掛。"
+
+#: views/dashboard-notices.php:15
+msgid "Click here"
+msgstr "點擊這裡"
+
+#. translators: %s: Name of this plugin
+#: views/dashboard-notices.php:11
+msgid "Thank you for installing %1$s!"
+msgstr "感謝採用 %1$s！"
+
+#: ihaf.php:134
+msgid "Settings Saved."
+msgstr "設定已儲存。"
+
+#: ihaf.php:125
+msgid "Invalid nonce specified. Settings NOT saved."
+msgstr "指定的一次性密碼無效。設定未儲存。"
+
+#: ihaf.php:122
+msgid "nonce field is missing. Settings NOT saved."
+msgstr "缺少一次性密碼欄位。設定未儲存。"
+
+#: ihaf.php:113
+msgid "Sorry, you are not allowed to access this page."
+msgstr "很抱歉，目前的登入身分沒有存取這個頁面的權限。"
+
+#. Author of the plugin
+msgid "WPBeginner"
+msgstr "WPBeginner"
+
+#. Description of the plugin
+msgid "Allows you to insert code or text in the header or footer of your WordPress blog"
+msgstr "這個外掛能讓網站管理員在 WordPress 網站的頁首或頁尾插入程式碼。"
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "http://www.wpbeginner.com/"
+msgstr "https://www.wpbeginner.com/"
+
+#. Plugin Name of the plugin
+msgid "Insert Headers and Footers"
+msgstr "Insert Headers and Footers"

@@ -1,0 +1,343 @@
+# Translation of Themes - Twenty Fifteen in Chinese (Taiwan)
+# This file is distributed under the same license as the Themes - Twenty Fifteen package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-12-09 05:55:46+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: zh_TW\n"
+"Project-Id-Version: Themes - Twenty Fifteen\n"
+
+#. Description of the theme
+msgid "Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen's simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer."
+msgstr "Twentey Fifteen 是一個簡潔、聚焦於部落格，具備清晰易讀設計的預設佈景主題；Twenty Fifteen 簡單直覺的排版方式在各種尺寸的螢幕具備良好的易讀性，並適合呈現各種語言內容。這個佈景主題以行動裝置優先為設計概念，這代表使用者無論是使用智慧型手機、平板或個人電腦，網站內容都會居中顯示。"
+
+#. Theme Name of the theme
+msgid "Twenty Fifteen"
+msgstr "Twenty Fifteen"
+
+#: functions.php:246
+msgid "Light Blue"
+msgstr "淺藍色"
+
+#: functions.php:241
+msgid "Bright Blue"
+msgstr "亮藍色"
+
+#: functions.php:236
+msgid "Blue Gray"
+msgstr "藍灰色"
+
+#: functions.php:226
+msgid "Dark Purple"
+msgstr "深紫色"
+
+#: functions.php:221
+msgid "Light Pink"
+msgstr "淺粉紅色"
+
+#: functions.php:216
+msgid "Medium Pink"
+msgstr "桃紅色"
+
+#: functions.php:211
+msgid "Dark Brown"
+msgstr "深褐色"
+
+#: functions.php:201
+msgid "White"
+msgstr "白色"
+
+#: functions.php:196
+msgid "Light Gray"
+msgstr "淺灰色"
+
+#: functions.php:191
+msgid "Dark Gray"
+msgstr "深灰色"
+
+#. translators: %s: Post title.
+#: comments.php:31
+msgctxt "comments title"
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr "在〈%s〉中有 1 則留言"
+
+#. translators: %s: Post title.
+#: inc/template-tags.php:132
+msgid "Leave a comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr "<span class=\"screen-reader-text\">在〈%s〉</span>發佈留言"
+
+#: single.php:39
+msgid "Previous post:"
+msgstr "上一篇文章:"
+
+#: single.php:38
+msgid "Previous"
+msgstr "上一篇文章"
+
+#: single.php:36
+msgid "Next post:"
+msgstr "下一篇文章:"
+
+#: single.php:35
+msgid "Next"
+msgstr "下一篇文章"
+
+#. translators: %s: Search query.
+#: search.php:21
+msgid "Search Results for: %s"
+msgstr "「%s」的搜尋結果"
+
+#: inc/template-tags.php:122
+msgctxt "Used before full size attachment link."
+msgid "Full size"
+msgstr "完整尺寸"
+
+#: inc/template-tags.php:110
+msgctxt "Used before tag names."
+msgid "Tags"
+msgstr "標籤"
+
+#: inc/template-tags.php:101
+msgctxt "Used before category names."
+msgid "Categories"
+msgstr "分類"
+
+#: inc/template-tags.php:97 inc/template-tags.php:106
+msgctxt "Used between list items, there is a space after the comma."
+msgid ", "
+msgstr "、"
+
+#: inc/template-tags.php:91
+msgctxt "Used before post author name."
+msgid "Author"
+msgstr "作者"
+
+#: inc/template-tags.php:81
+msgctxt "Used before publish date."
+msgid "Posted on"
+msgstr "發佈日期:"
+
+#: inc/template-tags.php:58
+msgctxt "Used before post format."
+msgid "Format"
+msgstr "文章格式"
+
+#: inc/template-tags.php:51
+msgid "Featured"
+msgstr "精選內容"
+
+#: inc/template-tags.php:31
+msgid "Newer Comments"
+msgstr "較新的留言"
+
+#: inc/template-tags.php:26
+msgid "Older Comments"
+msgstr "較舊的留言"
+
+#: inc/template-tags.php:23
+msgid "Comment navigation"
+msgstr "留言導覽"
+
+#: inc/customizer.php:239
+msgid "Blue"
+msgstr "藍色"
+
+#: functions.php:231 inc/customizer.php:228
+msgid "Purple"
+msgstr "紫色"
+
+#: inc/customizer.php:217
+msgid "Pink"
+msgstr "粉紅色"
+
+#: functions.php:206 inc/customizer.php:206
+msgid "Yellow"
+msgstr "黃色"
+
+#: inc/customizer.php:195
+msgid "Dark"
+msgstr "深色"
+
+#: inc/customizer.php:184
+msgid "Default"
+msgstr "預設"
+
+#: inc/customizer.php:103
+msgid "Header and Sidebar Background Color"
+msgstr "頁首及資訊欄背景色彩"
+
+#: inc/customizer.php:79 inc/customizer.php:104 inc/customizer.php:111
+msgid "Applied to the header on small screens and the sidebar on wide screens."
+msgstr "適用於顯示於小螢幕的頁首及寬螢幕的資訊欄。"
+
+#: inc/customizer.php:78
+msgid "Header and Sidebar Text Color"
+msgstr "頁首及資訊欄文字色彩"
+
+#: inc/customizer.php:55
+msgid "Base Color Scheme"
+msgstr "基本色彩配置"
+
+#. translators: %s: WordPress version.
+#: inc/back-compat.php:38 inc/back-compat.php:50 inc/back-compat.php:67
+msgid "Twenty Fifteen requires at least WordPress version 4.1. You are running version %s. Please upgrade and try again."
+msgstr "Twenty Fifteen 最低需求為 WordPress 4.1，而這個網站執行的是 %s，請於網站完成升級後再試一次。"
+
+#: image.php:88
+msgctxt "Parent post link"
+msgid "<span class=\"meta-nav\">Published in</span><span class=\"post-title\">%title</span>"
+msgstr "<span class=\"meta-nav\">上層內容:</span><span class=\"post-title\">%title</span>"
+
+#: image.php:25
+msgid "Next Image"
+msgstr "下一張圖片"
+
+#: image.php:25
+msgid "Previous Image"
+msgstr "上一張圖片"
+
+#: header.php:50
+msgid "Menu and widgets"
+msgstr "選單及小工具"
+
+#: header.php:27
+msgid "Skip to content"
+msgstr "跳至主要內容"
+
+#: functions.php:403
+msgid "collapse child menu"
+msgstr "收合子選單"
+
+#: functions.php:402
+msgid "expand child menu"
+msgstr "展開子選單"
+
+#: functions.php:322
+msgctxt "Add new subset (greek, cyrillic, devanagari, vietnamese)"
+msgid "no-subset"
+msgstr "no-subset"
+
+#: functions.php:314
+msgctxt "Inconsolata font: on or off"
+msgid "on"
+msgstr "on"
+
+#: functions.php:306
+msgctxt "Noto Serif font: on or off"
+msgid "on"
+msgstr "on"
+
+#: functions.php:298
+msgctxt "Noto Sans font: on or off"
+msgid "on"
+msgstr "on"
+
+#: functions.php:271
+msgid "Add widgets here to appear in your sidebar."
+msgstr "在這裡新增小工具便能顯示於資訊欄。"
+
+#: functions.php:269
+msgid "Widget Area"
+msgstr "小工具區域"
+
+#: functions.php:87
+msgid "Social Links Menu"
+msgstr "社交網路服務連結選單"
+
+#: functions.php:86
+msgid "Primary Menu"
+msgstr "主要選單"
+
+#. translators: %s: WordPress
+#: footer.php:33
+msgid "Proudly powered by %s"
+msgstr "本站採用 %s 建置"
+
+#: content-none.php:36
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "找不到符合條件的內容。請使用搜尋功能，應會有所幫助。"
+
+#: content-none.php:31
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "很抱歉，找不到符合搜尋條件的結果，請以不同的關鍵字重試。"
+
+#. translators: %s: Post editor URL.
+#: content-none.php:25
+msgid "Ready to publish your first post? <a href=\"%s\">Get started here</a>."
+msgstr "準備發佈第一篇文章了嗎？請從<a href=\"%s\">這裡</a>開始。"
+
+#: content-none.php:15
+msgid "Nothing Found"
+msgstr "找不到符合條件的結果"
+
+#: content-link.php:60 content.php:61 image.php:74 content-search.php:28
+#: content-search.php:33 content-page.php:37
+msgid "Edit"
+msgstr "編輯"
+
+#: content-link.php:39 content.php:41 image.php:61 content-page.php:26
+msgid "Pages:"
+msgstr "頁次:"
+
+#. translators: %s: Post title.
+#: content-link.php:32 content.php:34 inc/template-tags.php:252
+msgid "Continue reading %s"
+msgstr "閱讀全文 %s"
+
+#: comments.php:71
+msgid "Comments are closed."
+msgstr "留言功能已關閉。"
+
+#. translators: 1: Number of comments, 2: Post title.
+#: comments.php:35
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "在〈%2$s〉中有 %1$s 則留言"
+
+#. translators: %s: Author display name.
+#: author-bio.php:36
+msgid "View all posts by %s"
+msgstr "檢視「%s」的全部文章"
+
+#: author-bio.php:12
+msgid "Published by"
+msgstr "作者:"
+
+#: content-link.php:43 index.php:50 content.php:45 archive.php:53 search.php:48
+#: image.php:65 content-page.php:30
+msgid "Page"
+msgstr "頁次"
+
+#: index.php:49 archive.php:52 search.php:47
+msgid "Next page"
+msgstr "下一頁"
+
+#: index.php:48 archive.php:51 search.php:46
+msgid "Previous page"
+msgstr "上一頁"
+
+#: 404.php:21
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "在這裡找不到符合條件的項目，請使用搜尋功能進行查詢。"
+
+#: 404.php:17
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "很抱歉，找不到符合條件的頁面。"
+
+#. Author of the theme
+msgid "the WordPress team"
+msgstr "WordPress 團隊"
+
+#. Theme URI of the theme
+msgid "https://wordpress.org/themes/twentyfifteen/"
+msgstr "https://tw.wordpress.org/themes/twentyfifteen/"
+
+#. Author URI of the theme
+#: footer.php:30
+msgid "https://wordpress.org/"
+msgstr "https://tw.wordpress.org/"

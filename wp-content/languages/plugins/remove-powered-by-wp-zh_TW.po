@@ -1,0 +1,205 @@
+# Translation of Plugins - Remove &quot;Powered by WordPress&quot; - Stable (latest release) in Chinese (Taiwan)
+# This file is distributed under the same license as the Plugins - Remove &quot;Powered by WordPress&quot; - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-12-13 09:56:12+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: zh_TW\n"
+"Project-Id-Version: Plugins - Remove &quot;Powered by WordPress&quot; - Stable (latest release)\n"
+
+#: includes/class-rpbw-common.php:397
+msgid "Aleady Contributed!"
+msgstr "曾經贊助。"
+
+#: includes/class-rpbw-common.php:397
+msgid "Contribute to %s"
+msgstr "贊助 %s"
+
+#: includes/class-rpbw-common.php:396
+msgid "Funding plugins like this one with small financial contributions is essential to pay for the developers to continue to do what they do. Please take a moment to give a small amount ..."
+msgstr "小額贊助對於支持外掛開發者的開發工作實屬不可或缺，請花少許時間完成贊助流程..."
+
+#: includes/class-rpbw-common.php:258
+msgid "Contribute"
+msgstr "贊助"
+
+#: includes/class-rpbw-common.php:358
+msgid "Trial %s Premium for 7 days"
+msgstr "啟用 %s Premium 7 天免費試用版"
+
+#: includes/class-rpbw-common.php:358
+msgid "Try %s Premium"
+msgstr "試用 %s Premium"
+
+#: includes/class-rpbw-common.php:346
+msgid "Upgrade now to %s Premium to enable more options and features and contribute to the further development of this plugin."
+msgstr "立即升級至 %s Premium 以啟用更多選項及功能，同時也是對外掛開發的贊助及支持。"
+
+#: includes/class-rpbw-common.php:337 includes/class-rpbw-common.php:390
+msgid "Thank you for using %s plugin"
+msgstr "感謝採用 %s 外掛"
+
+#: includes/class-rpbw-common.php:313
+msgid "Download %s Premium"
+msgstr "下載 %s Premium"
+
+#: includes/class-rpbw-common.php:268
+msgid "Trial %s Premium"
+msgstr "試用 %s Premium"
+
+#: includes/class-rpbw-common.php:254
+msgid "Buy %s Premium"
+msgstr "購買 %s Premium"
+
+#: includes/class-rpbw-common.php:68
+msgid " or <a href=\"%s\" title=\"Download Free Trial\">trial it for 7 days</a>"
+msgstr "或<a href=\"%s\" title=\"下載免費試用版\">試用 7 天免費試用版</a>"
+
+#: includes/class-rpbw-common.php:62 includes/class-rpbw-common.php:258
+#: includes/class-rpbw-common.php:365
+msgid "Upgrade now to %s Premium"
+msgstr "立即升級至 %s Premium"
+
+#. Plugin URI of the plugin
+msgid "https://webd.uk/product/remove-powered-by-wp-donation/"
+msgstr "https://webd.uk/product/remove-powered-by-wp-donation/"
+
+#: remove-powered-by-wp.php:103
+msgid "<a href=\"%s\" class=\"button\">Install Options for %s Plugin</a>"
+msgstr "<a href=\"%s\" class=\"button\">安裝 Options for %s 外掛</a>"
+
+#: remove-powered-by-wp.php:97
+msgid "Would you like even more options and features for your theme %s?"
+msgstr "是否需要目前使用的 %s 佈景主題提供更多選項及功能？"
+
+#: remove-powered-by-wp.php:96
+msgid "More Theme Options"
+msgstr "更多佈景主題選項"
+
+#: includes/class-rpbw-common.php:418
+msgid "Use coupon code DONATE for 50% discount 🙂"
+msgstr "使用優惠代碼 DONATE 以獲得 5 折折扣 🙂"
+
+#: includes/class-rpbw-common.php:403
+msgid "Thank you!"
+msgstr "感謝採用！"
+
+#: includes/class-rpbw-common.php:342
+msgid "Would you like to try even more features? Download your 7 day free trial now!"
+msgstr "想試用更多功能？立即下載 7 天免費試用版！"
+
+#: includes/class-rpbw-common.php:311
+msgid "In order to use the premium features, you need to install the premium version of the plugin ..."
+msgstr "如需使用這個外掛的付費版功能，必須安裝外掛的付費版擴充功能..."
+
+#: includes/class-rpbw-common.php:274
+msgid "Purchase Confirmed"
+msgstr "購買項目已確認"
+
+#: includes/class-rpbw-common.php:268
+msgid "Download Trial"
+msgstr "下載試用版"
+
+#: includes/class-rpbw-common.php:264
+msgid "Activate Purchase"
+msgstr "啟用購買項目"
+
+#: includes/class-rpbw-common.php:258
+msgid "Upgrade"
+msgstr "升級"
+
+#: includes/class-rpbw-common.php:254
+msgid "Buy Now"
+msgstr "立即購買"
+
+#: includes/class-rpbw-common.php:132
+msgid " to use this option."
+msgstr "以使用這項功能。"
+
+#: includes/class-rpbw-common.php:106
+msgid "<strong>To reset this section of options to default settings</strong> without affecting other sections in the customizer, install <a href=\"%s\" title=\"Reset Customizer\">Reset Customizer</a>."
+msgstr "<strong>如需將這個區段的選項重設回預設值</strong>且不影響外觀自訂器的其他區段，請安裝 <a href=\"%s\" title=\"Reset Customizer\">Reset Customizer</a>。"
+
+#: includes/class-rpbw-common.php:92
+msgid "To keep using premium options"
+msgstr "如需繼續使用付費版功能，"
+
+#: includes/class-rpbw-common.php:88
+msgid "For even more options"
+msgstr "如需更多功能，"
+
+#: includes/class-rpbw-common.php:80
+msgid "If you have any requests for new features, please <a href=\"%s\" title=\"Support Forum\">let us know in the support forum</a>."
+msgstr "如果有任何新功能需求，請前往<a href=\"%s\" title=\"技術支援論壇\" target=\"_blank\">技術支援論壇</a>提出。"
+
+#. Author of the plugin
+msgid "Webd Ltd"
+msgstr "Webd Ltd"
+
+#: includes/class-rpbw-common.php:402
+msgid "Have you really? Press \"Cancel\" for a coupon code 🙂"
+msgstr "是否確定？點擊 [取消] 以獲得優惠代碼 🙂"
+
+#: remove-powered-by-wp.php:101 remove-powered-by-wp.php:443
+msgid "Options for "
+msgstr "Options for "
+
+#: remove-powered-by-wp.php:437
+msgid "You are using %s theme so you should try %s plugin which has loads more options and features!"
+msgstr "這個網站目前使用的佈景主題為 %s，可以採用可為這個佈景主題加入更多設定及功能的 %s 。"
+
+#: remove-powered-by-wp.php:135
+msgid "Removes the \"Powered by WordPress\" text displayed in the website footer."
+msgstr "移除顯示於網站頁尾的「本站採用 WordPress 建置」。"
+
+#: remove-powered-by-wp.php:131
+msgid "Removes the \"Proudly powered by WordPress\" text displayed in the website footer."
+msgstr "移除顯示於網站頁尾的「本站採用 WordPress 建置」。"
+
+#. Description of the plugin
+msgid "Removes the Wordpress credit on the default Wordpress theme and inserts a widget area"
+msgstr "移除 WordPress 預設佈景主題頁尾的「本站採用 WordPress 建置」字樣，並插入一個小工具區域。"
+
+#: remove-powered-by-wp.php:485
+msgid "This plugin requires one of the default Wordpress themes to be active or live previewed in order to function. Your theme \"%s\" is not compatible. Please install and activate or live preview one of these themes (or a child theme thereof):"
+msgstr "由於需要配合功能需求，這個外掛需要其中一個 WordPress 預設佈景主題才能啟用或進行即時預覽，而目前啟用的佈景主題 %s 與這個外掛並不相容。請安裝並啟用其中一個佈景主題或其子佈景主題:"
+
+#: remove-powered-by-wp.php:481
+msgid "Remove \"Powered by Wordpress\" Plugin Error"
+msgstr "Remove \"Powered by WordPress\" 外掛發生錯誤"
+
+#: includes/class-rpbw-common.php:248
+msgid "Settings"
+msgstr "設定"
+
+#: remove-powered-by-wp.php:351
+msgid "Add widgets here to appear in your footer site info."
+msgstr "在這裡新增小工具以顯示於 [網站資訊] 小工具區域。"
+
+#: remove-powered-by-wp.php:349
+msgid "Site Info"
+msgstr "網站資訊"
+
+#: remove-powered-by-wp.php:139
+msgid "Removes the \"Proudly powered by WordPress\" text displayed in the website footer and replaces with the content of the \"Site Info\" widget area."
+msgstr "移除顯示於網站頁尾的「本站採用 WordPress 建置」，並取代為 [網站資訊] 小工具區域。"
+
+#: remove-powered-by-wp.php:144
+msgid "Remove Powered by WordPress"
+msgstr "移除「本站採用 WordPress 建置」"
+
+#: remove-powered-by-wp.php:116
+msgid "Theme Options"
+msgstr "佈景主題選項"
+
+#. Author URI of the plugin
+msgid "https://webd.uk"
+msgstr "https://webd.uk"
+
+#. Plugin Name of the plugin
+msgid "Remove \"Powered by Wordpress\""
+msgstr "Remove \"Powered by WordPress\""
