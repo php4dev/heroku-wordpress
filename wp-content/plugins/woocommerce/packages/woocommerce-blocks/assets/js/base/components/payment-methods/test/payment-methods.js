@@ -26,18 +26,15 @@ jest.mock( '../saved-payment-method-options', () => ( { onChange } ) => (
 
 const registerMockPaymentMethods = () => {
 	[ 'cheque' ].forEach( ( name ) => {
-		registerPaymentMethod(
-			( Config ) =>
-				new Config( {
-					name,
-					label: name,
-					content: <div>A payment method</div>,
-					edit: <div>A payment method</div>,
-					icons: null,
-					canMakePayment: () => true,
-					ariaLabel: name,
-				} )
-		);
+		registerPaymentMethod( {
+			name,
+			label: name,
+			content: <div>A payment method</div>,
+			edit: <div>A payment method</div>,
+			icons: null,
+			canMakePayment: () => true,
+			ariaLabel: name,
+		} );
 	} );
 };
 
@@ -56,10 +53,12 @@ describe( 'PaymentMethods', () => {
 		);
 
 		await waitFor( () => {
-			const noPaymentMethods = screen.queryByText(
+			const noPaymentMethods = screen.queryAllByText(
 				/no payment methods available/
 			);
-			expect( noPaymentMethods ).not.toBeNull();
+			// We might get more than one match because the `speak()` function
+			// creates an extra `div` with the notice contents used for a11y.
+			expect( noPaymentMethods.length ).toBeGreaterThanOrEqual( 1 );
 		} );
 	} );
 

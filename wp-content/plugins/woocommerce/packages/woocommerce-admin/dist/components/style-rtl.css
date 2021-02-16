@@ -119,80 +119,6 @@ body.admin-color-sunrise {
 /**
  * Internal Dependencies
  */
-.woocommerce-accordion-badge {
-  background-color: #f0f0f0;
-  border-radius: 20px;
-  display: inline-block;
-  text-align: center;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 27px;
-  align-items: center;
-  width: 32px;
-  height: 28px;
-  margin-right: 16px; }
-
-.woocommerce-accordion-card.is-panel-opened:not(:first-child) {
-  margin-top: 20px; }
-
-.woocommerce-accordion-card.is-panel-opened:not(:last-child) {
-  margin-bottom: 20px; }
-
-@keyframes slide-in-left {
-  0% {
-    transform: translateX(-100%); }
-  100% {
-    transform: translateX(0); } }
-
-@keyframes slide-out-left {
-  0% {
-    transform: translateX(100%); }
-  100% {
-    transform: translateX(200%); } }
-
-@keyframes slide-in-right {
-  0% {
-    transform: translateX(100%); }
-  100% {
-    transform: translateX(0); } }
-
-@keyframes slide-out-right {
-  0% {
-    transform: translateX(100%); }
-  100% {
-    transform: translateX(0%); } }
-
-/**
-The CSSTransition element creates a containing div without a class
- */
-.woocommerce-slide-animation > div {
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  display: flex; }
-
-.woocommerce-slide-animation.animate-left .slide-enter-active {
-  animation: slide-in-left;
-  animation-duration: 200ms; }
-
-.woocommerce-slide-animation.animate-left .slide-exit-active {
-  animation: slide-out-left;
-  animation-duration: 200ms; }
-
-.woocommerce-slide-animation.animate-right .slide-enter-active {
-  animation: slide-in-right;
-  animation-duration: 200ms; }
-
-.woocommerce-slide-animation.animate-right .slide-exit-active {
-  animation: slide-out-right;
-  animation-duration: 200ms; }
-
-@media screen and (prefers-reduced-motion: reduce) {
-  .woocommerce-slide-animation .slide-enter-active,
-  .woocommerce-slide-animation .slide-exit-active {
-    animation: none !important; } }
-
 .woocommerce-calendar {
   width: 100%;
   background-color: #f0f0f0;
@@ -440,7 +366,7 @@ The CSSTransition element creates a containing div without a class
   margin-top: -16px;
   margin-bottom: 24px;
   background: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #e2e4e7;
   border-top: 0; }
   @media (max-width: 782px) {
     .woocommerce-chart {
@@ -452,7 +378,7 @@ The CSSTransition element creates a containing div without a class
       width: auto; } }
   .woocommerce-chart .woocommerce-chart__header {
     min-height: 50px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #e2e4e7;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -496,7 +422,7 @@ The CSSTransition element creates a containing div without a class
 
 .woocommerce-chart__interval-select {
   align-items: start;
-  border-left: 1px solid #ccc;
+  border-left: 1px solid #e2e4e7;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -531,7 +457,7 @@ The CSSTransition element creates a containing div without a class
 .woocommerce-chart__type-button {
   background: transparent !important; }
   .woocommerce-chart__type-button.components-button {
-    color: #ccc;
+    color: #e2e4e7;
     display: inline-flex;
     padding: 8px; }
     .woocommerce-chart__type-button.components-button.woocommerce-chart__type-button-selected {
@@ -841,15 +767,12 @@ The CSSTransition element creates a containing div without a class
     position: absolute;
     left: 14px;
     width: 32px;
-    height: 48px;
-    transition: transform ease 0.2s; }
-    @media screen and (prefers-reduced-motion: reduce) {
-      .woocommerce-page .woocommerce-dropdown-button::after {
-        transition: none; } }
+    height: 48px; }
   .woocommerce-page .woocommerce-dropdown-button.is-open::after {
     transform: translateX(-12px) translateY(2px) rotate(-180deg); }
   .woocommerce-page .woocommerce-dropdown-button:hover, .woocommerce-page .woocommerce-dropdown-button:active, .woocommerce-page .woocommerce-dropdown-button.is-open {
-    background-color: #f0f0f0; }
+    background-color: #f0f0f0;
+    border-color: #757575; }
   .woocommerce-page .woocommerce-dropdown-button.is-multi-line .woocommerce-dropdown-button__labels {
     flex-direction: column; }
   .woocommerce-page .woocommerce-dropdown-button:not(:focus):not(.is-open) {
@@ -939,15 +862,16 @@ The CSSTransition element creates a containing div without a class
 
 .woocommerce-filters-advanced {
   margin: 24px 0; }
-  .woocommerce-filters-advanced .woocommerce-card__header {
-    padding: 8px 16px; }
-  .woocommerce-filters-advanced .woocommerce-card__body {
-    padding: 0; }
+  .woocommerce-filters-advanced .components-card__body {
+    background-color: #f0f0f0; }
+    .woocommerce-filters-advanced .components-card__body.is-size-small:hover,
+    .woocommerce-filters-advanced .components-card__body ul li:hover {
+      background-color: #e0e0e0; }
   .woocommerce-filters-advanced .components-select-control__input {
     height: 38px;
     padding: 0 8px 0 0;
     margin: 0; }
-  .woocommerce-filters-advanced .components-base-control__field {
+  .woocommerce-filters-advanced .components-card__header .components-base-control__field {
     margin-bottom: 0; }
   @media (max-width: 782px) {
     .woocommerce-filters-advanced {
@@ -972,7 +896,6 @@ The CSSTransition element creates a containing div without a class
   display: grid;
   -ms-grid-columns: 1fr 40px;
   grid-template-columns: 1fr 40px;
-  background-color: #f0f0f0;
   border-bottom: 1px solid #ccc; }
   .woocommerce-filters-advanced__list-item:hover {
     background-color: #e0e0e0; }
@@ -1017,14 +940,8 @@ The CSSTransition element creates a containing div without a class
       padding: 8px 0 0 8px; } }
 
 .woocommerce-filters-advanced__add-filter {
-  padding: 12px;
   margin: 0;
-  color: #7f54b3;
-  display: block;
-  background-color: #f0f0f0;
-  border-bottom: 1px solid #ccc; }
-  .woocommerce-filters-advanced__add-filter:hover {
-    background-color: #e0e0e0; }
+  display: block; }
   .woocommerce-filters-advanced__add-filter div div {
     display: inline-block; }
   .woocommerce-filters-advanced__add-filter .components-popover:not(.is-mobile) .components-popover__content {
@@ -1103,18 +1020,9 @@ The CSSTransition element creates a containing div without a class
   .woocommerce-filters-advanced__add-button svg {
     fill: currentColor;
     margin: 0 0 0 6px; }
-  .woocommerce-filters-advanced__add-button.components-icon-button:not(:disabled):not([aria-disabled='true']):not(.is-default):hover {
-    color: #af7dd1; }
-  .woocommerce-filters-advanced__add-button:not(:disabled):not([aria-disabled='true']):focus {
-    color: #7f54b3;
-    background-color: transparent; }
 
-.woocommerce-filters-advanced__controls {
-  padding: 8px 16px;
-  display: flex;
-  align-items: center; }
-  .woocommerce-filters-advanced__controls .components-button {
-    margin-left: 16px; }
+.woocommerce-filters-advanced__controls .components-button {
+  margin-left: 16px; }
 
 .woocommerce-filters-advanced__add-dropdown {
   padding: 8px 0; }
@@ -1163,6 +1071,9 @@ The CSSTransition element creates a containing div without a class
 .woocommerce-filters-date__content.is-mobile .components-tab-panel__tab-content {
   height: calc(100% - 46px);
   overflow: auto; }
+
+.woocommerce-filters-date__content.components-dropdown__content .components-popover__content > div {
+  padding: 0; }
 
 .woocommerce-filters-date__tabs {
   height: calc(100% - 42px);
@@ -1302,6 +1213,12 @@ The CSSTransition element creates a containing div without a class
     .woocommerce-filters__basic-filters {
       margin-bottom: 16px; } }
 
+.woocommerce-filters__advanced-filters .components-card__body {
+  background-color: #f0f0f0; }
+
+.woocommerce-filters__advanced-filters .components-card__footer .components-button {
+  margin-left: 16px; }
+
 .woocommerce-filters-filter {
   width: 25%;
   padding: 0 12px;
@@ -1347,21 +1264,6 @@ The CSSTransition element creates a containing div without a class
   width: 100%;
   height: 100%;
   border: none; }
-
-.woocommerce-filters__compare .woocommerce-card__body {
-  padding: 0; }
-
-.woocommerce-filters__compare-body {
-  padding: 16px;
-  background-color: #f0f0f0;
-  border-bottom: 1px solid #f0f0f0; }
-
-.woocommerce-filters__compare-footer {
-  padding: 16px;
-  display: flex;
-  align-items: center; }
-  .woocommerce-filters__compare-footer .components-button {
-    margin-left: 16px; }
 
 .woocommerce-filters-filter__search .woocommerce-search__autocomplete-results {
   position: static; }
@@ -1603,7 +1505,7 @@ The CSSTransition element creates a containing div without a class
       font-size: 11px; } }
 
 .woocommerce-product-image {
-  border-radius: 50%; }
+  border-radius: 2px; }
 
 .woocommerce-rating {
   position: relative;
@@ -1626,8 +1528,9 @@ The CSSTransition element creates a containing div without a class
   position: relative; }
   .woocommerce-search.woocommerce-select-control i.material-icons-outlined {
     position: absolute;
-    top: 9px;
+    top: 50%;
     right: 10px;
+    transform: translateY(-50%);
     color: #ccc;
     font-size: 20px; }
   .woocommerce-search.woocommerce-select-control:not(.has-inline-tags) .woocommerce-tag {
@@ -1731,12 +1634,11 @@ The CSSTransition element creates a containing div without a class
     margin-bottom: 16px; }
 
 .woocommerce-search-list__list {
+  border: 1px solid #f0f0f0;
   padding: 0;
   max-height: 17em;
   overflow-x: hidden;
-  overflow-y: auto;
-  border-top: 1px solid #f0f0f0;
-  border-bottom: 1px solid #f0f0f0; }
+  overflow-y: auto; }
   .woocommerce-search-list__list.is-loading {
     padding: 12px 0;
     text-align: center;
@@ -1780,6 +1682,8 @@ The CSSTransition element creates a containing div without a class
     color: #757575; }
     .woocommerce-search-list__list .woocommerce-search-list__item:hover, .woocommerce-search-list__list .woocommerce-search-list__item:active, .woocommerce-search-list__list .woocommerce-search-list__item:focus {
       background: #f0f0f0; }
+    .woocommerce-search-list__list .woocommerce-search-list__item:active, .woocommerce-search-list__list .woocommerce-search-list__item:focus {
+      box-shadow: none; }
     .woocommerce-search-list__list .woocommerce-search-list__item:last-child {
       border-bottom: none !important; }
     .woocommerce-search-list__list .woocommerce-search-list__item .woocommerce-search-list__item-state {
@@ -1823,6 +1727,8 @@ The CSSTransition element creates a containing div without a class
         content: ' ›'; }
     .woocommerce-search-list__list .woocommerce-search-list__item.is-searching .woocommerce-search-list__item-name {
       color: #1e1e1e; }
+    .woocommerce-search-list__list .woocommerce-search-list__item.has-count > .components-menu-item__item {
+      width: 100%; }
     .woocommerce-search-list__list .woocommerce-search-list__item .woocommerce-search-list__item-count {
       flex: 0 1 auto;
       padding: 2px 8px;
@@ -1834,16 +1740,13 @@ The CSSTransition element creates a containing div without a class
       background: #fff;
       white-space: nowrap; }
 
-.components-panel .woocommerce-search-list {
-  padding: 0; }
-
-.components-panel .woocommerce-search-list__selected {
+.woocommerce-search-list.is-compact .woocommerce-search-list__selected {
   margin: 0 0 16px;
   padding: 0;
   border-top: none;
   min-height: 54px; }
 
-.components-panel .woocommerce-search-list__search {
+.woocommerce-search-list.is-compact .woocommerce-search-list__search {
   margin: 0 0 16px;
   padding: 0;
   border-top: none; }
@@ -1904,10 +1807,10 @@ The CSSTransition element creates a containing div without a class
 .woocommerce-section-header__title {
   margin: 0 0 0 16px;
   padding: 3px 0;
-  font-size: 18px;
-  font-size: 1.125rem;
+  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 2.2;
-  font-weight: 600; }
+  font-weight: 400; }
 
 .woocommerce-segmented-selection {
   width: 100%;
@@ -1974,7 +1877,7 @@ The CSSTransition element creates a containing div without a class
     border: 1px solid #a7aaad;
     border-radius: 3px;
     background: #fff;
-    padding: 12px 16px;
+    padding: 12px;
     position: relative; }
     .woocommerce-select-control .components-base-control .woocommerce-select-control__tags {
       margin: 12px 0 0 4px; }
@@ -2025,7 +1928,7 @@ The CSSTransition element creates a containing div without a class
     z-index: -1; }
   .woocommerce-select-control .woocommerce-select-control__tags {
     position: relative;
-    margin: 12px 0; }
+    margin: 12px 0 0 0; }
     .woocommerce-select-control .woocommerce-select-control__tags.has-clear {
       padding-left: 24px; }
   .woocommerce-select-control .woocommerce-tag {
@@ -2060,7 +1963,7 @@ The CSSTransition element creates a containing div without a class
     .woocommerce-select-control .woocommerce-select-control__option.is-selected, .woocommerce-select-control .woocommerce-select-control__option:hover {
       background: #f6f7f7; }
   .woocommerce-select-control.is-searchable .components-base-control__label {
-    right: 52px; }
+    right: 48px; }
   .woocommerce-select-control.is-searchable .components-base-control.is-active .components-base-control__label {
     font-size: 12px;
     margin-top: -12px; }
@@ -2185,7 +2088,7 @@ The CSSTransition element creates a containing div without a class
   display: block; }
 
 .woocommerce-stepper.is-vertical .woocommerce-stepper_content {
-  margin-top: 8px;
+  margin-top: 16px;
   margin-right: 36px; }
 
 @keyframes rotate {
@@ -2226,7 +2129,8 @@ The CSSTransition element creates a containing div without a class
   border-style: solid;
   border-color: #e0e0e0;
   background-color: #f0f0f0;
-  box-shadow: inset 1px -1px 0 #e0e0e0; }
+  box-shadow: inset 1px -1px 0 #e0e0e0;
+  width: 100%; }
   @media (max-width: 782px) {
     .woocommerce-summary {
       border-width: 0; }
@@ -2527,54 +2431,75 @@ The CSSTransition element creates a containing div without a class
   .components-popover__content .woocommerce-summary__item .woocommerce-summary__item-delta {
     margin-bottom: 0; }
 
-.woocommerce-table .woocommerce-card__body {
-  padding: 0;
-  position: relative; }
-
-.woocommerce-table .woocommerce-card__action {
-  justify-self: flex-end;
-  margin: -13px 0; }
-
-.woocommerce-table .woocommerce-card__menu {
-  justify-self: flex-end; }
-
-.woocommerce-table.is-empty {
-  align-items: center;
-  background: #f0f0f0;
-  color: #757575;
-  display: flex;
-  height: calc(16px + 1.1375rem + 1px + ( 32px + 1.1375rem + 1px ) * 5);
-  height: calc(16px + 1.1375rem + 1px + ( 32px + 1.1375rem + 1px ) * var(--number-of-rows));
-  justify-content: center;
-  padding: 16px;
-  text-align: center; }
-
-.woocommerce-table button.woocommerce-table__download-button {
-  padding: 6px 12px;
-  color: #000;
-  text-decoration: none;
-  align-items: center; }
-  .woocommerce-table button.woocommerce-table__download-button svg {
-    margin-left: 8px;
-    height: 24px;
-    width: 24px; }
-  @media (max-width: 782px) {
-    .woocommerce-table button.woocommerce-table__download-button svg {
-      margin-left: 0; }
-    .woocommerce-table button.woocommerce-table__download-button .woocommerce-table__download-button__label {
-      display: none; } }
-
-.woocommerce-table .woocommerce-pagination {
-  padding-top: 16px;
-  padding-bottom: 16px;
-  z-index: 1;
-  background: #fff;
-  position: relative; }
+.woocommerce-table {
+  margin-bottom: 40px; }
+  .woocommerce-table .woocommerce-table__actions {
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center; }
+    .woocommerce-table .woocommerce-table__actions > * {
+      margin-left: 16px; }
+      .woocommerce-table .woocommerce-table__actions > *:last-child {
+        margin-left: 0; }
+    .woocommerce-table .woocommerce-table__actions > div {
+      width: 100%; }
+  .woocommerce-table .components-card__footer {
+    flex-direction: column; }
+    .woocommerce-table .components-card__footer > * {
+      padding-left: 0; }
+  .woocommerce-table.is-empty {
+    align-items: center;
+    background: #f0f0f0;
+    color: #757575;
+    display: flex;
+    height: calc(16px + 1.1375rem + 1px + ( 32px + 1.1375rem + 1px ) * 5);
+    height: calc(16px + 1.1375rem + 1px + ( 32px + 1.1375rem + 1px ) * var(--number-of-rows));
+    justify-content: center;
+    padding: 16px;
+    text-align: center; }
+  .woocommerce-table .woocommerce-pagination {
+    margin-bottom: 16px;
+    z-index: 1;
+    background: #fff;
+    position: relative; }
+  .woocommerce-table .components-card__header {
+    align-items: center;
+    text-align: right;
+    display: -ms-grid;
+    display: grid;
+    width: 100%;
+    -ms-grid-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto; }
+  @media (max-width: 960px) {
+    .woocommerce-table.has-search .woocommerce-table__actions {
+      grid-gap: 12px;
+      -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+      -ms-grid-row: 2;
+          grid-row-start: 2;
+      -ms-grid-row-span: 0;
+      grid-row-end: 2;
+      -ms-grid-column: 1;
+          grid-column-start: 1;
+      -ms-grid-column-span: 3;
+      grid-column-end: 4;
+      margin: 0; } }
+  .woocommerce-table .woocommerce-search .woocommerce-select-control__control {
+    height: 38px; }
+  .woocommerce-table .woocommerce-compare-button {
+    padding: 3px 12px;
+    height: auto; }
+  .woocommerce-table .woocommerce-ellipsis-menu {
+    justify-content: flex-end;
+    display: flex; }
 
 .woocommerce-table__caption {
   font-size: 24px;
   font-size: 1.5rem;
   text-align: right; }
+
+.components-card__body {
+  position: relative; }
 
 .woocommerce-table__table {
   overflow-x: auto; }
@@ -2611,14 +2536,14 @@ The CSSTransition element creates a containing div without a class
 .woocommerce-table__header,
 .woocommerce-table__item,
 .woocommerce-table__empty-item {
-  padding: 16px 24px;
-  border-bottom: 1px solid #f0f0f0; }
+  padding: 16px 24px; }
 
 .woocommerce-table__header,
 .woocommerce-table__item {
   font-size: 13px;
   font-size: 0.8125rem;
-  text-align: right; }
+  text-align: right;
+  border-bottom: 1px solid #e2e4e7; }
   .woocommerce-table__header > a:only-child,
   .woocommerce-table__item > a:only-child {
     display: block; }
@@ -2668,6 +2593,9 @@ The CSSTransition element creates a containing div without a class
     .woocommerce-table__item.is-checkbox-column + th {
       border-right: 0; }
 
+.woocommerce-table tr:last-child .woocommerce-table__item {
+  border-bottom: 0; }
+
 .woocommerce-table__empty-item {
   text-align: center;
   font-size: 18px;
@@ -2685,11 +2613,8 @@ th.woocommerce-table__item {
 .woocommerce-table__header {
   padding: 8px 24px;
   background-color: #f8f9fa;
-  border-bottom: 1px solid #ccc;
   font-weight: bold;
   white-space: nowrap; }
-  .woocommerce-table__header + .woocommerce-table__header {
-    border-right: 1px solid #ccc; }
   .woocommerce-table__header.is-left-aligned.is-sortable {
     padding-right: 16px; }
     .woocommerce-table__header.is-left-aligned.is-sortable svg {
@@ -2721,12 +2646,8 @@ th.woocommerce-table__item {
       visibility: visible; }
 
 .woocommerce-table__summary {
-  margin: 0;
-  padding: 16px 0;
   text-align: center;
-  z-index: 1;
-  background: #fff;
-  position: relative; }
+  margin: 0; }
 
 .woocommerce-table__summary-item {
   display: inline-block;

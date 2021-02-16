@@ -63,7 +63,10 @@ class Assets {
 		// Inline data.
 		wp_add_inline_script(
 			'wc-blocks-middleware',
-			"var wcStoreApiNonce = '" . esc_js( wp_create_nonce( 'wc_store_api' ) ) . "';",
+			"
+			var wcStoreApiNonce = '" . esc_js( wp_create_nonce( 'wc_store_api' ) ) . "';
+			var wcStoreApiNonceTimestamp = '" . esc_js( time() ) . "';
+			",
 			'before'
 		);
 
@@ -93,8 +96,10 @@ class Assets {
 		if ( Package::feature()->is_experimental_build() ) {
 			$asset_api->register_script( 'wc-single-product-block', $asset_api->get_block_asset_build_path( 'single-product' ), $block_dependencies );
 		}
+		$asset_api->register_script( 'wc-price-format', 'build/price-format.js', [], false );
 
 		if ( Package::feature()->is_feature_plugin_build() ) {
+			$asset_api->register_script( 'wc-blocks-checkout', 'build/blocks-checkout.js', [], false );
 			$asset_api->register_script( 'wc-checkout-block', $asset_api->get_block_asset_build_path( 'checkout' ), $block_dependencies );
 			$asset_api->register_script( 'wc-cart-block', $asset_api->get_block_asset_build_path( 'cart' ), $block_dependencies );
 		}

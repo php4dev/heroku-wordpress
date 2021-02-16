@@ -37,6 +37,19 @@ describe( 'useStoreCart', () => {
 		cartIsLoading: false,
 		cartItemErrors: [],
 		cartErrors: [],
+		billingAddress: {
+			first_name: '',
+			last_name: '',
+			company: '',
+			address_1: '',
+			address_2: '',
+			city: '',
+			state: '',
+			postcode: '',
+			country: '',
+			email: '',
+			phone: '',
+		},
 		shippingAddress: {
 			first_name: '',
 			last_name: '',
@@ -50,7 +63,7 @@ describe( 'useStoreCart', () => {
 		},
 		shippingRates: previewCart.shipping_rates,
 		shippingRatesLoading: false,
-		hasShippingAddress: false,
+		cartHasCalculatedShipping: true,
 	};
 
 	const mockCartItems = [ { key: '1', id: 1, name: 'Lorem Ipsum' } ];
@@ -64,8 +77,10 @@ describe( 'useStoreCart', () => {
 		itemsWeight: 10,
 		needsPayment: true,
 		needsShipping: true,
+		billingAddress: {},
 		shippingAddress: mockShippingAddress,
 		shippingRates: [],
+		hasCalculatedShipping: true,
 	};
 	const mockCartTotals = {
 		currency_code: 'USD',
@@ -83,10 +98,11 @@ describe( 'useStoreCart', () => {
 		cartTotals: mockCartTotals,
 		cartIsLoading: mockCartIsLoading,
 		cartErrors: mockCartErrors,
+		billingAddress: {},
 		shippingAddress: mockShippingAddress,
 		shippingRates: [],
 		shippingRatesLoading: false,
-		hasShippingAddress: false,
+		cartHasCalculatedShipping: true,
 		receiveCart: undefined,
 	};
 
@@ -110,7 +126,7 @@ describe( 'useStoreCart', () => {
 				hasFinishedResolution: jest
 					.fn()
 					.mockReturnValue( ! mockCartIsLoading ),
-				areShippingRatesLoading: jest.fn().mockReturnValue( false ),
+				isCustomerDataUpdating: jest.fn().mockReturnValue( false ),
 			},
 		};
 		registry.registerStore( storeKey, {

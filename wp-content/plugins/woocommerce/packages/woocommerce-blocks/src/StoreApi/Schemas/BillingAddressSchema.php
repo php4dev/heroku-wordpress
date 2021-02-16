@@ -3,6 +3,7 @@ namespace Automattic\WooCommerce\Blocks\StoreApi\Schemas;
 
 use Automattic\WooCommerce\Blocks\RestApi\Routes;
 
+
 /**
  * BillingAddressSchema class.
  *
@@ -17,6 +18,13 @@ class BillingAddressSchema extends AbstractSchema {
 	 * @var string
 	 */
 	protected $title = 'billing_address';
+
+	/**
+	 * The schema item identifier.
+	 *
+	 * @var string
+	 */
+	const IDENTIFIER = 'billing-address';
 
 	/**
 	 * Term properties.
@@ -73,7 +81,6 @@ class BillingAddressSchema extends AbstractSchema {
 			'email'      => [
 				'description' => __( 'Email', 'woocommerce' ),
 				'type'        => 'string',
-				'format'      => 'email',
 				'context'     => [ 'view', 'edit' ],
 			],
 			'phone'      => [

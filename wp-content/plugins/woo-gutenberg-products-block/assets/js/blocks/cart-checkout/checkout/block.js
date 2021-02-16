@@ -65,6 +65,7 @@ const Checkout = ( { attributes, scrollToTop } ) => {
 		cartItems,
 		cartTotals,
 		cartCoupons,
+		cartFees,
 		cartNeedsPayment,
 	} = useStoreCart();
 	const {
@@ -140,6 +141,7 @@ const Checkout = ( { attributes, scrollToTop } ) => {
 						allowCreateAccount={ allowCreateAccount }
 					/>
 					<div className="wc-block-checkout__actions">
+						<PlaceOrderButton />
 						{ attributes.showReturnToCart && (
 							<ReturnToCartButton
 								link={ getSetting(
@@ -148,7 +150,6 @@ const Checkout = ( { attributes, scrollToTop } ) => {
 								) }
 							/>
 						) }
-						<PlaceOrderButton />
 					</div>
 					{ attributes.showPolicyLinks && <Policies /> }
 				</Main>
@@ -157,6 +158,7 @@ const Checkout = ( { attributes, scrollToTop } ) => {
 						cartCoupons={ cartCoupons }
 						cartItems={ cartItems }
 						cartTotals={ cartTotals }
+						cartFees={ cartFees }
 					/>
 				</Sidebar>
 			</SidebarLayout>

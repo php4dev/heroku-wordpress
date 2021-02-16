@@ -295,11 +295,11 @@ a.button {
 
 .woocommerce-store-notice__dismiss-link {
 	float: right;
-	color: #fff;
+	color: #000;
 
 	&:hover {
-		text-decoration: underline;
-		color: #fff;
+		text-decoration: none;
+		color: #000;
 	}
 }
 
@@ -1962,6 +1962,7 @@ a.reset_variations {
 		}
 
 		input[type=radio] {
+
 			& + label::before {
 				background: #fff !important;
 				border: var(--form--border-width) solid #000 !important;
@@ -2010,6 +2011,7 @@ a.reset_variations {
 		}
 
 		&:checked + label {
+
 			&::before {
 				background: var(--global--color-border);
 			}

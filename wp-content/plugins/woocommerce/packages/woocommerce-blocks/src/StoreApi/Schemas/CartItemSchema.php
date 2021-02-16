@@ -1,6 +1,9 @@
 <?php
 namespace Automattic\WooCommerce\Blocks\StoreApi\Schemas;
 
+use Automattic\WooCommerce\Blocks\Domain\Services\ExtendRestApi;
+use Automattic\WooCommerce\Checkout\Helpers\ReserveStock;
+
 /**
  * CartItemSchema class.
  *
@@ -16,20 +19,11 @@ class CartItemSchema extends ProductSchema {
 	protected $title = 'cart_item';
 
 	/**
-	 * Image attachment schema instance.
+	 * The schema item identifier.
 	 *
-	 * @var ImageAttachmentSchema
+	 * @var string
 	 */
-	protected $image_attachment_schema;
-
-	/**
-	 * Constructor.
-	 *
-	 * @param ImageAttachmentSchema $image_attachment_schema Image attachment schema instance.
-	 */
-	public function __construct( ImageAttachmentSchema $image_attachment_schema ) {
-		$this->image_attachment_schema = $image_attachment_schema;
-	}
+	const IDENTIFIER = 'cart-item';
 
 	/**
 	 * Cart schema properties.
@@ -266,6 +260,13 @@ class CartItemSchema extends ProductSchema {
 					]
 				),
 			],
+			'catalog_visibility'   => [
+				'description' => __( 'Whether the product is visible in the catalog', 'woocommerce' ),
+				'type'        => 'string',
+				'context'     => [ 'view', 'edit' ],
+				'readonly'    => true,
+			],
+			self::EXTENDING_KEY    => $this->get_extended_schema( self::IDENTIFIER ),
 		];
 	}
 
@@ -295,8 +296,7 @@ class CartItemSchema extends ProductSchema {
 			'images'               => $this->get_images( $product ),
 			'variation'            => $this->format_variation_data( $cart_item['variation'], $product ),
 			'prices'               => (object) $this->prepare_product_price_response( $product, get_option( 'woocommerce_tax_display_cart' ) ),
-			'totals'               => (object) array_merge(
-				$this->get_store_currency_response(),
+			'totals'               => (object) $this->prepare_currency_response(
 				[
 					'line_subtotal'     => $this->prepare_money_response( $cart_item['line_subtotal'], wc_get_price_decimals() ),
 					'line_subtotal_tax' => $this->prepare_money_response( $cart_item['line_subtotal_tax'], wc_get_price_decimals() ),
@@ -304,6 +304,8 @@ class CartItemSchema extends ProductSchema {
 					'line_total_tax'    => $this->prepare_money_response( $cart_item['line_tax'], wc_get_price_decimals() ),
 				]
 			),
+			'catalog_visibility'   => $product->get_catalog_visibility(),
+			self::EXTENDING_KEY    => $this->get_extended_data( self::IDENTIFIER, $cart_item ),
 		];
 	}
 
@@ -343,15 +345,10 @@ class CartItemSchema extends ProductSchema {
 			return null;
 		}
 
-		$draft_order = wc()->session->get( 'store_api_draft_order', 0 );
-
-		if ( \class_exists( '\Automattic\WooCommerce\Checkout\Helpers\ReserveStock' ) ) {
-			$reserve_stock = new \Automattic\WooCommerce\Checkout\Helpers\ReserveStock();
-		} else {
-			$reserve_stock = new \Automattic\WooCommerce\Blocks\StoreApi\Utilities\ReserveStock();
-		}
-
+		$draft_order    = wc()->session->get( 'store_api_draft_order', 0 );
+		$reserve_stock  = new ReserveStock();
 		$reserved_stock = $reserve_stock->get_reserved_stock( $product, $draft_order );
+
 		return $product->get_stock_quantity() - $reserved_stock;
 	}
 

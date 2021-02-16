@@ -13,7 +13,6 @@ import {
 } from '@wordpress/element';
 import { getSetting } from '@woocommerce/settings';
 import { useStoreNotices, useEmitResponse } from '@woocommerce/base-hooks';
-import { useEditorContext } from '@woocommerce/base-context';
 
 /**
  * Internal dependencies
@@ -40,6 +39,7 @@ import {
 import { useCustomerDataContext } from '../customer';
 import { useCheckoutContext } from '../checkout-state';
 import { useShippingDataContext } from '../shipping';
+import { useEditorContext } from '../../editor';
 import {
 	EMIT_TYPES,
 	emitterSubscribers,
@@ -95,7 +95,7 @@ const getCustomerPaymentMethods = ( availablePaymentMethods = {} ) => {
 				const isAvailable = gateway in availablePaymentMethods;
 				return (
 					isAvailable &&
-					availablePaymentMethods[ gateway ].supports?.savePaymentInfo
+					availablePaymentMethods[ gateway ].supports?.showSavedCards
 				);
 			}
 		);
@@ -131,7 +131,11 @@ export const PaymentMethodDataProvider = ( { children } ) => {
 		isFailResponse,
 		noticeContexts,
 	} = useEmitResponse();
+	// The active payment method - e.g. Stripe CC or BACS.
 	const [ activePaymentMethod, setActive ] = useState( '' );
+	// If a previously saved payment method is active, the token for that method.
+	// For example, a for a Stripe CC card saved to user account.
+	const [ activeSavedToken, setActiveSavedToken ] = useState( '' );
 	const [ observers, subscriber ] = useReducer( emitReducer, {} );
 	const currentObservers = useRef( observers );
 
@@ -445,6 +449,8 @@ export const PaymentMethodDataProvider = ( { children } ) => {
 		errorMessage: paymentData.errorMessage,
 		activePaymentMethod,
 		setActivePaymentMethod,
+		activeSavedToken,
+		setActiveSavedToken,
 		onPaymentProcessing,
 		customerPaymentMethods,
 		paymentMethods: paymentData.paymentMethods,

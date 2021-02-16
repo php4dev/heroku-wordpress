@@ -52,11 +52,12 @@ class CartRemoveItem extends AbstractCartRoute {
 		$cart       = $controller->get_cart_instance();
 		$cart_item  = $controller->get_cart_item( $request['key'] );
 
-		if ( ! $cart_item ) {
+		if ( empty( $cart_item ) ) {
 			throw new RouteException( 'woocommerce_rest_cart_invalid_key', __( 'Cart item no longer exists or is invalid.', 'woocommerce' ), 409 );
 		}
 
 		$cart->remove_cart_item( $request['key'] );
+		$this->maybe_release_stock();
 
 		return rest_ensure_response( $this->schema->get_item_response( $cart ) );
 	}

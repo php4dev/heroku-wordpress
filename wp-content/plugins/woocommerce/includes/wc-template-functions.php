@@ -2748,7 +2748,7 @@ if ( ! function_exists( 'woocommerce_form_field' ) ) {
 
 				} else {
 
-					$field = '<select name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '" class="country_to_state country_select ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" ' . implode( ' ', $custom_attributes ) . '><option value="default">' . esc_html__( 'Select a country / region&hellip;', 'woocommerce' ) . '</option>';
+					$field = '<select name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '" class="country_to_state country_select ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" ' . implode( ' ', $custom_attributes ) . ' data-placeholder="' . esc_attr( $args['placeholder'] ? $args['placeholder'] : esc_attr__( 'Select a country / region&hellip;', 'woocommerce' ) ) . '"><option value="">' . esc_html__( 'Select a country / region&hellip;', 'woocommerce' ) . '</option>';
 
 					foreach ( $countries as $ckey => $cvalue ) {
 						$field .= '<option value="' . esc_attr( $ckey ) . '" ' . selected( $value, $ckey, false ) . '>' . esc_html( $cvalue ) . '</option>';
@@ -3564,14 +3564,37 @@ function wc_empty_cart_message() {
 /**
  * Disable search engines indexing core, dynamic, cart/checkout pages.
  *
+ * @todo Deprecated this function after dropping support for WP 5.6.
  * @since 3.2.0
  */
 function wc_page_noindex() {
+	// wp_no_robots is deprecated since WP 5.7.
+	if ( function_exists( 'wp_robots_no_robots' ) ) {
+		return;
+	}
+
 	if ( is_page( wc_get_page_id( 'cart' ) ) || is_page( wc_get_page_id( 'checkout' ) ) || is_page( wc_get_page_id( 'myaccount' ) ) ) {
 		wp_no_robots();
 	}
 }
 add_action( 'wp_head', 'wc_page_noindex' );
+
+/**
+ * Disable search engines indexing core, dynamic, cart/checkout pages.
+ * Uses "wp_robots" filter introduced in WP 5.7.
+ *
+ * @since 5.0.0
+ * @param array $robots Associative array of robots directives.
+ * @return array Filtered robots directives.
+ */
+function wc_page_no_robots( $robots ) {
+	if ( is_page( wc_get_page_id( 'cart' ) ) || is_page( wc_get_page_id( 'checkout' ) ) || is_page( wc_get_page_id( 'myaccount' ) ) ) {
+		return wp_robots_no_robots( $robots );
+	}
+
+	return $robots;
+}
+add_filter( 'wp_robots', 'wc_page_no_robots' );
 
 /**
  * Get a slug identifying the current theme.

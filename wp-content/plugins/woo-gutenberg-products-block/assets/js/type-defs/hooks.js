@@ -12,6 +12,8 @@
  *                                                      to the cart.
  * @property {Array}               cartItems            An array of items in the
  *                                                      cart.
+ * @property {Array}               cartFees             An array of fees in the
+ *                                                      cart.
  * @property {number}              cartItemsCount       The number of items in the
  *                                                      cart.
  * @property {number}              cartItemsWeight      The weight of all items in
@@ -33,10 +35,12 @@
  *                                                      cart.
  * @property {Array}               shippingRates        array of selected shipping
  *                                                      rates.
+ * @property {Object}              extensions           Values provided by  *                                                      extensions.
  * @property {boolean}             shippingRatesLoading Whether or not the
  *                                                      shipping rates are
  *                                                      being loaded.
  * @property {boolean}             cartHasCalculatedShipping Whether or not the cart has calculated shipping yet.
+ * @property {Array}               paymentRequirements  List of features required from payment gateways.
  * @property {function(Object):any} receiveCart         Dispatcher to receive
  *                                                      updated cart.
  */

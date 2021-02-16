@@ -2,9 +2,9 @@
 Contributors: automattic, woocommerce, claudiulodro, tiagonoronha, jameskoster, ryelle, levinmedia, aljullu, mikejolley, nerrad, joshuawold, assassinateur, haszari
 Tags: gutenberg, woocommerce, woo commerce, products, blocks, woocommerce blocks
 Requires at least: 5.4
-Tested up to: 5.6
+Tested up to: 5.7
 Requires PHP: 7.0
-Stable tag: 4.1.0
+Stable tag: 4.4.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -85,6 +85,59 @@ Release and roadmap notes available on the [WooCommerce Developers Blog](https:/
 
 == Changelog ==
 
+= 4.4.2 - 2021-02-05 =
+
+#### Bug Fixes
+
+- Adds a default "features" array for payment methods which do not define supported features. Fixes conflicts with 3rd Party payment method integrations.
+
+= 4.4.1 - 2021-02-04 =
+
+#### Bug Fixes
+
+- Update package for WooCommerce core inclusion.
+
+= 4.4.0 - 2021-02-02 =
+
+#### Enhancements
+
+- Design tweaks to the cart page which move the quantity picker below each cart item and improve usability on mobile. ([3734](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3734))
+
+#### Bug Fixes
+
+- Fix - Ensure empty categories are correctly hidden in the product categories block. ([3765](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3765))
+- Fix - Added missing wrapper div within FeaturedCategory and FeatureProduct blocks. ([3746](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3746))
+- Fix - Set correct text color in BlockErrorBoundry notices. ([3738](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3738))
+- Hidden cart item meta data will not be rendered in the Cart and Checkout blocks. ([3732](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3732))
+- Fix - Improved accessibility of product image links in the products block by using correct aria tags and hiding empty image placeholders. ([3722](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3722))
+- Add missing aria-label for stars image in the review-list-item component. ([3706](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3706))
+- Prevent "X-WC-Store-API-Nonce is invalid" error when going back to a page with the products block using the browser back button. ([3770](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3770))
+
+#### compatibility
+
+- Hide the All Products Block from the new Gutenberg Widget Areas until full support is achieved. ([3737](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3737))
+- Legacy `star-rating` class name has been removed from Product rating block (inside All Products block). That element is still selectable with the `.wc-block-components-product-rating` class name. ([3717](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3717))
+
+= 4.3.0 - 2021-01-20 =
+
+#### Bug Fixes
+
+- Update input colors and alignment. ([3597](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3597))
+
+#### Enhancements
+
+- Store API - Fix selected rate in cart shipping rates response. ([3680](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3680))
+- Create get_item_responses_from_schema abstraction. ([3679](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3679))
+- Show itemized fee rows in the cart/checkout blocks. ([3678](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3678))
+- Extensibility: Show item data in Cart and Checkout blocks and update the variation data styles. ([3665](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3665))
+- Introduce SlotFill for Sidebar. ([3361](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3361))
+
+= 4.2.0 - 2021-01-06 =
+
+#### Bug Fixes
+
+- Fix an error that was blocking checkout with some user saved payment methods. ([3627](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3627))
+
 = 4.1.0 - 2020-12-24 =
 
 #### Enhancements
@@ -112,8 +165,6 @@ Release and roadmap notes available on the [WooCommerce Developers Blog](https:/
 
 - Removed compatibility with packages in WordPress 5.3. ([3541](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3541))
 - Bumped the minimum WP required version to 5.4. ([3537](https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3537))
-
-
 
 = 4.0.0 - 2020-12-07 =
 

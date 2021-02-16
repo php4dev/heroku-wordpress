@@ -358,9 +358,6 @@ class WC_Countries {
 
 		if ( 'eu_vat' === $type ) {
 			$countries[] = 'MC';
-			$countries[] = 'IM';
-			// The UK is still part of the EU VAT zone.
-			$countries[] = 'GB';
 		}
 
 		return apply_filters( 'woocommerce_european_union_countries', $countries, $type );
@@ -981,6 +978,15 @@ class WC_Countries {
 							'required' => false,
 						),
 					),
+					'GT' => array(
+						'postcode' => array(
+							'required' => false,
+							'hidden'   => true,
+						),
+						'state'    => array(
+							'label' => __( 'Department', 'woocommerce' ),
+						),
+					),
 					'HK' => array(
 						'postcode' => array(
 							'required' => false,
@@ -1230,10 +1236,10 @@ class WC_Countries {
 					),
 					'RS' => array(
 						'city'     => array(
-							'required' => false,
+							'required' => true,
 						),
 						'postcode' => array(
-							'required' => false,
+							'required' => true,
 						),
 						'state'    => array(
 							'label' => __( 'District', 'woocommerce' ),

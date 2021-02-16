@@ -1,10 +1,10 @@
 === WooCommerce ===
 Contributors: automattic, mikejolley, jameskoster, claudiosanches, rodrigosprimo, peterfabian1000, vedjain, jamosova, obliviousharmony, konamiman, sadowski, wpmuguru, royho
 Tags: e-commerce, store, sales, sell, woo, shop, cart, checkout, downloadable, downloads, payments, paypal, storefront, stripe, woo commerce
-Requires at least: 5.3
+Requires at least: 5.4
 Tested up to: 5.6
 Requires PHP: 7.0
-Stable tag: 4.8.0
+Stable tag: 5.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -160,122 +160,71 @@ WooCommerce comes with some sample data you can use to see how products look; im
 
 == Changelog ==
 
-= 4.8.0 - 2020-12-08 =
+= 5.0.0 - 2021-02-09 =
 
 **WooCommerce**
 
-* Enhancement - Limited the system status report's "not tested with version" warning to major versions. #28114
-* Enhancement - Add shipping, tax, and fee lines to refund REST API response. #28241
-* Enhancement - Added support for Twenty Twenty-One theme. #28134
-* Tweak - Reduced the memory usage of AJAX product searches. #28177
-* Tweak - Replaced deprecated jQuery functionality. #28005, #28058
-* Tweak - Hid "Add to cart" button for out of stock grouped products. #28169
-* Tweak - Made product date deserialization more explicit. #28052
-* Fix - Stock adjustment when deleting a refunded order item. #28069
-* Fix - Avatar display for recent reviews widget in admin area. #28067
-* Fix - Incorrect product sorting user capability. #28062
-* Fix - PayPal response emptying uninitialized cart. #28027
-* Fix - Display of visual feedback after pressing "Place Order" in `Twenty Twenty` and `Twenty Nineteen` themes #27997
-* Fix - Category and tag bulk deletion message. #27856
-* Fix - Corrected Puerto Rico address validation. #28465
-* Dev - Filter: `woocommerce_product_has_options` to products. #27514
-* Dev - Added error message to `checkout_error` JS event. #28101
-* Dev - Replaced usage of deprecated `woocommerce_reset_loop()` in product category shortcodes. #28242
-* Dev - Set "Tested up to" header to WordPress 5.6. #28388
-* Localization - Jamaican currency, states, and address structure. #27723
-* Localization - Better display of inclusive taxes during checkout. #28064
-* Localization - Validation for Belgium postcodes. #28145
+* Enhancement - Create additional download permissions for simple downloadable products that are converted to variable products provided that there are variations offering the same files. #28521
+* Enhancement - Export SASS variables as CSS variables. #28709
+* Tweak - Added "Store management insights" option. #28712
+* Tweak - Styling for dismiss link of the store notice for Twenty Twenty and Twenty Twenty One themes. #28790
+* Tweak - Notice to deprecate legacy reports in favor of the newer analytics page. #28799
+* Tweak - Ability to create new tags for products when creating a product via the REST API. #28723
+* Tweak - Disable untested plugin's notice from System Status and Plugin's page. #28840
+* Tweak - Use `wp_robots_no_robots()` when available to support WP 5.7. #28993
+* Fix - Improves the logic for deleting variations when a product type is changed. #27137
+* Fix - Use 'setlocale' in 'wc_ascii_uasort_comparison' for compatibility with PHP 8. #27844
+* Fix - Normalize end of lines in log-handler-email tests for compatibility with PHP 8. #27844
+* Fix - Invert `if` statement to reduce nesting level in `\WC_Shipping::calculate_shipping_for_package`. #28558
+* Fix - Changed value for speak to fix css3 validation issue. #28607
+* Fix - Check if Cart and Checkout pages are using block instead of shortcode for the Status check. #28679
+* Fix - Attributes on Edit Product page - "Select all" not working after "Select none" used. #28681
+* Fix - Ensure the orders and products statuses are reverted correctly when restoring them. #28690
+* Fix - Add checks to make sure session is initialised before loading the data store. #28692
+* Fix - Update featured extensions API endpoint on WooCommerce/Extensions page. #28719
+* Fix - Add Authorization header to the features extensions and search requests made to the marketplace. #28719
+* Fix - Duplicate New Order emails being sent when changing order status. #28809
+* Fix - Add migration to fix existing product review count. #28814
+* Fix - Fixed issues with empty prices in PHP 8. #28900
+* Dev - Increased WordPress minimum version to 5.4 according to WooCommerce's L-2 support policy. #28977
+* Dev - Use a custom fork of PHPUnit 7 in PHP 8 to workaround compatibility issues. #27844
+* Dev - Introduced `woocommerce_activated_plugin` hook. #28698
+* Dev - Clean up the `WC_Shipping_Zone_Data_Store::read()` method, documenting the `woocommerce_shipping_zone_loaded` hook. #28801
+* Dev - Updated the Jetpack Autoloader to 2.9.1. #29057
+* Localization - Adding states for Dominican Republic. #28713
+* Localization - Restored list of Serbia districts #28778
+* Localization - Update Indian state name from `Orissa` to `Odisha`. #28740
+* Localization - Remove post code requirement for Guatemala. #28706
+* Localization - Fixed name for state in Guatemala. #28706
 
-**WooCommerce Admin - 1.7.0 & 1.7.1 & 1.7.2 & 1.7.3**
+**WooCommerce Admin - 1.9.0**
 
-* Enhancement - Variations report.  #5167
-* Enhancement - Add ability to toggle homescreen layouts. #5429
-* Enhancement - Accordion component  #5474
-* Enhancement - Badge component #5520
-* Tweak - Remove customer analytics data upon order deletion  #5171
-* Tweak - Updating Stripe key field validation to support test keys  #5201
-* Tweak - Wrap search control selected items in list  #5231
-* Tweak - Update store setup link to redirect to setup wizard  #5200
-* Tweak - Removing breadcrumbs from wc-admin header #5232
-* Tweak - Use consistent markdown headers in navigation readme #5417
-* Tweak - Remove Store Setup Alert #5499
-* Tweak - Customers: Update column heading for date registered #5542
-* Tweak - alter homescreen layout. #5465
-* Fix - Added support for custom actionable statuses. #5550
-* Fix - wrong casing used on the PayPal brand name  #5514 🎉 @rtpHarry
-* Fix - Import @wordpress/base-styles/default-custom-properties #5491
-* Fix - downloads report  #5441
-* Fix - missing custom autocompleter attribute in Search component of Advanced Filter #5448
-* Fix - empty no posts state on Marketing page. #5411
-* Fix - visual issues in the Search component.  #5199
-* Fix - Inconsistent line endings in readme.txt. #5281
-* Fix - popover menu to expand menu item width to 100%  #5519
-* Fix - Wrong class name for querying Categories Report #5522 🎉 @zzap
-* Fix - Remove label printing mention for non us countries #5527
-* Fix - First product script navigation dependency #5584
-* Fix - Added support for custom actionable statuses #5550
-* Fix - Display the store management links last on the homescreen #5579
-* Fix - Ensure the "Set up additional payment providers" inbox notification is shown when relevant after completing the OBW. #5547
-* Fix - Load wc-tracks in the homepage notice admin script. #5638
-* Fix - Link component prop caused a React warning. #5653
-* Fix - Flickering of order panel while loading. #5655
-* Fix - Tax code duplicated when clicking the button to remove. #5638
-* Fix - Restore Autoloading of WooCommerce Classes in PHP Tests. #5650
-* Fix - Skip WC Payment plugin note if plugin not added through the onboarding process. #5619
-* Fix - Use error_log() to log the deprecated class calls instead of `_deprecated_function()`. #5802
-* Fix - Don't show the Orders panel on the homescreen with the Task List. #5552
-* Fix - Home Screen: Do not show store setup activity panel. #5801
-* Dev - Home Screen - migrate orders panel. #5455
-* Dev - Store Profiler - include Creative Mail as a free extension #5543
-* Dev - Add undefined check in intervals data util #5546
-* Dev - Fix wakeup visibility for PHP 8 compatibility  #5211
-* Dev - Fix header height and positioning for wc nav  #5173
-* Dev - Add remote inbox notification rule processors for country and state  #5203
-* Dev - Rename admin notes classes and file names to fit conventions  #514
-* Dev - remove checks of store registration that are no longer needed.  #5170
-* Dev - Fix version update script for composer.json  #5165
-* Dev - Remove getAdminLink from data package  #5158
-* Dev - Bump @woocommerce/components dependencies.  #5153
-* Dev - Add note status remote inbox notifications rule processor #5207
-* Dev - Make code chunk filenames more stable.  #5229
-* Dev - Inbox Panel component moved #5252
-* Dev - Added animation to Inbox note deletion  #5263
-* Dev - Update starter pack dependencies #5254
-* Dev - Ensure test zips have latest packages from npm and composer. #5313
-* Dev - Add remote inbox notifications rule allowing access to any option #5206
-* Dev - Add manage orders on the go admin note #5159
-* Dev - Add WooCommerceDependencyExtractionWebpackPlugin package  #5198
-* Dev - Migrate devdocs examples to Storybook stories #5271
-* Dev - Remove Enzyme in favor of React Testing Library #5299
-* Dev - Add exclusion rule to PHPCS config for TODO comments  #5388
-* Dev - Remove no longer used isPanelEmpty logic. #5423
-* Dev - Use new @wordpress/components Card on Marketing page.  #5428
-* Dev - Add PSR-4 naming checks to PHP linting. #5512
-* Dev - Rearrange the store management links under categories add filter woocommerce_admin_homescreen_quicklinks. #5476
-* Dev - Restyle the setup task list header to display incomplete tasks #5520
-
-**WooCommerce Blocks - 3.7.0 & 3.7.1 & 3.8.0 & 3.8.1**
-
-* Enhancement - Allow shoppers to sign-up for an account from the Checkout block. #3331
-* Enhancement - Standardise & refactor colors scss to align with Gutenberg colors and WooCommerce brand. #3300
-* Tweak - Show the phone number field in the billing section when shipping is disabled in settings. #3376
-* Tweak - Add new doc referencing feature flags and experimental interfaces. #3348
-* Tweak - Add __experimental_woocommerce_blocks_checkout_order_processed action. #3238
-* Fix - Fix PHP 8 error when argument is not invocable in AssetsDataRegistry::Add_data. #3315
-* Fix - Improve layout of Cart block line item quantity selector & price on smaller screens. #3299
-* Fix - Correctly process orders with $0 total (e.g. via coupon) in Checkout block. #3298
-* Fix - Respect Enable Taxes setting for checkout block taxes display. #3291
-* Fix - Fix 3D secure payment errors. #3272
-* Fix - Show current selected attributes when re-edit Products by Attribute block. #3185
-* Fix - Ensure that accounts are not created via checkout block request if account registration is disabled for WooCommerce. #3371
-* Fix - radio controls and checkboxes in Twenty Twenty One dark theme. #3446
-* Fix - Twenty Twenty One Price filter, Active filters and radio control styling. #3444
-* Fix - Twenty Twenty One Button and Placeholder Styling. #3443
-* Fix - checkbox and textarea styles in Twenty Twenty One when it has dark controls active. #3450
+* Fix - Add Customer Type column to the Orders report table. #5820
+* Fix - Product exclusion filter on Orders Report.
+* Fix - Typo in Variation Stats DataStore context filter value.
+* Fix - support custom attributes in Attribute advanced report filter.
+* Fix - Don't show Stock and Reviews Homescreen panels too early.
+* Tweak - Remove deprecated use of Jetpack in shipping label banner. #5929
+* Fix - Undefined `$collate` variable when database does not have collation capability. #5992
+* Tweak - Remove `visit_count` from track, and update task count logic. #5996
+* Fix - Moved certified owner label for review to title. ##5877
+* Fix - Move collapsible config to panels object, to allow for more control. #5855
+* Enhancement - Show Help panel tooltip when user visits unfinished task more then once. #5826
+* Tweak - Fix inconsistent REST API paramater name for customer type filtering.
+* Enhancement - Tasks extensibility in Home Screen. #5794
+* Enhancement - Add page parameter to override default wc-admin page in Navigation API. #5821
+* Fix - Invalidate product count if the last product was updated in the list. #5790
+* Fix - Updating (non wordpress user) customer with order data
+* Dev - Add documentation for filter `woocommerce_admin_pages_list` and `wc_admin_register_page` #5844
+* Dev - Revert work done in #4857 for automated shipping after OBW is completed #5971
+* Add - Welcome modal when coming from Calypso #6004
+* Enhancement - Add an a/b experiment for installing free business features #5786
+* Dev - Add `onChangeCallback` feature to the wc-admin `<Form>` component #5786 
+* Fix - Generate JSON translation chunks on plugin activation #6028
+* Dev - Add merchant email notifications #5922 
+* Add - Email note to add first product. #6024
+* Add - Note for users coming from Calypso. #6030
+* Enhancement - Add an "unread" indicator to inbox messages. #6047 
+* Add - Manage activity from home screen inbox message. #6072
 
 [See changelog for all versions](https://raw.githubusercontent.com/woocommerce/woocommerce/master/changelog.txt).
-
-== Upgrade Notice ==
-
-= 4.0 =
-4.0 is a major update. Make a full site backup, update your theme and extensions, and [review update best practices](https://docs.woocommerce.com/document/how-to-update-your-site) before upgrading.

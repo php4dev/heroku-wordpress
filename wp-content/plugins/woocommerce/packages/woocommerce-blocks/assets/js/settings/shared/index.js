@@ -10,6 +10,7 @@ import { getSetting } from './get-setting';
 
 export * from './default-constants';
 export { setSetting } from './set-setting';
+import '../../filters/exclude-draft-status-from-analytics';
 
 /**
  * Note: this attempts to coerce the wpVersion to a semver for comparison

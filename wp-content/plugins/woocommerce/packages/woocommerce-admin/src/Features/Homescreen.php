@@ -59,6 +59,8 @@ class Homescreen {
 			array(
 				'homepage_layout',
 				'homepage_stats',
+				'task_list_tracked_started_tasks',
+				'help_panel_highlight_shown',
 			)
 		);
 	}
@@ -69,12 +71,11 @@ class Homescreen {
 	public function register_page() {
 		wc_admin_register_page(
 			array(
-				'id'           => 'woocommerce-home',
-				'title'        => __( 'Home', 'woocommerce' ),
-				'parent'       => 'woocommerce',
-				'path'         => self::MENU_SLUG,
-				'is_top_level' => true,
-				'order'        => 0,
+				'id'     => 'woocommerce-home',
+				'title'  => __( 'Home', 'woocommerce' ),
+				'parent' => 'woocommerce',
+				'path'   => self::MENU_SLUG,
+				'order'  => 0,
 			)
 		);
 	}
@@ -147,8 +148,10 @@ class Homescreen {
 		// Remove the Draft Order status (from the Checkout Block).
 		unset( $allowed_statuses['checkout-draft'] );
 
-		$status_counts          = array_map( 'wc_orders_count', array_keys( $allowed_statuses ) );
-		$settings['orderCount'] = array_sum( $status_counts );
+		$status_counts                     = array_map( 'wc_orders_count', array_keys( $allowed_statuses ) );
+		$product_counts                    = wp_count_posts( 'product' );
+		$settings['orderCount']            = array_sum( $status_counts );
+		$settings['publishedProductCount'] = $product_counts->publish;
 
 		return $settings;
 	}

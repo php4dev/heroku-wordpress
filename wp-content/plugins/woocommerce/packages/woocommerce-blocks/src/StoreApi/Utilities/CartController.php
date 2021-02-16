@@ -3,6 +3,7 @@ namespace Automattic\WooCommerce\Blocks\StoreApi\Utilities;
 
 use Automattic\WooCommerce\Blocks\StoreApi\Routes\RouteException;
 use Automattic\WooCommerce\Blocks\StoreApi\Utilities\NoticeHandler;
+use Automattic\WooCommerce\Checkout\Helpers\ReserveStock;
 
 /**
  * Woo Cart Controller class.
@@ -110,7 +111,7 @@ class CartController {
 	public function set_cart_item_quantity( $item_id, $quantity = 1 ) {
 		$cart_item = $this->get_cart_item( $item_id );
 
-		if ( ! $cart_item ) {
+		if ( empty( $cart_item ) ) {
 			throw new RouteException( 'woocommerce_rest_cart_invalid_key', __( 'Cart item does not exist.', 'woocommerce' ), 404 );
 		}
 
@@ -630,14 +631,9 @@ class CartController {
 	 * @return int
 	 */
 	protected function get_remaining_stock_for_product( $product ) {
-		if ( \class_exists( '\Automattic\WooCommerce\Checkout\Helpers\ReserveStock' ) ) {
-			$reserve_stock_controller = new \Automattic\WooCommerce\Checkout\Helpers\ReserveStock();
-		} else {
-			$reserve_stock_controller = new \Automattic\WooCommerce\Blocks\StoreApi\Utilities\ReserveStock();
-		}
-
-		$draft_order  = wc()->session->get( 'store_api_draft_order', 0 );
-		$qty_reserved = $reserve_stock_controller->get_reserved_stock( $product, $draft_order );
+		$reserve_stock = new ReserveStock();
+		$draft_order   = wc()->session->get( 'store_api_draft_order', 0 );
+		$qty_reserved  = $reserve_stock->get_reserved_stock( $product, $draft_order );
 
 		return $product->get_stock_quantity() - $qty_reserved;
 	}

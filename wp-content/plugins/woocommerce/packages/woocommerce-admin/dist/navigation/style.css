@@ -121,3 +121,6 @@ li.toplevel_page_woocommerce.wp-has-submenu.wp-not-current-submenu.opensub:hover
 
 body.js:not(.has-woocommerce-navigation) .toplevel_page_woocommerce ul.wp-submenu {
   display: none; }
+  @media (max-width: 782px) {
+    body.js:not(.has-woocommerce-navigation) .toplevel_page_woocommerce ul.wp-submenu .wp-first-item.hide-if-js {
+      display: list-item; } }

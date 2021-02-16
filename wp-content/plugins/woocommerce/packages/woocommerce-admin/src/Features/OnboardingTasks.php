@@ -43,8 +43,11 @@ class OnboardingTasks {
 	public function __construct() {
 		// This hook needs to run when options are updated via REST.
 		add_action( 'add_option_woocommerce_task_list_complete', array( $this, 'track_completion' ), 10, 2 );
+		add_action( 'add_option_woocommerce_extended_task_list_complete', array( $this, 'track_extended_completion' ), 10, 2 );
 		add_action( 'add_option_woocommerce_task_list_tracked_completed_tasks', array( $this, 'track_task_completion' ), 10, 2 );
 		add_action( 'update_option_woocommerce_task_list_tracked_completed_tasks', array( $this, 'track_task_completion' ), 10, 2 );
+		add_action( 'add_woocommerce_extended_task_list_item', array( $this, 'add_extended_task_list_item' ), 10, 2 );
+		add_action( 'remove_woocommerce_extended_task_list_item', array( $this, 'remove_extended_task_list_item' ), 10, 2 );
 
 		if ( ! is_admin() ) {
 			return;
@@ -361,6 +364,50 @@ class OnboardingTasks {
 	public static function track_completion( $old_value, $new_value ) {
 		if ( $new_value ) {
 			wc_admin_record_tracks_event( 'tasklist_tasks_completed' );
+		}
+	}
+
+	/**
+	 * Records an event when all tasks are completed in the extended task list.
+	 *
+	 * @param mixed $old_value Old value.
+	 * @param mixed $new_value New value.
+	 */
+	public static function track_extended_completion( $old_value, $new_value ) {
+		if ( $new_value ) {
+			wc_admin_record_tracks_event( 'extended_tasklist_tasks_completed' );
+		}
+	}
+
+	/**
+	 * Adds item to the extended task list.
+	 *
+	 * @param mixed $new_task_name New task name.
+	 */
+	public static function add_extended_task_list_item( $new_task_name ) {
+		if ( $new_task_name ) {
+			$extended_tasks_list_items = get_option( 'woocommerce_extended_task_list_items', array() );
+			if ( ! in_array( $new_task_name, $extended_tasks_list_items, true ) ) {
+				array_push( $extended_tasks_list_items, $new_task_name );
+				update_option( 'woocommerce_extended_task_list_items', $extended_tasks_list_items );
+				update_option( 'woocommerce_extended_task_list_hidden', 'no' );
+			}
+		}
+	}
+
+	/**
+	 * Removes an item from the extended task list.
+	 *
+	 * @param mixed $task_name Task name to remove.
+	 */
+	public static function remove_extended_task_list_item( $task_name ) {
+		if ( $task_name ) {
+			$extended_tasks_list_items = get_option( 'woocommerce_extended_task_list_items', array() );
+			if ( in_array( $task_name, $extended_tasks_list_items, true ) ) {
+				array_push( $extended_tasks_list_items, $task_name );
+				$tasks_list_items = array_diff( $extended_tasks_list_items, array( $task_name ) );
+				update_option( 'woocommerce_extended_task_list_items', $tasks_list_items );
+			}
 		}
 	}
 

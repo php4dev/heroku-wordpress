@@ -2,6 +2,8 @@
 namespace Automattic\WooCommerce\Blocks\StoreApi\Schemas;
 
 use Automattic\WooCommerce\Blocks\Payments\PaymentResult;
+use Automattic\WooCommerce\Blocks\Domain\Services\ExtendRestApi;
+
 
 /**
  * CheckoutSchema class.
@@ -15,6 +17,13 @@ class CheckoutSchema extends AbstractSchema {
 	 * @var string
 	 */
 	protected $title = 'checkout';
+
+	/**
+	 * The schema item identifier.
+	 *
+	 * @var string
+	 */
+	const IDENTIFIER = 'checkout';
 
 	/**
 	 * Billing address schema instance.
@@ -33,12 +42,14 @@ class CheckoutSchema extends AbstractSchema {
 	/**
 	 * Constructor.
 	 *
+	 * @param ExtendRestApi         $extend Rest Extending instance.
 	 * @param BillingAddressSchema  $billing_address_schema Billing address schema instance.
 	 * @param ShippingAddressSchema $shipping_address_schema Shipping address schema instance.
 	 */
-	public function __construct( BillingAddressSchema $billing_address_schema, ShippingAddressSchema $shipping_address_schema ) {
+	public function __construct( ExtendRestApi $extend, BillingAddressSchema $billing_address_schema, ShippingAddressSchema $shipping_address_schema ) {
 		$this->billing_address_schema  = $billing_address_schema;
 		$this->shipping_address_schema = $shipping_address_schema;
+		parent::__construct( $extend );
 	}
 
 	/**
@@ -93,6 +104,7 @@ class CheckoutSchema extends AbstractSchema {
 				'description' => __( 'The ID of the payment method being used to process the payment.', 'woocommerce' ),
 				'type'        => 'string',
 				'context'     => [ 'view', 'edit' ],
+				'enum'        => wc()->payment_gateways->get_payment_gateway_ids(),
 			],
 			'create_account'   => [
 				'description' => __( 'Whether to create a new user account as part of order processing.', 'woocommerce' ),

@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { decodeEntities } from '@wordpress/html-entities';
+
+/**
  * Internal dependencies
  */
 import { TYPES, DEFAULT_STATE, STATUS } from './constants';
@@ -16,6 +21,7 @@ const {
 	SET_NO_ERROR,
 	INCREMENT_CALCULATING,
 	DECREMENT_CALCULATING,
+	SET_CUSTOMER_ID,
 	SET_ORDER_ID,
 	SET_ORDER_NOTES,
 	SET_SHOULD_CREATE_ACCOUNT,
@@ -54,7 +60,7 @@ export const prepareResponseData = ( data ) => {
 	};
 	if ( Array.isArray( data.payment_details ) ) {
 		data.payment_details.forEach( ( { key, value } ) => {
-			responseData.paymentDetails[ key ] = value;
+			responseData.paymentDetails[ key ] = decodeEntities( value );
 		} );
 	}
 	return responseData;
@@ -67,6 +73,7 @@ export const prepareResponseData = ( data ) => {
  * @param {Object} action Incoming action object.
  * @param {string} action.url URL passed in.
  * @param {string} action.type Type of action.
+ * @param {string} action.customerId Customer ID.
  * @param {string} action.orderId Order ID.
  * @param {Array} action.orderNotes Order notes.
  * @param {boolean} action.shouldCreateAccount True if shopper has requested a user account (signup checkbox).
@@ -74,7 +81,7 @@ export const prepareResponseData = ( data ) => {
  */
 export const reducer = (
 	state = DEFAULT_STATE,
-	{ url, type, orderId, orderNotes, shouldCreateAccount, data }
+	{ url, type, customerId, orderId, orderNotes, shouldCreateAccount, data }
 ) => {
 	let newState = state;
 	switch ( type ) {
@@ -184,6 +191,12 @@ export const reducer = (
 			newState = {
 				...state,
 				calculatingCount: Math.max( 0, state.calculatingCount - 1 ),
+			};
+			break;
+		case SET_CUSTOMER_ID:
+			newState = {
+				...state,
+				customerId,
 			};
 			break;
 		case SET_ORDER_ID:

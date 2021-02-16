@@ -2,23 +2,24 @@
  * External dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { getCurrency } from '@woocommerce/base-utils';
 import Label from '@woocommerce/base-components/label';
 import ProductPrice from '@woocommerce/base-components/product-price';
 import ProductName from '@woocommerce/base-components/product-name';
-import {
-	ProductBackorderBadge,
-	ProductImage,
-	ProductLowStockBadge,
-	ProductMetadata,
-} from '@woocommerce/base-components/cart-checkout';
+import { getCurrency } from '@woocommerce/price-format';
 import PropTypes from 'prop-types';
 import Dinero from 'dinero.js';
+
+/**
+ * Internal dependencies
+ */
+import ProductBackorderBadge from '../product-backorder-badge';
+import ProductImage from '../product-image';
+import ProductLowStockBadge from '../product-low-stock-badge';
+import ProductMetadata from '../product-metadata';
 
 const OrderSummaryItem = ( { cartItem } ) => {
 	const {
 		images,
-		catalog_visibility: catalogVisibility = '',
 		low_stock_remaining: lowStockRemaining = null,
 		show_backorder_badge: showBackorderBadge = false,
 		name,
@@ -27,19 +28,28 @@ const OrderSummaryItem = ( { cartItem } ) => {
 		quantity,
 		short_description: shortDescription,
 		description: fullDescription,
+		item_data: itemData = [],
 		variation,
 	} = cartItem;
 
 	const currency = getCurrency( prices );
-	const linePrice = Dinero( {
-		amount: parseInt( prices.raw_prices.price, 10 ),
+	const regularPriceSingle = Dinero( {
+		amount: parseInt( prices.raw_prices.regular_price, 10 ),
 		precision: parseInt( prices.raw_prices.precision, 10 ),
 	} )
+		.convertPrecision( currency.minorUnit )
+		.getAmount();
+	const unconvertedLinePrice = Dinero( {
+		amount: parseInt( prices.raw_prices.price, 10 ),
+		precision: parseInt( prices.raw_prices.precision, 10 ),
+	} );
+	const linePriceSingle = unconvertedLinePrice
+		.convertPrecision( currency.minorUnit )
+		.getAmount();
+	const linePrice = unconvertedLinePrice
 		.multiply( quantity )
 		.convertPrecision( currency.minorUnit )
 		.getAmount();
-	const isProductHiddenFromCatalog =
-		catalogVisibility === 'hidden' || catalogVisibility === 'search';
 
 	return (
 		<div className="wc-block-components-order-summary-item">
@@ -57,18 +67,19 @@ const OrderSummaryItem = ( { cartItem } ) => {
 				<ProductImage image={ images.length ? images[ 0 ] : {} } />
 			</div>
 			<div className="wc-block-components-order-summary-item__description">
-				<div className="wc-block-components-order-summary-item__header">
-					<ProductName
-						disabled={ isProductHiddenFromCatalog }
-						name={ name }
-						permalink={ permalink }
-					/>
-					<ProductPrice
-						currency={ currency }
-						price={ linePrice }
-						priceClassName="wc-block-components-order-summary-item__total-price"
-					/>
-				</div>
+				<ProductName
+					disabled={ true }
+					name={ name }
+					permalink={ permalink }
+				/>
+				<ProductPrice
+					currency={ currency }
+					price={ linePriceSingle }
+					regularPrice={ regularPriceSingle }
+					className="wc-block-components-order-summary-item__individual-prices"
+					priceClassName="wc-block-components-order-summary-item__individual-price"
+					regularPriceClassName="wc-block-components-order-summary-item__regular-individual-price"
+				/>
 				{ showBackorderBadge ? (
 					<ProductBackorderBadge />
 				) : (
@@ -81,8 +92,12 @@ const OrderSummaryItem = ( { cartItem } ) => {
 				<ProductMetadata
 					shortDescription={ shortDescription }
 					fullDescription={ fullDescription }
+					itemData={ itemData }
 					variation={ variation }
 				/>
+			</div>
+			<div className="wc-block-components-order-summary-item__total-price">
+				<ProductPrice currency={ currency } price={ linePrice } />
 			</div>
 		</div>
 	);
