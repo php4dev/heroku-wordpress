@@ -1,4 +1,4 @@
-/*! elementor - v3.0.15 - 21-12-2020 */
+/*! elementor - v3.1.1 - 31-01-2021 */
 .dialog-widget-content {
   background-color: #fff;
   position: absolute;
@@ -293,12 +293,9 @@
   -webkit-box-shadow: 0 0 13px inset rgba(0, 0, 0, 0.05);
           box-shadow: 0 0 13px inset rgba(0, 0, 0, 0.05); }
 
-#wpadminbar #wp-admin-bar-elementor_app_site_editor a.ab-item:before {
-  content: "\e91d";
-  font-family: eicons;
-  top: 4px;
-  font-size: 13px;
-  color: inherit; }
+#wpadminbar #wp-admin-bar-elementor_app_site_editor a.ab-item {
+  border-top: 1px solid #464b50;
+  margin-top: 6px; }
 
 .elementor-hidden {
   display: none; }
@@ -1748,6 +1745,9 @@ ul.elementor-icon-list-items.elementor-inline-items {
   .elementor-image-gallery .gallery.gallery-columns-2 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-3 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-4 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-5 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-6 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-7 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-8 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-9 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-10 .gallery-item {
     max-width: 100%; } }
 
+.elementor-widget-google_maps .elementor-widget-container {
+  overflow: hidden; }
+
 .elementor-widget-google_maps iframe {
   height: 300px; }
 
@@ -2210,15 +2210,17 @@ body.elementor-page .elementor-widget-menu-anchor {
             justify-content: var(--justify-content, center);
     justify-items: var(--justify-content, center); }
 
+.elementor-icon.elementor-social-icon {
+  font-size: var(--icon-size, 25px);
+  line-height: var(--icon-size, 25px);
+  width: calc(var(--icon-size, 25px) + (2 * var(--icon-padding, 0.5em)));
+  height: calc(var(--icon-size, 25px) + (2 * var(--icon-padding, 0.5em))); }
+
 .elementor-social-icon {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
   background-color: #818a91;
-  font-size: var(--icon-size, 25px);
-  line-height: var(--icon-size, 25px);
-  width: calc(var(--icon-size, 25px) + (2 * var(--icon-padding, 0.5em)));
-  height: calc(var(--icon-size, 25px) + (2 * var(--icon-padding, 0.5em)));
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -2524,7 +2526,7 @@ body.elementor-page .elementor-widget-menu-anchor {
 
 .elementor-widget-tabs .elementor-tab-title {
   cursor: pointer;
-  outline: none; }
+  outline: var(--focus-outline, none); }
 
 .elementor-widget-tabs .elementor-tab-desktop-title {
   position: relative;
@@ -2564,6 +2566,11 @@ body.elementor-page .elementor-widget-menu-anchor {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex; }
+  .elementor-widget-tabs.elementor-tabs-view-vertical .elementor-tabs-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
   .elementor-widget-tabs.elementor-tabs-view-vertical .elementor-tabs-content-wrapper {
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
@@ -2573,6 +2580,22 @@ body.elementor-page .elementor-widget-menu-anchor {
   .elementor-widget-tabs.elementor-tabs-view-horizontal .elementor-tab-content {
     border-style: solid;
     border-top-style: none; }
+  .elementor-widget-tabs.elementor-tabs-alignment-center .elementor-tabs-wrapper, .elementor-widget-tabs.elementor-tabs-alignment-end .elementor-tabs-wrapper, .elementor-widget-tabs.elementor-tabs-alignment-stretch .elementor-tabs-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  .elementor-widget-tabs.elementor-tabs-alignment-center .elementor-tabs-wrapper {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+  .elementor-widget-tabs.elementor-tabs-alignment-end .elementor-tabs-wrapper {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end; }
+  .elementor-widget-tabs.elementor-tabs-alignment-stretch.elementor-tabs-view-horizontal .elementor-tab-title {
+    width: 100%; }
+  .elementor-widget-tabs.elementor-tabs-alignment-stretch.elementor-tabs-view-vertical .elementor-tab-title {
+    height: 100%; }
   .elementor-tabs .elementor-tab-mobile-title {
     display: none; } }
 
@@ -2708,7 +2731,7 @@ body.elementor-page .elementor-widget-menu-anchor {
     display: block;
     width: 100%; }
 
-.elementor-widget-video .elementor-video {
+.elementor-widget-video .e-hosted-video .elementor-video {
   -o-object-fit: cover;
      object-fit: cover; }
 
@@ -3867,6 +3890,28 @@ button.swiper-pagination-bullet {
     text-align: justify;
     -moz-text-align-last: justify;
          text-align-last: justify; } }
+
+.e--ua-appleWebkit.rtl {
+  --flex-right: flex-start; }
+
+.e--ua-appleWebkit .elementor-widget-social-icons.e-grid-align-right, .e--ua-appleWebkit .elementor-share-buttons--align-right {
+  --justify-content: var(--flex-right, flex-end); }
+
+.e--ua-appleWebkit .elementor-grid-0.elementor-widget-social-icons.e-grid-align-right .elementor-widget-container, .e--ua-appleWebkit .elementor-grid-0.elementor-share-buttons--align-right .elementor-widget-container, .e--ua-appleWebkit .elementor-grid-0.elementor-share-buttons--align-justify .elementor-widget-container {
+  margin-left: calc(-0.5 * var(--grid-column-gap));
+  margin-right: calc(-0.5 * var(--grid-column-gap)); }
+  .e--ua-appleWebkit .elementor-grid-0.elementor-widget-social-icons.e-grid-align-right .elementor-widget-container .elementor-grid, .e--ua-appleWebkit .elementor-grid-0.elementor-share-buttons--align-right .elementor-widget-container .elementor-grid, .e--ua-appleWebkit .elementor-grid-0.elementor-share-buttons--align-justify .elementor-widget-container .elementor-grid {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: var(--justify-content, space-between);
+        -ms-flex-pack: var(--justify-content, space-between);
+            justify-content: var(--justify-content, space-between); }
+    .e--ua-appleWebkit .elementor-grid-0.elementor-widget-social-icons.e-grid-align-right .elementor-widget-container .elementor-grid-item, .e--ua-appleWebkit .elementor-grid-0.elementor-share-buttons--align-right .elementor-widget-container .elementor-grid-item, .e--ua-appleWebkit .elementor-grid-0.elementor-share-buttons--align-justify .elementor-widget-container .elementor-grid-item {
+      margin-left: calc(0.5 * var(--grid-column-gap));
+      margin-right: calc(0.5 * var(--grid-column-gap)); }
 
 @media (max-width: 767px) {
   .elementor .elementor-hidden-phone {

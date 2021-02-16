@@ -1,4 +1,4 @@
-/*! elementor - v3.0.15 - 21-12-2020 */
+/*! elementor - v3.1.1 - 31-01-2021 */
 .dialog-widget-content {
   background-color: #fff;
   position: absolute;
@@ -293,12 +293,9 @@
   -webkit-box-shadow: 0 0 13px inset rgba(0, 0, 0, 0.05);
           box-shadow: 0 0 13px inset rgba(0, 0, 0, 0.05); }
 
-#wpadminbar #wp-admin-bar-elementor_app_site_editor a.ab-item:before {
-  content: "\e91d";
-  font-family: eicons;
-  top: 4px;
-  font-size: 13px;
-  color: inherit; }
+#wpadminbar #wp-admin-bar-elementor_app_site_editor a.ab-item {
+  border-top: 1px solid #464b50;
+  margin-top: 6px; }
 
 .elementor-hidden {
   display: none; }
@@ -477,4 +474,96 @@
     width: 35px; }
     .elementor-finder__results__item__action:hover {
       background-color: rgba(0, 0, 0, 0.07); }
+
+.tipsy {
+  font-size: 10px;
+  position: absolute;
+  padding: 5px;
+  z-index: 100000; }
+
+.tipsy-inner {
+  background-color: #000;
+  color: #FFF;
+  font-weight: 500;
+  max-width: 200px;
+  padding: 5px 12px;
+  text-align: center;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5); }
+
+.tipsy-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  border: 5px dashed #000; }
+
+.tipsy-arrow-n {
+  border-bottom-color: #000; }
+
+.tipsy-arrow-s {
+  border-top-color: #000; }
+
+.tipsy-arrow-e {
+  border-left-color: #000; }
+
+.tipsy-arrow-w {
+  border-right-color: #000; }
+
+.tipsy-n .tipsy-arrow, .tipsy-nw .tipsy-arrow {
+  border-left-color: transparent;
+  border-right-color: transparent;
+  top: 0;
+  border-bottom-style: solid;
+  border-top: none; }
+
+.tipsy-n .tipsy-arrow {
+  left: 50%;
+  margin-left: -5px; }
+
+.tipsy-nw .tipsy-arrow {
+  left: 10px; }
+
+.tipsy-ne .tipsy-arrow {
+  top: 0;
+  right: 10px;
+  border-bottom-style: solid;
+  border-top: none;
+  border-left-color: transparent;
+  border-right-color: transparent; }
+
+.tipsy-s .tipsy-arrow, .tipsy-se .tipsy-arrow, .tipsy-sw .tipsy-arrow {
+  bottom: 0;
+  border-top-style: solid;
+  border-bottom: none;
+  border-left-color: transparent;
+  border-right-color: transparent; }
+
+.tipsy-s .tipsy-arrow {
+  left: 50%;
+  margin-left: -5px; }
+
+.tipsy-sw .tipsy-arrow {
+  left: 10px; }
+
+.tipsy-se .tipsy-arrow {
+  right: 10px; }
+
+.tipsy-e .tipsy-arrow, .tipsy-w .tipsy-arrow {
+  top: 50%;
+  margin-top: -5px;
+  border-top-color: transparent;
+  border-bottom-color: transparent; }
+
+.tipsy-e .tipsy-arrow {
+  right: 0;
+  border-left-style: solid;
+  border-right: none; }
+
+.tipsy-w .tipsy-arrow {
+  left: 0;
+  border-right-style: solid;
+  border-left: none; }
 /*# sourceMappingURL=common-rtl.css.map */
