@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.6.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-12-05 08:03:43+0000\n"
+"PO-Revision-Date: 2021-02-08 12:25:00+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -27,29 +27,49 @@ msgstr "3"
 msgid "Continue"
 msgstr "Продолжить"
 
+#. translators: %s: The server PHP version.
+#: wp-admin/includes/dashboard.php:1758
+msgid "Your site is running an outdated version of PHP (%s), which should be updated."
+msgstr "Ваш сайт использует устаревшую версию PHP (%s), её нужно обновить."
+
+#. translators: %s: The server PHP version.
+#: wp-admin/includes/dashboard.php:1752
+msgid "Your site is running an insecure version of PHP (%s), which should be updated."
+msgstr "Ваш сайт использует небезопасную версию PHP (%s), её нужно обновить."
+
+#: wp-admin/includes/dashboard.php:42
+msgid "PHP Update Recommended"
+msgstr "Рекомендуется обновление PHP"
+
+#. translators: %s: The minimum recommended PHP version.
+#: wp-admin/includes/class-wp-site-health.php:729
+#: wp-admin/includes/dashboard.php:1770
+msgid "PHP is the programming language used to build and maintain WordPress. Newer versions of PHP are created with increased performance in mind, so you may see a positive effect on your site&#8217;s performance. The minimum recommended version of PHP is %s."
+msgstr "PHP — язык программирования, используемый для создания WordPress. Используя актуальные версии PHP, вы улучшаете производительность и безопасность своего сайта. Минимально рекомендуемая версия PHP — %s."
+
 #: wp-admin/user-edit.php:766 wp-admin/authorize-application.php:93
 msgid "Your website appears to use Basic Authentication, which is not currently compatible with Application Passwords."
-msgstr "Ваш сайт, похоже, использует базовую HTTP авторизацию, которая в настоящее время несовместима с паролями приложений."
+msgstr "Ваш сайт, похоже, использует базовую HTTP-авторизацию, которая в настоящее время несовместима с паролями приложений."
 
-#: wp-admin/about.php:227
+#: wp-admin/about.php:260
 msgid "https://wordpress.org/plugins/enable-jquery-migrate-helper/"
 msgstr "https://ru.wordpress.org/plugins/enable-jquery-migrate-helper/"
 
-#: wp-admin/about.php:216
+#: wp-admin/about.php:249
 msgid "https://wordpress.org/plugins/wp-jquery-update-test/"
 msgstr "https://ru.wordpress.org/plugins/wp-jquery-update-test/"
 
 #. translators: 1: WordPress accessibility-ready guidelines link, 2: WCAG
 #. information link.
-#: wp-admin/about.php:123
+#: wp-admin/about.php:156
 msgid "What’s more, this default theme puts accessibility at the heart of your website. It conforms to the <a href=\"%1$s\">WordPress accessibility-ready guidelines</a> and addresses several more specialized standards from the <a href=\"%2$s\">Web Content Accessibility Guidelines (WCAG) 2.1 at level AAA</a>. It will help you meet the highest level of international accessibility standards when you create accessible content and choose plugins which are accessible too!"
 msgstr "Более того, эта тема по умолчанию делает доступность центральным элементом вашего сайта. Она соответствует <a href=\"%1$s\"> руководству по обеспечению доступности WordPress</a> и руководствуется более специализированными стандартами <a href=\"%2$s\"> Руководства по доступности веб-содержимого (WCAG). 2.1 на уровне AAA</a>. Это поможет вашему сайту соответствовать высочайшим международным стандартам доступности при создании доступного содержимого и использовании плагинов с поддержкой доступности."
 
-#: wp-admin/about.php:91
+#: wp-admin/about.php:124
 msgid "To help you add subtitles or captions to your videos, you can now upload them within your post or page. This makes it easier than ever to make your videos accessible for anyone who needs or prefers to use subtitles."
 msgstr "Загружать субтитры или подписи никогда не было так просто - вы сможете сделать это прямо из вашей записи или страницы. Сделайте ваши видео доступными для тех, кому требуется или кто предпочитает субтитры."
 
-#: wp-admin/about.php:90
+#: wp-admin/about.php:123
 msgid "Upload video captions directly in the block editor"
 msgstr "Загрузка подписей к видео прямо в редакторе блоков"
 
@@ -58,99 +78,99 @@ msgid "https://developer.wordpress.org/rest-api/frequently-asked-questions/#why-
 msgstr "https://developer.wordpress.org/rest-api/frequently-asked-questions/#why-is-authentication-not-working"
 
 #. translators: %s: WordPress 5.6 Field Guide link.
-#: wp-admin/about.php:243
+#: wp-admin/about.php:276
 msgid "Check out the latest version of the WordPress Field Guide. It highlights developer notes for each change you may want to be aware of. <a href=\"%s\">WordPress 5.6 Field Guide.</a>"
 msgstr "Загляните в свежую версию <a href=\"%s\">WordPress 5.6 Field Guide</a>, там вы найдете заметки для разработчиков по каждому изменению, если вы хотите быть в курсе всех подробностей."
 
 #. translators: %s: jQuery Migrate plugin link.
-#: wp-admin/about.php:224
+#: wp-admin/about.php:257
 msgid "If you find issues with the way your site looks (e.g. a slider doesn’t work, a button is stuck — that sort of thing), install the <a href=\"%s\">jQuery Migrate plugin</a>."
 msgstr "Если на сайте возникли проблемы с его отображением (например слайдер перестал работать, кнопка не нажимается), то попробуйте установить плагин <a href=\"%s\">jQuery Migrate</a>."
 
 #. translators: %s: jQuery update test plugin link.
-#: wp-admin/about.php:213
+#: wp-admin/about.php:246
 msgid "Updates to jQuery in WordPress take place across three releases: 5.5, 5.6, and 5.7. As we reach the mid-point of this process, run the <a href=\"%s\">update test plugin</a> to check your sites for errors ahead of time."
 msgstr "Продолжается запланированное на выпуски 5.5, 5.6 и 5.7 обновление jQuery. И так как мы уже на полпути, то самое время <a href=\"%s\">обновить тестовый плагин</a> для проверки ваших сайтов на ошибки заранее."
 
-#: wp-admin/about.php:208
+#: wp-admin/about.php:241
 msgid "jQuery"
 msgstr "jQuery"
 
 #. translators: %s: WordPress and PHP 8 dev note link.
-#: wp-admin/about.php:199
+#: wp-admin/about.php:232
 msgid "5.6 marks the first steps toward WordPress Core support for PHP 8. Now is a great time to start planning how your WordPress products, services and sites can support the latest PHP version. For more information about what to expect next, <a href=\"%s\">read the PHP 8 developer note</a>."
 msgstr "Выпуск 5.6 сделал первые шаги по поддержке PHP 8. Самое время начать планировать поддержку и использование последней версии PHP для ваших сайтов, товаров, услуг на основе WordPress. Больше подробностей и о том, чего следует ждать дальше по ссылке:  <a href=\"%s\">заметка для разработчиков PHP 8</a>."
 
-#: wp-admin/about.php:194
+#: wp-admin/about.php:227
 msgid "More PHP 8 support"
 msgstr "Улучшение поддержки PHP 8"
 
-#: wp-admin/about.php:191
+#: wp-admin/about.php:224
 msgid "Thanks to the API’s new Application Passwords authorization feature, third-party apps can connect to your site seamlessly and securely. This new REST API feature lets you see what apps are connecting to your site and control what they do."
 msgstr "Благодаря новому API паролей приложений, подключение сторонних приложений к сайту станет целостным и безопасным. Эта возможность REST API позволяет контролировать какие приложения подключаются к вашему сайту и что они делают."
 
-#: wp-admin/about.php:190
+#: wp-admin/about.php:223
 msgid "REST API authentication with Application Passwords"
 msgstr "Авторизация REST API по паролям приложений"
 
-#: wp-admin/about.php:181
+#: wp-admin/about.php:214
 msgid "If you’ve not had the chance to play with block patterns yet, all default themes now feature a range of block patterns that let you master complex layouts with minimal effort. Customize the patterns to your liking with the copy, images and colors that fit your story or brand."
 msgstr "Если вы еще не пробовали использовать паттерны блоков, то сейчас самое время, потому что все темы по умолчанию теперь поддерживают ряд паттернов, которые позволят вам создавать сложные макеты с минимумом усилий. Настройте их по своему вкусу с помощью текста, изображений и цветов, которые соответствуют вашей истории или бренду."
 
-#: wp-admin/about.php:180
+#: wp-admin/about.php:213
 msgid "Built-in patterns"
 msgstr "Встроенные паттерны"
 
 #. translators: %s: Accessibility statement feature plugin link.
-#: wp-admin/about.php:173
+#: wp-admin/about.php:206
 msgid "Even if you’re not an expert, you can start letting folks know about your site’s commitment to accessibility at the click of a button! The new <a href=\"%s\">feature plugin</a> includes template copy for you to update and publish, and it’s written to support different contexts and jurisdictions."
 msgstr "Даже если вы не являетесь экспертом, вы можете начать сообщать людям о приверженности вашего сайта поддержке доступности одним нажатием кнопки! Новый <a href=\"%s\">функциональный плагин</a> включает копию шаблона, который вы можете обновить и опубликовать, он написан для поддержки различных контекстов и юрисдикций."
 
-#: wp-admin/about.php:168
+#: wp-admin/about.php:201
 msgid "Accessibility statement template"
 msgstr "Шаблон заявления о доступности"
 
-#: wp-admin/about.php:165
+#: wp-admin/about.php:198
 msgid "For years, only developers have been able to update WordPress automatically. But now, you have that option, right in your dashboard. If this is your first site, you have auto-updates ready to go, right now! Upgrading an existing site? No problem! Everything is the same as it was before."
 msgstr "В течении многих лет только разработчики могли автоматически обновлять WordPress. Сейчас такая возможность есть у всех, прямо в консоли. Если вы только  что установили WordPress на сайт, эта возможность уже готова к использованию. Обновили существующий сайт? Без проблем! Все осталось как прежде."
 
-#: wp-admin/about.php:164
+#: wp-admin/about.php:197
 msgid "Expanding auto-updates"
 msgstr "Расширенные автоматические обновления"
 
-#: wp-admin/about.php:143
+#: wp-admin/about.php:176
 msgid "Need more flexibility than that? You can also choose your own color palette from the color picker."
 msgstr "Нужна еще большая гибкость выбора? Вы запросто можете выбрать вашу собственную палитру цветов."
 
-#: wp-admin/about.php:142
+#: wp-admin/about.php:175
 msgid "Perfect for a new year, Twenty Twenty-One gives you a range of pre-selected color palettes in pastel, all of which meet AAA standards for contrast. You can also choose your own background color for the theme, and the theme chooses accessibility-conscious text colors for you — automatically!"
 msgstr "Twenty Twenty-One идеально подходит для нового года и предлагает вам ряд предварительно выбранных цветовых палитр в пастельных тонах, каждая из которых соответствует стандартам контрастности AAA. Вы также можете выбрать свой собственный цвет фона для темы, и тема автоматически выберет цвета текста с учетом специальных возможностей!"
 
-#: wp-admin/about.php:139
+#: wp-admin/about.php:172
 msgid "A rainbow of soft pastels"
 msgstr "Радуга пастельных тонов"
 
-#: wp-admin/about.php:102
+#: wp-admin/about.php:135
 msgid "Twenty Twenty-One is a blank canvas for your ideas, and the block editor is the best brush. It is built for the block editor and packed with brand-new block patterns you can only get in the default themes. Try different layouts in a matter of seconds, and let the theme’s eye-catching, yet timeless design make your work shine."
 msgstr "Twenty Twenty-One - это чистый холст для ваших идей, а редактор блоков - лучшая кисть. Она создана для редактора блоков и укомплектована совершенно новыми паттернами блоков, которые вы можете получить пока только с темами по умолчанию. Попробуйте разные макеты за считанные секунды, и пусть привлекательный, но неподвластный времени дизайн заставит вашу работу блистать."
 
-#: wp-admin/about.php:99
+#: wp-admin/about.php:132
 msgid "Twenty Twenty-One is here!"
 msgstr "Новая тема Twenty Twenty-One!"
 
-#: wp-admin/about.php:85
+#: wp-admin/about.php:118
 msgid "In select themes, preconfigured block patterns make setting up standard pages on your site a breeze. Find the power of patterns to streamline your workflow, or share some of that power with your clients and save yourself a few clicks."
 msgstr "В некоторых темах предварительно настроенные паттерны блоков делают создание стандартных страниц легким как дуновение ветерка. Откройте для себя возможности паттернов для оптимизации рабочего процесса или поделитесь некоторыми из этих возможностей со своими клиентами и сэкономьте несколько нажатий."
 
-#: wp-admin/about.php:84
+#: wp-admin/about.php:117
 msgid "More block patterns"
 msgstr "Ещё больше паттернов блоков"
 
-#: wp-admin/about.php:78
+#: wp-admin/about.php:111
 msgid "Bring your stories to life with more tools that let you edit your layout with or without code. Single column blocks, designs using mixed widths and columns, full-width headers, and videos in your cover block—make small changes or big statements with equal ease!"
 msgstr "Оживите свои истории с помощью дополнительных инструментов, которые позволяют редактировать макет с использованием кода или без него. Блоки с одним столбцом, конструкции с использованием смешанной ширины и столбцов, заголовки на всю ширину и видео в блоке обложки - с одинаковой легкостью вносите как небольшие изменения так и большие утверждения!"
 
-#: wp-admin/about.php:77
+#: wp-admin/about.php:110
 msgid "Greater layout flexibility"
 msgstr "Большая гибкость макета"
 
@@ -226,7 +246,7 @@ msgstr "<strong>Состояние здоровья сайта</strong> &mdash; 
 
 #. translators: %s: Application name.
 #: wp-admin/user-edit.php:874 wp-admin/authorize-application.php:191
-#: wp-admin/js/auth-app.js:87
+#: wp-admin/js/auth-app.js:90
 msgid "Your new password for %s is:"
 msgstr "Ваш новый пароль для %s:"
 
@@ -238,7 +258,7 @@ msgstr "Добавить новый пароль приложения"
 msgid "Required to create an Application Password, but not to update the user."
 msgstr "Требуется для создания паролей приложений, но не для обновления данных пользователя."
 
-#: wp-admin/about.php:256
+#: wp-admin/about.php:289
 msgid "Go to Updates"
 msgstr "Перейти к обновлениям"
 
@@ -280,25 +300,25 @@ msgstr "Мы не можем найти %s. Попробуйте другой б
 msgid "Or"
 msgstr "или"
 
-#: wp-admin/authorize-application.php:298
+#: wp-admin/authorize-application.php:302
 msgid "You will be returned to the WordPress Dashboard, and no changes will be made."
 msgstr "Вы вернетесь в консоль WordPress, никаких изменений совершено не будет."
 
-#: wp-admin/authorize-application.php:280
+#: wp-admin/authorize-application.php:284
 msgid "No, I do not approve of this connection."
 msgstr "Нет, я не разрешаю это подключение."
 
-#: wp-admin/authorize-application.php:273
+#: wp-admin/authorize-application.php:277
 msgid "You will be given a password to manually enter into the application in question."
 msgstr "Вам будет предложен пароль для ввода в приложении."
 
 #. translators: %s: The URL the user is being redirected to.
-#: wp-admin/authorize-application.php:260
-#: wp-admin/authorize-application.php:294
+#: wp-admin/authorize-application.php:264
+#: wp-admin/authorize-application.php:298
 msgid "You will be sent to %s"
 msgstr "Вы будете перенаправлены на %s"
 
-#: wp-admin/authorize-application.php:246
+#: wp-admin/authorize-application.php:250
 msgid "Yes, I approve of this connection."
 msgstr "Да, я разрешаю это подключение."
 
@@ -337,15 +357,15 @@ msgid "Authorize Application"
 msgstr "Авторизовать приложение"
 
 #: wp-admin/user-edit.php:881 wp-admin/authorize-application.php:198
-#: wp-admin/js/auth-app.js:95
+#: wp-admin/js/auth-app.js:98
 msgid "Be sure to save this in a safe location. You will not be able to retrieve it."
 msgstr "Обязательно сохраните его в безопасном месте. Вы не сможете снова получить его."
 
-#: wp-admin/user-edit.php:747 wp-admin/authorize-application.php:223
+#: wp-admin/user-edit.php:747 wp-admin/authorize-application.php:227
 msgid "WordPress App on My Phone"
 msgstr "Приложение WordPress на моём смартфоне"
 
-#: wp-admin/user-edit.php:746 wp-admin/authorize-application.php:222
+#: wp-admin/user-edit.php:746 wp-admin/authorize-application.php:226
 msgid "New Application Password Name"
 msgstr "Имя нового пароля приложений"
 
@@ -640,7 +660,7 @@ msgstr "Значение \"%1$s\" меньше чем \"%2$s\"."
 msgid "Environment type"
 msgstr "Тип окружения"
 
-#: wp-admin/about.php:238
+#: wp-admin/about.php:271
 msgid "Check the Field Guide for more!"
 msgstr "Посмотрите руководство, чтобы узнать больше!"
 
@@ -1105,7 +1125,7 @@ msgstr "PHP сессии"
 #. translators: 1: session_start(), 2: session_write_close()
 #: wp-admin/includes/class-wp-site-health.php:1129
 msgid "A PHP session was created by a %1$s function call. This interferes with REST API and loopback requests. The session should be closed by %2$s before making any HTTP requests."
-msgstr "Сессия PHP была создана вызовом функции %1$s. Это препятствует работе REST API и петлевым запросам. Сессия должна быть закрыта функцией %2$s перед выполнением любых HTTP-запросов."
+msgstr "Сессия PHP была создана вызовом функции %1$s. Это препятствует работе REST API и петлевых запросов. Сессия должна быть закрыта функцией %2$s перед выполнением любых HTTP-запросов."
 
 #: wp-admin/includes/class-wp-site-health.php:1123
 msgid "An active PHP session was detected"
@@ -1114,7 +1134,7 @@ msgstr "Обнаружена активная PHP сессия"
 #. translators: 1: session_start(), 2: session_write_close()
 #: wp-admin/includes/class-wp-site-health.php:1112
 msgid "PHP sessions created by a %1$s function call may interfere with REST API and loopback requests. An active session should be closed by %2$s before making any HTTP requests."
-msgstr "Сессии PHP созданные вызовом функции %1$s могут препятствовать работе REST API и петлевым запросам. Активная сессия должна быть закрыта функцией %2$s перед выполнением любых HTTP-запросов."
+msgstr "Сессии PHP, созданные вызовом функции %1$s, могут препятствовать работе REST API и петлевых запросов. Активная сессия должна быть закрыта функцией %2$s перед выполнением любых HTTP-запросов."
 
 #: wp-admin/includes/class-wp-site-health.php:1102
 msgid "No PHP sessions detected"
@@ -1165,7 +1185,7 @@ msgid "Text"
 msgstr "Текст"
 
 #: wp-admin/includes/meta-boxes.php:353 wp-admin/includes/meta-boxes.php:354
-#: wp-admin/js/post.js:758
+#: wp-admin/js/post.js:766
 msgctxt "post action/button label"
 msgid "Schedule"
 msgstr "Расписание"
@@ -1486,31 +1506,31 @@ msgid "This localized version contains both the translation and various other lo
 msgstr "Локализованная версия содержит и перевод и разные другие исправления для локализации."
 
 #. translators: 1: Number of issues. 2: URL to Site Health screen.
-#: wp-admin/includes/dashboard.php:1863
+#: wp-admin/includes/dashboard.php:1878
 msgid "Take a look at the <strong>%1$d item</strong> on the <a href=\"%2$s\">Site Health screen</a>."
 msgid_plural "Take a look at the <strong>%1$d items</strong> on the <a href=\"%2$s\">Site Health screen</a>."
 msgstr[0] "Обратите внимание на <strong>%1$d элемент</strong> на экране <a href=\"%2$s\">«Здоровье сайта»</a>."
 msgstr[1] "Обратите внимание на <strong>%1$d элемента</strong> на экране <a href=\"%2$s\">«Здоровье сайта»</a>."
 msgstr[2] "Обратите внимание на <strong>%1$d элементов</strong> на экране <a href=\"%2$s\">«Здоровье сайта»</a>."
 
-#: wp-admin/includes/dashboard.php:1853
+#: wp-admin/includes/dashboard.php:1868
 msgid "Your site&#8217;s health is looking good, but there are still some things you can do to improve its performance and security."
 msgstr "Статус здоровья вашего сайта смотрится неплохо, но есть некоторые вещи, которые вы можете сделать для улучшения производительности и безопасности."
 
-#: wp-admin/includes/dashboard.php:1851
+#: wp-admin/includes/dashboard.php:1866
 msgid "Great job! Your site currently passes all site health checks."
 msgstr "Замечательно! Ваш сайт успешно прошел все тесты проверки состояния здоровья."
 
-#: wp-admin/includes/dashboard.php:1849
+#: wp-admin/includes/dashboard.php:1864
 msgid "Your site has critical issues that should be addressed as soon as possible to improve its performance and security."
 msgstr "На вашем сайте есть критические проблемы, которые стоит решить как можно быстрее, для улучшения безопасности и производительности вашего сайта."
 
 #. translators: %s: URL to Site Health screen.
-#: wp-admin/includes/dashboard.php:1841
+#: wp-admin/includes/dashboard.php:1856
 msgid "Site health checks will automatically run periodically to gather information about your site. You can also <a href=\"%s\">visit the Site Health screen</a> to gather information about your site now."
 msgstr "Проверка состояния здоровья сайта будет периодически запускаться и собирать информацию о вашем сайте. Можно перейти на экран <a href=\"%s\">«Здоровье сайта»</a>, чтобы сделать это сейчас."
 
-#: wp-admin/includes/dashboard.php:1829
+#: wp-admin/includes/dashboard.php:1844
 msgid "No information yet&hellip;"
 msgstr "Пока нет информации..."
 
@@ -1783,7 +1803,7 @@ msgstr "<a href=\"https://ru.wordpress.org/support/article/users-add-new-screen/
 msgid "This page can show you every detail about the configuration of your WordPress website. For any improvements that could be made, see the <a href=\"%s\">Site Health Status</a> page."
 msgstr "Эта страница показывает подробности о конфигурации вашего сайта WordPress. Если что-либо может быть улучшено, вы увидите это на <a href=\"%s\">странице состояния сайта</a>."
 
-#: wp-admin/includes/dashboard.php:1831 wp-admin/site-health-info.php:47
+#: wp-admin/includes/dashboard.php:1846 wp-admin/site-health-info.php:47
 #: wp-admin/site-health.php:52
 msgid "Results are still loading&hellip;"
 msgstr "Результаты всё ещё загружаются&hellip;"
@@ -1866,7 +1886,7 @@ msgstr "https://wordpress.org/support/article/giving-wordpress-its-own-directory
 msgid "<a href=\"https://wordpress.org/support/article/settings-general-screen/\">Documentation on General Settings</a>"
 msgstr "<a href=\"https://wordpress.org/support/article/settings-general-screen/\">Документация по общим настройкам</a>"
 
-#: wp-admin/includes/dashboard.php:1942
+#: wp-admin/includes/dashboard.php:1957
 msgid "https://wordpress.org/support/article/first-steps-with-wordpress/"
 msgstr "https://wordpress.org/support/article/first-steps-with-wordpress/"
 
@@ -1941,11 +1961,6 @@ msgstr "Запланированное задание пропущено"
 #: wp-admin/includes/class-wp-site-health.php:1509
 msgid "An HTTPS connection is a more secure way of browsing the web. Many services now have HTTPS as a requirement. HTTPS allows you to take advantage of new features that can increase site speed, improve search rankings, and gain the trust of your visitors by helping to protect their online privacy."
 msgstr "Использование подключения по HTTPS - более безопасный способ просмотра сети. Многие службы сегодня обязательно требуют HTTPS. Протокол HTTPS также позволяет использовать преимущества, которые могут ускорить работу сайта, улучшить ранжирование в поисковых системах и улучшить доверие посетителей, помогая им защитить их конфиденциальность в сети."
-
-#. translators: %s: The minimum recommended PHP version.
-#: wp-admin/includes/class-wp-site-health.php:729
-msgid "PHP is the programming language used to build and maintain WordPress. Newer versions of PHP are faster and more secure, so staying up to date will help your site&#8217;s overall performance and security. The minimum recommended version of PHP is %s."
-msgstr "PHP — язык программирования, используемый для создания WordPress. Новые версии PHP работают быстрее и более безопасны. Используя актуальные версии PHP, вы улучшаете производительность и безопасность сайта. Минимальная рекомендуемая версия PHP — %s."
 
 #. translators: %s: The current version of WordPress installed on this site.
 #: wp-admin/includes/class-wp-site-health.php:321
@@ -2028,7 +2043,7 @@ msgstr "Повернуть направо"
 msgid "Rotate left"
 msgstr "Повернуть налево"
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:145
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:147
 msgid "All automatic updates are disabled."
 msgstr "Автоматические обновления отключены."
 
@@ -2176,7 +2191,7 @@ msgstr "%1$s должно быть объектом %2$s."
 msgid "You are in recovery mode. This means there may be an error with a theme or plugin. To exit recovery mode, log out or use the Exit button. <a href=\"%s\">Exit Recovery Mode</a>"
 msgstr "Используется режим восстановления. Это означает, что возможно возникла ошибка с темой или плагином. Для выхода из режима восстановления выйдите из учетной записи или используйте кнопку выхода. <a href=\"%s\">Выйти из режима восстановления</a>."
 
-#: wp-admin/about.php:158
+#: wp-admin/about.php:191
 msgid "Improvements for everyone"
 msgstr "Улучшения для всех"
 
@@ -2249,10 +2264,6 @@ msgstr "SQL сервер &mdash; ПО используемое WordPress для 
 #: wp-admin/includes/class-wp-site-health.php:840
 msgid "PHP modules perform most of the tasks on the server that make your site run. Any changes to these must be made by your server administrator."
 msgstr "Расширения PHP выполняют многие задачи на сервере для обеспечения работы вашего сайта. Обычно любые изменения в них производятся системным администратором сервера."
-
-#: wp-admin/includes/dashboard.php:1759
-msgid "PHP is the programming language we use to build and maintain WordPress. Newer versions of PHP are both faster and more secure, so updating will have a positive effect on your site&#8217;s performance."
-msgstr "PHP — язык программирования, на основе которого создан WordPress. Новые версии PHP и быстрее и безопаснее, поэтому обновление окажет положительный эффект на производительность сайта."
 
 #: wp-admin/includes/class-wp-site-health.php:494
 msgid "Manage your themes"
@@ -2359,18 +2370,18 @@ msgstr "Перейти на экран плагинов"
 #. translators: %s: The filename of the package.
 #: wp-admin/includes/file.php:1361
 msgid "The authenticity of %s could not be verified."
-msgstr "Подлинность %s не может быть проверена."
+msgstr "Не удалось проверить подлинность %s."
 
 #. translators: %s: The filename of the package.
 #: wp-admin/includes/file.php:1313
 msgid "The authenticity of %s could not be verified as no signature was found."
-msgstr "Подлинность %s не может быть проверена, так как подпись не была найдена."
+msgstr "Не удалось проверить подлинность %s, так как подпись не была найдена."
 
 #. translators: %s: The filename of the package.
 #: wp-admin/includes/file.php:1240 wp-admin/includes/file.php:1260
 #: wp-admin/includes/file.php:1294
 msgid "The authenticity of %s could not be verified as signature verification is unavailable on this system."
-msgstr "Подлинность %s не может быть проверена, так как возможность проверки подписей недоступна в этой системе."
+msgstr "Не удалось проверить подлинность %s, так как данная система не поддерживает проверку подписей."
 
 #. translators: %s: Eraser friendly name.
 #: wp-admin/includes/ajax-actions.php:5028
@@ -3040,102 +3051,102 @@ msgid "We were unable to check if any new versions of WordPress are available."
 msgstr "Невозможно проверить доступность новой версии WordPress."
 
 #. translators: %s: Name of the filter used.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:447
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:449
 msgid "WordPress security and maintenance releases are blocked by the %s filter."
 msgstr "Обновления безопасности и исправления ошибок WordPress блокированы фильтром %s."
 
 #. translators: %s: Name of the constant used.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:435
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:437
 msgid "WordPress security and maintenance releases are blocked by %s."
 msgstr "Обновления безопасности и исправления ошибок WordPress блокированы %s."
 
 #. translators: %s: Name of the filter used.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:415
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:417
 msgid "WordPress development updates are blocked by the %s filter."
 msgstr "Разрабатываемые обновления WordPress блокированы фильтром %s."
 
 #. translators: %s: Name of the constant used.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:403
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:405
 msgid "WordPress development updates are blocked by the %s constant."
 msgstr "Разрабатываемые обновления WordPress блокированы константой %s."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:379
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:381
 msgid "All of your WordPress files are writable."
 msgstr "Все файлы WordPress доступны для записи."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:374
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:376
 msgid "Some files are not writable by WordPress:"
 msgstr "Некоторые файлы не доступны для записи WordPress:"
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:348
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:350
 msgid "This could mean that connections are failing to WordPress.org."
 msgstr "Это означает, что подключение к WordPress.org недоступно."
 
 #. translators: %s: WordPress version.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:345
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:347
 msgid "Couldn't retrieve a list of the checksums for WordPress %s."
 msgstr "Невозможно получить список контрольных сумм для WordPress %s."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:293
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:295
 msgid "Your installation of WordPress doesn't require FTP credentials to perform updates."
 msgstr "Ваша установка WordPress не требует данных FTP входа для обновления."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:284
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:286
 msgid "(Your site is performing updates over FTP due to file ownership. Talk to your hosting company.)"
 msgstr "(Ваш сайт обновляется через FTP из-за владельца файлов. Обратитесь в поддержку хостинга.)"
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:283
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:285
 msgid "Your installation of WordPress prompts for FTP credentials to perform updates."
 msgstr "Ваша установка WordPress требует данных FTP входа для обновления."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:261
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:263
 msgid "No version control systems were detected."
 msgstr "Систем контроля версий файлов не обнаружено."
 
 #. translators: 1: Folder name. 2: Version control directory.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:252
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:254
 msgid "The folder %1$s was detected as being under version control (%2$s)."
 msgstr "Папка %1$s определена как находящаяся под управлением системы контроля версий файлов (%2$s)."
 
 #. translators: 1: Folder name. 2: Version control directory. 3: Filter name.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:239
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:241
 msgid "The folder %1$s was detected as being under version control (%2$s), but the %3$s filter is allowing updates."
 msgstr "Папка %1$s определена как находящаяся под управлением системы контроля версий файлов (%2$s), но фильтр %3$s разрешает обновления."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:184
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:186
 msgid "We'll try again with the next release."
 msgstr "Мы попробуем снова для следующей версии."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:179
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:181
 msgid "A previous automatic background update could not occur."
 msgstr "Предыдущее автоматическое фоновое обновление не состоялось."
 
 #. translators: %s: Code of error shown.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:170
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:187
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:172
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:189
 msgid "The error code was %s."
 msgstr "Код ошибки был %s."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:167
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:169
 msgid "When you've been able to update using the \"Update Now\" button on Dashboard > Updates, we'll clear this error for future update attempts."
 msgstr "Тогда, когда вы сможете использовать кнопку \"Обновить сейчас\" в Консоль>Обновления, мы очистим эту ошибку для будущих попыток обновления."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:166
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:181
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:168
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:183
 msgid "You would have received an email because of this."
 msgstr "Вы должны были получить по этому поводу сообщение по эл.почте."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:165
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:167
 msgid "A previous automatic background update ended with a critical failure, so updates are now disabled."
 msgstr "Предыдущее автоматическое фоновое обновление завершилось критической ошибкой, обновления сейчас отключены."
 
 #. translators: %s: Name of the filter used.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:118
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:120
 msgid "The %s filter is enabled."
 msgstr "Включен фильтр %s."
 
 #. translators: %s: Name of the filter used.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:97
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:99
 msgid "A plugin has prevented updates by disabling %s."
 msgstr "Плагин предотвращает обновления отключением %s."
 
@@ -3654,30 +3665,18 @@ msgstr "Вы не можете установить, потому что <a href
 msgid "You cannot install because <a href=\"%1$s\">WordPress %2$s</a> requires PHP version %3$s or higher. You are running version %4$s."
 msgstr "Вы не можете установить, потому что <a href=\"%1$s\">WordPress %2$s</a> требует PHP версии %3$s или новее. Ваша версия - %4$s."
 
-#: wp-admin/includes/dashboard.php:1925
+#: wp-admin/includes/dashboard.php:1940
 msgid "Set up your homepage"
 msgstr "Настройте главную страницу сайта"
 
 #: wp-admin/includes/class-wp-site-health.php:736
-#: wp-admin/includes/dashboard.php:1766
+#: wp-admin/includes/dashboard.php:1781
 msgid "Learn more about updating PHP"
 msgstr "Узнайте больше об обновлении PHP"
 
-#: wp-admin/includes/dashboard.php:1758
+#: wp-admin/includes/dashboard.php:1765
 msgid "What is PHP and how does it affect my site?"
 msgstr "Что такое PHP и как это влияет на мой сайт?"
-
-#: wp-admin/includes/dashboard.php:1752
-msgid "WordPress has detected that your site is running on an outdated version of PHP."
-msgstr "WordPress обнаружил, что вы используете устаревшую версию PHP."
-
-#: wp-admin/includes/dashboard.php:1750
-msgid "WordPress has detected that your site is running on an insecure version of PHP."
-msgstr "WordPress обнаружил, что вы используете небезопасную версию PHP."
-
-#: wp-admin/includes/dashboard.php:42
-msgid "PHP Update Required"
-msgstr "Требуется обновление PHP"
 
 #: wp-admin/includes/plugin.php:2482
 msgid "You can find more details and make changes on the Plugins screen."
@@ -3767,8 +3766,9 @@ msgid "Cannot Install"
 msgstr "Установка невозможна"
 
 #. translators: %s: WordPress version.
+#. translators: %s: WordPress version
 #: wp-admin/includes/update.php:305 wp-admin/install.php:238
-#: wp-admin/update-core.php:82 wp-admin/upgrade.php:80
+#: wp-admin/update-core.php:82 wp-admin/upgrade.php:80 wp-admin/about.php:96
 msgid "https://wordpress.org/support/wordpress-version/version-%s/"
 msgstr "https://wordpress.org/support/wordpress-version/version-%s/"
 
@@ -6221,7 +6221,7 @@ msgid "(Currently set to: %s)"
 msgstr "(Сейчас отображает меню «%s»)"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:279
+#: wp-admin/about.php:312
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "В <strong>версии %s</strong> решена проблема с безопасностью."
 
@@ -6233,15 +6233,15 @@ msgstr "https://ru.gravatar.com/"
 msgid "Profile Picture"
 msgstr "Аватар"
 
-#: wp-admin/about.php:276
+#: wp-admin/about.php:309
 msgid "Maintenance and Security Releases"
 msgstr "Технические обновления безопасности"
 
-#: wp-admin/about.php:273
+#: wp-admin/about.php:306
 msgid "Security Releases"
 msgstr "Обновления безопасности"
 
-#: wp-admin/about.php:270
+#: wp-admin/about.php:303
 msgid "Maintenance Releases"
 msgstr "Технические обновления"
 
@@ -7275,7 +7275,7 @@ msgstr "В ответ на"
 
 #. translators: 1: Month, 2: Day, 3: Year, 4: Hour, 5: Minute.
 #: wp-admin/includes/template.php:833 wp-admin/js/comment.js:89
-#: wp-admin/js/post.js:775
+#: wp-admin/js/post.js:783
 msgid "%1$s %2$s, %3$s at %4$s:%5$s"
 msgstr "%1$s %2$s, %3$s в %4$s:%5$s"
 
@@ -7721,11 +7721,11 @@ msgstr "Изменить видимость"
 msgid "Edit status"
 msgstr "Изменить статус"
 
-#: wp-admin/includes/dashboard.php:1937
+#: wp-admin/includes/dashboard.php:1952
 msgid "Manage menus"
 msgstr "Управление меню"
 
-#: wp-admin/includes/dashboard.php:1934
+#: wp-admin/includes/dashboard.php:1949
 msgid "Manage widgets"
 msgstr "Управление виджетами"
 
@@ -8679,11 +8679,11 @@ msgstr "Области для меню обновлены."
 msgid "Your latest changes were saved as a revision."
 msgstr "Ваши последние изменения сохранены в виде редакции."
 
-#: wp-admin/includes/media.php:3428
+#: wp-admin/includes/media.php:3429
 msgid "Audio Codec:"
 msgstr "Аудиокодек:"
 
-#: wp-admin/includes/media.php:3427
+#: wp-admin/includes/media.php:3428
 msgid "Audio Format:"
 msgstr "Аудиоформат:"
 
@@ -8899,15 +8899,15 @@ msgstr "В разделе &laquo;Текст заголовка&raquo; на эт�
 msgid "You can also choose a background color by clicking the Select Color button and either typing in a legitimate HTML hex value, e.g. &#8220;#ff0000&#8221; for red, or by choosing a color using the color picker."
 msgstr "Также можно выбрать цвет фона, нажав кнопку &laquo;Выбрать цвет&raquo; и введя корректный HEX-код, принятый в HTML (например, &laquo;#ff0000&raquo; &#8212; красный), или выбрав цвет с помощью появившегося инструмента."
 
-#: wp-admin/includes/dashboard.php:1942
+#: wp-admin/includes/dashboard.php:1957
 msgid "Learn more about getting started"
 msgstr "Узнайте больше о работе с WordPress"
 
-#: wp-admin/includes/dashboard.php:1940
+#: wp-admin/includes/dashboard.php:1955
 msgid "Turn comments on or off"
 msgstr "Включите или выключите комментарии"
 
-#: wp-admin/includes/dashboard.php:1931
+#: wp-admin/includes/dashboard.php:1946
 msgid "More Actions"
 msgstr "Другие действия"
 
@@ -8991,48 +8991,48 @@ msgstr "Ваше имя пользователя на WordPress.org:"
 msgid "If you have marked plugins as favorites on WordPress.org, you can browse them here."
 msgstr "Если вы добавили плагины на WordPress.org в список любимых, здесь вы можете их просмотреть."
 
-#: wp-admin/includes/dashboard.php:1927
+#: wp-admin/includes/dashboard.php:1942
 msgid "View your site"
 msgstr "Просмотрите свой сайт"
 
-#: wp-admin/includes/dashboard.php:1924
+#: wp-admin/includes/dashboard.php:1939
 msgid "Add an About page"
 msgstr "Создайте страницу &laquo;Обо мне&raquo;"
 
-#: wp-admin/includes/dashboard.php:1923
+#: wp-admin/includes/dashboard.php:1938
 msgid "Write your first blog post"
 msgstr "Напишите свою первую запись"
 
-#: wp-admin/includes/dashboard.php:1921
+#: wp-admin/includes/dashboard.php:1936
 msgid "Add a blog post"
 msgstr "Добавьте запись в блог"
 
-#: wp-admin/includes/dashboard.php:1917 wp-admin/includes/dashboard.php:1920
+#: wp-admin/includes/dashboard.php:1932 wp-admin/includes/dashboard.php:1935
 msgid "Add additional pages"
 msgstr "Добавьте другие страницы"
 
-#: wp-admin/includes/dashboard.php:1916 wp-admin/includes/dashboard.php:1919
+#: wp-admin/includes/dashboard.php:1931 wp-admin/includes/dashboard.php:1934
 msgid "Edit your front page"
 msgstr "Отредактируйте главную страницу"
 
-#: wp-admin/includes/dashboard.php:1913
+#: wp-admin/includes/dashboard.php:1928
 msgid "Next Steps"
 msgstr "Следующие шаги"
 
 #. translators: %s: URL to Themes panel in Customizer or Themes screen.
-#: wp-admin/includes/dashboard.php:1907
+#: wp-admin/includes/dashboard.php:1922
 msgid "or, <a href=\"%s\">change your theme completely</a>"
 msgstr "или <a href=\"%s\">выберите другую тему</a>"
 
-#: wp-admin/includes/dashboard.php:1898
+#: wp-admin/includes/dashboard.php:1913
 msgid "Get Started"
 msgstr "Для начала"
 
-#: wp-admin/includes/dashboard.php:1894
+#: wp-admin/includes/dashboard.php:1909
 msgid "We&#8217;ve assembled some links to get you started:"
 msgstr "Мы собрали несколько ссылок для вашего удобства:"
 
-#: wp-admin/includes/dashboard.php:1893
+#: wp-admin/includes/dashboard.php:1908
 msgid "Welcome to WordPress!"
 msgstr "Добро пожаловать в WordPress!"
 
@@ -9302,16 +9302,16 @@ msgstr "https://ru.wordpress.org/about/"
 msgid "Select All"
 msgstr "Выделить все"
 
-#: wp-admin/includes/meta-boxes.php:175 wp-admin/js/post.js:866
+#: wp-admin/includes/meta-boxes.php:175 wp-admin/js/post.js:874
 msgid "Public, Sticky"
 msgstr "Открыто, прилеплено"
 
 #: wp-admin/includes/meta-boxes.php:108 wp-admin/includes/meta-boxes.php:143
-#: wp-admin/js/post.js:789 wp-admin/js/post.js:791
+#: wp-admin/js/post.js:797 wp-admin/js/post.js:799
 msgid "Privately Published"
 msgstr "Опубликовано как личное"
 
-#: wp-admin/includes/meta-boxes.php:59 wp-admin/js/post.js:820
+#: wp-admin/includes/meta-boxes.php:59 wp-admin/js/post.js:828
 msgid "Save as Pending"
 msgstr "Сохранить для утверждения"
 
@@ -9768,14 +9768,15 @@ msgstr "Введите адрес e-mail существующего пользо
 msgid "Show Toolbar when viewing site"
 msgstr "Показывать верхнюю панель при просмотре сайта"
 
+#. translators: %s: HelpHub URL
 #. translators: %s: Documentation URL.
-#: wp-admin/about.php:302
+#: wp-admin/about.php:93 wp-admin/about.php:335
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Дополнительную информацию можно найти в <a href=\"%s\">заметке о выпуске</a>."
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:296
+#: wp-admin/about.php:329
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "В <strong>версии %1$s</strong> решены несколько проблем с безопасностью и исправлена %2$s ошибка."
@@ -9784,7 +9785,7 @@ msgstr[2] "В <strong>версии %1$s</strong> решены несколько
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:290
+#: wp-admin/about.php:323
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "В <strong>версии %1$s</strong> решена проблема с безопасностью и исправлена %2$s ошибка."
@@ -9792,7 +9793,7 @@ msgstr[1] "В <strong>версии %1$s</strong> решена проблема �
 msgstr[2] "В <strong>версии %1$s</strong> решена проблема с безопасностью и исправлены %2$s ошибок."
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs.
-#: wp-admin/about.php:284
+#: wp-admin/about.php:81 wp-admin/about.php:317
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "В <strong>версии %1$s</strong> исправлена %2$s ошибка."
@@ -9804,19 +9805,19 @@ msgid "Welcome to your WordPress Dashboard! This is the screen you will see when
 msgstr "Добро пожаловать в консоль WordPress! Этот экран вы будете видеть после авторизации. Он даёт доступ ко всем функциям управления сайтом. Можно получить помощь по каждому экрану, нажав на вкладку &laquo;Помощь&raquo; над заголовком экрана."
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:281
+#: wp-admin/about.php:314
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "В <strong>версии %s</strong> решены несколько проблем с безопасностью."
 
-#: wp-admin/about.php:275
+#: wp-admin/about.php:308
 msgid "Maintenance and Security Release"
 msgstr "Техническое обновление безопасности"
 
-#: wp-admin/about.php:272
+#: wp-admin/about.php:305
 msgid "Security Release"
 msgstr "Обновление безопасности"
 
-#: wp-admin/about.php:269
+#: wp-admin/about.php:76 wp-admin/about.php:302
 msgid "Maintenance Release"
 msgstr "Техническое обновление"
 
@@ -10106,11 +10107,11 @@ msgstr "Поскольку это сеть сайтов, можно добавл
 msgid "Welcome to WordPress %s."
 msgstr "Добро пожаловать в WordPress %s"
 
-#: wp-admin/about.php:259
+#: wp-admin/about.php:292
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Перейти на страницу &laquo;Консоль&raquo; &rarr; &laquo;Главная&raquo;"
 
-#: wp-admin/about.php:256
+#: wp-admin/about.php:289
 msgid "Go to Dashboard &rarr; Updates"
 msgstr "Перейти на страницу &laquo;Консоль&raquo; &rarr; &laquo;Обновления&raquo;"
 
@@ -10118,11 +10119,11 @@ msgstr "Перейти на страницу &laquo;Консоль&raquo; &rarr;
 msgid "WordPress is created by a worldwide team of passionate individuals."
 msgstr "WordPress развивается силами международной команды увлечённых энтузиастов."
 
-#: wp-admin/about.php:188
+#: wp-admin/about.php:221
 msgid "For developers"
 msgstr "Для разработчиков"
 
-#: wp-admin/includes/dashboard.php:1899 wp-admin/includes/dashboard.php:1901
+#: wp-admin/includes/dashboard.php:1914 wp-admin/includes/dashboard.php:1916
 msgid "Customize Your Site"
 msgstr "Настройте свой сайт"
 
@@ -11953,7 +11954,7 @@ msgstr "Обновления WordPress"
 msgid "Edit menu item"
 msgstr "Изменить элемент меню"
 
-#: wp-admin/about.php:259 wp-admin/includes/network.php:148
+#: wp-admin/about.php:292 wp-admin/includes/network.php:148
 msgid "Go to Dashboard"
 msgstr "Перейти на страницу &laquo;Консоль&raquo;"
 

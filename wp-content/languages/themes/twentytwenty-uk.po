@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Themes - Twenty Twenty package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-04-02 08:05:46+0000\n"
+"PO-Revision-Date: 2021-01-02 13:31:17+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: GlotPress/2.4.0-alpha\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
 "Language: uk_UA\n"
 "Project-Id-Version: Themes - Twenty Twenty\n"
 
@@ -16,8 +16,113 @@ msgid "Our default theme for 2020 is designed to take full advantage of the flex
 msgstr "Наша тема за замовчуванням на 2020 рік розроблена для того, щоб максимально використати гнучкість редактора блоків. Організації та компанії мають можливість створювати динамічні цільові сторінки з нескінченними макетами за допомогою блоків групи та стовпців. У центрі стовпця із вмістом та налагоджена типографія також робить його ідеальним для традиційних блогів. Повні стилі редактора дають вам хороше уявлення про те, як виглядатиме ваш вміст, навіть перед публікацією. Ви можете надати своєму сайту особистого дотику, змінивши кольори фону та колір акценту у \"Настроювачі\". Кольори всіх елементів на вашому сайті автоматично розраховуються виходячи з вибраних кольорів, забезпечуючи високий, доступний кольоровий контраст для відвідувачів."
 
 #. Theme Name of the theme
+#: inc/block-patterns.php:20
 msgid "Twenty Twenty"
 msgstr "Twenty Twenty"
+
+#: classes/class-twentytwenty-customize.php:126
+msgctxt "color"
+msgid "Custom"
+msgstr "Власний"
+
+#: classes/class-twentytwenty-customize.php:125
+msgctxt "color"
+msgid "Default"
+msgstr "Початковий"
+
+#: inc/block-patterns.php:187
+msgid "Introduction"
+msgstr "Вступ"
+
+#: inc/block-patterns.php:157 inc/block-patterns.php:171
+msgid "August 1 — December 1"
+msgstr "1 серпня — 1 грудня"
+
+#: inc/block-patterns.php:151 inc/block-patterns.php:165
+msgid "Abstract Rectangles"
+msgstr "Абстрактні прямокутники"
+
+#: inc/block-patterns.php:142
+msgid "Featured Content"
+msgstr "Вибраний вміст"
+
+#: inc/block-patterns.php:128
+msgid "<em>Price</em><br>Included"
+msgstr "<em>Вартість</em><br>Включена"
+
+#: inc/block-patterns.php:123
+msgid "<em>Location</em><br>Exhibit Hall B"
+msgstr "<em>Розміщення</em><br>Виставковий зал Б"
+
+#: inc/block-patterns.php:118
+msgid "<em>Dates</em><br>Aug 1 — Dec 1"
+msgstr "<em>Дати</em><br>1 Сер — 1 Гру"
+
+#: inc/block-patterns.php:108
+msgid "Event Details"
+msgstr "Деталі події"
+
+#: inc/block-patterns.php:93
+msgid "Shop Now"
+msgstr "До магазину"
+
+#: inc/block-patterns.php:86
+msgid "The Store"
+msgstr "Магазин"
+
+#: inc/block-patterns.php:71
+msgid "The Museum"
+msgstr "Музей"
+
+#: inc/block-patterns.php:61
+msgid "Double Call to Action"
+msgstr "Подвійний заклик до дії"
+
+#: inc/block-patterns.php:48
+msgid "Become a Member"
+msgstr "Стати учасником"
+
+#: inc/block-patterns.php:42
+msgid "Support the Museum and Get Exclusive Offers"
+msgstr "Підтримати музей та отримати ексклюзивні пропозиції"
+
+#: inc/block-patterns.php:33
+msgid "Call to Action"
+msgstr "Заклик до дії"
+
+#: template-parts/modal-menu.php:73
+msgctxt "menu"
+msgid "Mobile"
+msgstr "Мобільне"
+
+#: template-parts/modal-menu.php:48
+msgctxt "menu"
+msgid "Expanded"
+msgstr "Розгорнуте"
+
+#: header.php:88
+msgctxt "menu"
+msgid "Horizontal"
+msgstr "Горизонтальне"
+
+#: header.php:53 header.php:157
+msgctxt "toggle text"
+msgid "Search"
+msgstr "Пошук"
+
+#: functions.php:498
+msgctxt "color"
+msgid "Secondary"
+msgstr "Другорядний"
+
+#: functions.php:493
+msgctxt "color"
+msgid "Primary"
+msgstr "Основний"
+
+#: index.php:51
+msgid "Nothing Found"
+msgstr "Нічого не знайдено"
 
 #: classes/class-twentytwenty-customize.php:246
 msgid "Show author bio"
@@ -27,74 +132,76 @@ msgstr "Показувати інформацію про автора"
 msgid "View Archive <span aria-hidden=\"true\">&rarr;</span>"
 msgstr "Перегляд архіву <span aria-hidden=\"true\">&rarr;</span>"
 
-#: inc/starter-content.php:38
+#: inc/starter-content.php:39
 msgctxt "Theme starter content"
 msgid "The New UMoMA Opens its Doors"
 msgstr "Оновлена UMoMA відчиняє двері"
 
-#: inc/template-tags.php:393
+#: inc/template-tags.php:396
 msgctxt "A string that is output before one or more categories"
 msgid "In"
 msgstr "В"
 
-#: inc/starter-content.php:150
+#: inc/starter-content.php:151
 msgid "Join the Club"
 msgstr "Приєднуйтесь до клубу"
 
-#: inc/starter-content.php:147
+#: inc/starter-content.php:148 inc/block-patterns.php:45
 msgid "Members get access to exclusive exhibits and sales. Our memberships cost $99.99 and are billed annually."
 msgstr "Учасники отримують доступ до ексклюзивних експонатів та розпродажів. Наші членства коштують 99,99 дол. США і стягуються щорічно."
 
-#: inc/starter-content.php:144
+#: inc/starter-content.php:145
 msgid "Become a Member and Get Exclusive Offers!"
 msgstr "Станьте членом та отримайте ексклюзивні пропозиції!"
 
-#: inc/starter-content.php:136
+#: inc/starter-content.php:137
 msgid "The exhibitions are produced by UMoMA in collaboration with artists and museums around the world and they often attract international attention. UMoMA has received a Special Commendation from the European Museum of the Year, and was among the top candidates for the Swedish Museum of the Year Award as well as for the Council of Europe Museum Prize."
 msgstr "Виставки організовуються UMoMA у співпраці з художниками та музеями по всьому світу, і вони часто привертають міжнародну увагу. UMoMA отримала спеціальну подяку від Європейського музею року та була однією з найкращих кандидатів на премію Шведського музею року, а також на премію Музею Ради Європи."
 
-#: inc/starter-content.php:133
+#: inc/starter-content.php:134
 msgid "With seven floors of striking architecture, UMoMA shows exhibitions of international contemporary art, sometimes along with art historical retrospectives. Existential, political and philosophical issues are intrinsic to our programme. As visitor you are invited to guided tours artist talks, lectures, film screenings and other events with free admission"
 msgstr "Завдяки семи поверхам яскравої архітектури, UMoMA демонструє виставки міжнародного сучасного мистецтва, іноді поряд із мистецькими історичними ретроспективами. Екзистенційні, політичні та філософські питання є суттєвими для нашої програми. В якості відвідувача вас запрошують на екскурсії художньої розмови, лекції, показ фільмів та інші заходи з вільним входом"
 
-#: inc/starter-content.php:129
+#: inc/starter-content.php:130
 msgid "&#8220;Cyborgs, as the philosopher Donna Haraway established, are not reverent. They do not remember the cosmos.&#8221;"
 msgstr "&#8220;Кіборги, як встановив філософ Донна Харавей, не шануються. Вони не пам’ятають космос.&#8221;"
 
-#: inc/starter-content.php:113
+#: inc/starter-content.php:114
 msgid "From Signac to Matisse"
 msgstr "Від Сигнака до Матісса"
 
-#: inc/starter-content.php:98
+#: inc/starter-content.php:99 inc/block-patterns.php:168
 msgid "The Life I Deserve"
 msgstr "Життя яке ви заслужили"
 
-#: inc/starter-content.php:84 inc/starter-content.php:116
+#: inc/starter-content.php:85 inc/starter-content.php:117
 msgid "October 1 -- December 1"
 msgstr "1 Жовтня -- 1 Грудня"
 
-#: inc/starter-content.php:81
+#: inc/starter-content.php:82
 msgid "Theatre of Operations"
 msgstr "Театр операцій"
 
-#: inc/starter-content.php:72 inc/starter-content.php:87
-#: inc/starter-content.php:104 inc/starter-content.php:119
+#: inc/starter-content.php:73 inc/starter-content.php:88
+#: inc/starter-content.php:105 inc/starter-content.php:120
+#: inc/block-patterns.php:78 inc/block-patterns.php:160
+#: inc/block-patterns.php:174
 msgid "Read More"
 msgstr "Читати далі"
 
-#: inc/starter-content.php:69 inc/starter-content.php:101
+#: inc/starter-content.php:70 inc/starter-content.php:102
 msgid "August 1 -- December 1"
 msgstr "1 Серпня - 1 Грудня"
 
-#: inc/starter-content.php:66
+#: inc/starter-content.php:67 inc/block-patterns.php:154
 msgid "Works and Days"
 msgstr "Дні роботи"
 
-#: inc/starter-content.php:55
+#: inc/starter-content.php:56
 msgid "The premier destination for modern art in Northern Sweden. Open from 10 AM to 6 PM every day during the summer months."
 msgstr "Головне місце сучасного мистецтва в Північній Швеції. Відкрито з 10:00 до 18:00 щодня протягом літніх місяців."
 
-#: inc/starter-content.php:47
+#: inc/starter-content.php:48
 msgid "The New UMoMA Opens its Doors"
 msgstr "Нова UMoMA відкриває свої двері"
 
@@ -126,14 +233,6 @@ msgstr "Налаштування шаблону сторінки \"Шаблон 
 msgid "Apply a custom color for links, buttons, featured images."
 msgstr "Застосовуйте спеціальний колір для посилань, кнопок, відображуваних зображень."
 
-#: classes/class-twentytwenty-customize.php:126
-msgid "Custom"
-msgstr "Користувацький"
-
-#: classes/class-twentytwenty-customize.php:125
-msgid "Default"
-msgstr "За замовчуванням"
-
 #: classes/class-twentytwenty-customize.php:123
 msgid "Primary Color"
 msgstr "Основний колір"
@@ -142,7 +241,7 @@ msgstr "Основний колір"
 msgid "Search for:"
 msgstr "Шукати:"
 
-#: index.php:99
+#: index.php:101
 msgid "search again"
 msgstr "шукати знову"
 
@@ -164,7 +263,8 @@ msgstr "Нагору %s"
 msgid "To the top %s"
 msgstr "На початок %s"
 
-#. translators: Copyright date format, see https://www.php.net/date
+#. translators: Copyright date format, see
+#. https://www.php.net/manual/datetime.format.php
 #: footer.php:25
 msgctxt "copyright date format"
 msgid "Y"
@@ -198,14 +298,6 @@ msgstr "Закрити пошук"
 msgid "Expanded Social links"
 msgstr "Розширені соціальні посилання"
 
-#: template-parts/modal-menu.php:73
-msgid "Mobile"
-msgstr "Мобільний"
-
-#: template-parts/modal-menu.php:48
-msgid "Expanded"
-msgstr "Розгорнуто"
-
 #: template-parts/modal-menu.php:21
 msgid "Close Menu"
 msgstr "Закрити меню"
@@ -219,15 +311,15 @@ msgid "Footer"
 msgstr "Підвал"
 
 #. translators: %s: Author name.
-#: inc/template-tags.php:354 template-parts/entry-author-bio.php:20
+#: inc/template-tags.php:357 template-parts/entry-author-bio.php:20
 msgid "By %s"
 msgstr "Від %s"
 
-#: template-parts/content-cover.php:138 template-parts/content.php:48
+#: template-parts/content.php:48 template-parts/content-cover.php:138
 msgid "Pages:"
 msgstr "Сторінки:"
 
-#: template-parts/content-cover.php:138 template-parts/content.php:48
+#: template-parts/content.php:48 template-parts/content-cover.php:138
 msgid "Page"
 msgstr "Сторінка"
 
@@ -254,148 +346,136 @@ msgid "Search:"
 msgstr "Пошук:"
 
 #. translators: %s: Post title. Only visible to screen readers.
-#: inc/template-tags.php:206
+#: inc/template-tags.php:207
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr "Редагувати <span class=\"screen-reader-text\">%s</span>"
 
-#: inc/template-tags.php:445
+#: inc/template-tags.php:448
 msgid "Sticky post"
 msgstr "Приліплений запис"
 
-#: inc/template-tags.php:407
+#: inc/template-tags.php:410
 msgid "Tags"
 msgstr "Позначки"
 
-#: inc/template-tags.php:389 template-parts/entry-header.php:36
+#: inc/template-tags.php:392 template-parts/entry-header.php:36
 #: template-parts/content-cover.php:70
 msgid "Categories"
 msgstr "Категорії"
 
-#: inc/template-tags.php:371
+#: inc/template-tags.php:374
 msgid "Post date"
 msgstr "Дата запису"
 
-#: inc/template-tags.php:347
+#: inc/template-tags.php:350
 msgid "Post author"
 msgstr "Автор запису"
 
-#: inc/starter-content.php:196
+#: inc/starter-content.php:197
 msgid "Social Links Menu"
 msgstr "Меню соціальних посилань"
 
-#: inc/starter-content.php:176 inc/starter-content.php:186 functions.php:494
+#: inc/starter-content.php:177 inc/starter-content.php:187
 msgid "Primary"
 msgstr "Головна"
-
-#: header.php:88
-msgid "Horizontal"
-msgstr "Горизонтально"
 
 #: header.php:76 header.php:137
 msgid "Menu"
 msgstr "Меню"
 
-#: header.php:53 header.php:157
-msgid "Search"
-msgstr "Пошук"
-
 #: template-parts/content.php:36
 msgid "Continue reading"
 msgstr "Продовжити читання"
 
-#: functions.php:551
+#: functions.php:550
 msgctxt "Short name of the larger font size in the block editor."
 msgid "XL"
 msgstr "XL"
 
-#: functions.php:550
+#: functions.php:549
 msgctxt "Name of the larger font size in the block editor"
 msgid "Larger"
 msgstr "Більше"
 
-#: functions.php:545
+#: functions.php:544
 msgctxt "Short name of the large font size in the block editor."
 msgid "L"
 msgstr "L"
 
-#: functions.php:544
+#: functions.php:543
 msgctxt "Name of the large font size in the block editor"
 msgid "Large"
 msgstr "Великий"
 
-#: functions.php:539
+#: functions.php:538
 msgctxt "Short name of the regular font size in the block editor."
 msgid "M"
 msgstr "M"
 
-#: functions.php:538
+#: functions.php:537
 msgctxt "Name of the regular font size in the block editor"
 msgid "Regular"
 msgstr "Звичайний"
 
-#: functions.php:533
+#: functions.php:532
 msgctxt "Short name of the small font size in the block editor."
 msgid "S"
 msgstr "S"
 
-#: functions.php:532
+#: functions.php:531
 msgctxt "Name of the small font size in the block editor"
 msgid "Small"
 msgstr "Малий"
 
-#: functions.php:517
+#: functions.php:516
 msgid "Background Color"
 msgstr "Колір фону"
 
-#: functions.php:504
+#: functions.php:503
 msgid "Subtle Background"
 msgstr "Тонкий фон"
 
-#: functions.php:499
-msgid "Secondary"
-msgstr "Вторинний"
-
-#: functions.php:489
+#: functions.php:488
 msgid "Accent Color"
 msgstr "Основний колір"
 
-#: functions.php:380
+#: functions.php:383
 msgid "Widgets in this area will be displayed in the second column in the footer."
 msgstr "Віджети в цій області відображатимуться у другому стовпці футера."
 
-#: functions.php:378
+#: functions.php:381
 msgid "Footer #2"
 msgstr "Підвал #2"
 
-#: functions.php:368
+#: functions.php:371
 msgid "Widgets in this area will be displayed in the first column in the footer."
 msgstr "Віджети в цій ділянці будуть показані в першому стовпчику футера."
 
-#: functions.php:366
+#: functions.php:369
 msgid "Footer #1"
 msgstr "Підвал #1"
 
-#: functions.php:341
+#: functions.php:344
 msgid "Skip to the content"
 msgstr "Перейти до вмісту"
 
-#: functions.php:262
+#: functions.php:266
 msgid "Social Menu"
 msgstr "Соціальне меню"
 
-#: functions.php:261
+#: functions.php:265
 msgid "Footer Menu"
 msgstr "Меню підвалу"
 
-#: functions.php:260
+#: functions.php:264
 msgid "Mobile Menu"
 msgstr "Мобільне меню"
 
-#: functions.php:259
+#: functions.php:263
 msgid "Desktop Expanded Menu"
 msgstr "Розгорнуте меню для комп'ютера"
 
-#: functions.php:258
+#: functions.php:262
 msgid "Desktop Horizontal Menu"
 msgstr "Горизонтальне меню для комп'ютера"
 
@@ -438,7 +518,7 @@ msgstr "Один коментар до &ldquo;%s&rdquo;"
 msgid "Leave a comment"
 msgstr "Залишити коментар"
 
-#: classes/class-twentytwenty-walker-page.php:107 inc/template-tags.php:555
+#: classes/class-twentytwenty-walker-page.php:107 inc/template-tags.php:558
 msgid "Show sub menu"
 msgstr "Показати підменю"
 
@@ -447,20 +527,20 @@ msgstr "Показати підменю"
 msgid "#%d (no title)"
 msgstr "#%d (без назви)"
 
-#: classes/class-twentytwenty-walker-comment.php:127
+#: classes/class-twentytwenty-walker-comment.php:133
 msgid "By Post Author"
 msgstr "Повідомлення автора"
 
-#: classes/class-twentytwenty-walker-comment.php:92
+#: classes/class-twentytwenty-walker-comment.php:98
 msgid "Your comment is awaiting moderation."
 msgstr "Ваш коментар чекає схвалення."
 
-#: classes/class-twentytwenty-walker-comment.php:77
+#: classes/class-twentytwenty-walker-comment.php:82
 msgid "Edit"
 msgstr "Редагувати"
 
 #. translators: 1: Comment date, 2: Comment time.
-#: classes/class-twentytwenty-walker-comment.php:69
+#: classes/class-twentytwenty-walker-comment.php:68
 msgid "%1$s at %2$s"
 msgstr "%1$s о %2$s"
 
