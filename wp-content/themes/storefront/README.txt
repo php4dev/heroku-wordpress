@@ -1,11 +1,13 @@
 === Storefront ===
 Contributors: automattic, tiagonoronha, jameskoster
 Requires at least: 5.3.4
-Tested up to: 5.6.0
-Stable tag: 2.9.0
-Version: 3.0.0
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tested up to: 5.7.0
+Stable tag: 3.6.0
+Version: 3.6.0
+WC requires at least: 4.2
+WC tested up to: 5.3
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Tags: e-commerce, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, threaded-comments, accessibility-ready, rtl-language-support, footer-widgets, sticky-post, theme-options, editor-style
 
 Storefront is the perfect theme for your next WooCommerce project.
@@ -48,6 +50,43 @@ To the best of our knowledge, Google doesn’t track nor share end user data.
 Privacy Policy for the Google Fonts API: https://developers.google.com/fonts/faq#what_does_using_the_google_fonts_api_mean_for_the_privacy_of_my_users
 
 == Changelog ==
+
+= 3.6.0 - 2021-05-11 =
+- Fix – Fix potential error that can occur when product is null on sticky add to cart ([#1650](https://github.com/woocommerce/storefront/pull/1650))
+- Fix – Accessibility: add aria-label on breadcrumbs ([#1668](https://github.com/woocommerce/storefront/pull/1668))
+- Fix – Hide spinner when Payment Request button is disabled ([#1672](https://github.com/woocommerce/storefront/pull/1672))
+- Dev – Remove deprecated functions ([#1652](https://github.com/woocommerce/storefront/pull/1652))
+- Dev – Remove jQuery Pointer Events Polyfill (PEP) ([#1654](https://github.com/woocommerce/storefront/pull/1654))
+- Dev – Update various dependencies.
+
+= 3.5.1 - 2021-03-17 =
+
+- Fix - Add missing hook to documentation [#1628](https://github.com/woocommerce/storefront/pull/1628)
+- Fix - Adjust size of download button for files with long names [#1624](https://github.com/woocommerce/storefront/pull/1624)
+- Fix - Close submenu for menu item on outside click [#1627](https://github.com/woocommerce/storefront/pull/1627)
+- Fix - Hide handheld-footer and notice only on smaller devices [#1615](https://github.com/woocommerce/storefront/pull/1615)
+
+= 3.5.0 - 2021-02-02 =
+- Fix - Remove maximum-scale from viewport meta tag [#1600](https://github.com/woocommerce/storefront/pull/1600)
+
+= 3.4.0 - 2021-01-27 =
+- Fix - Missing icons in WC Blocks and some other parts of the UI. [#1588](https://github.com/woocommerce/storefront/pull/1588)
+- Fix - Use proper escape function in comments template. [#1587](https://github.com/woocommerce/storefront/pull/1587)
+
+= 3.3.0 - 2021-01-14 =
+- Fix – Fatal error in old versions of WooCommerce. [#1583](https://github.com/woocommerce/storefront/pull/1583)
+- Fix - Updated several escape functions. [#1581](https://github.com/woocommerce/storefront/pull/1581)
+
+= 3.2.0 - 2021-01-12 =
+* Fix – Replaced WooCommerce and Star icon usage with FontAwesome. [#1574](https://github.com/woocommerce/storefront/pull/1574)
+* Fix - Use proper escape function for `datetime` attribute in comments template. [#1576](https://github.com/woocommerce/storefront/pull/1576)
+
+= 3.1.0 - 2021-01-05 =
+* Fix – Prevent a fatal error on activation if WooCommerce Admin is intentionally disabled.
+* Fix – Removed legacy code targeting unsupported versions of WooCommerce. Storefront currently supports 4.2+.
+* Dev - Update stylelint to use stylelint-config-wordpress\scss config and refactor SCSS files to follow WordPress CSS coding standards.
+* Dev - Updated engines in package.json.
+* Dev - Fixed PHP linting warnings.
 
 = 3.0.0 - 2020-12-15 = 
 * Enhancement - Add missing link text on cart button in handheld footer bar [#1205](https://github.com/woocommerce/storefront/issues/1205)

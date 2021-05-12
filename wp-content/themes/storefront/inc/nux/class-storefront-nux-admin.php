@@ -25,9 +25,9 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 			/*
-			* In case the user has installed the Storefront theme without WooCommerce plugin this will detect this scenario and show the admin notice.
-			*/
-			if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '4.8.0', '>=' ) ) {
+			 * In case the WC Admin inbox is not available, show the admin notice.
+			 */
+			if ( $this->is_inbox_available() ) {
 				add_action( 'admin_notices', array( $this, 'admin_inbox_messages' ), 99 );
 			} else {
 				add_action( 'admin_notices', array( $this, 'admin_notices' ), 99 );
@@ -37,6 +37,26 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 			add_action( 'admin_post_storefront_starter_content', array( $this, 'redirect_customizer' ) );
 			add_action( 'init', array( $this, 'log_fresh_site_state' ) );
 			add_filter( 'admin_body_class', array( $this, 'admin_body_class' ) );
+		}
+
+		/**
+		 * Checks if WC Admin inbox is available. It might not be available if
+		 * WooCommerce is not installed, in old versions of WC or if wc-admin
+		 * has been disabled.
+		 *
+		 * @since 3.3.0
+		 */
+		private function is_inbox_available() {
+			if (
+				function_exists( 'WC' ) &&
+				is_callable( array( WC(), 'is_wc_admin_active' ) ) &&
+				WC()->is_wc_admin_active() &&
+				version_compare( WC_VERSION, '4.8.0', '>=' )
+			) {
+				return true;
+			}
+
+			return false;
 		}
 
 		/**
@@ -129,7 +149,7 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 								<input type="hidden" name="homepage" value="on">
 							<?php endif; ?>
 
-							<?php if ( true === (bool) get_option( 'storefront_nux_fresh_site' ) && true === self::_is_woocommerce_empty() ) : ?>
+							<?php if ( true === (bool) get_option( 'storefront_nux_fresh_site' ) && self::is_woocommerce_empty() ) : ?>
 								<input type="hidden" name="products" value="on">
 							<?php endif; ?>
 
@@ -147,7 +167,7 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 									</label>
 								</div>
 
-								<?php if ( true === self::_is_woocommerce_empty() ) : ?>
+								<?php if ( self::is_woocommerce_empty() ) : ?>
 									<div class="notice-input">
 										<label>
 											<input type="checkbox" name="products" checked>
@@ -158,7 +178,7 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 							<?php endif; ?>
 
 							<input type="submit" name="storefront-guided-tour" class="sf-nux-button" value="<?php esc_attr_e( 'Let\'s go!', 'storefront' ); ?>">
-							<a href="#" class="sf-nux-dismiss-button" ><?php esc_attr_e( 'Skip', 'storefront' ); ?></a>
+							<a href="#" class="sf-nux-dismiss-button" ><?php esc_html_e( 'Skip', 'storefront' ); ?></a>
 						</form>
 					<?php endif; ?>
 				</div>
@@ -213,7 +233,7 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 
 			if ( ! empty( $_REQUEST['homepage'] ) && 'on' === sanitize_text_field( wp_unslash( $_REQUEST['homepage'] ) ) ) { // WPCS: input var ok.
 				if ( current_user_can( 'edit_pages' ) && 'page' === get_option( 'show_on_front' ) ) {
-					$this->_assign_page_template( get_option( 'page_on_front' ), 'template-homepage.php' );
+					$this->assign_page_template( get_option( 'page_on_front' ), 'template-homepage.php' );
 				} else {
 					$tasks[] = 'homepage';
 				}
@@ -232,7 +252,7 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 					update_option( 'fresh_site', true );
 
 					if ( current_user_can( 'edit_pages' ) && true === (bool) get_option( 'storefront_nux_fresh_site' ) ) {
-						$this->_set_woocommerce_pages_full_width();
+						$this->set_woocommerce_pages_full_width();
 					}
 				}
 			}
@@ -312,11 +332,11 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 		 *
 		 * @since 2.2.0
 		 */
-		private function _set_woocommerce_pages_full_width() {
+		private function set_woocommerce_pages_full_width() {
 			$wc_pages = $this->get_woocommerce_pages();
 
 			foreach ( $wc_pages as $option => $page_id ) {
-				$this->_assign_page_template( $page_id, 'template-fullwidth.php' );
+				$this->assign_page_template( $page_id, 'template-fullwidth.php' );
 			}
 		}
 
@@ -328,7 +348,7 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 		 * @param string $template Template file name.
 		 * @return void|bool Returns false if $page_id or $template is empty.
 		 */
-		private function _assign_page_template( $page_id, $template ) {
+		private function assign_page_template( $page_id, $template ) {
 			if ( empty( $page_id ) || empty( $template ) || '' === locate_template( $template ) ) {
 				return false;
 			}
@@ -339,10 +359,9 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 		/**
 		 * Check if WooCommerce is empty.
 		 *
-		 * @since 2.2.0
 		 * @return bool
 		 */
-		private static function _is_woocommerce_empty() {
+		private static function is_woocommerce_empty() {
 			$products = wp_count_posts( 'product' );
 
 			if ( 0 < $products->publish ) {
