@@ -6,6 +6,12 @@
  * Colors
  */
 /**
+ * SCSS Variables.
+ *
+ * Please use variables from this sheet to ensure consistency across the UI.
+ * Don't add to this sheet unless you're pretty sure the value will be reused in many places.
+ */
+/**
  * Colors
  */
 /**
@@ -25,13 +31,14 @@
  * Editor widths.
  */
 /**
- * Block UI.
- */
-/**
- * Border radii.
+ * Block & Editor UI.
  */
 /**
  * Block paddings.
+ */
+/**
+ * React Native specific.
+ * These variables do not appear to be used anywhere else.
  */
 /**
  * Breakpoint mixins
@@ -60,6 +67,9 @@
  */
 /**
  * Reset the WP Admin page styles for Gutenberg-like pages.
+ */
+/**
+ * These are default block editor widths in case the theme doesn't provide them.
  */
 /**
  * Breakpoints & Media Queries
@@ -758,15 +768,17 @@ body.admin-color-sunrise {
 .woocommerce-page .woocommerce-dropdown-button {
   background-color: #fff;
   position: relative;
-  border: 1px solid #f0f0f0;
-  color: #757575;
+  border: 1px solid #757575;
+  color: #1e1e1e;
   border-radius: 4px;
   padding: 0 40px 0 0;
   width: 100%;
   height: auto; }
   .woocommerce-page .woocommerce-dropdown-button::after {
     content: '';
-    background: transparent url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E) no-repeat right 0 top 55%;
+    background: #1e1e1e;
+    -webkit-mask: url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20%2F%3E%3C%2Fsvg%3E) no-repeat right 0 top 55%;
+            mask: url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20%2F%3E%3C%2Fsvg%3E) no-repeat right 0 top 55%;
     position: absolute;
     right: 14px;
     width: 32px;
@@ -774,8 +786,11 @@ body.admin-color-sunrise {
   .woocommerce-page .woocommerce-dropdown-button.is-open::after {
     transform: translateX(12px) translateY(2px) rotate(180deg); }
   .woocommerce-page .woocommerce-dropdown-button:hover, .woocommerce-page .woocommerce-dropdown-button:active, .woocommerce-page .woocommerce-dropdown-button.is-open {
-    background-color: #f0f0f0;
-    border-color: #757575; }
+    color: #007cba;
+    color: var(--wp-admin-theme-color); }
+    .woocommerce-page .woocommerce-dropdown-button:hover::after, .woocommerce-page .woocommerce-dropdown-button:active::after, .woocommerce-page .woocommerce-dropdown-button.is-open::after {
+      background: #007cba;
+      background: var(--wp-admin-theme-color); }
   .woocommerce-page .woocommerce-dropdown-button.is-multi-line .woocommerce-dropdown-button__labels {
     flex-direction: column; }
   .woocommerce-page .woocommerce-dropdown-button:not(:focus):not(.is-open) {
@@ -1348,11 +1363,11 @@ body.admin-color-sunrise {
   .woocommerce-list__item:hover {
     background-color: #f0f0f0; }
     .woocommerce-list__item:hover .woocommerce-list__item-title {
-      color: color(#007cba shade(20%));
-      color: color(var(--wp-admin-theme-color) shade(20%)); }
+      color: #007cba;
+      color: var(--wp-admin-theme-color); }
     .woocommerce-list__item:hover .woocommerce-list__item-before > svg {
-      fill: color(#007cba shade(20%));
-      fill: color(var(--wp-admin-theme-color) shade(20%)); }
+      fill: #007cba;
+      fill: var(--wp-admin-theme-color); }
   .woocommerce-list__item .woocommerce-list__item-title {
     color: #007cba;
     color: var(--wp-admin-theme-color); }
@@ -1529,7 +1544,7 @@ body.admin-color-sunrise {
 
 .woocommerce-search.woocommerce-select-control {
   position: relative; }
-  .woocommerce-search.woocommerce-select-control i.material-icons-outlined {
+  .woocommerce-search.woocommerce-select-control .woocommerce-select-control__control-icon {
     position: absolute;
     top: 50%;
     left: 10px;
@@ -1642,6 +1657,8 @@ body.admin-color-sunrise {
   max-height: 17em;
   overflow-x: hidden;
   overflow-y: auto; }
+  .woocommerce-search-list__list li {
+    margin-bottom: 0; }
   .woocommerce-search-list__list.is-loading {
     padding: 12px 0;
     text-align: center;
@@ -1689,10 +1706,8 @@ body.admin-color-sunrise {
       box-shadow: none; }
     .woocommerce-search-list__list .woocommerce-search-list__item:last-child {
       border-bottom: none !important; }
-    .woocommerce-search-list__list .woocommerce-search-list__item .woocommerce-search-list__item-state {
-      flex: 0 0 16px;
-      margin-right: 8px;
-      height: 24px; }
+    .woocommerce-search-list__list .woocommerce-search-list__item .woocommerce-search-list__item-input {
+      margin: 0 8px 0 0; }
     .woocommerce-search-list__list .woocommerce-search-list__item .woocommerce-search-list__item-label {
       display: flex;
       flex: 1; }
@@ -2355,7 +2370,7 @@ body.admin-color-sunrise {
   flex-direction: column;
   height: 100%;
   padding: 24px;
-  background-color: #fff;
+  background-color: #f8f9fa;
   border-bottom: 1px solid #e0e0e0;
   border-right: 1px solid #e0e0e0;
   line-height: 1.4em;
@@ -2375,10 +2390,10 @@ body.admin-color-sunrise {
   .woocommerce-summary__item:active {
     background-color: #f0f0f0; }
   .woocommerce-summary__item:focus {
-    box-shadow: inset -1px -1px 0 #757575, inset 1px 1px 0 #757575 !important; }
+    box-shadow: inset -1px 1px 0 #757575, inset 1px -1px 0 #757575 !important; }
   .woocommerce-summary__item.is-selected:focus {
-    box-shadow: inset -1px 1px 0 #757575, inset 1px 0 0 #757575, inset 0 -4px 0 #007cba !important;
-    box-shadow: inset -1px 1px 0 #757575, inset 1px 0 0 #757575, inset 0 -4px 0 var(--wp-admin-theme-color) !important; }
+    box-shadow: inset -1px -1px 0 #757575, inset 1px 0 0 #757575, inset 0 4px 0 #007cba !important;
+    box-shadow: inset -1px -1px 0 #757575, inset 1px 0 0 #757575, inset 0 4px 0 var(--wp-admin-theme-color) !important; }
   .is-dropdown-button .woocommerce-summary__item {
     position: relative;
     width: 100%;
@@ -2406,8 +2421,8 @@ body.admin-color-sunrise {
     color: #1e1e1e; }
   .woocommerce-summary__item.is-selected {
     background: #fff;
-    box-shadow: inset 0 -4px 0 #007cba;
-    box-shadow: inset 0 -4px 0 var(--wp-admin-theme-color); }
+    box-shadow: inset 0 4px 0 #007cba;
+    box-shadow: inset 0 4px 0 var(--wp-admin-theme-color); }
     .woocommerce-summary__item.is-selected .woocommerce-summary__item-value {
       font-weight: 600; }
     .woocommerce-summary__item.is-selected .woocommerce-summary__item-delta {

@@ -1,8 +1,6 @@
 <?php
 namespace Automattic\WooCommerce\Blocks\StoreApi\Routes;
 
-use Automattic\WooCommerce\Blocks\StoreApi\Utilities\CartController;
-
 /**
  * CartApplyCoupon class.
  *
@@ -36,7 +34,8 @@ class CartApplyCoupon extends AbstractCartRoute {
 					],
 				],
 			],
-			'schema' => [ $this->schema, 'get_public_item_schema' ],
+			'schema'      => [ $this->schema, 'get_public_item_schema' ],
+			'allow_batch' => [ 'v1' => true ],
 		];
 	}
 
@@ -52,12 +51,11 @@ class CartApplyCoupon extends AbstractCartRoute {
 			throw new RouteException( 'woocommerce_rest_cart_coupon_disabled', __( 'Coupons are disabled.', 'woo-gutenberg-products-block' ), 404 );
 		}
 
-		$controller  = new CartController();
-		$cart        = $controller->get_cart_instance();
+		$cart        = $this->cart_controller->get_cart_instance();
 		$coupon_code = wc_format_coupon_code( wp_unslash( $request['code'] ) );
 
 		try {
-			$controller->apply_coupon( $coupon_code );
+			$this->cart_controller->apply_coupon( $coupon_code );
 		} catch ( \WC_REST_Exception $e ) {
 			throw new RouteException( $e->getErrorCode(), $e->getMessage(), $e->getCode() );
 		}

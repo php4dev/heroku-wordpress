@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import deprecated from '@wordpress/deprecated';
+
+/**
  * Internal dependencies
  */
 import {
@@ -6,6 +11,12 @@ import {
 	assertValidElement,
 	assertValidElementOrString,
 } from './assertions';
+
+import { canMakePaymentWithFeaturesCheck } from './payment-method-config-helper';
+
+const NullComponent = () => {
+	return null;
+};
 
 export default class PaymentMethodConfig {
 	constructor( config ) {
@@ -16,16 +27,29 @@ export default class PaymentMethodConfig {
 		this.placeOrderButtonLabel = config.placeOrderButtonLabel;
 		this.ariaLabel = config.ariaLabel;
 		this.content = config.content;
+		this.savedTokenComponent = config.savedTokenComponent;
 		this.icons = config.icons;
 		this.edit = config.edit;
-		this.canMakePayment = config.canMakePayment;
 		this.paymentMethodId = config.paymentMethodId || this.name;
 		this.supports = {
-			savePaymentInfo: config?.supports?.savePaymentInfo || false,
+			showSavedCards:
+				config?.supports?.showSavedCards ||
+				config?.supports?.savePaymentInfo || // Kept for backward compatibility if methods still pass this when registering.
+				false,
+			showSaveOption: config?.supports?.showSaveOption || false,
+			features: config?.supports?.features || [ 'products' ],
 		};
+		this.canMakePayment = canMakePaymentWithFeaturesCheck(
+			config.canMakePayment,
+			this.supports.features
+		);
 	}
 
 	static assertValidConfig = ( config ) => {
+		// set default for optional
+		config.savedTokenComponent = config.savedTokenComponent || (
+			<NullComponent />
+		);
 		assertConfigHasProperties( config, [
 			'name',
 			'label',
@@ -67,6 +91,7 @@ export default class PaymentMethodConfig {
 		assertValidElementOrString( config.label, 'label' );
 		assertValidElement( config.content, 'content' );
 		assertValidElement( config.edit, 'edit' );
+		assertValidElement( config.savedTokenComponent, 'savedTokenComponent' );
 		if ( typeof config.ariaLabel !== 'string' ) {
 			throw new TypeError(
 				'The ariaLabel property for the payment method must be a string'
@@ -78,12 +103,38 @@ export default class PaymentMethodConfig {
 			);
 		}
 		if (
-			config.supports &&
-			typeof config.supports.savePaymentInfo !== 'undefined' &&
-			typeof config.supports.savePaymentInfo !== 'boolean'
+			typeof config.supports?.showSavedCards !== 'undefined' &&
+			typeof config.supports?.showSavedCards !== 'boolean'
 		) {
 			throw new TypeError(
-				'If the payment method includes the `supports.savePaymentInfo` property, it must be a boolean'
+				'If the payment method includes the `supports.showSavedCards` property, it must be a boolean'
+			);
+		}
+		if ( typeof config.supports?.savePaymentInfo !== 'undefined' ) {
+			deprecated(
+				'Passing savePaymentInfo when registering a payment method.',
+				{
+					alternative: 'Pass showSavedCards and showSaveOption',
+					plugin: 'woocommerce-gutenberg-products-block',
+					link:
+						'https://github.com/woocommerce/woocommerce-gutenberg-products-block/pull/3686',
+				}
+			);
+		}
+		if (
+			typeof config.supports?.features !== 'undefined' &&
+			! Array.isArray( config.supports?.features )
+		) {
+			throw new Error(
+				'The features property for the payment method must be an array or undefined.'
+			);
+		}
+		if (
+			typeof config.supports?.showSaveOption !== 'undefined' &&
+			typeof config.supports?.showSaveOption !== 'boolean'
+		) {
+			throw new TypeError(
+				'If the payment method includes the `supports.showSaveOption` property, it must be a boolean'
 			);
 		}
 	};

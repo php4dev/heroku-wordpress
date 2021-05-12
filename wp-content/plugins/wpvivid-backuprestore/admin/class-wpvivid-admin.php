@@ -325,6 +325,7 @@ class WPvivid_Admin {
         $wpvivid_siteurl = array();
         $wpvivid_siteurl['home_url'] = home_url();
         $wpvivid_siteurl['plug_url'] = plugins_url();
+        $wpvivid_siteurl['site_url'] = get_option( 'siteurl' );
         return $wpvivid_siteurl;
     }
 
@@ -600,7 +601,7 @@ class WPvivid_Admin {
             var wpvivid_siteurl = '<?php
                 $wpvivid_siteurl = array();
                 $wpvivid_siteurl=WPvivid_Admin::wpvivid_get_siteurl();
-                echo esc_url($wpvivid_siteurl['home_url']);
+                echo esc_url($wpvivid_siteurl['site_url']);
                 ?>';
             var wpvivid_plugurl =  '<?php
                 echo WPVIVID_PLUGIN_URL;

@@ -1,8 +1,6 @@
 <?php
 namespace Automattic\WooCommerce\Blocks\StoreApi\Routes;
 
-use Automattic\WooCommerce\Blocks\StoreApi\Utilities\CartController;
-
 /**
  * CartAddItem class.
  *
@@ -68,7 +66,8 @@ class CartAddItem extends AbstractCartRoute {
 					],
 				],
 			],
-			'schema' => [ $this->schema, 'get_public_item_schema' ],
+			'schema'      => [ $this->schema, 'get_public_item_schema' ],
+			'allow_batch' => [ 'v1' => true ],
 		];
 	}
 
@@ -85,9 +84,8 @@ class CartAddItem extends AbstractCartRoute {
 			throw new RouteException( 'woocommerce_rest_cart_item_exists', __( 'Cannot create an existing cart item.', 'woo-gutenberg-products-block' ), 400 );
 		}
 
-		$controller = new CartController();
-		$cart       = $controller->get_cart_instance();
-		$result     = $controller->add_to_cart(
+		$cart   = $this->cart_controller->get_cart_instance();
+		$result = $this->cart_controller->add_to_cart(
 			[
 				'id'        => $request['id'],
 				'quantity'  => $request['quantity'],

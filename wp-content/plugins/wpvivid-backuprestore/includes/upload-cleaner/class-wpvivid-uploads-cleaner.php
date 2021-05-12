@@ -1080,7 +1080,7 @@ class WPvivid_Uploads_Cleaner
             </h1>
             <?php
 
-            if(!class_exists('WPvivid_UC_Tab_Page_Container'))
+            if(!class_exists('WPvivid_Tab_Page_Container'))
                 include_once WPVIVID_PLUGIN_DIR . '/includes/class-wpvivid-tab-page-container.php';
 
             $args['is_parent_tab']=1;
@@ -2310,6 +2310,9 @@ class WPvivid_Uploads_Cleaner
 
     public function start_scan_uploads_files_task()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         set_time_limit(30);
 
         $uploads_scanner=new WPvivid_Uploads_Scanner();
@@ -2359,7 +2362,12 @@ class WPvivid_Uploads_Cleaner
         $start+=$limit;
 
         $result['result']='success';
-        $result['percent']=intval(($start/$count)*100);
+        if($count == 0){
+            $result['percent']=0;
+        }
+        else{
+            $result['percent']=intval(($start/$count)*100);
+        }
         $result['total_posts']=$start;
         $result['scanned_posts']=$count;
         $result['descript']='Scanning files from posts';
@@ -2417,13 +2425,26 @@ class WPvivid_Uploads_Cleaner
 
     public function scan_uploads_files_from_post()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
+        if(!isset($_POST['start']))
+        {
+            die();
+        }
+
+        $start=intval($_POST['start']);
+
+        if(!is_int($start))
+        {
+            die();
+        }
+
         set_time_limit(30);
 
         $uploads_scanner=new WPvivid_Uploads_Scanner();
 
         $count=$uploads_scanner->get_post_count();
-
-        $start=intval($_POST['start']);
 
         $limit=min(get_option('wpvivid_uc_scan_limit',20),$count);
 
@@ -2525,6 +2546,9 @@ class WPvivid_Uploads_Cleaner
 
     public function start_unused_files_task()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         set_time_limit(30);
 
         $uploads_scanner=new WPvivid_Uploads_Scanner();
@@ -2587,6 +2611,9 @@ class WPvivid_Uploads_Cleaner
 
     public function unused_files_task()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         set_time_limit(30);
 
         $uploads_scanner=new WPvivid_Uploads_Scanner();
@@ -2772,14 +2799,23 @@ class WPvivid_Uploads_Cleaner
 
     public function add_exclude_files()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         $json = $_POST['selected'];
         $json = stripslashes($json);
         $json = json_decode($json, true);
 
         $selected_list=$json['selected'];
 
+        $sanitize_list=array();
+        foreach ($selected_list as $item)
+        {
+            $sanitize_list[]=intval($item);
+        }
+
         $scanner=new WPvivid_Uploads_Scanner();
-        $files=$scanner->get_selected_files_list($selected_list);
+        $files=$scanner->get_selected_files_list($sanitize_list);
 
         $list=new WPvivid_Unused_Upload_Files_List();
 
@@ -2828,12 +2864,16 @@ class WPvivid_Uploads_Cleaner
 
     public function get_result_list()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         try
         {
             $search='';
             if(isset($_POST['search']))
             {
                 $search=$_POST['search'];
+
             }
 
             $folder='';
@@ -2883,6 +2923,9 @@ class WPvivid_Uploads_Cleaner
 
     public function isolate_selected_image()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         try
         {
             $json = $_POST['selected'];
@@ -2890,9 +2933,14 @@ class WPvivid_Uploads_Cleaner
             $json = json_decode($json, true);
 
             $selected_list=$json['selected'];
+            $sanitize_list=array();
+            foreach ($selected_list as $item)
+            {
+                $sanitize_list[]=intval($item);
+            }
 
             $scanner=new WPvivid_Uploads_Scanner();
-            $files=$scanner->get_selected_files_list($selected_list);
+            $files=$scanner->get_selected_files_list($sanitize_list);
 
             if($files===false||empty($files))
             {
@@ -2971,6 +3019,9 @@ class WPvivid_Uploads_Cleaner
 
     public function start_isolate_all_image()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         try
         {
             $search='';
@@ -3040,6 +3091,9 @@ class WPvivid_Uploads_Cleaner
 
     public function isolate_all_image()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         try
         {
             $search='';
@@ -3117,6 +3171,9 @@ class WPvivid_Uploads_Cleaner
 
     public function get_iso_list()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         try
         {
             $search='';
@@ -3173,6 +3230,9 @@ class WPvivid_Uploads_Cleaner
 
     public function delete_selected_image()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         try
         {
             $json = $_POST['selected'];
@@ -3231,6 +3291,8 @@ class WPvivid_Uploads_Cleaner
 
     public function delete_all_image()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
         try
         {
             $search='';
@@ -3283,6 +3345,9 @@ class WPvivid_Uploads_Cleaner
     //restore_selected_image
     public function restore_selected_image()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         try
         {
             $json = $_POST['selected'];
@@ -3340,6 +3405,8 @@ class WPvivid_Uploads_Cleaner
 
     public function restore_all_image()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
         try
         {
             $search='';

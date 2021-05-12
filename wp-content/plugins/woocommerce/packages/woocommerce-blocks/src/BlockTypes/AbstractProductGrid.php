@@ -2,6 +2,8 @@
 namespace Automattic\WooCommerce\Blocks\BlockTypes;
 
 use Automattic\WooCommerce\Blocks\Utils\BlocksWpQuery;
+use Automattic\WooCommerce\Blocks\StoreApi\SchemaController;
+use Automattic\WooCommerce\Blocks\Package;
 
 /**
  * AbstractProductGrid class.
@@ -34,7 +36,7 @@ abstract class AbstractProductGrid extends AbstractDynamicBlock {
 	 *
 	 * @return array List of block attributes with type and defaults.
 	 */
-	protected function get_attributes() {
+	protected function get_block_type_attributes() {
 		return array(
 			'className'         => $this->get_schema_string(),
 			'columns'           => $this->get_schema_number( wc_get_theme_support( 'product_blocks::default_columns', 3 ) ),
@@ -58,20 +60,55 @@ abstract class AbstractProductGrid extends AbstractDynamicBlock {
 	 * @param string $content    Block content. Default empty string.
 	 * @return string Rendered block type output.
 	 */
-	public function render( $attributes = array(), $content = '' ) {
+	protected function render( $attributes = array(), $content = '' ) {
 		$this->attributes = $this->parse_attributes( $attributes );
 		$this->content    = $content;
 		$this->query_args = $this->parse_query_args();
-		$products         = $this->get_products();
+		$products         = array_filter( array_map( 'wc_get_product', $this->get_products() ) );
 
 		if ( ! $products ) {
 			return '';
 		}
 
-		$classes = $this->get_container_classes();
-		$output  = implode( '', array_map( array( $this, 'render_product' ), $products ) );
+		/**
+		 * Product List Render event.
+		 *
+		 * Fires a WP Hook named `experimental__woocommerce_blocks-product-list-render` on render so that the client
+		 * can add event handling when certain products are displayed. This can be used by tracking extensions such
+		 * as Google Analytics to track impressions.
+		 *
+		 * Provides the list of product data (shaped like the Store API responses) and the block name.
+		 */
+		$this->asset_api->add_inline_script(
+			'wp-hooks',
+			'
+			window.addEventListener( "DOMContentLoaded", () => {
+				wp.hooks.doAction(
+					"experimental__woocommerce_blocks-product-list-render",
+					{
+						products: JSON.parse( decodeURIComponent( "' . esc_js(
+				rawurlencode(
+					wp_json_encode(
+						array_map(
+							[ Package::container()->get( SchemaController::class )->get( 'product' ), 'get_item_response' ],
+							$products
+						)
+					)
+				)
+			) . '" ) ),
+						listName: "' . esc_js( $this->block_name ) . '"
+					}
+				);
+			} );
+			',
+			'after'
+		);
 
-		return sprintf( '<div class="%s"><ul class="wc-block-grid__products">%s</ul></div>', esc_attr( $classes ), $output );
+		return sprintf(
+			'<div class="%s"><ul class="wc-block-grid__products">%s</ul></div>',
+			esc_attr( $this->get_container_classes() ),
+			implode( '', array_map( array( $this, 'render_product' ), $products ) )
+		);
 	}
 
 	/**
@@ -305,16 +342,10 @@ abstract class AbstractProductGrid extends AbstractDynamicBlock {
 	/**
 	 * Render a single products.
 	 *
-	 * @param int $id Product ID.
+	 * @param \WC_Product $product Product object.
 	 * @return string Rendered product output.
 	 */
-	public function render_product( $id ) {
-		$product = wc_get_product( $id );
-
-		if ( ! $product ) {
-			return '';
-		}
-
+	protected function render_product( $product ) {
 		$data = (object) array(
 			'permalink' => esc_url( $product->get_permalink() ),
 			'image'     => $this->get_image_html( $product ),
@@ -349,7 +380,7 @@ abstract class AbstractProductGrid extends AbstractDynamicBlock {
 	 * @return string
 	 */
 	protected function get_image_html( $product ) {
-		return '<div class="wc-block-grid__product-image">' . $product->get_image( 'woocommerce_thumbnail' ) . '</div>';
+		return '<div class="wc-block-grid__product-image">' . $product->get_image( 'woocommerce_thumbnail' ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -362,7 +393,7 @@ abstract class AbstractProductGrid extends AbstractDynamicBlock {
 		if ( empty( $this->attributes['contentVisibility']['title'] ) ) {
 			return '';
 		}
-		return '<div class="wc-block-grid__product-title">' . $product->get_title() . '</div>';
+		return '<div class="wc-block-grid__product-title">' . wp_kses_post( $product->get_title() ) . '</div>';
 	}
 
 	/**
@@ -382,7 +413,7 @@ abstract class AbstractProductGrid extends AbstractDynamicBlock {
 		if ( $rating_count > 0 ) {
 			return sprintf(
 				'<div class="wc-block-grid__product-rating">%s</div>',
-				wc_get_rating_html( $average, $rating_count )
+				wc_get_rating_html( $average, $rating_count ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			);
 		}
 		return '';
@@ -400,7 +431,7 @@ abstract class AbstractProductGrid extends AbstractDynamicBlock {
 		}
 		return sprintf(
 			'<div class="wc-block-grid__product-price price">%s</div>',
-			$product->get_price_html()
+			wp_kses_post( $product->get_price_html() )
 		);
 	}
 

@@ -8,11 +8,15 @@ import {
 	StoreNoticesProvider,
 } from '@woocommerce/base-context';
 import {
+	useStoreCart,
 	useEmitResponse,
 	usePaymentMethods,
-	useStoreCart,
-} from '@woocommerce/base-hooks';
-import { PaymentMethods } from '@woocommerce/base-components/payment-methods';
+} from '@woocommerce/base-context/hooks';
+
+/**
+ * Internal dependencies
+ */
+import { PaymentMethods } from '../../payment-methods';
 
 const PaymentMethodStep = () => {
 	const { isProcessing: checkoutIsProcessing } = useCheckoutContext();

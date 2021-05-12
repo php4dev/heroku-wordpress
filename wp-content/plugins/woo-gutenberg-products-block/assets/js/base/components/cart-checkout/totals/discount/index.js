@@ -2,11 +2,11 @@
  * External dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { DISPLAY_CART_PRICES_INCLUDING_TAX } from '@woocommerce/block-settings';
 import LoadingMask from '@woocommerce/base-components/loading-mask';
 import { RemovableChip } from '@woocommerce/base-components/chip';
 import PropTypes from 'prop-types';
 import { TotalsItem } from '@woocommerce/blocks-checkout';
+import { getSetting } from '@woocommerce/settings';
 
 /**
  * Internal dependencies
@@ -31,7 +31,10 @@ const TotalsDiscount = ( {
 	}
 
 	const discountTaxValue = parseInt( totalDiscountTax, 10 );
-	const discountTotalValue = DISPLAY_CART_PRICES_INCLUDING_TAX
+	const discountTotalValue = getSetting(
+		'displayCartPricesIncludingTax',
+		false
+	)
 		? discountValue + discountTaxValue
 		: discountValue;
 
@@ -56,7 +59,7 @@ const TotalsDiscount = ( {
 									className="wc-block-components-totals-discount__coupon-list-item"
 									text={ cartCoupon.code }
 									screenReaderText={ sprintf(
-										/* Translators: %s Coupon code. */
+										/* translators: %s Coupon code. */
 										__(
 											'Coupon: %s',
 											'woo-gutenberg-products-block'
@@ -69,7 +72,7 @@ const TotalsDiscount = ( {
 									} }
 									radius="large"
 									ariaLabel={ sprintf(
-										/* Translators: %s is a coupon code. */
+										/* translators: %s is a coupon code. */
 										__(
 											'Remove coupon "%s"',
 											'woo-gutenberg-products-block'

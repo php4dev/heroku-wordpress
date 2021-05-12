@@ -5,6 +5,9 @@ if (!defined('WPVIVID_PLUGIN_DIR')){
 }
 
 require_once WPVIVID_PLUGIN_DIR . '/includes/class-wpvivid-compress-default.php';
+
+$wpvivid_extract_option = array();
+
 class WPvivid_ZipClass extends Wpvivid_Compress_Default
 {
 	public $last_error = '';
@@ -380,8 +383,12 @@ class WPvivid_ZipClass extends Wpvivid_Compress_Default
         return $ret;
     }
 
-    public function extract($files,$path = '')
+    public function extract($files, $path = '', $option = array())
     {
+        if(!empty($option)){
+            $GLOBALS['wpvivid_extract_option'] = $option;
+        }
+
         global $wpvivid_plugin;
         //$wpvivid_plugin->restore_data->write_log('start prepare extract','notice');
         define(PCLZIP_TEMPORARY_DIR,dirname($path));
@@ -767,6 +774,11 @@ class WPvivid_ZipClass extends Wpvivid_Compress_Default
         else
             $exclude_files_regex=array();
 
+        if(isset($data['exclude_regex']))
+            $exclude_regex=$data['exclude_regex'];
+        else
+            $exclude_regex=array();
+
         if(isset($data['compress'])&&$data['compress']['exclude_file_size'])
             $exclude_file_size=$data['compress']['exclude_file_size'];
         else
@@ -785,7 +797,7 @@ class WPvivid_ZipClass extends Wpvivid_Compress_Default
 
         foreach ($data['files'] as $file)
         {
-            $this->get_file_cache($size,$file,$cache_perfix,$cache_file_handle,$number,$sumsize,$exclude_files_regex,$exclude_file_size,$skip_files_time);
+            $this->get_file_cache($size,$file,$cache_perfix,$cache_file_handle,$number,$sumsize,$exclude_regex,$exclude_files_regex,$exclude_file_size,$skip_files_time);
         }
 
         $file_cache=array();
@@ -797,7 +809,7 @@ class WPvivid_ZipClass extends Wpvivid_Compress_Default
         return $file_cache;
     }
 
-    public function get_file_cache($size,$path,$cache_perfix,&$cache_file_handle,&$number,&$sumsize,$exclude_files_regex,$exclude_file_size,$skip_files_time)
+    public function get_file_cache($size,$path,$cache_perfix,&$cache_file_handle,&$number,&$sumsize,$exclude_regex,$exclude_files_regex,$exclude_file_size,$skip_files_time)
     {
         if(!$cache_file_handle)
         {
@@ -813,10 +825,17 @@ class WPvivid_ZipClass extends Wpvivid_Compress_Default
         {
             if ($filename != "." && $filename != "..")
             {
-                if(is_dir($path . DIRECTORY_SEPARATOR . $filename))
+                if (is_dir($path . DIRECTORY_SEPARATOR . $filename))
                 {
-                    $this->get_file_cache($size,$path . DIRECTORY_SEPARATOR . $filename,$cache_perfix,$cache_file_handle,$number,$sumsize,$exclude_files_regex,$exclude_file_size,$skip_files_time);
+                    if ($this->regex_match($exclude_regex, $path . DIRECTORY_SEPARATOR . $filename, 0))
+                    {
+                        $this->get_file_cache($size,$path . DIRECTORY_SEPARATOR . $filename,$cache_perfix,$cache_file_handle,$number,$sumsize,$exclude_regex,$exclude_files_regex,$exclude_file_size,$skip_files_time);
+                    }
                 }
+                /*if(is_dir($path . DIRECTORY_SEPARATOR . $filename))
+                {
+                    $this->get_file_cache($size,$path . DIRECTORY_SEPARATOR . $filename,$cache_perfix,$cache_file_handle,$number,$sumsize,$exclude_regex,$exclude_files_regex,$exclude_file_size,$skip_files_time);
+                }*/
                 else
                 {
                     if($this->regex_match($exclude_files_regex, $filename, 0))
@@ -1014,6 +1033,13 @@ class WPvivid_PclZip_Class
 
         $wpvivid_plugin->wpvivid_log->WriteLog('Prepare to zip files. file: '.basename($name),'notice');
 
+        /*foreach ($files as $index => $file){
+            if(!is_dir($file) && filesize($file) === 0){
+                $wpvivid_plugin->wpvivid_log->WriteLog('Ignore files with size 0. file: '.$file,'notice');
+                unset($files[$index]);
+            }
+        }*/
+
         if($no_compress)
         {
             if($use_temp_file==1)
@@ -1121,6 +1147,33 @@ function wpvivid_function_per_add_callback($p_event, &$p_header)
 function wpvivid_function_pre_extract_callback($p_event, &$p_header)
 {
     $plugins = substr(WP_PLUGIN_DIR, strpos(WP_PLUGIN_DIR, 'wp-content/'));
+
+    $option = $GLOBALS['wpvivid_extract_option'];
+    if (isset($option['file_type'])) {
+        if ($option['file_type'] == 'themes') {
+            if (isset($option['remove_themes'])) {
+                foreach ($option['remove_themes'] as $slug => $themes) {
+                    if (empty($slug))
+                        continue;
+                    if(strpos($p_header['filename'],$plugins.DIRECTORY_SEPARATOR.$slug)!==false)
+                    {
+                        return 0;
+                    }
+                }
+            }
+        } else if ($option['file_type'] == 'plugin') {
+            if (isset($option['remove_plugin'])) {
+                foreach ($option['remove_plugin'] as $slug => $plugin) {
+                    if (empty($slug))
+                        continue;
+                    if(strpos($p_header['filename'],$plugins.'/'.$slug)!==false)
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
+    }
 
     if(strpos($p_header['filename'],$plugins.DIRECTORY_SEPARATOR.'wpvivid-backuprestore')!==false)
     {

@@ -29,8 +29,7 @@ class AddFirstProduct {
 	 * @return Note
 	 */
 	public static function get_note() {
-		// We want to show the note after three days.
-		if ( ! self::wc_admin_active_for( 3 * DAY_IN_SECONDS ) ) {
+		if ( ! self::wc_admin_active_for( 2 * DAY_IN_SECONDS ) || self::wc_admin_active_for( 5 * DAY_IN_SECONDS ) ) {
 			return;
 		}
 
@@ -47,8 +46,22 @@ class AddFirstProduct {
 			return;
 		}
 
+		// Don't show if there is an orders.
+		$args   = array(
+			'limit'  => 1,
+			'return' => 'ids',
+		);
+		$orders = wc_get_orders( $args );
+		if ( 0 !== count( $orders ) ) {
+			return;
+		}
+
+		// If you're updating the following please use sprintf to separate HTML tags.
+		// https://github.com/woocommerce/woocommerce-admin/pull/6617#discussion_r596889685.
 		$content_lines = array(
-			__( 'Nice one, you’ve created a WooCommerce store! Now it’s time to add your first product.<br/><br/>', 'woocommerce' ),
+			'{greetings}<br/><br/>',
+			/* translators: %s: line break */
+			sprintf( __( 'Nice one; you\'ve created a WooCommerce store! Now it\'s time to add your first product and get ready to start selling.%s', 'woocommerce' ), '<br/><br/>' ),
 			__( 'There are three ways to add your products: you can <strong>create products manually, import them at once via CSV file</strong>, or <strong>migrate them from another service</strong>.<br/><br/>', 'woocommerce' ),
 			__( '<a href="https://docs.woocommerce.com/document/managing-products/?utm_source=help_panel">Explore our docs</a> for more information, or just get started!', 'woocommerce' ),
 		);
@@ -58,12 +71,12 @@ class AddFirstProduct {
 		);
 
 		$note = new Note();
-		$note->set_title( __( 'Store setup', 'woocommerce' ) );
+		$note->set_title( __( 'Add your first product', 'woocommerce' ) );
 		$note->set_content( implode( '', $content_lines ) );
 		$note->set_content_data( (object) $additional_data );
 		$note->set_image(
 			plugins_url(
-				'/images/admin_notes/img-product-light.png',
+				'/images/admin_notes/dashboard-widget-setup.png',
 				WC_ADMIN_PLUGIN_FILE
 			)
 		);

@@ -26,7 +26,6 @@ table.wc-block-cart-items td {
 
 .editor-styles-wrapper table.wc-block-cart-items,
 table.wc-block-cart-items {
-	table-layout: fixed;
 	width: 100%;
 
 	.wc-block-cart-items__header {
@@ -38,10 +37,6 @@ table.wc-block-cart-items {
 		}
 		.wc-block-cart-items__header-product {
 			visibility: hidden;
-			min-width: 300px;
-		}
-		.wc-block-cart-items__header-quantity {
-			width: 116px;
 		}
 		.wc-block-cart-items__header-total {
 			width: 100px;
@@ -69,13 +64,7 @@ table.wc-block-cart-items {
 		.wc-block-cart-item__total {
 			@include font-size(regular);
 			text-align: right;
-			line-height: 1.25;
-
-			.wc-block-components-product-price__regular,
-			.wc-block-components-product-price__value {
-				display: block;
-				font-weight: bold;
-			}
+			line-height: inherit;
 		}
 		.wc-block-components-product-metadata {
 			margin-bottom: 0.75em;
@@ -87,6 +76,10 @@ table.wc-block-cart-items {
 			transition: opacity 200ms ease;
 		}
 	}
+}
+
+.wc-block-cart .wc-block-components-shipping-rates-control__package {
+	@include with-translucent-border(1px 0 0);
 }
 
 // Loading placeholder state.
@@ -157,6 +150,25 @@ table.wc-block-cart-items {
 	display: flex;
 }
 
+.wc-block-cart-item__total-price-and-sale-badge-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+
+	.wc-block-components-sale-badge {
+		margin-top: $gap-smallest;
+	}
+}
+
+.is-small,
+.is-mobile {
+	.wc-block-cart-item__total {
+		.wc-block-components-sale-badge {
+			display: none;
+		}
+	}
+}
+
 .is-medium,
 .is-small,
 .is-mobile {
@@ -209,10 +221,6 @@ table.wc-block-cart-items {
 				.wc-block-components-formatted-money-amount {
 					display: inline-block;
 				}
-
-				.wc-block-components-sale-badge {
-					display: none;
-				}
 			}
 		}
 	}
@@ -241,10 +249,20 @@ table.wc-block-cart-items {
 		left: 0;
 	}
 
+	.wc-block-cart__totals-title {
+		@include with-translucent-border(0 0 1px);
+		@include text-heading();
+		@include font-size(smaller);
+		display: block;
+		font-weight: 600;
+		padding: 0.25rem 0;
+		text-align: right;
+		text-transform: uppercase;
+	}
+
 	.wc-block-components-sidebar {
-		> .wc-block-cart__totals-title,
 		.wc-block-components-shipping-calculator,
-		.wc-block-components-shipping-rates-control__package:not(.wc-blocks-components-panel) {
+		.wc-block-components-shipping-rates-control__package:not(.wc-block-components-panel) {
 			padding-left: $gap;
 			padding-right: $gap;
 		}

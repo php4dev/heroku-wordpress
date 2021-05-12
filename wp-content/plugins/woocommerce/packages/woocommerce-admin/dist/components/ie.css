@@ -5,6 +5,12 @@
  * Colors
  */
 /**
+ * SCSS Variables.
+ *
+ * Please use variables from this sheet to ensure consistency across the UI.
+ * Don't add to this sheet unless you're pretty sure the value will be reused in many places.
+ */
+/**
  * Colors
  */
 /**
@@ -24,13 +30,14 @@
  * Editor widths.
  */
 /**
- * Block UI.
- */
-/**
- * Border radii.
+ * Block & Editor UI.
  */
 /**
  * Block paddings.
+ */
+/**
+ * React Native specific.
+ * These variables do not appear to be used anywhere else.
  */
 /**
  * Breakpoint mixins
@@ -59,6 +66,9 @@
  */
 /**
  * Reset the WP Admin page styles for Gutenberg-like pages.
+ */
+/**
+ * These are default block editor widths in case the theme doesn't provide them.
  */
 /**
  * Breakpoints & Media Queries

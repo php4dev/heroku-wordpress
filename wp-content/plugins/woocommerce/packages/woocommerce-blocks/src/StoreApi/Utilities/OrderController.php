@@ -1,6 +1,7 @@
 <?php
 namespace Automattic\WooCommerce\Blocks\StoreApi\Utilities;
 
+use \Exception;
 use Automattic\WooCommerce\Blocks\StoreApi\Routes\RouteException;
 
 /**
@@ -103,26 +104,47 @@ class OrderController {
 	 * By this point we have an order populated with customer data and items.
 	 *
 	 * @throws RouteException Exception if invalid data is detected.
-	 *
 	 * @param \WC_Order $order Order object.
 	 */
 	public function validate_order_before_payment( \WC_Order $order ) {
-		$coupons = $order->get_coupon_codes();
+		$this->validate_coupons( $order );
+		$this->validate_email( $order );
+		$this->validate_addresses( $order );
+	}
 
+	/**
+	 * Convert a coupon code to a coupon object.
+	 *
+	 * @param string $coupon_code Coupon code.
+	 * @return \WC_Coupon Coupon object.
+	 */
+	protected function get_coupon( $coupon_code ) {
+		return new \WC_Coupon( $coupon_code );
+	}
+
+	/**
+	 * Validate coupons applied to the order and remove those that are not valid.
+	 *
+	 * @throws RouteException Exception if invalid data is detected.
+	 * @param \WC_Order $order Order object.
+	 */
+	protected function validate_coupons( \WC_Order $order ) {
+		$coupon_codes  = $order->get_coupon_codes();
+		$coupons       = array_filter( array_map( [ $this, 'get_coupon' ], $coupon_codes ) );
+		$validators    = [ 'validate_coupon_email_restriction', 'validate_coupon_usage_limit' ];
 		$coupon_errors = [];
 
-		foreach ( $coupons as $coupon_code ) {
-			$coupon = new \WC_Coupon( $coupon_code );
-
+		foreach ( $coupons as $coupon ) {
 			try {
-				$this->validate_coupon_email_restriction( $coupon, $order );
-			} catch ( \Exception $error ) {
-				$coupon_errors[ $coupon_code ] = $error->getMessage();
-			}
-			try {
-				$this->validate_coupon_usage_limit( $coupon, $order );
-			} catch ( \Exception $error ) {
-				$coupon_errors[ $coupon_code ] = $error->getMessage();
+				array_walk(
+					$validators,
+					function( $validator, $index, $params ) {
+						call_user_func_array( [ $this, $validator ], $params );
+					},
+					[ $coupon, $order ]
+				);
+			} catch ( Exception $error ) {
+				$coupon_errors[ $coupon->get_code() ] = $error->getMessage();
 			}
 		}
 
@@ -142,7 +164,7 @@ class OrderController {
 			throw new RouteException(
 				'woocommerce_rest_cart_coupon_errors',
 				sprintf(
-					// Translators: %s Coupon codes.
+					/* translators: %s Coupon codes. */
 					__( 'Invalid coupons were removed from the cart: "%s"', 'woocommerce' ),
 					implode( '", "', array_keys( $coupon_errors ) )
 				),
@@ -155,30 +177,214 @@ class OrderController {
 	}
 
 	/**
+	 * Validates the customer email. This is a required field.
+	 *
+	 * @throws RouteException Exception if invalid data is detected.
+	 * @param \WC_Order $order Order object.
+	 */
+	protected function validate_email( \WC_Order $order ) {
+		$email = $order->get_billing_email();
+
+		if ( empty( $email ) ) {
+			throw new RouteException(
+				'woocommerce_rest_missing_email_address',
+				__( 'A valid email address is required', 'woocommerce' ),
+				400
+			);
+		}
+
+		if ( ! is_email( $email ) ) {
+			throw new RouteException(
+				'woocommerce_rest_invalid_email_address',
+				sprintf(
+					/* translators: %s provided email. */
+					__( 'The provided email address (%s) is not valid—please provide a valid email address', 'woocommerce' ),
+					esc_html( $email )
+				),
+				400
+			);
+		}
+	}
+
+	/**
+	 * Validates customer address data based on the locale to ensure required fields are set.
+	 *
+	 * @throws RouteException Exception if invalid data is detected.
+	 * @param \WC_Order $order Order object.
+	 */
+	protected function validate_addresses( \WC_Order $order ) {
+		$errors           = new \WP_Error();
+		$needs_shipping   = wc()->cart->needs_shipping();
+		$billing_address  = $order->get_address( 'billing' );
+		$shipping_address = $order->get_address( 'shipping' );
+
+		if ( $needs_shipping && ! $this->validate_allowed_country( $shipping_address['country'], (array) wc()->countries->get_shipping_countries() ) ) {
+			throw new RouteException(
+				'woocommerce_rest_invalid_address_country',
+				sprintf(
+					/* translators: %s country code. */
+					__( 'Sorry, we do not ship orders to the provided country (%s)', 'woocommerce' ),
+					$shipping_address['country']
+				),
+				400,
+				[
+					'allowed_countries' => array_keys( wc()->countries->get_shipping_countries() ),
+				]
+			);
+		}
+
+		if ( ! $this->validate_allowed_country( $billing_address['country'], (array) wc()->countries->get_allowed_countries() ) ) {
+			throw new RouteException(
+				'woocommerce_rest_invalid_address_country',
+				sprintf(
+					/* translators: %s country code. */
+					__( 'Sorry, we do not allow orders from the provided country (%s)', 'woocommerce' ),
+					$billing_address['country']
+				),
+				400,
+				[
+					'allowed_countries' => array_keys( wc()->countries->get_allowed_countries() ),
+				]
+			);
+		}
+
+		if ( $needs_shipping ) {
+			$this->validate_address_fields( $shipping_address, 'shipping', $errors );
+		}
+		$this->validate_address_fields( $billing_address, 'billing', $errors );
+
+		if ( ! $errors->has_errors() ) {
+			return;
+		}
+
+		$errors_by_code = [];
+		$error_codes    = $errors->get_error_codes();
+		foreach ( $error_codes as $code ) {
+			$errors_by_code[ $code ] = $errors->get_error_messages( $code );
+		}
+
+		// Surface errors from first code.
+		foreach ( $errors_by_code as $code => $error_messages ) {
+			throw new RouteException(
+				'woocommerce_rest_invalid_address',
+				sprintf(
+					/* translators: %s Address type. */
+					__( 'There was a problem with the provided %s:', 'woocommerce' ) . ' ' . implode( ', ', $error_messages ),
+					'shipping' === $code ? __( 'shipping address', 'woocommerce' ) : __( 'billing address', 'woocommerce' )
+				),
+				400,
+				[
+					'errors' => $errors_by_code,
+				]
+			);
+		}
+	}
+
+	/**
+	 * Check all required address fields are set and return errors if not.
+	 *
+	 * @param string $country Country code.
+	 * @param array  $allowed_countries List of valid country codes.
+	 * @return boolean True if valid.
+	 */
+	protected function validate_allowed_country( $country, array $allowed_countries ) {
+		return array_key_exists( $country, $allowed_countries );
+	}
+
+	/**
+	 * Check all required address fields are set and return errors if not.
+	 *
+	 * @param array     $address Address array.
+	 * @param string    $address_type billing or shipping address, used in error messages.
+	 * @param \WP_Error $errors Error object.
+	 */
+	protected function validate_address_fields( $address, $address_type, \WP_Error $errors ) {
+		$all_locales    = wc()->countries->get_country_locale();
+		$current_locale = isset( $all_locales[ $address['country'] ] ) ? $all_locales[ $address['country'] ] : [];
+
+		/**
+		 * We are not using wc()->counties->get_default_address_fields() here because that is filtered. Instead, this array
+		 * is based on assets/js/base/components/cart-checkout/address-form/default-address-fields.js
+		 */
+		$address_fields = [
+			'first_name' => [
+				'label'    => __( 'First name', 'woocommerce' ),
+				'required' => true,
+			],
+			'last_name'  => [
+				'label'    => __( 'Last name', 'woocommerce' ),
+				'required' => true,
+			],
+			'company'    => [
+				'label'    => __( 'Company', 'woocommerce' ),
+				'required' => false,
+			],
+			'address_1'  => [
+				'label'    => __( 'Address', 'woocommerce' ),
+				'required' => true,
+			],
+			'address_2'  => [
+				'label'    => __( 'Apartment, suite, etc.', 'woocommerce' ),
+				'required' => false,
+			],
+			'country'    => [
+				'label'    => __( 'Country/Region', 'woocommerce' ),
+				'required' => true,
+			],
+			'city'       => [
+				'label'    => __( 'City', 'woocommerce' ),
+				'required' => true,
+			],
+			'state'      => [
+				'label'    => __( 'State/County', 'woocommerce' ),
+				'required' => true,
+			],
+			'postcode'   => [
+				'label'    => __( 'Postal code', 'woocommerce' ),
+				'required' => true,
+			],
+		];
+
+		if ( $current_locale ) {
+			foreach ( $current_locale as $key => $field ) {
+				if ( isset( $address_fields[ $key ] ) ) {
+					$address_fields[ $key ]['label']    = isset( $field['label'] ) ? $field['label'] : $address_fields[ $key ]['label'];
+					$address_fields[ $key ]['required'] = isset( $field['required'] ) ? $field['required'] : $address_fields[ $key ]['required'];
+				}
+			}
+		}
+
+		foreach ( $address_fields as $address_field_key => $address_field ) {
+			if ( empty( $address[ $address_field_key ] ) && $address_field['required'] ) {
+				/* translators: %s Field label. */
+				$errors->add( $address_type, sprintf( __( '%s is required', 'woocommerce' ), $address_field['label'] ), $address_field_key );
+			}
+		}
+	}
+
+	/**
 	 * Check email restrictions of a coupon against the order.
 	 *
-	 * @throws \Exception Exception if invalid data is detected.
-	 *
+	 * @throws Exception Exception if invalid data is detected.
 	 * @param \WC_Coupon $coupon Coupon object applied to the cart.
 	 * @param \WC_Order  $order Order object.
 	 */
-	protected function validate_coupon_email_restriction( \WC_Coupon $coupon, $order ) {
+	protected function validate_coupon_email_restriction( \WC_Coupon $coupon, \WC_Order $order ) {
 		$restrictions = $coupon->get_email_restrictions();
 
 		if ( ! empty( $restrictions ) && $order->get_billing_email() && ! wc()->cart->is_coupon_emails_allowed( [ $order->get_billing_email() ], $restrictions ) ) {
-			throw new \Exception( $coupon->get_coupon_error( \WC_Coupon::E_WC_COUPON_NOT_YOURS_REMOVED ) );
+			throw new Exception( $coupon->get_coupon_error( \WC_Coupon::E_WC_COUPON_NOT_YOURS_REMOVED ) );
 		}
 	}
 
 	/**
 	 * Check usage restrictions of a coupon against the order.
 	 *
-	 * @throws \Exception Exception if invalid data is detected.
-	 *
+	 * @throws Exception Exception if invalid data is detected.
 	 * @param \WC_Coupon $coupon Coupon object applied to the cart.
 	 * @param \WC_Order  $order Order object.
 	 */
-	protected function validate_coupon_usage_limit( \WC_Coupon $coupon, $order ) {
+	protected function validate_coupon_usage_limit( \WC_Coupon $coupon, \WC_Order $order ) {
 		$coupon_usage_limit = $coupon->get_usage_limit_per_user();
 
 		if ( $coupon_usage_limit > 0 ) {
@@ -186,7 +392,7 @@ class OrderController {
 			$usage_count = $order->get_customer_id() ? $data_store->get_usage_by_user_id( $coupon, $order->get_customer_id() ) : $data_store->get_usage_by_email( $coupon, $order->get_billing_email() );
 
 			if ( $usage_count >= $coupon_usage_limit ) {
-				throw new \Exception( $coupon->get_coupon_error( \WC_Coupon::E_WC_COUPON_USAGE_LIMIT_REACHED ) );
+				throw new Exception( $coupon->get_coupon_error( \WC_Coupon::E_WC_COUPON_USAGE_LIMIT_REACHED ) );
 			}
 		}
 	}
@@ -247,28 +453,29 @@ class OrderController {
 	 * @param \WC_Order $order The order object to update.
 	 */
 	protected function update_addresses_from_cart( \WC_Order $order ) {
-		$customer_billing = wc()->customer->get_billing();
-		$customer_billing = array_combine(
-			array_map(
-				function( $key ) {
-					return 'billing_' . $key;
-				},
-				array_keys( $customer_billing )
-			),
-			$customer_billing
+		$order->set_props(
+			[
+				'billing_first_name'  => wc()->customer->get_billing_first_name(),
+				'billing_last_name'   => wc()->customer->get_billing_last_name(),
+				'billing_company'     => wc()->customer->get_billing_company(),
+				'billing_address_1'   => wc()->customer->get_billing_address_1(),
+				'billing_address_2'   => wc()->customer->get_billing_address_2(),
+				'billing_city'        => wc()->customer->get_billing_city(),
+				'billing_state'       => wc()->customer->get_billing_state(),
+				'billing_postcode'    => wc()->customer->get_billing_postcode(),
+				'billing_country'     => wc()->customer->get_billing_country(),
+				'billing_email'       => wc()->customer->get_billing_email(),
+				'billing_phone'       => wc()->customer->get_billing_phone(),
+				'shipping_first_name' => wc()->customer->get_shipping_first_name(),
+				'shipping_last_name'  => wc()->customer->get_shipping_last_name(),
+				'shipping_company'    => wc()->customer->get_shipping_company(),
+				'shipping_address_1'  => wc()->customer->get_shipping_address_1(),
+				'shipping_address_2'  => wc()->customer->get_shipping_address_2(),
+				'shipping_city'       => wc()->customer->get_shipping_city(),
+				'shipping_state'      => wc()->customer->get_shipping_state(),
+				'shipping_postcode'   => wc()->customer->get_shipping_postcode(),
+				'shipping_country'    => wc()->customer->get_shipping_country(),
+			]
 		);
-		$order->set_props( $customer_billing );
-
-		$customer_shipping = wc()->customer->get_shipping();
-		$customer_shipping = array_combine(
-			array_map(
-				function( $key ) {
-					return 'shipping_' . $key;
-				},
-				array_keys( $customer_shipping )
-			),
-			$customer_shipping
-		);
-		$order->set_props( $customer_shipping );
 	}
 }

@@ -97,7 +97,7 @@ function wpvivid_general_settings()
                     }
                 }
                 ?>
-            </select><strong style="margin-right: 10px;"><?php _e('backups retained', 'wpvivid-backuprestore'); ?></strong><a href="https://wpvivid.com/pro-version-beta-testing?utm_source=client_backups_retained&utm_medium=inner_link&utm_campaign=access" style="text-decoration: none;"><?php _e('Pro feature: Retain more backups', 'wpvivid-backuprestore'); ?></a>
+            </select><strong style="margin-right: 10px;"><?php _e('backups retained', 'wpvivid-backuprestore'); ?></strong><a href="https://wpvivid.com/wpvivid-backup-pro-backup-retention" style="text-decoration: none;"><?php _e('Pro feature: Retain more backups', 'wpvivid-backuprestore'); ?></a>
         </div>
         <div>
             <label for="wpvivid_estimate_backup">

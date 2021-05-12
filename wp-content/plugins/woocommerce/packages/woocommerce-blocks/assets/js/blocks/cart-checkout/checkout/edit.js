@@ -3,7 +3,6 @@
  */
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
-import { CartCheckoutFeedbackPrompt } from '@woocommerce/editor-components/feedback-prompt';
 import { InspectorControls } from '@wordpress/block-editor';
 import {
 	PanelBody,
@@ -19,7 +18,7 @@ import {
 	CHECKOUT_PAGE_ID,
 	CHECKOUT_ALLOWS_SIGNUP,
 } from '@woocommerce/block-settings';
-import { compareWithWooVersion, getAdminLink } from '@woocommerce/settings';
+import { isWcVersion, getAdminLink } from '@woocommerce/settings';
 import { createInterpolateElement } from 'wordpress-element';
 import { useRef } from '@wordpress/element';
 import {
@@ -27,7 +26,9 @@ import {
 	useEditorContext,
 	StoreNoticesProvider,
 } from '@woocommerce/base-context';
+import { CartCheckoutFeedbackPrompt } from '@woocommerce/editor-components/feedback-prompt';
 import PageSelector from '@woocommerce/editor-components/page-selector';
+import { CartCheckoutCompatibilityNotice } from '@woocommerce/editor-components/compatibility-notices';
 import {
 	previewCart,
 	previewSavedPaymentMethods,
@@ -61,7 +62,7 @@ const BlockSettings = ( { attributes, setAttributes } ) => {
 	// Also implicitly gated to feature plugin, because Checkout
 	// block is gated to plugin
 	const showCreateAccountOption =
-		CHECKOUT_ALLOWS_SIGNUP && compareWithWooVersion( '4.7.0', '<=' );
+		CHECKOUT_ALLOWS_SIGNUP && isWcVersion( '4.7.0', '>=' );
 	return (
 		<InspectorControls>
 			{ currentPostId !== CHECKOUT_PAGE_ID && (
@@ -323,45 +324,48 @@ const BlockSettings = ( { attributes, setAttributes } ) => {
 const CheckoutEditor = ( { attributes, setAttributes } ) => {
 	const { className, isPreview } = attributes;
 	return (
-		<EditorProvider
-			previewData={ { previewCart, previewSavedPaymentMethods } }
-		>
-			<div
-				className={ classnames(
-					className,
-					'wp-block-woocommerce-checkout',
-					{
-						'is-editor-preview': isPreview,
-					}
-				) }
+		<>
+			<EditorProvider
+				previewData={ { previewCart, previewSavedPaymentMethods } }
 			>
-				<BlockSettings
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-				/>
-				<BlockErrorBoundary
-					header={ __(
-						'Checkout Block Error',
-						'woocommerce'
-					) }
-					text={ __(
-						'There was an error whilst rendering the checkout block. If this problem continues, try re-creating the block.',
-						'woocommerce'
-					) }
-					showErrorMessage={ true }
-					errorMessagePrefix={ __(
-						'Error message:',
-						'woocommerce'
+				<div
+					className={ classnames(
+						className,
+						'wp-block-woocommerce-checkout',
+						{
+							'is-editor-preview': isPreview,
+						}
 					) }
 				>
-					<StoreNoticesProvider context="wc/checkout">
-						<Disabled>
-							<Block attributes={ attributes } />
-						</Disabled>
-					</StoreNoticesProvider>
-				</BlockErrorBoundary>
-			</div>
-		</EditorProvider>
+					<BlockSettings
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+					/>
+					<BlockErrorBoundary
+						header={ __(
+							'Checkout Block Error',
+							'woocommerce'
+						) }
+						text={ __(
+							'There was an error whilst rendering the checkout block. If this problem continues, try re-creating the block.',
+							'woocommerce'
+						) }
+						showErrorMessage={ true }
+						errorMessagePrefix={ __(
+							'Error message:',
+							'woocommerce'
+						) }
+					>
+						<StoreNoticesProvider context="wc/checkout">
+							<Disabled>
+								<Block attributes={ attributes } />
+							</Disabled>
+						</StoreNoticesProvider>
+					</BlockErrorBoundary>
+				</div>
+			</EditorProvider>
+			<CartCheckoutCompatibilityNotice blockName="checkout" />
+		</>
 	);
 };
 

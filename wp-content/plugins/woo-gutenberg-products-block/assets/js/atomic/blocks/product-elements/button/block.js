@@ -4,10 +4,11 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { __, _n, sprintf } from '@wordpress/i18n';
-import { useEffect, useRef } from '@wordpress/element';
-import { useStoreAddToCart } from '@woocommerce/base-hooks';
+import {
+	useStoreEvents,
+	useStoreAddToCart,
+} from '@woocommerce/base-context/hooks';
 import { decodeEntities } from '@wordpress/html-entities';
-import { triggerFragmentRefresh } from '@woocommerce/base-utils';
 import {
 	useInnerBlockLayoutContext,
 	useProductDataContext,
@@ -51,8 +52,6 @@ const Block = ( { className } ) => {
 };
 
 const AddToCartButton = ( { product } ) => {
-	const firstMount = useRef( true );
-
 	const {
 		id,
 		permalink,
@@ -61,17 +60,8 @@ const AddToCartButton = ( { product } ) => {
 		is_purchasable: isPurchasable,
 		is_in_stock: isInStock,
 	} = product;
-
+	const { dispatchStoreEvent } = useStoreEvents();
 	const { cartQuantity, addingToCart, addToCart } = useStoreAddToCart( id );
-
-	useEffect( () => {
-		// Avoid running on first mount when cart quantity is first set.
-		if ( firstMount.current ) {
-			firstMount.current = false;
-			return;
-		}
-		triggerFragmentRefresh();
-	}, [ cartQuantity ] );
 
 	const addedToCart = Number.isFinite( cartQuantity ) && cartQuantity > 0;
 	const allowAddToCart = ! hasOptions && isPurchasable && isInStock;
@@ -80,7 +70,7 @@ const AddToCartButton = ( { product } ) => {
 	);
 	const buttonText = addedToCart
 		? sprintf(
-				// translators: %s number of products in cart.
+				/* translators: %s number of products in cart. */
 				_n(
 					'%d in cart',
 					'%d in cart',
@@ -100,9 +90,17 @@ const AddToCartButton = ( { product } ) => {
 	if ( ! allowAddToCart ) {
 		buttonProps.href = permalink;
 		buttonProps.rel = 'nofollow';
+		buttonProps.onClick = () => {
+			dispatchStoreEvent( 'product-view-link', {
+				product,
+			} );
+		};
 	} else {
 		buttonProps.onClick = () => {
 			addToCart();
+			dispatchStoreEvent( 'cart-add-item', {
+				product,
+			} );
 		};
 	}
 

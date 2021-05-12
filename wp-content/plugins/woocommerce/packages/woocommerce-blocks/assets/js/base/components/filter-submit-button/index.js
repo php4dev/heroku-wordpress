@@ -14,7 +14,7 @@ import './style.scss';
 const FilterSubmitButton = ( {
 	className,
 	disabled,
-	// translators: Submit button text for filters.
+	/* translators: Submit button text for filters. */
 	label = __( 'Go', 'woocommerce' ),
 	onClick,
 	screenReaderLabel = __( 'Apply filter', 'woocommerce' ),

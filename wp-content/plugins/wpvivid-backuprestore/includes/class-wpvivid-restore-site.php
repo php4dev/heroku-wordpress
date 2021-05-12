@@ -130,7 +130,7 @@ class WPvivid_RestoreSite
                 {
                     @rename(get_home_path() . '.htaccess', get_home_path() . '.htaccess_old');
                 }
-                $ret = $zip->extract($all_files, $root_path);
+                $ret = $zip->extract($all_files, $root_path, $option);
 
                 if (isset($option['file_type'])) {
                     if ($option['file_type'] == 'themes') {
@@ -139,7 +139,7 @@ class WPvivid_RestoreSite
                                 if (empty($slug))
                                     continue;
                                 $wpvivid_plugin->restore_data->write_log('remove ' . get_theme_root() . DIRECTORY_SEPARATOR . $slug, 'notice');
-                                $this->delTree(get_theme_root() . DIRECTORY_SEPARATOR . $slug);
+                                //$this->delTree(get_theme_root() . DIRECTORY_SEPARATOR . $slug);
                             }
                         }
                     } else if ($option['file_type'] == 'plugin') {
@@ -148,7 +148,7 @@ class WPvivid_RestoreSite
                                 if (empty($slug))
                                     continue;
                                 $wpvivid_plugin->restore_data->write_log('remove ' . WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . $slug, 'notice');
-                                $this->delTree(WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . $slug);
+                                //$this->delTree(WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . $slug);
                             }
                         }
                     }

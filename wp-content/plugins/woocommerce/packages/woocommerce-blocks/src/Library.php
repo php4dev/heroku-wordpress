@@ -1,7 +1,11 @@
 <?php
 namespace Automattic\WooCommerce\Blocks;
 
+use Automattic\WooCommerce\Blocks\BlockTypes\AtomicBlock;
 use Automattic\WooCommerce\Blocks\Package;
+use Automattic\WooCommerce\Blocks\Assets\AssetDataRegistry;
+use Automattic\WooCommerce\Blocks\Assets\Api as AssetApi;
+use Automattic\WooCommerce\Blocks\Integrations\IntegrationRegistry;
 
 /**
  * Library class.
@@ -40,7 +44,8 @@ class Library {
 	 * Register blocks, hooking up assets and render functions as needed.
 	 */
 	public static function register_blocks() {
-		global $wp_version;
+		global $wp_version, $pagenow;
+
 		$blocks = [
 			'AllReviews',
 			'FeaturedCategory',
@@ -57,36 +62,57 @@ class Library {
 			'ReviewsByCategory',
 			'ProductSearch',
 			'ProductTag',
+			'AllProducts',
+			'PriceFilter',
+			'AttributeFilter',
+			'ActiveFilters',
 		];
-		// Note: as a part of refactoring dynamic block registration, this will be moved
-		// to block level config.
-		if ( version_compare( $wp_version, '5.3', '>=' ) ) {
-			$blocks[] = 'AllProducts';
-			$blocks[] = 'PriceFilter';
-			$blocks[] = 'AttributeFilter';
-			$blocks[] = 'ActiveFilters';
 
-			if ( Package::feature()->is_feature_plugin_build() ) {
-				$blocks[] = 'Checkout';
-				$blocks[] = 'Cart';
-			}
+		if ( Package::feature()->is_feature_plugin_build() ) {
+			$blocks[] = 'Checkout';
+			$blocks[] = 'Cart';
 		}
+
 		if ( Package::feature()->is_experimental_build() ) {
 			$blocks[] = 'SingleProduct';
 		}
-		foreach ( $blocks as $class ) {
-			$class    = __NAMESPACE__ . '\\BlockTypes\\' . $class;
-			$instance = new $class();
-			$instance->register_block_type();
+
+		/**
+		 * This disables specific blocks in Widget Areas by not registering them.
+		 */
+		if ( 'themes.php' === $pagenow ) {
+			$blocks = array_diff(
+				$blocks,
+				[
+					'AllProducts',
+					'PriceFilter',
+					'AttributeFilter',
+					'ActiveFilters',
+				]
+			);
 		}
-		self::register_atomic_blocks();
+
+		// Provide block types access to assets, data registry, and integration registry.
+		$asset_api     = Package::container()->get( AssetApi::class );
+		$data_registry = Package::container()->get( AssetDataRegistry::class );
+
+		foreach ( $blocks as $block_type ) {
+			$block_type_class    = __NAMESPACE__ . '\\BlockTypes\\' . $block_type;
+			$block_type_instance = new $block_type_class( $asset_api, $data_registry, new IntegrationRegistry() );
+		}
+
+		foreach ( self::get_atomic_blocks() as $block_type ) {
+			$block_type_instance = new AtomicBlock( $asset_api, $data_registry, new IntegrationRegistry(), $block_type );
+		}
 	}
 
 	/**
-	 * Register atomic blocks on the PHP side.
+	 * Get atomic blocks types.
+	 *
+	 * @return array
 	 */
-	protected static function register_atomic_blocks() {
-		$atomic_blocks = [
+	protected static function get_atomic_blocks() {
+		return [
 			'product-title',
 			'product-button',
 			'product-image',
@@ -100,9 +126,5 @@ class Library {
 			'product-stock-indicator',
 			'product-add-to-cart',
 		];
-		foreach ( $atomic_blocks as $atomic_block ) {
-			$instance = new \Automattic\WooCommerce\Blocks\BlockTypes\AtomicBlock( $atomic_block );
-			$instance->register_block_type();
-		}
 	}
 }

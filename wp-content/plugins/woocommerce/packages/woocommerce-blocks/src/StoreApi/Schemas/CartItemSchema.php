@@ -144,6 +144,35 @@ class CartItemSchema extends ProductSchema {
 					],
 				],
 			],
+			'item_data'            => [
+				'description' => __( 'Metadata related to the cart item', 'woocommerce' ),
+				'type'        => 'array',
+				'context'     => [ 'view', 'edit' ],
+				'readonly'    => true,
+				'items'       => [
+					'type'       => 'object',
+					'properties' => [
+						'name'    => [
+							'description' => __( 'Name of the metadata.', 'woocommerce' ),
+							'type'        => 'string',
+							'context'     => [ 'view', 'edit' ],
+							'readonly'    => true,
+						],
+						'value'   => [
+							'description' => __( 'Value of the metadata.', 'woocommerce' ),
+							'type'        => 'string',
+							'context'     => [ 'view', 'edit' ],
+							'readonly'    => true,
+						],
+						'display' => [
+							'description' => __( 'Optionally, how the metadata value should be displayed to the user.', 'woocommerce' ),
+							'type'        => 'string',
+							'context'     => [ 'view', 'edit' ],
+							'readonly'    => true,
+						],
+					],
+				],
+			],
 			'prices'               => [
 				'description' => __( 'Price data for the product in the current line item, including or excluding taxes based on the "display prices during cart and checkout" setting. Provided using the smallest unit of the currency.', 'woocommerce' ),
 				'type'        => 'object',
@@ -285,8 +314,8 @@ class CartItemSchema extends ProductSchema {
 			'quantity'             => wc_stock_amount( $cart_item['quantity'] ),
 			'quantity_limit'       => $this->get_product_quantity_limit( $product ),
 			'name'                 => $this->prepare_html_response( $product->get_title() ),
-			'short_description'    => $this->prepare_html_response( wc_format_content( $product->get_short_description() ) ),
-			'description'          => $this->prepare_html_response( wc_format_content( $product->get_description() ) ),
+			'short_description'    => $this->prepare_html_response( wc_format_content( wp_kses_post( $product->get_short_description() ) ) ),
+			'description'          => $this->prepare_html_response( wc_format_content( wp_kses_post( $product->get_description() ) ) ),
 			'sku'                  => $this->prepare_html_response( $product->get_sku() ),
 			'low_stock_remaining'  => $this->get_low_stock_remaining( $product ),
 			'backorders_allowed'   => (bool) $product->backorders_allowed(),
@@ -295,6 +324,7 @@ class CartItemSchema extends ProductSchema {
 			'permalink'            => $product->get_permalink(),
 			'images'               => $this->get_images( $product ),
 			'variation'            => $this->format_variation_data( $cart_item['variation'], $product ),
+			'item_data'            => $this->get_item_data( $cart_item ),
 			'prices'               => (object) $this->prepare_product_price_response( $product, get_option( 'woocommerce_tax_display_cart' ) ),
 			'totals'               => (object) $this->prepare_currency_response(
 				[
@@ -385,5 +415,30 @@ class CartItemSchema extends ProductSchema {
 		}
 
 		return $return;
+	}
+
+	/**
+	 * Format cart item data removing any HTML tag.
+	 *
+	 * @param array $cart_item Cart item array.
+	 * @return array
+	 */
+	protected function get_item_data( $cart_item ) {
+		$item_data = apply_filters( 'woocommerce_get_item_data', array(), $cart_item );
+		return array_map( [ $this, 'format_item_data_element' ], $item_data );
+	}
+
+	/**
+	 * Remove HTML tags from cart item data and set the `hidden` property to
+	 * `__experimental_woocommerce_blocks_hidden`.
+	 *
+	 * @param array $item_data_element Individual element of a cart item data.
+	 * @return array
+	 */
+	protected function format_item_data_element( $item_data_element ) {
+		if ( array_key_exists( '__experimental_woocommerce_blocks_hidden', $item_data_element ) ) {
+			$item_data_element['hidden'] = $item_data_element['__experimental_woocommerce_blocks_hidden'];
+		}
+		return array_map( 'wp_strip_all_tags', $item_data_element );
 	}
 }

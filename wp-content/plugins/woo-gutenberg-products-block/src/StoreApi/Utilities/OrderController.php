@@ -164,7 +164,7 @@ class OrderController {
 			throw new RouteException(
 				'woocommerce_rest_cart_coupon_errors',
 				sprintf(
-					// Translators: %s Coupon codes.
+					/* translators: %s Coupon codes. */
 					__( 'Invalid coupons were removed from the cart: "%s"', 'woo-gutenberg-products-block' ),
 					implode( '", "', array_keys( $coupon_errors ) )
 				),
@@ -197,7 +197,7 @@ class OrderController {
 			throw new RouteException(
 				'woocommerce_rest_invalid_email_address',
 				sprintf(
-					// Translators: %s provided email.
+					/* translators: %s provided email. */
 					__( 'The provided email address (%s) is not valid—please provide a valid email address', 'woo-gutenberg-products-block' ),
 					esc_html( $email )
 				),
@@ -222,7 +222,7 @@ class OrderController {
 			throw new RouteException(
 				'woocommerce_rest_invalid_address_country',
 				sprintf(
-					// Translators: %s country code.
+					/* translators: %s country code. */
 					__( 'Sorry, we do not ship orders to the provided country (%s)', 'woo-gutenberg-products-block' ),
 					$shipping_address['country']
 				),
@@ -237,7 +237,7 @@ class OrderController {
 			throw new RouteException(
 				'woocommerce_rest_invalid_address_country',
 				sprintf(
-					// Translators: %s country code.
+					/* translators: %s country code. */
 					__( 'Sorry, we do not allow orders from the provided country (%s)', 'woo-gutenberg-products-block' ),
 					$billing_address['country']
 				),
@@ -268,7 +268,7 @@ class OrderController {
 			throw new RouteException(
 				'woocommerce_rest_invalid_address',
 				sprintf(
-					// Translators: %s Address type.
+					/* translators: %s Address type. */
 					__( 'There was a problem with the provided %s:', 'woo-gutenberg-products-block' ) . ' ' . implode( ', ', $error_messages ),
 					'shipping' === $code ? __( 'shipping address', 'woo-gutenberg-products-block' ) : __( 'billing address', 'woo-gutenberg-products-block' )
 				),
@@ -356,7 +356,7 @@ class OrderController {
 
 		foreach ( $address_fields as $address_field_key => $address_field ) {
 			if ( empty( $address[ $address_field_key ] ) && $address_field['required'] ) {
-				// Translators: %s Field label.
+				/* translators: %s Field label. */
 				$errors->add( $address_type, sprintf( __( '%s is required', 'woo-gutenberg-products-block' ), $address_field['label'] ), $address_field_key );
 			}
 		}
@@ -453,28 +453,29 @@ class OrderController {
 	 * @param \WC_Order $order The order object to update.
 	 */
 	protected function update_addresses_from_cart( \WC_Order $order ) {
-		$customer_billing = wc()->customer->get_billing();
-		$customer_billing = array_combine(
-			array_map(
-				function( $key ) {
-					return 'billing_' . $key;
-				},
-				array_keys( $customer_billing )
-			),
-			$customer_billing
+		$order->set_props(
+			[
+				'billing_first_name'  => wc()->customer->get_billing_first_name(),
+				'billing_last_name'   => wc()->customer->get_billing_last_name(),
+				'billing_company'     => wc()->customer->get_billing_company(),
+				'billing_address_1'   => wc()->customer->get_billing_address_1(),
+				'billing_address_2'   => wc()->customer->get_billing_address_2(),
+				'billing_city'        => wc()->customer->get_billing_city(),
+				'billing_state'       => wc()->customer->get_billing_state(),
+				'billing_postcode'    => wc()->customer->get_billing_postcode(),
+				'billing_country'     => wc()->customer->get_billing_country(),
+				'billing_email'       => wc()->customer->get_billing_email(),
+				'billing_phone'       => wc()->customer->get_billing_phone(),
+				'shipping_first_name' => wc()->customer->get_shipping_first_name(),
+				'shipping_last_name'  => wc()->customer->get_shipping_last_name(),
+				'shipping_company'    => wc()->customer->get_shipping_company(),
+				'shipping_address_1'  => wc()->customer->get_shipping_address_1(),
+				'shipping_address_2'  => wc()->customer->get_shipping_address_2(),
+				'shipping_city'       => wc()->customer->get_shipping_city(),
+				'shipping_state'      => wc()->customer->get_shipping_state(),
+				'shipping_postcode'   => wc()->customer->get_shipping_postcode(),
+				'shipping_country'    => wc()->customer->get_shipping_country(),
+			]
 		);
-		$order->set_props( $customer_billing );
-
-		$customer_shipping = wc()->customer->get_shipping();
-		$customer_shipping = array_combine(
-			array_map(
-				function( $key ) {
-					return 'shipping_' . $key;
-				},
-				array_keys( $customer_shipping )
-			),
-			$customer_shipping
-		);
-		$order->set_props( $customer_shipping );
 	}
 }

@@ -2124,7 +2124,7 @@ function wpvivid_backuppage_add_page_downlaod(){
             jQuery('#wpvivid_init_download_info').show();
             jQuery('#wpvivid_init_download_info').find('.spinner').addClass('is-active');
 
-            wpvivid_post_request_addon(ajax_data, function(data)
+            wpvivid_post_request(ajax_data, function(data)
             {
                 jQuery('#wpvivid_init_download_info').hide();
                 jQuery('#wpvivid_init_download_info').find('.spinner').removeClass('is-active');
@@ -2270,8 +2270,7 @@ function wpvivid_backup_module_add_descript(){
     <div style="font-size: 14px; padding: 8px 12px; margin: 0; line-height: 1.4; font-weight: 600;">
         <span style="margin-right: 5px;"><?php _e( 'Back Up Manually','wpvivid-backuprestore'); ?></span>
         <span style="margin-right: 5px;">|</span>
-        <span style="margin-right: 0;"><a href="<?php echo esc_url(admin_url().'admin.php?page=wpvivid-cleaner'); ?>" style="text-decoration: none;"><?php _e('Unused Image Cleaner', 'wpvivid-backuprestore'); ?></a></span>
-        <span style="font-size: 10px; color: #FFA500; line-height: 10px;">(<?php _e('new feature', 'wpvivid-backuprestore'); ?>)</span>
+        <span style="margin-right: 0;"><a href="<?php echo esc_url('https://wordpress.org/plugins/wpvivid-imgoptim/'); ?>" style="text-decoration: none;"><?php _e('Compress images with our image optimization plugin, it\'s free', 'wpvivid-backuprestore'); ?></a></span>
     </div>
     <div class="quickstart-storage-setting">
         <span class="list-top-chip backup" name="ismerge" value="1" style="margin: 10px 10px 10px 0;"><?php _e('Local Storage Directory:', 'wpvivid-backuprestore'); ?></span>

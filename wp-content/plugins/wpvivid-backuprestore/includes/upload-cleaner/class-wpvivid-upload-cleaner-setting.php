@@ -1256,6 +1256,9 @@ class WPvivid_Uploads_Cleaner_Setting
 
     public function get_exclude_files_list()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         try
         {
             if(isset($_POST['file_exclude'])&&!empty($_POST['file_exclude']))
@@ -1298,6 +1301,9 @@ class WPvivid_Uploads_Cleaner_Setting
 
     public function delete_exclude_files()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         try
         {
             $json = $_POST['selected'];
@@ -1343,6 +1349,9 @@ class WPvivid_Uploads_Cleaner_Setting
 
     public function get_post_type_list()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         try
         {
             $default_post_types=array();
@@ -1395,6 +1404,9 @@ class WPvivid_Uploads_Cleaner_Setting
 
     public function delete_post_type()
     {
+        global $wpvivid_plugin;
+        $wpvivid_plugin->ajax_check_security();
+
         try
         {
             $default_post_types=array();

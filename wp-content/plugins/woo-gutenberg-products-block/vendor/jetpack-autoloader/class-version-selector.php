@@ -5,7 +5,7 @@
  * @package automattic/jetpack-autoloader
  */
 
-namespace Automattic\Jetpack\Autoloader\jp4fb2807c60af9e0a8f707ca0c8c965be;
+namespace Automattic\Jetpack\Autoloader\jpbc1b1af2c309d7ebec60f743d6cb8207;
 
  // phpcs:ignore
 
@@ -33,11 +33,11 @@ class Version_Selector {
 			return true;
 		}
 
-		if ( $use_dev_versions && $this->is_package_version_dev( $selected_version ) ) {
+		if ( $use_dev_versions && $this->is_dev_version( $selected_version ) ) {
 			return false;
 		}
 
-		if ( $this->is_package_version_dev( $compare_version ) ) {
+		if ( $this->is_dev_version( $compare_version ) ) {
 			if ( $use_dev_versions ) {
 				return true;
 			} else {
@@ -59,7 +59,7 @@ class Version_Selector {
 	 *
 	 * @return bool True if the version is a dev version, else false.
 	 */
-	private function is_package_version_dev( $version ) {
+	public function is_dev_version( $version ) {
 		if ( 'dev-' === substr( $version, 0, 4 ) || '9999999-dev' === $version ) {
 			return true;
 		}

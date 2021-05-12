@@ -23,11 +23,13 @@ const EmptyCart = () => {
 					'woocommerce'
 				) }
 			</p>
-			<span className="wp-block-button">
-				<a href={ SHOP_URL } className="wp-block-button__link">
-					{ __( 'Browse store', 'woocommerce' ) }
-				</a>
-			</span>
+			{ SHOP_URL && (
+				<span className="wp-block-button">
+					<a href={ SHOP_URL } className="wp-block-button__link">
+						{ __( 'Browse store', 'woocommerce' ) }
+					</a>
+				</span>
+			) }
 		</div>
 	);
 };

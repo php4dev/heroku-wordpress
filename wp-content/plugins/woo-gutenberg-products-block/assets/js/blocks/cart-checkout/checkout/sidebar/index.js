@@ -17,10 +17,10 @@ import {
 import { getCurrencyFromPriceResponse } from '@woocommerce/price-format';
 import { useShippingDataContext } from '@woocommerce/base-context';
 import {
-	COUPONS_ENABLED,
-	DISPLAY_CART_PRICES_INCLUDING_TAX,
-} from '@woocommerce/block-settings';
-import { useStoreCartCoupons } from '@woocommerce/base-hooks';
+	useStoreCartCoupons,
+	useStoreCart,
+} from '@woocommerce/base-context/hooks';
+import { getSetting } from '@woocommerce/settings';
 
 const CheckoutSidebar = ( {
 	cartCoupons = [],
@@ -37,6 +37,15 @@ const CheckoutSidebar = ( {
 
 	const { needsShipping } = useShippingDataContext();
 	const totalsCurrency = getCurrencyFromPriceResponse( cartTotals );
+
+	// Prepare props to pass to the ExperimentalOrderMeta slot fill.
+	// We need to pluck out receiveCart.
+	// eslint-disable-next-line no-unused-vars
+	const { extensions, receiveCart, ...cart } = useStoreCart();
+	const slotFillProps = {
+		extensions,
+		cart,
+	};
 
 	return (
 		<>
@@ -58,13 +67,13 @@ const CheckoutSidebar = ( {
 					currency={ totalsCurrency }
 				/>
 			) }
-			{ ! DISPLAY_CART_PRICES_INCLUDING_TAX && (
+			{ ! getSetting( 'displayCartPricesIncludingTax', false ) && (
 				<TotalsTaxes
 					currency={ totalsCurrency }
 					values={ cartTotals }
 				/>
 			) }
-			{ COUPONS_ENABLED && (
+			{ getSetting( 'couponsEnabled', true ) && (
 				<TotalsCoupon
 					onSubmit={ applyCoupon }
 					initialOpen={ false }
@@ -75,7 +84,7 @@ const CheckoutSidebar = ( {
 				currency={ totalsCurrency }
 				values={ cartTotals }
 			/>
-			<ExperimentalOrderMeta.Slot />
+			<ExperimentalOrderMeta.Slot { ...slotFillProps } />
 		</>
 	);
 };

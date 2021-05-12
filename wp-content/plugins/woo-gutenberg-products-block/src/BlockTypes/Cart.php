@@ -19,44 +19,62 @@ class Cart extends AbstractBlock {
 	protected $block_name = 'cart';
 
 	/**
-	 * Registers the block type with WordPress.
+	 * Get the editor script handle for this block type.
+	 *
+	 * @param string $key Data to get, or default to everything.
+	 * @return array|string;
 	 */
-	public function register_block_type() {
-		register_block_type(
-			$this->namespace . '/' . $this->block_name,
-			array(
-				'render_callback' => array( $this, 'render' ),
-				'editor_script'   => 'wc-' . $this->block_name . '-block',
-				'editor_style'    => 'wc-block-editor',
-				'style'           => [ 'wc-block-style', 'wc-block-vendors-style' ],
-				'script'          => 'wc-' . $this->block_name . '-block-frontend',
-				'supports'        => [],
-			)
-		);
+	protected function get_block_type_editor_script( $key = null ) {
+		$script = [
+			'handle'       => 'wc-' . $this->block_name . '-block',
+			'path'         => $this->asset_api->get_block_asset_build_path( $this->block_name ),
+			'dependencies' => [ 'wc-vendors', 'wc-blocks' ],
+		];
+		return $key ? $script[ $key ] : $script;
 	}
 
+	/**
+	 * Get the frontend script handle for this block type.
+	 *
+	 * @see $this->register_block_type()
+	 * @param string $key Data to get, or default to everything.
+	 * @return array|string
+	 */
+	protected function get_block_type_script( $key = null ) {
+		$script = [
+			'handle'       => 'wc-' . $this->block_name . '-block-frontend',
+			'path'         => $this->asset_api->get_block_asset_build_path( $this->block_name . '-frontend' ),
+			'dependencies' => [],
+		];
+		return $key ? $script[ $key ] : $script;
+	}
+
+	/**
+	 * Enqueue frontend assets for this block, just in time for rendering.
+	 *
+	 * @param array $attributes  Any attributes that currently are available from the block.
+	 */
+	protected function enqueue_assets( array $attributes ) {
+		do_action( 'woocommerce_blocks_enqueue_cart_block_scripts_before' );
+		parent::enqueue_assets( $attributes );
+		do_action( 'woocommerce_blocks_enqueue_cart_block_scripts_after' );
+	}
 
 	/**
 	 * Append frontend scripts when rendering the Cart block.
 	 *
-	 * @param array|\WP_Block $attributes Block attributes, or an instance of a WP_Block. Defaults to an empty array.
-	 * @param string          $content    Block content. Default empty string.
+	 * @param array  $attributes Block attributes.
+	 * @param string $content    Block content.
 	 * @return string Rendered block type output.
 	 */
-	public function render( $attributes = array(), $content = '' ) {
-		$block_attributes = is_a( $attributes, '\WP_Block' ) ? $attributes->attributes : $attributes;
-
-		do_action( 'woocommerce_blocks_enqueue_cart_block_scripts_before' );
-		$this->enqueue_assets( $block_attributes );
-		do_action( 'woocommerce_blocks_enqueue_cart_block_scripts_after' );
-
+	protected function render( $attributes, $content ) {
 		// Deregister core cart scripts and styles.
-		wp_deregister_script( 'wc-cart' );
-		wp_deregister_script( 'wc-password-strength-meter' );
-		wp_deregister_script( 'selectWoo' );
-		wp_deregister_style( 'select2' );
+		wp_dequeue_script( 'wc-cart' );
+		wp_dequeue_script( 'wc-password-strength-meter' );
+		wp_dequeue_script( 'selectWoo' );
+		wp_dequeue_style( 'select2' );
 
-		return $this->inject_html_data_attributes( $content . $this->get_skeleton(), $block_attributes );
+		return $this->inject_html_data_attributes( $content . $this->get_skeleton(), $attributes );
 	}
 
 	/**
@@ -67,27 +85,51 @@ class Cart extends AbstractBlock {
 	 *                           not in the post content on editor load.
 	 */
 	protected function enqueue_data( array $attributes = [] ) {
-		$data_registry = Package::container()->get(
-			AssetDataRegistry::class
+		parent::enqueue_data( $attributes );
+
+		$this->asset_data_registry->add(
+			'shippingCountries',
+			function() {
+				return $this->deep_sort_with_accents( WC()->countries->get_shipping_countries() );
+			},
+			true
 		);
+		$this->asset_data_registry->add(
+			'shippingStates',
+			function() {
+				return $this->deep_sort_with_accents( WC()->countries->get_shipping_country_states() );
+			},
+			true
+		);
+		$this->asset_data_registry->add(
+			'countryLocale',
+			function() {
+				// Merge country and state data to work around https://github.com/woocommerce/woocommerce/issues/28944.
+				$country_locale = wc()->countries->get_country_locale();
+				$states         = wc()->countries->get_states();
 
-		if ( ! $data_registry->exists( 'shippingCountries' ) ) {
-			$data_registry->add( 'shippingCountries', $this->deep_sort_with_accents( WC()->countries->get_shipping_countries() ) );
-		}
-
-		if ( ! $data_registry->exists( 'shippingStates' ) ) {
-			$data_registry->add( 'shippingStates', $this->deep_sort_with_accents( WC()->countries->get_shipping_country_states() ) );
-		}
-
-		$permalink = ! empty( $attributes['checkoutPageId'] ) ? get_permalink( $attributes['checkoutPageId'] ) : false;
-
-		if ( $permalink && ! $data_registry->exists( 'page-' . $attributes['checkoutPageId'] ) ) {
-			$data_registry->add( 'page-' . $attributes['checkoutPageId'], $permalink );
-		}
+				foreach ( $states as $country => $states ) {
+					if ( empty( $states ) ) {
+						$country_locale[ $country ]['state']['required'] = false;
+						$country_locale[ $country ]['state']['hidden']   = true;
+					}
+				}
+				return $country_locale;
+			},
+			true
+		);
+		$this->asset_data_registry->add( 'baseLocation', wc_get_base_location(), true );
+		$this->asset_data_registry->add( 'isShippingCalculatorEnabled', filter_var( get_option( 'woocommerce_enable_shipping_calc' ), FILTER_VALIDATE_BOOLEAN ), true );
+		$this->asset_data_registry->add( 'displayCartPricesIncludingTax', 'incl' === get_option( 'woocommerce_tax_display_cart' ), true );
+		$this->asset_data_registry->add( 'taxesEnabled', wc_tax_enabled(), true );
+		$this->asset_data_registry->add( 'couponsEnabled', wc_coupons_enabled(), true );
+		$this->asset_data_registry->add( 'shippingEnabled', wc_shipping_enabled(), true );
+		$this->asset_data_registry->add( 'hasDarkEditorStyleSupport', current_theme_supports( 'dark-editor-style' ), true );
+		$this->asset_data_registry->register_page_id( isset( $attributes['checkoutPageId'] ) ? $attributes['checkoutPageId'] : 0 );
 
 		// Hydrate the following data depending on admin or frontend context.
 		if ( ! is_admin() && ! WC()->is_rest_api_request() ) {
-			$this->hydrate_from_api( $data_registry );
+			$this->hydrate_from_api();
 		}
 
 		do_action( 'woocommerce_blocks_cart_enqueue_data' );
@@ -114,25 +156,10 @@ class Cart extends AbstractBlock {
 	}
 
 	/**
-	 * Register/enqueue scripts used for this block.
-	 *
-	 * @param array $attributes  Any attributes that currently are available from the block.
-	 *                           Note, this will be empty in the editor context when the block is
-	 *                           not in the post content on editor load.
-	 */
-	protected function enqueue_scripts( array $attributes = [] ) {
-		Assets::register_block_script( $this->block_name . '-frontend', $this->block_name . '-block-frontend' );
-	}
-
-	/**
 	 * Hydrate the cart block with data from the API.
-	 *
-	 * @param AssetDataRegistry $data_registry Data registry instance.
 	 */
-	protected function hydrate_from_api( AssetDataRegistry $data_registry ) {
-		if ( ! $data_registry->exists( 'cartData' ) ) {
-			$data_registry->add( 'cartData', WC()->api->get_endpoint_data( '/wc/store/cart' ) );
-		}
+	protected function hydrate_from_api() {
+		$this->asset_data_registry->hydrate_api_request( '/wc/store/cart' );
 	}
 
 	/**

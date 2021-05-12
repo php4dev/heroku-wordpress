@@ -294,7 +294,12 @@ class Google_Service_Resource
     }
 
     if (count($queryVars)) {
-      $requestUrl .= '?' . implode($queryVars, '&');
+        if (version_compare(PHP_VERSION, '7.4', '>=')) {
+            $requestUrl .= '?' . implode('&', $queryVars);
+        }
+        else{
+            $requestUrl .= '?' . implode($queryVars, '&');
+        }
     }
 
     return $requestUrl;

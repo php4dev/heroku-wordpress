@@ -2,6 +2,8 @@
 namespace Automattic\WooCommerce\Blocks\StoreApi\Routes;
 
 use Automattic\WooCommerce\Blocks\StoreApi\Schemas\AbstractSchema;
+use Automattic\WooCommerce\Blocks\StoreApi\Utilities\InvalidStockLevelsInCartException;
+use WP_Error;
 
 /**
  * AbstractRoute class.
@@ -52,9 +54,6 @@ abstract class AbstractRoute implements RouteInterface {
 	public function get_response( \WP_REST_Request $request ) {
 		$response = null;
 		try {
-			if ( 'GET' !== $request->get_method() ) {
-				$this->check_nonce( $request );
-			}
 			switch ( $request->get_method() ) {
 				case 'POST':
 					$response = $this->get_route_post_response( $request );
@@ -72,6 +71,8 @@ abstract class AbstractRoute implements RouteInterface {
 			}
 		} catch ( RouteException $error ) {
 			$response = $this->get_route_error_response( $error->getErrorCode(), $error->getMessage(), $error->getCode(), $error->getAdditionalData() );
+		} catch ( InvalidStockLevelsInCartException $error ) {
+			$response = $this->get_route_error_response_from_object( $error->getError(), $error->getCode(), $error->getAdditionalData() );
 		} catch ( \Exception $error ) {
 			$response = $this->get_route_error_response( 'unknown_server_error', $error->getMessage(), 500 );
 		}
@@ -80,9 +81,6 @@ abstract class AbstractRoute implements RouteInterface {
 			$response = $this->error_to_response( $response );
 		}
 
-		$response->header( 'X-WC-Store-API-Nonce', wp_create_nonce( 'wc_store_api' ) );
-		$response->header( 'X-WC-Store-API-Nonce-Timestamp', time() );
-		$response->header( 'X-WC-Store-API-User', get_current_user_id() );
 		return $response;
 	}
 
@@ -114,34 +112,6 @@ abstract class AbstractRoute implements RouteInterface {
 		}
 
 		return new \WP_REST_Response( $data, $status );
-	}
-
-	/**
-	 * For non-GET endpoints, require and validate a nonce to prevent CSRF attacks.
-	 *
-	 * Nonces will mismatch if the logged in session cookie is different! If using a client to test, set this cookie
-	 * to match the logged in cookie in your browser.
-	 *
-	 * @throws RouteException On error.
-	 *
-	 * @param \WP_REST_Request $request Request object.
-	 */
-	protected function check_nonce( \WP_REST_Request $request ) {
-		$nonce = $request->get_header( 'X-WC-Store-API-Nonce' );
-
-		if ( apply_filters( 'woocommerce_store_api_disable_nonce_check', false ) ) {
-			return;
-		}
-
-		if ( null === $nonce ) {
-			throw new RouteException( 'woocommerce_rest_missing_nonce', __( 'Missing the X-WC-Store-API-Nonce header. This endpoint requires a valid nonce.', 'woo-gutenberg-products-block' ), 401 );
-		}
-
-		$valid_nonce = wp_verify_nonce( $nonce, 'wc_store_api' );
-
-		if ( ! $valid_nonce ) {
-			throw new RouteException( 'woocommerce_rest_invalid_nonce', __( 'X-WC-Store-API-Nonce is invalid.', 'woo-gutenberg-products-block' ), 403 );
-		}
 	}
 
 	/**
@@ -203,6 +173,21 @@ abstract class AbstractRoute implements RouteInterface {
 	 */
 	protected function get_route_error_response( $error_code, $error_message, $http_status_code = 500, $additional_data = [] ) {
 		return new \WP_Error( $error_code, $error_message, array_merge( $additional_data, [ 'status' => $http_status_code ] ) );
+	}
+
+	/**
+	 * Get route response when something went wrong and the supplied error is a WP_Error. This currently only happens
+	 * when an item in the cart is out of stock, partially out of stock, can only be bought individually, or when the
+	 * item is not purchasable.
+	 *
+	 * @param WP_Error $error_object The WP_Error object containing the error.
+	 * @param int      $http_status_code HTTP status. Defaults to 500.
+	 * @param array    $additional_data  Extra data (key value pairs) to expose in the error response.
+	 * @return WP_Error WP Error object.
+	 */
+	protected function get_route_error_response_from_object( $error_object, $http_status_code = 500, $additional_data = [] ) {
+		$error_object->add_data( array_merge( $additional_data, [ 'status' => $http_status_code ] ) );
+		return $error_object;
 	}
 
 	/**
@@ -295,16 +280,5 @@ abstract class AbstractRoute implements RouteInterface {
 		return array(
 			'context' => $this->get_context_param(),
 		);
-	}
-
-	/**
-	 * Makes the cart and sessions available to a route by loading them from core.
-	 */
-	protected function maybe_load_cart() {
-		if ( ! did_action( 'woocommerce_load_cart_from_session' ) && function_exists( 'wc_load_cart' ) ) {
-			include_once WC_ABSPATH . 'includes/wc-cart-functions.php';
-			include_once WC_ABSPATH . 'includes/wc-notice-functions.php';
-			wc_load_cart();
-		}
 	}
 }

@@ -3,25 +3,32 @@
  */
 import {
 	OrderSummary,
-	SubtotalsItem,
-	TotalsFeesItem,
-	TotalsCouponCodeInput,
-	TotalsDiscountItem,
+	TotalsCoupon,
+	TotalsDiscount,
 	TotalsFooterItem,
-	TotalsShippingItem,
-	TotalsTaxesItem,
+	TotalsShipping,
 } from '@woocommerce/base-components/cart-checkout';
+import {
+	Subtotal,
+	TotalsFees,
+	TotalsTaxes,
+	ExperimentalOrderMeta,
+} from '@woocommerce/blocks-checkout';
+import { getCurrencyFromPriceResponse } from '@woocommerce/price-format';
 import { useShippingDataContext } from '@woocommerce/base-context';
-import { getCurrencyFromPriceResponse } from '@woocommerce/base-utils';
 import {
 	COUPONS_ENABLED,
 	DISPLAY_CART_PRICES_INCLUDING_TAX,
 } from '@woocommerce/block-settings';
-import { useStoreCartCoupons } from '@woocommerce/base-hooks';
+import {
+	useStoreCartCoupons,
+	useStoreCart,
+} from '@woocommerce/base-context/hooks';
 
 const CheckoutSidebar = ( {
 	cartCoupons = [],
 	cartItems = [],
+	cartFees = [],
 	cartTotals = {},
 } ) => {
 	const {
@@ -34,12 +41,21 @@ const CheckoutSidebar = ( {
 	const { needsShipping } = useShippingDataContext();
 	const totalsCurrency = getCurrencyFromPriceResponse( cartTotals );
 
+	// Prepare props to pass to the ExperimentalOrderMeta slot fill.
+	// We need to pluck out receiveCart.
+	// eslint-disable-next-line no-unused-vars
+	const { extensions, receiveCart, ...cart } = useStoreCart();
+	const slotFillProps = {
+		extensions,
+		cart,
+	};
+
 	return (
 		<>
 			<OrderSummary cartItems={ cartItems } />
-			<SubtotalsItem currency={ totalsCurrency } values={ cartTotals } />
-			<TotalsFeesItem currency={ totalsCurrency } values={ cartTotals } />
-			<TotalsDiscountItem
+			<Subtotal currency={ totalsCurrency } values={ cartTotals } />
+			<TotalsFees currency={ totalsCurrency } cartFees={ cartFees } />
+			<TotalsDiscount
 				cartCoupons={ cartCoupons }
 				currency={ totalsCurrency }
 				isRemovingCoupon={ isRemovingCoupon }
@@ -47,7 +63,7 @@ const CheckoutSidebar = ( {
 				values={ cartTotals }
 			/>
 			{ needsShipping && (
-				<TotalsShippingItem
+				<TotalsShipping
 					showCalculator={ false }
 					showRateSelector={ false }
 					values={ cartTotals }
@@ -55,13 +71,13 @@ const CheckoutSidebar = ( {
 				/>
 			) }
 			{ ! DISPLAY_CART_PRICES_INCLUDING_TAX && (
-				<TotalsTaxesItem
+				<TotalsTaxes
 					currency={ totalsCurrency }
 					values={ cartTotals }
 				/>
 			) }
 			{ COUPONS_ENABLED && (
-				<TotalsCouponCodeInput
+				<TotalsCoupon
 					onSubmit={ applyCoupon }
 					initialOpen={ false }
 					isLoading={ isApplyingCoupon }
@@ -71,6 +87,7 @@ const CheckoutSidebar = ( {
 				currency={ totalsCurrency }
 				values={ cartTotals }
 			/>
+			<ExperimentalOrderMeta.Slot { ...slotFillProps } />
 		</>
 	);
 };

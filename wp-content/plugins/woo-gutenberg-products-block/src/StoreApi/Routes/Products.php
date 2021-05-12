@@ -44,8 +44,6 @@ class Products extends AbstractRoute {
 	 * @return \WP_REST_Response
 	 */
 	protected function get_route_response( \WP_REST_Request $request ) {
-		// we load so that we have the same session, this is done so that Add to Cart can function.
-		$this->maybe_load_cart();
 		$response      = new \WP_REST_Response();
 		$product_query = new ProductQuery();
 
@@ -310,11 +308,15 @@ class Products extends AbstractRoute {
 		);
 
 		$params['stock_status'] = array(
-			'description'       => __( 'Limit result set to products with specified stock status.', 'woo-gutenberg-products-block' ),
-			'type'              => 'string',
-			'enum'              => array_keys( wc_get_product_stock_status_options() ),
-			'sanitize_callback' => 'sanitize_text_field',
-			'validate_callback' => 'rest_validate_request_arg',
+			'description' => __( 'Limit result set to products with specified stock status.', 'woo-gutenberg-products-block' ),
+			'type'        => 'array',
+			'items'       => array(
+				'type'              => 'string',
+				'enum'              => array_keys( wc_get_product_stock_status_options() ),
+				'sanitize_callback' => 'sanitize_text_field',
+				'validate_callback' => 'rest_validate_request_arg',
+			),
+			'default'     => [],
 		);
 
 		$params['attributes'] = array(

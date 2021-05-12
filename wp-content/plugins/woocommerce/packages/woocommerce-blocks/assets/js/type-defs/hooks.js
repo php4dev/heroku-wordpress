@@ -12,6 +12,8 @@
  *                                                      to the cart.
  * @property {Array}               cartItems            An array of items in the
  *                                                      cart.
+ * @property {Array}               cartFees             An array of fees in the
+ *                                                      cart.
  * @property {number}              cartItemsCount       The number of items in the
  *                                                      cart.
  * @property {number}              cartItemsWeight      The weight of all items in
@@ -33,10 +35,12 @@
  *                                                      cart.
  * @property {Array}               shippingRates        array of selected shipping
  *                                                      rates.
+ * @property {Object}              extensions           Values provided by  *                                                      extensions.
  * @property {boolean}             shippingRatesLoading Whether or not the
  *                                                      shipping rates are
  *                                                      being loaded.
  * @property {boolean}             cartHasCalculatedShipping Whether or not the cart has calculated shipping yet.
+ * @property {Array}               paymentRequirements  List of features required from payment gateways.
  * @property {function(Object):any} receiveCart         Dispatcher to receive
  *                                                      updated cart.
  */
@@ -62,20 +66,6 @@
  *                                             being added or not.
  * @property {boolean}  cartIsLoading          Whether the cart is being loaded.
  * @property {Function} addToCart              Callback for adding a cart item.
- */
-
-/**
- * @typedef {Object} StoreCartItemQuantity
- *
- * @property {number}   quantity               The quantity of the item in the
- *                                             cart.
- * @property {boolean}  isPendingDelete        Whether the cart item is being
- *                                             deleted or not.
- * @property {Function} changeQuantity         Callback for changing quantity
- *                                             of item in cart.
- * @property {Function} removeItem             Callback for removing a cart item.
- * @property {Object}   cartItemQuantityErrors An array of errors thrown by
- *                                             the cart.
  */
 
 /**

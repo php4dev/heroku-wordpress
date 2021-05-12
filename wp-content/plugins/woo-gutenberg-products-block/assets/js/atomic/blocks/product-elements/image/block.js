@@ -5,12 +5,13 @@ import PropTypes from 'prop-types';
 import { useState, Fragment } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
 import classnames from 'classnames';
-import { PLACEHOLDER_IMG_SRC } from '@woocommerce/block-settings';
+import { PLACEHOLDER_IMG_SRC } from '@woocommerce/settings';
 import {
 	useInnerBlockLayoutContext,
 	useProductDataContext,
 } from '@woocommerce/shared-context';
 import { withProductDataContext } from '@woocommerce/shared-hocs';
+import { useStoreEvents } from '@woocommerce/base-context/hooks';
 
 /**
  * Internal dependencies
@@ -39,6 +40,7 @@ export const Block = ( {
 	const { parentClassName } = useInnerBlockLayoutContext();
 	const { product } = useProductDataContext();
 	const [ imageLoaded, setImageLoaded ] = useState( false );
+	const { dispatchStoreEvent } = useStoreEvents();
 
 	if ( ! product.id ) {
 		return (
@@ -60,7 +62,7 @@ export const Block = ( {
 	const image = hasProductImages ? product.images[ 0 ] : null;
 	const ParentComponent = showProductLink ? 'a' : Fragment;
 	const anchorLabel = sprintf(
-		/* Translators: %s is referring to the product name */
+		/* translators: %s is referring to the product name */
 		__( 'Link to %s', 'woo-gutenberg-products-block' ),
 		product.name
 	);
@@ -68,6 +70,11 @@ export const Block = ( {
 		href: product.permalink,
 		rel: 'nofollow',
 		...( ! hasProductImages && { 'aria-label': anchorLabel } ),
+		onClick: () => {
+			dispatchStoreEvent( 'product-view-link', {
+				product,
+			} );
+		},
 	};
 
 	return (

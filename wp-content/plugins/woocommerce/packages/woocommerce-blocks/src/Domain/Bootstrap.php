@@ -25,6 +25,9 @@ use Automattic\WooCommerce\Blocks\StoreApi\Formatters;
 use Automattic\WooCommerce\Blocks\StoreApi\Formatters\MoneyFormatter;
 use Automattic\WooCommerce\Blocks\StoreApi\Formatters\HtmlFormatter;
 use Automattic\WooCommerce\Blocks\StoreApi\Formatters\CurrencyFormatter;
+use Automattic\WooCommerce\Blocks\StoreApi\RoutesController;
+use Automattic\WooCommerce\Blocks\StoreApi\SchemaController;
+use Automattic\WooCommerce\Blocks\Domain\Services\GoogleAnalytics;
 
 /**
  * Takes care of bootstrapping the plugin.
@@ -86,6 +89,7 @@ class Bootstrap {
 		$this->container->get( ExtendRestApi::class );
 		$this->container->get( PaymentsApi::class );
 		$this->container->get( RestApi::class );
+		$this->container->get( GoogleAnalytics::class );
 		Library::init();
 	}
 
@@ -121,7 +125,7 @@ class Bootstrap {
 			function() {
 				echo '<div class="error"><p>';
 				printf(
-					/* Translators: %1$s is the install command, %2$s is the build command, %3$s is the watch command. */
+					/* translators: %1$s is the install command, %2$s is the build command, %3$s is the watch command. */
 					esc_html__( 'WooCommerce Blocks development mode requires files to be built. From the plugin directory, run %1$s to install dependencies, %2$s to build the files or %3$s to build the files and watch for changes.', 'woocommerce' ),
 					'<code>npm install</code>',
 					'<code>npm run build</code>',
@@ -176,7 +180,7 @@ class Bootstrap {
 		$this->container->register(
 			RestApi::class,
 			function ( Container $container ) {
-				return new RestApi( $container->get( ExtendRestApi::class ) );
+				return new RestApi( $container->get( RoutesController::class ) );
 			}
 		);
 		$this->container->register(
@@ -208,9 +212,32 @@ class Bootstrap {
 			}
 		);
 		$this->container->register(
+			SchemaController::class,
+			function( Container $container ) {
+				return new SchemaController( $container->get( ExtendRestApi::class ) );
+			}
+		);
+		$this->container->register(
+			RoutesController::class,
+			function( Container $container ) {
+				return new RoutesController( $container->get( SchemaController::class ) );
+			}
+		);
+		$this->container->register(
 			ExtendRestApi::class,
 			function( Container $container ) {
 				return new ExtendRestApi( $container->get( Package::class ), $container->get( Formatters::class ) );
+			}
+		);
+		$this->container->register(
+			GoogleAnalytics::class,
+			function( Container $container ) {
+				// Require Google Analytics Integration to be activated.
+				if ( ! class_exists( 'WC_Google_Analytics_Integration' ) ) {
+					return;
+				}
+				$asset_api = $container->get( AssetApi::class );
+				return new GoogleAnalytics( $asset_api );
 			}
 		);
 	}

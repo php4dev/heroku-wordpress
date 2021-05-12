@@ -130,6 +130,7 @@ class WPvivid {
         add_filter('wpvivid_set_mail_body', array($this, 'set_mail_body'), 10, 2);
 
         add_filter('wpvivid_get_oldest_backup_ids', array($this, 'get_oldest_backup_ids'), 10, 2);
+        add_filter('wpvivid_check_backup_completeness', array($this, 'check_backup_completeness'), 10, 2);
 
         //
 		//Initialisation schedule hook
@@ -1041,6 +1042,54 @@ class WPvivid {
         }
     }
 
+    public function check_backup_completeness($check_res, $task_id){
+        $task=WPvivid_taskmanager::get_task($task_id);
+        if(isset($task['options']['backup_options']['ismerge'])){
+            if($task['options']['backup_options']['ismerge'] == '1'){
+                foreach ($task['options']['backup_options']['backup']['backup_merge']['result']['files'] as $file_info){
+                    $file_name = $file_info['file_name'];
+                    if(!$this->check_backup_file_json($file_name)){
+                        $check_res = false;
+                    }
+                }
+            }
+            else{
+                foreach ($task['options']['backup_options']['backup'] as $key => $value){
+                    foreach ($value['result']['files'] as $file_info){
+                        $file_name = $file_info['file_name'];
+                        if(!$this->check_backup_file_json($file_name)){
+                            $check_res = false;
+                        }
+                    }
+                }
+            }
+        }
+        return $check_res;
+    }
+
+    public function check_backup_file_json($file_name){
+        $zip=new WPvivid_ZipClass();
+
+        $general_setting=WPvivid_Setting::get_setting(true, "");
+        $backup_folder = $general_setting['options']['wpvivid_local_setting']['path'];
+        $backup_path=WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$backup_folder.DIRECTORY_SEPARATOR;
+        $file_path=$backup_path.$file_name;
+
+        $ret=$zip->get_json_data($file_path);
+        if($ret['result'] === WPVIVID_SUCCESS) {
+            $json=$ret['json_data'];
+            $json = json_decode($json, 1);
+            if (is_null($json)) {
+                return false;
+            } else {
+                return $json;
+            }
+        }
+        elseif($ret['result'] === WPVIVID_FAILED){
+            return false;
+        }
+    }
+
     /**
      * Initialization backup task.
      *
@@ -1167,6 +1216,14 @@ class WPvivid {
         if($status['str']=='running')
         {
             $this->wpvivid_log->WriteLog('Backup succeeded.','notice');
+
+            $check_res = apply_filters('wpvivid_check_backup_completeness', true, $task_id);
+            if(!$check_res){
+                $task=WPvivid_taskmanager::get_task($task_id);
+                $task['status']['error'] = 'We have detected that this backup is either corrupted or incomplete. Please make sure your server disk space is sufficient then create a new backup. In order to successfully back up/restore a website, the amount of free server disk space needs to be at least twice the size of the website';
+                do_action('wpvivid_handle_backup_failed',$task, false);
+                return false;
+            }
 
             $remote_options=WPvivid_taskmanager::get_task_options($task_id,'remote_options');
             if($remote_options===false)
@@ -1807,7 +1864,7 @@ class WPvivid {
 
         $sapi_type=php_sapi_name();
 
-        if($sapi_type=='cgi-fcgi'||$sapi_type==' fpm-fcgi')
+        if($sapi_type=='cgi-fcgi'||$sapi_type=='fpm-fcgi')
         {
             $alter_fcgi=true;
         }
@@ -3794,6 +3851,8 @@ class WPvivid {
         $maintenance_string.='$version_check=version_compare($wp_version,4.6,\'>\' );';
         $maintenance_string.='if($version_check)';
         $maintenance_string.='{';
+        $maintenance_string.='if(!function_exists(\'enable_maintenance_mode_filter\'))';
+        $maintenance_string.='{';
         $maintenance_string.='function enable_maintenance_mode_filter($enable_checks,$upgrading)';
         $maintenance_string.='{';
         $maintenance_string.='if(is_admin()&&isset($_POST[\'wpvivid_restore\']))';
@@ -3801,6 +3860,7 @@ class WPvivid {
         $maintenance_string.='return false;';
         $maintenance_string.='}';
         $maintenance_string.='return $enable_checks;';
+        $maintenance_string.='}';
         $maintenance_string.='}';
         $maintenance_string.='add_filter( \'enable_maintenance_mode\',\'enable_maintenance_mode_filter\',10, 2 );';
         $maintenance_string.='}';

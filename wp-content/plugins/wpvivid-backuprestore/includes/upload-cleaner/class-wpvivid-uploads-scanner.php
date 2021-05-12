@@ -384,7 +384,7 @@ class WPvivid_Uploads_Scanner
 
         $post_status="post_status NOT IN ('inherit', 'trash', 'auto-draft')";
 
-        $query="SELECT COUNT(*) FROM $wpdb->posts WHERE $post_types AND $post_status";
+        $query=$wpdb->prepare("SELECT COUNT(*) FROM $wpdb->posts WHERE $post_types AND %s",$post_status);
 
         $result=$wpdb->get_results($query,ARRAY_N);
 
@@ -1369,10 +1369,10 @@ class WPvivid_Uploads_Scanner
         }
 
         $table = $wpdb->prefix . "wpvivid_unused_uploads_files";
-        $sql="SELECT * FROM $table ".$where;
 
-        $result=$wpdb->get_results($sql,ARRAY_A);
-        return $result;
+        $sql=esc_sql("SELECT * FROM `$table` ".$where);
+
+        return $wpdb->get_results($sql,ARRAY_A);
     }
 
     public function get_scan_result_count()
@@ -1450,8 +1450,7 @@ class WPvivid_Uploads_Scanner
         $ids=implode(",",$selected_list);
 
         $table = $wpdb->prefix . "wpvivid_unused_uploads_files";
-        $sql="SELECT * FROM $table WHERE `id` IN ($ids)";
-
+        $sql=$wpdb->prepare("SELECT * FROM $table WHERE `id` IN (%s)",$ids);
         $result=$wpdb->get_results($sql,ARRAY_A);
         if($result)
         {
@@ -1516,8 +1515,7 @@ class WPvivid_Uploads_Scanner
         //LIMIT
 
         $table = $wpdb->prefix . "wpvivid_unused_uploads_files";
-        $sql="SELECT * FROM $table ".$where;
-
+        $sql=esc_sql("SELECT * FROM $table ".$where);
         $result=$wpdb->get_results($sql,ARRAY_A);
         if($result)
         {

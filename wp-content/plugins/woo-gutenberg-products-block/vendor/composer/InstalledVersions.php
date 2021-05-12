@@ -30,28 +30,28 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '951f738347a89bc1f30e2965c0a579992f5fa69a',
+    'reference' => 'e78f5855b8ec80e32b265081f2286250074298dc',
     'name' => 'woocommerce/woocommerce-blocks',
   ),
   'versions' => 
   array (
     'automattic/jetpack-autoloader' => 
     array (
-      'pretty_version' => 'v2.7.1',
-      'version' => '2.7.1.0',
+      'pretty_version' => '2.10.1',
+      'version' => '2.10.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5437697a56aefbdf707849b9833e1b36093d7a73',
+      'reference' => '20393c4677765c3e737dcb5aee7a3f7b90dce4b3',
     ),
     'composer/installers' => 
     array (
-      'pretty_version' => 'v1.9.0',
-      'version' => '1.9.0.0',
+      'pretty_version' => 'v1.10.0',
+      'version' => '1.10.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'b93bcf0fa1fccb0b7d176b0967d969691cd74cca',
+      'reference' => '1a0357fccad9d1cc1ea0c9a05b8847fbccccb78d',
     ),
     'roundcube/plugin-installer' => 
     array (
@@ -74,7 +74,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '951f738347a89bc1f30e2965c0a579992f5fa69a',
+      'reference' => 'e78f5855b8ec80e32b265081f2286250074298dc',
     ),
   ),
 );
@@ -299,7 +299,6 @@ self::$canGetVendors = method_exists('Composer\Autoload\ClassLoader', 'getRegist
 $installed = array();
 
 if (self::$canGetVendors) {
-
 foreach (ClassLoader::getRegisteredLoaders() as $vendorDir => $loader) {
 if (isset(self::$installedByVendor[$vendorDir])) {
 $installed[] = self::$installedByVendor[$vendorDir];

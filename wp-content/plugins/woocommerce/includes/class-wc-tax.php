@@ -405,7 +405,7 @@ class WC_Tax {
 
 		$criteria_string = implode( ' AND ', $criteria );
 
-		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		// phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$found_rates = $wpdb->get_results(
 			"
 			SELECT tax_rates.*, COUNT( locations.location_id ) as postcode_count, COUNT( locations2.location_id ) as city_count
@@ -479,8 +479,22 @@ class WC_Tax {
 	 * @return  array
 	 */
 	public static function get_rates( $tax_class = '', $customer = null ) {
+		$tax_class = sanitize_title( $tax_class );
+		$location  = self::get_tax_location( $tax_class, $customer );
+		return self::get_rates_from_location( $tax_class, $location, $customer );
+	}
+
+	/**
+	 * Get's an arrau of matching rates from location and tax class. $customer parameter is used to preserve backward compatibility for filter.
+	 *
+	 * @param string $tax_class Tax class to get rates for.
+	 * @param array  $location  Location to compute rates for. Should be in form: array( country, state, postcode, city).
+	 * @param object $customer  Only used to maintain backward compatibility for filter `woocommerce-matched_rates`.
+	 *
+	 * @return mixed|void Tax rates.
+	 */
+	public static function get_rates_from_location( $tax_class, $location, $customer = null ) {
 		$tax_class         = sanitize_title( $tax_class );
-		$location          = self::get_tax_location( $tax_class, $customer );
 		$matched_tax_rates = array();
 
 		if ( count( $location ) === 4 ) {
@@ -747,7 +761,7 @@ class WC_Tax {
 	 * @since 3.7.0
 	 * @return array Array of tax class objects consisting of tax_rate_class_id, name, and slug.
 	 */
-	protected static function get_tax_rate_classes() {
+	public static function get_tax_rate_classes() {
 		global $wpdb;
 
 		$cache_key        = 'tax-rate-classes';
@@ -801,6 +815,7 @@ class WC_Tax {
 
 		$existing       = self::get_tax_classes();
 		$existing_slugs = self::get_tax_class_slugs();
+		$name           = wc_clean( $name );
 
 		if ( in_array( $name, $existing, true ) ) {
 			return new WP_Error( 'tax_class_exists', __( 'Tax class already exists', 'woocommerce' ) );
@@ -808,6 +823,11 @@ class WC_Tax {
 
 		if ( ! $slug ) {
 			$slug = sanitize_title( $name );
+		}
+
+		// Stop if there's no slug.
+		if ( ! $slug ) {
+			return new WP_Error( 'tax_class_slug_invalid', __( 'Tax class slug is invalid', 'woocommerce' ) );
 		}
 
 		if ( in_array( $slug, $existing_slugs, true ) ) {

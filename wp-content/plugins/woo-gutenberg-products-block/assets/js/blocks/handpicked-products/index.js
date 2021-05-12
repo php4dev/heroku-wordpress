@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import { DEFAULT_COLUMNS } from '@woocommerce/block-settings';
+import { getSetting } from '@woocommerce/settings';
 import { Icon, widgets } from '@woocommerce/icons';
 
 /**
@@ -11,7 +11,6 @@ import { Icon, widgets } from '@woocommerce/icons';
  */
 import './editor.scss';
 import Block from './block';
-import { deprecatedConvertToShortcode } from '../../utils/deprecations';
 
 registerBlockType( 'woocommerce/handpicked-products', {
 	title: __( 'Hand-picked Products', 'woo-gutenberg-products-block' ),
@@ -50,7 +49,7 @@ registerBlockType( 'woocommerce/handpicked-products', {
 		 */
 		columns: {
 			type: 'number',
-			default: DEFAULT_COLUMNS,
+			default: getSetting( 'default_columns', 3 ),
 		},
 
 		/**
@@ -106,45 +105,6 @@ registerBlockType( 'woocommerce/handpicked-products', {
 			default: false,
 		},
 	},
-
-	deprecated: [
-		{
-			// Deprecate shortcode save method in favor of dynamic rendering.
-			attributes: {
-				align: {
-					type: 'string',
-				},
-				columns: {
-					type: 'number',
-					default: DEFAULT_COLUMNS,
-				},
-				editMode: {
-					type: 'boolean',
-					default: true,
-				},
-				contentVisibility: {
-					type: 'object',
-					default: {
-						title: true,
-						price: true,
-						rating: true,
-						button: true,
-					},
-				},
-				orderby: {
-					type: 'string',
-					default: 'date',
-				},
-				products: {
-					type: 'array',
-					default: [],
-				},
-			},
-			save: deprecatedConvertToShortcode(
-				'woocommerce/handpicked-products'
-			),
-		},
-	],
 
 	/**
 	 * Renders and manages the block.

@@ -3,14 +3,13 @@
  */
 import { __, sprintf } from '@wordpress/i18n';
 import { speak } from '@wordpress/a11y';
+import { usePrevious, useShallowEqual } from '@woocommerce/base-hooks';
 import {
 	useCollection,
 	useQueryStateByKey,
 	useQueryStateByContext,
 	useCollectionData,
-	usePrevious,
-	useShallowEqual,
-} from '@woocommerce/base-hooks';
+} from '@woocommerce/base-context/hooks';
 import { useCallback, useEffect, useState, useMemo } from '@wordpress/element';
 import CheckboxList from '@woocommerce/base-components/checkbox-list';
 import DropdownSelector from '@woocommerce/base-components/dropdown-selector';
@@ -255,7 +254,7 @@ const AttributeFilterBlock = ( {
 				if ( filterAddedName && filterRemovedName ) {
 					speak(
 						sprintf(
-							/* Translators: %1$s and %2$s are attribute terms (for example: 'red', 'blue', 'large'...). */
+							/* translators: %1$s and %2$s are attribute terms (for example: 'red', 'blue', 'large'...). */
 							__(
 								'%1$s filter replaced with %2$s.',
 								'woo-gutenberg-products-block'
@@ -267,7 +266,7 @@ const AttributeFilterBlock = ( {
 				} else if ( filterAddedName ) {
 					speak(
 						sprintf(
-							/* Translators: %s attribute term (for example: 'red', 'blue', 'large'...) */
+							/* translators: %s attribute term (for example: 'red', 'blue', 'large'...) */
 							__(
 								'%s filter added.',
 								'woo-gutenberg-products-block'
@@ -278,7 +277,7 @@ const AttributeFilterBlock = ( {
 				} else if ( filterRemovedName ) {
 					speak(
 						sprintf(
-							/* Translators: %s attribute term (for example: 'red', 'blue', 'large'...) */
+							/* translators: %s attribute term (for example: 'red', 'blue', 'large'...) */
 							__(
 								'%s filter removed.',
 								'woo-gutenberg-products-block'

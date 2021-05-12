@@ -7,7 +7,7 @@ import { debounce, find } from 'lodash';
 import PropTypes from 'prop-types';
 import { SearchListControl, SearchListItem } from '@woocommerce/components';
 import { SelectControl } from '@wordpress/components';
-import { LIMIT_TAGS } from '@woocommerce/block-settings';
+import { getSetting } from '@woocommerce/settings';
 
 /**
  * Internal dependencies
@@ -74,7 +74,7 @@ class ProductTagControl extends Component {
 				{ ...args }
 				showCount
 				aria-label={ sprintf(
-					// Translators: %1$d is the count of products, %2$s is the name of the tag.
+					/* translators: %1$d is the count of products, %2$s is the name of the tag. */
 					_n(
 						'%1$d product tagged as %2$s',
 						'%1$d products tagged as %2$s',
@@ -108,7 +108,7 @@ class ProductTagControl extends Component {
 			),
 			selected: ( n ) =>
 				sprintf(
-					// Translators: %d is the count of selected tags.
+					/* translators: %d is the count of selected tags. */
 					_n(
 						'%d tag selected',
 						'%d tags selected',
@@ -123,6 +123,8 @@ class ProductTagControl extends Component {
 			),
 		};
 
+		const limitTags = getSetting( 'limitTags', false );
+
 		return (
 			<>
 				<SearchListControl
@@ -133,7 +135,7 @@ class ProductTagControl extends Component {
 						.map( ( id ) => find( list, { id } ) )
 						.filter( Boolean ) }
 					onChange={ onChange }
-					onSearch={ LIMIT_TAGS ? this.debouncedOnSearch : null }
+					onSearch={ limitTags ? this.debouncedOnSearch : null }
 					renderItem={ this.renderItem }
 					messages={ messages }
 					isHierarchical

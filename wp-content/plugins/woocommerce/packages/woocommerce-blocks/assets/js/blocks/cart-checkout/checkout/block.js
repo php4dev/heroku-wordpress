@@ -15,8 +15,7 @@ import {
 	useEditorContext,
 	useValidationContext,
 } from '@woocommerce/base-context';
-import { useStoreCart, useStoreNotices } from '@woocommerce/base-hooks';
-import { CheckoutExpressPayment } from '@woocommerce/base-components/payment-methods';
+import { useStoreCart, useStoreNotices } from '@woocommerce/base-context/hooks';
 import {
 	Sidebar,
 	SidebarLayout,
@@ -27,7 +26,7 @@ import {
 	CHECKOUT_ALLOWS_GUEST,
 	CHECKOUT_ALLOWS_SIGNUP,
 } from '@woocommerce/block-settings';
-import { compareWithWooVersion, getSetting } from '@woocommerce/settings';
+import { isWcVersion, getSetting } from '@woocommerce/settings';
 
 /**
  * Internal dependencies
@@ -35,6 +34,7 @@ import { compareWithWooVersion, getSetting } from '@woocommerce/settings';
 import CheckoutForm from './form';
 import CheckoutSidebar from './sidebar';
 import CheckoutOrderError from './checkout-order-error';
+import { CheckoutExpressPayment } from '../payment-methods';
 import { LOGIN_TO_CHECKOUT_URL } from './utils';
 import './style.scss';
 
@@ -65,6 +65,7 @@ const Checkout = ( { attributes, scrollToTop } ) => {
 		cartItems,
 		cartTotals,
 		cartCoupons,
+		cartFees,
 		cartNeedsPayment,
 	} = useStoreCart();
 	const {
@@ -88,7 +89,7 @@ const Checkout = ( { attributes, scrollToTop } ) => {
 	// uses updated my-account/lost-password screen from 4.7+ for
 	// setting initial password.
 	const allowCreateAccount =
-		attributes.allowCreateAccount && compareWithWooVersion( '4.7.0', '<=' );
+		attributes.allowCreateAccount && isWcVersion( '4.7.0', '>=' );
 
 	useEffect( () => {
 		if ( hasErrorsToDisplay ) {
@@ -157,6 +158,7 @@ const Checkout = ( { attributes, scrollToTop } ) => {
 						cartCoupons={ cartCoupons }
 						cartItems={ cartItems }
 						cartTotals={ cartTotals }
+						cartFees={ cartFees }
 					/>
 				</Sidebar>
 			</SidebarLayout>

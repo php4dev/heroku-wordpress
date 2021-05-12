@@ -7,15 +7,15 @@ $baseDir   = dirname($vendorDir);
 
 return array(
 	'Composer\\Installers\\' => array(
-		'version' => '1.9.0.0',
+		'version' => '1.10.0.0',
 		'path'    => array( $vendorDir . '/composer/installers/src/Composer/Installers' )
 	),
 	'Automattic\\WooCommerce\\Blocks\\' => array(
-		'version' => '4.4.2.0',
+		'version' => '5.1.0.0',
 		'path'    => array( $baseDir . '/src' )
 	),
 	'Automattic\\Jetpack\\Autoloader\\' => array(
-		'version' => '2.7.1.0',
+		'version' => '2.10.1.0',
 		'path'    => array( $vendorDir . '/automattic/jetpack-autoloader/src' )
 	),
 );

@@ -39,9 +39,26 @@ class WPvivid_mail_report
 
         $task_log=$task['options']['log_file_name'];
 
-        $wpvivid_log=new WPvivid_Log();
-        $log_file_name= $wpvivid_log->GetSaveLogFolder().$task_log.'_log.txt';
-        $attachments[] = $log_file_name;
+        if(isset($option['email_attach_log'])){
+            if($option['email_attach_log'] == '1'){
+                $attach_log = true;
+            }
+            else{
+                $attach_log = false;
+            }
+        }
+        else{
+            $attach_log = true;
+        }
+        if($attach_log){
+            $wpvivid_log=new WPvivid_Log();
+            $log_file_name= $wpvivid_log->GetSaveLogFolder().$task_log.'_log.txt';
+            $attachments[] = $log_file_name;
+        }
+        else{
+            $attachments = array();
+        }
+
         foreach ($option['send_to'] as $send_to)
         {
             if(wp_mail( $send_to, $subject, $body,$headers,$attachments)===false)

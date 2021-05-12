@@ -49,6 +49,11 @@ export const IS_SHIPPING_CALCULATOR_ENABLED = getSetting(
 	'isShippingCalculatorEnabled',
 	true
 );
+// used for the editor logic as an extra check
+export const SHIPPING_COST_REQUIRES_ADDRESS = getSetting(
+	'shippingCostRequiresAddress',
+	false
+);
 export const IS_SHIPPING_COST_HIDDEN = getSetting(
 	'isShippingCostHidden',
 	false
@@ -84,6 +89,7 @@ const defaultPage = {
 	permalink: '',
 };
 const storePages = getSetting( 'storePages', {
+	myaccount: defaultPage,
 	shop: defaultPage,
 	cart: defaultPage,
 	checkout: defaultPage,
@@ -109,4 +115,7 @@ export const CHECKOUT_ALLOWS_SIGNUP = getSetting(
 	'checkoutAllowsSignup',
 	false
 );
-export const LOGIN_URL = getSetting( 'loginUrl', '/wp-login.php' );
+
+export const LOGIN_URL = storePages.myaccount.permalink
+	? storePages.myaccount.permalink
+	: getSetting( 'loginUrl', '/wp-login.php' );

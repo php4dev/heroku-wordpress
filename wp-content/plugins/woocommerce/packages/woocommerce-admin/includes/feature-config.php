@@ -17,9 +17,11 @@ if ( ! function_exists( 'wc_admin_get_feature_config' ) ) {
 			'navigation' => false,
 			'onboarding' => true,
 			'remote-inbox-notifications' => true,
+			'settings' => false,
 			'shipping-label-banner' => true,
 			'store-alerts' => true,
 			'wcpay' => true,
+			'wcpay/support-international-countries' => false,
 		);
 	}
 }

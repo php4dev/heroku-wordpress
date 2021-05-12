@@ -38,11 +38,13 @@ class Plugins_Handler {
 	/**
 	 * Gets all of the active plugins we can find.
 	 *
+	 * @param bool $include_deactivating When true, plugins deactivating this request will be considered active.
+	 * @param bool $record_unknown When true, the current plugin will be marked as active and recorded when unknown.
+	 *
 	 * @return string[]
 	 */
-	public function get_active_plugins() {
+	public function get_active_plugins( $include_deactivating, $record_unknown ) {
 		global $jetpack_autoloader_activating_plugins_paths;
-		global $jetpack_autoloader_including_latest;
 
 		// We're going to build a unique list of plugins from a few different sources
 		// to find all of our "active" plugins. While we need to return an integer
@@ -73,7 +75,8 @@ class Plugins_Handler {
 			}
 		}
 
-		$plugins = $this->plugin_locator->find_activating_this_request();
+		// These actions contain plugins that are being activated/deactivated during this request.
+		$plugins = $this->plugin_locator->find_using_request_action( array( 'activate', 'activate-selected', 'deactivate', 'deactivate-selected' ) );
 		foreach ( $plugins as $path ) {
 			$active_plugins[ $path ] = $path;
 		}
@@ -86,9 +89,18 @@ class Plugins_Handler {
 		// of causing a reset because the active plugins list has
 		// been changed since it was saved in the global.
 		$current_plugin = $this->plugin_locator->find_current_plugin();
-		if ( ! in_array( $current_plugin, $active_plugins, true ) && ! $jetpack_autoloader_including_latest ) {
+		if ( $record_unknown && ! in_array( $current_plugin, $active_plugins, true ) ) {
 			$active_plugins[ $current_plugin ]             = $current_plugin;
 			$jetpack_autoloader_activating_plugins_paths[] = $current_plugin;
+		}
+
+		// When deactivating plugins aren't desired we should entirely remove them from the active list.
+		if ( ! $include_deactivating ) {
+			// These actions contain plugins that are being deactivated during this request.
+			$plugins = $this->plugin_locator->find_using_request_action( array( 'deactivate', 'deactivate-selected' ) );
+			foreach ( $plugins as $path ) {
+				unset( $active_plugins[ $path ] );
+			}
 		}
 
 		// Transform the array so that we don't have to worry about the keys interacting with other array types later.
@@ -102,7 +114,7 @@ class Plugins_Handler {
 	 */
 	public function get_cached_plugins() {
 		$cached = get_transient( self::TRANSIENT_KEY );
-		if ( false === $cached ) {
+		if ( ! is_array( $cached ) || empty( $cached ) ) {
 			return array();
 		}
 
@@ -133,12 +145,6 @@ class Plugins_Handler {
 	 */
 	public function have_plugins_changed( $plugins ) {
 		global $jetpack_autoloader_cached_plugin_paths;
-
-		// When no autoloader has executed there is nothing to have changed.
-		if ( ! isset( $jetpack_autoloader_cached_plugin_paths ) ) {
-			$jetpack_autoloader_cached_plugin_paths = $plugins;
-			return false;
-		}
 
 		if ( $jetpack_autoloader_cached_plugin_paths !== $plugins ) {
 			$jetpack_autoloader_cached_plugin_paths = $plugins;

@@ -15,18 +15,13 @@ import {
 	useEditorContext,
 	useValidationContext,
 } from '@woocommerce/base-context';
-import { useStoreCart, useStoreNotices } from '@woocommerce/base-hooks';
-import { CheckoutExpressPayment } from '@woocommerce/base-components/payment-methods';
+import { useStoreCart, useStoreNotices } from '@woocommerce/base-context/hooks';
 import {
 	Sidebar,
 	SidebarLayout,
 	Main,
 } from '@woocommerce/base-components/sidebar-layout';
 import withScrollToTop from '@woocommerce/base-hocs/with-scroll-to-top';
-import {
-	CHECKOUT_ALLOWS_GUEST,
-	CHECKOUT_ALLOWS_SIGNUP,
-} from '@woocommerce/block-settings';
 import { isWcVersion, getSetting } from '@woocommerce/settings';
 
 /**
@@ -35,6 +30,7 @@ import { isWcVersion, getSetting } from '@woocommerce/settings';
 import CheckoutForm from './form';
 import CheckoutSidebar from './sidebar';
 import CheckoutOrderError from './checkout-order-error';
+import { CheckoutExpressPayment } from '../payment-methods';
 import { LOGIN_TO_CHECKOUT_URL } from './utils';
 import './style.scss';
 
@@ -105,8 +101,8 @@ const Checkout = ( { attributes, scrollToTop } ) => {
 	if (
 		! isEditor &&
 		! customerId &&
-		! CHECKOUT_ALLOWS_GUEST &&
-		! ( allowCreateAccount && CHECKOUT_ALLOWS_SIGNUP )
+		! getSetting( 'checkoutAllowsGuest', false ) &&
+		! ( allowCreateAccount && getSetting( 'checkoutAllowsSignup', false ) )
 	) {
 		return (
 			<>
@@ -141,7 +137,6 @@ const Checkout = ( { attributes, scrollToTop } ) => {
 						allowCreateAccount={ allowCreateAccount }
 					/>
 					<div className="wc-block-checkout__actions">
-						<PlaceOrderButton />
 						{ attributes.showReturnToCart && (
 							<ReturnToCartButton
 								link={ getSetting(
@@ -150,6 +145,7 @@ const Checkout = ( { attributes, scrollToTop } ) => {
 								) }
 							/>
 						) }
+						<PlaceOrderButton />
 					</div>
 					{ attributes.showPolicyLinks && <Policies /> }
 				</Main>

@@ -8,9 +8,12 @@ namespace Automattic\WooCommerce\Admin;
 
 defined( 'ABSPATH' ) || exit;
 
+use \Automattic\WooCommerce\Admin\Features\Features;
 use \Automattic\WooCommerce\Admin\Notes\AddingAndManangingProducts;
 use \Automattic\WooCommerce\Admin\Notes\ChooseNiche;
 use \Automattic\WooCommerce\Admin\Notes\ChoosingTheme;
+use \Automattic\WooCommerce\Admin\Notes\CustomizingProductCatalog;
+use Automattic\WooCommerce\Admin\Notes\FirstDownlaodableProduct;
 use \Automattic\WooCommerce\Admin\Notes\GivingFeedbackNotes;
 use \Automattic\WooCommerce\Admin\Notes\InsightFirstProductAndPayment;
 use \Automattic\WooCommerce\Admin\Notes\MobileApp;
@@ -30,7 +33,6 @@ use \Automattic\WooCommerce\Admin\Notes\RealTimeOrderAlerts;
 use \Automattic\WooCommerce\Admin\RemoteInboxNotifications\DataSourcePoller;
 use \Automattic\WooCommerce\Admin\RemoteInboxNotifications\RemoteInboxNotificationsEngine;
 use \Automattic\WooCommerce\Admin\Notes\MerchantEmailNotifications\MerchantEmailNotifications;
-use \Automattic\WooCommerce\Admin\Loader;
 use \Automattic\WooCommerce\Admin\Notes\InsightFirstSale;
 use \Automattic\WooCommerce\Admin\Notes\NeedSomeInspiration;
 use \Automattic\WooCommerce\Admin\Notes\OnlineClothingStore;
@@ -46,6 +48,8 @@ use \Automattic\WooCommerce\Admin\Notes\NavigationFeedbackFollowUp;
 use \Automattic\WooCommerce\Admin\Notes\FilterByProductVariationsInReports;
 use \Automattic\WooCommerce\Admin\Notes\AddFirstProduct;
 use \Automattic\WooCommerce\Admin\Notes\DrawAttention;
+use \Automattic\WooCommerce\Admin\Notes\GettingStartedInEcommerceWebinar;
+use \Automattic\WooCommerce\Admin\Notes\NavigationNudge;
 
 /**
  * Events Class.
@@ -140,6 +144,10 @@ class Events {
 		InsightFirstProductAndPayment::possibly_add_note();
 		AddFirstProduct::possibly_add_note();
 		AddingAndManangingProducts::possibly_add_note();
+		CustomizingProductCatalog::possibly_add_note();
+		GettingStartedInEcommerceWebinar::possibly_add_note();
+		FirstDownlaodableProduct::possibly_add_note();
+		NavigationNudge::possibly_add_note();
 	}
 
 	/**
@@ -149,7 +157,7 @@ class Events {
 	 */
 	protected function is_remote_inbox_notifications_enabled() {
 		// Check if the feature flag is disabled.
-		if ( ! Loader::is_feature_enabled( 'remote-inbox-notifications' ) ) {
+		if ( ! Features::is_enabled( 'remote-inbox-notifications' ) ) {
 			return false;
 		}
 
@@ -169,7 +177,7 @@ class Events {
 	 */
 	protected function is_merchant_email_notifications_enabled() {
 		// Check if the feature flag is disabled.
-		if ( 'yes' !== get_option( 'woocommerce_merchant_email_notifications', 'yes' ) ) {
+		if ( 'yes' !== get_option( 'woocommerce_merchant_email_notifications', 'no' ) ) {
 			return false;
 		}
 
